@@ -1,37 +1,38 @@
-# The Complete "Game Development with Blender" Book
-by Dalai Felinto and Mike Pan. Now Free!
 
-This is a republication of the book originally published by Cengage. We put the book up here for free hoping to allow more people to learn the Blender Game Engine. We also hope to continue to improve the book with the help of the community and keep it always up-to-date.
+# O Livro Completo "Game Development with Blender" (O Desenvolvimento de Jogo com Blender)
+by Dalai Felinto and Mike Pan. Now Free! (Um projeto de tradução do material)
 
-## Start Reading:
+Esta é uma re-publicação de um livro originalmente publicado por Cengage. Nós colocamos o livro aqui para termos a esperança livre de mais pessoas aceitarem aprender o Blender Game Engine. Nós também esperamos continuar a prover um livro com ajuda da comunidade e manter sempre atualizado.
 
-[Chapter 1 - Getting Started](text/01-GettingStarted.md)
+## Começando a leitura:
 
-[Chapter 2 - Your First Game](text/02-FirstGame.md)
+[Capítulo 1 - Começando](text/01-GettingStarted.md)
 
-[Chapter 3 - Logic Bricks](text/03-LogicBricks.md)
+[Capítulo 2 - Seu Primeiro Jogo](text/02-FirstGame.md)
 
-[Chapter 4 - Animation](text/04-Animation.md)
+[Capítulo 3 - Logic Bricks](text/03-LogicBricks.md)
 
-[Chapter 5 - Graphics](text/05-Graphics.md)
+[Capítulo 4 - Animação](text/04-Animation.md)
 
-[Chapter 6 - Physics](text/06-Physics.md)
+[Capítulo 5 - Gráficos](text/05-Graphics.md)
 
-[Chapter 7 - Scripting](text/07-Scripting.md)
+[Capítulo 6 - Física](text/06-Physics.md)
 
-[Chapter 8 - Optimization](text/08-Optimization.md)
+[Capítulo 7 - Scripting](text/07-Scripting.md)
 
-[Chapter 9 - Publishing](text/09-Publishing.md)
+[Capítulo 8 - Otimização](text/08-Optimization.md)
 
-[Chapter 10 - Case Studies](text/10-CaseStudies.md)
+[Capítulo 9 - Publicação](text/09-Publishing.md)
 
-## Start Contributing:
-Since This book was written years ago, Blender has gone through many many improvements. So there will be omissions and errors, please help us keep this book up-to-date by submitting a pull request on [GitHub](https://github.com/mikepan/GameEngineBook/).
+[Capítulo 10 - Estudos de Caso](text/10-CaseStudies.md)
 
-## License
-The book is released under the Creative Commons BY-SA license. By contributing to this book (through pull requests or otherwise), you agree that your work becomes part of this book which might be publised on a different non-commercial platform in the future.
+## Começando a contribuir:
+Desde que este livro foi escrito anos atrás, o Blender passou por muitas melhorias. Portanto, haverá omissões e erros. Ajude-nos a manter este livro atualizado enviando uma solicitação de recebimento no [GitHub] (https://github.com/mikepan/GameEngineBook/).
 
-## Credits:
+## Licença
+O livro é lançado sob a licença Creative Commons BY-SA. Ao contribuir com este livro (por meio de solicitações pull ou de outra forma), você concorda que seu trabalho se tornará parte deste livro que poderá ser publicado em uma plataforma não comercial diferente no futuro.
+
+## Créditos:
 - Mike Pan
 - Dalai Felinto
 - Momel15
