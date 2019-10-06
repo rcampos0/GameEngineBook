@@ -1,160 +1,159 @@
-**Table of Contents**
+**Índice**
 
-- [Chapter 1: Getting Started](#Chapter_1_Getting_Started)
-	- [An Origin Story](#An_Origin_Story)
-		- [Blender Begins](#Blender_Begins)
-		- [The Dark Nights](#The_Dark_Nights)
-		- [Blender Rises](#Blender_Rises)
-	- [About Blender](#About_Blender)
-		- [About the Game Engine](#About_the_Game_Engine)
-		- [Future of BGE](#Future_of_BGE)
-	- [3D Basics](#3D_Basics)
-		- [Coordinate System](#Coordinate_System)
-		- [Points, Edges, Triangles, and Meshes](#Points,_Edges,_Triangles,_and_Meshes)
-		- [Basic Transforms](#Basic_Transforms)
-		- [Materials and Textures](#Materials_and_Textures)
-		- [Lights](#Lights)
-		- [Camera](#Camera)
-		- [Animation](#Animation)
+- [Capítulo 1: Introdução](#Chapter_1_Getting_Started)
+	- [Uma História da Origem](#An_Origin_Story)
+		- [O Blender inicia](#Blender_Begins)
+		- [As noites escuras](#The_Dark_Nights)
+		- [A Ascenção de Blender](#Blender_Rises)
+	- [Sobre o Blender](#About_Blender)
+		- [Sobre o Game Engine](#About_the_Game_Engine)
+		- [O Futuro da BGE](#Future_of_BGE)
+	- [O Básico do 3D](#3D_Basics)
+		- [Sistema de Coordenadas](#Coordinate_System)
+		- [Pontos, arestas, triângulos e malhas](#Points,_Edges,_Triangles,_and_Meshes)
+		- [Transformações básicas](#Basic_Transforms)
+		- [Materiais e Texturas](#Materials_and_Textures)
+		- [Iluminação](#Lights)
+		- [Câmera](#Camera)
+		- [Animação](#Animation)
 		- [Game](#Game)
-	- [Setting up](#Setting_up)
-		- [Installation](#Installation)
-		- [System Requirements](#System_Requirements)
-	- [Blender Basics](#Blender_Basics)
-		- [Main Menu](#Main_Menu)
-		- [3D Viewport](#3D_Viewport)
+	- [Configurando](#Setting_up)
+		- [Instalação](#Installation)
+		- [Requisitos de sistema](#System_Requirements)
+	- [Noções básicas do Blender](#Blender_Basics)
+		- [Menu Principal](#Main_Menu)
+		- [Vista 3D](#3D_Viewport)
 		- [Outliner](#Outliner)
-		- [Properties Editor](#Properties_Editor)
+		- [Editor de Propriedades](#Properties_Editor)
 		- [Timeline](#Timeline)
-		- [Workspace Customization](#Workspace_Customization)
-		- [More on the 3D View](#More_on_the_3D_View)
-		- [Viewport Shading Modes](#Viewport_Shading_Modes)
-		- [Editing Modes](#Editing_Modes)
-		- [Keyboard and Mouse](#Keyboard_and_Mouse)
-		- [Search](#Search)
-		- [Blender Philosophy](#Blender_Philosophy)
+		- [Personalização da área de trabalho](#Workspace_Customization)
+		- [Mais sobre a vista 3D](#More_on_the_3D_View)
+		- [Modos de sombreamento da viewport](#Viewport_Shading_Modes)
+		- [Modos de edição](#Editing_Modes)
+		- [Teclado e Mouse](#Keyboard_and_Mouse)
+		- [Procura](#Search)
+		- [Filosofia do Blender](#Blender_Philosophy)
 		- [Interface](#Interface)
-		- [Keyboard](#Keyboard)
+		- [Teclado](#Keyboard)
 		- [Mouse](#Mouse)
-		- [Context](#Context)
-		- [Datablocks](#Datablocks)
-		- [Parenting and Grouping](#Parenting_and_Grouping)
-		- [Backward Compatibility](#Backward_Compatibility)
-	- [Onward](#Onward)
+		- [Contexto](#Context)
+		- [Blocos de dados](#Datablocks)
+		- [Parentalidade e Agrupamento](#Parenting_and_Grouping)
+		- [Compatibilidade com versões anteriores](#Backward_Compatibility)
+	- [Adiante](#Onward)
 
-# Chapter 1: Getting Started <a id="Chapter_1_Getting_Started"></a>
-Here is something you don't know about Mike. He has read more Linux books than he cares to admit. Unfortunately, Mike rarely makes it past chapter 2. Given that the first two chapters usually contain nothing more than a warm introduction and a history of the software, this practice has two profound consequences. The first is that Mike can articulate the history of Linux far better than almost anyone. The second is that he still does not know how to actually use Linux. Granted, the former happens to be far more useful at a party than knowing the difference between "tar cvfz" and "lshw."
+# Capítulo 1: Introdução <a id="Chapter_1_Getting_Started"></a>
+Aqui está algo que você não sabe sobre Mike. Ele leu mais livros sobre Linux do que gostaria de admitir. Infelizmente, Mike raramente passa do capítulo 2. Dado que os dois primeiros capítulos geralmente não contêm nada além de uma introdução calorosa e um histórico do software, essa prática tem duas consequências profundas. A primeira é que Mike pode articular a história do Linux muito melhor do que quase qualquer um. A segunda é que ele ainda não sabe como usar o Linux. É verdade que o primeiro é muito mais útil em uma festa do que saber a diferença entre "tar cvfz" e "lshw".
 
-In keeping with this tech book tradition, this book won't be any different. In this chapter, you will learn Blender's rich history and be introduced to the very basics of this application.
+De acordo com essa tradição de livros sobre tecnologia, este livro não será diferente. Neste capítulo, você aprenderá a rica história do Blender e será apresentado aos princípios básicos deste aplicativo.
 
-## An Origin Story <a id="An_Origin_Story"></a>
+## Uma História da Origem <a id="An_Origin_Story"></a>
 
-It was the mid-1990s, and the personal computer was taking off faster than anyone had anticipated. With it, there arose the advent of animated graphics and 3D games.
+Era meados da década de 1990, e o computador pessoal estava decolando mais rápido do que se previa. Com isso, surgiu o advento de gráficos animados e jogos em 3D.
 
-### Blender Begins <a id="Blender_Begins"></a>
-It was at this ripe time that Blender came into being. Blender started off as an in-house 3D animation software created by a small Dutch animation studio called NeoGeo. Perhaps it was because of the lack of a cheap and capable substitute; perhaps it was due to sheer ambition, NeoGeo decided to create its own animation software from scratch rather than using what was available. The chief programmer of Blender was *Ton Roosendaal*, who was responsible for writing a large part of the core Blender functionalities.
+### O Blender inicia <a id="Blender_Begins"></a>
+Foi nessa época que o Blender surgiu. O Blender começou como um software de animação 3D interno criado por um pequeno estúdio de animação holandês chamado NeoGeo. Talvez fosse por falta de um substituto barato e capaz; talvez fosse por pura ambição, a NeoGeo decidiu criar seu próprio software de animação do zero, em vez de usar o que estava disponível. O principal programador do Blender foi Ton Roosendaal, responsável por escrever grande parte das principais funcionalidades do Blender.
 
-For the next few years, Blender remained the internal tool of a very successful animation studio. The software became so good that in 1998, Blender was made available to the public. A new company, Not a Number (NaN), was formed to oversee the development and distribution of Blender. Largely via the Internet, Blender was distributed as two separate versions: a free version with limited functionality and a version that was not free (called Blender Publisher) that had a few additional features. Being the only complete 3D animation and game creation package available for free at a time when computer graphics was still in its infancy, Blender started gaining popularity, and many online communities developed that allowed artists to share knowledge and their work.
+Nos anos seguintes, o Blender permaneceu a ferramenta interna de um estúdio de animação de muito sucesso. O software ficou tão bom que, em 1998, o Blender foi disponibilizado ao público. Uma nova empresa, Not a Number (NaN), foi formada para supervisionar o desenvolvimento e a distribuição do Blender. Em grande parte pela Internet, o Blender foi distribuído em duas versões separadas: uma versão gratuita com funcionalidade limitada e uma versão que não era gratuita (chamada Blender Publisher) que possuía alguns recursos adicionais. Sendo o único pacote completo de animação em 3D e criação de jogos disponível gratuitamente no momento em que a computação gráfica ainda estava em sua infância, o Blender começou a ganhar popularidade, e muitas comunidades online se desenvolveram permitindo que os artistas compartilhassem conhecimento e seu trabalho.
 
 ![Left: Blender 1.6. Right: Blender 2.65](../figures/Chapter1/Fig01-01.jpg)
 
-###  The Dark Nights <a id="The_Dark_Nights"></a>
-Alas, with the collapse of the Internet bubble and some other unfortunate circumstances, Not a Number (NaN) filed for bankruptcy in 2002. Since Blender was the intellectual property of the company at the time, dissolving the company meant an uncertain future for Blender. The Blender community did not want to see their favorite software go down with NaN. So a deal was struck in which NaN would release the source code of Blender to the public for a payment of €100,000. A "Free the Blender" fundraising campaign was started. The online community responded very generously. A few months later, enough money was collected to convince NaN to re-release Blender as an open source software to the newly established Blender Foundation. The foundation was created specifically to manage the now open source Blender. Ton Roosendaal, the original creator of Blender, heads the foundation.
+###  As noites escuras <a id="The_Dark_Nights"></a>
+Infelizmente, com o colapso da bolha da Internet e outras circunstâncias infelizes, a Not a Number (NaN) entrou em falência em 2002. Como o Blender era propriedade intelectual da empresa na época, dissolver a empresa significava um futuro incerto para o Blender. A comunidade do Blender não queria ver o seu software favorito ficar com o NaN. Então, foi fechado um acordo em que o NaN divulgaria o código fonte do Blender ao público por um pagamento de € 100.000. Uma campanha de arrecadação de fundos "Free the Blender" foi iniciada. A comunidade online respondeu muito generosamente. Alguns meses depois, dinheiro suficiente foi coletado para convencer o NaN a relançar o Blender como um software de código aberto para a recém-criada Fundação Blender. A fundação foi criada especificamente para gerenciar o Blender, agora de código aberto. Ton Roosendaal, o criador original do Blender, lidera a fundação.
 
-### Blender Rises <a id="Blender_Rises"></a>
-Located in beautiful Amsterdam, the Blender Foundation now oversees the development, distribution, and marketing of Blender. But because of the open source nature of the software, its development has been driven largely by volunteer contributors from across the world.
+### A Ascenção de Blender <a id="Blender_Rises"></a>
+Localizada na bela Amsterdã, a Blender Foundation agora supervisiona o desenvolvimento, distribuição e marketing do Blender. Porém, devido à natureza de código aberto do software, seu desenvolvimento foi impulsionado em grande parte por colaboradores voluntários de todo o mundo.
 
-The Blender Foundation also created the Blender Institute, an animation and game studio that focuses on movie and game development using Blender. The Institute produced the movies _Elephants Dream_, _Big Buck Bunny_, _Sintel_, _Tears of Steel_, Cosmos Laundromat and the game _Yo, Frankie!_ These projects serve two main goals: The production process is an opportunity to improve Blender in a real studio environment, and the end result also serves as an advertisement for the software itself.
+A Blender Foundation também criou o Blender Institute, um estúdio de animação e jogos que se concentra no desenvolvimento de filmes e jogos usando o Blender. O Instituto produziu os filmes _Elephants Dream_, _Big Buck Bunny_, _Sintel_, _Tears of Steel_, Cosmos Laundromat e o jogo _Yo, Frankie! _ Esses projetos atendem a dois objetivos principais: O processo de produção é uma oportunidade de melhorar o Blender em um ambiente de estúdio real, e o resultado final também serve como um anúncio para o próprio software.
 
 ![Top: Elephants Dream, Big Buck Bunny, Yo, Frankie!, Bottom:  Sintel, Tears of Steel, Cosmos Laundromat](../figures/Chapter1/Fig01-02.jpg)
 
-Then came Blender 2.5, which changed much of how Blender looked and behaved. This refactoring, as it was called, took years of planning and coding. Blender 2.5 marks a significant milestone in the history of Blender. For users coming from the Blender 2.4x series, the entire interface looks radically different: menus items are rearranged, keyboard shortcuts are altered, even the default color scheme has changed from a boring gray to a slightly less boring shade of gray.  Blender 2.5 is designed to be more intuitive, faster to use, and easier to learn than its predecessor.
+Depois veio o Blender 2.5, que mudou muito a aparência e o comportamento do Blender. Essa refatoração, como foi chamada, levou anos de planejamento e codificação. O Blender 2.5 marca um marco significativo na história do Blender. Para usuários provenientes da série Blender 2.4x, toda a interface parece radicalmente diferente: os itens dos menus são reorganizados, os atalhos do teclado são alterados, até o esquema de cores padrão mudou de cinza para um tom de cinza um pouco menos chato. O Blender 2.5 foi projetado para ser mais intuitivo, mais rápido de usar e mais fácil de aprender do que seu antecessor.
 
-Blender uses the Python programming language for scripting. With Python, you can customize the behavior of Blender, extend its functionality, and, more importantly, control the game engine. Knowing how to program is not a requirement for using Blender, but knowing Python will make you a far more capable game-maker.
+O Blender usa a linguagem de programação Python para scripts. Com o Python, você pode personalizar o comportamento do Blender, ampliar sua funcionalidade e, mais importante, controlar o mecanismo do jogo. Saber programar não é um requisito para usar o Blender, mas conhecer o Python fará de você um criador de jogos muito mais capaz.
 
 <img alt="Blender Commit statistics form 2003 to 2012" src="../figures/Chapter1/Fig01-03.png" width="50%" align="left">
-The year 2012 marked the tenth anniversary of Blender going open source. During these 10 years of open source development, more than 150 people have contributed something to the source code, totaling 50,000 contributions ("commits," in SVN techno-jargon), averaging nearly 30 commits every day over the past year. Needless to say, the program has improved much over the years, and it shows no sign of slowing down. The image below shows the Blender development statistics gathered from the official SVN repository including Blender trunk all its branches.
+O ano de 2012 marcou o décimo aniversário do Blender em código aberto. Durante esses 10 anos de desenvolvimento de código aberto, mais de 150 pessoas contribuíram com algo para o código-fonte, totalizando 50.000 contribuições ("confirmações", no jargão técnico do SVN), com uma média de quase 30 confirmações por dia durante o ano passado. Desnecessário dizer que o programa melhorou muito ao longo dos anos e não mostra sinais de desaceleração. A imagem abaixo mostra as estatísticas de desenvolvimento do Blender coletadas no repositório oficial do SVN, incluindo o tronco do Blender em todas as suas ramificações.
 
-Of course, software exists to serve the users - that's you. Every time a Blender user creates a piece of artwork, it justifies, even if just a little, the enormous amount of time that went into creating the software. We hope that by picking up this book, you are on your way to creating something amazing to share with the world.
+Obviamente, existe software para atender os usuários - é você. Toda vez que um usuário do Blender cria uma obra de arte, justifica, mesmo que um pouco, a enorme quantidade de tempo que foi gasta na criação do software. Esperamos que, ao adquirir este livro, você esteja no caminho de criar algo incrível para compartilhar com o mundo.
 
 
 
 ---
 
-## About Blender <a id="About_Blender"></a>
+## Sobre o Blender <a id="About_Blender"></a>
 
-Chances are, you already know that Blender is an open source 3D software that is capable of modeling, animation, rendering, compositing, and producing a game all in one package. Even if you are not sure what each of those term means, don't fret!
+Provavelmente, você já sabe que o Blender é um software 3D de código aberto capaz de modelar, animar, renderizar, compor e produzir um jogo em um único pacote. Mesmo que você não tenha certeza do significado de cada um desses termos, não se preocupe!
 
-Let's break down the term "open source 3D animation software."
+Vamos detalhar o termo "software de animação 3D de código aberto".
+"Código aberto" significa que o código fonte do Blender está disponível para qualquer pessoa acessar e modificar. A vantagem mais óbvia para o software de código aberto é que, como artista, você pode usar o Blender gratuitamente, para trabalhos não comerciais e comerciais. Como desenvolvedor, você tem permissão para modificar o Blender da maneira que desejar para atender às suas necessidades específicas. Mas o código aberto não significa que qualquer pessoa possa fazer alterações maliciosas no código do Blender sem aprovação. O Blender está licenciado sob a GNU Public License v2 (GPL2). Em poucas palavras, significa que o Blender pode ser copiado, modificado e, se compartilhado novamente, as alterações no código-fonte precisam estar disponíveis e licenciadas em uma licença equivalente.
 
-"Open source" means that Blender's source code is available for anyone to access and modify. The most obvious advantage to open source software is that as an artist, you can use Blender for free, for non-commercial as well as commercial work. As a developer, you are allowed to modify Blender in any way you want to suit your specific needs. But open source does not mean that anyone can make malicious changes to the Blender code without approval. Blender is licensed under the GNU Public License v2 (GPL2). In a nutshell, it means that Blender can be copied, modified, and if re-shared, the changes in the source code have to be available and licensed in an equivalent license.
-
-> **Caveat**:
+> **Ressalva**:
 >
-> Before you publish a game using Blender, you should understand the limitations of the GPL. This topic is covered in Chapter 9, "Publishing and Beyond."
+> Antes de publicar um jogo usando o Blender, você deve entender as limitações da GPL. Este tópico é abordado no capítulo 9, "Publicando e além".
 
-The term "3D" means three dimensions. The world we live in is 3D because it has height, width, and depth. Compare this with 2D software programs such as Photoshop, GIMP or Krita, the content-creation process in Blender is done in a 3D space, not on a 2D canvas.
+O termo "3D" significa três dimensões. O mundo em que vivemos é 3D porque possui altura, largura e profundidade. Compare isso com os programas de software 2D, como Photoshop, GIMP ou Krita, o processo de criação de conteúdo no Blender é feito em um espaço 3D, não em uma tela 2D.
 
 ![2D vs. 3D](../figures/Chapter1/Fig01-04.jpg)
 
-The term "animation" is perhaps a misleading one. Although we tend to attribute the term "computer animated" to any film that is done by a computer, we should remember that Blender isn't limited to just creating animation. Blender is capable of modeling, rendering, compositing, and making games just as well as it can animate.
+O termo "animação" talvez seja enganoso. Embora tendamos a atribuir o termo "animação por computador" a qualquer filme feito por um computador, devemos lembrar que o Blender não se limita apenas a criar animação. O Blender é capaz de modelar, renderizar, compor e criar jogos da melhor maneira possível.
 
-The term "software" suggests that Blender is a tool-a tool that allows you to create animations and games. So this book will treat it as such-merely a means to an end. We will help you understand each of Blender's features, so you will know how to use the software to achieve what you want.
+O termo "software" sugere que o Blender é uma ferramenta - uma ferramenta que permite criar animações e jogos. Portanto, este livro o tratará como tal - apenas um meio para atingir um fim. Nós o ajudaremos a entender cada um dos recursos do Blender, para que você saiba como usar o software para alcançar o que deseja.
 
-As this is a book about the tools, this is not a book on game design. Topics such as storyline, art direction, and game playability are beyond the scope of this book. Blender is merely a platform that enables you to make art.
+Como este é um livro sobre as ferramentas, este não é um livro sobre design de jogos. Tópicos como história, direção de arte e jogabilidade estão além do escopo deste livro. O Blender é apenas uma plataforma que permite fazer arte.
 
-### About the Game Engine <a id="About_the_Game_Engine"></a>
+### Sobre o Game Engine <a id="About_the_Game_Engine"></a>
 
-Blender is a multi-faceted tool. This book will focus on one aspect of it: the game-creation process. If you are new to Blender, learning the game engine means you will pick up basic modeling, animation, and other necessary skills along the way. If you already have Blender experience, great! The skills you already know will make transitioning to the game engine much easier.
+O Blender é uma ferramenta multifacetada. Este livro se concentrará em um aspecto: o processo de criação de jogos. Se você é novo no Blender, aprender o mecanismo do jogo significa que você adquirirá modelagem básica, animação e outras habilidades necessárias ao longo do caminho. Se você já tem experiência com o Blender, ótimo! As habilidades que você já conhece facilitarão muito a transição para o mecanismo de jogo.
 
-Compared to some of the commercial game engines available today, the Blender Game Engine (BGE or GE for short) is relatively simple. Is that a bad thing? Not necessarily. A simple platform like Blender is very easy to learn, and yet it's flexible enough to do a lot.
+Comparado a alguns dos mecanismos de jogos comerciais disponíveis atualmente, o Blender Game Engine (BGE ou GE, abreviado) é relativamente simples. Isso é uma coisa ruim? Não necessariamente. Uma plataforma simples como o Blender é muito fácil de aprender e, no entanto, é flexível o suficiente para fazer muito.
 
-To give you some idea of what the game engine is capable of, Chapter 10, "Case Studies," is dedicated to projects that were done in the GE.
+Para ter uma idéia do que o mecanismo de jogo é capaz, o Capítulo 10, "Estudos de Caso", é dedicado a projetos que foram feitos na GE.
 
-### Future of BGE <a id="Future_of_BGE"></a>
+### O Futuro da BGE <a id="Future_of_BGE"></a>
 
-One downside to writing about software is that it's constantly improving. Even today, projects such as [UPBGE](https://upbge.org/) is promising to dramatically improve the features and functionalities of the Blender Game Engine. We will try our best to keep this ebook as up-to-date as possible. What you should do as a reader, is to make sure you are always using the latest version of Blender.
+Uma desvantagem de escrever sobre software é que ele está melhorando constantemente. Ainda hoje, projetos como o [UPBGE] (https://upbge.org/) prometem melhorar drasticamente os recursos e funcionalidades do Blender Game Engine. Faremos o possível para manter este e-book o mais atualizado possível. O que você deve fazer como leitor é garantir que você esteja sempre usando a versão mais recente do Blender.
 
-> **Test Builds**
+> **Construções de Teste**
 >
-> If the latest version is not fresh good enough, you can find official daily builds on [builder.blender.org](https://builder.blender.org/download/). Additionally, many non-official test builds of Blender are available from [graphicall.org](http://graphicall.org/).
+> Se a versão mais recente não for boa o suficiente, você poderá encontrar versões oficiais diárias em [builder.blender.org] (https://builder.blender.org/download/). Além disso, muitas versões de teste não oficiais do Blender estão disponíveis em [graphicall.org] (http://graphicall.org/).
 
-## 3D Basics <a id="3D_Basics"></a>
+## O Básico do 3D <a id="3D_Basics"></a>
 
-If you haven't used any 3D application before, the terms modeling, animation, and rendering might be foreign to you. So before you go off to create the spectacular game that you always wanted to make, let's have a quick refresher on the basics of computer graphics. You don't have to endure the boring section below if you are already know what RGB stands for and the difference between Cartesian and Gaussian.
+Se você nunca usou um aplicativo 3D antes, os termos modelagem, animação e renderização podem ser estranhos para você. Portanto, antes de criar o jogo espetacular que você sempre quis fazer, vamos relembrar rapidamente o básico da computação gráfica. Você não precisa suportar a seção chata abaixo se já sabe o que significa RGB e a diferença entre Cartesiano e Gaussiano.
 
-The knowledge in this section is universal and applies to all other 3D applications. So even if you are coming from a different application, the same concepts drive all of them.
+O conhecimento nesta seção é universal e se aplica a todos os outros aplicativos 3D. Portanto, mesmo se você vier de um aplicativo diferente, os mesmos conceitos os conduzirão a todos.
 
-### Coordinate System <a id="Coordinate_System"></a>
+### Sistema de Coordenadas <a id="Coordinate_System"></a>
 
 <img alt="The three axes illustrated" src="../figures/Chapter1/Fig01-05.png" width="33%" align="right">
-We live in a three-dimensional world that has width, height, and depth. So to represent anything that resembles real life as a virtual world inside a computer, we need to think and work in three dimensions. The most common system used is called the Cartesian coordinate system, where the three dimensions are represented by X, Y, and Z, laid out as intersecting planes. Where the three axes meet is called the _origin_. You can think of the origin as the center of your digital universe. A single position in space is represented by a set of numbers that corresponds to its position from the origin: thus (2, -4, 8) is a point in space that is 2 units from the origin along the X axis, 4 units from the origin along the -Y axis, and 8 units up in the Z direction.
+Vivemos em um mundo tridimensional que tem largura, altura e profundidade. Portanto, para representar qualquer coisa que se assemelhe à vida real como um mundo virtual dentro de um computador, precisamos pensar e trabalhar em três dimensões. O sistema mais comum usado é chamado de sistema de coordenadas cartesianas, onde as três dimensões são representadas por X, Y e Z, dispostas como planos de interseção. Onde os três eixos se encontram é chamado de _origin_. Você pode pensar na origem como o centro do seu universo digital. Uma única posição no espaço é representada por um conjunto de números que corresponde à sua posição desde a origem: assim (2, -4, 8) é um ponto no espaço que está a 2 unidades da origem ao longo do eixo X, 4 unidades de a origem ao longo do eixo -Y e 8 unidades acima na direção Z.
 
 
-### Points, Edges, Triangles, and Meshes <a id="Points,_Edges,_Triangles,_and_Meshes"></a>
+### Pontos, Arestas, Triângulos e Malhas <a id="Points,_Edges,_Triangles,_and_Meshes"></a>
 
-Although we can define a position in space using the XYZ coordinates, a single point (or a "vertex," as it's more commonly known in computer graphics) is not terribly useful; after all, you can't see a dot that is infinitesimally small. But you can join this vertex with another vertex to form a line (also known as an "edge"). An edge by itself still wouldn't be very visible, so you create another vertex and join all three vertices together with lines and fill in the middle. Suddenly, something far more interesting is created[md]a triangle (also known as a "face")! By linking multiple faces together, you can create any shape, the result of which is called a "mesh" or "model." Figure below shows how a mesh can be broken down into faces, then edges, and ultimately, as vertices.
+Embora possamos definir uma posição no espaço usando as coordenadas XYZ, um único ponto (ou um "vértice", como é mais conhecido em computação gráfica) não é muito útil; afinal, você não pode ver um ponto infinitamente pequeno. Mas você pode associar esse vértice a outro vértice para formar uma linha (também conhecida como "aresta"). Uma aresta por si só ainda não seria muito visível, então você cria outro vértice e une os três vértices com linhas e preenche o meio. De repente, algo muito mais interessante é criado [md] um triângulo (também conhecido como "rosto")! Ao vincular várias faces, você pode criar qualquer forma, cujo resultado é chamado de "malha" ou "modelo". A figura abaixo mostra como uma malha pode ser dividida em faces, arestas e, finalmente, como vértices.
 
-![Teapot, cube, face, edge and vertex.](../figures/Chapter1/Fig01-06.jpg)
+![Bule, cubo, face, borda e vértice.](../figures/Chapter1/Fig01-06.jpg)
 
-Why is the triangle so important? Turns out, modern computer graphics use the triangle as the basic building block for almost any shape. A rectangular plane (also known as a _quadrangle_, or more commonly a _quad_) is simply two triangles arranged side by side. A cube is simply six squares put together. Even a sphere is just made of tiny facelets arranged into a ball shape.
+Por que o triângulo é tão importante? Acontece que os gráficos de computador modernos usam o triângulo como o elemento básico para quase qualquer formato. Um plano retangular (também conhecido como quadrangular_ ou, mais comumente, quadrangular) é simplesmente dois triângulos dispostos lado a lado. Um cubo é simplesmente seis quadrados juntos. Até uma esfera é feita apenas de pequenas faceletas dispostas em forma de bola.
 
 <img alt="The same cylinder cap can be made up of triangles, quads, or an n-gon." src="../figures/Chapter1/Fig01-07.jpg" width="50%" align="right">
 
-In Blender, a mesh can be made from a combination of triangles, quads, or n-gons. The benefit of n-gons is their ability to retain a clean topology while modeling. Without n-gons, certain areas of a model (such as a window on a wall) would require a higher number of triangles or quads to approximate, as shown below. While n-gons make modeling easier in some cases, Blender still converts them to triangles when you start the game.
+No Blender, uma malha pode ser feita a partir de uma combinação de triângulos, quadrados ou n-gons. O benefício dos n-gons é sua capacidade de manter uma topologia limpa durante a modelagem. Sem n-gons, certas áreas de um modelo (como uma janela na parede) exigiriam um número maior de triângulos ou quadríceps para se aproximar, como mostrado abaixo. Enquanto n-gons facilitam a modelagem em alguns casos, o Blender ainda os converte em triângulos quando você inicia o jogo.
 
-The process of creating a mesh by rearranging vertices, edges, and faces is called _modeling_. Blender has many tools that help artists define the geometry they want.
+O processo de criação de uma malha reorganizando vértices, arestas e faces é chamado _modeling_. O Blender possui muitas ferramentas que ajudam os artistas a definir a geometria desejada.
 
-It is worth noting that unlike the real world, polygonal models do not have volumes. They are just a shell made of interconnected faces that take the shape of the object, but the inside of the object is always "hollow."
+Vale ressaltar que, diferentemente do mundo real, os modelos poligonais não possuem volumes. Eles são apenas uma concha feita de faces interconectadas que assumem a forma do objeto, mas a parte interna do objeto é sempre "oca".
 
 <img alt="Surface normals are displayed as cyan lines protruding from the faces." src="../figures/Chapter1/Fig01-08.jpg" width="50%" align="right">
 
-Another concept that a modeler will likely encounter is surface normals, or "normals" for short. Normal is a property of each face that indicates the direction a polygon is facing. Because normals are used for shading computation of the surface, ideally all the normals for a mesh should be pointed "outward." Wrongly oriented normals can cause the mesh to show up as black or invisible. Fortunately, there is a Make Normals Consistent function in Blender that can usually resolve the issue. Figure 1.8 shows how normals are presented in Blender.
+Outro conceito que um modelador provavelmente encontrará são os normais de superfície, ou "normais", para abreviar. Normal é uma propriedade de cada face que indica a direção em que um polígono está voltado. Como os normais são usados para calcular a superfície da sombra, idealmente todos os normais de uma malha devem ser apontados "para fora". Normais mal orientadas podem fazer com que a malha apareça como preta ou invisível. Felizmente, existe uma função Tornar normais consistentes no Blender que geralmente pode resolver o problema. A Figura 1.8 mostra como as normais são apresentadas no Blender.
 
 
-> **Beyond Polygons**
+> **Além dos polígonos**
 >
-> Technically, there are other approaches to computer graphics that do not rely on triangles or polygons, such as NURBS (Non-uniform rational B-spline) and voxel (short for VOlumetric piXEL). But polygon modeling and rendering is by far the most common, and it is the only supported method in the game engine.
+> Tecnicamente, existem outras abordagens para computação gráfica que não dependem de triângulos ou polígonos, como NURBS (spline B racional não uniforme) e voxel (abreviação de VOlumetric piXEL). Mas a modelagem e renderização de polígonos é de longe o mais comum e é o único método suportado no mecanismo de jogo.
 
 ### Basic Transforms <a id="Basic_Transforms"></a>
 
