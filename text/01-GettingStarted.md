@@ -491,51 +491,51 @@ O "contexto" geralmente se refere a um ou a uma combinação dos seguintes itens
 - ** Objeto selecionado: ** Todos os objetos que foram selecionados (destacados). Lembre-se de que pode haver mais de um objeto selecionado, mas apenas um objeto ativo.
 - ** Modo de edição: ** O Blender possui seis modos diferentes de edição. Dois dos mais usados ​​são o modo de edição e o modo de objeto. No modo Objeto, você pode manipular objetos como um todo. No modo de edição, você pode alterar a forma de uma malha. Em cada modo, há um conjunto exclusivo de ferramentas e opções à sua disposição. Você aprenderá sobre os outros quatro modos (Sculpt, Vertex Paint, Texture Paint, Weight Paint) nos próximos capítulos.
 
-### Datablocks <a id="Datablocks"></a>
+### Bloco de Dados <a id="Datablocks"></a>
 
-Often, a single Blender file contains hundreds of objects, each with different colors, textures, and animations. How is all this organized?
+Freqüentemente, um único arquivo Blender contém centenas de objetos, cada um com cores, texturas e animações diferentes. Como tudo isso está organizado?
 
-Blender uses "data blocks" to represent content stored within a Blender file. Each data block represents a collection of data or settings. Some common datablock types you will encounter are Object datablock, Mesh datablock, Material datablock, Texture datablock, and Image datablock.
-
-
-<img alt="Datablock hierarchy" src="../figures/Chapter1/Fig01-32.png" width="30%" align="right">
-
-In order to reduce the apparent complexity of the program, Blender further organizes data blocks into hierarchies. At the top level are scenes, which can have a number of worlds, each of which can have any number of objects (objects can be a mesh, a lamp, a camera, and so on). If the object is a mesh, then a Mesh datablock is attached to it. If the object is a lamp, then a Lamp datablock is attached to the object.
-
-An example of a datablock hierarchy chain is shown in Figure 1.32: Scene > Object > Mesh > Material > Texture > Image
+O Blender usa "blocos de dados" para representar o conteúdo armazenado em um arquivo Blender. Cada bloco de dados representa uma coleção de dados ou configurações. Alguns tipos comuns de blocos de dados que você encontrará são: bloco de dados Objeto, bloco de dados Mesh, bloco de dados Material, bloco de dados Texture e bloco de dados Image.
 
 
-Throughout the Blender interface, you will run into many datablock managers. They all look like Figure 1.33.
+<img alt="Hierarquia de bloco de dados" src="../figures/Chapter1/Fig01-32.png" width="30%" align="right">
+
+Para reduzir a aparente complexidade do programa, o Blender organiza ainda mais os blocos de dados em hierarquias. No nível superior, há cenas que podem ter vários mundos, cada qual com vários objetos (os objetos podem ser uma malha, uma lâmpada, uma câmera e assim por diante). Se o objeto for uma malha, um bloco de dados Mesh será anexado a ele. Se o objeto for uma lâmpada, um bloco de dados da lâmpada será anexado ao objeto.
+
+Um exemplo de uma cadeia de hierarquia de blocos de dados é mostrado na Figura 1.32: Cena> Objeto> Malha> Material> Textura> Imagem
 
 
-<img alt="Datablock Sharing" src="../figures/Chapter1/Fig01-33.png" width="30%" align="left">
+Em toda a interface do Blender, você encontrará muitos gerenciadores de blocos de dados. Todos eles se parecem com a Figura 1.33.
 
-Because datablocks can be shared, copied, and reused, large scenes can be managed efficiently through the use of shared datablocks. Figure 1.33 shows a datablock that has been shared by three "users," as denoted by the number next to its name.
 
-### Parenting and Grouping <a id="Parenting_and_Grouping"></a>
+<img alt="Compartilhamento de Datablock" src="../figures/Chapter1/Fig01-33.png" width="30%" align="left">
 
-Grouping and parenting both allow you to introduce some form of order to the scene by setting up arbitrary relationships between different objects. But grouping and parenting work in different ways.
+Como os blocos de dados podem ser compartilhados, copiados e reutilizados, cenas grandes podem ser gerenciadas eficientemente através do uso de blocos de dados compartilhados. A Figura 1.33 mostra um bloco de dados que foi compartilhado por três "usuários", conforme indicado pelo número ao lado de seu nome.
 
-Parenting is used to establish links between multiple objects so that basic transformations like location, rotation, and scaling are propagated from the parent to its children. This way, any transformation applied to the parent is automatically applied to all the children. Parenting is a useful way to "glue" different objects together so they behave as one.
+### Parentalidade e Agrupamento <a id="Parenting_and_Grouping"></a>
 
-To parent one object to another, simply select the object you want to be the child first.  If more than one object is to be a child, select all of them now. Lastly, select the object that you want to be the parent. Then press Ctrl+P to set parent.
+O agrupamento e a criação dos pais permitem introduzir alguma forma de ordem na cena, estabelecendo relacionamentos arbitrários entre objetos diferentes. Mas agrupar e criar filhos funcionam de maneiras diferentes.
 
-An object can only have one parent object, but a parent object can have many children.
+A parentalidade é usada para estabelecer links entre vários objetos, para que transformações básicas como localização, rotação e escala sejam propagadas do pai para seus filhos. Dessa forma, qualquer transformação aplicada ao pai é automaticamente aplicada a todos os filhos. A paternidade é uma maneira útil de "colar" objetos diferentes para que eles se comportem como um.
 
-Grouping can also be used to logically link objects in the scene together without any transformation constraints to the objects. Unlike parenting, grouping does not have a parent-child relationship; objects are simply members of a group.
+Para pai de um objeto para outro, basta selecionar o objeto que você deseja que seja o filho primeiro. Se mais de um objeto for filho, selecione todos eles agora. Por fim, selecione o objeto que você deseja que seja o pai. Em seguida, pressione Ctrl + P para definir o pai.
 
-Select all the objects you want to group. Then press Ctrl+G to add them to a new group. You can also manage group membership from the Object Properties Editor.
+Um objeto pode ter apenas um objeto pai, mas um objeto pai pode ter muitos filhos.
 
-Grouping, by itself, it not very useful. But groups can be quickly "instanced" as group instances. Group Instance is a very useful way to create multiple copies of objects without making actual copies of the objects. Grouping will also come in handy for asset management, which will be discussed in the next chapter.
+O agrupamento também pode ser usado para vincular logicamente objetos na cena, sem nenhuma restrição de transformação aos objetos. Ao contrário dos pais, o agrupamento não tem um relacionamento pai-filho; objetos são simplesmente membros de um grupo.
 
-A single object can be in multiple groups. A group can have multiple objects.
+Selecione todos os objetos que você deseja agrupar. Em seguida, pressione Ctrl + G para adicioná-los a um novo grupo. Você também pode gerenciar a associação ao grupo no Editor de propriedades do objeto.
 
-### Backward Compatibility <a id="Backward_Compatibility"></a>
+Agrupar, por si só, não é muito útil. Mas os grupos podem ser "instanciados" rapidamente como instâncias de grupo. A Instância de grupo é uma maneira muito útil de criar várias cópias de objetos sem fazer cópias reais dos objetos. O agrupamento também será útil para o gerenciamento de ativos, que será discutido no próximo capítulo.
 
-Blender is designed so that older files can be opened with newer versions of Blender. But due to the rate that Blender matures, some unexpected behaviors are to be expected when you least expect them.
+Um único objeto pode estar em vários grupos. Um grupo pode ter vários objetos.
 
-Due to the Blender Python API change in Blender 2.5, old scripts written for 2.4x will be broken in later versions of Blender. But by the time you are reading this, there should be enough new content available for you to find.
+### Compatibilidade com versões anteriores <a id="Backward_Compatibility"></a>
 
-## Onward <a id="Onward"></a>
+O Blender foi desenvolvido para que arquivos mais antigos possam ser abertos com versões mais recentes do Blender. Porém, devido à taxa que o Blender amadurece, alguns comportamentos inesperados são esperados quando você menos espera.
 
-This concludes the crash course on Blender and the game engine. By now, you should have a cursory understanding of the function of a game engine and be familiar with the Blender interface. In the next chapter, you will get your hands dirty and build a simple game by following the step-by-step tutorial.
+Devido à alteração da API do Blender Python no Blender 2.5, os scripts antigos escritos para 2.4x serão quebrados nas versões posteriores do Blender. Mas quando você estiver lendo isso, deve haver conteúdo novo suficiente disponível para você encontrar.
+
+## Adiante <a id="Onward"></a>
+
+Isso conclui o curso intensivo do Blender e do mecanismo de jogo. Até agora, você deve ter uma compreensão superficial da função de um mecanismo de jogo e estar familiarizado com a interface do Blender. No próximo capítulo, você vai sujar as mãos e criar um jogo simples, seguindo o tutorial passo a passo.
