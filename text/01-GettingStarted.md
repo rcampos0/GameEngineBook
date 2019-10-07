@@ -239,57 +239,57 @@ Por fim, lembre-se de que fazer mover objetos nem sempre precisa ser um processo
 
 Até agora, falamos sobre o 3D em detalhes. Mas como o mecanismo de jogo se encaixa? Bem, um mecanismo de jogo simplesmente pega os recursos 3D existentes e anexa um "cérebro" a eles para que os objetos saibam como responder aos eventos. O "cérebro" pode estar na forma de blocos lógicos (que podem executar ações diferentes dependendo da entrada do usuário), scripts (que podem estender a funcionalidade dos blocos lógicos) ou outras propriedades físicas de um objeto (como configurações rígidas do corpo fazer um objeto cair e cair de maneira realista).
 
-![Game = Object + Logic.](../figures/Chapter1/Fig01-19.jpg)
+![Game = Objeto + Logic.](../figures/Chapter1/Fig01-19.jpg)
 
-A game engine is made up of many distinct components:
+Um mecanismo de jogo é composto de muitos componentes distintos:
 
-- **Rendering Engine** : Turns the 3D scene you've built (including models, lights, and camera) into an image to be displayed onscreen.
-- **Physics** : Handles collisions and physical simulations of objects.
-- **Logic/Scripting** : The brain behind a game[md]it reacts to the user input, makes decisions, and keeps track of what's going on in the game.
-- **Sound** : Produces the audio events.
+- ** Rendering Engine **: transforma a cena 3D que você construiu (incluindo modelos, luzes e câmera) em uma imagem para ser exibida na tela.
+- ** Física **: lida com colisões e simulações físicas de objetos.
+- ** Logic / Scripting **: o cérebro por trás de um jogo [md] reage às informações do usuário, toma decisões e acompanha o que está acontecendo no jogo.
+- ** Som **: produz os eventos de áudio.
 
-The above list is not meant to be exhaustive, but it should give you an idea of what a game engine does. The Blender game engine gives you a lot of control over each of these components, which you will learn one by one in later chapters.
+A lista acima não pretende ser exaustiva, mas deve fornecer uma idéia do que um mecanismo de jogo faz. O mecanismo de jogo do Blender oferece muito controle sobre cada um desses componentes, que você aprenderá um a um nos próximos capítulos.
 
-> **Quality vs. Performance**
+> **Qualidade vs. Desempenho**
 >
-> Making a video game is a constant balancing act between quality and performance. As artists, you want to make the virtual world as rich and detailed as possible; on the other hand, you need to make sure the game can run smoothly for people who might not have top-of-the-line computers. Throughout the process of game-making, you will run into cases where you have to make a decision whether to prioritize the visual quality or the performance of the game. You will also learn tricks to achieve high-quality visual without compromising the performance, as well as how to optimize the game by identifying what is slowing it down.
+>Fazer um videogame é um constante equilíbrio entre qualidade e desempenho. Como artistas, você deseja tornar o mundo virtual o mais rico e detalhado possível; por outro lado, você precisa garantir que o jogo funcione sem problemas para pessoas que podem não ter computadores de primeira linha. Durante todo o processo de criação de jogos, você encontrará casos em que precisa decidir se deve priorizar a qualidade visual ou o desempenho do jogo. Você também aprenderá truques para obter visual de alta qualidade sem comprometer o desempenho, bem como otimizar o jogo, identificando o que está diminuindo sua velocidade.
 
-## Setting up <a id="Setting_up"></a>
+## Configurando <a id="Setting_up"></a>
 
-It's finally time to dive into Blender! From now on, you may be better off reading the book with the computer at your side. In this section, we will give you a short tour of Blender, just enough to get you familiar with the software.
+Finalmente chegou a hora de mergulhar no Blender! A partir de agora, é melhor você ler o livro com o computador ao seu lado. Nesta seção, faremos um breve tour pelo Blender, apenas o suficiente para você se familiarizar com o software.
 
-### Installation <a id="Installation"></a>
+### Instalação <a id="Installation"></a>
 
-Blender runs on Windows, Mac OS X, and Linux, You can find the Blender installer for your operating system from www.blender.org. The complete Blender download size is about 100MB.
+O Blender roda em Windows, Mac OS X e Linux. Você pode encontrar o instalador do Blender para o seu sistema operacional em www.blender.org. O tamanho completo do download do Blender é de aproximadamente 100 MB.
 
-Go ahead and install Blender. Start the application once it's installed.
+Vá em frente e instale o Blender. Inicie o aplicativo uma vez instalado.
 
-> **Installation Not Required**
+> **Instalação não requerida**
 >
-> Technically, Blender does not need to be installed before it can be used. The installer is available for convenience only. Blender will run from any location. You can even copy it to a USB storage device and carry it with you, so you'll never be apart from your favorite program. Although, by default, Blender saves some user settings to the user directory.
+> Tecnicamente, o Blender não precisa ser instalado antes de poder ser usado. O instalador está disponível apenas por conveniência. O Blender será executado em qualquer local. Você pode até copiá-lo para um dispositivo de armazenamento USB e carregá-lo com você, para nunca se separar do seu programa favorito. Embora, por padrão, o Blender salve algumas configurações do usuário no diretório do usuário.
 
-Even though you need Blender to develop the game, Blender games can be packaged as stand-alone applications, so that others playing it don't need to install anything. See Chapter 9, "Publishing and Beyond," for more details.
+Mesmo que você precise do Blender para desenvolver o jogo, os jogos do Blender podem ser empacotados como aplicativos autônomos, para que outros jogadores não precisem instalar nada. Consulte o Capítulo 9, "Publicando e além", para obter mais detalhes.
 
-### System Requirements <a id="System_Requirements"></a>
+### Requisitos do sistema <a id="System_Requirements"></a>
 
-Blender has no explicit system requirement. The performance of the software is dependent on the complexity of the project. Needless to say, the faster your computer is, the better Blender will run.
+O Blender não possui requisitos explícitos de sistema. O desempenho do software depende da complexidade do projeto. Desnecessário dizer que, quanto mais rápido o seu computador, melhor o Blender será executado.
 
-## Blender Basics <a id="Blender_Basics"></a>
+## O Basico de Blender <a id="Blender_Basics"></a>
 
-When you start Blender, you will be greeted with the splash screen.Although you can customize all aspect of Blender, in this book, we will assume you are using the default Blender settings and shortcuts.
+Ao iniciar o Blender, você será recebido com a tela inicial. Embora você possa personalizar todos os aspectos do Blender, neste livro, assumiremos que você está usando as configurações e atalhos padrão do Blender.
 
-Clicking anywhere else to dismiss the splash screen, you are presented with an empty workspace like this:
+Clicando em qualquer outro lugar para descartar a tela inicial, você verá um espaço de trabalho vazio como este:
 
 ![Blender default workspace.](../figures/Chapter1/Fig01-20.jpg)
 
-The Blender window is divided into Editors. Each Editor region can be resized, moved, and changed to display a specific set of content. For now, let's focus on the default setup.
+A janela do Blender é dividida em Editores. Cada região do Editor pode ser redimensionada, movida e alterada para exibir um conjunto específico de conteúdo. Por enquanto, vamos nos concentrar na configuração padrão.
 
-#### Main Menu <a id="Main_Menu"></a>
+#### Menu Principal <a id="Main_Menu"></a>
 
-At the top of the screen is the main menu, which offers basic functionalities such as Open, Save, and Help. Furthermore, the main menu controls the view for the rest of the Blender window. The Render Engine option in the middle of the menu controls how the interface is configured.
+Na parte superior da tela, está o menu principal, que oferece funcionalidades básicas, como Abrir, Salvar e Ajuda. Além disso, o menu principal controla a visualização do restante da janela do Blender. A opção Mecanismo de renderização no meio do menu controla como a interface está configurada.
 
 <img alt="Selecting the Game Engine" src="../figures/Chapter1/Fig01-21.png" width="40%" align="left">
-By default, Cycles Render is selected. In this mode, the interface is configured for doing 3D modeling, animation, and rendering with Cycles. But let's switch it to the Blender Game mode. Click the drop-down menu and select Blender Game from the list. This setting will unlock certain features that are not visible normally, and it also hides features that are not available in the Blender game engine.
+Por padrão, Cycles Render está selecionado. Nesse modo, a interface está configurada para modelagem, animação e renderização em 3D com o Cycles. Mas vamos mudar para o modo Blender Game. Clique no menu suspenso e selecione Jogo do Blender na lista. Essa configuração desbloqueia certos recursos que não são visíveis normalmente e também oculta os recursos que não estão disponíveis no mecanismo de jogo do Blender.
 
 
 #### 3D Viewport <a id="3D_Viewport"></a>
