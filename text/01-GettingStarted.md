@@ -294,18 +294,18 @@ Por padrão, Cycles Render está selecionado. Nesse modo, a interface está conf
 
 #### 3D Viewport <a id="3D_Viewport"></a>
 
-Occupying the majority of the screen is a 3D Viewport. Here you can see the 3D world you created and test the game. For now, feel free to explore the 3D Viewport by holding down your middle mouse button over the 3D Viewport and dragging the mouse; the view should rotate with the mouse movement. (Mac users can use the two-finger rotate gesture on the trackpad) The default scene contains three objects: a cube, a camera, and a light. To select one of the objects, right-click on it. The selected object is highlighted in yellow.
+Ocupando a maior parte da tela está uma viewport 3D. Aqui você pode ver o mundo 3D que você criou e testar o jogo. Por enquanto, fique à vontade para explorar a Viewport 3D mantendo pressionado o botão do meio do mouse sobre a Viewport 3D e arrastando o mouse; a vista deve girar com o movimento do mouse. (Os usuários de Mac podem usar o gesto de rotação de dois dedos no trackpad). A cena padrão contém três objetos: um cubo, uma câmera e uma luz. Para selecionar um dos objetos, clique com o botão direito do mouse. O objeto selecionado é destacado em amarelo.
 
->**Basic Navigation Controls**
+>**Controles básicos de navegação**
 
->Press and hold the middle mouse button to rotate the 3D view. Scroll the mouse wheel to zoom in the 3D view. Right-click to select a 3D object. Selected objects are highlighted in yellow.
+>Pressione e segure o botão do meio do mouse para girar a visualização 3D. Role a roda do mouse para ampliar a visualização 3D. Clique com o botão direito do mouse para selecionar um objeto 3D. Os objetos selecionados são destacados em amarelo.
 
 
 <img alt="Number pad keyboard layout." src="../figures/Chapter1/Fig01-23.png" width="25%" align="left">
 <br>
-Another common setup for the 3D Viewport is to split the view into four quadrants: top view, side view, front view, and a perspective view. You can turn on Quad view by pressing Ctrl+Alt+Q with the mouse over the 3D Viewport (see Figure 1.22). Press the same key combination to go back to the single view.
+Outra configuração comum para o 3D Viewport é dividir a vista em quatro quadrantes: vista superior, lateral, frontal e frontal. Você pode ativar a visualização Quad pressionando Ctrl + Alt + Q com o mouse sobre a viewport 3D (veja a Figura 1.22). Pressione a mesma combinação de teclas para voltar à exibição única.
 
-To quickly snap to one of the predetermined views (side, top, front, and so on), the number pad is the way to go.
+Para encaixar rapidamente em uma das vistas predeterminadas (lateral, superior, frontal etc.), o teclado numérico é o caminho a percorrer.
 
 <br><br>
 
@@ -314,86 +314,86 @@ To quickly snap to one of the predetermined views (side, top, front, and so on),
 
 <img alt="Outliner" src="../figures/Chapter1/Fig01-20b.png" width="33%" align="right">
 
-To the right of the screen are two editors. The top portion is the Outliner, which contains a listing of all the data in the current Blender file. For a large project, the Outliner is an indispensable tool for organizing your scene. For now, you can safely ignore it.
+À direita da tela há dois editores. A parte superior é o Outliner, que contém uma lista de todos os dados no arquivo atual do Blender. Para um projeto grande, o Outliner é uma ferramenta indispensável para organizar sua cena. Por enquanto, você pode ignorá-lo com segurança.
 
-#### Properties Editor <a id="Properties_Editor"></a>
+#### Editor de Propriedades <a id="Properties_Editor"></a>
 
 
 <img alt="Properties Editor icons." src="../figures/Chapter1/Fig01-24.png" width="33%" align="right">
-Under the Outliner on the right, you have the Properties Editor. Here you can access global settings for the file, as well as settings for individual objects. This is one of the most frequently used panels in Blender, after the 3D view perhaps. The Properties Editor is context sensitive, which means it will automatically display different content, depending on the object that is active. Take a closer look at the row of icons at the top of the Properties Editor, as shown in Figure 1.24. These tabs organize the properties into groups, with the more general settings on the left-most tab, and the more specific settings on the right.
+Sob o Outliner à direita, você tem o Editor de propriedades. Aqui você pode acessar configurações globais para o arquivo, bem como configurações para objetos individuais. Este é um dos painéis mais usados no Blender, talvez depois da visualização em 3D. O Editor de propriedades é sensível ao contexto, o que significa que ele exibirá automaticamente conteúdo diferente, dependendo do objeto que estiver ativo. Observe mais de perto a linha de ícones na parte superior do Editor de propriedades, como mostra a Figura 1.24. Essas guias organizam as propriedades em grupos, com as configurações mais gerais na guia mais à esquerda e as configurações mais específicas à direita.
 
 
 #### Timeline <a id="Timeline"></a>
 
-At the very bottom of the screen is a timeline window, which will be useful when you start making animations.
+Na parte inferior da tela, há uma janela da linha do tempo, que será útil quando você começar a fazer animações.
 ![Timeline](../figures/Chapter1/Fig01-20c.png)
 
 
-#### Workspace Customization <a id="Workspace_Customization"></a>
+#### Personalização da área de trabalho <a id="Workspace_Customization"></a>
 
-The default screen, as described previously, is set up for general use. At some point, it becomes necessary to change the screen layout to accomplish other tasks. To select a different layout, use the Screens layout drop-down menu from the main menu.
+A tela padrão, conforme descrito anteriormente, é configurada para uso geral. Em algum momento, torna-se necessário alterar o layout da tela para realizar outras tarefas. Para selecionar um layout diferente, use o menu suspenso Layout de telas no menu principal.
 
-Apart from the predefined screen layouts, you can customize the screen layout however you like. You can either split an existing editor into two or merge two adjacent editors together.
+Além dos layouts de tela predefinidos, você pode personalizar o layout da tela da maneira que desejar. Você pode dividir um editor existente em dois ou mesclar dois editores adjacentes.
 
->**Editor, Region, and Area**
+>**Editor, região e área**
 >
->A region within the Blender windows is called an _editor_. An editor displays a specific set of content and tools. Common areas include: 3D View, Properties Editor, UV/Image Editor, and Logic Brick Editor.
+>Uma região dentro das janelas do Blender é chamada de _editor_. Um editor exibe um conjunto específico de conteúdo e ferramentas. As áreas comuns incluem: Visualização 3D, Editor de propriedades, Editor de UV / imagem e Editor de tijolo lógico.
 
 
 
-Figure 1.25 shows one area split into two. You can do it by dragging the top corner of the area to the right or bottom
+A Figura 1.25 mostra uma área dividida em duas. Você pode fazer isso arrastando o canto superior da área para a direita ou para baixo
 
-![Area Splitting](../figures/Chapter1/Fig01-25.png)
+![Divisão de área](../figures/Chapter1/Fig01-25.png)
 
-To merge two adjacent areas into one is exactly the same as shown in Figure 1.25, but it is done in reverse order. Optionally, you can click with the right mouse button in the edge of the area you want to split or join, and select the option in the Area Options pop-up menu.
+Mesclar duas áreas adjacentes em uma é exatamente o mesmo mostrado na Figura 1.25, mas é feito na ordem inversa. Opcionalmente, você pode clicar com o botão direito do mouse na borda da área que deseja dividir ou unir e selecionar a opção no menu pop-up Opções de Área.
 
 
-<img alt="Editor selection." src="../figures/Chapter1/Fig01-27.png" width="25%" align="left">
+<img alt="Seleção de editor." src="../figures/Chapter1/Fig01-27.png" width="25%" align="left">
 <br>
-Not only can you change the size and layout of the editor, but the type of editor can also be changed. As you can see in Figure 1.27, the left-most icon in the header can be used to change the editor type.
+Não apenas você pode alterar o tamanho e o layout do editor, mas também o tipo de editor. Como você pode ver na Figura 1.27, o ícone mais à esquerda no cabeçalho pode ser usado para alterar o tipo de editor.
 
 <img alt="Dopesheet, Image Editor, and Logic Brick Editor." src="../figures/Chapter1/Fig01-28.png" width="45%" align="right">
-Almost everything a studio needs to create the game is integrated into a single interface: you can create the game, test the game, and play the game all from the same program. This means that, as an artist, you can create a game in the shortest time possible, without having to worry about importing and exporting files between different applications. As a programmer, you won't have to switch back and forth between different software just to test your code. Figure 1.28 shows some screenshots of different editors that you will be using throughout the book.
+Quase tudo o que um estúdio precisa para criar o jogo está integrado em uma única interface: você pode criar o jogo, testar o jogo e jogar tudo no mesmo programa. Isso significa que, como artista, você pode criar um jogo no menor tempo possível, sem ter que se preocupar em importar e exportar arquivos entre aplicativos diferentes. Como programador, você não precisará alternar entre softwares diferentes apenas para testar seu código. A Figura 1.28 mostra algumas capturas de tela de diferentes editores que você usará ao longo do livro.
 
 
-### More on the 3D View <a id="More_on_the_3D_View"></a>
+### Mais sobre a vista 3D <a id="More_on_the_3D_View"></a>
 
-The 3D view is where you will spend most of your time, so let's take a look at it in a bit more detail. You've already learned a few ways to navigate around the scene earlier in this chapter, using both the mouse and the keyboard.
+A visualização 3D é onde você passará a maior parte do tempo, então vamos dar uma olhada em mais detalhes. Você já aprendeu algumas maneiras de navegar pela cena anteriormente neste capítulo, usando o mouse e o teclado.
 
-#### Viewport Shading Modes <a id="Viewport_Shading_Modes"></a>
+#### Modos de sombreamento da viewport <a id="Viewport_Shading_Modes"></a>
 
 <img alt="Drawing Modes" src="../figures/Chapter1/Fig01-29.png" width="25%" align="right">
-Let's look at the four different Viewport Shading modes available in the 3D view. They are used to change the way the scene is displayed onscreen. The four modes are:
+Vejamos os quatro modos diferentes de Viewport Shading disponíveis na visualização 3D. Eles são usados para alterar a maneira como a cena é exibida na tela. Os quatro modos são:
 
-- **Bounding Box** : Represents all objects as a wireframe boundary. Useful for when the scene gets really complex.
-- **Wireframe** : Draws all objects as wireframe, which allows you to see through objects.
-- **Solid** : Draws all objects as solid faces, which is commonly used when modeling.
-- **Textured** : Draws all objects as solid faces, also with texture and accurate lighting. This is useful for previewing the scene.
+- ** Caixa delimitadora **: representa todos os objetos como um limite de estrutura de arame. Útil para quando a cena fica realmente complexa.
+- ** Wireframe **: desenha todos os objetos como wireframe, o que permite ver através dos objetos.
+- ** Sólido **: desenha todos os objetos como faces sólidas, comumente usadas na modelagem.
+- ** Texturizado **: desenha todos os objetos como faces sólidas, também com textura e iluminação precisa. Isso é útil para visualizar a cena.
 
-The two most commonly used Shading modes are Wireframe and Solid. Therefore, they are assigned to a keyboard toggle for easy access. Press the Z key to toggle between Wireframe and Solid View modes. Additionally, you can Press Alt+Z to toggle between Solid and Textured view modes.
+Os dois modos de sombreamento mais usados são Wireframe e Solid. Portanto, eles são atribuídos a uma alternância de teclado para facilitar o acesso. Pressione a tecla Z para alternar entre os modos Wireframe e Solid View. Além disso, você pode pressionar Alt + Z para alternar entre os modos de exibição Sólido e Texturizado.
 
-> **Standing Out**
+> **Destacando-se**
 >
-> Individual objects can also override the Viewport Shading mode via a setting under the Properties Editor > Object > Display > Type.
+> Objetos individuais também podem substituir o modo de sombreamento da viewport por meio de uma configuração no Editor de propriedades> Objeto> Tela> Tipo.
 
 
 
-### Editing Modes <a id="Editing_Modes"></a>
+### Modos de edição <a id="Editing_Modes"></a>
 
-To the left of the Shading mode selector is the Editing Mode selector.
+À esquerda do seletor de modo de sombreamento está o seletor de modo de edição.
 
-- **Object Mode** : The default mode, which allows the manipulation of objects in the scene as a whole. From this mode, you can select any of the objects in the scene, and move, rotate, and scale them. In fact, almost everything apart from modeling can be done from Object mode.
-- **Edit Mode**: This mode can be seen as the counterpart to Object mode. It allows you to edit the underlying geometry of the object. If you are modeling, you'll probably want to be in Edit mode. For this reason, Edit mode is not available when a non-editable object is selected (for example, a camera or lamp).
+- ** Modo de objeto **: o modo padrão, que permite a manipulação de objetos na cena como um todo. Nesse modo, você pode selecionar qualquer um dos objetos na cena e movê-los, girá-los e redimensioná-los. De fato, quase tudo, além da modelagem, pode ser feito no modo Objeto.
+- ** Edit Mode **: Este modo pode ser visto como o equivalente ao modo Objeto. Permite editar a geometria subjacente do objeto. Se você estiver modelando, provavelmente desejará estar no modo de edição. Por esse motivo, o modo de edição não está disponível quando um objeto não editável é selecionado (por exemplo, uma câmera ou lâmpada).
 
-To switch between Object mode and Edit mode, press the tab key.
+Para alternar entre o modo Objeto e o modo Editar, pressione a tecla Tab.
 
-In addition to the two editing modes we just discussed, there are a few other modes that are less commonly used.
+Além dos dois modos de edição que acabamos de discutir, existem alguns outros modos que são menos usados.
 
-- **Sculpt Mode** : Only available for Mesh objects. Allows modifications to the mesh as if it were clay.
-- **Vertex** , **Weight,** and **Texture Paint Mode** : Only available for Mesh objects. These modes allow the assignment of color or weight to the mesh.
-- **Pose Mode** : Is used to animate bones in an armature.
+- ** Modo Sculpt **: Disponível apenas para objetos Mesh. Permite modificações na malha como se fosse argila.
+- ** Vertex **, ** Weight, ** e ** Texture Paint Mode **: Disponível apenas para objetos de malha. Esses modos permitem a atribuição de cor ou peso à malha.
+- ** Modo de pose **: É usado para animar ossos em uma armadura.
 
-Edit mode and Object mode are by far the most commonly used editing modes, so we will refrain from diving too deeply into the other modes for now.
+O modo de edição e o modo de objeto são, de longe, os modos de edição mais usados, por isso, nos absteremos de mergulhar profundamente nos outros modos por enquanto.
 
 ### Keyboard and Mouse <a id="Keyboard_and_Mouse"></a>
 
