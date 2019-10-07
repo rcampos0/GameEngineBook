@@ -395,102 +395,101 @@ Além dos dois modos de edição que acabamos de discutir, existem alguns outros
 
 O modo de edição e o modo de objeto são, de longe, os modos de edição mais usados, por isso, nos absteremos de mergulhar profundamente nos outros modos por enquanto.
 
-### Keyboard and Mouse <a id="Keyboard_and_Mouse"></a>
+### Teclado e Mouse <a id="Keyboard_and_Mouse"></a>
 
-The joke is that to move an object in Blender, you have to press the G key, which stands for "movinG." This gag stems from the fact that to a beginner, many of the shortcuts in Blender seem counterintuitive. However, there is a very good reason why "G" is preferred over "M." In this case, the G key can be easily accessed on the keyboard by the left hand while the right hand is on the mouse. Also, officially, G stands for Grab.
+A piada é que, para mover um objeto no Blender, você precisa pressionar a tecla G, que significa "movinG". Essa mordaça decorre do fato de que, para um iniciante, muitos dos atalhos no Blender parecem contra-intuitivos. No entanto, há uma boa razão pela qual "G" é preferido em vez de "M." Nesse caso, a tecla G pode ser facilmente acessada no teclado pela mão esquerda enquanto a mão direita está no mouse. Além disso, oficialmente, G significa Grab.
 
 
 
-> **Think Different**
+> **Pense diferente**
 >
-> By default, the Mac keyboard uses Command instead of Control as the default modifier key. So whenever you see Ctrl+Something in this book, mentally map it to Cmd if you are using a Jobsian product.
+> Por padrão, o teclado do Mac usa Command em vez de Control como a tecla modificadora padrão. Portanto, sempre que vir Ctrl + Something neste livro, mapeie-o mentalmente para o Cmd se você estiver usando um produto Jobsian.
 >
-> Additionally, Blender has good support for multi-touch gestures on OS X. You can pinch to zoom, rotate to orbit around, and pan around.
+> Além disso, o Blender oferece um bom suporte para gestos multitoque no OS X. Você pode beliscar para ampliar, girar para orbitar e girar.
 
 
 
-Let's start with some shortcuts that work the way you would expect:
+Vamos começar com alguns atalhos que funcionam da maneira que você esperaria:
 
-* **Ctrl + S:** Save File
-* **Ctrl + O:** Open File
-* **Ctrl + N:** New File
-* **Ctrl + Z:** Undo
-* **Ctrl + Shift + Z:** Redo
-* **Ctrl + Q:** Close(Quit) Application
+* ** Ctrl + S: ** Salvar arquivo
+* ** Ctrl + O: ** Abrir arquivo
+* ** Ctrl + N: ** Novo arquivo
+* ** Ctrl + Z: ** Desfazer
+* ** Ctrl + Shift + Z: ** Refazer
+* ** Ctrl + Q: ** Fechar (Sair) do aplicativo
 
-The above shortcuts work anywhere within Blender: they are effectively global. Unfortunately, the familiarity ends here.
+Os atalhos acima funcionam em qualquer lugar do Blender: eles são efetivamente globais. Infelizmente, a familiaridade termina aqui.
 
-To manipulate an object in the 3D view, generally you have to select it at first:
+Para manipular um objeto na vista 3D, geralmente é necessário selecioná-lo primeiro:
 
-- **Right-click:** Select object
-- **Shift + Right-click:** Extend selection to multiple objects
-- **A:** Select all
+- ** Clique com o botão direito do mouse: ** Selecionar objeto
+- ** Shift + clique com o botão direito do mouse: ** Estende a seleção para vários objetos
+- ** A: ** Selecionar tudo
 
-All of the actions above are "reversible." If something is already selected, right-clicking on it will deselect it. If all the objects are already selected, pressing A will deselect all.
+Todas as ações acima são "reversíveis". Se alguma coisa já estiver selecionada, clicar com o botão direito do mouse nela cancelará a seleção. Se todos os objetos já estiverem selecionados, pressionar A desmarcará tudo.
 
-Once an object is selected, you can start manipulating it. The keyboard shortcuts below correspond to the three most basic transforms:
+Depois que um objeto é selecionado, você pode começar a manipulá-lo. Os atalhos de teclado abaixo correspondem às três transformações mais básicas:
 
-- **G:** Start Grabbing
-- **S:** Start Scaling
-- **R:** Start Rotating
-- **Move mouse:** Carry out transform action
-- **Left-click:** Confirm transformation
-- **Enter:** Confirm transformation
+- ** G: ** Comece a agarrar
+- ** S: ** Iniciar o dimensionamento
+- ** R: ** Comece a girar
+- ** Mova o mouse: ** Execute a ação de transformação
+- ** Clique com o botão esquerdo: ** Confirme a transformação
+- ** Enter: ** Confirmar transformação
 
-Pressing one of the keys will start the transformation, and then you can move your mouse to control the degree of the effect. To finalize the transformation, left-click the mouse or press Enter.
+Pressionar uma das teclas iniciará a transformação e você poderá mover o mouse para controlar o grau do efeito. Para finalizar a transformação, clique com o botão esquerdo do mouse ou pressione Enter.
 
-### Search <a id="Search"></a>
+### Busca <a id="Search"></a>
 
-<img alt="The Search Box" src="../figures/Chapter1/Fig01-30.png" width="30%" align="right">
+<img alt="A caixa de busca" src="../figures/Chapter1/Fig01-30.png" width="30%" align="right">
 
-The final tip that you will learn is the search functionality in Blender. If you are unable to recall how to invoke a certain operation, whether through a button or a keyboard shortcut, a quick way to find it is by using the search functionality. Key in a few letters of what you are looking for, and the result should appear as shown in Figure 1.30.
-
-Tapping on the spacebar from anywhere will bring out a search box that contains a list of actions.
-
+A dica final que você aprenderá é a funcionalidade de pesquisa no Blender. Se você não conseguir se lembrar de como chamar uma determinada operação, seja através de um botão ou de um atalho de teclado, uma maneira rápida de encontrá-la é usando a funcionalidade de pesquisa. Digite algumas letras do que você está procurando e o resultado deverá aparecer como mostrado na Figura 1.30.
+Tocar na barra de espaço de qualquer lugar exibirá uma caixa de pesquisa que contém uma lista de ações.
 
 
-A word of caution, though: the current implementation of the search is not very context-aware, so sometimes operations that are not permitted in the active context might show up.
 
-### Blender Philosophy <a id="Blender_Philosophy"></a>
+Uma palavra de cautela: a implementação atual da pesquisa não é muito sensível ao contexto; portanto, às vezes, operações que não são permitidas no contexto ativo podem aparecer.
 
-Blender is designed with certain philosophies in mind. Understanding these will allow you to use Blender the way it is intended, which allows you to navigate around Blender faster and work more efficiently.
+### A Filosofia de Blender <a id="Blender_Philosophy"></a>
 
-Let the brainwashing begin!
+O Blender é projetado com certas filosofias em mente. Entender isso permitirá que você use o Blender da maneira que se destina, o que permite navegar pelo Blender mais rapidamente e trabalhar com mais eficiência.
+
+Que comece a lavagem cerebral!
 
 ### Interface <a id="Interface"></a>
 
-Because Blender was originally created as an in-house software, its interface is designed to maximize speed and efficiency for users who have mastered it. Since Blender 2.5, a lot of work has been done to make the interface more user-friendly. That said, Blender is probably unlike any other program you've used before, including other kinds of 3D software. Luckily, the Blender interface is very consistent within the application. This means that once you learn to do something, you'll be able to use it in another part of the program.
+Como o Blender foi criado originalmente como um software interno, sua interface foi projetada para maximizar a velocidade e a eficiência dos usuários que o dominam. Desde o Blender 2.5, muito trabalho foi feito para tornar a interface mais amigável. Dito isto, o Blender provavelmente é diferente de qualquer outro programa que você já usou antes, incluindo outros tipos de software 3D. Felizmente, a interface do Blender é muito consistente dentro do aplicativo. Isso significa que depois que você aprender a fazer algo, poderá usá-lo em outra parte do programa.
 
-### Keyboard <a id="Keyboard"></a>
+### Teclado <a id="Keyboard"></a>
 
-Because of the large number of commands Blender is capable of performing, invoking a function through a quick tap on the keyboard is generally faster than using the mouse to find the menu entry. As you follow through the rest of this section, pay special attention to the shortcut keys that are used, because Blender is designed to let you work fast once you learn the shortcuts.
+Devido ao grande número de comandos que o Blender é capaz de executar, invocar uma função através de um toque rápido no teclado geralmente é mais rápido do que usar o mouse para encontrar a entrada do menu. Conforme você segue o restante desta seção, preste atenção especial às teclas de atalho usadas, porque o Blender foi projetado para permitir que você trabalhe rapidamente depois de aprender os atalhos.
 
 
-Blender's keyboard shortcuts are optimized for a full-sized English QWERTY keyboard. The number pad (which, unfortunately, is not present on many laptops) is used to quickly navigate around the 3D scene. Laptop users usually have to press extra keys on their keyboard (such as the Fn key or a toggle) in order to simulate a number pad key. As a solution, go to File > User Preferences (Ctrl + Alt + U), then switch to Input tab and enable "Emulate Numpad" option to use main 1 to 0 keys instead of Numpad keys. If you want this setting remain permanently, click on the "Save User Settings" button.
-![Emulate Numpad](../figures/Chapter1/Fig01-30-1.png)
+Os atalhos de teclado do Blender são otimizados para um teclado QWERTY em tamanho inglês. O teclado numérico (que, infelizmente, não está presente em muitos laptops) é usado para navegar rapidamente pela cena 3D. Os usuários de laptops geralmente precisam pressionar teclas extras no teclado (como a tecla Fn ou uma alternância) para simular uma tecla do teclado numérico. Como solução, vá para Arquivo> Preferências do usuário (Ctrl + Alt + U), alterne para a guia Entrada e ative a opção "Emular Numpad" para usar as teclas principais 1 a 0 em vez das teclas Numpad. Se você deseja que essa configuração permaneça permanentemente, clique no botão "Salvar configurações do usuário".
+![Emular Numpad](../figures/Chapter1/Fig01-30-1.png)
 
-<img alt="3D Navigator." src="../figures/Chapter1/Fig01-31.png" width="20%" align="right">
-Alternatively, Blender also has an add-on called "3D Navigation" that provides an easier way to navigate around the world for people without a number pad. To enable the 3D navigation plug-in to help you navigate around the 3D Viewport quickly, go to File > User Preferences > Add-Ons, and turn on 3D Views: 3D Navigation. Then you can switch views quickly from the 3D view's Toolshelf.
+<img alt="Navegação 3D." src="../figures/Chapter1/Fig01-31.png" width="20%" align="right">
+Como alternativa, o Blender também possui um complemento chamado "Navegação 3D" que fornece uma maneira mais fácil de navegar pelo mundo para pessoas sem teclado numérico. Para ativar o plug-in de navegação 3D para ajudá-lo a navegar rapidamente pela Viewport 3D, vá para Arquivo> Preferências do usuário> Complementos e ative Exibições 3D: Navegação 3D. Em seguida, você pode alternar as visualizações rapidamente da prateleira de ferramentas da visualização 3D.
 
 ### Mouse <a id="Mouse"></a>
 
-Blender is designed for a three-button mouse: a mouse with two buttons and a scroll wheel. Although there is an option to emulate the middle-mouse button (when you click on the scroll wheel), this book will assume that you are working with a three-button mouse for convenience.
+O Blender foi desenvolvido para um mouse de três botões: um mouse com dois botões e uma roda de rolagem. Embora exista uma opção para emular o botão do meio do mouse (quando você clica na roda de rolagem), este livro pressupõe que você esteja trabalhando com um mouse de três botões por conveniência.
 
-> **How to Emulate a Three-Button Mouse**
+> **Como emular um mouse de três botões**
 >
-> If you don't have a three-button mouse, you can use the Alt+Left mouse button combination to emulate the middle mouse button. To enable this feature, go to File > User Preferences > Input and turn on Emulate 3 Button Mouse.
+> Se você não possui um mouse de três botões, pode usar a combinação de botões Alt + Esquerdo para emular o botão do meio. Para ativar esse recurso, vá para Arquivo> Preferências do usuário> Entrada e ative o Emulate 3 Button Mouse.
 
-### Context <a id="Context"></a>
+### Contexto <a id="Context"></a>
 
-In Blender, the actions you can perform at any given time are limited to the current state of Blender, also known collectively as the " context." For example, certain operations can only be invoked when you have an object selected; the Property Editors change, depending on which object is selected; the effect of the keyboard shortcuts even changes, depending on where your mouse is positioned. This context-sensitive nature lets you focus on the task at hand by only providing you with options that makes sense at the time. This is Blender's way of preventing the interface from getting too cluttered.
+No Blender, as ações que você pode executar a qualquer momento são limitadas ao estado atual do Blender, também conhecido coletivamente como "contexto". Por exemplo, certas operações só podem ser invocadas quando você tiver um objeto selecionado; os editores de propriedades são alterados, dependendo do objeto selecionado; o efeito dos atalhos do teclado muda até mesmo, dependendo da posição do mouse. Essa natureza sensível ao contexto permite que você se concentre na tarefa em questão, fornecendo apenas as opções que fazem sentido no momento. Esta é a maneira do Blender de impedir que a interface fique muito confusa.
 
-The "context" usually refers to one or a combination of the following:
+O "contexto" geralmente se refere a um ou a uma combinação dos seguintes itens:
 
-- **Active rendering engine:** Blender Render, Blender Games, and Cycles Render are the default three.
-- **Active editor:** The active editor is defined as the window subdivision that the mouse cursor is hovering over. Shortcut keys often have different effects, depending on which editor the mouse is over.
-- **Active object:** The active object is defined as the object that is most recently selected.
-- **Selected object:** All the objects that have been selected (highlighted). Keep in mind that there can be more than one selected object, but only one active object.
-- **Editing mode:** Blender has six different modes of editing. Two of the most commonly used are the Edit mode and the Object mode. In Object mode, you can manipulate objects as a whole. In Edit mode, you can change the shape of a mesh. In each mode, there is a unique set of tools and options at your disposal. You will learn about the other four modes (Sculpt, Vertex Paint, Texture Paint, Weight Paint) in later chapters.
+- ** Mecanismo de renderização ativo: ** Blender Render, Blender Games e Cycles Render são os três padrão.
+- ** Editor ativo: ** O editor ativo é definido como a subdivisão da janela sobre a qual o cursor do mouse está passando o mouse. As teclas de atalho geralmente têm efeitos diferentes, dependendo de qual editor o mouse acabou.
+- ** Objeto ativo: ** O objeto ativo é definido como o objeto que foi selecionado mais recentemente.
+- ** Objeto selecionado: ** Todos os objetos que foram selecionados (destacados). Lembre-se de que pode haver mais de um objeto selecionado, mas apenas um objeto ativo.
+- ** Modo de edição: ** O Blender possui seis modos diferentes de edição. Dois dos mais usados ​​são o modo de edição e o modo de objeto. No modo Objeto, você pode manipular objetos como um todo. No modo de edição, você pode alterar a forma de uma malha. Em cada modo, há um conjunto exclusivo de ferramentas e opções à sua disposição. Você aprenderá sobre os outros quatro modos (Sculpt, Vertex Paint, Texture Paint, Weight Paint) nos próximos capítulos.
 
 ### Datablocks <a id="Datablocks"></a>
 
