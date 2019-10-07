@@ -1,75 +1,70 @@
-**Table of Contents**
+**Índice**
 
-- [Chapter 2: First Game](#Chapter_2_First_Game)
-	- [Game Idea](#Game_Idea)
-	- [Game Elements](#Game_Elements)
-	- [File Organization, Datablocks, and Linking](#File_Organization,_Datablocks,_and_Linking)
-	- [Datablocks](#Datablocks)
-	- [Linking and Appending](#Linking_and_Appending)
-	- [How to Use the Chapter Files](#How_to_Use_the_Chapter_Files)
-	- [Modeling](#Modeling)
-	- [Texturing](#Texturing)
+- [Capítulo 2: Primeiro Jogo](#Chapter_2_First_Game)
+	- [Ideia de Jogo](#Game_Idea)
+	- [Elementos do Jogo](#Game_Elements)
+	- [Organização do Arquivo, Dados do bloco, e ligação](#File_Organization,_Datablocks,_and_Linking)
+	- [Dados do bloco](#Datablocks)
+	- [Ligando e Anexando](#Linking_and_Appending)
+	- [Como usar o Capítulo de Arquivos](#How_to_Use_the_Chapter_Files)
+	- [Modelando](#Modeling)
+	- [Texturizando](#Texturing)
 	- [Rigging](#Rigging)
-	- [Animation](#Animation)
-	- [Camera and Keyboard](#Camera_and_Keyboard)
-	- [World and Environment](#World_and_Environment)
-	- [Artificial Intelligence](#Artificial_Intelligence)
-	- [All You Can Eat](#All_You_Can_Eat)
-	- [Scoring System](#Scoring_System)
-	- [Music for Your Ears](#Music_for_Your_Ears)
-	- [Where to Go from Here](#Where_to_Go_from_Here)
+	- [Animação](#Animation)
+	- [Câmera e teclado](#Camera_and_Keyboard)
+	- [Mundo e Ambiente](#World_and_Environment)
+	- [Inteligência Artificial](#Artificial_Intelligence)
+	- [Tudo voce pode comer](#All_You_Can_Eat)
+	- [Sistema de pontuação](#Scoring_System)
+	- [Música para seus ouvidos](#Music_for_Your_Ears)
+	- [Onde vou daqui](#Where_to_Go_from_Here)
 
-# Chapter 2: First Game <a id="Chapter_2_First_Game"></a>
+# Capítulo 2: Primeiro Jogo <a id="Chapter_2_First_Game"></a>
 
-In this chapter, we are going through the steps of making a simple game, from start to finish. The first goal is to keep your Blender knowledge up-to-date. Second, this is a chance to present an overview of the game's workflow. From this point on, you should be able to read the chapters in this book in any given order, according to your needs.
+Neste capítulo, vamos seguir as etapas de criação de um jogo simples, do começo ao fim. O primeiro objetivo é manter o seu conhecimento do Blender atualizado. Segundo, esta é uma chance de apresentar uma visão geral do fluxo de trabalho do jogo. Desse ponto em diante, você poderá ler os capítulos deste livro em qualquer ordem, de acordo com suas necessidades.
 
-Welcome to _Feed The Shark,_ the game.
+Bem-vindo ao _Feed The Shark, _ o jogo.## Game Idea <a id="Game_Idea"></a>
 
-## Game Idea <a id="Game_Idea"></a>
+_A população de tubarões está esgotada em todo o mundo. Estudos sugerem que a pesca excessiva e a comercialização ilegal de barbatanas de tubarão impactaram não apenas o principal predador dos oceanos, mas também trouxeram desequilíbrio para todo o ecossistema.
 
-_The shark population has been depleted worldwide. Studies suggest that overfishing and the illegal marketing of shark fins has impacted not only the top predator of the oceans but also brought imbalance to the whole ecosystem._
+_É hora da vingança! _
 
-_It is payback time!_
+Embora sejamos tentados, não podemos realmente fazer um jogo sangrento aqui. Devido ao risco de perder nosso público adolescente, precisamos fazer alguns compromissos no desenvolvimento da linha da história:
 
-Although we're tempted, we can't really make a gory game here. Because of the risk of losing our teenage audience, we need to make some compromises in developing the story line:
+_ Lutando pela sobrevivência, os tubarões precisam comer o máximo possível para escapar dos riscos de extinção.
 
-_Struggling for survival, sharks need to eat as much as possible to escape the risks of extinction._
+Claro, quem não gosta de sashimi? Simplificando, precisaremos de um tubarão nadador que coma peixe e seja controlado pelo jogador (como mostrado na Figura 2.1). Toda vez que o tubarão come um peixe, ele se torna cada vez maior.
 
-Sure, who doesn't like sashimi? Simply put, we will need a swimming shark that has to eat fish and is controlled by the player (as shown in Figure 2.1). Every time the shark eats a fish, it gets bigger and bigger.
+Para torná-lo mais parecido com um jogo, o envolveremos com um sistema de pontuação e um onipresente relógio de contagem regressiva.
 
-To make it more like a game, we will wrap it with a score system and an omnipresent ticking, counting-down clock.
-
-![Feed The Shark, the game.](../figures/Chapter2/Fig02-01.png)
+![Alimente o tubarão, o jogo.](../figures/Chapter2/Fig02-01.png)
 
 
-## Game Elements <a id="Game_Elements"></a>
+## Elementos do Jogo <a id="Game_Elements"></a>
 
-This minimalistic game will consist of:
+Este jogo minimalista consistirá em:
 
-1. Animated shark controlled by keyboard
-2. Underwater environment
-3. Schools of fish controlled by AI
+1. Tubarão animado controlado pelo teclado
+2. Ambiente subaquático
+3. Cardumes de peixes controlados pela IA
 4. Interface
 
-We are not covering all the topics extensively. We will, however, walk you through some of the basics of modeling, animating, and other Blender-specific tasks.
+Não estamos cobrindo todos os tópicos extensivamente. No entanto, mostraremos algumas das noções básicas de modelagem, animação e outras tarefas específicas do Blender.
 
-If you are already familiar with Blender as an asset-making tool, you might skip some of those steps. You will find incremental snapshots for all the individual parts here on this site.
+Se você já conhece o Blender como uma ferramenta de criação de ativos, pode pular algumas dessas etapas. Você encontrará instantâneos incrementais para todas as partes individuais aqui neste site.
 
-## File Organization, Datablocks, and Linking <a id="File_Organization,_Datablocks,_and_Linking"></a>
+## Organização de arquivos, blocos de dados e vinculação <a id="File_Organization,_Datablocks,_and_Linking"></a>
 
-_Starting with the right fin…_
+_Iniciando com a nadadeira direita… _
 
-It's important to plan ahead and to know how to organize the files we will be creating. For this project, we will try to make the files as self-contained as possible. You should be able to open the shark file and test the swimming animation-without having to worry about the other fish, the terrain, or the interface.
+É importante planejar com antecedência e saber como organizar os arquivos que criaremos. Para este projeto, tentaremos tornar os arquivos o mais independentes possível. Você deve poder abrir o arquivo do tubarão e testar a animação da natação - sem ter que se preocupar com os outros peixes, o terreno ou a interface.
 
-Having independent files allows for a big team to work together on separated assets. It also helps for individual versioning control. It may seem like overkill for a small project, but it's a good practice that scales up pretty well.
+Ter arquivos independentes permite que uma grande equipe trabalhe em conjunto em ativos separados. Também ajuda no controle de versão individual. Pode parecer um exagero para um projeto pequeno, mas é uma boa prática que aumenta bastante.
 
-
-> **Version Control**
+> **Controle de versão**
+>> Controle de versão é qualquer sistema que você pode encontrar para organizar a versão dos seus arquivos. Se você mantiver backups diários de seus arquivos de produção em uma pasta separada, estará executando o controle de versão. Em termos práticos, existem maneiras mais modernas de fazer isso, sem ter que lidar com a renomeação de arquivos e os arquivos de log preenchidos manualmente, como SVN, Git e Bazaar.
 >
-> Version control is any system you can find to organize the version of your files. If you keep daily backups of your production files in a separate folder, then you are doing version control. In practical terms, there are more modern ways to accomplish this, without having to handle file renaming and manually filled log files-namely SVN, Git, and Bazaar.
->
-> Blender files are not optimal when it comes to merging. (Given that they are binaries, you either roll back a file entirely or do it manually.) Thus, working with individual components can help you overcome that.
-
+> Os arquivos do Blender não são ideais quando se trata de mesclagem. (Como são binários, você reverte um arquivo inteiramente ou o faz manualmente.) Portanto, trabalhar com componentes individuais pode ajudá-lo a superar isso.
 
 ## Datablocks <a id="Datablocks"></a>
 
