@@ -155,89 +155,89 @@ Outro conceito que um modelador provavelmente encontrará são os normais de sup
 >
 > Tecnicamente, existem outras abordagens para computação gráfica que não dependem de triângulos ou polígonos, como NURBS (spline B racional não uniforme) e voxel (abreviação de VOlumetric piXEL). Mas a modelagem e renderização de polígonos é de longe o mais comum e é o único método suportado no mecanismo de jogo.
 
-### Basic Transforms <a id="Basic_Transforms"></a>
+### Transformações Básicas <a id="Basic_Transforms"></a>
 
-The three basic transforms that you should be familiar with are:
+As três transformações básicas com as quais você deve se familiarizar são:
 
-* **Translation:** The moving of an object in any direction, without rotating it.
-* **Scaling:** The resizing of an object around a point.
-* **Rotation:** The rotating of an object around a point.
+* ** Translação: ** O movimento de um objeto em qualquer direção, sem girá-lo.
+* ** Dimensionamento: ** O redimensionamento de um objeto em torno de um ponto.
+* ** Rotação: ** A rotação de um objeto em torno de um ponto.
 
-These three are the most common manipulations you will encounter. They are illustrated below.
+Essas três são as manipulações mais comuns que você encontrará. Eles são ilustrados abaixo.
 
-![Translation, scaling, and rotation.](../figures/Chapter1/Fig01-09.jpg)
+![Translação, dimensionamento, e rotação.](../figures/Chapter1/Fig01-09.jpg)
 
-### Materials and Textures <a id="Materials_and_Textures"></a>
+### Materiais e Texturas <a id="Materials_and_Textures"></a>
 
-Using polygons, you can define the shape of a mesh. To alter the color and appearance of it, you need to apply materials to the object. Material controls the color, shininess, bumpiness, and even transparency of the object. These variables ultimately all serve to add details to the object.
+Usando polígonos, você pode definir a forma de uma malha. Para alterar a cor e a aparência, é necessário aplicar materiais ao objeto. O material controla a cor, o brilho, o relevo e até a transparência do objeto. No fim, todas essas variáveis servem para adicionar detalhes ao objeto.
 
-Often, changing the color is not enough to make a surface look realistic. This is where textures come in. Texturing is a common technique used to add color and detail to a mesh by wrapping the mesh with an image, like a decal. Imagine a toy globe: if you carefully peel off the paper map that is glued onto the plastic ball and lay it out flat on the table, that map would be the texture, and the plastic ball would be the mesh. The projection of the 2D image onto a 3D mesh is called _texture mapping_. Texture mapping can be an automatic process, using one of the predefined projections, or a manual process, which uses a UV layout to map the 2D image onto the 3D mesh. Figure 1.10 illustrates how an image is mapped onto a model.
+Muitas vezes, alterar a cor não é suficiente para fazer com que uma superfície pareça realista. É aqui que as texturas entram. A texturização é uma técnica comum usada para adicionar cor e detalhes a uma malha, envolvendo a malha com uma imagem, como um decalque. Imagine um globo de brinquedo: se você cuidadosamente retira o mapa de papel colado na bola de plástico e o coloca sobre a mesa, esse mapa seria a textura e a bola de plástico seria a malha. A projeção da imagem 2D em uma malha 3D é denominada _texture mapping_. O mapeamento de textura pode ser um processo automático, usando uma das projeções predefinidas, ou um processo manual, que usa um layout UV para mapear a imagem 2D na malha 3D. A Figura 1.10 ilustra como uma imagem é mapeada em um modelo.
 
-![Meshes with texture applied.](../figures/Chapter1/Fig01-10.jpg)
+![Malhas com textura aplicada.](../figures/Chapter1/Fig01-10.jpg)
 
 
-Traditionally, a texture changes the color of a surface. But that's not all it can do: textures can also be used to alter other properties of the surface such as its transparency, reflectivity, and even bumpiness to create the illusion of a much more detailed surface.
+Tradicionalmente, uma textura muda a cor de uma superfície. Mas isso não é tudo o que pode fazer: as texturas também podem ser usadas para alterar outras propriedades da superfície, como sua transparência, refletividade e até irregularidade, para criar a ilusão de uma superfície muito mais detalhada.
 
 <img alt="From left to right: diffuse map, normal map, and specular map." src="../figures/Chapter1/Fig01-11.jpg" width="50%" align="right">
 
-A diffuse map controls the base color of the surface. A normal map controls the surface normal of an object, creating a bumpy effect by changing the way the light is reflected off the object. A specular map controls the specular reflection of an object, making it look shiny in certain places and dull in others. A texture map can also have transparent pixels, rendering part of the object transparent.
+Um mapa difuso controla a cor base da superfície. Um mapa normal controla a superfície normal de um objeto, criando um efeito irregular alterando a maneira como a luz é refletida no objeto. Um mapa especular controla a reflexão especular de um objeto, fazendo com que pareça brilhante em certos lugares e opaco em outros. Um mapa de textura também pode ter pixels transparentes, tornando parte do objeto transparente.
 
-Generally, textures are image files. But there are also other ways to texture a surface, such as using a procedural texture. Procedural texture differs from an image in that it's generated by an algorithm in real time, rather than from a pre-made image file. The Blender game engine does not support procedural textures yet.
+Geralmente, as texturas são arquivos de imagem. Mas também existem outras maneiras de texturizar uma superfície, como o uso de uma textura processual. A textura processual difere de uma imagem, pois é gerada por um algoritmo em tempo real, e não de um arquivo de imagem pré-criado. O mecanismo de jogo do Blender ainda não suporta texturas processuais.
 
-### Lights <a id="Lights"></a>
+### Luzes <a id="Lights"></a>
 
-Everything you see is the result of light hitting your eyes-without lights, the world would be pitch black. Likewise, light is just as important in a virtual world. With light comes shadow as well. Shadow might not be something that you think about every day, but the interplay of shadow and light makes a huge difference in how the scene is presented.
+Tudo o que você vê é o resultado da luz atingindo seus olhos - sem luzes, o mundo seria totalmente escuro. Da mesma forma, a luz é igualmente importante em um mundo virtual. Com a luz vem a sombra também. A sombra pode não ser algo que você pensa todos os dias, mas a interação de sombra e luz faz uma enorme diferença na forma como a cena é apresentada.
 
 <img alt="From left: Lamp, Sun, Spot lamp, Hemi lamp, and Area lamp." src="../figures/Chapter1/Fig01-12.png" width="50%" align="right">
 
-In most 3D applications, there are several different types of light available to the artist; each type has its advantages and disadvantages. For example, a Spot lamp approximates a lamp with a conical influence; a sun lamp approximates a light source from infinitely far away. Lamps in Blender are treated like regular objects: they can be positioned and rotated just like any other object. Figure 1.12 shows how different lamps look in Blender.
+Na maioria das aplicações 3D, existem vários tipos diferentes de luz disponíveis para o artista; cada tipo tem suas vantagens e desvantagens. Por exemplo, uma lâmpada Spot aproxima-se de uma lâmpada com influência cônica; uma lâmpada solar aproxima-se de uma fonte de luz infinitamente distante. As lâmpadas no Blender são tratadas como objetos comuns: elas podem ser posicionadas e giradas como qualquer outro objeto. A Figura 1.12 mostra a aparência de diferentes lâmpadas no Blender.
 
-Think of lighting as more than something that makes your scene visible. Good lighting can enhance the purpose of the scene by highlighting details while hiding irrelevant areas in shadow. Skillful placement of lighting also adds drama and realism to the scene, making an otherwise boring scene look visually exciting.
+Pense na iluminação como algo que torna sua cena visível. Uma boa iluminação pode aprimorar o objetivo da cena destacando os detalhes enquanto oculta áreas irrelevantes na sombra. A colocação hábil da iluminação também adiciona drama e realismo à cena, fazendo com que uma cena chata pareça visualmente emocionante.
 
-### Camera <a id="Camera"></a>
+### Câmera <a id="Camera"></a>
 
 <img alt="Camera objects" src="../figures/Chapter1/Fig01-13.png" width="50%" align="right">
 
-When you are creating a 3D scene, you are looking at the virtual world from an omniscient view. In this mode, you can view and edit the world from any angle[md]just like a movie director walking around a set in order to adjust things. Once the game starts, the player must view the game through a predetermined camera. Note that a predetermined camera does not mean the camera is fixed; almost all games have a camera that reacts to a player's input. In an action game, the camera tends to follow the character from behind; in a strategy game, the camera might be hovering high above, looking down; in a platformer, the camera is usually looking at the scene from the side.
+Ao criar uma cena 3D, você está olhando o mundo virtual de uma visão onisciente. Nesse modo, você pode visualizar e editar o mundo de qualquer ângulo [md], como um diretor de cinema andando em um set para ajustar as coisas. Uma vez iniciado o jogo, o jogador deve vê-lo através de uma câmera pré-determinada. Observe que uma câmera predeterminada não significa que a câmera está fixa; quase todos os jogos têm uma câmera que reage à entrada do jogador. Em um jogo de ação, a câmera tende a seguir o personagem por trás; em um jogo de estratégia, a câmera pode estar pairando acima, olhando para baixo; em um jogo de plataformas, a câmera geralmente olha a cena de lado.
 
-A camera is also treated as a regular object in Blender, so you can manipulate its location and orientation just as you can with any other object.
+Uma câmera também é tratada como um objeto comum no Blender, para que você possa manipular sua localização e orientação da mesma forma que em qualquer outro objeto.
 
 
-> **Drawing and Composition for Visual Storytellers**
+> **Desenhando e compondo para contadores de histórias visuais**
 >
-> Speaking of lights and cameras, this is the part where we point out the wonderful book by Marcos Mateu-Mestre called Framed Ink. The book uses tons of beautiful drawings to illustrate the many key principles in visual storytelling.
+> Por falar em luzes e câmeras, é nessa parte que destacamos o maravilhoso livro de Marcos Mateu-Mestre, chamado Framed Ink. O livro usa toneladas de belos desenhos para ilustrar os muitos princípios-chave da narrativa visual.
 
-### Animation <a id="Animation"></a>
+### Animação <a id="Animation"></a>
 
-In this context, _animation_ refers to the technique of making things change over time. For example, animation can involve moving an object, deforming it, or changing its color. To set up an animation, you create "keyframes," which are snapshots in time that store specific values pertaining to the animation. The software can then automatically interpolate in between those values to create a smooth transition. The image below shows Blender's Dopesheet Editor. The Dopesheet allows you to see the various properties that change during an animation: the horizontal axis represents time; the vertical axis shows the various properties, such as location or rotation that are keyframed.
+Nesse contexto, _animação_ refere-se à técnica de fazer as coisas mudarem com o tempo. Por exemplo, a animação pode envolver mover um objeto, deformar ou alterar sua cor. Para configurar uma animação, crie "quadros-chave", que são instantâneos no tempo que armazenam valores específicos pertencentes à animação. O software pode interpolar automaticamente entre esses valores para criar uma transição suave. A imagem abaixo mostra o Editor de Dopesheet do Blender. Um Dopesheet permite ver as várias propriedades que mudam durante uma animação: o eixo horizontal representa o tempo; o eixo vertical mostra as várias propriedades, como localização ou rotação, que são os quadros principais.
 
-![Dopesheet Editor: each diamond shape is a keyframe.](../figures/Chapter1/Fig01-14.png)
+![Editor de Dopesheet: cada forma de diamante é um quadro-chave.](../figures/Chapter1/Fig01-14.png)
 
 <img alt="LocRotScale animation" src="../figures/Chapter1/Fig01-15.png" width="50%" align="right">
 <br><br>
-The easiest way to animate is to alter the location, rotation, and scaling of an object over time. For example, by altering these variables, you can realistically animate the movement of a bouncing ball. Keep in mind that the curves represent the value of the channels (in this case xyz location) of the ball, not the actual motion path of the ball itself.
+A maneira mais fácil de animar é alterar o local, a rotação e a escala de um objeto ao longo do tempo. Por exemplo, alterando essas variáveis, você pode animar realisticamente o movimento de uma bola quicando. Lembre-se de que as curvas representam o valor dos canais (neste caso, localização xyz) da bola, não o caminho real do movimento da bola.
 
 <br><br>
 
 <img alt="Armature animation" src="../figures/Chapter1/Fig01-16.png" width="33%" align="left">
 <br><br>
-To animate something more complicated, such as a human, it's not enough to just move, rotate, and scale the object as a whole. This is where armatures come in. Armatures are skeletons that can be "inserted" into a model to control the model's deformation. Using this system, you can create complex yet organic-looking animations.
+Para animar algo mais complicado, como um humano, não basta mover, girar e dimensionar o objeto como um todo. É aqui que as armaduras entram. Armaduras são esqueletos que podem ser "inseridos" em um modelo para controlar a deformação do modelo. Usando esse sistema, você pode criar animações complexas, porém com aparência orgânica.
 
 <br><br><br><br>
 <img alt="Shape keys animation." src="../figures/Chapter1/Fig01-17.jpg" width="50%" align="right">
 <br>
-A third way to animate is using shape keys. Shape keys are snapshots of the mesh in different shapes. They are often used to animate nuanced changes that cannot be otherwise easily animated with armatures.
+Uma terceira maneira de animar é usar as teclas de forma. As teclas de forma são instantâneos da malha em diferentes formas. Eles são frequentemente usados para animar mudanças diferenciadas que não podem ser facilmente animadas com armaduras.
 
 
 <img alt="Procedural physics-based motion." src="../figures/Chapter1/Fig01-18.jpg" width="33%" align="left">
 <br>
-Finally, keep in mind that making objects move doesn't always have to be a manual process. You can also make objects move by using the physics engine (see Chapter 6).
+Por fim, lembre-se de que fazer mover objetos nem sempre precisa ser um processo manual. Você também pode mover objetos usando o mecanismo de física (consulte o Capítulo 6).
 
 <br>
 
-### Game <a id="Game"></a>
+### Jogo <a id="Game"></a>
 
-So far, we have talked about 3D at length. But how does the game engine fit into? Well, a game engine simply takes the existing 3D assets and attaches a "brain" to them so the objects know how to respond to events. The  "brain" can be in the form of logic bricks (which can perform different actions depending on the user input), scripts (which can extend the functionality of logic bricks), or other physical properties of an object (such as rigid body settings to make an object tumble and fall realistically).
+Até agora, falamos sobre o 3D em detalhes. Mas como o mecanismo de jogo se encaixa? Bem, um mecanismo de jogo simplesmente pega os recursos 3D existentes e anexa um "cérebro" a eles para que os objetos saibam como responder aos eventos. O "cérebro" pode estar na forma de blocos lógicos (que podem executar ações diferentes dependendo da entrada do usuário), scripts (que podem estender a funcionalidade dos blocos lógicos) ou outras propriedades físicas de um objeto (como configurações rígidas do corpo fazer um objeto cair e cair de maneira realista).
 
 ![Game = Object + Logic.](../figures/Chapter1/Fig01-19.jpg)
 
