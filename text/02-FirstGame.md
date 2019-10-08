@@ -66,57 +66,57 @@ Ter arquivos independentes permite que uma grande equipe trabalhe em conjunto em
 >
 > Os arquivos do Blender não são ideais quando se trata de mesclagem. (Como são binários, você reverte um arquivo inteiramente ou o faz manualmente.) Portanto, trabalhar com componentes individuais pode ajudá-lo a superar isso.
 
-## Datablocks <a id="Datablocks"></a>
+## Blocos de dados <a id="Datablocks"></a>
 
-In the previous chapter, we introduced you to the concept of datablocks. Linked datablocks (for example, a texture datablock used by a material datablock) don't even need to be part of the same file. In our project, we will use it to a certain extent. What are the criteria here?
+No capítulo anterior, apresentamos o conceito de blocos de dados. Blocos de dados vinculados (por exemplo, um bloco de dados de textura usado por um bloco de dados de material) nem precisam fazer parte do mesmo arquivo. Em nosso projeto, vamos usá-lo até certo ponto. Quais são os critérios aqui?
 
-Taking material and textures as an example, you need to consider how you will be using them in your workflow. Those two are often edited together: You adjust the influence of a texture channel in your material, tweak the material diffuse color, and get back to the texture. In this case, it's best to have both datablocks in the same file.
+Tomando o material e as texturas como exemplo, você precisa considerar como os usará no seu fluxo de trabalho. Esses dois são frequentemente editados juntos: você ajusta a influência de um canal de textura em seu material, ajusta a cor difusa do material e volta à textura. Nesse caso, é melhor ter os dois blocos de dados no mesmo arquivo.
 
-Now let's look at armatures and actions. Only after you are done with your rigging, do you start the animation. Even if you change your armature after you start the animation, you may want to keep them separated. If you need to go back to an earlier version of the armature but want to keep the new animations, separated files are the way to go. That said, we could keep the actions separated from the main armature files. We could, but for the sake of simplicity, we will not.
+Agora vamos olhar para armaduras e ações. Somente depois de terminar o seu equipamento, você inicia a animação. Mesmo que você altere sua armadura depois de iniciar a animação, convém mantê-las separadas. Se você precisar voltar para uma versão anterior da armadura, mas quiser manter as novas animações, arquivos separados são o caminho a seguir. Dito isto, poderíamos manter as ações separadas dos principais arquivos de armadura. Poderíamos, mas por uma questão de simplicidade, não o faremos.
 
-But how do we keep them linked while in separate files?
+Mas como os mantemos vinculados enquanto em arquivos separados?
 
-## Linking and Appending <a id="Linking_and_Appending"></a>
+## Vinculando e anexando <a id="Linking_and_Appending"></a>
 
-There are four ways of adding new objects and other datablocks to your Blender file:
-- You can build them from scratch.
-- You can import them from a different format (Collada or FBX, for example).
-- You can link them from another Blender file.
-- You can append them from another Blender file.
+Existem quatro maneiras de adicionar novos objetos e outros blocos de dados ao seu arquivo Blender:
+- Você pode construí-los do zero.
+- Você pode importá-los de um formato diferente (Collada ou FBX, por exemplo).
+- Você pode vinculá-los a partir de outro arquivo do Blender.
+- Você pode anexá-los de outro arquivo do Blender.
 
-For Linking part of another blender file click on File > Link (Ctrl + A + O). Then browse in your system and find the source file. Click on it and you see some folders that categorize data blocks. Select intended data block(s), configure linking options in the "Link from Library" section. Finally click on "Link from Library".
+Para vincular parte de outro arquivo do liquidificador, clique em Arquivo> Link (Ctrl + A + O). Em seguida, navegue no seu sistema e encontre o arquivo de origem. Clique nele e você verá algumas pastas que categorizam os blocos de dados. Selecione o (s) bloco (s) de dados pretendidos, configure as opções de vinculação na seção "Link da biblioteca". Por fim, clique em "Link from Library".
 
-![Linking data blocks](../figures/Chapter2/Fig02-02-1.png  "Linking data blocks")
+![Vinculando blocos de dados](../figures/Chapter2/Fig02-02-1.png  "Linking data blocks")
 
-For appending part of another blender file click on File > Append (Shift + F1). Then browse in your system and find the source file. Click on it and you see some folders that categorize data blocks. Select intended data block(s), configure appending options in the "Append from Library" section. Finally click on "Append from Library".
+Para anexar parte de outro arquivo do liquidificador, clique em Arquivo> Anexar (Shift + F1). Em seguida, navegue no seu sistema e encontre o arquivo de origem. Clique nele e você verá algumas pastas que categorizam os blocos de dados. Selecione o (s) bloco (s) de dados pretendido (s), configure as opções anexadas na seção "Anexar da Biblioteca". Por fim, clique em "Anexar da Biblioteca".
 
-![Appending data blocks](../figures/Chapter2/Fig02-02-2.png  "Appending data blocks")
+![Anexando blocos de dados](../figures/Chapter2/Fig02-02-2.png  "Appending data blocks")
 
->**Tips**
+>**Dicas**
 >
->- In big and complex blender files there are many files (datablocks) and you may have problems in finding your intended file. You can search items through search box in the top right of the dialog (even with wildcards). Also you can filter data blocks and items in the Filter tab.
-><img alt="Shape keys animation." src="../figures/Chapter2/Fig02-02-3.png" align="center">
+>- Nos arquivos grandes e complexos do liquidificador, existem muitos arquivos (blocos de dados) e você pode ter problemas para encontrar o arquivo pretendido. Você pode pesquisar itens através da caixa de pesquisa no canto superior direito da caixa de diálogo (mesmo com caracteres curinga). Além disso, você pode filtrar blocos de dados e itens na guia Filtro.
+><img alt="Animação de teclas de forma." src="../figures/Chapter2/Fig02-02-3.png" align="center">
 >
->- You can use thumbnails to find some datablock types easier. Before using this feature, use File > Data Previews commands to generate thumbnails for datablocks (like materials, textures, ...).
-><img alt="Shape keys animation." src="../figures/Chapter2/Fig02-02-4.png" align="center">
+>- Você pode usar miniaturas para encontrar alguns tipos de blocos de dados mais fáceis. Antes de usar esse recurso, use os comandos Arquivo> Pré-visualizações de dados para gerar miniaturas para blocos de dados (como materiais, texturas, ...).
+><img alt="Animação de teclas de forma." src="../figures/Chapter2/Fig02-02-4.png" align="center">
 
-The difference between linking and appending is what happens after you bring the new data into your file. If you append a file - let's call it _library_-the new elements will keep no reference to the original library file. You can literally delete the library file, and it will not result in any changes in your work file. That also means that any change you do in your library file will not be synced back into your working file.
+A diferença entre vincular e anexar é o que acontece depois que você traz os novos dados para o seu arquivo. Se você anexar um arquivo - vamos chamá-lo _library_ - os novos elementos não farão referência ao arquivo original da biblioteca. Você pode literalmente excluir o arquivo da biblioteca e não resultará em alterações no seu arquivo de trabalho. Isso também significa que qualquer alteração feita no arquivo da biblioteca não será sincronizada novamente no arquivo de trabalho.
 
-If you want to keep the files in sync (and you do most of the time), you then need to set "Link" while importing the library file. By doing this, you will not be able to edit the file in your working Blender file. Instead, you need to go back to your library file, change it, save it, and then open the working file again.
+Se você deseja manter os arquivos sincronizados (e o faz na maioria das vezes), é necessário definir "Link" ao importar o arquivo da biblioteca. Ao fazer isso, você não poderá editar o arquivo no seu arquivo de trabalho do Blender. Em vez disso, você precisa voltar ao seu arquivo de biblioteca, alterá-lo, salvá-lo e, em seguida, abrir o arquivo de trabalho novamente.
 
-As you will see from our file structure (explained next), we will be using mostly linking between the files.
+Como você verá em nossa estrutura de arquivos (explicada a seguir), usaremos principalmente a vinculação entre os arquivos.
 
-You don't simply dump the whole Blender file inside yours. Instead, you can navigate inside the file structure and bring in only an object, or a group, material, or even an entire scene. We will be linking the shark, interface, environment, and other fish in the main file. We could also do nested linking, by having one of the library files link another file inside it (for example, the actions could be linked in the armature files).
+Você não despeja simplesmente todo o arquivo do Blender dentro do seu. Em vez disso, você pode navegar dentro da estrutura do arquivo e trazer apenas um objeto ou grupo, material ou mesmo uma cena inteira. Estaremos vinculando o tubarão, a interface, o ambiente e outros peixes no arquivo principal. Também poderíamos fazer links aninhados, fazendo com que um dos arquivos da biblioteca vinculasse outro arquivo dentro dele (por exemplo, as ações poderiam ser vinculadas nos arquivos de armadura).
 
-## How to Use the Chapter Files <a id="How_to_Use_the_Chapter_Files"></a>
+## Como usar os arquivos de capítulos <a id="How_to_Use_the_Chapter_Files"></a>
 
-On the Book files, you can find the complete game(exercise) in the folder Book/Chapter02/game/_final/.
+Nos arquivos do livro, você encontra o jogo completo (exercício) na pasta Livro / Capítulo02 / jogo / _final /.
 
-For simplicity's sake, we will use Blender relative path syntax to refer to the files inside this folder. In this case // refers to the base folder and //interface/score.blend stands for Book/Chapter02/game/_final/interface/score.blend.
+Por uma questão de simplicidade, usaremos a sintaxe do caminho relativo do Blender para se referir aos arquivos dentro desta pasta. Nesse caso, // refere-se à pasta base e //interface/score.blend significa Livro / Capítulo02 / jogo / _final / interface / score.blend.
 
-To play the game inside Blender, open the file game.blend. This file is only a part of the game and depends on the external files that are organized as:
+Para jogar dentro do Blender, abra o arquivo game.blend. Este arquivo é apenas uma parte do jogo e depende dos arquivos externos organizados como:
 
-**//** game.blend
+** // ** game.blend
 
 **//** assets **/** shark.blend
 
@@ -126,17 +126,18 @@ To play the game inside Blender, open the file game.blend. This file is only a p
 
 **//** interface **/** score.blend
 
-To follow the progress of the instruction steps, we have other folders. Copy the whole folder onto your computer to work from there. These are the folders we will be using:
+Para acompanhar o andamento das etapas da instrução, temos outras pastas. Copie a pasta inteira no seu computador para trabalhar a partir daí. Estas são as pastas que usaremos:
 
-- **Book/Chapter02/game\_my** -The semi-empty folder structure to be filled as you advance in the chapter.
 
-- **Book/Chapter02/game\_progress** -The same folder structure but filled with files of different snapshots. Every file is named after the original name plus a progress number-for example, game.1.blend, game.1.blend, //assets/shark.8.blend. To use them, you need to rename the file to the original name and copy to the right folder in "game\_my" folder.
+- ** livro / Capítulo02 / game \ _my ** - A estrutura da pasta semi-vazia a ser preenchida à medida que você avança no capítulo.
 
-- **Book/Chapter02/game\_final** -The final as of the end of this exercise; use for reference.
+- **Livro/Capítulo02/game\_progress** A mesma estrutura de pastas, mas cheia de arquivos de snapshots diferentes. Cada arquivo é nomeado após o nome original mais um número de progresso - por exemplo, game.1.blend, game.1.blend, //assets/shark.8.blend. Para usá-los, você precisa renomear o arquivo para o nome original e copiar para a pasta correta na pasta "game \ _my".
 
-- **Book/Chaper02/references** -Files to support the making of the game.
+- **Livro/Capítulo02/game\_final** - A final no final deste exercício; use para referência.
 
-For the rest of the chapter, we will refer to the files from your //game\_my/ top folder.
+- **Livro/Capítulo02/references**  - Arquivos para apoiar a criação do jogo.
+
+No restante do capítulo, vamos nos referir aos arquivos da sua pasta // game \ _my / top.
 
 
 ## Modeling <a id="Modeling"></a>
