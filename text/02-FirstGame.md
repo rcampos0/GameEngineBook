@@ -140,23 +140,23 @@ Para acompanhar o andamento das etapas da instrução, temos outras pastas. Copi
 No restante do capítulo, vamos nos referir aos arquivos da sua pasta // game \ _my / top.
 
 
-## Modeling <a id="Modeling"></a>
+## Modelando <a id="Modeling"></a>
 
-Open Blender and save the default file as //assets/shark.blend.
+Abra o Blender e salve o aquivo padrão como //assets/shark.blend.
 
-We will model the outline of the shark based on reference images. To set up your working environment, follow these steps:
+Nós iremos modelar o outline do tubarão baseado nas imagens de referência. Para configurar seu ambiente de trabalho, siga estes passos:
 
-1. Split your 3D view into four views (Ctrl+Alt+Q).
+1. Divida sua vista3d em quatro visões (Ctrl+Alt+Q).
 
-2. Open the 3D view Properties panel (N)-remember that the mouse needs to be over the 3D view in order to call the commands for it.
+2. Abra o painel de propriedades da vista 3d (N) - lembre que o mouse precisa estar sobre a vista 3d paraenviar o comando para  o painel.
 
-3. In the bottom of the panel, you will see the Background Images option. Turn it on.
+3. No botão do painel, você irá ver a opção de Imagem de fundo. Deixe ativo.
 
-4. Add three images for the three Axis/Views: Top, Front, and Right. They can be found in the reference folder named shark-top.png, shark-front.png, and shark-right.png.
+4. Adicione três imagens para os Eixos/Visões: Topo, Frente, e Direita. Eles podem ser encontrados na pasta de referência nomeados shark-top.png, shark-front.png, e shark-right.png.
 
-5. Change their size to 3.00
+5. Mude seu tamanho para 3.00.
 
-![Background images setup(Blender Foundation).](../figures/Chapter2/Fig02-03.png "Redo last menu.")
+![Configuração da imagem de Fundo(Blender Foundation).](../figures/Chapter2/Fig02-03.png "Redo last menu.")
 
 The current file can be found under the name //assets/shark.1.blend.
 
