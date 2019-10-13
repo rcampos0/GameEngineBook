@@ -158,23 +158,23 @@ Nós iremos modelar o outline do tubarão baseado nas imagens de referência. Pa
 
 ![Configuração da imagem de Fundo(Blender Foundation).](../figures/Chapter2/Fig02-03.png "Redo last menu.")
 
-The current file can be found under the name //assets/shark.1.blend.
+O arquivo atual pode ser encontrado sob o nome //assets/shark.1.blend.
 
-To start the model, remove the initial cube (X) and add a cylinder into the scene (Shift+A > Mesh > Cylinder). New objects are always added to the 3D cursor location, so make sure that it is in the center of the scene [0,0,0] (Shift+S > Cursor to Center). The default cylinder doesn't match the dimensions or the orientation of the reference model. The quick way to change that is to access the redo last menu (F6) and tweak the cylinder parameters. As you can see in Figure 2.4, we used 12 Vertices, Radius of 0.4, Depth of 1.0, Location Y 0.5, and Rotation X 90 degrees.
+Para iniciar o modelo, remova o cubo inicial (X) e adicione um cilindro à cena (Shift + A> Malha> Cilindro). Novos objetos sempre são adicionados à localização do cursor 3D, portanto, verifique se ele está no centro da cena [0,0,0] (Shift + S> Cursor para o centro). O cilindro padrão não corresponde às dimensões ou à orientação do modelo de referência. A maneira rápida de mudar isso é acessar o menu refazer último (F6) e ajustar os parâmetros do cilindro. Como você pode ver na Figura 2.4, usamos 12 vértices, raio de 0,4, profundidade de 1,0, localização Y 0,5 e rotação X 90 graus.
 
-![Redo last menu(Blender Foundation).](../figures/Chapter2/Fig02-04.png "Redo last menu.")
+![Refazer o último menu (Blender Foundation).](../figures/Chapter2/Fig02-04.png "Redo last menu.")
 
-This will be the base for the shark. We will roughly model from the front and side views, trying to match the picture. To work with more freedom, let's customize the screen. Since we will be modeling with side- and front-view references only, it helps to toggle off "quad view" in the Properties panel in the 3D view. Instead, we will split the screen in half (dragging the triangle from the bottom left edge of the 3D view editor).
+Esta será a base para o tubarão. Modelaremos aproximadamente as vistas frontal e lateral, tentando combinar a imagem. Para trabalhar com mais liberdade, vamos personalizar a tela. Como modelaremos apenas as referências de vista lateral e frontal, ajuda a desativar a "visualização em quadruplo" no painel Propriedades na visualização 3D. Em vez disso, dividiremos a tela ao meio (arrastando o triângulo a partir da borda inferior esquerda do editor de vistas em 3D).
 
-Enter the Edit mode and, in the top view, remove half of the mesh (leaving the vertices from the middle). Since the shark is symmetrical, we don't need to model its two halves. Switch back to the Object mode and in the Properties panel add a Mirror Modifier. Set clipping to on and make sure that the mirror axis is X. The other default options are fine.
+Entre no modo de edição e, na vista superior, remova metade da malha (deixando os vértices do meio). Como o tubarão é simétrico, não precisamos modelar suas duas metades. Volte ao modo Objeto e, no painel Propriedades, adicione um Modificador de Espelho. Ative o recorte como ativado e verifique se o eixo do espelho é X. As outras opções padrão estão corretas.
 
-![Mirror Modifier](../figures/Chapter2/Fig02-04-1.png "Mirror Modifier")
+![Modificador de espelho](../figures/Chapter2/Fig02-04-1.png "Mirror Modifier")
 
-Thanks to the modifier, you should now see the cylinder complete again. Back in the Edit mode, any change you make will be automatically mirrored in the other half, as you can see in Figure 2.5.
+Graças ao modificador, você deve ver o cilindro completo novamente. De volta ao modo Editar, qualquer alteração que você fizer será espelhada automaticamente na outra metade, como você pode ver na Figura 2.5.
 
-![Mirror Modifier(Blender Foundation.Cengage Learning).](../figures/Chapter2/Fig02-05.png "Mirror Modifier")
+![Modificador de espelho (Blender Foundation.Cengage Learning).](../figures/Chapter2/Fig02-05.png "Mirror Modifier")
 
-We can't do much with the current mesh. We need more vertices to model the shark, and we will use the Loop Cut tool for that. In Edit mode, press Ctrl+R. This will show a purple edge on top of the cylinder. If you move your mouse over the mesh, you can choose where to slice it. In our case, we want a cut parallel to the base of the geometry. To confirm the command, right-click in the window and either move the mouse to slide the new edge loop, or press Esc to cut through the middle of the cylinder. If you scroll your mouse wheel before you confirm (click), you can do multiple slices at once, as shown in Figure 2.6.
+Não podemos fazer muito com a malha atual. Precisamos de mais vértices para modelar o tubarão, e usaremos a ferramenta Loop Cut para isso. No modo de edição, pressione Ctrl + R. Isso mostrará uma borda roxa na parte superior do cilindro. Se você mover o mouse sobre a malha, poderá escolher onde cortá-la. No nosso caso, queremos um corte paralelo à base da geometria. Para confirmar o comando, clique com o botão direito do mouse na janela e mova o mouse para deslizar o novo loop de aresta ou pressione Esc para cortar o meio do cilindro. Se você rolar a roda do mouse antes de confirmar (clique), poderá fazer várias fatias ao mesmo tempo, como mostra a Figura 2.6.
 
 ![Loop cut(Cengage Learning).](../figures/Chapter2/Fig02-06.png "Loop cut")
 
