@@ -176,15 +176,15 @@ Graças ao modificador, você deve ver o cilindro completo novamente. De volta a
 
 Não podemos fazer muito com a malha atual. Precisamos de mais vértices para modelar o tubarão, e usaremos a ferramenta Loop Cut para isso. No modo de edição, pressione Ctrl + R. Isso mostrará uma borda roxa na parte superior do cilindro. Se você mover o mouse sobre a malha, poderá escolher onde cortá-la. No nosso caso, queremos um corte paralelo à base da geometria. Para confirmar o comando, clique com o botão direito do mouse na janela e mova o mouse para deslizar o novo loop de aresta ou pressione Esc para cortar o meio do cilindro. Se você rolar a roda do mouse antes de confirmar (clique), poderá fazer várias fatias ao mesmo tempo, como mostra a Figura 2.6.
 
-![Loop cut(Cengage Learning).](../figures/Chapter2/Fig02-06.png "Loop cut")
+![Corte de loop (Cengage Learning).](../figures/Chapter2/Fig02-06.png "Loop cut")
 
-We will slice the cylinder on every section where the outline of the shark has a significant change in its slope. Remember to save the file, and if you want to compare your progress, check the file //assets/shark.2.blend.
+Cortaremos o cilindro em todas as seções em que o contorno do tubarão tenha uma mudança significativa em sua inclinação. Lembre-se de salvar o arquivo e, se você quiser comparar seu progresso, verifique o arquivo //assets/shark.2.blend.
 
-Since this is a shark and not a sausage, we need to accommodate the new mesh arcs to follow the reference image. The B key will turn box selection on and let you select one or more vertices at once. Another useful shortcut is Alt+RMB (in linux : Alt + Shift + RMB) on one of the edges of the loops to quickly select the edge loop.
+Como este é um tubarão e não uma salsicha, precisamos acomodar os novos arcos de malha para seguir a imagem de referência. A tecla B ativa a seleção da caixa e permite selecionar um ou mais vértices de uma só vez. Outro atalho útil é Alt + RMB (no linux: Alt + Shift + RMB) em uma das arestas dos loops para selecionar rapidamente o loop da aresta.
 
 ![Edge loop](../figures/Chapter2/Fig02-06-1.png "Edge loop")
 
-With the arcs selected, you can grab them and move around (G). When necessary, you can use the S key to scale them around them. The transformations (Rotation, Scaling, and even Grabbing) always happen relative to/around a pivot. By default, the pivot is the 3D Cursor. You can change it, for example, to pivot around the center of the selected vertices. To change the pivot, use the shortcuts comma and period (current selection and 3D cursor respectively) or the menu by the Shading mode. In fact, a lot of the other options in the 3D View header are important for modeling (such as snap, proportional editing, vertex/edge/face selection) and can be found in Figure 2.7.
+Com os arcos selecionados, você pode agarrá-los e mover-se (G). Quando necessário, você pode usar a tecla S para dimensioná-los em torno deles. As transformações (rotação, redimensionamento e até mesmo agarrar) sempre acontecem em relação a / ao redor de um pivô. Por padrão, o pivô é o Cursor 3D. Você pode alterá-lo, por exemplo, para girar em torno do centro dos vértices selecionados. Para alterar o pivô, use os atalhos vírgula e ponto (seleção atual e cursor 3D respectivamente) ou o menu no modo Sombreamento. De fato, muitas outras opções no cabeçalho da Visualização 3D são importantes para modelagem (como snap, edição proporcional, seleção de vértice / aresta / face) e podem ser encontradas na Figura 2.7.
 
 ![3D View header(Blender Foundation)](../figures/Chapter2/Fig02-07.png "3D View header")
 
