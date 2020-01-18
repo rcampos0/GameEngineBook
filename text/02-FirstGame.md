@@ -188,7 +188,7 @@ Com os arcos selecionados, você pode agarrá-los e mover-se (G). Quando necess�
 
 ![3D View header(Blender Foundation)](../figures/Chapter2/Fig02-07.png "3D View header")
 
-At this point, you can start exploring the top view as well. For quickly switching to top view, use NumPad7 or toggle quad view on and off. Sometimes you need to transform the geometry only in one axis. In Figure 2.8, you can use the handler to pull if you want to move an edge in a specific axis. You can also use the keyboard for that. To restrict the transformation, press X, Y, or Z after the command and slide in the specified axis. Shift+X, Y, or Z works in the opposite way. It locks the transformation for the opposite axis (so you can only move/scale/rotate in a plane). This is really useful-we use G with Shift+Z all the time.
+Nesse ponto, você também pode começar a explorar a vista superior. Para alternar rapidamente para a vista superior, use o NumPad7 ou ative ou desative a visualização em quad. Às vezes, você precisa transformar a geometria apenas em um eixo. Na Figura 2.8, você pode usar o manipulador para puxar se desejar mover uma aresta em um eixo específico. Você também pode usar o teclado para isso. Para restringir a transformação, pressione X, Y ou Z após o comando e deslize no eixo especificado. Shift + X, Y ou Z funciona da maneira oposta. Ele bloqueia a transformação para o eixo oposto (para que você só possa mover / dimensionar / girar em um plano). Isso é realmente útil - usamos G com Shift + Z o tempo todo.
 
 ![Locked axis transformation(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-08.png "Locked axis transformation")
 
