@@ -200,80 +200,79 @@ Com essas ferramentas, você pode chegar ao estágio do arquivo //assets/shark.3
 
 ![Extruding(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-10.png "Extruding")
 
-Once you enter the extrude command, a new face is created. This face is connected to and in the same position as the original face. Additionally, it automatically puts you in the Grab command with the movement locked to the normal axis (no more the X, Y, or Z but the face normal instead). Pull the face as far as needed (in our case, the front reference image should be the guide) and click to finish it. If you press Esc, you will cancel the Grab part of the command but will still have the new face.
-
+Depois de inserir o comando de extrusão, uma nova face é criada. Este rosto está conectado e na mesma posição que o rosto original. Além disso, o coloca automaticamente no comando Grab (agarrar) com o movimento travado no eixo normal (não mais o eixo: X, Y, ou Z; mas a face normal). Puxe a face o quanto for necessário (no nosso caso, a imagem de referência frontal poderá ser o guia) e clique para finalizá-la. Se você pressionar Esc, irá cancelar a ação Grab, mas ainda estará com a nova face.
 
 >**Transform Orientation**
+>**Orientação da Transformação**
 >
->If an object or its parts is rotated in relation to the global axis, you will find the default axis locking hardly useful. Therefore, Blender allows you to quickly set a different alignment mode in the 3D View header (the default is Global). To switch to it, enter the desired axis twice (for example, X+X).
-By changing the global orientation, you are actually changing the orientation of the Transform controllers (Translate, Rotate, Scale).
-One exception to this system (and broadly used) is that when Global is set as the global orientation, you get Local transformations when double-typing your locking axis.
-Additionally, an advanced resource is to add custom Transform Orientations. This is accessible at the end of the 3D View Properties panel.
+>Se um objeto ou suas partes forem girados em relação ao eixo global, você encontrará o bloqueio do eixo padrão dificilmente útil. Portanto, o Blender permite que você defina rapidamente um modo de alinhamento diferente no cabeçalho da Visualização 3D (o padrão é Global). Para alternar para ele, insira o eixo desejado duas vezes (por exemplo, X + X).
+Ao alterar a orientação global, vocẽ está realmente alterando a orientação dos controladores Transform (Transformação) (Mover, Girar, Escalar). Uma exceção a esse sistema (e amplamente usada) é que, quando Global é definiado como orientação global, você obtém transformações locais ao digitar duas vezes o seu eixo de bloqueio.
 
+Como o Modificador Espelho tem as opções "Mesclar" e "Recortar" ativadas, a extrusão não será simplesmente restringida ao normal (o eixo perpendicular à face) inicialmente. Em vez disso, a face extrudada será bloqueada ao normal, mas metade dela será bloqueada no plano do espelho. Portanto, ele se comportará como se tivese bloqueado na vertical (eixo Z).
 
-Because the Mirror Modifier has both "Merge" and "Clipping" options turned on, the extrude will not simply be constrained to the normal (the axis perpendicular to the face) initially. Instead, the extruded face will be locked to the normal, but half of it will be locked in with the mirror plane. Therefore, it will behave as if locked vertically (Z axis).
+Para economizar tanto com a modelagem, adicionaremos um cabeçalho das malhas embutidas no Blender. Enquanto estiver no modo Editar, vá para o menu Adicionar malha (Shift + A) e escolha Monkey. Você precisará escalar (S), girar (R) e agarrar (G) para que a malha correponda  à imagem de referência. E eles combinam perfeitamente - feliz coincidência.
 
-To save time with the modeling, we will add a head from the built-in meshes in Blender. While in the Edit mode, go to the Add Mesh menu (Shift+A) and choose Monkey. You will need to scale (S), rotate (R), and grab (G) it to make it match the reference image. And they match perfectly-what a happy coincidence.
-
-You will need to remove some faces from the neck to connect it with the top part of the body. To delete faces, use the X key. This will bring up the menu shown in Figure 2.11-pick your option wisely. To connect vertices and edges, use the F key. (They need to be selected, and no more than what can fit in a face.)
+Você precisará remover algumas faces do pescoço para conectá-lo à parte superior do corpo. Para excluir face, use a tecla X. Isso exibirá o menu mostrado na Figura 2.11 - escolha sua opção com sabedoria. Para conectar vértices e arestas, use a tecla F. (Eles precisam ser selecionados e não mais do que aquilo que cabe em um rosto.)
 
 ![Delete menu(Blender Foundation)](../figures/Chapter2/Fig02-11.png "Delete menu")
 
-To finish the model, you can add the swimmers on the sides. Start by selecting one face in the lateral of the mesh and extruding it until necessary. As we did for the main body of the shark, we should add more sections to the swimmer with the Loop Cut tool.
+Para finalizar o modelo, você pode adicionar os nadadeiras nas laterais. Comece selecionando uma face na lateral da malha e extrudando-a até necessário. Como fizemos no corpo principal do tuburão, devemos adicionar mais seções a nadadeira com a ferramenta Loop Cut.
 
-You can refine your model as much as you want. The current model is in //assets/shark.4.blend.
+Você pode refinar seu modelo quantas vezes quiser. O modelo atual está em //assets/shark.4.blend.
 
-## Texturing <a id="Texturing"></a>
+## Texturizando <a id="Texturing"></a>
 
-The next step shouldn't take much time. To add the skin of the shark, we will use an image projected into the faces. Images are two-dimensional, while our models are three-dimensional. In order to match them both, we need to do the equivalent of peeling an orange and flattening the peel onto a flat plane. The peel in the plane will be our image of the orange skin, allowing us to use a 2D image for our 3D model. Another example is the representation of the world map where a sphere is projected onto a plane, as you can see in Figure 2.12. The process of mapping the 3D geometry to a 2D plane is called _UV texturing._
+O próxim passo não deve demorar muito. Para adicionar a pele do tubarão, usaremos uma imagem projetada nos rostos. As imagens são bidimensionais, enquanto nossos modelos são tridimensionais. Para combinar os dois, precisamos fazer o equivalente a descascar uma laranja e achatar a casca em um plano achatado. a casca no avião será a nossa imagem da pele laraja, permitindo usar uma imagem 2D para o nosso modelo 3D. Outro exemplo é a representação do mapa do mundo em que uma esfera é projetada em um plano, como você pode ver na figura 2.12. O processo de mapeamento da geometria 3D para um plano 2D é chamado de _UV texturing_.
 
 ![World Map: 2D surface equivalent of a 3D geometry(NASA)](../figures/Chapter2/Fig02-12.png "World Map: 2D surface equivalent of a 3D geometry")
 
-
-Before we start, go to the Modifiers panel and apply the Mirror Modifier. If you don't do that, the shark can't have a different texture for each of its sides-instead, it would use the same texture flipped in the model. Also, you will no longer need the background images. You can turn them off or remove them from the file-both options can be found in the Background Images panel in the 3D View Properties menu.
+Antes de começar, vá para o painel Modificadores e aplique o Modificador Espelho. Se você não fizer isso, o tubarão não poderá ter uma textura diferente para cada um dos lados; em vez disso, usaria a mesma textura invertida no modelo. Além disso, você não precisará mais das imagens de fundo. Você pode desativá-los ou removê-los do arquivo - ambas as opções podem ser encontradas no painel Imagens de fundo no menu Propriedades da Vista 3D.
 
 To start creating a UV texture, you need to switch to Edit mode and call the UV Mapping menu (U). This menu has different mapping options. We will be using the first one,  Unwrap, which is a semi-automatic way to calculate the optimal stretching for the 2D texture. The result can be seen and edited in the UV/Image Editor.
 
-In the Editor menu, click Image > New Image, and in the pop-up menu, set Generated Type as UV Grid and confirm. This will produce a sample image where you can check in the 3D model as to how stretched the map image (texture) will be, once it is re-projected onto the shark model. If you look at Figure 2.13, you should spot a problem with the default unwrapping: the image on the side of the shark is too stretched and does not have enough resolution. While the shark tail has a high resolution, that doesn't correspond to its need (the tail is small after all)-the smaller the squares of the UV test grid, the higher the pixel-per-face ratio.
+Para começar a criar uma textura UV, você precisa alternar para o modo Editar e chamar o menu Mapeamento UV (U). Este menu possui diferente opções de mapeamento. Usaremos o primeiro, Desembrulhar (Unwarp),que é uma maneira semi-automática de calcuar o alongamento ideal para a texura 2D.
+
+No menu Editar, clique em Imagem > Nova Imagem e, no menu pop-up, defina Tipo gerado como Grade UV e confirme.Isso produzirá uma imagem de amostra na qual é possivel verificar no modelo 3D o quão esticada será a imagem do mapa (textura), uma vez que ela for re-projetada no modelo do tubarão. Se você observar a Figura 2.13, poderá encontrar um problema com o desembrulhamento padrão: a imagem na lateral do tubarão está muito esticada enão tem resolução suficiente. Embora a cada do tubarão tenha uma alta resolução, isso não corresponde à sua necessidade (afinal, a cauda é pequena) - quanto menores os quadrados da grade de teste de UV, maior a proporção de pixesl por face.
 
 ![Bad default unwrapping(Cengage Learning)](../figures/Chapter2/Fig02-13.png "Bad default unwrapping")
 
-To solve this problem, go to the 3D view and select the edge loop that splits the side-swimmer from the body. With this "ring" selected, go to the Edge menu (Ctrl+E) and select Mark Seam. Now redo the UV Mapping  Unwrapping, and you will have a more distributed stretching along the mesh. This can be seen in Figure 2.14 and in the file //assets/shark.5.blend.
+Para resolver esse problema, vá para a visualização 3D e selecione o loop de aresta que divide a nadadeira lateral do corpo. Com esse "anel" selecionado, vá para o menu Edge (Ctrl + E) e selecione Mark Seam. Agora refaça o Mapeamento UV Desembrulhando, e você terá um alongamento mais distribuido ao longo da malha. Isso pode ser visto na Figura 2.14 e o arquivo //assets/shark.5.blend.
 
 ![Final UV mapping(Blender Foundation-Cengage Learning)](../figures/Chapter2/Fig02-14.png "Final UV mapping")
 
-Your model is now ready for proper texturing. In the 3D view, switch to the Texture Paint Mode and have fun. Once you are done painting, save the image from the UV/Image Editor to your computer in //assets/textures/shark.png.
+Agora o seu modelo está pronto para uma textura adequada. Na visualização 3D, alterne para o Modo de Pntura de Textura e divirta-se. Quando terminar de pintar, salve a imagem do UV/Editor de Imagem no seu computador em //assets/textures/shark.png.
 
-
+>**Não pintar, Não a dor**
 >**No Paint, No Pain**
 >
->There is more to texture painting than we can cover here. But it's important to know that the feature is there, and it works great for 3D touch-up painting of your game textures.
-Thus, if you don't want to paint the model, you can use the reference image as texture. Turn back to the side view and in the UV Mapping menu (U), set Project from View. In the UV/Image Editor, select the image you used for reference. For the side-swimmers, go to top view and, selecting only them, repeat >the procedure and choose the top reference image.
+>Há mais na textura da pintura do que podemos cobrir aqui. Mas é importante saber que o recurso existe e funciona muito bem para a pintura de retoques em 3D das texturas do jogo.
+Portanto, se você não quise pintar o modelo, poderá usar a imagem de referência como textura. Volte a vista laterial e, no menu Mapeamento UV (U), defina Project from View. No Editor de Imagem / UV, selecione a imagem que voce usou para referẽncia. Para as nadadeiras laterais, vá para a vista superior e, selecionando apenas elas, repita > o procecimento e escolha a imagem de referẽncia superior.
+Outra opção é usar a textura simples de "Tatuagem de tubarão" que eu pintei para o arquivo final do jogo. Este peixe é uma pequena parte da textura, porque a textura corresponde ao layout UV de toda a malha. Se a imagem parecer estranha no seu tubarão, vocẽ terá que editar seu layout UV para que ele corresponda ao UV do //assets/shark.6.blend. Voce precisará encontrar a textura em \Book\Chapter02\game\_final\assests\textures\shader.png.
+
+
+
+
 Another option is to use the simple "shark tattoo" texture I painted for the final game file. This fish is a small part of the texture, because the texture corresponds to the UV layout of the whole mesh. If the image looks strange in your shark, you will have to edit your UV layout to make it match the UV of the //assets/shark.6.blend. You will find the texture in \Book\Chapter02\game\_final\assets\textures\shader.png.
 
+A textura precisa fazer parte de um material. Selecione o objeto e, no Editor de Propriedades, abra o painel Material. Crie dois materiais - um para os olhos e outro para o resto do tubarão. No modo de edição, vocẽ pode atribuir um material para as faces selecionadas. O material para os olhos é sombreado e usao branco coom a sua cor difusa. O material do corpo também é sombreado, mas precisa de uma textura para as informações de cores. Com o material de corpo selecionado, alterne para o painel Texture e adicione uma nova textura. O tipo de textura precisa ser "imagem" ou "Filme" e você precisa escolher a imagem que preparou como textura. Por fim, vá para a guia Mapeamento e selecione UV como Coordenada. Dessa forma, a textura será mapeada de acordo com o UV que você acabou de criar.
 
-The texture needs to be part of a material. Select the object, and in the Properties Editor, open the Material panel. Create two materials-one for the eyes and one for the rest of the shark. In Edit Mode, you can assign a material for the selected faces. The material for the eyes is shadeless and uses white as its diffuse color. The body material is also shadeless, but needs a texture for the color information. With the body material selected, switch to the Texture panel and add a new texture. The texture type needs to be "Image" or "Movie," and you need to pick the image you prepared as a texture. Finally, go to the Mapping tab and select UV as Coordinate. This way, the texture will be mapped according to the UV you just created.
-
-If you are not familiar with materials in Blender, refer to Chapter 5, "Graphics." You can also import the materials Shark and SharkEyes from the current file at //assets/shark.6.blend .
+Se você não conhece os materiais do Blender, consulte o Capítulo 5, "Gráficos". Você também pode importar os materiais Shark e SharkEyes do arquivo atual em //assets/shark.6.blend.
 
 ## Rigging <a id="Rigging"></a>
 
 _Animate the shark…_
 
-In order to make the shark swim, we need an armature with bones. Similar to real bones, the Blender bones will deform the mesh, producing the animation for our game.
+Para fazer o tubarão nadar, precisamos de uma armadura com ossos. Semelhante aos ossos reais, os ossos do Blender deformam a malha, produzindo a animação para o nosso jogo.
 
-The base file is here: //assets/shark.6.blend
+A base do arquivo está aqui: //assests/shark.6.blend.
 
-The first thing to do is to add an Armature object (Shift+AArmature). It's important to have the armature center at the "center of mass" of the shark, which happens to be the right place for the shark mesh origin as well. (In our case, it's in the center of the scene at coordinates [0,0,0]). To make sure you got this right, in the 3D view look at the big dot representing the center of the shark or try to rotate it using its center as pivot. If the center is slightly above the side-swimmers and centralized in the short side of the shark, you are good to go. Otherwise, you need to reset its origin with the Shift+Ctrl+Alt+C option:
+A primeira coisa a fazer é adicionar um objeto Armature (Shift + A -> Armature). É importante ter o centro da armadura no "centro de massa" do tubarão, que também é o local certo para a origem da malha do tubarão. (No nosso caso, está no centro da cena nas coordenadas [0,0,0]). Para garantir que voce acertou, na visualização 3D, observe o grande ponto que representa o centro do tubarão ou tente girá-lo usando o centro como pivô. Se o centro estiver um pouco acima das nadadeiras laterais e centralizado no lado mais curto do tubarão, você estará pronto. Caso contrário, você precisará redefinir sua origem com a opção Shift + Ctrl + Alt + C:
 
-1. Move the 3D cursor to the approximate location (or to skip the next step, put it in [0,0,0] or use Shift+C).
+1. Mova o cursor 3D para o local aproximado (ou para pular o próximo passo, coloque-o em [0, 0, 0] ou use Shift + C).
+2. Defina sua coordenada X como 0 - o painal Propriedades mostra a localização exata do cursor 3D.
+3. Defina Origem > Origem para 3D cursor.
 
-2. Set its X coordinate to 0-the Property panel shows the 3D cursor's exact location.
-
-3. Set Origin > Origin to 3D cursor.
-
-
-With the 3D cursor in the center of the object, add the armature (Shift+A). In the Edit mode of the armature, select this bone (A or RMB on it) and move it [nd]1 unit in Z. Now the tail of the bone is in the center. The tail is the small extremity of the bone, opposite to its head. This will be our root bone, the one bone that controls all the others.
+Com o cursor 3D no centro do objeto, adicione a armadura (Shift + A). No modo Editar da armadura, selecione esse osso (A ou RMB) e mova-o  uma unidade em Z. Agora a cauda do osso está no centro. A cauda é a pequena extremidade do osso, oposta à sua cabeça. Este será nosso osso da raiz, o osso que controla tdos os outros.
 
 With the 3D cursor still in the center, add a new bone (Shift+A). Select this bone tail and move (G) it until it matches the mouth location, as you can see in Figure 2.15. Now select this bone and the root bone and parent them without linking them (Ctrl+P  Keep Offset). This way the bone can still move freely, although it is parented to the root bone.
 
