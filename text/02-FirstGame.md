@@ -209,12 +209,9 @@ Além disso, um recurso avançado é adicionar Orientações de tranformação p
 
 Como o Modificador Mirror tem as opções "Merge" e "clipping" ativadas, a extrusão não será simplesmente restringida ao normal (o eixo perpendicular à face) inicialmente. Em vez disso, a face extrudada será travada na normal, mas metade dela será travada no plano do espelho. Portanto, ela se comportará como se estivesse travado verticalmente (eixo Z).
 
-
 Para economiar tempo com a modelagem, iremos adicionar uma cabeça das malhas embutidas no Blender. No modo edit, vá ao menu Add Mesh (Shift + A) e escolha Monkey. você precisará escalar (S), rotacionar (R) e agarrar (G) para que corresponda à imagem de referência. E eles combinam perfeitamente - que feliz coincidẽncia.
 
-To save time with the modeling, we will add a head from the built-in meshes in Blender. While in the Edit mode, go to the Add Mesh menu (Shift+A) and choose Monkey. You will need to scale (S), rotate (R), and grab (G) it to make it match the reference image. And they match perfectly-what a happy coincidence.
-
-You will need to remove some faces from the neck to connect it with the top part of the body. To delete faces, use the X key. This will bring up the menu shown in Figure 2.11-pick your option wisely. To connect vertices and edges, use the F key. (They need to be selected, and no more than what can fit in a face.)
+Você precisará remover algumas faces do pescoço para conectá-lo à parte superior do corpo. Para excluir faces, use a tecla X.Isso abrirá o menu mostrado na Figura 2.11 - escolha sua opção com sabedoria. Para conectar vértices e arestas, use a tecla F. (Eles precisam ser selecionados, e não mais do que o que pode caber em uma face.)
 
 ![Delete menu(Blender Foundation)](../figures/Chapter2/Fig02-11.png "Delete menu")
 
