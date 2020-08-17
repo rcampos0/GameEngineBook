@@ -200,18 +200,17 @@ Com essas ferramentas, você pode chegar ao estágio do arquivo //assets/shark.3
 
 ![Extruding(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-10.png "Extruding")
 
-Once you enter the extrude command, a new face is created. This face is connected to and in the same position as the original face. Additionally, it automatically puts you in the Grab command with the movement locked to the normal axis (no more the X, Y, or Z but the face normal instead). Pull the face as far as needed (in our case, the front reference image should be the guide) and click to finish it. If you press Esc, you will cancel the Grab part of the command but will still have the new face.
-
+Depois de inserir o comando de extrusão, uma nova face é criada. Esta face está conectada a na mesma posição da face original. Além disso, ele coloca voce automaticamente no comando Agarrag com o movimento travado no eixo normal (não mais o X, Y ou Z, mas a face normal). Puxe a face o quanto for ncessário (no nosso caso, a imagem de referência frontal deve ser o guia) e clique para finalizá-lo. Se você pressionar Esc, cancelará a parte "Grab" do comando, mas ainda terá a nova face.
 
 >**Transform Orientation**
 >
->If an object or its parts is rotated in relation to the global axis, you will find the default axis locking hardly useful. Therefore, Blender allows you to quickly set a different alignment mode in the 3D View header (the default is Global). To switch to it, enter the desired axis twice (for example, X+X).
-By changing the global orientation, you are actually changing the orientation of the Transform controllers (Translate, Rotate, Scale).
-One exception to this system (and broadly used) is that when Global is set as the global orientation, you get Local transformations when double-typing your locking axis.
-Additionally, an advanced resource is to add custom Transform Orientations. This is accessible at the end of the 3D View Properties panel.
+>Se um objeto ou suas partes forem rotacionadas em relação ao eixo global, vocẽ irá encontrar o bloqueio do eixo padrão pouco útil. Portanto, o Blender permite que você defina rapidamente um modo de alinhamento diferente no cabeçho da Visualização 3D (o padrão é Global). Para alternar para ele, insira o eixo desejado duas vezes (por exemplo, X + X). Ao alterar a orientação global, você está, na verdade, alterando a orientação dos controladores Transform (translação, rotação, escala). Uma exceção a este sistema (e amplamente usado) é que quando Global é definido como a orientação global, você obtém transformações locais ao digitar duas vezes seu eixo de bloqueio.
+Além disso, um recurso avançado é adicionar Orientações de tranformação personalizadas. Isso pode ser acessado no final do painel Propriedades da Vista 3D.
+
+Como o Modificador Mirror tem as opções "Merge" e "clipping" ativadas, a extrusão não será simplesmente restringida ao normal (o eixo perpendicular à face) inicialmente. Em vez disso, a face extrudada será travada na normal, mas metade dela será travada no plano do espelho. Portanto, ela se comportará como se estivesse travado verticalmente (eixo Z).
 
 
-Because the Mirror Modifier has both "Merge" and "Clipping" options turned on, the extrude will not simply be constrained to the normal (the axis perpendicular to the face) initially. Instead, the extruded face will be locked to the normal, but half of it will be locked in with the mirror plane. Therefore, it will behave as if locked vertically (Z axis).
+Para economiar tempo com a modelagem, iremos adicionar uma cabeça das malhas embutidas no Blender. No modo edit, vá ao menu Add Mesh (Shift + A) e escolha Monkey. você precisará escalar (S), rotacionar (R) e agarrar (G) para que corresponda à imagem de referência. E eles combinam perfeitamente - que feliz coincidẽncia.
 
 To save time with the modeling, we will add a head from the built-in meshes in Blender. While in the Edit mode, go to the Add Mesh menu (Shift+A) and choose Monkey. You will need to scale (S), rotate (R), and grab (G) it to make it match the reference image. And they match perfectly-what a happy coincidence.
 
