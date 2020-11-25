@@ -223,34 +223,31 @@ Você pode refinar seu modelo o quanto quiser. O modelo atual está em // assets
 
 A pŕoxima etapa não deve levar muito tempo. Para adicionar a pele do tubarão, usaremos uma imagem projetada nas faces. As imagens são bidimensionais. Para combinar os dois, precisamos fazer o equivalente a descascar uma laranja e achatar a casca em uma superfície plana. A casca no plano será a nossa imagem da casca da laranja, permitindo-nos usar uma imagem 2D para o nosso modelo 3D. Outro exemplo é a representação do mapa-múndi onde uma esfera é projetada em um plano, como voce pode ver na Figura 2.12. O processo de mapear a geometria 3D para um plano 2D é chamado de _UV texturing._
 
-![World Map: 2D surface equivalent of a 3D geometry(NASA)](../figures/Chapter2/Fig02-12.png "World Map: 2D surface equivalent of a 3D geometry")
+![World Map: a superfície 2D equivalente de uma geometria 3D(NASA)](../figures/Chapter2/Fig02-12.png "World Map: 2D surface equivalent of a 3D geometry")
 
+Antes de começar, vá para o painel Modificadores (Modifiers) e aplique o Modificador Espelho (Mirror Modifier). Se você não fizer isso, o tubarão não pode ter uma textura diferente para cada um de seus lados - em vez disso, ele usaria a mesma textura invertida no modelo. Além disso, vocẽ não precisará mais das imagens de fundo. Vocẽ pode desativá-las ou removê-las do arquivo - ambas as opções podem ser encontradas no painel Imagens de Fundo (Background Images) no menu Propriedades de Visualização 3D (3D View Properties Menu).
 
-Before we start, go to the Modifiers panel and apply the Mirror Modifier. If you don't do that, the shark can't have a different texture for each of its sides-instead, it would use the same texture flipped in the model. Also, you will no longer need the background images. You can turn them off or remove them from the file-both options can be found in the Background Images panel in the 3D View Properties menu.
+Para começar a criar uma textura UV, você precisa alternar para o modo Editar e chamar o menu Mapeamento UV (U) (UV Mapping menu). Este menu possui diferentes opções de mapeamento. Estaremos usando o primeiro, Desempacote (Unwrap), que é uma forma semiautomática de calcular o alongamento ideal para a textura 2D. O resultado pode ser visto e editado no Editor de Imagem/UV (UV/Image Editor).
 
-To start creating a UV texture, you need to switch to Edit mode and call the UV Mapping menu (U). This menu has different mapping options. We will be using the first one,  Unwrap, which is a semi-automatic way to calculate the optimal stretching for the 2D texture. The result can be seen and edited in the UV/Image Editor.
+No menu Editor, clique em Imagem > Nova Imagem (Image > New Image), e no menu pop-up, defina o Tipo Gerado (Generate Type) como Grade UV (UV Grid) e confirme. Isso produzirá uma imagem de amostra onde você pode verificar no modelo 3D o quão esticada a imagem do mapa (textura) (texture) será, uma vez que ela for re-projetada no modelo de tubarão. Se você olhar a Figura 2.13, verá um problema com o desempacotamento padrão: a imagem na laeral do tubarão está muito esticada e não tem resolução suficiente. Embora a cauda do tubarão tenha alta resolução, isso não corresponde à sua necessidade (afinal, a cauda é pequena) - quanto menores os quadrados da grade de teste UV, maior a proporção pixel por face.
 
-In the Editor menu, click Image > New Image, and in the pop-up menu, set Generated Type as UV Grid and confirm. This will produce a sample image where you can check in the 3D model as to how stretched the map image (texture) will be, once it is re-projected onto the shark model. If you look at Figure 2.13, you should spot a problem with the default unwrapping: the image on the side of the shark is too stretched and does not have enough resolution. While the shark tail has a high resolution, that doesn't correspond to its need (the tail is small after all)-the smaller the squares of the UV test grid, the higher the pixel-per-face ratio.
-
-![Bad default unwrapping(Cengage Learning)](../figures/Chapter2/Fig02-13.png "Bad default unwrapping")
-
-To solve this problem, go to the 3D view and select the edge loop that splits the side-swimmer from the body. With this "ring" selected, go to the Edge menu (Ctrl+E) and select Mark Seam. Now redo the UV Mapping  Unwrapping, and you will have a more distributed stretching along the mesh. This can be seen in Figure 2.14 and in the file //assets/shark.5.blend.
+![Desempacotamento padrão incorreto (Cengage Learning)](../figures/Chapter2/Fig02-13.png "Bad default unwrapping")
+Para resolver esse problema, vá para a visualização 3D (3D View) e selecione o loop de borda (edge loop) que separa o nadador lateral do corpo. Com este "anel" selecionado, vá ao menu Borda (Edge) (Ctral + E) e selecione Marcar Costura (Mark Seam). Agora refaça o Mapeamento UV (UV Mapping)  Desempacotamento (Unwrapping), e voce terá um alongamento mais distribuido ao longo da malha. Isso pode ser visto na Figura 2.14 e no arquivo //assets/shark.5.blend.
 
 ![Final UV mapping(Blender Foundation-Cengage Learning)](../figures/Chapter2/Fig02-14.png "Final UV mapping")
+Seu modelo agora está pronto para a texturização adequada. Na visualização 3D, mude para o Modo de Pintura de Textura e divirta-se. Assim que terminar de pintar, salve a imagem do Editor de Imagem / UV em seu computador em //assets/shark.png.
 
-Your model is now ready for proper texturing. In the 3D view, switch to the Texture Paint Mode and have fun. Once you are done painting, save the image from the UV/Image Editor to your computer in //assets/textures/shark.png.
-
-
->**No Paint, No Pain**
+>**Não Pintar,Não dor**
 >
->There is more to texture painting than we can cover here. But it's important to know that the feature is there, and it works great for 3D touch-up painting of your game textures.
-Thus, if you don't want to paint the model, you can use the reference image as texture. Turn back to the side view and in the UV Mapping menu (U), set Project from View. In the UV/Image Editor, select the image you used for reference. For the side-swimmers, go to top view and, selecting only them, repeat >the procedure and choose the top reference image.
-Another option is to use the simple "shark tattoo" texture I painted for the final game file. This fish is a small part of the texture, because the texture corresponds to the UV layout of the whole mesh. If the image looks strange in your shark, you will have to edit your UV layout to make it match the UV of the //assets/shark.6.blend. You will find the texture in \Book\Chapter02\game\_final\assets\textures\shader.png.
+>Há mais na pintura de textura do que podemos cobrir aqui. Mas é importante saber que o recurso está lá e funciona muito bem para retocar a pintura 3D das texturas do jogo. 
 
+Assim, se você não quiser pintar o modelo, pode usar a imagem de referência como textura. Volte para a visão lateral e no menu Mapeamento UV (U) (UV Mapping), defina Visão de Projeto (Project from View). No UV/Editor de Imagem, (UV/Image Editor), selecione a imagem que você usou como referência. Para as nadadeiras laterais, vá para a vista superior e, selecionando apenas elas, repita >O procedimento e escolha a imagem de referẽncia superior.
 
-The texture needs to be part of a material. Select the object, and in the Properties Editor, open the Material panel. Create two materials-one for the eyes and one for the rest of the shark. In Edit Mode, you can assign a material for the selected faces. The material for the eyes is shadeless and uses white as its diffuse color. The body material is also shadeless, but needs a texture for the color information. With the body material selected, switch to the Texture panel and add a new texture. The texture type needs to be "Image" or "Movie," and you need to pick the image you prepared as a texture. Finally, go to the Mapping tab and select UV as Coordinate. This way, the texture will be mapped according to the UV you just created.
+Outra opção é usar a textura simples de "tatuagem de tubarão" que pintei para o arquivo final do jogo. Este peixe é uma pequena parte da textura, porque a textura corresponde ao layout UV de toda a malha. Se a imagem parecer estranha em seu tubarão, você terá que editar seu layout de UV para torná-lo compatível com o UV do //assets/shark.6.blend. Você encontrará a textura em \Book\Capítulo02\game\_final\assets\textures\shader.png.
 
-If you are not familiar with materials in Blender, refer to Chapter 5, "Graphics." You can also import the materials Shark and SharkEyes from the current file at //assets/shark.6.blend .
+A textura precisa fazer parte de um material. Selecione o objeto e, no Editor de Propriedades, abra o painel Material. Crie dois materiais - um para os olhos e outro para o resto do tubarão. No modo de edição, você pode atribuir um material para as faces selecionadas. O material para os olhos não tem sombra e usa o branco como cor difusa. O material do corpo também não tem sombra, mas precisa de uma textura para as informações de cor. Como o material de corpo selecionado,mude para o painel Textura e adicione uma nova textura. O tipo de textura precisa ser "Imagem" ou "Filme" e você precisa escolher a imagem que preparou como textura. Finalmente, vá para a aba Mapping e selecione UV como Coordenada. Desta forma, a textura será mapeada de acordo com o UV que você acabou de criar.
+
+Se vocẽ não está familiarizado com os materiais do Blender, consulte o Capítulo 5, "Gráficos". Você também pode importar os materiais Shark e SharkEyes do arquivo atual em //assets/shark.6.blend.
 
 ## Rigging <a id="Rigging"></a>
 
