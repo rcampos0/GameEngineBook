@@ -215,13 +215,13 @@ Você precisará remover algumas faces do pescoço para conectá-lo à parte sup
 
 ![Delete menu(Blender Foundation)](../figures/Chapter2/Fig02-11.png "Delete menu")
 
-To finish the model, you can add the swimmers on the sides. Start by selecting one face in the lateral of the mesh and extruding it until necessary. As we did for the main body of the shark, we should add more sections to the swimmer with the Loop Cut tool.
+Para finalizar o modelo, você pode adicionar as nadadeiras nas laterais. Comece selecionando uma face na laterial da malha e extrudando até qeu seja necessário. Como fizemos para o corpo principal do tubarão, devemos adicionar mais seções a nadadeira com a ferramenta Loop Cut.
 
-You can refine your model as much as you want. The current model is in //assets/shark.4.blend.
+Você pode refinar seu modelo o quanto quiser. O modelo atual está em // assets/shark.4.blend.
 
-## Texturing <a id="Texturing"></a>
+## Texturizando <a id="Texturing"></a>
 
-The next step shouldn't take much time. To add the skin of the shark, we will use an image projected into the faces. Images are two-dimensional, while our models are three-dimensional. In order to match them both, we need to do the equivalent of peeling an orange and flattening the peel onto a flat plane. The peel in the plane will be our image of the orange skin, allowing us to use a 2D image for our 3D model. Another example is the representation of the world map where a sphere is projected onto a plane, as you can see in Figure 2.12. The process of mapping the 3D geometry to a 2D plane is called _UV texturing._
+A pŕoxima etapa não deve levar muito tempo. Para adicionar a pele do tubarão, usaremos uma imagem projetada nas faces. As imagens são bidimensionais. Para combinar os dois, precisamos fazer o equivalente a descascar uma laranja e achatar a casca em uma superfície plana. A casca no plano será a nossa imagem da casca da laranja, permitindo-nos usar uma imagem 2D para o nosso modelo 3D. Outro exemplo é a representação do mapa-múndi onde uma esfera é projetada em um plano, como voce pode ver na Figura 2.12. O processo de mapear a geometria 3D para um plano 2D é chamado de _UV texturing._
 
 ![World Map: 2D surface equivalent of a 3D geometry(NASA)](../figures/Chapter2/Fig02-12.png "World Map: 2D surface equivalent of a 3D geometry")
 
