@@ -253,9 +253,11 @@ Se vocẽ não está familiarizado com os materiais do Blender, consulte o Capí
 
 _Animate the shark…_
 
-In order to make the shark swim, we need an armature with bones. Similar to real bones, the Blender bones will deform the mesh, producing the animation for our game.
+Para fazer o tubarão nadar, precisamos de uma armadura com ossos. Semelhante aos ossos reais, os ossos do Blender irão deformar a malha, produzindo a animação do nosso jogo.
 
-The base file is here: //assets/shark.6.blend
+A base do arquivo está aqui: //assets/shark.6.blend
+
+A primeira coisa a fazer é adicionar um objeto Armature (Shift + A  Armadura (armature)). É importante ter o centro da armadura no "centro de massa" do tubarão, que por acaso também é o lugar certo para a origem da malha do tubarão. (No nosso caso, está no centro da cena nas coordenadas [0, 0, 0]). Para ter certeza de que entendeu direito, na visualização
 
 The first thing to do is to add an Armature object (Shift+AArmature). It's important to have the armature center at the "center of mass" of the shark, which happens to be the right place for the shark mesh origin as well. (In our case, it's in the center of the scene at coordinates [0,0,0]). To make sure you got this right, in the 3D view look at the big dot representing the center of the shark or try to rotate it using its center as pivot. If the center is slightly above the side-swimmers and centralized in the short side of the shark, you are good to go. Otherwise, you need to reset its origin with the Shift+Ctrl+Alt+C option:
 
