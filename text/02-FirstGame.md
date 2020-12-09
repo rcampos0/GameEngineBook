@@ -257,24 +257,21 @@ Para fazer o tubarão nadar, precisamos de uma armadura com ossos. Semelhante ao
 
 A base do arquivo está aqui: //assets/shark.6.blend
 
-A primeira coisa a fazer é adicionar um objeto Armature (Shift + A  Armadura (armature)). É importante ter o centro da armadura no "centro de massa" do tubarão, que por acaso também é o lugar certo para a origem da malha do tubarão. (No nosso caso, está no centro da cena nas coordenadas [0, 0, 0]). Para ter certeza de que entendeu direito, na visualização
+A primeira coisa a fazer é adicionar um objeto Armature (Shift + A  Armadura (armature)). É importante ter o centro da armadura no "centro de massa" do tubarão, que por acaso também é o lugar certo para a origem da malha do tubarão. (No nosso caso, está no centro da cena nas coordenadas [0, 0, 0]). Para ter certeza de que entendeu direito, na visualização 3D, olhe para o grande ponto que representa o centro do tubarão ou tente girá-lo usando seu centro como pivô. Se o centro estiver ligeiramente acima das nadadeiras laterais e centralizado no lado mais curto do tubarão, você está pronto para ir (prosseguir adiante). Caso contrário, vocẽ precisa redefinir sua origem com a opção Shift + Ctrl + Alt + C:
 
-The first thing to do is to add an Armature object (Shift+AArmature). It's important to have the armature center at the "center of mass" of the shark, which happens to be the right place for the shark mesh origin as well. (In our case, it's in the center of the scene at coordinates [0,0,0]). To make sure you got this right, in the 3D view look at the big dot representing the center of the shark or try to rotate it using its center as pivot. If the center is slightly above the side-swimmers and centralized in the short side of the shark, you are good to go. Otherwise, you need to reset its origin with the Shift+Ctrl+Alt+C option:
+1. Mova o cursor 3D para a localização aproximada (ou para pular a próxima etapa, coloque-o em [ 0, 0, 0 ], ou use Shift + C ).
 
-1. Move the 3D cursor to the approximate location (or to skip the next step, put it in [0,0,0] or use Shift+C).
+2. Defina sua coordenada X para 0 - o painel de Propriedade mostra a localização exata do cursor 3D.
 
-2. Set its X coordinate to 0-the Property panel shows the 3D cursor's exact location.
+3. Defina Origem > Origem para o cursor 3D.
 
-3. Set Origin > Origin to 3D cursor.
+Com o cursor 3D no centro do objeto, adicione a armadura ( Shift + A ). No modo Editar da armadura, selecione este osso ( A ou RMB no osso ) e mova-o [nd] 1 unidade em Z. Agora, a cauda do osso está no centro. A cauda é a pequena extremidade do osso, oposto à sua cabeça. este será nosso osso raíz, o osso que controla todos os outros.
 
+Com o cursor 3D ainda no centro, adicione um novo osso ( Shift + A ). Seleciona esta cauda de osso e mova-a (G) até que corresponda à localização da boca, como você pode ver na Figura 2.15. Agora selecione este osso e osso raiz e os parente eles sem vincula-los (Ctrl + P  Manter Offset). Dessa forma, o osso ainda pode se mover livremente, embora seja pai do osso raiz.
 
-With the 3D cursor in the center of the object, add the armature (Shift+A). In the Edit mode of the armature, select this bone (A or RMB on it) and move it [nd]1 unit in Z. Now the tail of the bone is in the center. The tail is the small extremity of the bone, opposite to its head. This will be our root bone, the one bone that controls all the others.
+![Editando o Osso (Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-15.png "Bone editing")
 
-With the 3D cursor still in the center, add a new bone (Shift+A). Select this bone tail and move (G) it until it matches the mouth location, as you can see in Figure 2.15. Now select this bone and the root bone and parent them without linking them (Ctrl+P  Keep Offset). This way the bone can still move freely, although it is parented to the root bone.
-
-![Bone editing(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-15.png "Bone editing")
-
-Back to the root bone: select its tail and extrude it (E). This is another way of adding bones, automatically connecting them. Move the extruded bone to the beginning of the shark tail. Now repeat the procedure for the new bone, extruding it all the way to the end of the shark tail. Figure 2.16 shows the current bones as seen in //assets/shark.7.blend .
+De volta ao osso raiz: selecione sua cauda e extrude-o. (E). Esta é outra maneira de adicionar ossos, conectando-os automaticamente. Mova o osso extrudado para o início da cauda do tubarão. Agora repita o procedimento parao novo osso, extrudando-o até o final da cuda do tubarão. A figura 2.16 mostra os ossos atuais conforme vistos em //assets/shark.7.blend.
 
 ![Armature Bones(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-16.png "Armature Bones")
 
