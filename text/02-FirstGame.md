@@ -530,60 +530,74 @@ O sistema de pontuação do jogo faz parte de sua interface construída sobre a 
 
 A interface do usuário é independente do arquivo, objetos e eventos do jogo. Graças ao sistema de mensagens do mecanismo de jogo (a combinação do atuador de mensagens e dos sensores de mensagens), você pode implementar a interface como um arquivo separado com sua própria lógica. Abra o arquivo de interface em //interface/score.blend. O diagrama da Figura 2.31 ilustra a dinâmica de seus elementos e o fluxo de mensagens.
 
-![Message system diagram(Cengage Learning)](../figures/Chapter2/Fig02-31.png "Message system diagram")
+![Diagrama do sistema de mensagens(Cengage Learning)](../figures/Chapter2/Fig02-31.png "Message system diagram")
 
-Now you have two sets of independent and concurrent events. On the one hand, you can  update the score every time a message comes from a fish saying it got "sharked" (a fish collided with the shark). This is pretty straightforward and happens for as long as the game is not over.
+Agora você tem dois conjuntos de eventos independentes e simultâneos. Por outro lado, você pode atualizar a pontuação toda vez que uma mensagem vier de um peixe dizendo que ele foi "tubarão" (um peixe colidiu com o tubarão). Isso é muito simples e acontece enquanto o jogo não acabar.
 
-The game is over when you run out of time, which is part of the second set of events. The time system is an independent countdown timer (using a timer game property). It updates the time in the interface and sends a message to all the game elements when the time is up, and the game is over. This message is used to freeze the fish-counting and trigger an action to move the score to its final position, as you can see in Figure 2.32.
+O jogo termina quando você fica sem tempo, o que faz parte do segundo conjunto de eventos. O sistema de tempo é um cronômetro de contagem regressiva independente (usando uma propriedade de jogo com cronômetro). Ele atualiza o tempo na interface e envia uma mensagem para todos os elementos do jogo quando o tempo acaba e o jogo acaba. Essa mensagem é usada para congelar a contagem de peixes e acionar uma ação para mover a pontuação para sua posição final, como você pode ver na Figura 2.32.
 
-![Game over interface(Cengage Learning)](../figures/Chapter2/Fig02-32.png "Game over interface")
+![Interface do game over(Cengage Learning)](../figures/Chapter2/Fig02-32.png "Game over interface")
 
-This scene will be imported without changes into your game file. Once again, the linking system of Blender allow you to keep components separated and synced. Open //game.4.blend and link (not append) the "Score" scene from the //interface/score.blend file. Although the scene is now in the Blender file, you still need to load it into the game:
-
-
-1. Add an empty object (Shift+AEmpty).
-
-2. Select the object and open the Logic Editor.
-
-3. Add an Always sensor.
-
-4. Add a Scene actuator: mode Add Overlay Scene, scene "Score."
-
-5. Connect the sensor with the actuator.
+Esta cena será importada sem alterações no arquivo do jogo. Mais uma vez, o sistema de vinculação do Blender permite que você mantenha os componentes separados e sincronizados. Abra //game.4.blend e vincule (não acrescente) a cena "Score" do arquivo //interface/score.blend. Embora a cena agora esteja no arquivo do Blender, você ainda precisa carregá-la no jogo:
 
 
-Now the game is a combination of two scenes that work as separate layers. The file is at //game.5.blend. In Figures 2.33 and 2.34, you can see the user interface integrated within the game.
+1. Adicione um objeto vazio (Shift + AEmpty).
+
+2. Selecione o objeto e abra o Logic Editor.
+
+3. Adicione um sensor Always.
+
+4. Adicionar um atuador de cena: modo Adicionar cena de sobreposição, cena "Pontuação".
+
+5. Conecte o sensor com o atuador.
+
+
+Agora o jogo é uma combinação de duas cenas que funcionam como camadas separadas. O arquivo está em //game.5.blend. Nas Figuras 2.33 e 2.34, você pode ver a interface do usuário integrada ao jogo.
 
 ![Game start(Cengage Learning)](../figures/Chapter2/Fig02-33.png "Game start")
 
 ![Game over(Cengage Learning)](../figures/Chapter2/Fig02-34.png "Game over")
 
-## Music for Your Ears <a id="Music_for_Your_Ears"></a>
+## Música para seus ouvidos <a id="Music_for_Your_Ears"></a>
 
-A game is not complete without sound effects. There are three sounds under // sounds/: the ambient sound (water.m4a), the eating-fish effect (sharked.m4a), and the ending sound (gameover.m4a). This is the farewell set of instructions for this chapter and a prelude for the following chapter (entirely on logic bricks). Speaking of the lack of images, those are sound samples. Feel free to whistle along.
+Um jogo não está completo sem efeitos sonoros. Existem três sons em // sons /: o som ambiente (water.m4a), o efeito de comer peixe (sharked.m4a) e o som final (gameover.m4a). Este é o conjunto de instruções de despedida para este capítulo e um prelúdio para o capítulo seguinte (inteiramente sobre tijolos lógicos). Falando em falta de imagens, são amostras de som. Sinta-se à vontade para assobiar.
 
-- **Ambient sound** : Add a Sound actuator; load the sound file (water.m4a). Mode: Loop End, Volume: 2. Connect it to the Always sensor you created to load the UI. This will play the ambient sound through the whole game in an eternal loop.
+- ** Som ambiente **: Adicione um atuador de som; carregue o arquivo de som (water.m4a). Modo: Fim do loop, Volume: 2. Conecte-o ao sensor Always que você criou para carregar a IU. Isso reproduzirá o som ambiente durante todo o jogo em um loop eterno.
 
-- **Eating-fish sound** : Add a Message sensor with subject: "Sharked" and a Sound actuator; load the sound file (sharked.m4a). Mode: Play End, Volume: 2. Connect the sensor with the actuator. Every time a fish is eaten, the sound effect will be played.
+- ** Som de comer peixe **: Adicione um sensor de mensagem com o assunto: "Sharked" e um atuador de som; carregue o arquivo de som (sharked.m4a). Modo: Play End, Volume: 2. Conecte o sensor ao atuador. Cada vez que um peixe é comido, o efeito sonoro é reproduzido.
 
-- **Ending game sound** : Add a Message sensor with subject: "GameOver" and connect it to a new Sound actuator; load the sound file (gameover.m4a). Mode: Play End, Volume: 0.3.
+- ** Som de finalização do jogo **: Adicione um sensor de mensagem com o assunto: "GameOver" e conecte-o a um novo atuador de som; carregue o arquivo de som (gameover.m4a). Modo: Fim do jogo, Volume: 0,3.
 
-There is a catch here. You are sending the GameOver message not once but continuously. That would make the GameOver sound play in loop, which you don't want. You can fix this in the score.blend scene file (by sending the message only once). Or else you can do it here, as follows:
 
-You need a Boolean game property that tells you what the status of the game is: when gameover is False the game is running; if gameover is True the game is over. When you receive a message with the subject "GameOver," you need to change the value of this property. You do this by connecting the Message sensor with a new Property actuator -Mode: Assign, Property: "gameover," Value: True.
+1. Adicione um objeto vazio (Shift + AEmpty).
 
-Next you add a Property sensor named GameIsNotOver to detect if the game is running (if the gameover game property is True or False). Set Evaluation Type to Equal, property to "gameover," and Value as False.
+2. Selecione o objeto e abra o Logic Editor.
 
-Connect this sensor to the And controller of the game over Sound actuator. Optionally, you can also link this sensor to the And controller of the eating-fish Sound actuator. This will make the sound effects stop after the game is over. The ambient sound should still play; thus, there is no need to connect the GameIsNotOver sensor with the And controller of the ambient Sound. The final logic bricks can be seen in Figure 2.35
+3. Adicione um sensor Always.
+
+4. Adicionar um atuador de cena: modo Adicionar cena de sobreposição, cena "Pontuação".
+
+5. Conecte o sensor com o atuador.
+
+
+Agora o jogo é uma combinação de duas cenas que funcionam como camadas separadas. O arquivo está em //game.5.blend. Nas Figuras 2.33 e 2.34, você pode ver a interface do usuário integrada ao jogo.
+
+Há um problema aqui. Você está enviando a mensagem GameOver não uma vez, mas continuamente. Isso faria o som do GameOver tocar em loop, o que você não quer. Você pode corrigir isso no arquivo de cena score.blend (enviando a mensagem apenas uma vez). Ou então você pode fazer aqui, da seguinte maneira:
+
+Você precisa de uma propriedade de jogo booleana que informe qual é o status do jogo: quando o gameover é False, o jogo está rodando; se gameover for True, o jogo acabou. Ao receber uma mensagem com o assunto "GameOver", é necessário alterar o valor desta propriedade. Você faz isso conectando o sensor de mensagem a um novo atuador de propriedade -Modo: Atribuir, Propriedade: "gameover", Valor: Verdadeiro.
+
+Em seguida, você adiciona um sensor de propriedade chamado GameIsNotOver para detectar se o jogo está em execução (se a propriedade do jogo gameover for True ou False). Defina o tipo de avaliação como igual, a propriedade como "gameover" e o valor como falso.
+
+Conecte este sensor ao controlador E do jogo pelo atuador de som. Opcionalmente, você também pode vincular esse sensor ao controlador E do atuador de som de peixe comedor. Isso fará com que os efeitos sonoros parem após o término do jogo. O som ambiente ainda deve tocar; assim, não há necessidade de conectar o sensor GameIsNotOver com o controlador E do som ambiente. Os blocos lógicos finais podem ser vistos na Figura 2.35.
 
 ![Sound logic bricks(Blender Foundation)](../figures/Chapter2/Fig02-35.png "Sound logic bricks")
 
-The final file is at //game.6.blend.
+O arquivo final está em //game.6.blend.
 
-## Where to Go from Here <a id="Where_to_Go_from_Here"></a>
+## Para onde ir a partir daqui <a id="Where_to_Go_from_Here"> </a>
 
-The game is complete: the final files are in \Book\Chapter02\game\_final\game.blend.
+O jogo está completo: os arquivos finais estão em \ Book \ Chapter02 \ game \ _final \ game.blend.
 
-The modular approach we took allows for easy customization of the individual elements of the game. As you advance in the book, you should try to keep evolving the games files. Create a new user interface. Create multiple shark animations. Change all your assets.
+A abordagem modular que adotamos permite uma fácil personalização dos elementos individuais do jogo. À medida que avança no livro, você deve tentar manter a evolução dos arquivos dos jogos. Crie uma nova interface de usuário. Crie várias animações de tubarão. Mude todos os seus ativos.
 
-If you want to share your version of the Feed the Shark the game, please host it online and send us a link. If there are enough contributions, we will make them available on the book's home page.
+Se você deseja compartilhar sua versão do jogo Feed the Shark, hospede-o online e envie-nos um link. Se houver contribuições suficientes, as disponibilizaremos na página inicial do livro.
