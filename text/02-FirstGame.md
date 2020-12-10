@@ -404,7 +404,7 @@ Se você está modelando tudo do zero, deve ajustar a velocidade e o ângulo do 
 
 Com o tubarão sozinho na cena, é difícil dizer como ele está se movendo. É hora de adicionar outros objetos à cena para que você possa ter certeza de que as configurações da câmera e o movimento do tubarão estão bem ajustados. Assim, o próximo passo é adicionar o mundo (o SeaBed et al). Enquanto isso, você pode comparar o status do seu arquivo com: //assets/shark.12.blend.
 
-## MUndo e Ambiente <a id="World_and_Environment"></a>
+## Mundo e Ambiente <a id="World_and_Environment"></a>
 
 Vamos deixar o arquivo shark por enquanto e juntar as peças do jogo. Abra o arquivo //game.1.blend. Este arquivo vazio será o arquivo principal do jogo. Se você deseja iniciar um arquivo do zero, abra o arquivo padrão do Blender, exclua tudo dele (pressione A para selecionar tudo e então X para excluir), e mude o motor para o Blender Game e o modo Shading para GLSL.
 
@@ -438,7 +438,7 @@ Para visualizar a cor e o efeito de névoa no Viewport 3D, você precisa definir
 
 Jogue o seu jogo e nade com o tubarão. No entanto, falta um elemento básico em nosso jogo de sobrevivência do tubarão: a comida.
 
-## Artificial Intelligence <a id="Artificial_Intelligence"></a>
+## Inteligência Artificial <a id="Artificial_Intelligence"></a>
 
 Enquanto o tubarão é 100 por cento interativo, controlado pelo jogador, o peixe será controlado por meio de uma mecânica simples de IA (inteligência artificial). Os princípios são simples: o ciclo de natação do peixe é feito por tijolos lógicos, enquanto o fluxo constante de desova do peixe é controlado por um "programa" individual (um script) responsável pelos seguintes componentes:
 
@@ -462,73 +462,73 @@ Na Figura 2.26, você pode ver o jogo com o cardume de peixes ao redor do tubar�
 
 ![School of fish(Cengage Learning)](../figures/Chapter2/Fig02-26.png "School of fish")
 
-The script allows for more direct manipulation of your game elements, complex math computations, and a denser logic for your game play. If you look at the scripts in this file (in the text editor), you'll see you have nothing to be scared of. This is a simple textual way to describe interactive behaviors for your game. And it's far simpler than the hardcore task of programming an entire game engine. Cheers for the compromise. In Figure 2.27, you can look at the game property and logic bricks (including the script controllers) of the FishLeader.
+O script permite uma manipulação mais direta dos elementos do seu jogo, cálculos matemáticos complexos e uma lógica mais densa para o seu jogo. Se você olhar os scripts neste arquivo (no editor de texto), verá que não tem nada a temer. Esta é uma forma textual simples de descrever comportamentos interativos para seu jogo. E é muito mais simples do que a tarefa pesada de programar um motor de jogo inteiro. Felicidades pelo compromisso. Na Figura 2.27, você pode observar as propriedades do jogo e as peças lógicas (incluindo os controladores de script) do FishLeader.
 
 
->**Art Versus Math**
+>**Arte Versus Matemática**
 >
->"But I'm an artist and don't understand math." Sure, we get that a lot. But bear in mind that here you only need to understand the mechanics of when to rely on a script and what you can do with it. For a more in-depth overview of this topic, see Chapter 7, "Python Scripting," later in the book. Also, the math you need for Python scripting is more accessible than most people assume. Unless, of course, you are planning to run for Miss U.S.A. [http://youtu.be/9QBv2CFTSWU](http://youtu.be/9QBv2CFTSWU)
+>"Mas eu sou um artista e não entendo matemática." Claro, recebemos muito isso. Mas tenha em mente que aqui você só precisa entender a mecânica de quando confiar em um script e o que pode fazer com ele. Para uma visão geral mais aprofundada deste tópico, consulte o Capítulo 7, "Script do Python", posteriormente neste livro. Além disso, a matemática necessária para o script Python é mais acessível do que a maioria das pessoas supõe. A menos, é claro, que você esteja planejando concorrer para a Miss EUA. [Http://youtu.be/9QBv2CFTSWU](http://youtu.be/9QBv2CFTSWU)
 
 
-If you want to do your own customizations, try to animate the fish with bones. You can follow all the steps we did for the shark. Additionally, remember to change the object being added by the FishLeader "AddFish" actuator (see Figure 2.27). Instead of adding the fish, you will have to add the fish parent (the FishArmature object you will create). The armature child (the fish itself) will be added together automatically.
+Se você quiser fazer suas próprias personalizações, tente animar os peixes com ossos. Você pode seguir todas as etapas que fizemos para o tubarão. Além disso, lembre-se de alterar o objeto que está sendo adicionado pelo atuador FishLeader "AddFish" (consulte a Figura 2.27). Em vez de adicionar o peixe, você terá que adicionar o pai peixe (o objeto FishArmature que você criará). O filho da armadura (o próprio peixe) será adicionado automaticamente.
 
-![Logic bricks and Game Property of the FishLeader(Blender Foundation)](../figures/Chapter2/Fig02-27.png "Logic bricks and Game Property of the FishLeader")
+![Logic bricks e Game Property of the FishLeader(Blender Foundation)](../figures/Chapter2/Fig02-27.png "Logic bricks and Game Property of the FishLeader")
 
-The current checkpoint is at //game.4.blend. If you changed your //assets/school.blend file, you need only replace the one in the sources with yours. As we mentioned (three times already, anyone counting?), the new data will be automatically synced in the game. Play your game, and get ready to wrap up the shark feeding.
+O ponto de verificação atual está em //game.4.blend. Se você alterou seu arquivo //assets/school.blend, você só precisa substituir o que está nas fontes pelo seu. Como mencionamos (já três vezes, alguém contando?), Os novos dados serão sincronizados automaticamente no jogo. Jogue o seu jogo e prepare-se para encerrar a alimentação dos tubarões.
 
-## All You Can Eat <a id="All_You_Can_Eat"></a>
+## Tudo o que conseguires comer <a id="All_You_Can_Eat"></a>
 
-If you try to catch the fish with the shark, you will see that the shark pushes the fish away. For the game, we need three things to happen: (1) the fish needs to die, (2) the shark needs to get bigger, (3) a score on the screen needs to tell how many fish we caught and how much time we have left.
+Se você tentar pegar o peixe com o tubarão, verá que o tubarão empurra o peixe para longe. Para o jogo, precisamos que três coisas aconteçam: (1) o peixe precisa morrer, (2) o tubarão precisa ficar maior, (3) uma pontuação na tela precisa dizer quantos peixes pescamos e quanto tempo nós saimos.
 
-The score system will be made in the next section. For now, we will focus on making the shark and the little fish interact.
+O sistema de pontuação será feito na próxima seção. Por enquanto, vamos nos concentrar em fazer o tubarão e os peixinhos interagirem.
 
-The school of fish is, in fact, already set up. But let's look at what we have there. Open the file //assets/school.blend. In the second layer, select the fish and look at the logic bricks, shown in Figure 2.28.
+O cardume, de fato, já está montado. Mas vamos dar uma olhada no que temos lá. Abra o arquivo //assets/school.blend. Na segunda camada, selecione o peixe e observe os tijolos lógicos, mostrados na Figura 2.28.
 
 ![Fish school logic bricks(Blender Foundation)](../figures/Chapter2/Fig02-28.png "Fish school logic bricks")
 
-We have a Collision sensor that will only be active when touching an object that has a "shark" property. We don't want to know when one fish collides with another or with the seabed, for that matter. This filter addresses that. The sensor is connected to a Python controller "killMe.py" that takes care of some housekeeping. It tells the FishLeader that we will need a new fish soon. The controller also activates two actuators: one to kill the fish, and the second to send a message indicating a fish went down.
+Temos um sensor de Colisão que só estará ativo ao tocar em um objeto que possui a propriedade "tubarão". Não queremos saber quando um peixe colide com outro ou com o fundo do mar, aliás. Este filtro trata disso. O sensor é conectado a um controlador Python "killMe.py" que cuida de algumas tarefas domésticas. Diz ao FishLeader que precisaremos de um novo peixe em breve. O controlador também ativa dois atuadores: um para matar os peixes e o segundo para enviar uma mensagem indicando que um peixe caiu.
 
-This message is like spam mail. It doesn't matter if you have a mail-only sign in your mailbox. It doesn't even matter if you don't have a mailbox. You will receive the McDonald's coupon you never asked for. (And you will end up eating there-damned spammers!)
+Esta mensagem é como um e-mail de spam. Não importa se você tem um sinal somente para correio em sua caixa de correio. Nem importa se você não tem uma caixa de correio. Você receberá o cupom do McDonald's que nunca solicitou. (E você vai acabar comendo spammers malditos!)
 
-And so will the shark. Once the shark receives a message, it can act accordingly. In our case, we want to make the shark big. To do so, open the file shark.12.blend again. Until now, we have been adding all the logic bricks to the armature. Now let's put the armature aside and use the mesh:
-
-
-1. Select the SharkMesh object.
-
-2. Add a keyframe to the size (IScaling).
-
-3. Go to frame 100, scale up the shark, and repeat the previous step.
-
-4. Open the Logic Editor.
-
-5. Create a Boolean game property named "shark."
-
-6. Create an Integer game property named "size."
-
-7. Add a Message sensor with the subject "Sharked"
-
-8. Add a Property actuator: mode Add, property "size," and value 1.
-
-9. Add an Action actuator: mode Property, action SharkMeshAction, and property "size."
-
-10. Connect the sensor with both actuators.
+E o tubarão também. Depois que o tubarão recebe uma mensagem, ele pode agir de acordo. No nosso caso, queremos tornar o tubarão grande. Para fazer isso, abra o arquivo shark.12.blend novamente. Até agora, estivemos adicionando todos os blocos lógicos à armadura. Agora vamos colocar a armadura de lado e usar a malha:
 
 
-The final shark file is at //assets/shark.13.blend. In Figure 2.29, we have a screen of the logic bricks setup.
+1. Selecione o objeto SharkMesh.
 
-![Shark ready to grow(Blender Foundation)](../figures/Chapter2/Fig02-29.png "Shark ready to grow")
+2. Adicione um quadro-chave ao tamanho (IScaling).
 
-We started by creating an animation for the shark. This animation is played according to a game property (size) that will increase every time a message is received. The message gets to the shark every time a fish is eaten (for example, collides with the shark). Thus, we have a good synchronization between fish disappearing and the shark getting bigger.
+3. Vá para o quadro 100, amplie o tubarão e repita a etapa anterior.
 
-Apart from that, the shark needs the "shark" game property to be detected by the fish school. This will trigger the collision. The collision sensor simply checks if the object has a property with a given name, so the type and value of the property are arbitrary (in our case, we are using a Boolean property, but it could be any other property type). Now one by one, we can eat the fish. And it's time to count sheep.
+4. Abra o Logic Editor.
 
-## Scoring System <a id="Scoring_System"></a>
+5. Crie uma propriedade de jogo booleana chamada "shark".
 
-The score system of the game is part of its interface built on top of the 3D view. In Figure 2.30, you can see the main elements of the interface: the score on the top left, the time countdown on the top right, and the title of the game on the bottom right.
+6. Crie uma propriedade de jogo Integer chamada "size".
 
-![Interface elements(Blender Foundation)](../figures/Chapter2/Fig02-30.png "Interface elements")
+7. Adicione um sensor de mensagem com o assunto "Sharked"
 
-The user interface is independent from the game file, objects, and events. Thanks to the messaging system of the game engine (the combination message actuator and message sensors), you can implement the interface as a separate file with its own logic. Open the interface file in //interface/score.blend. The diagram in Figure 2.31 illustrates the dynamic of its elements and the message flow.
+8. Adicione um atuador de propriedade: modo Adicionar, propriedade "tamanho" e valor 1.
+
+9. Adicione um atuador Action: mode Property, action SharkMeshAction e propriedade "size".
+
+10. Conecte o sensor com ambos os atuadores.
+
+
+O arquivo shark final está em //assets/shark.13.blend. Na Figura 2.29, temos uma tela de configuração dos blocos lógicos.
+
+![Shark pronto para crescer(Blender Foundation)](../figures/Chapter2/Fig02-29.png "Shark ready to grow")
+
+Começamos criando uma animação para o tubarão. Esta animação é reproduzida de acordo com uma propriedade do jogo (tamanho) que aumentará cada vez que uma mensagem for recebida. A mensagem chega ao tubarão toda vez que um peixe é comido (por exemplo, colide com o tubarão). Assim, temos uma boa sincronização entre o desaparecimento dos peixes e o aumento do tamanho do tubarão.
+
+Além disso, o tubarão precisa da propriedade de jogo "tubarão" para ser detectado pelo cardume. Isso irá desencadear a colisão. O sensor de colisão simplesmente verifica se o objeto possui uma propriedade com um determinado nome, portanto, o tipo e o valor da propriedade são arbitrários (no nosso caso, estamos usando uma propriedade booleana, mas poderia ser qualquer outro tipo de propriedade). Agora, um a um, podemos comer os peixes. E é hora de contar ovelhas.
+
+## Sistema de Pontuação <a id="Scoring_System"></a>
+
+O sistema de pontuação do jogo faz parte de sua interface construída sobre a visualização 3D. Na Figura 2.30, você pode ver os principais elementos da interface: a pontuação no canto superior esquerdo, a contagem regressiva do tempo no canto superior direito e o título do jogo no canto inferior direito.
+
+![Elementos da Inteface(Blender Foundation)](../figures/Chapter2/Fig02-30.png "Interface elements")
+
+A interface do usuário é independente do arquivo, objetos e eventos do jogo. Graças ao sistema de mensagens do mecanismo de jogo (a combinação do atuador de mensagens e dos sensores de mensagens), você pode implementar a interface como um arquivo separado com sua própria lógica. Abra o arquivo de interface em //interface/score.blend. O diagrama da Figura 2.31 ilustra a dinâmica de seus elementos e o fluxo de mensagens.
 
 ![Message system diagram(Cengage Learning)](../figures/Chapter2/Fig02-31.png "Message system diagram")
 
