@@ -297,177 +297,168 @@ Para criar uma animação, você precisa definir as poses individuais que criar�
 >
 >A complexidade da animação também está diretamente relacionada ao número de bones criados em seu rig. Para este jogo, não estamos usando muitos ossos por uma questão de simplicidade. No Capítulo 4, "Animação", você encontrará exemplos mais robustos.
 
+Vamos criar um ciclo de natação - uma animação em que a primeira e a última poses são iguais e podem ser reproduzidas continuamente em um loop. Vamos começar seguindo estas etapas:
+1. Defina o quadro atual para o inicial (Shift + Esquerda).
 
-We will create a swimming cycle-an animation where the first and the last poses are the same and can be played seamlessly in a loop. Let's start by the following these steps:
+2. Selecione a armadura.
 
-
-1. Set the current frame to the initial one (Shift+Left).
-
-2. Select the armature.
-
-3. Change to the Pose mode.
+3. Mude para o modo Pose.
 
 
-Rotate the tailbone 50 degrees clockwise in the Z axis. Rotate the head bone 5 degrees counter-clockwise in the same axis. Select all bones (A) and insert a keyframe (ILocRot). This will be our pose for the first frame. The current file is at //assets/shark.9.blend and is shown in Figure 2.18.
+Gire o cóccix 50 graus no sentido horário no eixo Z. Gire o osso da cabeça 5 graus no sentido anti-horário no mesmo eixo. Selecione todos os ossos (A) e insira um quadro-chave (ILocRot). Essa será nossa pose para o primeiro frame. O arquivo atual está em //assets/shark.9.blend e é mostrado na Figura 2.18.
 
-![Initial pose(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-18.png "Initial pose")
+![Pose Inicial(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-18.png "Initial pose")
 
-To create a cycle, you need the beginning and end frames to match. Move to frame 31 (through the Timeline or Shift+Up six times) and add a new keyframe for the same pose.
-
-There are different ways to see your animation in Blender. Change your current screen to Animation (in the header menu where you see Default). This screen shows the three animation editors: Dopesheet, Graph Editor, and Timeline, as you can see in Figure 2.19.
+Para criar um ciclo, você precisa dos quadros inicial e final correspondentes. Vá para o frame 31 (por meio da Linha do tempo ou Shift + Up seis vezes) e adicione um novo quadro-chave para a mesma pose.
+Existem diferentes maneiras de ver sua animação no Blender. Mude sua tela atual para Animação (no menu do cabeçalho, onde você vê Padrão). Essa tela mostra os três editores de animação: Dopesheet, Graph Editor e Timeline, como você pode ver na Figura 2.19.
 
 ![Animation screen(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-19.png "Animation screen")
 
-In the Dopesheet, you can see where we have added keyframes so far. The two points and the line connecting them mean that there is no change between the two poses. The other way of adding a new pose is by selecting the keyframes in the Dopesheet and duplicating them. As with the other editors in Blender, you can grab (G), scale (S), copy (Shift+D), and toggle all selection (A) using the same shortcuts you are used to.
+No Dopesheet, você pode ver onde adicionamos frames-chave até agora. Os dois pontos e a linha que os conecta significam que não há mudança entre as duas poses. A outra maneira de adicionar uma nova pose é selecionar os quadros-chave no Dopesheet e duplicá-los. Como com os outros editores no Blender, você pode pegar (G), dimensionar (S), copiar (Shift + D), e alternar todas as seleções (A) usando os mesmos atalhos que você está acostumado.
 
-The middle pose of the animation cycle should be opposite to the initial (and final) pose. Blender has a simple way to flip poses. In Figure 2.20, you can see the Paste Flipped option in the 3D View header.
-
-
-1. Change to the Pose Mode.
-
-2. Select all bones (A).
-
-3. Click on Copy Pose in the 3D View header.
-
-4. Go to frame 15.
-
-5. Click on Paste Flipped Pose.
-
-6. Store the keyframes (I).
+A pose do meio do ciclo de animação deve ser oposta à pose inicial (e final). O Blender tem uma maneira simples de virar poses. Na Figura 2.20, você pode ver a opção Colar invertido no cabeçalho da visualização 3D.
 
 
-![Copy and paste Flipped Pose buttons(Blender Foundation)](../figures/Chapter2/Fig02-20.png "Copy and paste Flipped Pose buttons")
+1. Mude para o modo de pose.
+
+2. Selecione todos os ossos (A).
+
+3. Clique em Copy Pose no cabeçalho da vista 3D.
+
+4. Vá para o frame 15.
+
+5. Clique em Colar posição invertida.
+
+6. Armazene os quadros-chave (I).
 
 
->**Bones Mirroring**
+![Copia e Cola Flipped Pose buttons(Blender Foundation)](../figures/Chapter2/Fig02-20.png "Copy and paste Flipped Pose buttons")
+
+
+>**Espelhando Ossos**
 >
->If your rigs have bones bifurcating from the main bone chain, there is a special way to make them mirror. By default, Blender will try to paste the pose of the same bone mirrored relative to the Y axis. Sometimes, however, you want to swap the transformations between two bones-a left and right. The classic example is walking animations when you need to animate only half of the strides.
->To have Blender interpret the bones as two sides of the same bone, you need to name them L (for left bones) and R (for right bones). This way, the bone Swimmer.001.L will be treated as the pair of Swimmer.001.R, and their poses will be swapped and mirrored when using the Pose Flip Paste option. To learn more about this, refer to the walking cycle tutorial in the Chapter 4.
+>Se suas plataformas têm ossos bifurcando da cadeia de ossos principal, há uma maneira especial de fazê-los espelhar. Por padrão, o Blender tentará colar a pose do mesmo osso espelhado em relação ao eixo Y. Às vezes, no entanto, você deseja trocar as transformações entre dois ossos - um esquerdo e um direito. O exemplo clássico são as animações de caminhada, quando você precisa animar apenas metade das passadas.
+>Para que o Blender interprete os ossos como dois lados do mesmo osso, você precisa nomeá-los L (para ossos esquerdos) e R (para ossos direitos). Desta forma, o osso Swimmer.001.L será tratado como o par de Swimmer.001.R, e suas poses serão trocadas e espelhadas ao usar a opção Pose Flip Paste. Para saber mais sobre isso, consulte o tutorial de ciclismo de caminhada no Capítulo 4.
 
-
-The swimming animation is now finished. In the Timeline, set the final playback frame to 30. Playing back the animation (Alt+A) will reveal our lovely and clumsy swimming cycle. In the Dopesheet, switch the Display mode to Action Editor. There you can change the name of the current action to "SharkSwimming," as shown in Figure 2.21.
+A animação de natação está concluída. Na linha de tempo, defina o quadro de reprodução final para 30. Reproduzir a animação (Alt + A) revelará nosso adorável e desajeitado ciclo de natação. No Dopesheet, mude o modo Display para Action Editor. Lá você pode alterar o nome da ação atual para "SharkSwimming", conforme mostrado na Figura 2.21.
 
 ![Action Editor header(Blender Foundation)](../figures/Chapter2/Fig02-21.png "Action Editor header")
 
-The current snapshot of this file is //assets/shark.10.blend.
+O instantâneo atual deste arquivo é //assets/shark.10.blend.
 
-You can also do a "SharkAttack" animation. For a smooth transition, make the new action with the same initial and final poses as the "SharkSwimming." If you go with that, use the attack animation when the shark eats a fish.
+Você também pode fazer uma animação "SharkAttack". Para uma transição suave, faça a nova ação com as mesmas poses inicial e final do "SharkSwimming". Se você continuar, use a animação de ataque quando o tubarão comer um peixe.
 
-## Camera and Keyboard <a id="Camera_and_Keyboard"></a>
+## Camera e Keyboard <a id="Camera_and_Keyboard"></a>
 
-After all the hard work of setting up your main character, it's time to bring in the game. If you play (P) the game now, you will see nothing but the shark standing still.
+Depois de todo o trabalho árduo de configurar seu personagem principal, é hora de entrar no jogo. Se você jogar (P) o jogo agora, não verá nada além do tubarão parado.
 
 
->**Playing and Quitting the Game**
+>**Jogando e Saindo do Jogo**
 >
->Every time you need to test the current status of the game, you can launch it from the Game menu (available when the Engine is set to Game Engine) or by using the shortcut P. To quit the running game and go back to the regular Blender environment, use the Exit key set in the game Render panel (Esc by default).
+>Toda vez que você precisar testar o status atual do jogo, pode iniciá-lo a partir do menu Jogo (disponível quando o Motor está configurado como Game Engine) ou usando o atalho P. Para sair do jogo em execução e voltar ao normal No ambiente do Blender, use a tecla Exit definida no painel Render do jogo (Esc por padrão).
 
 
-We will now set up the logic bricks. You'll learn more about logic bricks in the next chapter. They are the visual components of the logic and interaction of the game. The shark animation and movement will be controlled with logic bricks. We will also set up the camera control and motion.
+Agora vamos configurar os blocos lógicos. Você aprenderá mais sobre tijolos lógicos no próximo capítulo. Eles são os componentes visuais da lógica e da interação do jogo. A animação e o movimento do tubarão serão controlados com tijolos lógicos. Também configuraremos o controle e o movimento da câmera.
 
-The shark will always be swimming. Thus, we will be playing the swimming animation constantly:
-
-
-1. Change your screen from animation to game logic.
-
-2. In the Logic Editor, add an Always sensor (Shift+ASensorAlways).
-
-3. Add an Action actuator and connect it with the sensor.
-
-4. In the Action actuator: mode Loop Stop, action SharkSwimming, start frame 1 and end frame 30.
+O tubarão sempre estará nadando. Assim, reproduziremos a animação de natação constantemente:
 
 
-Now that the shark can swim, you want it to move around. The controls of the game are simple: use the spacebar to swim forward; left and right to rotate; up and down to emerge and submerge. You have to add a Keyboard sensor for each of those keys and connect them as such:
+1. Mude sua tela de animação para lógica de jogo.
+
+2. No Logic Editor, adicione um sensor Always (Shift + ASensorSempre).
+
+3. Adicione um atuador Action e conecte-o ao sensor.
+
+4. No atuador de ação: modo Loop Stop, ação SharkSwimming, start frame 1 e end frame 30.
 
 
-- Left key => Motion actuator: RotZ = 1° and disable L for rotation
-
-- Right key => Motion actuator: RotZ = -1° and disable L for rotation
-
-- Up key => Motion actuator: RotX = 1°
-
-- Down key => Motion actuator: RotX = -1°
-
-- Space key => Motion actuator: LocY = -0.05
+Agora que o tubarão pode nadar, você quer que ele se mova. Os controles do jogo são simples: use a barra de espaço para nadar para a frente; esquerda e direita para girar; para cima e para baixo para emergir e submergir. Você deve adicionar um sensor de teclado para cada uma dessas teclas e conectá-las da seguinte forma:
 
 
-Test your progress inside the game (P) and remember to always save. If your file is showing a different result than the file at //assets/shark.11.blend, check the logic bricks in Figure 2.22.
+- Tecla esquerda => Atuador de movimento: RotZ = 1 ° e desabilitar L para rotação
 
-![Motion actuators(Blender Foundation)](../figures/Chapter2/Fig02-22.png "Motion actuators")
+- Tecla direita => Atuador de movimento: RotZ = -1 ° e desabilitar L para rotação
 
-This simple setup allows the shark to swim freely away from the camera. To have the camera following the shark, select the camera and do the following:
+- Tecla para cima => Atuador de movimento: RotX = 1 °
 
+- Tecla para baixo => Atuador de movimento: RotX = -1 °
 
-1. Add an Always sensor.
-
-2. Add a Camera actuator and connect it with the sensor.
-
-3. In the Camera actuator, set SharkArmature as object, height 5.0, axis [nd]Y, min 5.0, max 20.0, damping 0.10.
+- Tecla de espaço => Atuador de movimento: LocY = -0,05
 
 
-This camera will be behind the shark, always trying to stay inside the specified distance (from 5 to 20 Blender units). The damping will set how fast you want the camera to adjust to the new position while the shark swims away.
+Teste seu progresso dentro do jogo (P) e lembre-se de sempre salvar. Se o seu arquivo estiver mostrando um resultado diferente do arquivo em //assets/shark.11.blend, verifique os blocos lógicos na Figura 2.22.
 
-If you are modeling everything from scratch, you should tweak the speed and angle of the shark Motion actuator and the damping and distance of the camera to better accommodate the scale of your work.
+![Atuadores de movimento(Blender Foundation)](../figures/Chapter2/Fig02-22.png "Motion actuators")
 
-With the shark alone in the scene, it's hard to tell how it is moving. It's time to add other objects to the scene so you can make sure that the camera settings and the shark motion are well adjusted. Thus, the next step is to add the world (the SeaBed et al). In the meantime, you can compare the status of your file with: //assets/shark.12.blend.
+Essa configuração simples permite que o tubarão nade livremente para longe da câmera. Para que a câmera siga o tubarão, selecione a câmera e faça o seguinte:
+1. Adicione um sensor Always.
 
-## World and Environment <a id="World_and_Environment"></a>
+2. Adicione um atuador de câmera e conecte-o ao sensor.
 
-We will leave the shark file for now and put the game pieces together. Open the file //game.1.blend. This empty file will be the main file of the game. If you want to start a file from scratch, open the Blender default file, delete everything from it (press A to select all and then X to delete), and change engine to Blender Game and Shading mode to GLSL.
-
-You need to bring the shark model into this file. Start by linking in the SharkMesh and the SharkArmature objects from the shark asset file. Go to the menu File > Link, navigate to the shark blend file, and once in it, navigate inside "Object," select the SharkArmature and SharkMesh objects, and press OK. A screen capture of the linking options is shown in Figure 2.23. The defaults options are good for now.
-
-![Linking options(Blender Foundation)](../figures/Chapter2/Fig02-23.png "Linking options")
-
-It's important to save your file first; otherwise, the Relative Path option will have no effect. Linking keeps your shark file as an external asset. Any changes you make in the shark.blend file will be transferred over to the game.blend file, once you save it. That also means you cannot make changes in the asset objects through the game.blend file. If you linked before you saved the file, no worries. You can change all the file paths going to the menu File > External Data > Make All Paths Absolute.
-
-The camera doesn't need to be linked. In fact, it's better to keep it as a local object, given that you will certainly adjust its parameters later. To append (not link) the camera, use the menu File  Append and use the default options to import the camera. This will be the main camera for the game. Select the camera and in the 3D View header, choose View > Cameras > Set Active Object as Camera. If everything went right, you can now play your game, and it should behave just as in the shark.blend file.
-
-Good news. The SeaBed was already prepared and is ready for the game (and in your game\_my asset folder). Repeat the linking steps once again for the SeaBed group inside the //level/seabed.blend. You now have the shark, the camera, and the set prepared for the game. The progress shown in Figure 2.24 can be checked at //game.2.blend.
-
-![Shark, camera, and SeaBed(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-24.png "Shark, camera, and SeaBed")
-
-To simulate the water, we will add a blue mist effect. This produces an effect similar to fog and gives a nice water attenuation effect (where everything eventually fades to blue). Follow these steps:
+3. No atuador da câmera, defina SharkArmature como objeto, altura 5.0, eixo [nd] Y, mín 5,0, máx 20,0, amortecimento 0,10.
 
 
-1. Switch to the World panel in the Properties Editor.
+Esta câmera ficará atrás do tubarão, sempre tentando ficar dentro da distância especificada (de 5 a 20 unidades do Blender). O amortecimento definirá a velocidade com que você deseja que a câmera se ajuste à nova posição enquanto o tubarão se afasta.
 
-2. Create a new World.
+Se você está modelando tudo do zero, deve ajustar a velocidade e o ângulo do atuador Shark Motion e o amortecimento e a distância da câmera para acomodar melhor a escala de seu trabalho.
 
-3. Set Horizon Color to Hex: 264A6B.
+Com o tubarão sozinho na cena, é difícil dizer como ele está se movendo. É hora de adicionar outros objetos à cena para que você possa ter certeza de que as configurações da câmera e o movimento do tubarão estão bem ajustados. Assim, o próximo passo é adicionar o mundo (o SeaBed et al). Enquanto isso, você pode comparar o status do seu arquivo com: //assets/shark.12.blend.
 
-4. Turn Mist on and set Start 0.0 and Depth 50.0
+## MUndo e Ambiente <a id="World_and_Environment"></a>
+
+Vamos deixar o arquivo shark por enquanto e juntar as peças do jogo. Abra o arquivo //game.1.blend. Este arquivo vazio será o arquivo principal do jogo. Se você deseja iniciar um arquivo do zero, abra o arquivo padrão do Blender, exclua tudo dele (pressione A para selecionar tudo e então X para excluir), e mude o motor para o Blender Game e o modo Shading para GLSL.
+
+Você precisa trazer o modelo de tubarão para este arquivo. Comece vinculando os objetos SharkMesh e SharkArmature do arquivo shark asset. Vá para o menu Arquivo > Link, navegue até o arquivo de mistura de tubarões e, uma vez nele, navegue dentro de "Objeto", selecione os objetos SharkArmature e SharkMesh e pressione OK. Uma captura de tela das opções de vinculação é mostrada na Figura 2.23. As opções padrão são boas por enquanto.
+
+![Opções de vinculação(Blender Foundation)](../figures/Chapter2/Fig02-23.png "Linking options")
+
+É importante salvar seu arquivo primeiro; caso contrário, a opção Caminho Relativo não terá efeito. A vinculação mantém seu arquivo de tubarão como um ativo externo. Todas as alterações feitas no arquivo shark.blend serão transferidas para o arquivo game.blend assim que você salvá-lo. Isso também significa que você não pode fazer alterações nos objetos de ativo por meio do arquivo game.blend. Se você vinculou antes de salvar o arquivo, não se preocupe. Você pode alterar todos os caminhos de arquivo indo para o menu Arquivo> Dados externos> Tornar todos os caminhos absolutos.
+
+A câmera não precisa estar conectada. Na verdade, é melhor mantê-lo como um objeto local, visto que você certamente ajustará seus parâmetros posteriormente. Para anexar (não vincular) a câmera, use o menu Arquivo  Anexar e use as opções padrão para importar a câmera. Esta será a câmera principal do jogo. Selecione a câmera e no cabeçalho Visualização 3D, escolha Exibir> Câmeras> Definir objeto ativo como câmera. Se tudo deu certo, agora você pode jogar seu jogo, e ele deve se comportar como no arquivo shark.blend.
+
+Boas notícias. A SeaBed já estava preparada e pronta para o jogo (e na pasta do seu jogo \ _minha ativos). Repita as etapas de vinculação mais uma vez para o grupo SeaBed dentro do //level/seabed.blend. Agora você tem o tubarão, a câmera e o conjunto preparados para o jogo. O progresso mostrado na Figura 2.24 pode ser verificado em //game.2.blend.
+
+![Shark, camera, e SeaBed(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-24.png "Shark, camera, and SeaBed")
+
+Para simular a água, adicionaremos um efeito de névoa azul. Isso produz um efeito semelhante à névoa e dá um bom efeito de atenuação da água (onde tudo eventualmente desbota para o azul). Siga esses passos:
 
 
-In order to preview the color and the mist effect in the 3D Viewport, you need to set Viewport Shading to Texture (Alt+Z), as shown in Figure 2.25. The World is now finished and part of the //game3.blend file.
+1. Alterne para o painel Mundo no Editor de propriedades.
 
-![Mist effect-preview in 3D View(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-25.png "Mist effect-preview in 3D View")
+2. Crie um novo mundo.
 
-Play your game and swim around with the shark. However, there is one basic element missing in our survival shark game: the food.
+3. Defina Horizon Color como Hex: 264A6B.
+
+4. Ligue a névoa e defina o início 0,0 e a profundidade 50,0
+
+
+Para visualizar a cor e o efeito de névoa no Viewport 3D, você precisa definir Viewport Shading para Texture (Alt + Z), conforme mostrado na Figura 2.25. O mundo agora está concluído e faz parte do arquivo //game3.blend.
+
+![Pré-visualização do efeito de névoa na visualização 3D(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-25.png "Mist effect-preview in 3D View")
+
+Jogue o seu jogo e nade com o tubarão. No entanto, falta um elemento básico em nosso jogo de sobrevivência do tubarão: a comida.
 
 ## Artificial Intelligence <a id="Artificial_Intelligence"></a>
 
-While the shark is 100 percent interactive, controlled by the player, the fish will be controlled through a simple AI (artificial intelligence) mechanic. The principles are simple: the fish's swimming cycle is handled by logic bricks, while the fish's constant spawning inflow is controlled by an individual "program" (a script) responsible for the following components:
+Enquanto o tubarão é 100 por cento interativo, controlado pelo jogador, o peixe será controlado por meio de uma mecânica simples de IA (inteligência artificial). Os princípios são simples: o ciclo de natação do peixe é feito por tijolos lógicos, enquanto o fluxo constante de desova do peixe é controlado por um "programa" individual (um script) responsável pelos seguintes componentes:
 
 
-- Populating the game with fish schools.
+- Preenchendo o jogo com cardumes de peixes.
 
-- Making the fish follow a "fish leader."
+- Fazer com que os peixes sigam um "líder dos peixes".
 
-- Killing some fish when the shark attacks.
+- Matar alguns peixes quando o tubarão ataca.
 
 
-
->**Speaking of Scripts**
+>**Falando de Scripts**
 >
->Scripts can also be used to complement the functionality of a component of the game. The score scene is using logic bricks to handle the score, but it needs a script to handle the time out, the game over, and to change the resolution of all the text objects. We'll explain more about that in the "Scoring System" section of this chapter.
+>Os scripts também podem ser usados para complementar a funcionalidade de um componente do jogo. A cena da pontuação está usando tijolos lógicos para controlar a pontuação, mas precisa de um script para lidar com o tempo limite, o jogo acabado e para alterar a resolução de todos os objetos de texto. Explicaremos mais sobre isso na seção "Sistema de pontuação" deste capítulo.
 
+Mais uma vez, tiraremos vantagem de um sistema com ativos vinculáveis. Em vez de criar você mesmo o cardume de peixes, você o trará para dentro do jogo, pronto para usar.
 
-Once again, we will take advantage of a system with linkable assets. Instead of creating the fish school yourself, you will bring it inside your game, ready to use.
+Comece reabrindo a versão atual do arquivo //game.blend. Agora você precisa vincular o grupo FishSchool do arquivo //assets/school.blend. (Desta vez, ao invés de navegar na subpasta Objeto, vá para Grupo.) Se você vincular um grupo com a opção "Grupos de Instâncias" habilitada, você terminará com uma instância desse grupo adicionada à cena. Esta "instância de grupo" nada mais é do que um objeto vazio que é usado para colocar um grupo do Blender na cena. O grupo está vinculado ao arquivo original, portanto, as alterações feitas nele são mantidas em sincronia com o arquivo do jogo.
 
-Start by reopening the current version of the file //game.blend. Now you need to link the group FishSchool from the file //assets/school.blend. (This time, instead of navigating in the Object subfolder, go to Group.) If you link a group in with the "Instance Groups"  option enabled, you will end up with an instance of this group added to the scene. This "group instance" is nothing more than an empty object that is used to place a Blender group in the scene. The group is linked from the original file, thus changes made there are kept in sync with your game file.
-
-In Figure 2.26, you can see the game with the school of fish around the shark. If you open the file school.blend, you can see an empty (FishLeader) in the visible layer and an object (Fish) in the second layer (which is and has to be hidden by default). The empty is always rotating and adding more of the fish model into the scene. A fish is added every second or so until the limit specified in the FishLeader game property, maxFish, is reached. Change this number from 30 to 100 and fish will flood you. Decrease to 5, and you make the game even harder. Select the FishLeader, and you will see some new logic bricks. Pay particular attention to the Python controllers.
+Na Figura 2.26, você pode ver o jogo com o cardume de peixes ao redor do tubarão. Se você abrir o arquivo school.blend, poderá ver um vazio (FishLeader) na camada visível e um objeto (Fish) na segunda camada (que está e deve estar oculto por padrão). O vazio está sempre girando e adicionando mais do modelo de peixe à cena. Um peixe é adicionado a cada segundo ou mais até que o limite especificado na propriedade do jogo FishLeader, maxFish, seja atingido. Mude este número de 30 para 100 e os peixes o inundarão. Diminua para 5 e tornará o jogo ainda mais difícil. Selecione o FishLeader e você verá alguns novos blocos lógicos. Preste atenção especial aos controladores Python.
 
 ![School of fish(Cengage Learning)](../figures/Chapter2/Fig02-26.png "School of fish")
 
