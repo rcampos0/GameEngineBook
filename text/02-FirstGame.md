@@ -265,40 +265,37 @@ A primeira coisa a fazer é adicionar um objeto Armature (Shift + A  Armadura
 
 3. Defina Origem > Origem para o cursor 3D.
 
+Com o cursor 3D no centro do objeto, adicione a armadura (Shift + A). No modo Editar da armadura, selecione esse osso (A ou RMB nele) e mova-o [nd] 1 unidade em Z. Agora, a cauda do osso está no centro. A cauda é a pequena extremidade do osso, opostá à sua cabeça. Este será o nosso osso raiz, o osso que controla todos os outros.
 
+Com o cursor 3D ainda no centro, adicione um novo osso (Shift + A). Selecione esta cauda de osso e mova-a (G) até que corresponda à localização da boca, como você pode ver na Figura 2.15. Agora selecione este osso e o osso raiz e os parente sem vinculá-los (Ctrl + P  Manter Offset). Dessa forma, o osso ainda pode se mover livremente, embora seja pai do osso raiz.
 
-With the 3D cursor in the center of the object, add the armature (Shift+A). In the Edit mode of the armature, select this bone (A or RMB on it) and move it [nd]1 unit in Z. Now the tail of the bone is in the center. The tail is the small extremity of the bone, opposite to its head. This will be our root bone, the one bone that controls all the others.
+![Editando o Osso(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-15.png "Bone editing")
 
-With the 3D cursor still in the center, add a new bone (Shift+A). Select this bone tail and move (G) it until it matches the mouth location, as you can see in Figure 2.15. Now select this bone and the root bone and parent them without linking them (Ctrl+P  Keep Offset). This way the bone can still move freely, although it is parented to the root bone.
+De volta ao osso raiz: selecione sua cauda e extrude-o (E). Esta é outra maneira de adicionar ossos, conectando-os automaticamente. Mova o osso extrudado para o início da cauda do tubarão. Agora repita o procedimento para o novo osso, extrudando-o até o final da cauda do tubarão. A Figura 2.16 mostra os ossos atuais conforme vistos em //assets/shark.7.blend.
 
-![Bone editing(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-15.png "Bone editing")
+![Armadura de Osso (Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-16.png "Armature Bones")
 
-Back to the root bone: select its tail and extrude it (E). This is another way of adding bones, automatically connecting them. Move the extruded bone to the beginning of the shark tail. Now repeat the procedure for the new bone, extruding it all the way to the end of the shark tail. Figure 2.16 shows the current bones as seen in //assets/shark.7.blend .
+Antes de animar o tubarão, precisamos vincular a armadura à malha. Isso é feito o comando Set Parent To Operator:
 
-![Armature Bones(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-16.png "Armature Bones")
+No modo Objeto, selecione a malha de tubarão e, em seguida, a armadura de tubarão e Ctrl + P  Deformar Armadura  Com Pesos automáticos. Isso tentará definir automaticamente a influência de cada osso na malha. Para fazer o ajuste fino, selecione a armadura, defina-a para o modo de pose e, a seguir, selecione a malha e defina-a para o modo de pintura de peso. Agora você pode selecionar os ossos individualmente e pintar sua influência sobre os vértices, conforme mostrado na Figura 2.17.
 
-Before animating the shark, we need to link the armature with the mesh. This is done with the Set Parent To operator:
-
-In the Object mode, select the shark mesh and then the shark armature and Ctrl+P  Armature Deform  With Automatic Weights. This will try to automatically set the influence of each bone in the mesh. For fine-tuning, select the armature, set it to Pose Mode, and then select the mesh and set it to Weight Paint mode. Now you can select the bones individually and paint their influence over the vertices as shown in Figure 2.17.
-
-![Weight painting(Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-17.png "Weight painting")
+![Pintando os pesos (Blender Foundation-Art Cengage Learning)](../figures/Chapter2/Fig02-17.png "Weight painting")
 
 
 >**X-Ray and Auto-Normalize**
 >
->With the armature selected, go to the Properties Data panel and set X-Ray on in the armature display-this will make the bones always be visible. Also, while weight painting, you can set Auto Normalize in the Tool panel-this ensures that all bone-deforming vertex groups don't add up to 1.0 while weight painting.
+>Com a armadura selecionada, vá para o painel Propriedades de Dados e ative o X-Ray no visor da armadura - isso fará com que os ossos estejam sempre visíveis. Além disso, durante a pintura de peso, você pode definir a normalização automática no painel Ferramentas - isso garante que todos os grupos de vértices de deformação óssea não totalizem 1,0 durante a pintura de peso.
 
 
-To test the bone weighting, move the bones around (in the Pose not Edit Mode) and see if the mesh goes with it. The file is ready for animation and can be found here: //assets/shark.8.blend.
+Para testar o peso do osso, mova os ossos ao redor (no modo Pose não Edit) e veja se a malha vai junto. O arquivo está pronto para animação e pode ser encontrado aqui: //assets/shark.8.blend.
 
-## Animation <a id="Animation"></a>
+## Animação <a id="Animation"></a>
 
-To create an animation, you need to define the individual poses that will build up the illusion of movement. As an artist, you can define the poses frame by frame or work in a few moments of the animation. For example, you can define just a few frames, and Blender will automatically calculate the missing frames for the animation. It depends on how much control you want.
+Para criar uma animação, você precisa definir as poses individuais que criarão a ilusão de movimento. Como artista, você pode definir as poses quadro a quadro ou trabalhar em alguns momentos da animação. Por exemplo, você pode definir apenas alguns frames, e o Blender irá calcular automaticamente os frames que faltam para a animação. Depende de quanto controle você deseja.
 
-
->**When 206 Bones Are Too Many**
+>**Quando 206 ossos são muitos**
 >
->The animation complexity is also directly related to the number of bones created in your rig. For this game, we are not using many bones for simplicity's sake. In Chapter 4, "Animation," you will find more robust examples.
+>A complexidade da animação também está diretamente relacionada ao número de bones criados em seu rig. Para este jogo, não estamos usando muitos ossos por uma questão de simplicidade. No Capítulo 4, "Animação", você encontrará exemplos mais robustos.
 
 
 We will create a swimming cycle-an animation where the first and the last poses are the same and can be played seamlessly in a loop. Let's start by the following these steps:
