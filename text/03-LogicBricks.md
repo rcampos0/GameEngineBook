@@ -74,33 +74,32 @@
 	- [Sharing and Group Instancing](#Sharing_and_Group_Instancing)
 	- [To the Infinite and Beyond](#To_the_Infinite_and_Beyond)
 
-# Chapter 3: Logic Bricks <a id="Chapter_3_Logic_Bricks"></a>
+# Capítulo 3: Logic Bricks <a id="Chapter_3_Logic_Bricks"></a>
 
-What makes a game different than a movie? Let's see. In both you can find yourself buried in a comfortable seat eating junk food and alienated from the world. And funny 3D goggles are not exclusive to either. But what about interactivity? In a game you can control a player and interact with the virtual (or real!) world and the game elements. The story can be dynamically created in front of your eyes.
+O que torna um jogo diferente de um filme? Vamos ver. Em ambos, você pode se encontrar enterrado em um assento confortável comendo junk food e alienado do mundo. E óculos 3D engraçados não são exclusivos de nenhum dos dois. Mas e quanto à interatividade? Em um jogo, você pode controlar um jogador e interagir com o mundo virtual (ou real!) E os elementos do jogo. A história pode ser criada dinamicamente na frente de seus olhos.
 
-Therefore, as a director and content creator you will play different roles in a movie or a game. In a movie, for example, you have to direct the flow of the story, but for a game, you have to direct how the player controls and experiences this flow. Those are the times of super computers to Watson, IBM's Jeopardy "intelligent" machine. More than ever, it's time to narrow the gap between what technology can deliver and what the public can experiment with and assimilate as part of their own nature. As Kevin Flynn praised in _Tron_ and _Tron Legacy_the Disney game-related movie and prequel   _all the power to the user_.
+Portanto, como diretor e criador de conteúdo, você desempenhará diferentes papéis em um filme ou jogo. Em um filme, por exemplo, você deve direcionar o fluxo da história, mas para um jogo, você deve direcionar como o jogador controla e experimenta esse fluxo. Essa é a época dos supercomputadores para o Watson, a máquina "inteligente" Jeopardy da IBM. Mais do que nunca, é hora de diminuir a lacuna entre o que a tecnologia pode oferecer e o que o público pode experimentar e assimilar como parte de sua própria natureza. Como Kevin Flynn elogiou em _Tron_ e _Tron Legacy_ o filme relacionado ao jogo da Disney e prequela _todo o poder para o usuário_.
 
-Traditionally, to design your game interaction in the past, you would have needed coding expertise and a highly technical background. If, as a creative artist, any words such as _technical, code,_ or _programming_ scare you, Have confidence!
-"Pure artists" are still scared with code. The idea here is not that they will no longer be afraid of it. Instead, with the BGE they will not have to face their fears. Logic Bricks are an alternative to hardcore coding, known to be "artists friendly" more. Logic Bricks is here to rescue you. Logic Bricks is a visual set of tools responsible for integrating the game components together. By using Logic Bricks, you can determine what to do after a mouse click, when to play an animation, how to move your character, and so on, as shown in Figure 3.1.
+Tradicionalmente, para projetar sua interação de jogo no passado, você precisaria de especialização em codificação e um conhecimento altamente técnico. Se, como um artista criativo, quaisquer palavras como _técnica, código _ ou _programação_ assustam você, tenha confiança!
+
+"Artistas puros" ainda se assustam com o código. A ideia aqui não é que eles não tenham mais medo disso. Em vez disso, com o BGE, eles não terão que enfrentar seus medos. Os Logic Bricks são uma alternativa à codificação hardcore, conhecida por ser mais "amiga do artista". O Logic Bricks está aqui para resgatá-lo. Logic Bricks é um conjunto visual de ferramentas responsáveis por integrar os componentes do jogo. Usando o Logic Bricks, você pode determinar o que fazer após um clique do mouse, quando reproduzir uma animação, como mover seu personagem e assim por diante, conforme mostrado na Figura 3.1.
 
 ![Example of playing an animation when pressing Space](../figures/Chapter3/Fig03-01.png "Example of playing an animation when pressing Space")
 
 >**Note**
 >
->Logic Bricks is high level visual programming.
+>O Logic Bricks é uma programação visual de alto nível.
 
-The Logic Brick system is composed of three main elements: **sensors**, **controllers**, and **actuators**. Sensors are an event system used to trigger an action upon a specific event (for example, an object collides with another object or the joystick is used). Once one or more sensors is triggered, you can use a controller to control whether or not this set of events will produce an event in the game (and which effect). Controllers work as logic pipes, evaluating sensors through simple logic conditions, such as And, Or, and Not. Finally, when a controller validates a set of sensors, it will activate an actuator. An actuator is responsible for a specific action of the game (such as ending the game, moving an object, and so on).
+O sistema Logic Brick é composto por três elementos principais: ** sensores **, ** controladores ** e ** atuadores **. Sensores são um sistema de eventos usado para disparar uma ação em um evento específico (por exemplo, um objeto colide com outro objeto ou o joystick é usado). Depois que um ou mais sensores são acionados, você pode usar um controlador para controlar se esse conjunto de eventos produzirá ou não um evento no jogo (e qual efeito). Os controladores funcionam como tubos lógicos, avaliando sensores por meio de condições lógicas simples, como And, Or e Not. Finalmente, quando um controlador valida um conjunto de sensores, ele ativará um atuador. Um atuador é responsável por uma ação específica do jogo (como encerrar o jogo, mover um objeto e assim por diante).
 
-In this chapter, we'll cover sensors, controllers, and actuators in detail specifically, how and when to use them. Additionally, you will learn about object game properties, the State Machine system, how the interface works, and the architecture of the system as a whole. As a system used to build new worlds, this is no place for _do's_ and _don'ts_. It will be up to you to find the best set of features that fits your project and creativity. Nevertheless, when possible, we'll present suggestions of when and how people have used the tools in the past, but you don't have to feel constrained by that. Treat Logic Bricks as small Lego pieces and surprise us and yourself.
+Neste capítulo, vamos cobrir os sensores, controladores e atuadores em detalhes, especificamente, como e quando usá-los. Além disso, você aprenderá sobre as propriedades do jogo de objetos, o sistema State Machine, como a interface funciona e a arquitetura do sistema como um todo. Como um sistema usado para construir novos mundos, este não é lugar para _fazer_ e _não_. Caberá a você encontrar o melhor conjunto de recursos que se adequa ao seu projeto e criatividade. No entanto, quando possível, apresentaremos sugestões de quando e como as pessoas usaram as ferramentas no passado, mas você não precisa se sentir limitado por isso. Trate os Tijolos Lógicos como pequenas peças de Lego e surpreenda a nós e a você.
 
->**Leave Your Python at the Door**
+>**Deixe seu Python na porta**
 >
->Logic Bricks are really easy and quick to use. You can make entire games with them with absolutely no need for coding.
+>Os blocos lógicos são realmente fáceis e rápidos de usar. Você pode fazer jogos inteiros com eles sem absolutamente nenhuma necessidade de codificação.
 
-
-## General Overview <a id="General_Overview"></a>
-
-Thus far, you know that this whole system will allow you to create those little pieces that compose the interaction of your game. There are multiple ways to put those little parts together and even more ways to combine them. It's impossible to show all the possibilities, but there is a common principle as to how they operate that we can look at.
+## Visao geral <a id="General_Overview"></a>
+Até agora, você sabe que todo este sistema permitirá que você crie aquelas pequenas peças que compõem a interação do seu jogo. Existem várias maneiras de colocar essas pequenas partes juntas e ainda mais maneiras de combiná-las. É impossível mostrar todas as possibilidades, mas existe um princípio comum de como elas funcionam que podemos observar.
 
 ### Simple Example <a id="Simple_Example"></a>
 
