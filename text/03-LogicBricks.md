@@ -177,29 +177,29 @@ Arraste o mouse segurando o botão esquerdo do mouse e a tecla Control para usar
 
 ### Expandir / Mostrar / Ocultar <a id="Expand/Show/Hide"></a>
 
-Visual organization is a key aspect of working with Logic Bricks. You don't need to edit the values of a Logic Brick all the time so you can often keep most of them hidden. You can hide/show one particular Logic Brick using the arrow to the left of its header. If you want to hide/show all the sensors or controllers or actuators of one object, simply click in its corresponding header.
+A organização visual é um aspecto fundamental do trabalho com blocos lógicos. Você não precisa editar os valores de um Logic Brick o tempo todo, então você pode manter a maioria deles ocultos. Você pode ocultar / mostrar um Logic Brick em particular usando a seta à esquerda de seu cabeçalho. Se você deseja ocultar / mostrar todos os sensores ou controladores ou atuadores de um objeto, basta clicar no cabeçalho correspondente.
 
->**Hide and Show Menus**
+>**Ocultar e Mostrar Menus**
 >
->On the top of the Logic Editor, you can access a menu to quickly hide or show the bricks for sensors, controllers, and actuators for all the selected objects, as seen in Figure 3.5.
+>No topo do Logic Editor, você pode acessar um menu para ocultar ou mostrar rapidamente os tijolos para sensores, controladores e atuadores para todos os objetos selecionados, como visto na Figura 3.5.
 
-![Show/Hide drop-down menu](../figures/Chapter3/Fig03-05.png "Show/Hide drop-down menu")
+![Mostrar / ocultar menu suspenso](../figures/Chapter3/Fig03-05.png "Show/Hide drop-down menu")
 
 ### Move <a id="Move"></a>
 
-When you add a new Logic Brick, it will show up in the bottom of the Logic Bricks stack of the active object. You can move it up and down according to your need. In order to rearrange them, you need to set the Logic Brick to be unexpanded and use the up and down arrow icons.
+Quando você adiciona um novo Logic Brick, ele aparecerá na parte inferior da pilha de Logic Bricks do objeto ativo. Você pode movê-lo para cima e para baixo de acordo com sua necessidade. Para reorganizá-los, você precisa definir o Logic Brick como não expandido e usar os ícones de seta para cima e para baixo.
 
-### States <a id="States"></a>
+### Estados <a id="States"></a>
 
-Above the list of an object controller, you can see a small but important plus icon. It shows and hides the States control. You can also set initial game states and the ones you want to see at that moment in the interface. In order to learn how to use the State system, look ahead to the end of this chapter in the "State Machine" section.
+Acima da lista de um controlador de objeto, você pode ver um pequeno, mas importante ícone de adição. Mostra e esconde o controle dos Estados. Você também pode definir os estados iniciais do jogo e aqueles que deseja ver naquele momento na interface. Para aprender a usar o sistema de estado, olhe para o final deste capítulo na seção "Máquina de estado".
 
-![Controller states](../figures/Chapter3/Fig03-06.png "Controller states")
+![Controlador de Estados](../figures/Chapter3/Fig03-06.png "Controller states")
 
->**States Layers**
+>**Camdas de Estados**
 >
->When you play the game, the active states of a controller are the ones in the bottom row shown in Figure 3.6, known as _initial states._ The states present in the top row, namely visible states, are a tool to help you visualize different states without messing with the Initial States set. They are reset to the Initial States every time you reopen your file.
+>Quando você joga o jogo, os estados ativos de um controlador são aqueles na linha inferior mostrada na Figura 3.6, conhecidos como _estados iniciais._ Os estados presentes na linha superior, ou seja, os estados visíveis, são uma ferramenta para ajudá-lo a visualizar diferentes estados sem mexer com o conjunto de estados iniciais. Eles são redefinidos para os Estados iniciais sempre que você reabre o arquivo.
 
-The States interface works like the layer system in Blender[md]click to select one state and Shift+click to select more than one. As for the Blender layers, states have no individual names for the time being.
+A interface de estados funciona como o sistema de camadas no Blender [md] clique para selecionar um estado e Shift + clique para selecionar mais de um. Quanto às camadas do Blender, os estados não têm nomes individuais por enquanto.
 
 ### Properties <a id="Properties"></a>
 
