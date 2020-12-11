@@ -173,9 +173,9 @@ Você não precisa manter a lógica autocontida em objetos individuais. Ao selec
 
 ### Desvincular <a id="Unlink"></a>
 
-Drag the mouse holding the left mouse button and the Control key to use the Unlink feature. This will activate a knife system to cut the links between Logic Bricks you want to unlink. It works the same way as the Node Editor in Blender.
+Arraste o mouse segurando o botão esquerdo do mouse e a tecla Control para usar o recurso Desvincular. Isso ativará um sistema de faca para cortar os links entre os tijolos lógicos que você deseja desvincular. Funciona da mesma forma que o Editor de Nó no Blender.
 
-### Expand/Show/Hide <a id="Expand/Show/Hide"></a>
+### Expandir / Mostrar / Ocultar <a id="Expand/Show/Hide"></a>
 
 Visual organization is a key aspect of working with Logic Bricks. You don't need to edit the values of a Logic Brick all the time so you can often keep most of them hidden. You can hide/show one particular Logic Brick using the arrow to the left of its header. If you want to hide/show all the sensors or controllers or actuators of one object, simply click in its corresponding header.
 
