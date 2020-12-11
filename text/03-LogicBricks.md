@@ -201,109 +201,108 @@ Acima da lista de um controlador de objeto, você pode ver um pequeno, mas impor
 
 A interface de estados funciona como o sistema de camadas no Blender [md] clique para selecionar um estado e Shift + clique para selecionar mais de um. Quanto às camadas do Blender, os estados não têm nomes individuais por enquanto.
 
-### Properties <a id="Properties"></a>
+### Propriedades <a id="Properties"></a>
 
-The left panel in the Logic Editor allows you to add and edit your object game properties (see Figure 3.7). Unlike the Logic Bricks, the visible game properties are those of the current active object only. As with other editor areas in Blender, you can hide/unhide this area with the property panel shortcut (N).
+O painel esquerdo do Logic Editor permite que você adicione e edite as propriedades do jogo de objetos (consulte a Figura 3.7). Ao contrário dos blocos lógicos, as propriedades visíveis do jogo são apenas as do objeto ativo atual. Assim como em outras áreas do editor no Blender, você pode ocultar / mostrar esta área com o atalho do painel de propriedades (N).
 
-![Game Properties panel](../figures/Chapter3/Fig03-07.png "Game Properties panel")
+![Painel de propriedades do jogo](../figures/Chapter3/Fig03-07.png "Game Properties panel")
 
-Properties are often used to store a variable characteristic of a game object (for example, life, energy, or speed). In this case, you will be using Property actuators to change the values of a property when hitting an enemy, accelerating, and other sorts of events. On top of that, Property sensors or Expression controllers can invoke different actions when you get to certain values (for example, end the game when life and energy are zero).
+As propriedades são freqüentemente usadas para armazenar uma característica variável de um objeto de jogo (por exemplo, vida, energia ou velocidade). Nesse caso, você usará atuadores de propriedade para alterar os valores de uma propriedade ao atingir um inimigo, acelerar e outros tipos de eventos. Além disso, os sensores de propriedade ou controladores de expressão podem invocar ações diferentes quando você chega a certos valores (por exemplo, terminar o jogo quando a vida e a energia forem zero).
 
-Another way of using the properties is to determine how other objects will react to each one. As we will see later on this chapter, there are a few sensors that rely on the existence of a property to interact with an object. Those Physic sensors (Near, Collision, etc.) work regardless of the property value; they check only for the property name, which can't be changed inside the game.
+Outra maneira de usar as propriedades é determinar como outros objetos reagirão a cada um. Como veremos mais adiante neste capítulo, existem alguns sensores que dependem da existência de uma propriedade para interagir com um objeto. Esses sensores físicos (Near, Collision, etc.) funcionam independentemente do valor da propriedade; eles verificam apenas o nome da propriedade, que não pode ser alterado dentro do jogo.
 
-The available properties are: Float, Integer, Timer, Boolean, and String.
+As propriedades disponíveis são: Float, Integer, Timer, Boolean e String.
 
-Now let's move ahead and look at the functionalities you can use.
+Agora, vamos seguir em frente e ver as funcionalidades que você pode usar.
 
-### Sensors <a id="Sensors"></a>
+### Sensores <a id="Sensors"></a>
 
-Sensors are the first layer of interaction between your game objects and the game itself, so they need to be planned carefully to avoid overhead on your logic performance. It's usually a trade-off between maintainability and work speed. For the first stages of your project, you may be able to have multiple sensors for the same tests (for example, individual collision sensors for different property and material checks). Later on, when and if performance becomes an issue, you can replace them for a more elegant solution with the same functionality. But for now, you should just focus on playing and experimenting with the presented tools.
+Os sensores são a primeira camada de interação entre os objetos do jogo e o próprio jogo, portanto, eles precisam ser planejados com cuidado para evitar sobrecarga no desempenho lógico. Geralmente é uma troca entre facilidade de manutenção e velocidade de trabalho. Para os primeiros estágios de seu projeto, você pode ter vários sensores para os mesmos testes (por exemplo, sensores de colisão individuais para diferentes verificações de propriedades e materiais). Mais tarde, quando e se o desempenho se tornar um problema, você pode substituí-los por uma solução mais elegante com a mesma funcionalidade. Mas, por enquanto, você deve se concentrar apenas em jogar e experimentar as ferramentas apresentadas.
 
-The next part of the chapter is structured to serve both as a continuous reading and reference guide. If you read it through, you will capture the big picture of the system, what you can do, and when you might use the specific features. I recommend you read it all at least once. Later, you can revisit this chapter for a deeper perspective on the presented functionalities.
+A próxima parte do capítulo está estruturada para servir como uma leitura contínua e como um guia de referência. Se você ler, terá uma visão geral do sistema, o que pode fazer e quando pode usar os recursos específicos. Eu recomendo que você leia tudo pelo menos uma vez. Posteriormente, você pode revisitar este capítulo para uma perspectiva mais aprofundada das funcionalidades apresentadas.
 
 #### Header <a id="Header"></a>
 
-In the first part of this chapter we mentioned some options present in all the logic bricks. Now we will see with more details the properties that are specific for sensor headers, as shown in Figure 3.8.
+Na primeira parte deste capítulo mencionamos algumas opções presentes em todos os blocos lógicos. Agora veremos com mais detalhes as propriedades que são específicas para cabeçalhos de sensor, conforme mostrado na Figura 3.8.
 
 ![Sensor header](../figures/Chapter3/Fig03-08.png "Sensor header")
 
-- **Name:** Can be used to identify your sensor, even when it's not expanded. You will refer to it from inside the Expression and Python controllers.
+- **Name:** Pode ser usado para identificar o seu sensor, mesmo quando não está expandido. Você vai se referir a ele de dentro dos controladores Expression e Python.
 
-- **Pulse Positive:** Continuously sends positive pulses to the controller while the sensor is active.
+- **Pulse Positive:** Envia continuamente pulsos positivos para o controlador enquanto o sensor está ativo.
 
-- **Pulse Negative:** Continuously sends negative pulses to the controller while the sensor is not active. A negative pulse will not be sent before the sensor is positive at least once or the level is enabled.
+- **Pulse Negative:** Envia continuamente pulsos negativos para o controlador enquanto o sensor não está ativo. Um pulso negativo não será enviado antes que o sensor seja positivo pelo menos uma vez ou o nível seja habilitado.
 
-- **Frequency:** Sets how often the pulse will trigger the sensor. The frequency is actually the number of logic tics that will be skipped before triggering the sensor again. Keep it at zero to have the sensor pulsing for every logic tic.
+- **Frequency:** Define a frequência com que o pulso acionará o sensor. A frequência é realmente o número de tiques lógicos que serão ignorados antes de acionar o sensor novamente. Mantenha-o em zero para ter o sensor pulsando a cada tique lógico.
 
-- **Level:** Triggers the controller at the beginning of the game or when the controllers are activated from a disabled state. With this option, you can force negative signals (for example, a property is not inside a range, a mouse is not over your object, a key is not pressed) to trigger the controller, even if it never turns positive. Mostly used as part of a state system to force a sensor to be evaluated right after the state of an object changes.
+- **Level:** Aciona o controlador no início do jogo ou quando os controladores são ativados a partir de um estado desativado. Com esta opção, você pode forçar sinais negativos (por exemplo, uma propriedade não está dentro de um intervalo, um mouse não está sobre seu objeto, uma tecla não é pressionada) para acionar o controlador, mesmo se ele nunca ficar positivo. Geralmente usado como parte de um sistema de estado para forçar um sensor a ser avaliado logo após a mudança de estado de um objeto.
 
-- **Tap:** Triggers the sensor only one at a time. It works opposite to the pulse, and it's especially useful for Physical sensors, Keyboard sensors, and Mouse sensors.
+- **Tap:** Aciona o sensor apenas um de cada vez. Ele funciona em oposição ao pulso e é especialmente útil para sensores físicos, sensores de teclado e sensores de mouse.
 
-- **Invert:** Still triggers the sensor as it would normally, but sends a negative signal when it starts and a positive one when it stops being valid (for example, when a key is no longer pressed). If you need the sensor to send a negative signal before ever being positive, remember to turn on Level.
+- **Invert:** Ainda aciona o sensor como faria normalmente, mas envia um sinal negativo quando ele inicia e um positivo quando deixa de ser válido (por exemplo, quando uma tecla não é mais pressionada). Se você precisa que o sensor envie um sinal negativo antes de ser positivo, lembre-se de ligar o Nível.
 
 #### Always <a id="Always"></a>
 
-Always, as shown in Figure 3.9, is the simplest and most often used sensor. There are basically two ways of using it. When Pulse is off, it will run once when the level starts and never again. When Pulse is on, the sensor will run repeatedly, triggering controllers according to its frequency.
+Always, conforme mostrado na Figura 3.9, é o sensor mais simples e usado com mais frequência. Existem basicamente duas maneiras de usá-lo. Quando o pulso está desligado, ele será executado uma vez quando o nível começar e nunca mais. Quando o Pulso está ativado, o sensor funciona repetidamente, acionando os controladores de acordo com sua frequência.
 
 ![Always sensor](../figures/Chapter3/Fig03-09.png "Always sensor")
 
-Always sensors are commonly used to initialize actuators, such as Filters 2D, Motion, Scene, Sound, and so on. When combined with the Python controller, this sensor is often used to call scripts that need to be initialized first (when the frequency is zero) and scripts that handle global events (with the frequency set according to the needs of a particular script).
+Os sensores Always são comumente usados para inicializar atuadores, como Filtros 2D, Movimento, Cena, Som e assim por diante. Quando combinado com o controlador Python, esse sensor costuma ser usado para chamar scripts que precisam ser inicializados primeiro (quando a frequência é zero) e scripts que tratam de eventos globais (com a frequência definida de acordo com as necessidades de um script específico).
 
 #### Delay <a id="Delay"></a>
 
-Similar to the Always sensor, the Delay sensor allows you to postpone the initialization of some actions by some logic tics (see Figure 3.10). You will notice three options here: Delay, Duration, and Repeat.
+Semelhante ao sensor Always, o sensor Delay permite adiar a inicialização de algumas ações por alguns tiques lógicos (consulte a Figura 3.10). Você notará três opções aqui: Delay, Duration e Repeat.
 
 ![Delay sensor](../figures/Chapter3/Fig03-10.png "Delay sensor")
 
-_Delay_ is the initial waiting period before the sensor is triggered. _Duration_ stands for how long (once triggered) the sensor will be positive/active. If you want this to happen cyclically, you can set Repeat on. It's important to note that the Pulse option works on top of those three parameters.
-
+_Delay_ é o período de espera inicial antes que o sensor seja acionado. _Duração_ representa quanto tempo (uma vez disparado) o sensor ficará positivo / ativo. Se quiser que isso aconteça ciclicamente, você pode ativar a repetição. É importante observar que a opção Pulso funciona com base nesses três parâmetros.
 In combination with the Python controller, this sensor is often used to call scripts that require other scripts to run first.
 
 #### Actuator <a id="Actuator"></a>
 
-Here comes a chicken-and-egg situation. In order to understand this sensor, you may need to get more familiar with actuators first. The actuator sensor is triggered when the selected actuator changes its status (active/inactive), as shown in Figure 3.11. A typical application of it is with the Action actuator. If you use an Expression controller to check for the actuator sensor status (for example, actsensor=false), you can trigger another action right after an animation is done.
+Aí vem a situação do ovo e da galinha. Para entender este sensor, você pode precisar se familiarizar mais com os atuadores primeiro. O sensor do atuador é acionado quando o atuador selecionado muda de estado (ativo / inativo), conforme mostrado na Figura 3.11. Uma aplicação típica disso é com o atuador Action. Se você usar um controlador de Expressão para verificar o status do sensor do atuador (por exemplo, attensor = false), poderá acionar outra ação logo após a conclusão de uma animação.
 
 ![Actuator sensor](../figures/Chapter3/Fig03-11.png "Actuator sensor")
 
->**Actuator Sensor and the Messaging System**
+>**Sensor do atuador e o sistema de mensagens**
 >
->In the online files, you can find a file that illustrates how this sensor can be used with the message and the animation system: _\Book\Chapter3\sensor\_actuator.blend_
+>Nos arquivos online, você pode encontrar um arquivo que ilustra como este sensor pode ser usado com a mensagem e o sistema de animação: _\Book\Chapter3\sensor\_actuator.blend_
 
 #### Joystick <a id="Joystick"></a>
 
-Don't listen to those Kinect fanboys, joysticks are still here to stay (see Figure 3.12). Start by selecting your Joystick Index, which means you can work with multiple joysticks in the same game. For every Joystick sensor, you can control one of the following: Hat, Axis, Button, and Single Axis.
+Não dê ouvidos aos fanboys do Kinect, os joysticks ainda estão aqui para ficar (veja a Figura 3.12). Comece selecionando seu Índice de Joystick, o que significa que você pode trabalhar com vários joysticks no mesmo jogo. Para cada sensor de Joystick, você pode controlar um dos seguintes: Chapéu, Eixo, Botão e Eixo único.
 
 ![Joystick sensor](../figures/Chapter3/Fig03-12.png "Joystick sensor")
 
 #### Keyboard <a id="Keyboard"></a>
 
-You don't want to map your keyboard, key by key to individual Keyboard sensors (see Figure 3.13). Yet you can. In order to provide flexibility for game developers, the game engine can control actions on an individual key basis, capture modifiers (traditionally Alt, Ctrl, Shift but extended to any key), or on no particular key. For the latter, the option All Keys linked to a Python Controller is the way to go, although for a full Python approach, you don't even need the Keyboard sensor.
+Você não deseja mapear seu teclado, tecla por tecla, para sensores de teclado individuais (consulte a Figura 3.13). No entanto, você pode. Para fornecer flexibilidade aos desenvolvedores de jogos, o mecanismo de jogo pode controlar ações com base em uma tecla individual, capturar modificadores (tradicionalmente Alt, Ctrl, Shift, mas estendidos a qualquer tecla) ou em nenhuma tecla específica. Para o último, a opção Todas as teclas vinculadas a um controlador Python é o caminho a percorrer, embora para uma abordagem Python completa, você nem mesmo precise do sensor de teclado.
 
 ![Keyboard sensor](../figures/Chapter3/Fig03-13.png "Keyboard sensor")
 
-Log Toggle and Target work together. When the Log Toggle property value is True and a String is set as Target, you can keep track of all the pressed keys by a given sensor. It can be used for debugging or even for direct input of texts for a property.
+Log Toggle e Target trabalham juntos. Quando o valor da propriedade Log Toggle for True e uma String for definida como Target, você pode acompanhar todas as teclas pressionadas por um determinado sensor. Pode ser usado para depuração ou mesmo para entrada direta de textos para uma propriedade.
 
-In the online files, you can see a sample of that: _\Book\Chapter3\sensor\_keyboard.blend_
+Nos arquivos online, você pode ver uma amostra disso: _\Book\Chapter3\sensor\_keyboard.blend_
 
 >**Keys Status on Python**
 >
->The keyboard sensor will send a positive pulse when the specified key is pressed down and a negative one when it is released. The status of the key is represented by Python constants: bge.logic.KX\_INPUT\_JUST\_ACTIVATED right when it's pressed, bge.logic.KX\_INPUT\_ACTIVE while it's being held, and bge.logic.KX\_INPUT\_JUST\_RELEASED right after it's been released. Its status can only be accessed from a Python Controller.
+>O sensor do teclado enviará um pulso positivo quando a tecla especificada for pressionada e um pulso negativo quando for liberada. O status da chave é representado por constantes Python: bge.logic.KX\_INPUT\_JUST\_ACTIVATED logo quando é pressionado, bge.logic.KX\_INPUT\_ACTIVE enquanto está sendo pressionado e bge.logic.KX\_INPUT\_JUST\_RELEASED logo após ter sido lançado. Seu status só pode ser acessado a partir de um controlador Python.
 
 #### Mouse <a id="Mouse"></a>
 
-The Mouse sensor is used to control the mouse input in the game. It can be used entirely with Logic Bricks or integrated with Python. Be aware that individual sensors are needed to handle different mouse events and most of them are not handled per object (see Figure 3.14). The mouse events are separated in two different types commonly combined together:
+O sensor do mouse é usado para controlar a entrada do mouse no jogo. Ele pode ser usado inteiramente com Logic Bricks ou integrado com Python. Esteja ciente de que sensores individuais são necessários para lidar com diferentes eventos do mouse e a maioria deles não é tratada por objeto (consulte a Figura 3.14). Os eventos do mouse são separados em dois tipos diferentes comumente combinados:
 
-- **Mouse inputs** - general input: Movement, Wheel Down, Wheel Up, Right Button, Middle Button, and Left Button.
+- **Mouse inputs** - entrada geral: movimento, roda para baixo, roda para cima, botão direito, botão do meio e botão esquerdo.
 
-- **Mouse actions** - per object: Mouse Over and Mouse Over Any.
+- **Mouse actions** - por objeto: Mouse Over e Mouse Over Any.
 
 ![Mouse sensor event types](../figures/Chapter3/Fig03-14.png "Mouse sensor event types")
 
-If you run an actuator when a mouse input is triggered (for example, Left Button), the action will happen, regardless of where the click is. If you need an actuator to happen when you click on one particular object, then you need a Mouse Over and a Left Button linked through an And Controller.
+Se você executar um atuador quando uma entrada do mouse for acionada (por exemplo, botão esquerdo), a ação acontecerá, independentemente de onde o clique estiver. Se você precisa que um atuador aconteça quando você clica em um objeto específico, você precisa de um Mouse Over e um Botão Esquerdo vinculados por meio de um Controlador And.
 
 >**Collision, Physics and Mouse Click**
 >
->In order to be clickable, an object must have collision enabled in the Physics Panel.
+>Para ser clicável, um objeto deve ter a colisão habilitada no Painel de Física.
 
 #### Armature <a id="Armature"></a>
 
