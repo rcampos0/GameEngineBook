@@ -101,19 +101,17 @@ Neste capítulo, vamos cobrir os sensores, controladores e atuadores em detalhes
 ## Visao geral <a id="General_Overview"></a>
 Até agora, você sabe que todo este sistema permitirá que você crie aquelas pequenas peças que compõem a interação do seu jogo. Existem várias maneiras de colocar essas pequenas partes juntas e ainda mais maneiras de combiná-las. É impossível mostrar todas as possibilidades, mas existe um princípio comum de como elas funcionam que podemos observar.
 
-### Simple Example <a id="Simple_Example"></a>
+### Exemplo Simple <a id="Simple_Example"></a>
 
-From the book files, open _Book/Chapter3/bowling\_base.blend_.
-In this file, you have a small bowling game that includes the bowling ball, the pines, and the rink for the ball to roll around in. The goal here is to launch the ball and keep it rolling as much as you can. If you go to the Blender game menu and start the game, you will see that nothing much seems to happen. Here are some things you may need:
+Nos arquivos do livro, abra _Book / Chapter3 / bowling \ _base.blend_.
+Neste arquivo, você tem um pequeno jogo de boliche que inclui a bola de boliche, os pinheiros e a pista para a bola rolar. O objetivo aqui é lançar a bola e mantê-la rolando o máximo que puder. Se você for ao menu do jogo do Blender e iniciar o jogo, verá que nada parece acontecer. Aqui estão algumas coisas de que você pode precisar:
+- Sensor de teclado para reagir quando as teclas são pressionadas.
 
-- Keyboard sensor to react when keys are pressed.
+- Atuador para mover a bola.
 
-- Actuator to move the ball.
+- Controlador para ativar o atuador quando o sensor for positivo.
 
-- Controller to activate the actuator when the sensor is positive.
-
-
-Select the ball, and you will see that some of those Logic Bricks are already there, as pictured in Figure 3.2. Click in the socket by the Keyboard sensor and drag the line all the way to the socket by the Motion actuator. If your aim was good, this will create a Controller to bridge the sensor with the actuator. Start the game again and press the spacebar a few times to roll a strike.
+Selecione a bola, e você verá que alguns daqueles tijolos lógicos já estão lá, conforme ilustrado na Figura 3.2. Clique no soquete pelo sensor do teclado e arraste a linha até o soquete pelo atuador de movimento. Se o seu objetivo foi bom, isso criará um controlador para conectar o sensor com o atuador. Comece o jogo novamente e pressione a barra de espaço algumas vezes para rolar um golpe.
 
 ![Simple bowling sample game](../figures/Chapter3/Fig03-02.png "Simple bowling sample game")
 
