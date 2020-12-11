@@ -306,109 +306,108 @@ Se você executar um atuador quando uma entrada do mouse for acionada (por exemp
 
 #### Armature <a id="Armature"></a>
 
-Armature is an advanced sensor to help you detect error threshold on bone constraints (see Figure 3.15). It was created as part of the IK solver implementation integrated by the developer Benoit Bolsée.
+Armature é um sensor avançado para ajudá-lo a detectar o limite de erro nas restrições ósseas (consulte a Figura 3.15). Ele foi criado como parte da implementação do solver IK integrado pelo desenvolvedor Benoit Bolsée.
 
 ![Armature sensor](../figures/Chapter3/Fig03-15.png "Armature sensor")
 
-The original goal of this set of functionalities was targeted at robotic studies, so it may rest outside the scope of your project. If you are going to use iTaSC (instantaneous Task Specification using Constraints), this sensor will help you keep track of your armature constraints. For more information, please visit: [http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver](http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver)
+O objetivo original deste conjunto de funcionalidades era voltado para estudos robóticos, portanto, pode ficar fora do escopo de seu projeto. Se você for usar o iTaSC (especificação de tarefa instantânea usando restrições), este sensor o ajudará a controlar as restrições de armadura. Para obter mais informações, visite: [http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver](http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver)
 
->**To Caesar What Is Caesar's**
+>**Para César, o que é de César**
 >
->The armature sensor is only available for armature objects. If you copy this sensor to non-armature objects, the panel will show "Sensor only available for armatures," and the sensor will be inoperative.
+>O sensor de armadura está disponível apenas para objetos de armadura. Se você copiar este sensor para objetos que não sejam de armadura, o painel mostrará "Sensor disponível apenas para armaduras" e o sensor ficará inoperante.
 
 
 #### Touch <a id="Touch"></a>
 
-The Touch sensor is a subset of the Collision sensor. Actually, they share the same code internally. It's likely to be deprecated in the future.
+O sensor de toque é um subconjunto do sensor de colisão. Na verdade, eles compartilham o mesmo código internamente. É provável que seja suspenso no futuro.
 
 #### Collision <a id="Collision"></a>
 
-The Collision sensor can be used to detect collisions between a game object and other objects or the environment (see Figure 3.16). You can filter the collision to only trigger the sensor when the object hits a face with a specific material or an object with a particular property (use the M/P button to toggle between them). As with the Physics sensors, this sensor is dependent on the Physics properties of the objects involved in the interaction (collision, ghost, bounding box, and so on). Look at Chapter 6, "Physics," to read about the physics settings for the objects and the game.
+O sensor de colisão pode ser usado para detectar colisões entre um objeto do jogo e outros objetos ou o ambiente (ver Figura 3.16). Você pode filtrar a colisão para acionar o sensor apenas quando o objeto atinge uma face com um material específico ou um objeto com uma propriedade particular (use o botão M/P para alternar entre eles). Como ocorre com os sensores de Física, esse sensor depende das propriedades físicas dos objetos envolvidos na interação (colisão, fantasma, caixa delimitadora e assim por diante). Consulte o Capítulo 6, "Física", para ler sobre as configurações físicas dos objetos e do jogo.
 
 ![Collision sensor](../figures/Chapter3/Fig03-16.png "Collision sensor")
 
-This sensor is often used with collision proxies, which are invisible low-poly meshes created to spare your heavy graphic objects from the expensive collision tests.
+Este sensor é frequentemente usado com proxies de colisão, que são malhas invisíveis de baixo polímero criadas para poupar seus pesados objetos gráficos dos caros testes de colisão.
 
 >**Use It Moderately**
 >
->Together with the other Physics sensors, this sensor is considered to be expensive computation-wise, so use it reasonably and use physics proxies whenever possible[md]a topic discussed in the Chapter 6 and Chapter 8, "Workflow and Optimization."
+>Junto com os outros sensores de Física, este sensor é considerado caro em termos de computação, então use-o razoavelmente e use proxies físicos sempre que possível [md] um tópico discutido no Capítulo 6 e Capítulo 8, "Fluxo de Trabalho e Otimização."
 
 #### Near <a id="Near"></a>
 
-For more advanced control over the physics interaction of your game, you can trigger actions based on the distance of the objects in your scene before they even collide. Unlike the Collision sensor, the Near sensor is only sensitive to Property detection (see Figure 3.17). Leave the Property blank, and it will detect all the objects.
+Para um controle mais avançado sobre a interação física do seu jogo, você pode disparar ações com base na distância dos objetos em sua cena antes mesmo de eles colidirem. Ao contrário do sensor de colisão, o sensor Near é sensível apenas à detecção de propriedade (consulte a Figura 3.17). Deixe a propriedade em branco e ela detectará todos os objetos.
 
 ![Near sensor](../figures/Chapter3/Fig03-17.png "Near sensor")
 
-This sensor will be triggered when a detected object is closer than the Trigger Distance. Once triggered, it will only stop being valid after the object is farther than the Reset Distance.
+Este sensor será acionado quando um objeto detectado estiver mais perto do que a distância de disparo. Uma vez acionado, ele só deixará de ser válido depois que o objeto estiver mais longe do que a distância de reinicialização.
 
 >**The Amazing Near Sensor**
 >
->The Near sensor detects all directions. It's the game engine equivalent of the Spider-Man sense.
+>O sensor Near detecta todas as direções. É o motor de jogo equivalente ao sentido do Homem-Aranha.
 
 #### Radar <a id="Radar"></a>
 
-The Radar sensor creates a detection cone locked up to one direction (see Figure 3.18). You must choose the axis, the distance, and the angle of your detection radar. Similar to most of the other Physics sensors, you can filter the detection per property.
+O sensor de radar cria um cone de detecção travado em uma direção (consulte a Figura 3.18). Você deve escolher o eixo, a distância e o ângulo de seu radar de detecção. Semelhante à maioria dos outros sensores de física, você pode filtrar a detecção por propriedade.
 
 ![Radar sensor](../figures/Chapter3/Fig03-18.png "Radar sensor")
 
 >**Troubleshooting and Debugging**
 >
->In order to easily debug your radar settings in the game, you can turn on the Show Physics Visualization option in the Game Menu. The result is shown in Figure 3.19.
+>Para depurar facilmente as configurações do seu radar no jogo, você pode ativar a opção Mostrar Visualização Física no Menu do Jogo. O resultado é mostrado na Figura 3.19.
 
 
 ![Radar Sensor Physic Visualization](../figures/Chapter3/Fig03-19.png "Radar Sensor Physic Visualization")
 
 #### Ray <a id="Ray"></a>
 
-The Ray sensor can only cast rays in a specified axis (relative to the object) and as far as the determined range distance goes. Although it may seem limiting, this makes it the fastest Physics sensor available (see Figure 3.20).
+O sensor de raio só pode lançar raios em um eixo especificado (em relação ao objeto) e na medida em que a distância de alcance determinada vai. Embora possa parecer limitante, isso o torna o sensor de física mais rápido disponível (veja a Figura 3.20).
 
-In order to get more data from the casted ray, you can access the sensor from a Python Controller. The API allows you to access hitObject, hitPosition, and hitNormal.
+Para obter mais dados do raio fundido, você pode acessar o sensor de um Controlador Python. A API permite que você acesse hitObject, hitPosition e hitNormal.
 
-If X-Ray Mode is on, the ray will only stop when hitting an object with the property or material specified. Otherwise, it will stop when the first object returns None, in case of a non-match.
+Se o Modo de Raios-X estiver ativado, o raio só irá parar quando atingir um objeto com a propriedade ou material especificado. Caso contrário, ele irá parar quando o primeiro objeto retornar Nenhum, no caso de uma não correspondência.
 
 ![Ray sensor](../figures/Chapter3/Fig03-20.png "Ray sensor")
 
 #### Random <a id="Random"></a>
 
-The Random sensor generates pulses randomly (see Figure 3.21). Its use is so generic that it is misleading to define one specific application for it. You can change the Seed property to produce pseudo-random pulses. When the seed is zero, it works as a regular Always sensor.
+O sensor Random gera pulsos aleatoriamente (consulte a Figura 3.21). Seu uso é tão genérico que é enganoso definir uma aplicação específica para ele. Você pode alterar a propriedade Seed para produzir pulsos pseudo-aleatórios. Quando a semente é zero, ele funciona como um sensor Always normal.
 
 ![Random sensor](../figures/Chapter3/Fig03-21.png "Random sensor")
 
 >**Do Not Use It Randomly**
 >
->Use the Random sensor together with other sensors to add an organic dynamic to them. It's especially useful for environment behavior and artificial intelligence (A.I.).
+>Use o sensor Random junto com outros sensores para adicionar uma dinâmica orgânica a eles. É especialmente útil para o comportamento do ambiente e inteligência artificial (I.A.).
 
 
 #### Message <a id="Message"></a>
 
-The Message sensor receives a message sent from a Message actuator or from a Python controller (see Figure 3.22). A game object will receive any message sent specifically to it or broadcast to all the objects. To achieve another level of control, you can use the optional Subject field to filter the messages of a particular subject (not triggering it otherwise). Take a look at the Message actuator for a longer explanation.
+O sensor Message recebe uma mensagem enviada de um atuador Message ou de um controlador Python (consulte a Figura 3.22). Um objeto de jogo receberá qualquer mensagem enviada especificamente para ele ou transmitida para todos os objetos. Para atingir outro nível de controle, você pode usar o campo opcional Assunto para filtrar as mensagens de um determinado assunto (não acionando de outra forma). Dê uma olhada no atuador Message para obter uma explicação mais detalhada.
 
 ![Message sensor](../figures/Chapter3/Fig03-22.png "Message sensor")
 
 >**Extra Message Information**
 >
->>The extra information available in the message (subject, body) can be accessed only by a Python controller.
-
+>>As informações extras disponíveis na mensagem (assunto, corpo) podem ser acessadas apenas por um controlador Python.
 
 #### Property <a id="Property"></a>
 
-The Property sensor helps you use Properties effectively for your game objects (see Figure 3.23). A game property usually does not change any aspect of your game directly (see the note "Expressions"). Instead, they store a value (for example, life points) to be interpreted and to invoke specific actions and effects.
+O sensor Property ajuda você a usar Properties de maneira eficaz para seus objetos de jogo (consulte a Figura 3.23). Uma propriedade do jogo geralmente não altera nenhum aspecto do jogo diretamente (consulte a nota "Expressões"). Em vez disso, eles armazenam um valor (por exemplo, pontos vitais) a ser interpretado e para invocar ações e efeitos específicos.
 
 ![Property sensor](../figures/Chapter3/Fig03-23.png "Property sensor")
 
-This sensor has different evaluation types that allow you to detect specific values, track ranges, or sense any property change. Respectively, they are: equal, not equal, interval, and changed. Be aware that the intervaloption should not be used by Strings and Booleans, but it is the only one recommended for Timer properties.
+Este sensor possui diferentes tipos de avaliação que permitem detectar valores específicos, faixas de rastreamento ou detectar qualquer alteração de propriedade. Respectivamente, eles são: iguais, diferentes, intervalos e alterados. Esteja ciente de que a opção de intervalo não deve ser usada por Strings e Booleanos, mas é a única recomendada para propriedades de Timer.
 
-The exceptions are properties used by Python scripts, those used by Filters 2D, and Text strings used by Bitmap Texts.
+As exceções são propriedades usadas por scripts Python, aqueles usados por Filtros 2D e strings de texto usadas por textos de bitmap.
 
 >**Expressions**
 >
->Instead of direct values, you can use an expression in the value fields for this sensor. Take a look at the Controller Expression for more details.
+>Em vez de valores diretos, você pode usar uma expressão nos campos de valor para este sensor. Dê uma olhada em Controller Expression para mais detalhes.
 
 ### Controllers <a id="Controllers"></a>
 
-Sensors can't do much for themselves without controllers. As explained in the architecture section, controllers are the central piece of the Logic Bricks, because all events pass through them, as well as the actions of the game. Yet, they are simple to understand and use. For games using only Logic Bricks, you will be using one or two types of controllers most of the time. Indeed, until a few Blender versions ago, we didn't have more than four kinds of controllers.
+Os sensores não podem fazer muito por si próprios sem controladores. Conforme explicado na seção de arquitetura, os controladores são a peça central dos Tijolos Lógicos, pois todos os eventos passam por eles, assim como as ações do jogo. No entanto, eles são simples de entender e usar. Para jogos que usam apenas Logic Bricks, você usará um ou dois tipos de controladores na maioria das vezes. Na verdade, até algumas versões do Blender atrás, não tínhamos mais do que quatro tipos de controladores.
 
-In this section, the Expression Controller deserves special attention due to the possibilities that it brings. The Python Controller, on the other hand, is the shining star of another section of the book, as it reveals a world of complexity and promises. It can be skipped for now and revisited once you get to Chapter 7, "Python Scripting."
+Nesta seção, o Expression Controller merece atenção especial pelas possibilidades que traz. O Python Controller, por outro lado, é a estrela que brilha em outra seção do livro, pois revela um mundo de complexidade e promessas. Ele pode ser ignorado por enquanto e revisitado quando você chegar ao Capítulo 7, "Scripting Python".
 
 >**Using States as Organization Layers**
 >
