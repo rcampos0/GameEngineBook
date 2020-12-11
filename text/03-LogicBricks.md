@@ -113,66 +113,65 @@ Neste arquivo, você tem um pequeno jogo de boliche que inclui a bola de boliche
 
 Selecione a bola, e você verá que alguns daqueles tijolos lógicos já estão lá, conforme ilustrado na Figura 3.2. Clique no soquete pelo sensor do teclado e arraste a linha até o soquete pelo atuador de movimento. Se o seu objetivo foi bom, isso criará um controlador para conectar o sensor com o atuador. Comece o jogo novamente e pressione a barra de espaço algumas vezes para rolar um golpe.
 
-![Simple bowling sample game](../figures/Chapter3/Fig03-02.png "Simple bowling sample game")
+![Exemplo de jogo de boliche simples](../figures/Chapter3/Fig03-02.png "Simple bowling sample game")
 
-To make things more interesting, there is also a timer that will start when the game begins. If you connect the Property sensor (already in the file) to the same controller as the Keyboard sensor, you will only be able to move the ball for a few seconds. The Property sensor will be positive as long as the timer is inside a specified range. So the And controller will be positive only when both the Keyboard and the Property Sensors are positive.
+Para tornar as coisas mais interessantes, há também um cronômetro que será iniciado quando o jogo começar. Se você conectar o sensor de propriedade (já no arquivo) ao mesmo controlador que o sensor do teclado, você só poderá mover a bola por alguns segundos. O sensor de propriedade será positivo enquanto o cronômetro estiver dentro de um intervalo especificado. Portanto, o controlador And será positivo apenas quando o teclado e os sensores de propriedade forem positivos.
 
-This is a simple example, but it should get you started so that you can experiment with the available options and other Logic Bricks. Go ahead and change a few things. Don't worry because nothing will break. In Figure 3.3, you can see how your final linked Logic Bricks may look. Notice that there are some Logic Bricks pre-created for the camera and the first pine. If you connect them as shown, the camera will animate as soon as the ball hits the pine.
+Este é um exemplo simples, mas deve ajudá-lo a começar para que possa experimentar as opções disponíveis e outros blocos lógicos. Vá em frente e mude algumas coisas. Não se preocupe porque nada vai quebrar. Na Figura 3.3, você pode ver a aparência dos seus blocos lógicos vinculados finais. Observe que existem alguns tijolos lógicos pré-criados para a câmera e o primeiro pinheiro. Se você conectá-los como mostrado, a câmera será animada assim que a bola atingir o pinheiro.
 
 ![Bowling Logic Bricks](../figures/Chapter3/Fig03-03.png "Bowling Logic Bricks")
 
 
-## Architecture <a id="Architecture"></a>
+## Arquitetura <a id="Architecture"></a>
 
-The game engine was designed to revolve around game objects. Fifteen years ago, when it was first developed, this was a breakthrough design. The idea of having events controlled per object, as opposed to a central controller, worked well for the early days of 3D engines. Nowadays, some people may advocate that controlling elements per object is less scalable and more difficult to manage. That will be up to you to decide. Regardless of your thoughts on that subject, the game engine still allows you to emulate a centralized controlling system, while giving autonomy to each object to deal with its own business. Part of this flexibility is due to the hooked-up Python layer and the Logic Brick system. Through the Python interface, you can replace or at least control most of the effects and logic setups you create with Logic Bricks. With Logic Bricks, you can quickly set up a system that is easy to visualize, implement, and test. The strength of the game engine comes from the trade-off between the two sibling systems. A flexible design may lack features and performance compared to specific engines. Nevertheless, the different kinds of applications you can prototype and develop quickly with the game engine make up for the compromise.
+O motor do jogo foi projetado para girar em torno dos objetos do jogo. Quinze anos atrás, quando foi desenvolvido pela primeira vez, este foi um design inovador. A ideia de ter eventos controlados por objeto, ao invés de um controlador central, funcionou bem para os primeiros dias dos motores 3D. Hoje em dia, algumas pessoas podem defender que controlar os elementos por objeto é menos escalonável e mais difícil de gerenciar. Isso caberá a você decidir. Independentemente do que você pensa sobre o assunto, a engine do jogo ainda permite que você emule um sistema de controle centralizado, enquanto dá autonomia a cada objeto para lidar com seu próprio negócio. Parte dessa flexibilidade se deve à camada Python conectada e ao sistema Logic Brick. Por meio da interface Python, você pode substituir ou pelo menos controlar a maioria dos efeitos e configurações lógicas que você cria com os blocos lógicos. Com o Logic Bricks, você pode configurar rapidamente um sistema fácil de visualizar, implementar e testar. A força do motor de jogo vem do trade-off entre os dois sistemas irmãos. Um design flexível pode carecer de recursos e desempenho em comparação com motores específicos. No entanto, os diferentes tipos de aplicativos que você pode prototipar e desenvolver rapidamente com o mecanismo de jogo compensam o compromisso.
 
-If you look at a level deep into the object structure, you will find that the architecture of the Logic Bricks system is "controller-centric." It revolves around the controllers of the game because they are the ones to determine what do to with the sensors and what actuators to activate. This doesn't have to be followed strictly, but based on this design, you will want to keep your sensors and actuators to a minimum and optimize their usage with the controllers. Actually, in order to optimize the performance, the game engine disables any sensor and actuator that is unlinked to a controller or linked to a controller in a non-active state. This is one of the (many) reasons why Python controllers are so popular. They allow you to replace the use of multiple sensors and actuators by direct calls to their equivalents in the source code. Chapter 7, "Python Scripting," is entirely dedicated to that aspect of the game engine, and will complement the applications of Logic Bricks discussed in this chapter.
+Se você olhar em um nível profundo na estrutura do objeto, verá que a arquitetura do sistema Logic Bricks é "centrada no controlador". Ele gira em torno dos controladores do jogo porque são eles que determinam o que fazer com os sensores e quais atuadores ativar. Isso não precisa ser seguido à risca, mas com base neste projeto, você desejará manter seus sensores e atuadores no mínimo e otimizar seu uso com os controladores. Na verdade, para otimizar o desempenho, o mecanismo de jogo desabilita qualquer sensor e atuador que esteja desvinculado de um controlador ou vinculado a um controlador em um estado não ativo. Esta é uma das (muitas) razões pelas quais os controladores Python são tão populares. Eles permitem que você substitua o uso de vários sensores e atuadores por chamadas diretas para seus equivalentes no código-fonte. O Capítulo 7, "Python Scripting", é inteiramente dedicado a esse aspecto do mecanismo de jogo e complementará os aplicativos dos blocos lógicos discutidos neste capítulo.
 
 ## Interface <a id="Interface"></a>
 
-Logic Bricks has its own editor inside the Blender interface. While other game settings are spread all over the panels and menus, editing Logic Bricks can be done entirely inside the Logic Editor.
+O Logic Bricks possui seu próprio editor dentro da interface do Blender. Enquanto outras configurações do jogo estão espalhadas por todos os painéis e menus, a edição dos Logic Bricks pode ser feita inteiramente dentro do Logic Editor.
 
-You can see that Logic Bricks are sorted per object and organized according to your own needs. For each individual object, the controllers are executed from top to bottom, as presented in the interface. Nevertheless, there is not much control as to which of the object's Logic Bricks runs first. The criteria of organization for the Logic Bricks tend to reflect more personal preferences and visual clarity needs than internal requirements.
+Você pode ver que os tijolos lógicos são classificados por objeto e organizados de acordo com suas próprias necessidades. Para cada objeto individual, os controladores são executados de cima para baixo, conforme apresentado na interface. No entanto, não há muito controle sobre qual dos blocos lógicos do objeto é executado primeiro. Os critérios de organização para os blocos lógicos tendem a refletir mais preferências pessoais e necessidades de clareza visual do que requisitos internos.
 
-Here are some instructions on how to use the Logic Editor interface.
+Aqui estão algumas instruções sobre como usar a interface do Logic Editor.
 
 >**Note**
 >
->For those used to the Blender 2.49 interface, you may need some time to get used to the enhanced new design of Blender. The first thing you will notice is that the Physics panel has been moved to the Physics tab at the Properties Logic Editor. If you jumped straight to this chapter and are a bit lost navigating Blender interface, then Chapter 1 should help you find your intended UI element.
+>Para aqueles que estão acostumados com a interface do Blender 2.49, você pode precisar de algum tempo para se acostumar com o novo design aprimorado do Blender. A primeira coisa que você notará é que o painel Physics foi movido para a guia Physics no Properties Logic Editor. Se você pulou direto para este capítulo e está um pouco perdido na navegação pela interface do Blender, o Capítulo 1 deve ajudá-lo a encontrar o elemento de IU pretendido.
 
 
-### Add <a id="Add"></a>
+### Adicionar <a id="Add"></a>
 
-To add new Logic Bricks, it is only possible for the active object. This one always displayed as first in the Logic Editor list. You can see the Add Sensor/Controller/Actuator button right after the name of the active object on its respective column, as shown in Figure 3.4.
+Para adicionar novos Logic bricks, só é possível para o objeto ativo. Este sempre é exibido como o primeiro na lista do Logic Editor. Você pode ver o botão Adicionar Sensor / Controlador / Atuador logo após o nome do objeto ativo em sua respectiva coluna, conforme mostrado na Figura 3.4.
 
-![Add controller](../figures/Chapter3/Fig03-04.png "Add controller")
+![Adicionar Controlador](../figures/Chapter3/Fig03-04.png "Add controller")
 
-When you click in the button, a pop-up list will show you all the available Logic Bricks that are compatible with this kind of object (for example, Armature sensors are only available for Armature objects). Selecting the desired type will create a new Logic Brick with the default parameters for this particular type (which you will likely need to change). The name of the Logic Brick is automatically created, based on its type, for pure convenience.
+Ao clicar no botão, uma lista pop-up mostrará todos os blocos lógicos disponíveis que são compatíveis com este tipo de objeto (por exemplo, os sensores de armadura estão disponíveis apenas para objetos de armadura). Selecionar o tipo desejado criará um novo Logic Brick com os parâmetros padrão para este tipo específico (que você provavelmente precisará alterar). O nome do Logic Brick é criado automaticamente, com base em seu tipo, por pura conveniência.
 
->**Quick Ways to Add a Logic Brick**
+>**Maneiras rápidas de adicionar um bloco lógico**
 >
 >As a quick alternative, you can use the Add Menu (in the Logic Editor header bar) or press Shift+A (while mouse pointer is in the Logic Editor).
 
 ### Remove <a id="Remove"></a>
 
-In order to delete individual Logic Bricks, you need to click the "x" icon present in the header of each Logic Brick. By doing this, you are unlinking each Logic Brick with any connected Logic Bricks and removing it. Although this action can be reverted with Undo (Ctrl + Z), simply unlinking a Logic Brick or moving it to an inactive state (for Controllers) is enough to disable it. There is also a Checkbox button that sets active state of the sensor. The game engine will not compute unlinked and disabled Logic Bricks. Thus, it can be handy to have testing sensors and actuators hanging around for later use with no performance impact.
+Para excluir blocos lógicos individuais, você precisa clicar no ícone "x" presente no cabeçalho de cada bloco lógico. Ao fazer isso, você está desvinculando cada Logic Brick com qualquer Logic Brick conectado e removendo-o. Embora esta ação possa ser revertida com Undo (Ctrl + Z), simplesmente desvincular um Logic Brick ou movê-lo para um estado inativo (para controladores) é suficiente para desativá-lo. Há também um botão de caixa de seleção que define o estado ativo do sensor. O mecanismo de jogo não calculará blocos lógicos desassociados e desabilitados. Portanto, pode ser útil ter sensores e atuadores de teste pendurados para uso posterior sem impacto no desempenho.
 
 ### Link <a id="Link"></a>
 
-Every Logic Brick has a connector used to link it with other Logic Bricks. Sensors show the connector on the right side of their header, while actuators show it on the left side. Controllers are placed between the sensors and actuators, so the connectors are presented on both sides. Drag the connector from a Logic Brick and drop it in the connector you want to link to.
+Cada Logic Brick possui um conector usado para ligá-lo a outros Logic Bricks. Os sensores mostram o conector no lado direito de seu cabeçalho, enquanto os atuadores o mostram no lado esquerdo. Os controladores são colocados entre os sensores e atuadores, de forma que os conectores são apresentados em ambos os lados. Arraste o conector de um Logic Brick e solte-o no conector ao qual deseja se vincular.
 
->**Kill Two Birds with One Stone: Linking and Adding a Controller**
+>**Mate dois pássaros com uma pedra: ligando e adicionando um controlador**
 >
->Try to link a sensor directly with an actuator on the same object. Blender will automatically create an And controller and link it between them.
+>Tente ligar um sensor diretamente a um atuador no mesmo objeto. O Blender irá criar automaticamente um controlador And e ligá-lo entre eles.
 
-You don't need to keep the logics self-contained in single objects. When you select more than one object at the same time, you will see all of them in the Logic Editor. That feature allows you to connect a sensor from one object to the controller of another one and again to the actuator of yet another object. This is one of the key elements for group instancing[md]an advanced way of sharing Logic Bricks, which is covered at the end of this chapter.
+Você não precisa manter a lógica autocontida em objetos individuais. Ao selecionar mais de um objeto ao mesmo tempo, você verá todos eles no Logic Editor. Esse recurso permite que você conecte um sensor de um objeto ao controlador de outro e novamente ao atuador de outro objeto. Este é um dos elementos-chave para instanciar grupos [md] uma maneira avançada de compartilhar blocos lógicos, que é abordado no final deste capítulo.
 
->**Message System**
+>**Sistema de Mensagens**
 >
->If you found that cross-linked objects can easily become hard to keep track of, welcome to the team. Before getting desperate, make sure that you read about the elegant alternative presented by the Message sensor and Message actuator. Be aware that if you decide for the messaging system, your events will always be delayed by one logic tic, since it will only trigger the sensor in the next logic loop.
+>Se você descobriu que objetos com ligações cruzadas podem facilmente se tornar difíceis de controlar, bem-vindo à equipe. Antes de ficar desesperado, certifique-se de ler sobre a alternativa elegante apresentada pelo sensor Message e pelo atuador Message. Esteja ciente de que se você decidir pelo sistema de mensagens, seus eventos sempre serão atrasados por um tique lógico, já que só disparará o sensor no próximo loop lógico.
 
-
-### Unlink <a id="Unlink"></a>
+### Desvincular <a id="Unlink"></a>
 
 Drag the mouse holding the left mouse button and the Control key to use the Unlink feature. This will activate a knife system to cut the links between Logic Bricks you want to unlink. It works the same way as the Node Editor in Blender.
 
