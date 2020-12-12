@@ -451,27 +451,27 @@ Mas e se você quisesse usar apenas um controlador para lidar com esses dois sen
 
 Às vezes, os interruptores lógicos não fornecem controle suficiente para avaliar seus sensores. Você pode querer comparar o valor de mais de uma propriedade ao mesmo tempo, ou talvez até mesmo verificar arranjos específicos em seus sensores, chamando o atuador apenas quando alguns sensores são positivos e outros negativos. Ou por que não (afinal de contas é o seu jogo) fazer tudo isso juntos? Como você adivinhou, as expressões podem lidar com todas essas situações e algumas outras.
 
-Before going into all of the options, let's first take a look at some examples:
+Antes de entrar em todas as opções, vamos primeiro dar uma olhada em alguns exemplos:
 
-First case: We want to eliminate your player when the energy is zero, and there are no lives left. So we create two game properties, named "energy" and "life," and control them with the expression:
+Primeiro caso: Queremos eliminar o seu jogador quando a energia for zero e não houver mais vidas. Portanto, criamos duas propriedades de jogo, chamadas "energia" e "vida", e as controlamos com a expressão:
 
 energy<=0 AND life==0
 
-Simple, right? But what if you want to finish the game when you type "quit"? Now you need a keyboard sensor with all keys logged to a text property. The expression would be:
+Simples, certo? Mas e se você quiser terminar o jogo ao digitar "sair"? Agora você precisa de um sensor de teclado com todas as teclas registradas em uma propriedade de texto. A expressão seria:
 
 text=="quit\n"
 
->**End of Line**
+>**Fim da Linha**
 >
->Here we are using \n to identify a Return (Enter) right after the word. You can see this last technique combined with other actuators and different objects on: _\Book\Chapter3\controller\_expression.blend._
->This is especially powerful for quick prototyping and debugging of your game.
+>Aqui, estamos usando \ n para identificar um Return (Enter) logo após a palavra. Você pode ver esta última técnica combinada com outros atuadores e objetos diferentes em: _\Book\Chapter3\controller\_expression.blend._
+>Isso é especialmente poderoso para prototipagem rápida e depuração de seu jogo.
 
 
-Expressions tend to be as simple as the examples presented. They can grow big, however, and the following parts will show how to combine simple expressions to create more advanced controllers. Keep in mind that expressions are actually used also in the Property sensor and Property actuator. The difference is that for them the result will be directly used as the property value. Therefore, there you will use mostly Values and Arithmetic Operations. For the Expression controller, the expected value is always a Boolean, so you end up using Comparison Test and the Boolean Operations more often.
+As expressões tendem a ser tão simples quanto os exemplos apresentados. Eles podem crescer muito, entretanto, e as partes a seguir mostrarão como combinar expressões simples para criar controladores mais avançados. Lembre-se de que as expressões também são usadas no sensor de propriedade e no atuador de propriedade. A diferença é que para eles o resultado será utilizado diretamente como valor da propriedade. Portanto, você usará principalmente Valores e Operações Aritméticas. Para o controlador de Expressão, o valor esperado é sempre um Booleano, então você acaba usando o Teste de Comparação e as Operações Booleanas com mais frequência.
 
 >**Error Checkpoint**
 >
->Always check the console for errors. If the expression is incorrect, the game engine will print an error when you call the controller.
+>Sempre verifique se há erros no console. Se a expressão estiver incorreta, o mecanismo de jogo imprimirá um erro quando você chamar o controlador.
 
 #### Values <a id="Values"></a>
 
