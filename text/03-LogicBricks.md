@@ -411,33 +411,33 @@ Nesta seção, o Expression Controller merece atenção especial pelas possibili
 
 >**Using States as Organization Layers**
 >
->The controller state system was designed to help in building advanced state machine systems. But as it turned out, it works great as a way to organize your Logic Bricks. You can use different states as layers, to group controllers and their linked sensors and actuators. The initial state of the controller needs to include all the states you set. But while working, you can alternate the visible states to show only a small parcel of them at a time.
+>O sistema de estado do controlador foi projetado para ajudar na construção de sistemas de máquina de estado avançados. Mas acabou funcionando muito bem como uma forma de organizar seus blocos lógicos. Você pode usar diferentes estados como camadas para agrupar controladores e seus sensores e atuadores vinculados. O estado inicial do controlador precisa incluir todos os estados que você definiu. Mas enquanto trabalha, você pode alternar os estados visíveis para mostrar apenas uma pequena parcela deles por vez.
 
 #### Header <a id="Header"></a>
 
-Similar to the sensors, each controller carries a unique set of information, regardless of its type. Pay special attention to the State and Mark options, both unique to Controllers. In Figure 3.24, you will find all the options available on their headers.
+Semelhante aos sensores, cada controlador carrega um conjunto único de informações, independentemente de seu tipo. Preste atenção especial às opções de Estado e Marca, ambas exclusivas dos Controladores. Na Figura 3.24, você encontrará todas as opções disponíveis em seus cabeçalhos.
 
 ![Controller header](../figures/Chapter3/Fig03-24.png "Controller header")
 
-- **Name** : Unlike the sensors and actuators, the name here has no importance other than to keep your controllers easy to identify when not expanded.
+- **Name** : Ao contrário dos sensores e atuadores, o nome aqui não tem nenhuma importância além de manter seus controladores fáceis de identificar quando não estão expandidos.
 
-- **State** : Set the state (from 1 to 30) of the controller. To read about the State Machine system, check out the "State Machine" section in this chapter.
+- **State** : Defina o estado (de 1 a 30) do controlador. Para ler sobre o sistema State Machine, verifique a seção "State Machine" neste capítulo.
 
-- **Mark** : Forces the controller to run before non-marked controllers.
+- **Mark** : Força o controlador a funcionar antes de controladores não marcados.
 
 #### Booleans <a id="Booleans"></a>
 
-When you have one single sensor that has to call an actuator, there is not much to worry about. In this case, a simple And controller will make it work. If instead you need to activate the actuator only when the sensor is False, you can use the Invert option to keep using the same Add controller. Too simple? Let's complicate it a bit then. What if you have two sensors and only one of them needs to be True? You could create two And controllers linked to the same actuator. It's not elegant, but it would work.
+Quando você tem um único sensor que precisa chamar um atuador, não há muito com que se preocupar. Neste caso, um simples controlador And fará com que funcione. Se, em vez disso, você precisar ativar o atuador apenas quando o sensor for False, poderá usar a opção Inverter para continuar usando o mesmo controlador Adicionar. Tão simples? Vamos complicar um pouco então. E se você tiver dois sensores e apenas um deles precisar ser verdadeiro? Você pode criar dois controladores And ligados ao mesmo atuador. Não é elegante, mas funcionaria.
 
->**How Many Times Can You Activate an Actuator?
+>**Quantas vezes você pode ativar um atuador?
 >
->If you think that the setup above would call the actuator twice, then have fun testing it. An actuator is activated only once per frame, regardless of the number of controllers calling it.
+>Se você acha que a configuração acima chamaria o atuador duas vezes, divirta-se testando-o. Um atuador é ativado apenas uma vez por quadro, independentemente do número de controladores que o chamam.
 
-But what if you wanted to use only one controller to handle those two sensors? In this case, it would be the Or controller, created specifically for that. That's not all, though. Either for convenience or for more advanced control, you could simplify your controllers by using the other Boolean controllers. Together with And and Or, those are the other logic switches to use when combining multiple sensors and their outcomes.
+Mas e se você quisesse usar apenas um controlador para lidar com esses dois sensores? Nesse caso, seria o controlador Or, criado especificamente para isso. Mas isso não é tudo. Por conveniência ou para um controle mais avançado, você pode simplificar seus controladores usando os outros controladores booleanos. Junto com And e Or, essas são as outras chaves lógicas a serem usadas ao combinar vários sensores e seus resultados.
 
-- **And** : True if _all_the sensors are True. False if _any_ of the sensors is False.
+- **And** : Verdadeiro se _all_the sensors forem verdadeiros. False se _any_ dos sensores for False. 
 
-- **Or** : True if _any_ of the sensors is True. False if _all_ the sensors are False
+- **Or** : Verdadeiro se _any_ dos sensores forem verdadadeiro Verdadeiro. Falso se _all_ sensores forem falsos.
 
 - **Nand** : True if _any_ of the sensors is False. False if _all_ the sensors are True
 
