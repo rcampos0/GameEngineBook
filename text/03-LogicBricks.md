@@ -449,7 +449,7 @@ Mas e se você quisesse usar apenas um controlador para lidar com esses dois sen
 
 #### Expression <a id="Expression"></a>
 
-Sometimes logic switches don't give you enough control to evaluate your sensors. You may want to compare the value of more than one property at once, or maybe even to check for specific arranges in your sensors, calling the actuator only when some sensors are positive and others negative. Or why not (it's your game after all) do all of this together? As you have guessed, expressions can handle all of those situations and a few others.
+Às vezes, os interruptores lógicos não fornecem controle suficiente para avaliar seus sensores. Você pode querer comparar o valor de mais de uma propriedade ao mesmo tempo, ou talvez até mesmo verificar arranjos específicos em seus sensores, chamando o atuador apenas quando alguns sensores são positivos e outros negativos. Ou por que não (afinal de contas é o seu jogo) fazer tudo isso juntos? Como você adivinhou, as expressões podem lidar com todas essas situações e algumas outras.
 
 Before going into all of the options, let's first take a look at some examples:
 
