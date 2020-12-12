@@ -475,32 +475,32 @@ As expressões tendem a ser tão simples quanto os exemplos apresentados. Eles p
 
 #### Values <a id="Values"></a>
 
-The simplest expression contains no more than a single value. If you want to check if a Boolean property is true, you only need to use its name as a value:
+A expressão mais simples não contém mais do que um único valor. Se você deseja verificar se uma propriedade booleana é verdadeira, você só precisa usar seu nome como um valor:
 
 my\_property\_that\_may\_be\_true
 
-For the Controller Expression, you will only use the lonely value when dealing with Booleans; however, for the Property sensor, Property actuator and as part of big expressions, you can also use the following types as values:
+Para a expressão do controlador, você usará apenas o valor solitário ao lidar com booleanos; no entanto, para o sensor de propriedade, atuador de propriedade e como parte de grandes expressões, você também pode usar os seguintes tipos como valores:
 
 - **Boolean** : True, False
 
-- **Number** : 5, [ms]7, 3.5, 40, 3.5[md]integers and floats, positive, negative, and even zero.
+- **Number** : 5, [ms]7, 3.5, 40, 3.5[md]inteiros e floats, positivo, negativo e até zero.
 
-- **String** : "text"[md]always around quotation marks.
+- **String** : "text"[md]sempre entre aspas.
 
-- **Property** : propertyName[md]gives the property value.
+- **Property** : propertyName[md]fornece o valor da propriedade.
 
-- **Sensor** : sensorName[md]gives True or False according to the sensor status.
+- **Sensor** : sensorName[md]dá Verdadeiro ou Falso de acordo com o status do sensor.
 
 
-A single value is not exactly an expression. Let's move on and see what kind of expressions and operations we can make when combining them together:
+Um único valor não é exatamente uma expressão. Vamos prosseguir e ver que tipo de expressões e operações podemos fazer ao combiná-los:
 
 >**Sensors in an Expression**
 >
->In order to use a sensor name, the sensor has to be linked to the Expression controller. Sensors can't be used in the expressions for the Property sensor and the Property actuator.
+>Para usar um nome de sensor, o sensor deve estar vinculado ao controlador Expression. Sensores não podem ser usados nas expressões para o sensor de propriedade e o atuador de propriedade.
 
 #### Comparison Tests <a id="Comparison"></a>
 
-If instead of testing a single variable, you need to compare two values, there are five different comparison tests you can use. The test can be between a variable (property or sensor) and a value, two values, or two variables:
+Se, em vez de testar uma única variável, você precisar comparar dois valores, existem cinco testes de comparação diferentes que você pode usar. O teste pode ser entre uma variável (propriedade ou sensor) e um valor, dois valores ou duas variáveis:
 
 - **Equal** : fruit = "jabuticaba"
 
@@ -512,15 +512,15 @@ If instead of testing a single variable, you need to compare two values, there a
 
 - **Lesser or Equal** : timer <= 2011
 
-The result of a comparison test will always be a Boolean. If you need to return a value other than True or False, then what you are looking for is:
+O resultado de um teste de comparação sempre será um booleano. Se você precisar retornar um valor diferente de True ou False, o que você está procurando é:
 
 **Condition Statement** : IF (frame < 0, [ms]1, 0)
 
-The syntax is: IF (Condition, ValueWhenTrue, ValueWhenFalse). If you use the above expression as a value for the Add mode in a Property actuator, it will decrease the counter (for example, frame) if the value is greater than zero.
+A sintaxe é: IF (Condition, ValueWhenTrue, ValueWhenFalse). Se você usar a expressão acima como um valor para o modo Adicionar em um atuador de propriedade, ele diminuirá o contador (por exemplo, quadro) se o valor for maior que zero.
 
 #### Arithmetic Operations <a id="Arithmetic_Operations"></a>
 
-If your value is numeric, you can also manipulate it a bit. This can be used to assign a value based on a variable (for example, speed \* time) or as part of a test (for example, energy + potion > 0). The most basic math operations are supported to operate your value, for the records:
+Se o seu valor for numérico, você também pode manipulá-lo um pouco. Isso pode ser usado para atribuir um valor com base em uma variável (por exemplo, velocidade \ * tempo) ou como parte de um teste (por exemplo, energia + poção> 0). As operações matemáticas mais básicas são suportadas para operar seu valor, para os registros:
 
 - **Addition** : 1 + 3.8
 
