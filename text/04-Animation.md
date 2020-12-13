@@ -135,27 +135,27 @@ Mesmo quando estiver usando o atuador Action, você estará manipulando internam
 
 Outras ações podem ser usadas para animar seu objeto como um todo, sem afetar sua geometria interna. Você pode mover o objeto, alterar seu tamanho, girá-lo e animar seus parâmetros de tipo específicos. Por exemplo, você pode animar uma câmera para seguir um caminho predeterminado ou animar uma lâmpada para piscar uma luz dinâmica de cor fraca. Sua câmera precisa trocar as lentes durante o jogo? Uma ação pode facilmente fazer isso por você.
 
-## Armature and Poses <a id="Armature_and_Poses"></a>
+## Armadura e Poses <a id="Armature_and_Poses"></a>
 
-The Bone animation system works in the game engine very closely to the way it does in Blender. You will create a Mesh object and an Armature object to deform the first.
+O sistema de animação do Bone funciona na engine do jogo de forma muito parecida com a do Blender. Você criará um objeto Mesh e um objeto Armature para deformar o primeiro.
 
->**Mesh and Armature**
+>**Malha e Armadura**
 >
->Both the Armature and the Mesh objects need to be present in the game for them to work. In fact, if you are adding the animated object dynamically (for example, through an Add Object actuator), you will refer to the Armature object to bring in the animated conjunct.
->As in Blender, the Armature object is the parent of the Mesh object. Therefore the armature will be the game object running most of the animation sensors and actuators. Thus you may as well dump all the Logic Bricks of your object in the armature. An exception is the Replace Mesh option in the Edit Object Actuator. In that case you need to run the Actuator in the Mesh object itself.
+>Ambos os objetos Armature e Mesh precisam estar presentes no jogo para que funcionem. Na verdade, se você estiver adicionando o objeto animado dinamicamente (por exemplo, por meio de um atuador Adicionar objeto), você se referirá ao objeto Armadura para trazer o conjunto animado.
+>Como no Blender, o objeto Armature é o pai do objeto Mesh. Portanto, a armadura será o objeto do jogo executando a maioria dos sensores e atuadores de animação. Assim, você também pode despejar todos os blocos lógicos de seu objeto na armadura. Uma exceção é a opção Replace Mesh no Edit Object Actuator. Nesse caso, você precisa executar o Atuador no próprio objeto Mesh.
 
-The workflow for Armature and Bones resembles the NLA (Non-Linear Animation) Editor in Blender. You create individual animation actions that you want to be played at a certain time. Those are the actions we referred to when talking about the animation cycles, earlier in this chapter.
+O fluxo de trabalho para Armadura e Bones se assemelha ao Editor NLA (Non-Linear Animation) no Blender. Você cria ações de animação individuais que deseja reproduzir em um determinado momento. Essas são as ações às quais nos referimos quando falamos sobre os ciclos de animação, no início deste capítulo.
 
-The first difference is that you don't need to predefine the order and length of all the action you want to play. For example, in the NLA Editor if you want to animate a shark turning, you will create an action for "Straight Swimming" and another for "Turning." You will alternate between them based on your script: maybe the shark turns at the same time you throw bait close by.
+A primeira diferença é que você não precisa predefinir a ordem e a duração de todas as ações que deseja jogar. Por exemplo, no Editor de NLA, se você deseja animar a curva de um tubarão, criará uma ação para "Natação em linha reta" e outra para "Curva". Você vai alternar entre eles com base em seu script: talvez o tubarão vire ao mesmo tempo que você joga a isca por perto.
 
->**Speaking of NLA**
+>**Falando de NLA**
 >
->Even though NLA animation is not supported in the game engine, you can still use the NLA Editor to make your animation sequences. Cut scenes or complex dialog scenes can benefit a lot from a NLA based workflow.
->For example, you can combine dialog actions from a MoCap (motion capture) system with pregenerated idle body animation cycles. Once the animation editing is done you need to combine the actions into a single action with the Bake Action operator, available via the Search Menu (spacebar).
+>Mesmo que a animação NLA não seja suportada no mecanismo de jogo, você ainda pode usar o Editor NLA para fazer suas sequências de animação. Cenas cortadas ou cenas de diálogo complexas podem se beneficiar muito de um fluxo de trabalho baseado em NLA.
+>Por exemplo, você pode combinar ações de diálogo de um sistema MoCap (captura de movimento) com ciclos de animação de corpo ocioso pré-gerados. Uma vez que a edição da animação é feita, você precisa combinar as ações em uma única ação com o operador Bake Action, disponível através do Menu de Pesquisa (barra de espaço).
 
-Unlike in the NLA Editor, we have a chance to play actions based on the player decisions or AI predesigned interactions. In our shark example, we can have the player controlling the shark and turning it when it gets tired of swimming in a straight line. Maybe this shark likes to chase its tail restlessly. Either way, we can play and stop playing the individual animations ("Straight_Swimming" and "Turning") anytime. Figure 4.3 illustrates this.
+Ao contrário do NLA Editor, temos a chance de jogar ações com base nas decisões do jogador ou nas interações de IA predefinidas. Em nosso exemplo do tubarão, podemos ter o jogador controlando o tubarão e girando-o quando ele se cansar de nadar em linha reta. Talvez este tubarão goste de perseguir o rabo sem descanso. De qualquer maneira, podemos reproduzir e parar de reproduzir as animações individuais ("Straight_Swimming" e "Turning") a qualquer momento. A Figura 4.3 ilustra isso.
 
-![Shark stuck in the Turning Action](../figures/Chapter4/Fig04-03.png)
+![Tubarão preso na ação de virada](../figures/Chapter4/Fig04-03.png)
 
 The second difference is regarding the bone constraints. We will cover it in more detail later. It's important to know that not all the Bone Constraints that work in Blender will work in the game engine. Most of them do, so it shouldn't be much of a hassle. Also, the constrained bone and the target bone should be part of the same armature.
 
