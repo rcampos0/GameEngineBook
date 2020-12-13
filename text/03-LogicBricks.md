@@ -1058,38 +1058,38 @@ This is the simplest way of using states. It's not the only one, though. In more
 
 The game engine centralizes the logic components at the object level. This is at the same time a curse and a blessing. On the positive side of things, you can set up each object as a unique, independent participant of your game. The down side comes when you need to reproduce a behavior, and when the last thing you need is unique objects. Sure, you can copy over Logic Bricks and properties, but this is hard to maintain and doesn't scale well for more complex files. Note that we are not talking about duplicated objects[md]those indeed share the same Logic Brick. We are looking at game objects that have different individual components but need to share part of each other's functionality. We need a compromise between both systems, and this is possible with group instancing and Logic Bricks cross-linking.
 
-Group instancing support in the game engine was added for the project Yo Frankie[md]a game demo project organized and developed by the Blender Foundation in 2008. For this particular project, they had to share the Logic Bricks between the NPC enemies (sheeps, rats, etc.) and a different set of Logic Bricks for the two main playable characters (Frankie and Momo).
+Suporte de instanciação de grupo no motor de jogo foi adicionado para o projeto Yo Frankie [md] um projeto de demonstração de jogo organizado e desenvolvido pela Blender Foundation em 2008. Para este projeto em particular, eles tiveram que compartilhar os blocos lógicos entre os inimigos NPC (ovelhas, ratos, etc.) e um conjunto diferente de blocos lógicos para os dois personagens principais (Frankie e Momo).
 
 >**To Read More…**
 >
->To read about their specific implementation you can look at Campbell Barton's chapter in _The Blender GameKit, 2nd_Edition_: http://wiki.blender.org/index.php/Doc:2.4/Books/GameKit\_2/12.Yo\_Frankie!#Logic\_Sharing.
+>Para ler sobre sua implementação específica, você pode olhar o capítulo de Campbell Barton em _The Blender GameKit, 2nd_Edition_: http://wiki.blender.org/index.php/Doc:2.4/Books/GameKit\_2/12.Yo\_Frankie! #Logic\_Sharing.
 
-The first and simplest usage of this feature is to replicate the same set of objects multiple times. Open the file _\Book\Chapter3\group\_instancing\_logic\_1.blend_. As you can see in Figure 3.53, here we have 10 copies of a system compound of balls and fountains. The balls will constantly roll inside the fountain and every once in a while the ball will get more of an impulse at the bottom of the fountain.
+O primeiro e mais simples uso desse recurso é replicar o mesmo conjunto de objetos várias vezes. Abra o arquivo _\Book\Chapter3\group\_instancing\_logic\_1.blend_. Como você pode ver na Figura 3.53, aqui temos 10 cópias de um sistema composto de bolas e fontes. As bolas vão rolar constantemente dentro da fonte e de vez em quando a bola vai ganhar mais impulso no fundo da fonte.
 
 ![Group Instance first example](../figures/Chapter3/Fig03-53.png "Group Instance first example")
 
-There are three relevant components here: a fountain for the ball to roll in, a ball, and an invisible plane in the bottom of the fountain set to send the balls up when they collide. Since we want the objects to be alike, what we need to do is to group the three elements together and hide them in one of the non-visible layers. Now in our main layer, we can use the Add Menu (Shift+A) and select the newly created group in the Group Instance option. Figure 3.54 shows the option to be selected there.
+Existem três componentes relevantes aqui: uma fonte para a bola rolar, uma bola e um plano invisível no fundo da fonte definida para enviar as bolas para cima quando colidem. Visto que queremos que os objetos sejam semelhantes, o que precisamos fazer é agrupar os três elementos e ocultá-los em uma das camadas não visíveis. Agora em nossa camada principal, podemos usar o Menu Adicionar (Shift + A) e selecionar o grupo recém-criado na opção Instância de Grupo. A Figura 3.54 mostra a opção a ser selecionada lá.
 
 ![Add Menu - Group Instance](../figures/Chapter3/Fig03-54.png "Add Menu - Group Instance")
 
 >**Logic Brick Duplication**
 >
->There are other ways to duplicate your Logic Brick object. In fact, the Group Instance option from the Add Menu is simply a shortcut for using an Empty with Group as the Duplication type. Vertices and Faces can also be used there, but this will only duplicate the child object in the geometry, not an entire group.
+>Existem outras maneiras de duplicar seu objeto Logic Brick. Na verdade, a opção Instância de Grupo do Menu Adicionar é simplesmente um atalho para usar Esvaziar com Grupo como o tipo de Duplicação. Vértices e faces também podem ser usados lá, mas isso apenas duplicará o objeto filho na geometria, não um grupo inteiro.
 
-The most obvious advantage of this is that if you need to change the Logic Bricks, you can at any time edit them in the original elements of the group. This will automatically be replicated to all the instances that share the same Logic Bricks. Group Instance also works for dynamically added objects. In other words, you can add a Group Instance by placing it in the file (as the previous example shows) or by using the Add Object option of the Edit Object actuator.
+A vantagem mais óbvia disso é que se você precisar alterar os blocos lógicos, poderá editá-los a qualquer momento nos elementos originais do grupo. Isso será automaticamente replicado para todas as instâncias que compartilham os mesmos blocos lógicos. A instância de grupo também funciona para objetos adicionados dinamicamente. Em outras palavras, você pode adicionar uma instância de grupo colocando-a no arquivo (como mostra o exemplo anterior) ou usando a opção Adicionar objeto do atuador Editar objeto.
 
-Now that you understand how Group Instancing works, let's go a step further and see a more advanced (yet still simple) example of sharing Logic Bricks. Please open the file _\Book\Chapter3\group\_instancing\_logic\_2.blend_. In the first example, we were duplicating the same group, but here we have two different groups: Pyramid and Orbit. Both groups share one common object, the DummyMesh, and have a unique object on their own.
+Agora que você entende como funciona a instância de grupo, vamos dar um passo adiante e ver um exemplo mais avançado (mas ainda simples) de compartilhamento de blocos lógicos. Abra o arquivo _\Book\Chapter3\group\_instancing\_logic\_2.blend_. No primeiro exemplo, estávamos duplicando o mesmo grupo, mas aqui temos dois grupos diferentes: Pirâmide e Órbita. Ambos os grupos compartilham um objeto comum, o DummyMesh, e têm um objeto único por conta própria.
 
-Now look closely at the Logic Bricks in Figure 3.55. The sensor and the controller are in the DummyMesh, while the actuators are in the Pyramid and the Orbit objects. This way, a Group Instance that contains the DummyMesh and either the Pyramid or the Orbit will share similarities, allowing for individual effects on top of them. In this example, if you press the spacebar, the Pyramid rotates while the Orbit runs away from the camera.
+Agora olhe atentamente para os blocos lógicos na Figura 3.55. O sensor e o controlador estão no DummyMesh, enquanto os atuadores estão nos objetos Pirâmide e Órbita. Dessa forma, uma instância de grupo que contém o DummyMesh e a pirâmide ou a órbita compartilhará semelhanças, permitindo efeitos individuais em cima delas. Neste exemplo, se você pressionar a barra de espaço, a pirâmide gira enquanto a órbita foge da câmera.
 
 ![Group Instance - second example](../figures/Chapter3/Fig03-55.png "Group Instance - second example")
 
 ## To the Infinite and Beyond <a id="To_the_Infinite_and_Beyond"></a>
 
-Now that we have gone over the various possibilities with Logic Bricks, it's time for you to put these skills into practice. Try the sample files and play with them. Rip them apart, disassemble them, and combine them. It's important to look at them creatively and use their diversity and flexibility in your favor.
+Agora que examinamos as várias possibilidades com os blocos lógicos, é hora de você colocar essas habilidades em prática. Experimente os arquivos de amostra e brinque com eles. Rasgue-os, desmonte-os e combine-os. É importante olhar para eles com criatividade e usar sua diversidade e flexibilidade a seu favor.
 
-In the past few years, there have been community organized game engine contests. One of the categories is specifically Logic Bricks-only games. It's really interesting to see what can be done without a single line of code. An online search for "Blender Game Engine Contest" should give you enough inspiration for further experimentation.
+Nos últimos anos, houve competições de motor de jogo organizadas pela comunidade. Uma das categorias é especificamente os jogos apenas do Logic Bricks. É realmente interessante ver o que pode ser feito sem uma única linha de código. Uma busca online por "Blender Game Engine Contest" deve lhe dar inspiração suficiente para novas experiências.
 
-Actually, even if you are planning to use Python over plain Logic Bricks, it's important to understand both systems and how they work together. In the end, which tools you use will depend on the project you are working on, your team, and your workflow.
+Na verdade, mesmo se você estiver planejando usar Python em vez de blocos lógicos simples, é importante entender os dois sistemas e como eles funcionam juntos. No final, as ferramentas que você usará dependerão do projeto em que está trabalhando, da sua equipe e do seu fluxo de trabalho.
 
-Finally, in one way or another, the next chapters all relate back to this one. You might review some parts of this chapter while learning the game engine aspects of animation, graphics, physics, constraints, and Python.
+Finalmente, de uma forma ou de outra, todos os próximos capítulos se relacionam com este. Você pode revisar algumas partes deste capítulo enquanto aprende os aspectos do mecanismo de jogo de animação, gráficos, física, restrições e Python.
