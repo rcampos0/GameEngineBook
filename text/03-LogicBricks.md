@@ -665,96 +665,96 @@ O motor do jogo, por padrão, reproduz as ações do início ao fim do quadro e 
 
 ##### Blendin, Layers, and Priority <a id="Blendin,_Layers,_and_Priority"></a>
 
-If you need to play multiple actions for the same object, you need to configure their transitions and how they will interact. So you need to explore the remaining options in the Action actuator interface: Blendin, Layers, and Priority. Blendin works as a cross fading effect between actions, while Layer allows to have different actions playing at the same time.
+Se você precisa executar várias ações para o mesmo objeto, você precisa configurar suas transições e como eles irão interagir. Portanto, você precisa explorar as opções restantes na interface do atuador de ação: Blendin, Layers e Priority. O Blendin funciona como um efeito de desvanecimento cruzado entre as ações, enquanto o Layer permite que diferentes ações sejam reproduzidas ao mesmo tempo.
 
-- **Blendin** is necessary when you need to switch actions. More specifically, it's vital when you want to smoothly fade from one animation to another. Imagine, for example, that your character is walking and then starts to run. Even if the frames of both animation cycles start and end exactly alike, the effect will be strange. The difference in speed of the actions will make the transition too noticeable and unnatural. Thus, unless you are animating an old car with some engine problems, you don't want the transition to be so abrupt. Therefore, you can Blendin the new action (for example, to run) within the current one (to walk). Blendin works even if the old animation is no longer playing. Note that Blendin only works between Action actuators that are in the same animation Layers.
+- **Blendin** é necessário quando você precisa alternar ações. Mais especificamente, é vital quando você deseja esmaecer suavemente de uma animação para outra. Imagine, por exemplo, que seu personagem está caminhando e depois começa a correr. Mesmo que os quadros de ambos os ciclos de animação comecem e terminem exatamente da mesma forma, o efeito será estranho. A diferença na velocidade das ações tornará a transição muito perceptível e não natural. Portanto, a menos que você esteja animando um carro antigo com alguns problemas de motor, você não quer que a transição seja tão abrupta. Portanto, você pode combinar a nova ação (por exemplo, correr) com a atual (andar). O Blendin funciona mesmo se a animação anterior não estiver mais sendo reproduzida. Observe que o Blendin só funciona entre atuadores de ação que estão nas mesmas camadas de animação.
 
-- **Priority** will determine the execution order of different actions in the same layer. If you have two or more actions playing at the same time, which one will be played? This will be up to the priority to decide. The actuator with the lowest priority will be the one played (so a low priority number equals a high execution priority).
+- **Priority**irá determinar a ordem de execução de diferentes ações na mesma camada. Se você tiver duas ou mais ações em execução ao mesmo tempo, qual será executada? Isso caberá à prioridade decidir. O atuador com a prioridade mais baixa será aquele tocado (então um número de baixa prioridade é igual a uma alta prioridade de execução).
 
-- **Layer** allows you to have concurrently playing animations. In other words, you can stack multiple actions to be played independently. For example, you can have a base layer for the body actions and a top layer for the face animations. While the body can be playing a walking animation, the face can be playing different idle actions. Splitting actions in separate layers (and separate Action actuators) also allows for gradual blending between the actions.
+- **Layer**permite que você reproduza animações simultaneamente. Em outras palavras, você pode empilhar várias ações para serem executadas independentemente. Por exemplo, você pode ter uma camada de base para as ações do corpo e uma camada superior para as animações de rosto. Embora o corpo possa reproduzir uma animação de caminhada, o rosto pode estar reproduzindo diferentes ações inativas. Dividir ações em camadas separadas (e atuadores de ação separados) também permite a fusão gradual entre as ações.
 
-- **Layer Weight** sets the ratio of influence of the previous animation layers to blend into the current Action actuator.
+- **Layer Weight** define a proporção de influência das camadas de animação anteriores para combinar com o atuador de ação atual.
 
 #### Armature <a id="Armature"></a>
 
-The Action actuator is not the only way of moving and controlling your armature. With the help of bone constraints, armatures can perform autonomous interacting with other objects. Together with the Armature sensor, this actuator was originally created for robotic simulations. Nevertheless, these kinds of non-baked/pre-done bone animations can serve multiple purposes. For a proper explanation on when this can be used and how it works, please refer to the iTaSC section in Chapter 4, "Animation."
+O atuador Action não é a única maneira de mover e controlar sua armadura. Com a ajuda de restrições ósseas, as armaduras podem realizar uma interação autônoma com outros objetos. Junto com o sensor Armature, este atuador foi originalmente criado para simulações robóticas. No entanto, esses tipos de animações de osso não preparadas / pré-feitas podem servir a vários propósitos. Para obter uma explicação adequada sobre quando isso pode ser usado e como funciona, consulte a seção iTaSC no Capítulo 4, "Animação".
 
-And for more information, please visit: [http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver](http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver)
+E para obter mais informações, visite: [http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver](http://wiki.blender.org/index.php/Dev:Source/ GameEngine/RobotIKSolver)
 
 ![Armature actuator](../figures/Chapter3/Fig03-29.png "Armature actuator")
 
-The actuator modes are the following:
+Os modos do atuador são os seguintes:
 
-- **Run Armature** : Runs the simulation in this armature.
+- **Run Armature** : Executa a simulação nesta armadura.
 
-- **Enable** / **Disable** : Takes a bone and a bone constraint as arguments. It allows you to control when this particular constraint should run.
+- **Enable** / **Disable** : Utiliza um osso e uma restrição de osso como argumentos. Ele permite que você controle quando essa restrição específica deve ser executada.
 
-- **Set Influence** : Sets the influence of a bone constraint dynamically.
+- **Set Influence** : Define a influência de uma restrição de osso dinamicamente.
 
-- **Set Weight** : Sets the weight of the IK influence in a bone.
+- **Set Weight** : Define o peso da influência IK em um osso.
 
-- **Set Target** : Sets the targets for a bone constraint. When using the Inverse KinematicConstraint, you can also set the Secondary Target (also known as _polar target_).
+- **Set Target** :Define os alvos para uma restrição de osso. Ao usar a restrição cinemática inversa, você também pode definir o alvo secundário (também conhecido como _alvo polar_).
 
 >**Dynamic Constraints**
 >
-This actuator only works for Armature objects. If you want to drive some of the bone parameters (for example a bone constraint influence), you need to have an active Armature actuator with the "Run Armature" option.
-You can find an example of Set Influence with Run Armature in the sample file \Book\Chapter3\influence\_dynamic.blend.
+Este atuador só funciona para objetos de armadura. Se você deseja conduzir alguns dos parâmetros do bone (por exemplo, uma influência de restrição do bone), você precisa ter um atuador de armadura ativo com a opção "Executar armadura".
+Você pode encontrar um exemplo de Set Influence with Run Armature no arquivo de amostra \Book\Chapter3\Influence\_dynamic.blend.
 
 #### Camera <a id="Camera"></a>
 
-The Camera actuator will move your object (usually your active camera) behind the specified axis (X or Y) of the camera object (see Figure 3.30). The front part of your object is its Y axis, because this is the one used in the final alignment. It will not act right away, though. The more you activate it, the closer you get from the specified parameters: Min, Max, and Height. After reaching the target, your object will keep "bobbing," while making sure it keeps itself inside the distance determined by the Min and Max range.
+O atuador da câmera moverá seu objeto (geralmente sua câmera ativa) atrás do eixo especificado (X ou Y) do objeto de câmera (consulte a Figura 3.30). A parte frontal do seu objeto é o eixo Y, porque este é o eixo usado no alinhamento final. Não vai agir imediatamente, no entanto. Quanto mais você o ativa, mais perto você se aproxima dos parâmetros especificados: Mín, Máx e Altura. Depois de atingir o alvo, seu objeto continuará "balançando", enquanto se certifica de que se mantém dentro da distância determinada pelo intervalo Mín e Máx.
 
 ![Camera actuator](../figures/Chapter3/Fig03-30.png "Camera actuator")
 
 >**Tips**
 >
->If You Are Looking to Change the Active Camera, Keep Looking
+>Se você deseja alterar a câmera ativa, continue procurando
 >
->If you are trying to change the active camera of the scene, please look at the Scene actuator.
+>Se você está tentando mudar a câmera ativa da cena, por favor, olhe para o atuador de cena.
 
 #### Constraint <a id="Constraint"></a>
 
-The Constraint actuator takes control over your object position and orientation. You can use it to make sure that an object is always close to the ground, which is probably the most popular application of it. If you are into physics demos and sci-fi games, you might use it to simulate an anti-gravitational field. What if you want to make a bop bag? A Constraint actuator will make it for you. (Well, you do have to set it up.)
+O atuador de restrição assume o controle sobre a posição e orientação do objeto. Você pode usá-lo para garantir que um objeto esteja sempre próximo ao solo, o que é provavelmente a aplicação mais popular dele. Se você gosta de demos de física e jogos de ficção científica, pode usá-lo para simular um campo antigravitacional. E se você quiser fazer um bop bag? Um atuador de restrição fará isso por você. (Bem, você tem que configurá-lo.)
 
 ##### Location Constraint <a id="Location_Constraint"></a>
 
-With the Location Constraint option, the actuator will move your object inside the specified range (see Figure 3.31). It doesn't have to happen right away, and this is one of the beauties of it. You can set a Damping factor, which will determine how many frames it will take for the object to get in the right position; this produces very smooth results.
+Com a opção Location Constraint, o atuador moverá seu objeto dentro do intervalo especificado (consulte a Figura 3.31). Não precisa acontecer imediatamente, e essa é uma das belezas disso. Você pode definir um fator de amortecimento, que determinará quantos quadros serão necessários para que o objeto fique na posição correta; isso produz resultados muito suaves.
 
 ![Constraint actuator – location](../figures/Chapter3/Fig03-31.png "Constraint actuator – location")
 
-The Min and Max are global coordinates and can only restrict one axis at a time. To lock your object into a three-dimensional cage, you need three distinct Constraint actuators. This will give you full control over the range of positions where your object should be.
+O Mín e Máx são coordenadas globais e podem restringir apenas um eixo de cada vez. Para travar seu objeto em uma gaiola tridimensional, você precisa de três atuadores de restrição distintos. Isso lhe dará controle total sobre a gama de posições onde seu objeto deve estar.
 
 ##### Distance <a id="Distance"></a>
 
-The Distance Constraint option compares and controls the distance between your object and nearby objects (see Figure 3.32). You first have to determine which axis you want to use for the distance check. If you toggle the **L** button, the actuator uses the object axis; otherwise, it uses the global one. The game engine will cast a ray in that direction and try to find a surface that has the game property or the material specified with the M/P option. It uses the Range to determine the maximum length of the casted ray. If the ray hits a face, the following options will be considered:
+A opção Restrição de distância compara e controla a distância entre seu objeto e os objetos próximos (veja a Figura 3.32). Você primeiro deve determinar qual eixo deseja usar para a verificação da distância. Se você alternar o **L** botão, o atuador usa o eixo do objeto; caso contrário, ele usa o global. O motor do jogo lançará um raio nessa direção e tentará encontrar uma superfície que tenha a propriedade do jogo ou o material especificado com a opção M / P. Ele usa o Alcance para determinar o comprimento máximo do raio lançado. Se o raio atingir uma face, as seguintes opções serão consideradas:
 
-- **Force Distance** : Sets the new distance between your object and the found/hit surface.
+- **Force Distance** : Define a nova distância entre seu objeto e a superfície encontrada/atingida.
 
-- **Damping** : The number of frames for the repositioning to be complete.
+- **Damping** : O número de quadros para que o reposicionamento seja concluído.
 
-- **N** : Turn it on, and your object will be aligned with the (normal of the) found/hit surface.
+- **N** : Ligue-o e seu objeto ficará alinhado com a superfície (normal da) encontrada/atingida.
 
-- **RotDamping** : The number of frames to complete the alignment rotation.
+- **RotDamping** : O número de quadros para completar a rotação do alinhamento.
 
 ![Constraint actuator – Distance](../figures/Chapter3/Fig03-32.png "Constraint actuator – Distance")
 
 >**Until a Negative Signal Do Us Part**
 >
->This actuator will be active as soon as it is triggered and will remain active until it receives a negative signal or can no longer find a surface (for example, the floor) in the given range. If you want to keep your actuator active even when it doesn't find a surface to be constrained to, you can turn on the Persistency **(PER)** option. If Time is greater than zero, it will set the maximum activation period of the actuator.
+>Este atuador estará ativo assim que for acionado e permanecerá ativo até receber um sinal negativo ou não conseguir mais encontrar uma superfície (por exemplo, o piso) na faixa fornecida. Se você deseja manter o seu atuador ativo mesmo quando ele não encontra uma superfície para ser restringido, você pode ativar a Persistência**(PER)** opção. Se o tempo for maior que zero, definirá o período máximo de ativação do atuador.
 
 #### Orientation Constraint <a id="Orientation_Constraint"></a>
 
-Instead of affecting your object's position, the Orientation Constraint option will restrict its rotation on individual axes (see Figure 3.33). It aligns the specified axis with the reference direction. For example, if you want to make your bop bag stay straight, you can use Z as Direction and 0, 0, 1 as the Referencedirection. As with the other Constraint Actuator options, you can set Min and Max angles, Damping frames, and the Time.
+Em vez de afetar a posição do seu objeto, a opção Orientation Constraint restringirá sua rotação em eixos individuais (veja a Figura 3.33). Ele alinha o eixo especificado com a direção de referência. Por exemplo, se você quiser fazer seu saco de bop ficar reto, você pode usar Z como direção e 0, 0, 1 como direção de referência. Tal como acontece com as outras opções do atuador de restrição, você pode definir os ângulos mínimo e máximo, quadros de amortecimento e o tempo.
 
 ![Constraint actuator – Orientation](../figures/Chapter3/Fig03-33.png "Constraint actuator – Orientation")
 
 #### Force Field Constraint <a id="Force_Field_Constraint"></a>
 
-The Force Field Constraint simulates a spring field underneath your object (see Figure 3.34). The effect is similar to hovering above water or simple buoyancy. Force fields can also be set with the Physics settings in the Material Panel (see Chapter 6 for details).
+A restrição de campo de força simula um campo de mola sob seu objeto (consulte a Figura 3.34). O efeito é semelhante a pairar sobre a água ou flutuação simples. Os campos de força também podem ser definidos com as configurações de Física no Painel de Materiais (consulte o Capítulo 6 para obter detalhes).
 
 ![Constraint actuator - Force Field](../figures/Chapter3/Fig03-34.png "Constraint actuator - Force Field")
 
-The special options are the following:
+As opções especiais são as seguintes:
 
 - **Force** : Spring force of the force field.
 
