@@ -55,35 +55,35 @@
 		- [Mango Jambo Special Animation](#Mango_Jambo_Special_Animation)
 	- [To Learn More](#To_Learn_More)
 
-# Chapter 4: Animation <a id="Chapter_4_Animation"></a>
+# Capítulo 4: Animação <a id="Chapter_4_Animation"></a>
 
-_Written in collaboration with Moraes Júnior - Mango Jambo for friends[md]known for his work as the main character animator in the Blender Foundation open game project Yo Frankie._
+_Escrito em colaboração com Moraes Júnior - Mango Jambo para amigos [md] conhecido por seu trabalho como o animador do personagem principal no projeto de jogo aberto da Blender Foundation Yo Frankie._
 
-Animation is the breath of life. It's the soul of your characters. And we swear we're not making that up. Take a look at the etymological origin of the word, and you will find that animation comes from _anima_, which means _soul_ in Latin. Try to remember that. If for nothing else, it can help you to sound smart for the next person who wonders why you are paid to play video games. Figure 4.1 highlights what animation can be.
+A animação é o sopro da vida. É a alma de seus personagens. E juramos que não estamos inventando isso. Dê uma olhada na origem etimológica da palavra, e você verá que animação vem de _anima_, que significa _soul_ em latim. Tente se lembrar disso. Se por nada mais, ele pode ajudá-lo a parecer inteligente para a próxima pessoa que se pergunta por que você é pago para jogar videogame. A Figura 4.1 destaca o que a animação pode ser.
 
-![This chapter is about what? Hmmm? I can't see!](../figures/Chapter4/Fig04-01.png)
+![Este capítulo é sobre o quê? Hmmm? Eu não consigo ver!](../figures/Chapter4/Fig04-01.png)
 
-Back on the right track, in this chapter you will note a different structure than the previous chapters.
+De volta ao caminho certo, neste capítulo você notará uma estrutura diferente dos capítulos anteriores.
 
-We will first talk about the main animation tools and available techniques. This part will be naturally dense, focusing on when and why to use specific animation features. Even for those experienced Blender animators, there are important aspects of the game engine system that you will need to learn because not all the resources available in Blender translate directly to the game engine.
+Vamos primeiro falar sobre as principais ferramentas de animação e técnicas disponíveis. Esta parte será naturalmente densa, focando em quando e por que usar recursos de animação específicos. Mesmo para os animadores experientes do Blender, existem aspectos importantes do sistema de mecanismo de jogo que você precisa aprender porque nem todos os recursos disponíveis no Blender são traduzidos diretamente para o mecanismo de jogo.
 
-The second part is organized as a tutorial. I worked with artist Moraes Júnior to expose his animation workflow. In this part, we will revisit the game engine animation features and learn how an artist integrates them into a production environment. For this part, it's especially important that you follow along with the steps in the book files.
+A segunda parte é organizada como um tutorial. Trabalhei com o artista Moraes Júnior para expor seu fluxo de trabalho de animação. Nesta parte, revisitaremos os recursos de animação do motor de jogo e aprenderemos como um artista os integra em um ambiente de produção. Para esta parte, é especialmente importante que você siga as etapas nos arquivos do livro.
 
 >**Keyframing a Keyframe**
 >
->_Keyframe_ is used both as a verb and a noun in this chapter. The latter (noun) refers to the animation frames that you will manually create. The first (verb) is the action of creating those frames (through the "I" key shortcut or the Auto Recording system).
+>_Keyframe_ é usado como verbo e substantivo neste capítulo. O último (substantivo) refere-se aos quadros de animação que você criará manualmente. O primeiro (verbo) é a ação de criar esses quadros (por meio do atalho da tecla "I" ou do sistema de Gravação automática).
 
-In order to use the animation system properly, it will help if you know how to produce astonishing animations. For that there is a lot of good literature available, whether it is Blender specific or not. This book will not teach you how to do nice animations. Nonetheless, we want you, the artist, to understand how to animate for the game engine.
+Para usar o sistema de animação corretamente, será útil saber como produzir animações surpreendentes. Para isso existe uma boa literatura disponível, seja ela específica do Blender ou não. Este livro não vai te ensinar como fazer belas animações. No entanto, queremos que você, o artista, entenda como animar para o motor de jogo.
 
->**Before You Start**
+>**Antes que você comece**
 >
->If this is your first time working with animation in Blender, make sure that you haven't skipped the first chapter. The game engine uses the animations created in Blender with Keyframes, F-Curves, interpolations, and so on. To learn how to master animation, you will have a better time consulting a Blender-specific book. Nevertheless, it doesn't hurt to refresh your mind regarding basic concepts and interface navigation topics covered in Chapter 1.
+>Se esta é sua primeira vez trabalhando com animação no Blender, certifique-se de não pular o primeiro capítulo. A engine do jogo usa as animações criadas no Blender com Keyframes, F-Curves, interpolações e assim por diante. Para aprender a dominar a animação, você terá um melhor momento consultando um livro específico do Blender. No entanto, não custa refrescar sua mente em relação aos conceitos básicos e tópicos de navegação de interface cobertos no Capítulo 1.
 
-## Every Pot Has a Cover <a id="Every_Pot_Has_a_Cover"></a>
+## Cada panela tem uma tampa <a id="Every_Pot_Has_a_Cover"></a>
 
-_Every animated pot has an F-Curve._
+_Todo pote animado tem uma curva F._
 
-Where do we use animations in a game? The most obvious place is for character animation; for example, whenever the player walks, jumps, or flies, you'll see game animations running. That is not the only time, though, when you'll see animations. You will also see them in cut scenes, background elements, the user interface, and so on[md]the list is endless. In order to cover such a wide variety of usages, there are three mechanisms that the game engine provides to animate your game elements: object transformations, armature poses, and shape keys.
+Onde usamos animações em um jogo? O lugar mais óbvio é para a animação de personagens; por exemplo, sempre que o jogador anda, pula ou voa, você verá as animações do jogo em execução. Essa não é a única vez, porém, em que você verá animações. Você também os verá em cutscenes, elementos de fundo, a interface do usuário e assim por diante [md] a lista é interminável. Para cobrir uma ampla variedade de usos, existem três mecanismos que o motor do jogo fornece para animar os elementos do jogo: transformações de objetos, poses de armadura e chaves de forma.
 
 - **Object transformations** enable you to change object transformations such as size, rotation, and location.
 
