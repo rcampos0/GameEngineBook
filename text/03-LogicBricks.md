@@ -143,7 +143,7 @@ Aqui estão algumas instruções sobre como usar a interface do Logic Editor.
 
 ### Adicionar <a id="Add"></a>
 
-Para adicionar novos Logic bricks, só é possível para o objeto ativo. Este sempre é exibido como o primeiro na lista do Logic Editor. Você pode ver o botão Adicionar Sensor / Controlador / Atuador logo após o nome do objeto ativo em sua respectiva coluna, conforme mostrado na Figura 3.4.
+Para adicionar novos Logic bricks, só é possível para o objeto ativo. Este sempre é exibido como o primeiro na lista do Logic Editor. Você pode ver o botão Adicionar Sensor/Controlador/Atuador logo após o nome do objeto ativo em sua respectiva coluna, conforme mostrado na Figura 3.4.
 
 ![Adicionar Controlador](../figures/Chapter3/Fig03-04.png "Add controller")
 
