@@ -778,80 +778,80 @@ Por meio das opções da interface, você pode alterar a velocidade linear e ang
 
 >**For More Control Go with Python**
 >
->There are so many applications for this feature that it is hard to narrow them down to one example. They run from dynamically populating your game to creating short duration particle effects. You may find yourself looking for more control over added objects, and scripting may address this for you. Through the Python API, you can access the previously added object, get its life span, or even completely replace the actuator by its Python equivalent function KX\_Scene.addObject().
+>Existem tantos aplicativos para esse recurso que é difícil restringi-los a um exemplo. Eles vão desde o preenchimento dinâmico do seu jogo até a criação de efeitos de partículas de curta duração. Você pode encontrar-se procurando por mais controle sobre os objetos adicionados, e os scripts podem resolver isso para você. Por meio da API Python, você pode acessar o objeto adicionado anteriormente, obter sua vida útil ou até mesmo substituir completamente o atuador por sua função equivalente em Python KX\_Scene.addObject ().
 
-- **EndObject** : Take a deep look at your game object. Now turn away and say bye! Not only will your object be removed from the game, but also any child object parented to it.
+- **EndObject** : Dê uma olhada em seu objeto de jogo. Agora vire-se e diga tchau! Não apenas seu objeto será removido do jogo, mas também qualquer objeto filho a ele relacionado.
 
-- **ReplaceMesh** : If your object is not an Armature, a Camera, an Empty, a Lamp, or a Text, it does have a mesh attached to it. And if it has a mesh, it can have it switched into a different one. There are two options here: to replace the graphic mesh[md]the one you see rendered[md]or to replace the physical mesh[md]the one used for physics interactions, viewed with Show Physics Visualization.
+- **ReplaceMesh** :Se o seu objeto não for uma Armadura, uma Câmera, um Vazio, uma Lâmpada ou um Texto, ele tem uma malha anexada a ele. E se tiver uma malha, pode trocá-la por outra. Existem duas opções aqui: substituir a malha gráfica [md] aquela que você vê renderizada [md] ou substituir a malha física [md] aquela usada para interações físicas, vista com Mostrar Visualização de Física.
 
 >**But Isn't This Slow? Not Really**
 >
->This feature works pretty fast. All meshes in the blender file are preconverted when the game is launched. When the actuator is activated, the game engine simply swaps the current mesh for the new one. This works even if there is no visible object using the mesh you want to replace, or there is no object at all; just make sure to keep the mesh alive with the "fake user" option.
+>Este recurso funciona muito rápido. Todas as malhas no arquivo do blender são pré-convertidas quando o jogo é iniciado. Quando o atuador é ativado, o mecanismo de jogo simplesmente troca a malha atual pela nova. Isso funciona mesmo se não houver nenhum objeto visível usando a malha que você deseja substituir ou se não houver nenhum objeto; apenas certifique-se de manter a malha viva com a opção "falso usuário".
 
-This option can be used to implement what is known as level of detail: you swap your object mesh based on its distance to the camera. Whether the extra stress on your Logic and eventual scripting makes up for the gain in rasterizer performance will be up to your particular game.
+Esta opção pode ser usada para implementar o que é conhecido como nível de detalhe: você troca a malha do seu objeto com base na distância da câmera. Depende do seu jogo em particular se o estresse extra em seu Logic e eventual script compensam o ganho no desempenho do rasterizador.
 
-- **TrackTo:** Unlike the Camera actuator, this Edit Object option will not move your object but rather change its rotation. Your object will work as a security camera tracking the object specified in the Object field. The 3D tracking option allows for three degrees of freedom in the tracker object. If Time is bigger than zero, it will determine how long a tracking lasts before the actuator is reactivated. To change the tracking axes, go to the Relations Extras options in the Object panel.
+- **TrackTo:** Ao contrário do atuador da Câmera, esta opção Editar Objeto não moverá seu objeto, mas mudará sua rotação. Seu objeto funcionará como uma câmera de segurança rastreando o objeto especificado no campo Objeto. A opção de rastreamento 3D permite três graus de liberdade no objeto rastreador. Se o tempo for maior que zero, ele determinará quanto tempo dura um rastreamento antes que o atuador seja reativado. Para alterar os eixos de rastreamento, vá para as opções Extras de relações no painel Objeto.
 
-- **Dynamics** : Rigid Body and Dynamics can be turned off and back on here. That doesn't make a static object into a Rigid Body or Dynamic. It works to temporarily (or permanently) disable the physics behavior of one. The mass of the object can be changed here as well.
+- **Dynamics** : Rigid Body and Dynamics podem ser desativados e ativados aqui. Isso não transforma um objeto estático em um corpo rígido ou dinâmico. Ele funciona para desativar temporariamente (ou permanentemente) o comportamento físico de um. A massa do objeto também pode ser alterada aqui.
 
 #### Message <a id="Message"></a>
 
-There are different ways to coordinate actions between different objects. As presented earlier, one of them is through linking logic bricks from different objects. That is not only messy, but also limiting; you can only link objects if they are both present in the game altogether (ruling out dynamic added objects); nor you can broadcast an action over multiple objects without linking them manually. A good alternative is to use the Message actuator to send a message for other objects (or for itself). The three optional available fields are: To, Subject, and Body. You can see them in Figure 3.36.
+Existem diferentes maneiras de coordenar ações entre diferentes objetos. Conforme apresentado anteriormente, um deles é através da ligação de blocos lógicos de objetos diferentes. Isso não é apenas confuso, mas também limitante; você só pode vincular objetos se ambos estiverem presentes no jogo (descartando objetos adicionados dinâmicos); nem você pode transmitir uma ação sobre vários objetos sem vinculá-los manualmente. Uma boa alternativa é usar o atuador Message para enviar uma mensagem para outros objetos (ou para si mesmo). Os três campos opcionais disponíveis são: Para, Assunto e Corpo. Você pode vê-los na Figura 3.36.
 
 ![Message actuator](../figures/Chapter3/Fig03-36.png "Message actuator")
 
-If you don't know which object to send the message to (or want to send it to more than one), you can broadcast it instead. For that you simply have to omit the To parameter. A Message Sensor[md]the other part of the story[md]can filter messages by their Subject. The Body can only be retrieved by a Python script, and it is commonly left blank when you only want to trigger an event, not to pass a value. The Body can be either a text or the value of a property.
+Se você não sabe para qual objeto enviar a mensagem (ou deseja enviá-la para mais de um), você pode transmiti-la. Para isso, basta omitir o parâmetro To. Um sensor de mensagem [md] a outra parte da história [md] pode filtrar mensagens por assunto. O corpo só pode ser recuperado por um script Python e normalmente é deixado em branco quando você deseja apenas acionar um evento, não para passar um valor. O corpo pode ser um texto ou o valor de uma propriedade.
 
 > **The Real Thing About Real-Time Is That It Has a Delay**
 >
->Be aware that messages are only going to be detected by the Message sensor in the next Logic cycle. Therefore, it's not a full replacement for linked Logic Bricks.
+>Esteja ciente de que as mensagens só serão detectadas pelo sensor de Mensagem no próximo ciclo lógico. Portanto, não é um substituto completo para os blocos lógicos vinculados.
 
 #### Motion <a id="Motion"></a>
 
-_"My body move, move, my body …move!"_[md]hippo dance/pickup line (one of the best moments of DreamWorks' _Madagascar 2_).
+_ "Meu corpo se move, move, meu corpo ... move!" _ [Md] hipopótamo dance / pickup line (um dos melhores momentos de _Madagascar 2_ da DreamWorks).
 
-It moves, but it does it in distinct ways. For example, an animated character will use an actuator to control the bones and a Motion actuator to control the general movement of the object into the scene[md]its orientation and position. So unless the game character is doing a windmill exercise, your walking cycle will need this actuator. As a matter of fact, any object[md]with or without an action assigned to it[md]may need to rotate and move around. Therefore, this is one of the most important actuators and vastly used for a game. Let's take a deep look at the two available methods: Simple Motion and Servo Control.
+Ele se move, mas o faz de maneiras distintas. Por exemplo, um personagem animado usará um atuador para controlar os ossos e um atuador de movimento para controlar o movimento geral do objeto na cena [md] sua orientação e posição. Portanto, a menos que o personagem do jogo esteja fazendo um exercício de moinho de vento, sua bicicleta de caminhada precisará deste atuador. Na verdade, qualquer objeto [md] com ou sem uma ação atribuída a ele [md] pode precisar girar e se mover. Portanto, este é um dos atuadores mais importantes e amplamente utilizado para um jogo. Vamos dar uma olhada nos dois métodos disponíveis: Simple Motion e Servo Control.
 
 >**Rotate It Just a Bit**
 >
->Once activated, this actuator will keep playing until it receives a negative signal or until it stops receiving the positive ones. So if you want to rotate your object a few degrees only when you press a key, you must use the Tap option in the Keyboard sensor.
+>Uma vez ativado, este atuador continuará tocando até receber um sinal negativo ou até que ele pare de receber os positivos. Portanto, se você deseja girar seu objeto alguns graus apenas ao pressionar uma tecla, deve usar a opção Toque no sensor do teclado.
 
 ##### Simple Motion <a id="Simple_Motion"></a>
 
-The simplest way of moving an object is by changing its location in a specific direction. You can determine the offset in the X/Y/Z axis and in the next frame, your object will be that far from its original position. You can apply a rotation the same way, by considering the angle you want to rotate each of the axes every time. In Figure 3.37, you can see the barebones for this actuator.
+A maneira mais simples de mover um objeto é alterando sua localização em uma direção específica. Você pode determinar o deslocamento no eixo X / Y / Z e no próximo quadro, seu objeto estará muito longe de sua posição original. Você pode aplicar uma rotação da mesma maneira, considerando o ângulo que deseja girar cada um dos eixos todas as vezes. Na Figura 3.37, você pode ver os barebones desse atuador.
 
 ![Motion actuator - Simple Motion](../figures/Chapter3/Fig03-37.png "Motion actuator - Simple Motion")
 
-But what happens if your object is a dynamic one? If the object is already being controlled by the rules of physics, you can interact with it on that instance as well. Dynamic Object Settings allow you to apply physical changes into your object and let it react to them. Instead of displacing it a few units away, you can actually push it with some force into a given direction. What will stop the object from moving in this direction forever? As in the real world, the reaction from the other objects will produce resistance through surface collision (also known as _friction_). There will be times when you want to move your object regardless of the other game actors' physic meshes. For those, you can still rely on the Loc and Rot options.
+Mas o que acontece se o seu objeto for dinâmico? Se o objeto já está sendo controlado pelas regras da física, você também pode interagir com ele nessa instância. As configurações dinâmicas de objeto permitem que você aplique alterações físicas em seu objeto e deixe que ele reaja a elas. Em vez de deslocá-lo algumas unidades de distância, você pode empurrá-lo com alguma força em uma determinada direção. O que impedirá o objeto de se mover nessa direção para sempre? Como no mundo real, a reação de outros objetos produzirá resistência por meio de colisão de superfície (também conhecida como _fricção_). Haverá momentos em que você deseja mover seu objeto, independentemente das malhas físicas dos outros atores do jogo. Para aqueles, você ainda pode contar com as opções Loc e Rot.
 
 ![Motion actuator - Dynamic Object Settings](../figures/Chapter3/Fig03-38.png "Motion actuator - Dynamic Object Settings")
 
-When your object is a dynamic one, you will see new options in the actuator (see Figure 3.38). Force, Torque, Linear and Angular Velocity, and Damping were all explained earlier. The difference between Force, Torque, and Linear and Angular Velocity is simple: when you use Force and Torque, you are adding physic momentum that will be applied to the object mass and result in a specific velocity. When you set the velocity directly, you have the game engine making sure the applied momentum will result on that velocity. There is also an option to Set or Add the Linear Velocity on top of the existent one and specify the Damping Frames to simulate acceleration; those are the number of frames that it will take to reach the target velocity.
+Quando seu objeto for dinâmico, você verá novas opções no atuador (consulte a Figura 3.38). Força, Torque, Velocidade Linear e Angular e Amortecimento foram explicados anteriormente. A diferença entre Força, Torque e Velocidade Linear e Angular é simples: quando você usa Força e Torque, você está adicionando o momento físico que será aplicado à massa do objeto e resultará em uma velocidade específica. Quando você configura a velocidade diretamente, você tem o mecanismo de jogo certificando-se de que o momento aplicado resultará nessa velocidade. Também existe uma opção para definir ou adicionar a velocidade linear em cima da existente e especificar os quadros de amortecimento para simular a aceleração; esse é o número de quadros que serão necessários para atingir a velocidade alvo.
 
 >**Local and Global Again**
 >
->In Blender, there are two main coordinate systems: Local and Global. Whenever you refer to an axis, you should be aware of the system you want to use. The default one is always the Global (also known as _World_) and will use the absolute X,Y,Z reference of your scene. When you want to use the Local one, which is shown as an L in the interface, the axis used will always be relative to your object's current orientation.
+>No Blender, existem dois sistemas principais de coordenadas: Local e Global. Sempre que você se referir a um eixo, deve estar ciente do sistema que deseja usar. O padrão é sempre o Global (também conhecido como _Mundo_) e usará a referência X, Y, Z absoluta de sua cena. Quando você quiser usar o local, que é mostrado como um L na interface, o eixo usado será sempre relativo à orientação atual do seu objeto.
 
 ##### Servo Control <a id="Servo_Control"></a>
 
-This is a more complex and complete method for controlling your object's linear movement. The Servo Control option enables you to control speed with force. It will apply a variable force in order to reach the target specified speed. It can be used to simulate the most varied effects, such as friction, flying, sliding, and so on.
+Este é um método mais complexo e completo para controlar o movimento linear do seu objeto. A opção Servo Control permite que você controle a velocidade com força. Ele aplicará uma força variável para atingir a velocidade desejada. Pode ser usado para simular os mais diversos efeitos, como fricção, voo, deslizamento, etc.
 
-The Servo Control can (and should) be used for any object, regardless of its dynamic/physic properties (see Figure 3.39). It replaces both Location and Linear Velocity from the Simple Motion option. The produced result is a more fluid and continuous movement for your object. This also doesn't affect the behavior of collision and other physics interactions[md]as opposed to using Location in the Simple Motion. The latter makes the object do "jumps into space," ignoring whatever is between its original and final position.
+O Servo controle pode (e deve) ser usado para qualquer objeto, independentemente de suas propriedades dinâmicas / físicas (ver Figura 3.39). Ele substitui Local e Velocidade Linear da opção Movimento Simples. O resultado produzido é um movimento mais fluido e contínuo para seu objeto. Isso também não afeta o comportamento de colisão e outras interações físicas [md] em oposição ao uso de Localização no Movimento Simples. Este último faz com que o objeto "salte no espaço", ignorando o que quer que esteja entre sua posição original e final.
 
 ![Motion actuator - Servo Control](../figures/Chapter3/Fig03-39.png "Motion actuator - Servo Control")
 
-- **Reference Object** : Albert Einstein once said that everything is relative. One of the breakthroughs of his scientific findings originated from his observation of a train from different reference points (a station, the same train, another train). The Reference Object here works as such, relativizing the new velocity from its position and velocity.
+- **Reference Object** : Albert Einstein disse uma vez que tudo é relativo. Um dos avanços de suas descobertas científicas originou-se da observação de um trem de diferentes pontos de referência (uma estação, o mesmo trem, outro trem). O Reference Object aqui funciona como tal, relativizando a nova velocidade de sua posição e velocidade.
 
 - **Linear Velocity:** The target velocity used in the Servo Control calculation.
 
-- **Force Limit X** , **Y** , **Z** : It can control the minimum and maximum of the force applied in the object. The target velocity will eventually be reached so this option works toward speeding up or slowing down the acceleration.
+- **Force Limit X** , **Y** , **Z** :Ele pode controlar o mínimo e o máximo da força aplicada no objeto. A velocidade alvo será eventualmente alcançada, então esta opção funciona no sentido de acelerar ou desacelerar a aceleração.
 
 >**Advanced Motion Control**
 >
->**PID Servo Control System** : The following options help you to control the responsiveness and the reaction of your movement. In simple English, this is known as a "control loopback mechanism," and it is a constant evaluation procedure that shapes the characteristics of your movement.
->This is a generic (non-Blender specific) system; for more information, look at external references such as:http://en.wikipedia.org/wiki/PID\_controller
+>**PID Servo Control System** : As opções a seguir o ajudam a controlar a capacidade de resposta e a reação de seu movimento. Em inglês simples, isso é conhecido como "mecanismo de loopback de controle" e é um procedimento de avaliação constante que molda as características de seu movimento.
+>Este é um sistema genérico (não específico do Blender); para obter mais informações, consulte as referências externas, como: http: //en.wikipedia.org/wiki/PID \ _controller
 
-- **Proportional Coefficient** : You don't need to change this parameter unless you know what you are doing. It will adjust itself to be 60 times the IntegralCoefficient, so if you want a different value, remember to update it after making any adjustments there.
+- **Proportional Coefficient** :Você não precisa alterar esse parâmetro, a menos que saiba o que está fazendo. Ele se ajustará para ser 60 vezes o IntegralCoefficient, então se você quiser um valor diferente, lembre-se de atualizá-lo após fazer quaisquer ajustes.
 
 - **Integral Coefficient** : The default value (0.5) will give you a fast response into the system. Values as small as 0.1 will produce very slow responses.
 
