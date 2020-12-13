@@ -534,7 +534,7 @@ Se o seu valor for numérico, você também pode manipulá-lo um pouco. Isso pod
 
 #### Boolean Operations <a id="Boolean_Operations"></a>
 
-Finally, you have the capability of combining Boolean tests together. A Boolean test can be a simple Boolean value (for example, a sensor or a property value) or the result of a comparison test. They work as aggregators through which you can compile big expression tests.
+Finalmente, você tem a capacidade de combinar testes booleanos. Um teste booleano pode ser um valor booleano simples (por exemplo, um sensor ou um valor de propriedade) ou o resultado de um teste de comparação. Eles funcionam como agregadores por meio dos quais você pode compilar grandes testes de expressão.
 
 - **And** : potionKeyboardSensor AND numberPotions > 0 AND energy + 30 < 60
 
@@ -542,127 +542,126 @@ Finally, you have the capability of combining Boolean tests together. A Boolean 
 
 - **Not** : jumpKeyboardSensor AND NOT floorCollisionSensor
 
-The Boolean operations are not commutative or associative when grouped together. For example, try to read the following expressions:
+As operações booleanas não são comutativas ou associativas quando agrupadas. Por exemplo, tente ler as seguintes expressões:
 
 1 = 2 AND 3 > 4 OR 5<6
 
 False AND False OR True
 
-They are intentionally ambiguous. Are we testing the AND or the OR first? In order to solve this issue, you can use parentheses to isolate your expressions. The previous expressions are evaluated as:
+Eles são intencionalmente ambíguos. Estamos testando o AND ou o OR primeiro? Para resolver esse problema, você pode usar parênteses para isolar suas expressões. As expressões anteriores são avaliadas como:
 
 (1 = 2 AND 3 > 4) OR 5 < 6
 
 (False AND False) OR True
 
-Those expressions will result in true (false or true = true). If the expected result was false, we should have grouped it as:
+Essas expressões resultarão em verdadeiro (falso ou verdadeiro = verdadeiro). Se o resultado esperado fosse falso, deveríamos ter agrupado como:
 
 1 = 2 AND (3 > 4 OR 5 < 6)
 
 False AND (False OR True)
 
-You can find an elegant use of the Boolean operators to create a toggle mechanism on: _\Book\Chapter3\controller\_expression\_toggle.blend._
+Você pode encontrar um uso elegante dos operadores booleanos para criar um mecanismo de alternância em: _\Book\Chapter3\controller\_expression\_toggle.blend._
 
 >**Fake Flipper Animation with Expressions**
 >
->In the accompanying material, you can see a simulation of the Flipper animation mode implemented using the Property mode instead. This is done in two different ways: one with a Expression controller, and another with a Nand and And controllers and an Expression in a Property actuator. It shows the flexibility of the system and is a nice way to regulate the speed of your animation: _\Book\Chapter3\controller\_expression\_flipper.blend_ .
+>No material que acompanha, você pode ver uma simulação do modo de animação Flipper implementado usando o modo Property. Isso é feito de duas maneiras diferentes: uma com um controlador Expression, outra com controladores Nand e And e um atuador Expression in a Property. Mostra a flexibilidade do sistema e é uma boa maneira de regular a velocidade de sua animação: _\Book\Chapter3\controller\_expression\_flipper.blend_.
 
 #### Python Controller <a id="Python_Controller"></a>
 
-With a Python controller, you can evaluate sensors and activate actuators just as you would do with the other controllers. You can indeed replace any of the tests (logical switches or expressions) by an equivalent in Python. Actually, not only can the other controllers be replaced by this, but also most of your Logic Bricks as well. Chapter 7 is entirely dedicated to how and when to use this controller. Even if you are not into programming, we recommend you read the introduction sections of this chapter to understand its differences and advantages.
+Com um controlador Python, você pode avaliar sensores e ativar atuadores da mesma forma que faria com outros controladores. Na verdade, você pode substituir qualquer um dos testes (opções ou expressões lógicas) por um equivalente em Python. Na verdade, não apenas os outros controladores podem ser substituídos por este, mas também a maioria dos seus blocos lógicos. O Capítulo 7 é inteiramente dedicado a como e quando usar este controlador. Mesmo que você não goste de programação, recomendamos que leia as seções de introdução deste capítulo para entender suas diferenças e vantagens.
 
-There are two types of Python controllers: Script and Module.
+Existem dois tipos de controladores Python: Script e Módulo.
 
-- **Script** : This will take an internal Text datablock and run it as a script.
+- **Script** : Isso pegará um bloco de dados interno de texto e o executará como um script.
 
-- **Module** : This will call a module from a script file inside or outside your game file. The Module mode has a Debug option that forces the module to be recompiled every time you call it. This is really slow, but allows you to do changes in your script while your game is playing.
+- **Module** : Isso chamará um módulo de um arquivo de script dentro ou fora do arquivo do jogo. O modo Módulo tem uma opção de depuração que força o módulo a ser recompilado toda vez que você o chama. Isso é muito lento, mas permite que você faça alterações em seu script enquanto o jogo está jogando.
 
 >**Which Came First, the Controller or the Controller?**
 >
->For scripts, the order in which the controllers is executed matters. In cases where you need a script to run before the others, you can use the Mark option present in the Controller header. This is commonly used for Python controllers running scripts that are responsible for the initialization of your game variables and settings.
+>Para scripts, a ordem em que os controladores são executados é importante. Nos casos em que você precisa que um script seja executado antes dos outros, você pode usar a opção Mark presente no cabeçalho do Controlador. Isso é comumente usado para controladores Python que executam scripts que são responsáveis pela inicialização das variáveis e configurações do jogo.
 
 ### Actuators <a id="Actuators"></a>
 
-Last, but not least, there are the actuators. The trouble you've taken setting up sensors, controllers, and noodle linking will finally pay off. The actuators are grouped per themes (scene, game, object, actions, and so on), and their names and applications may surprise you. (For example, did you know the Camera actuator doesn't have to be used by a camera object?) We recommend that you familiarize yourself with all the options and sub-options and experiment with them as much as you can. While some effects work by themselves (for example, the game actuator), some will be more useful when combined together (for example, motion and action actuators). Have fun!
+Por último, mas não menos importante, existem os atuadores. O trabalho que você teve ao configurar sensores, controladores e vinculação de macarrão finalmente valerá a pena. Os atuadores são agrupados por temas (cena, jogo, objeto, ações e assim por diante), e seus nomes e aplicativos podem surpreendê-lo. (Por exemplo, você sabia que o atuador da câmera não precisa ser usado por um objeto de câmera?) Recomendamos que você se familiarize com todas as opções e subopções e as experimente o máximo que puder. Embora alguns efeitos funcionem por si próprios (por exemplo, o atuador do jogo), alguns serão mais úteis quando combinados (por exemplo, atuadores de movimento e ação). Diverta-se!
 
 #### Header <a id="Header"></a>
 
-The header of the actuators is similar to the sensors. Like the sensors, the Name is an essential element when using the actuator with a Python controller. In Figure 3.25, you can also see the Pin, a special option available to be used with controller states.
+O cabeçalho dos atuadores é semelhante aos sensores. Como os sensores, o Nome é um elemento essencial ao usar o atuador com um controlador Python. Na Figura 3.25, você também pode ver o Pin, uma opção especial disponível para ser usada com os estados do controlador.
 
 ![Actuator header](../figures/Chapter3/Fig03-25.png "Actuator header")
 
-- **Name** : This can be used to identify your actuator, even when it's not expanded. It's also used from Python scripts to activate it.
+- **Name** : Isso pode ser usado para identificar o seu atuador, mesmo quando não está expandido. Também é usado em scripts Python para ativá-lo.
 
-- **Pin** : When working with the State Machine system, you can use the State option on top of the actuator list to show only the actuators linked to controllers from visible states. With the Pin option in the actuator header, you can set your actuator to be always visible.
+- **Pin** : Ao trabalhar com o sistema State Machine, você pode usar a opção State no topo da lista de atuadores para mostrar apenas os atuadores vinculados aos controladores de estados visíveis. Com a opção Pin no cabeçalho do atuador, você pode definir seu atuador para estar sempre visível.
 
 #### Action <a id="Action"></a>
 
-Camera, lights, action! And let the animation begin. Whether you want to animate your Armature or you want to play a pre-recorded Action, you will end up using this actuator. An action can contain different F-Curves, controlling various object properties. If you split your property curves in different actions, you can control them one at a time. For example, leave Size and ObColor in the same action, and you can have a banana that is green when it's still small and turns yellow while growing.
+Câmera, luzes, ação! E vamos começar a animação. Quer você queira animar sua armadura ou quer jogar uma ação pré-gravada, você vai acabar usando este atuador. Uma ação pode conter diferentes Curvas F, controlando várias propriedades do objeto. Se você dividir suas curvas de propriedade em diferentes ações, poderá controlá-las uma de cada vez. Por exemplo, deixe Size e ObColor na mesma ação, e você pode ter uma banana que é verde quando ainda é pequena e fica amarela enquanto cresce.
 
-You can also have the same property present in multiple actions and use individual actions to store different animations.
+Você também pode ter a mesma propriedade presente em várias ações e usar ações individuais para armazenar diferentes animações.
 
 >**Short Actions in the Long Run**
 >
->Before the animation system redesign in Blender, it was only possible to have multiple actions for armatures and shape keys. Therefore, for any other animated action, people would create one really long action with different animations in different frame ranges. This still works well, but it's hard to manage if you ever need to change the length of one of the animations[md]you would have to update the start and end of all the actuators that were playing the other subanimations. You may find yourself still using this technique in order to organize your file; however, sometimes a long action can be easier to manage than multiple small ones.
+>Antes do redesenho do sistema de animação no Blender, só era possível ter várias ações para armaduras e chaves de forma. Portanto, para qualquer outra ação animada, as pessoas criariam uma ação realmente longa com diferentes animações em diferentes intervalos de quadros. Isso ainda funciona bem, mas é difícil de gerenciar se você precisar alterar a duração de uma das animações [md], você terá que atualizar o início e o fim de todos os atuadores que estavam jogando as outras subanimações. Você ainda pode usar essa técnica para organizar seu arquivo; no entanto, às vezes, uma ação longa pode ser mais fácil de gerenciar do que várias ações pequenas.
 
-The actuator will let you pick an action, set the frame range, and configure how you want to play it (see Figure 3.26). If you are planning to reuse this actuator[md]for example, for linked/shared Logic Bricks[md]you can leave the action blank and set it through the Python API during the game engine. In Chapter 4, "Animation," we will use this actuator in a series of tutorials.
-
+O atuador permitirá que você escolha uma ação, defina o intervalo do quadro e configure como deseja jogá-la (consulte a Figura 3.26). Se você está planejando reutilizar este atuador [md] por exemplo, para blocos lógicos vinculados/compartilhados [md], você pode deixar a ação em branco e configurá-la por meio da API Python durante o mecanismo de jogo. No Capítulo 4, "Animação", usaremos esse atuador em uma série de tutoriais.
 ![Action actuator](../figures/Chapter3/Fig03-26.png "Action actuator")
 
 ##### What Can Be Animated <a id="What_Can_Be_Animated"></a>
 
-Some of the animations you create in Blender can be used in the game engine. The same result you see in the viewport when you play them back with Alt+A, you can also get in the game engine. That includes armature poses, shape keys, and some of the properties of object, material, light, and camera as following:
+Algumas das animações que você cria no Blender podem ser usadas no motor de jogo. O mesmo resultado que você vê na janela de exibição ao reproduzi-los com Alt + A, também pode ser obtido no mecanismo de jogo. Isso inclui poses de armadura, teclas de forma e algumas das propriedades de objeto, material, luz e câmera como a seguir:
 
-- **Pose** : Any recorded sequence in an Armature object can be played. It's common to have different animated cycles[md]walking, running, jumping, tired walking, taking a break[md]and to alternate between them during an event. When using multiple action actuators, you may have an action currently playing when you start a new one. To make the transition smoothly, you can set the Blend In and Priority to respectively blend the animations for a certain number of frames and to play the new animation on top of the old one.
+- **Pose** :Qualquer sequência gravada em um objeto Armature pode ser reproduzida. É comum ter diferentes ciclos animados [md] caminhada, corrida, salto, caminhada cansada, fazer uma pausa [md] e alternar entre eles durante um evento. Ao usar vários atuadores de ação, você pode ter uma ação em execução ao iniciar uma nova. Para fazer a transição sem problemas, você pode definir o Blend In e Priority para, respectivamente, misturar as animações para um determinado número de quadros e para reproduzir a nova animação sobre a antiga.
 
-- **Shape Keys** : Similar to poses, you can play the shape key actions created in the DopeSheet Editor with control over the blending, priority, frames, and so on. There is even a Continue option common to both that allows you to start the animation when you left the last time you activated it. Remember that you don't play the individual shape keys but rather the action that stores their influence on each other over time.
+- **Shape Keys** : Semelhante às poses, você pode reproduzir as ações-chave da forma criadas no DopeSheet Editor com controle sobre a combinação, prioridade, quadros e assim por diante. Há até uma opção Continuar comum a ambos, que permite iniciar a animação quando você saiu da última vez que a ativou. Lembre-se de que você não toca as teclas de forma individual, mas sim a ação que armazena sua influência uma na outra ao longo do tempo.
 
-- **Object Properties** : Location, Rotation, Scale, Color, and Physics properties (Location and Rotation Damping, Anisotropic Friction).
+- **Object Properties** : Propriedades de localização, rotação, escala, cor e físicas (amortecimento de localização e rotação, atrito anisotrópico).
 
 - **Material** : Diffuse Color.
 
-- **Light** : Energy, Color, Distance, Attenuation, Spot Size and Spot Blend.
+- **Light** : Energia, cor, distância, atenuação, tamanho do ponto e mistura do ponto.
 
-- **Camera** : Start/End Clipping and Focal Length.
+- **Camera** : Início/fim do corte e distância focal.
 
 ##### What Cannot Be Animated <a id="What_Cannot_Be_Animated"></a>
 
-Unfortunately, not everything we can animate inside Blender can be animated in the game engine. More specifically, the following elements can't be animated with the Action actuator:Drivers, Scene, World, remaining Object, Material, Camera, and Light properties.
+Infelizmente, nem tudo o que podemos animar dentro do Blender pode ser animado no motor de jogo. Mais especificamente, os seguintes elementos não podem ser animados com o atuador de Ação: Drivers, Cena, Mundo, Objeto restante, Material, Câmera e propriedades de luz.
 
-Be aware that this may change in the near future. And some of these settings behave differently, depending on the render mode (GLSL, MultiTexture).
+Esteja ciente de que isso pode mudar em um futuro próximo. E algumas dessas configurações se comportam de maneira diferente, dependendo do modo de renderização (GLSL, MultiTexture).
 
 >**Animating More Elements via Scripting**
 >
->Some Scene settings, such as Shading Mode, Mouse Cursor, and Eye Separation, can be set through the Python API. The same is valid for World settings, such as Mist, Background Color, Physics and Logic Maximum Steps, and FPS.
+>Algumas configurações de cena, como Modo de sombreamento, Cursor do mouse e Separação de olhos, podem ser definidas por meio da API Python. O mesmo é válido para configurações de mundo, como Névoa, Cor de fundo, Física e Etapas máximas lógicas e FPS.
 
 ##### Object Settings <a id="Object_Settings"></a>
 
-If you are not animating an Armature Pose or a ShapeKey, there are extra options you can use, as below and highlighted in Figure 3.27.
+Se você não estiver animando uma Armature Pose ou uma ShapeKey, existem opções extras que você pode usar, conforme abaixo e destacadas na Figura 3.27.
 
 ![Action Actuator - Dynamic Object settings](../figures/Chapter3/Fig03-27.png "Action Actuator - Dynamic Object settings")
 
-- **Force** : If your object is Physical Dynamic, you can apply the transformations (for example, location) as a mechanical force. This avoids the "ghost" effect of having objects trespassing each other when their new location overlaps. With force, they will simply collide.
+- **Force** : Se o seu objeto for Físico Dinâmico, você pode aplicar as transformações (por exemplo, localização) como uma força mecânica. Isso evita o efeito "fantasma" de objetos que se sobrepõem uns aos outros quando sua nova localização se sobrepõe. Com a força, eles simplesmente colidirão.
 
-- **Add** : Evaluate the fcurves as relative values. This way you can add the transformations on top of each other, instead of setting a new position/size/rotation.
+- **Add** : Avalie as fcurvas como valores relativos. Desta forma, você pode adicionar as transformações umas sobre as outras, ao invés de definir uma nova posição/tamanho/rotação.
 
-- **Local** : Apply the transformations in local or world coordinates.
+- **Local** : Aplique as transformações em coordenadas locais ou mundiais.
 
 ##### Play Modes <a id="Play_Modes"></a>
 
-The game engine, by default, plays the actions from the start to the end frame, and stop. There are times where you may want to loop the animation, play it backward, or even control the playback speed in a different way. This can be achieved by changing the Action actuator playback type, as you can see in Figure 3.28.
+O motor do jogo, por padrão, reproduz as ações do início ao fim do quadro e para. Há momentos em que você pode querer repetir a animação, reproduzi-la ao contrário ou até mesmo controlar a velocidade de reprodução de uma maneira diferente. Isso pode ser obtido alterando o tipo de reprodução do atuador Action, como você pode ver na Figura 3.28.
 
 ![Action Actuator – Play Mode](../figures/Chapter3/Fig03-28.png "Action Actuator – Play Mode")
 
-- **Play** : Plays the action from start to end frames. If you want it to play again, you have to send a new positive signal to the actuator (for example, a Keyboard sensor with Pulse enabled can have the animation playing interruptedly if a key keeps being pressed).
+- **Play** : Reproduz a ação do início ao fim dos quadros. Se você quiser que ele toque novamente, você deve enviar um novo sinal positivo para o atuador (por exemplo, um sensor de teclado com pulso habilitado pode ter a reprodução da animação interrompida se uma tecla continuar sendo pressionada).
 
-- **Ping Pong** : Plays the animation from start to end. Next time, it will play it from end to start. Then start to end, and end to start again. And ping, ping, ping, pong.
+- **Ping Pong** : Reproduz a animação do início ao fim. Da próxima vez, ele irá reproduzi-lo do início ao fim. Então comece para o fim e termine para começar de novo. E ping, ping, ping, pong.
 
-- **Flipper** : Plays it until you keep it valid. As soon as you stop with the positive signal (for example, you release the key), it plays back to the initial frame. This happens even if the animation was only halfway through the frames.
+- **Flipper** : Joga até você mantê-lo válido. Assim que você para com o sinal positivo (por exemplo, você solta a tecla), ele reproduz o quadro inicial. Isso acontece mesmo que a animação esteja apenas na metade dos quadros.
 
-- **Loop Stop** : Plays the animation while the actuator is valid. If the animation gets to the final frame, it loops back to the start frame. If the actuator is no longer active, it stops right away.
+- **Loop Stop** : Reproduz a animação enquanto o atuador é válido. Se a animação chegar ao quadro final, ela retornará ao quadro inicial. Se o atuador não estiver mais ativo, ele para imediatamente.
 
-- **Loop End** : Plays the animation continuously going to the initial frame after reaching the final one. If you interrupt the signal in the middle of the action, it will behave like the Play mode and play it all the way until the end frame.
+- **Loop End** : Reproduz a animação continuamente indo para o quadro inicial após atingir o final. Se você interromper o sinal no meio da ação, ele se comportará como o modo Play e será reproduzido até o final do quadro.
 
-- **Property** : Instead of using a start and final frames, you drive the animation by a game property value. You can use any number, integer or not, as the property value. That way, you can have pretty smooth playbacks. With this option, you can also simulate slow-motion, time-lapse, or even create your own Play mode by controlling the property change as you will.
+- **Property** : Em vez de usar os quadros inicial e final, você dirige a animação por um valor de propriedade do jogo. Você pode usar qualquer número, inteiro ou não, como o valor da propriedade. Dessa forma, você pode ter reproduções bem suaves. Com essa opção, você também pode simular câmera lenta, lapso de tempo ou até mesmo criar seu próprio modo de jogo controlando a alteração da propriedade como quiser.
 
 ##### Blendin, Layers, and Priority <a id="Blendin,_Layers,_and_Priority"></a>
 
