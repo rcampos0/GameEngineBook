@@ -756,25 +756,25 @@ A restrição de campo de força simula um campo de mola sob seu objeto (consult
 
 As opções especiais são as seguintes:
 
-- **Force** : Spring force of the force field.
+- **Force** : Força da mola do campo de força.
 
-- **Distance** : Height of the force field.
+- **Distance** : Altura do campo de força.
 
-- **RotFh** : Aligns the object axis with the normal of the force field.
+- **RotFh** : Alinha o eixo do objeto com a normal do campo de força.
 
-- **N** : Adds a horizontal force to (the slopes of) the field.
+- **N** : Adiciona uma força horizontal (nas inclinações) do campo.
 
-The rest of the options behave as the ones presented for the other Constraint actuator types **:** Direction, M/P, PER, Time, Damping, and RotDamping.
+O resto das opções se comportam como as apresentadas para os outros tipos de atuador de restrição **:** Direção, M/P, PER, Tempo, Amortecimento e RotDamping.
 
 #### Edit Object <a id="Edit_Object"></a>
 
-There are a few actuators that feel as if they could be split into individual ones. The Edit Object is certainly one of them (see Figure 3.35). With this actuator, you can add more objects into your scene, remove your object out of it, replace its mesh, track its orientation to another object, or eventually alter some of its physics dynamics settings. Let's take a look at them:
+Existem alguns atuadores que parecem poder ser divididos em unidades individuais. O Edit Object é certamente um deles (veja a Figura 3.35). Com este atuador, você pode adicionar mais objetos em sua cena, remover seu objeto dele, substituir sua malha, rastrear sua orientação para outro objeto ou, eventualmente, alterar algumas de suas configurações de dinâmica física. Vamos dar uma olhada neles:
 
 ![Edit Object actuator](../figures/Chapter3/Fig03-35.png "Edit Object actuator")
 
-- **AddObject** : If you have objects in one of the non-visible layers, you can add them into the game with this option. The added object will be at the position and with the orientation of the object controlling the actuator. The scale, however, will be a combination of both objects. Other than that, the new object is pretty much autonomous[md]actually game property and logic bricks in the new object will be as good as if the object existed since frame one. The only exception is the Timer game properties that start counting only when the object gets added. You can add multiple instances of the same object, and any of them will behave as an independent duplicated copy of it.
+- **AddObject** : Se você tiver objetos em uma das camadas não visíveis, poderá adicioná-los ao jogo com esta opção. O objeto adicionado estará na posição e com a orientação do objeto que controla o atuador. A escala, no entanto, será uma combinação de ambos os objetos. Fora isso, o novo objeto é bastante autônomo [md], na verdade, a propriedade do jogo e os tijolos lógicos no novo objeto serão tão bons como se o objeto existisse desde o primeiro quadro. A única exceção são as propriedades do jogo Timer que começam a contar apenas quando o objeto é adicionado. Você pode adicionar várias instâncias do mesmo objeto, e qualquer uma delas se comportará como uma cópia duplicada independente dele.
 
-Through the options in the interface, you can change the initial linear and angular velocity of the object and its life duration.
+Por meio das opções da interface, você pode alterar a velocidade linear e angular inicial do objeto e sua duração de vida.
 
 >**For More Control Go with Python**
 >
