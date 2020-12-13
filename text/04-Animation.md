@@ -85,15 +85,15 @@ _Todo pote animado tem uma curva F._
 
 Onde usamos animações em um jogo? O lugar mais óbvio é para a animação de personagens; por exemplo, sempre que o jogador anda, pula ou voa, você verá as animações do jogo em execução. Essa não é a única vez, porém, em que você verá animações. Você também os verá em cutscenes, elementos de fundo, a interface do usuário e assim por diante [md] a lista é interminável. Para cobrir uma ampla variedade de usos, existem três mecanismos que o motor do jogo fornece para animar os elementos do jogo: transformações de objetos, poses de armadura e chaves de forma.
 
-- **Object transformations** enable you to change object transformations such as size, rotation, and location.
+- **Transformações de objeto** permitem que você altere transformações de objeto, como tamanho, rotação e localização.
 
-- **Armatures** let you work with a bone structure, deformed mesh, and bone special settings, such as bone constraint and bone parenting.
+- **Armatures** permitem trabalhar com uma estrutura de osso, malha deformada e configurações especiais de osso, como restrição de osso e parentesco de osso.
 
-- **Shape keys** give you complete mesh transformation control.
+- **Shape keys** fornecem controle completo de transformação de malha.
 
-These are different systems, but there is a lot of overlap among them. More importantly, you often will use them together. In the next pages, we will talk about these mechanisms individually and also see how they complement each other. In the practical aspects of how to use them effectively, we will focus on character animation, which is the most complex form of animation you can have in your game. Once you understand the concepts of character animation, you will have no difficulty in bringing life to your menu elements, shake your environments, and direct your cut scenes.
+Esses são sistemas diferentes, mas há muitas sobreposições entre eles. Mais importante, você frequentemente os usará juntos. Nas próximas páginas, falaremos sobre esses mecanismos individualmente e também veremos como eles se complementam. Nos aspectos práticos de como usá-los de forma eficaz, vamos nos concentrar na animação de personagens, que é a forma mais complexa de animação que você pode ter em seu jogo. Depois de compreender os conceitos de animação de personagens, você não terá dificuldade em dar vida aos elementos do seu menu, agitar seus ambientes e dirigir suas cutscenes.
 
-Rousing reading awaits you. Let the fun begin. First, let's look at one fundamental concept for game animation[md]the animation cycle.
+Uma leitura estimulante espera por você. E que comece a diversão. Primeiro, vamos examinar um conceito fundamental para a animação de jogos [md] o ciclo de animação.
 
 ## Animation Cycles <a id="Animation_Cycles"></a>
 
