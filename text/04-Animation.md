@@ -233,17 +233,17 @@ Diferente das restrições de bone anteriores, você não pode definir o desloca
 
 Como regra geral, uma influência diferente de 1.0 produz comportamentos mais interessantes.
 
-![Copy Transforms bone constraint](../figures/Chapter4/Fig04-08.png)
+![Copiar transforma a restrição óssea](../figures/Chapter4/Fig04-08.png)
 
-##### Limit Distance, Limit Rotation, Limit Scale <a id="Limit_Distance,_Limit_Rotation,_Limit_Scale"></a>
+##### Limite de distância, limite de rotação, limite de escala <a id="Limit_Distance,_Limit_Rotation,_Limit_Scale"></a>
 
-When you use a bone transformation to influence another bone (for example, bone control sliders or bone drivers), you are mapping a range of transformation (the position from [0,0,0] to [0,1,0] into the constrained bone[md]see the Transformation bone constraint). Limit bone constraints restrict the bone to transformations inside the expected range they are being mapped from (see Figures 4.9a-c).
+Quando você usa uma transformação de osso para influenciar outro osso (por exemplo, controles deslizantes de osso ou drivers de osso), você está mapeando um intervalo de transformação (a posição de [0,0,0] a [0,1,0] no osso restrito [md] veja a restrição de osso de transformação). As restrições de limite de osso restringem o osso a transformações dentro do intervalo esperado a partir do qual estão sendo mapeados (veja as Figuras 4.9a-c).
 
-They can also be used to complement Copy Location/Rotation/Scale bone constraints by copying the transformation but limiting some of the parameters (for example, copy location but not allow Z to be below zero[md]under the bone used as a ground reference).
+Eles também podem ser usados para complementar as restrições de localização / rotação / escala do osso copiando a transformação, mas limitando alguns dos parâmetros (por exemplo, copiar o local, mas não permitir que Z fique abaixo de zero [md] sob o osso usado como referência de base )
 
-![Limit Distance bone constraint](../figures/Chapter4/Fig04-09a.png)
+![Limite de restrição óssea de distância](../figures/Chapter4/Fig04-09a.png)
 
-![Limit Rotation bone constraint](../figures/Chapter4/Fig04-09b.png)
+![Limite de restrição óssea de rotação](../figures/Chapter4/Fig04-09b.png)
 
 ![Limi Scale bone constraint](../figures/Chapter4/Fig04-09c.png)
 
