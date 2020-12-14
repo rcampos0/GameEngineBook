@@ -157,57 +157,57 @@ Ao contrário do NLA Editor, temos a chance de jogar ações com base nas decis�
 
 ![Tubarão preso na ação de virada](../figures/Chapter4/Fig04-03.png)
 
-The second difference is regarding the bone constraints. We will cover it in more detail later. It's important to know that not all the Bone Constraints that work in Blender will work in the game engine. Most of them do, so it shouldn't be much of a hassle. Also, the constrained bone and the target bone should be part of the same armature.
+A segunda diferença é com relação às restrições ósseas. Abordaremos isso com mais detalhes posteriormente. É importante saber que nem todas as Restrições de osso que funcionam no Blender funcionarão no motor de jogo. A maioria deles faz isso, então não deve ser muito incômodo. Além disso, o bone restrito e o bone alvo devem fazer parte da mesma armadura.
 
-The third difference is the general simplicity of the armature and bone system. In general, games have simpler rigging (as the armature and bone system are known) than in animated movies. For AAA games, this is not so true[md]their rigs are closer to film than to traditional game rigs. In the end, the complexity of the rig is also directly related to the amount of polygons your mesh has. Therefore, as game objects naturally have fewer faces than their animated film counterparts, the rigging reflects that.
+A terceira diferença é a simplicidade geral da armadura e do sistema ósseo. Em geral, os jogos têm rigging mais simples (como a armadura e o sistema ósseo são conhecidos) do que nos filmes de animação. Para jogos AAA, isso não é tão verdadeiro [md] que seus rigs estão mais próximos do filme do que os rigs de jogos tradicionais. No final das contas, a complexidade do rig também está diretamente relacionada à quantidade de polígonos que sua malha possui. Portanto, como os objetos do jogo naturalmente têm menos faces do que seus equivalentes em filmes de animação, o aparelhamento reflete isso.
 
-A good example is Frankie the Flying Squirrel in the animated short _Big Buck Bunny_ and in the _Yo Frankie!_ game. As you can see in Figure 4.4, the original model had 11,777 faces and 388 bones, while the model remade for the game has only 2,509 faces and 52 bones. Even though the role of Frankie was pumped up from a side film character to the game main character, the complexity of the game file is much simpler. (The film-file face count goes to 128,404 when you apply the Subdivision Surface modifiers.)
+Um bom exemplo é Frankie the Flying Squirrel no curta de animação _Big Buck Bunny_ e no jogo _Yo Frankie! _. Como você pode ver na Figura 4.4, o modelo original tinha 11.777 faces e 388 bones, enquanto o modelo refeito para o jogo tinha apenas 2.509 faces e 52 bones. Mesmo que o papel de Frankie tenha passado de personagem do filme paralelo para personagem principal do jogo, a complexidade do arquivo do jogo é muito mais simples. (A contagem de faces do arquivo de filme vai para 128.404 quando você aplica os modificadores de Superfície de subdivisão.)
 
 ![_Big Buck Bunny_ (left) and _Yo Frankie_ (right) rigging comparison](../figures/Chapter4/Fig04-04.png)
 
-### When to Use Pose Actions <a id="When_to_Use_Pose_Actions"></a>
+### Quando usar ações de pose <a id="When_to_Use_Pose_Actions"></a>
 
-Always! The main usage of pose actions is the one explained earlier when talking about animation cycles. Full animation cycles will not be the only ones in your character repertory.
+Sempre! O principal uso das ações de pose é aquele explicado anteriormente quando falamos sobre ciclos de animação. Ciclos de animação completos não serão os únicos em seu repertório de personagens.
 
-You don't need to have all the bones posed in all the actions you want to play. Imagine you want to have a regular walking animation and allow the character to look back while walking. For this kind of situation, you can animate the upper-body bones in a different action than the legs and the hip. If the animations are in separate actions, you can turn the single actions (walk, look back) on and off individually. This will spare you from making an animation action for every possible combination of individual movements (blink, jump, walk, scratch the head, and so on). It also makes it simpler to control those actions. They don't need to have the same length or be called from the same actuator.
+Você não precisa ter todos os ossos colocados em todas as ações que deseja jogar. Imagine que você deseja ter uma animação de caminhada regular e permitir que o personagem olhe para trás enquanto caminha. Para esse tipo de situação, você pode animar os ossos da parte superior do corpo com uma ação diferente da das pernas e do quadril. Se as animações estiverem em ações separadas, você pode ativar e desativar as ações individuais (andar, olhar para trás) individualmente. Isso o poupará de fazer uma ação de animação para cada combinação possível de movimentos individuais (piscar, pular, andar, coçar a cabeça e assim por diante). Também torna mais simples controlar essas ações. Eles não precisam ter o mesmo comprimento ou ser chamados do mesmo atuador.
 
-Animated characters are not the only game objects that can use the armature animation system, though. You can use armatures anytime you need more control than the Motion Actuator can provide. Even a simple object like a door can use an armature to help open and close it. The problem with a door is that you often need to use the door as a colliding object[md]to keep the three little pigs safe from the wolf. That leads us to our next topic.
+Personagens animados não são os únicos objetos do jogo que podem usar o sistema de animação de armadura. Você pode usar armaduras sempre que precisar de mais controle do que o atuador de movimento pode fornecer. Até mesmo um objeto simples como uma porta pode usar uma armadura para ajudar a abri-la e fechá-la. O problema com uma porta é que muitas vezes você precisa usar a porta como um objeto de colisão [md] para manter os três porquinhos protegidos do lobo. Isso nos leva ao nosso próximo tópico.
 
-## Graphic Mesh vs. Physic Shape <a id="Graphic_Mesh_vs._Physic_Shape"></a>
+## Malha gráfica vs. forma física <a id="Graphic_Mesh_vs._Physic_Shape"></a>
 
-To animate a mesh with bones is a relatively expensive task for the computer. Therefore, when you set an object to play a pose action, you are changing only the graphic mesh of the object[md]the mesh used for the game render. All the physics computations, however, are done in another instance of this mesh, and are not updated with the animation. In Figure 4.5 you can see the screen when Show Physics Visualization is on and the game has an object armature animated. The original rest pose of the armature is used for the physics/collision mesh. This is the mesh with the arms lying still. Although we can see the correct pose on top of that, this is not the one used for the physics computations.
+Animar uma malha com ossos é uma tarefa relativamente cara para o computador. Portanto, quando você define um objeto para executar uma ação de pose, está alterando apenas a malha gráfica do objeto [md] a malha usada para a renderização do jogo. Todos os cálculos de física, no entanto, são feitos em outra instância dessa malha e não são atualizados com a animação. Na Figura 4.5 você pode ver a tela quando a opção Show Physics Visualization está ligada e o jogo tem uma armadura de objeto animada. A pose original de descanso da armadura é usada para a malha de física / colisão. Esta é a malha com os braços parados. Embora possamos ver a postura correta acima disso, esta não é a usada para os cálculos de física.
 
-![Physic mesh not updated for armatures meshes](../figures/Chapter4/Fig04-05.png)
+![Malha física não atualizada para malhas de armações](../figures/Chapter4/Fig04-05.png)
 
-## Bone Constraints <a id="Bone_Constraints"></a>
+## Restrições ósseas <a id="Bone_Constraints"></a>
 
-The constraints are a handy set of tools to facilitate the animation process. They are more familiar to riggers than to animators, since they are used to build easier-to-animate armatures. Thanks to bone constraints, we can build bone controllers to ease the work with complex game armatures. Because of constraints such as the IK (Inverse Kinematics), we can create poses in very simplified ways. In a nutshell, bone constraints will spare you from animating all the bones individually by setting relations between them.
+As restrições são um conjunto útil de ferramentas para facilitar o processo de animação. Eles são mais familiares aos riggers do que aos animadores, já que são usados ​​para construir armaduras mais fáceis de animar. Graças às restrições ósseas, podemos construir controladores ósseos para facilitar o trabalho com armaduras de jogo complexas. Devido a restrições como IK (Cinemática Inversa), podemos criar poses de maneiras muito simplificadas. Resumindo, as restrições de ossos pouparão você de animar todos os ossos individualmente, definindo relações entre eles.
 
-The way bone constraints work in the game engine is quite similar to Blender itself. There are a few differences, though. When you define a bone constraint[md]for example, the copy rotation[md]you set one bone to be constrained to another bone, the target bone. In this case, the constrained bone will copy the rotation of the target bone for every pose, every frame. Unlike Blender, in the game engine, the target bone and the constrained bone need to be part of the same armature.
+A forma como as restrições ósseas funcionam no motor de jogo é bastante semelhante ao próprio Blender. Existem algumas diferenças, no entanto. Quando você define uma restrição de osso [md] por exemplo, a rotação de cópia [md], você define um osso a ser restringido a outro osso, o osso alvo. Nesse caso, o bone restrito copiará a rotação do bone alvo para cada pose, cada quadro. Ao contrário do Blender, no motor de jogo, o osso alvo e o osso restrito precisam fazer parte da mesma armadura.
 
-In Blender, bone constraints can be used in two ways. The first and simplest way is to use them to help with posing. For example, the Track To bone constraint helps you indirectly animate the eyes' rotations by animating the target the eyes are looking at. In this case, even though you are not directly animating the eye bones, the animation process is much more intuitive. This is how you do it in Blender, and this is how you will do it for the game engine. Another way of using them is by setting up the constraints and animating their Influence values. Each bone constraint has an influence that ranges from zero to one.
+No Blender, as restrições de ossos podem ser usadas de duas maneiras. A primeira e mais simples maneira é usá-los para ajudar na pose. Por exemplo, a restrição Track To bone ajuda a animar indiretamente as rotações dos olhos, animando o alvo para o qual os olhos estão olhando. Nesse caso, mesmo que você não esteja animando diretamente os ossos dos olhos, o processo de animação é muito mais intuitivo. É assim que você faz no Blender, e é assim que você vai fazer para o motor de jogo. Outra maneira de usá-los é configurando as restrições e animando seus valores de influência. Cada restrição óssea tem uma influência que varia de zero a um.
 
->**Bone Constraint Influence**
+>**Influência da restrição óssea**
 >
->When you start a game, the current influence of the bone constraints will determine the initial armature behavior. If you need to change it during the game, you can use an Armature actuator with the Set Influence option.
+>Quando você inicia um jogo, a influência atual das restrições ósseas determinará o comportamento inicial da armadura. Se precisar alterá-lo durante o jogo, você pode usar um atuador de armadura com a opção Definir influência.
 
-### Bone Constraints Not Supported <a id="Bone_Constraints_Not_Supported"></a>
+### Restrições ósseas não suportadas <a id="Bone_Constraints_Not_Supported"></a>
 
-Because the constrained bone and the target bone need to be in the same armature, some constraints that rely on external curves, hinges, and objects are incompatible with the game engine. In the current version of Blender, the nonsupported bone constraints are: Spline IK, Follow Path, Rigid Body Joint, Script, Shrinkwrap, and, partially, the ChildOf.
+Como o bone restrito e o bone alvo precisam estar na mesma armadura, algumas restrições que dependem de curvas externas, dobradiças e objetos são incompatíveis com o mecanismo de jogo. Na versão atual do Blender, as restrições de osso não suportadas são: Spline IK, Follow Path, Rigid Body Joint, Script, Shrinkwrap e, parcialmente, ChildOf.
 
->**Rigid Body Joint Partly Supported**
+>**Articulação do corpo rígido parcialmente suportada**
 >
->Rigid Body Joint is supported as an object constraint, but not as a bone constraint. You will learn how to use it in the chapter 6 Physics.
+>A junta rígida do corpo é suportada como uma restrição de objeto, mas não como uma restrição óssea. Você aprenderá como usá-lo no capítulo 6, Física.
 
-### Bone Constraints Supported <a id="Bone_Constraints_Supported"></a>
+### Suporta restrições ósseas <a id="Bone_Constraints_Supported"></a>
 
-All the Transform, Tracking, and Relationship bone constraints that were not mentioned previously can be used as you would in Blender.
+Todas as restrições de bone Transform, Tracking e Relationship que não foram mencionadas anteriormente podem ser usadas como você faria no Blender.
 
-In Figure 4.6, you can see the menu with all the bone constraints compatible with the game engine highlighted.
+Na Figura 4.6, você pode ver o menu com todas as restrições ósseas compatíveis com o motor de jogo em destaque.
 
-![Supported bone constraints](../figures/Chapter4/Fig04-06.png)
+![Restrições ósseas suportadas](../figures/Chapter4/Fig04-06.png)
 
-If you're not familiar with bone constraints, following is a brief overview of them and their functionalities. As with almost every other feature of the game engine, the suggested usages illustrate but do not limit their potential application.
+Se você não está familiarizado com as restrições ósseas, a seguir há uma breve visão geral delas e de suas funcionalidades. Como acontece com quase todos os outros recursos do motor de jogo, os usos sugeridos ilustram, mas não limitam sua aplicação potencial.
 
 #### Transform <a id="Transform"></a>
 
