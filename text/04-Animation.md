@@ -209,29 +209,29 @@ Na Figura 4.6, você pode ver o menu com todas as restrições ósseas compatív
 
 Se você não está familiarizado com as restrições ósseas, a seguir há uma breve visão geral delas e de suas funcionalidades. Como acontece com quase todos os outros recursos do motor de jogo, os usos sugeridos ilustram, mas não limitam sua aplicação potencial.
 
-#### Transform <a id="Transform"></a>
+#### Transformar <a id="Transform"></a>
 
-The Transformation bone constraints help you build a bone control system. This control armature is a high-level armature, with only a few bones directly affecting the real armature.
+As restrições de osso de transformação ajudam a construir um sistema de controle de osso. Esta armadura de controle é uma armadura de alto nível, com apenas alguns ossos afetando diretamente a armadura real.
 
-##### Copy Location, Rotation, Scale <a id="Copy_Location,_Rotation,_Scale"></a>
+##### Copiar localização, rotação, escala <a id="Copy_Location,_Rotation,_Scale"></a>
 
-These allow you to copy part of the transformation and to set an offset for the copy. The bone doesn't get locked, allowing for further adjustments of the bone transformation (see Figures 4.7a-c).
+Eles permitem que você copie parte da transformação e defina um deslocamento para a cópia. O osso não fica travado, permitindo ajustes adicionais da transformação do osso (ver Figuras 4.7a-c).
 
-A simple use would be building control armatures with bones duplicated between the armatures. Those bone constraints allow for syncing of the bone chains.
+Um uso simples seria construir armaduras de controle com ossos duplicados entre as armaduras. Essas restrições ósseas permitem a sincronização das cadeias ósseas.
 
-An artistic example of its use would be clothes or armor. The external bone chains (for clothes) can copy the base bone chain (for the body) to use as a base transformation. Since there is no locking, you can animate the external bones independently of the body animation. The offset can be used to match the real separation between the body and cloth geometries.
+Um exemplo artístico de seu uso seria roupas ou armaduras. As cadeias de osso externas (para roupas) podem copiar a cadeia de osso de base (para o corpo) para usar como uma transformação de base. Como não há bloqueio, você pode animar os ossos externos independentemente da animação do corpo. O deslocamento pode ser usado para corresponder à separação real entre as geometrias do corpo e do tecido.
 
-![Copy Location bone constraint](../figures/Chapter4/Fig04-07a.png)
+![Copiar restrição óssea de localização](../figures/Chapter4/Fig04-07a.png)
 
-![Copy Rotation, bone constraint](../figures/Chapter4/Fig04-07b.png)
+![Rotação de cópia, restrição óssea](../figures/Chapter4/Fig04-07b.png)
 
-![Copy Scale bone constraint](../figures/Chapter4/Fig04-07c.png)
+![Copiar restrição óssea de escala](../figures/Chapter4/Fig04-07c.png)
 
-##### Copy Transforms <a id="Copy_Transforms"></a>
+##### Copiar transformações <a id="Copy_Transforms"></a>
 
-Unlike the previous bone constraints, you cannot set the bone offset in this constraint, so with influence 1.0, the constrained bone and the target bone will be exactly in the same place (see Figure 4.8).
+Diferente das restrições de bone anteriores, você não pode definir o deslocamento de bone nesta restrição, então com influência 1.0, o bone restrito e o bone de destino estarão exatamente no mesmo lugar (veja a Figura 4.8).
 
-As a rule of thumb, an influence different than 1.0 produces more interesting behaviors.
+Como regra geral, uma influência diferente de 1.0 produz comportamentos mais interessantes.
 
 ![Copy Transforms bone constraint](../figures/Chapter4/Fig04-08.png)
 
