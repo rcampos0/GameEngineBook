@@ -247,37 +247,37 @@ Eles também podem ser usados para complementar as restrições de localização
 
 ![Limi Scale bone constraint](../figures/Chapter4/Fig04-09c.png)
 
-##### Maintain Volume <a id="Maintain_Volume"></a>
+##### Manter o Volume <a id="Maintain_Volume"></a>
 
-This bone constraint does not use a target (see Figure 4.10). The transformation happens only dependent on the bone itself (and within the axis opposite to the selected Free axis).
+Esta restrição óssea não usa um alvo (veja a Figura 4.10). A transformação acontece apenas dependendo do próprio osso (e dentro do eixo oposto ao eixo Livre selecionado).
 
-It's used for squash and stretch, the classic cartoon effect for squeezing bouncing balls.
+É usado para squash e stretch, o efeito clássico de desenho animado para apertar bolas quicando.
 
-![Maintain Volume bone constraint](../figures/Chapter4/Fig04-10.png)
+![Manter restrição óssea de volume](../figures/Chapter4/Fig04-10.png)
 
-##### Transformation <a id="Transformation"></a>
+##### Transformação <a id="Transformation"></a>
 
-This is the best bone constraint for sliders. It allows you to map the transformation from the target bone into a completely different transformation of the constrained bone. For example, you can map the location range of a target (slider) bone from [0,-1,0] to [0,1,0] onto the rotation of the constrained bone from -90 degrees to 90 degrees (see Figure 4.11).
+Esta é a melhor restrição óssea para controles deslizantes. Ele permite que você mapeie a transformação do bone alvo em uma transformação completamente diferente do bone restrito. Por exemplo, você pode mapear a faixa de localização de um bone alvo (slider) de [0, -1,0] a [0,1,0] na rotação do bone restrito de -90 graus a 90 graus (ver Figura 4,11).
 
-In the book files, you can see this example of a bone slider where we are using Limit Location, Transformation, Copy Rotation, and a Limit Rotation Bone Constraint to set up a simple arm. It's not the optimal use of those Bone Constraints, but it shows how they can be set up together.
+Nos arquivos do livro, você pode ver este exemplo de um controle deslizante de osso em que usamos Limite de localização, Transformação, Rotação de cópia e uma Restrição de limite de rotação de osso para configurar um braço simples. Não é o uso ideal dessas restrições ósseas, mas mostra como elas podem ser configuradas juntas.
 
-![Transformation bone constraint](../figures/Chapter4/Fig04-11.png)
+![Restrição óssea de transformação](../figures/Chapter4/Fig04-11.png)
 
-You can find the file in _\Book\Chapter04\1\_constraints\_transform.blend_ (see Figure 4.12).
+Você pode encontrar o arquivo em _\Book\Chapter04\1\_constraints\_transform.blend_ (consulte a Figura 4.12).
 
-![Bone slider](../figures/Chapter4/Fig04-12.png)
+![Controle deslizante de osso](../figures/Chapter4/Fig04-12.png)
 
-#### Tracking <a id="Tracking"></a>
+#### Rastreando <a id="Tracking"></a>
 
-A tracked bone constraint can be part of your main armature or your control bones. For example, it's common to have the Inverse Kinematics bone constraint in one bone that is part of the chain. At the same time, the Track To often uses a bone not connected to the chain and not deforming any mesh directly.
+Uma restrição de bone rastreada pode fazer parte de sua armadura principal ou de seus bones de controle. Por exemplo, é comum ter a restrição de bone Inverse Kinematics em um bone que faz parte da cadeia. Ao mesmo tempo, o Track To freqüentemente usa um osso não conectado à corrente e não deformando nenhuma malha diretamente.
 
-##### Clamp To <a id="Clamp_To"></a>
+##### Grampo para <a id="Clamp_To"></a>
 
-The Clamp To bone constraint forces the bone along a curve object (see Figure 4.13). The bone needs to be disconnected from the bone chain to properly constrain its location into the curve.
+A restrição Clamp To bone força o bone ao longo de um objeto de curva (veja a Figura 4.13). O osso precisa ser desconectado da corrente do osso para restringir adequadamente sua localização na curva.
 
-It's quite handy for cyclic environment animation of assets from your game. For example, you can make birds flying in the sky by having a predefined curve for the bones to follow along. Cars driving or even people walking in the background also can be accomplished with this technique.
+É muito útil para animação de ambiente cíclico de ativos de seu jogo. Por exemplo, você pode fazer pássaros voando no céu tendo uma curva predefinida para os ossos seguirem. Carros dirigindo ou mesmo pessoas andando em segundo plano também podem ser realizados com essa técnica.
 
-![Clamp To bone constraint](../figures/Chapter4/Fig04-13.png)
+![Restrição de grampo para osso](../figures/Chapter4/Fig04-13.png)
 
 ##### Damped Track, Locked Track, and Track To <a id="Damped_Track,_Locked_Track,_and_Track_To"></a>
 
