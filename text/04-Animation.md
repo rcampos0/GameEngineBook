@@ -279,75 +279,75 @@ A restrição Clamp To bone força o bone ao longo de um objeto de curva (veja a
 
 ![Restrição de grampo para osso](../figures/Chapter4/Fig04-13.png)
 
-##### Damped Track, Locked Track, and Track To <a id="Damped_Track,_Locked_Track,_and_Track_To"></a>
+##### Pista Amortecida, Pista Bloqueada e Pista Para <a id="Damped_Track,_Locked_Track,_and_Track_To"></a>
 
-Those three bone constraints work in a similar way. You select a target bone[md]where the constrained bone will be facing[md]and an axis indicating the internal direction to point to that target. The difference is how much manual control over the bone rotation you need after setting up the bone constraint. While the Track To completely locks the constrained bone rotation, the Damped Track keeps it completely loose for transformations on top of the bone constraint influence.
+Essas três restrições ósseas funcionam de maneira semelhante. Você seleciona um osso alvo [md] onde o osso restrito estará voltado para [md] e um eixo indicando a direção interna para apontar para aquele alvo. A diferença é quanto controle manual sobre a rotação do osso você precisa após configurar a restrição do osso. Enquanto o Track To bloqueia completamente a rotação do osso restrito, o Damped Track o mantém completamente livre para transformações no topo da influência da restrição do osso.
 
-The Damped Track gives you the most freedom between them, and it's the simplest to set up. You only have to select the axis to lock, and it allows you to adjust the rotation of any axis of the constrained bone (see Figure 4.14). You can see an example of this used in robotic eyes. The basic effect is to track a target object. But you can still spin the eye around for a cheesy, I mean, classic "droid target locked" effect.
+O Damped Track oferece mais liberdade entre eles e é o mais simples de configurar. Você só precisa selecionar o eixo a ser travado, e isso permite ajustar a rotação de qualquer eixo do osso restrito (veja a Figura 4.14). Você pode ver um exemplo disso usado em olhos robóticos. O efeito básico é rastrear um objeto alvo. Mas você ainda pode girar os olhos para um efeito extravagante, quero dizer, clássico "alvo de andróide bloqueado".
 
-![Damped Track bone constraint](../figures/Chapter4/Fig04-14.png)
+![Restrição óssea de trilha amortecida](../figures/Chapter4/Fig04-14.png)
 
-Locked Track will work as a compromise between the other two trackers. It allows you to adjust the rotation of the non-tracked axis (see Figure 4.15). A security camera can be simulated with this bone constraint. A main axis is tracked by the camera (for example, doing a horizontal spin-around routine), while the other axes are independently controlled/animated.
+Trilha bloqueada funcionará como um meio-termo entre os outros dois rastreadores. Ele permite que você ajuste a rotação do eixo não rastreado (consulte a Figura 4.15). Uma câmera de segurança pode ser simulada com essa restrição óssea. Um eixo principal é rastreado pela câmera (por exemplo, fazendo uma rotina de rotação horizontal), enquanto os outros eixos são controlados / animados independentemente.
 
-![Locked Track bone constraint](../figures/Chapter4/Fig04-15.png)
+![Restrição de osso de trilha bloqueada](../figures/Chapter4/Fig04-15.png)
 
-Track To locks the constrained bone for any rotation adjustment, leaving its rotation to be controlled entirely by the bone constraint (see Figure 4.16). By default, it rotates only one axis. However, you can track the other axis of the bone by setting Target Z in this Bone Constraint panel. The classic use of this is for eyes. Instead of rotating the eye bones directly, you can set them to track a target bone at which the eyes will be staring.
+Track To bloqueia o osso restrito para qualquer ajuste de rotação, deixando sua rotação ser controlada inteiramente pela restrição do osso (consulte a Figura 4.16). Por padrão, ele gira apenas um eixo. No entanto, você pode rastrear o outro eixo do osso definindo Target Z neste painel de restrição de osso. O uso clássico disso é para os olhos. Em vez de girar os ossos do olho diretamente, você pode configurá-los para rastrear um osso-alvo para o qual os olhos estarão fixos.
 
-![Track To bone constraint](../figures/Chapter4/Fig04-16.png)
+![Restrição de faixa para osso](../figures/Chapter4/Fig04-16.png)
 
-##### Inverse Kinematics <a id="Inverse_Kinematics"></a>
+##### Cinemática Inversa <a id="Inverse_Kinematics"></a>
 
-The IK (Inverse Kinematics) bone constraint helps you bypass the FK (Forward Kinematics) architecture of the armature bones. FK is designed for individual changes of rotation over the bone chain (from the parent to the children). In order to change a bone location, you need to rotate all the bones that lead to it and make sure the resulting rotation places the bone into the desired location (see Figure 4.17).
+A restrição de bone IK (cinemática inversa) ajuda a ignorar a arquitetura FK (Cinemática direta) dos bones de armadura. FK é projetado para mudanças individuais de rotação ao longo da cadeia óssea (do pai para os filhos). Para alterar a localização de um osso, você precisa girar todos os ossos que levam a ele e certificar-se de que a rotação resultante coloque o osso no local desejado (consulte a Figura 4.17).
 
-It's very easy to lose yourself in going back and forth to fine-tune the position of your bones. Let's look at an arm rig as an example. A simple armature would have a shoulder bone as the parent, and the arm, forearm, and hand as children. If you want to put the hand in a particular place, you need to rotate the shoulder, rotate arm, and finally rotate the hand. If you miscalculated the extension of the arm and its radius of extension, you need to go back and rotate the hand again, fine-tuning it.
+É muito fácil perder-se indo e voltando para ajustar a posição dos ossos. Vejamos um braço rig como exemplo. Uma armadura simples teria um osso do ombro como pai e o braço, antebraço e mão como filhos. Se quiser colocar a mão em um lugar específico, você precisa girar o ombro, girar o braço e, finalmente, girar a mão. Se você calculou mal a extensão do braço e seu raio de extensão, você precisa voltar e girar a mão novamente, fazendo o ajuste fino.
 
-With IK, you only need to move the hand to the target place. The rotation of the forearm, arm, and shoulder will be automatically calculated by Blender.
+Com IK, você só precisa mover a mão para o local de destino. A rotação do antebraço, braço e ombro será calculada automaticamente pelo Blender.
 
-![Inverse Kinematics bone constraint](../figures/Chapter4/Fig04-17.png)
+![Restrição óssea de cinemática inversa](../figures/Chapter4/Fig04-17.png)
 
-The target bone can't be a parent or child of any bone constrained by this bone constraint[md]this produces cyclic unpredictable effects. This includes not only the bone where you added the IK, but also as many bones as you set in your chain length. (Leaving it as zero influences the whole bone chain.)
+O osso alvo não pode ser pai ou filho de qualquer osso restringido por esta restrição óssea [md], isso produz efeitos cíclicos imprevisíveis. Isso inclui não apenas o osso onde você adicionou o IK, mas também quantos ossos você definir no comprimento da sua corrente. (Deixar como zero influencia toda a cadeia óssea.)
 
 ###### Legacy Solver <a id="Legacy_Solver"></a>
 
-By default, Blender uses the Legacy solver for the Inverse Kinematics calculations. This is how most of the animation software works and how animators are used to work.
+Por padrão, o Blender usa o solver Legacy para os cálculos da Cinemática Inversa. É assim que a maior parte do software de animação funciona e como os animadores costumam trabalhar.
 
-When a bone is under the influence of an IK Bone Constraint, you can set specific IK settings in the Bone panel, as you can see in Figure 4.18.
+Quando um osso está sob a influência de uma restrição IK Bone, você pode definir configurações específicas de IK no painel Bone, como você pode ver na Figura 4.18.
 
 ![Inverse Kinematics Bone panel](../figures/Chapter4/Fig04-18.png)
 
-Those parameters allow you to add some control over the otherwise automatic IK computations.
+Esses parâmetros permitem adicionar algum controle sobre os cálculos IK, de outra forma automáticos.
 
-- **Limit** : In the arm, you need to make sure that the bones behave as real bones would. For example, in real life you can't twist the elbow above certain limits. In order to mimic this behavior you can force the rotation of a bone to be inside a given range. In our case, the limits would be set: X: 5 degrees to 180 degrees; Y: -90 degrees to 90 degrees; Z: 0 degrees to 0 degrees.
+- **Limit** : No braço, você precisa ter certeza de que os ossos se comportam como os ossos reais. Por exemplo, na vida real você não pode torcer o cotovelo acima de certos limites. Para imitar esse comportamento, você pode forçar a rotação de um osso dentro de um determinado intervalo. Em nosso caso, os limites seriam definidos: X: 5 graus a 180 graus; Y: -90 graus a 90 graus; Z: 0 graus a 0 graus.
 
-- **Stiffness:** This parameter sets how difficult it is to rotate the bone. High values make a bone rotates less. Joint stiffness can be one of the earliest symptoms of arthritis. So look after your characters.
+- **Stiffness:** Este parâmetro define o quão difícil é girar o osso. Valores altos fazem um osso girar menos. A rigidez articular pode ser um dos primeiros sintomas da artrite. Portanto, cuide de seus personagens.
 
-- **Stretch:** Cartoon arms often need to stretch beyond their original sizes. The Stretch factor has to be set per bone. (Stretch needs to be enabled in the Bone Constraint as well, but it's on by default.)
+- **Stretch:** Os braços dos desenhos animados geralmente precisam se esticar além de seus tamanhos originais. O fator de alongamento deve ser definido por osso. (O alongamento também precisa ser ativado na restrição óssea, mas está ativado por padrão.)
 
-Unlike the Stretch To bone constraint, the volume of the bone is not entirely preserved when using the IK stretch. In order words, the arm seems fat when stretched. To use IK stretching and the Stretch To bone constraint, you need to set up two bone chains separately: one for the IK, and the other[md]with Stretch To[md]to deform the mesh. The Stretch To is what preserves the correct volume for the bones. You can see a sample file in the Stretch To section later in this chapter.
+Ao contrário da restrição Esticar até o osso, o volume do osso não é totalmente preservado ao usar o alongamento IK. Em outras palavras, o braço parece gordo quando esticado. Para usar o alongamento IK e a restrição Stretch To bone, você precisa configurar duas cadeias de osso separadamente: uma para IK e a outra [md] com Stretch To [md] para deformar a malha. O Stretch To é o que preserva o volume correto para os ossos. Você pode ver um arquivo de amostra na seção Esticar para mais adiante neste capítulo.
 
 >**Target-less Bone Constraint**
 >
->If you don't select a target for the bone constraint, you can still use the IK in a special way. In this case, the constrained bone is the self-target, and as such it's free to be placed anywhere. This technique, known as _fake IK,_ is really light in terms of computation. In the traditional IK, you keyframe only the target bone, thus the IK computation has to run every time you play the animation. With fake IK, the computation is valid during the transformation (when you are moving the target bone around). You have to keyframe all the individual constrained bones for this to work. (This is automatically done when AutoKey is enabled from the Timeline editor.) Since there is no IK happening when you play the animation, the computation of fake IK is far superior to real IK.
+>Se você não selecionar um destino para a restrição de osso, ainda poderá usar o IK de uma maneira especial. Nesse caso, o osso restrito é o alvo próprio e, como tal, pode ser colocado em qualquer lugar. Essa técnica, conhecida como _fake IK, _ é muito leve em termos de computação. No IK tradicional, você define o quadro-chave apenas o osso alvo, portanto, o cálculo de IK deve ser executado toda vez que você reproduz a animação. Com IK falso, o cálculo é válido durante a transformação (quando você está movendo o osso alvo). Você tem que definir o quadro-chave de todos os bones restritos individuais para que isso funcione. (Isso é feito automaticamente quando AutoKey é habilitado no editor de linha de tempo.) Como não há IK acontecendo quando você reproduz a animação, o cálculo de IK falso é muito superior ao IK real.
 
 ###### iTaSC Solver <a id="iTaSC_Solver"></a>
 
-Additionally, you can change the IK solver in the Armature panel to use iTaSC. This name stands for _Instantaneous Task Specification using Constraints._ This IK solver was developed especially for robotics, but can be used as a more advanced replacement for the old IK (Legacy) solver.
+Além disso, você pode alterar o solucionador IK no painel Armadura para usar o iTaSC. Este nome significa _Instantaneous Task Specification using Constraints._ Este solver IK foi desenvolvido especialmente para robótica, mas pode ser usado como um substituto mais avançado para o antigo solver IK (Legacy).
 
-The calculation or the armature structure is calculated on the fly, based on predefined constraints and a dynamic target. It's a very powerful system, but not directly related to the more traditional armature, bones, pose animation paradigm. No keyframes are required here.
+O cálculo ou a estrutura da armadura são calculados em tempo real, com base em restrições predefinidas e um alvo dinâmico. É um sistema muito poderoso, mas não está diretamente relacionado ao paradigma mais tradicional de armadura, ossos e pose de animação. Nenhum quadro-chave é necessário aqui.
 
-The iTaSC solver is faster than the Legacy one and definitively better at handling real dynamic constraints (see Figure 4.19).
+O solucionador iTaSC é mais rápido do que o Legacy e definitivamente melhor no tratamento de restrições dinâmicas reais (consulte a Figura 4.19).
 
 ![iTaSC Bone panel](../figures/Chapter4/Fig04-19.png)
 
-The other bone constraints are great to help you animate your armature, but they are not as efficient in dealing with the real-time changes in the armature to produce dynamically plausible movement. If you are into robotics or simply want to explore more advanced settings in this solver, please refer to the official documentation:
+As outras restrições ósseas são ótimas para ajudá-lo a animar sua armadura, mas não são tão eficientes em lidar com as mudanças em tempo real na armadura para produzir movimentos dinamicamente plausíveis. Se você gosta de robótica ou simplesmente deseja explorar configurações mais avançadas neste solucionador, consulte a documentação oficial:
 
-_http://wiki.blender.org/index.php/Dev:Source/GameEngine/RobotIKSolver_
+_http: //wiki.blender.org/index.php/Dev: Source/GameEngine/RobotIKSolver_
 
 ##### Stretch To <a id="Stretch_To"></a>
 
-A stretched bone allows you to produce cartoon body transformations (see Figure 4.20). Different from a scaled bone, a stretched one maintains its volume. The target bone needs to be completely isolated from and not connected at all to the constrained bone. It can't be either a child or a parent.
+Um osso alongado permite que você produza transformações corporais de desenho animado (consulte a Figura 4.20). Diferente de um osso escamado, um alongado mantém seu volume. O osso alvo precisa ser completamente isolado e não conectado ao osso restrito. Não pode ser filho ou pai.
 
-In the book files, you can find an example of a more advanced technique that integrates Stretch To, IK, and Copy Rotation bone constraints. Study it carefully; further instructions are inside the file _\Book\Chapter04\2\_cartoon\_arm.blend_.
+Nos arquivos do livro, você pode encontrar um exemplo de uma técnica mais avançada que integra as restrições de bone Stretch To, IK e Copy Rotation. Estude-o cuidadosamente; mais instruções estão dentro do arquivo _\Book\Chapter04\2\_cartoon\_arm.blend_.
 
 ![Stretch To bone constraint](../figures/Chapter4/Fig04-20.png)
 
