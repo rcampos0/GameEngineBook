@@ -905,156 +905,155 @@ Finalmente, você precisa configurar as poses restantes [md] pálpebra para cima
 
 ### Get Your Hands Dirty <a id="Get_Your_Hands_Dirty"></a>
 
-With the armature ready to pose, you can complete the idle animation. Once things are set, there is no need to worry about anything but the armature poses. Take the previous file and create the complete cycle.
+Com a armadura pronta para posar, você pode completar a animação ociosa. Depois que as coisas estiverem definidas, não há necessidade de se preocupar com nada além das poses da armadura. Pegue o arquivo anterior e crie o ciclo completo.
 
-Our attempt of a fun idle animation can be seen on the book file _\Book\Chapter4\tutorial\_idle\_5.action.blend_. The animation is not (yet) set to play in the game engine, but you can play it back in the 3D view. Also remember to change the end frame in your render panel to match the playback of your animation cycle. This will not affect the game engine, but it will help you preview your work in Blender.
+Nossa tentativa de uma animação ociosa divertida pode ser vista no arquivo do livro _ \ Book \ Chapter4 \ tutorial \ _idle \ _5.action.blend_. A animação (ainda) não está configurada para ser reproduzida no mecanismo de jogo, mas você pode reproduzi-la na visualização 3D. Lembre-se também de alterar o quadro final em seu painel de renderização para corresponder à reprodução de seu ciclo de animação. Isso não afetará o mecanismo de jogo, mas ajudará você a visualizar seu trabalho no Blender.
 
-After the tutorial section, you can check out the idle and walking animation made by Moraes Júnior especially for this book. In the meantime, enjoy our take on Momo, the happiest monkey in the world (see Figure 4.53).
+Após a seção tutorial, você pode conferir a animação ociosa e ambulante feita por Moraes Júnior especialmente para este livro. Enquanto isso, aproveite nossa opinião sobre Momo, o macaco mais feliz do mundo (consulte a Figura 4.53).
 
 ![Momo idle animation](../figures/Chapter4/Fig04-53.png)
 
 ### Wiring Up the Logic Bricks <a id="Wiring_Up_the_Logic_Bricks"></a>
 
-There is only one thing missing. We need to alternate between the two animations: the walking and the idle one. With the latest file open, select RigMomo and in the Logic Editor, make the following changes:
+Só falta uma coisa. Precisamos alternar entre as duas animações: a pé e a ociosa. Com o arquivo mais recente aberto, selecione RigMomo e, no Logic Editor, faça as seguintes alterações:
 
-1. Change the Always sensor to a Keyboard sensor with Key set to W.
+1. Altere o sensor Always para um sensor de teclado com a chave definida para W.
 
-2. Add a Property Sensor to check whether the frame property is between 39 and 40. Set Invert and turn on Positive and Negative Pulse modes.
+2. Adicione um sensor de propriedade para verificar se a propriedade do quadro está entre 39 e 40. Defina Inverter e ative os modos de pulso positivo e negativo.
 
-3. Connect the Property Sensor to the Motion actuator (Move Forward).
+3. Conecte o sensor de propriedade ao atuador de movimento (mover para frente).
 
-These changes can be seen in Figure 4.54. What you are doing here first is to set the action to play when the W key is pressed. Since the Action Actuator is set to Loop End, the animation will still play for a few more frames. In order to make Momo keep moving forward, you need to keep the Motion Actuator active until the frame played is not the final (40). That way when you release the key, you ensure that the Momo animation is in the beginning of its animation cycle, ready to blend with the idle action.
+Essas mudanças podem ser vistas na Figura 4.54. O que você está fazendo aqui primeiro é definir a ação a ser executada quando a tecla W for pressionada. Como o Action Actuator está definido como Loop End, a animação ainda será reproduzida por mais alguns quadros. Para fazer o Momo continuar avançando, você precisa manter o atuador de movimento ativo até que o quadro reproduzido não seja o final (40). Dessa forma, ao soltar a tecla, você garante que a animação Momo está no início de seu ciclo de animação, pronta para se misturar com a ação ociosa.
 
 ![Logic Brick, Part 1 - keep walking](../figures/Chapter4/Fig04-54.png)
 
-Now all that is left to be done is to play the idle action when Momo is not walking. Add a Nor Controller connected to the Keyboard and the Property and connect it to a new Action Actuator. The Nor Controller will play this actuator only when both sensors are false. The Action Actuator and the final logic bricks can be seen in Figure 4.55. The explanation for the parameters follows.
+Agora tudo o que falta fazer é jogar a ação ociosa quando Momo não está andando. Adicione um Nor Controller conectado ao teclado e à propriedade e conecte-o a um novo Action Actuator. O Nor Controller jogará este atuador apenas quando ambos os sensores forem falsos. O Action Actuator e os blocos lógicos finais podem ser vistos na Figura 4.55. A explicação para os parâmetros segue.
 
 ![Logic Brick, Part 2 - idle](../figures/Chapter4/Fig04-55.png)
 
-- **Playback type** : Loop Stop will make the action loop until the Keyboard Sensor is active. It will stop immediately after.
+- **Playback type** : Loop Stop fará com que a ação seja repetida até que o Sensor do Teclado esteja ativo. Ele vai parar imediatamente depois.
 
-- **Priority** : 2[md]it has to be higher than the walking Action Actuator. Lower priority actions have precedence over higher ones.
+- **Priority** : 2 [md] deve ser mais alto do que o atuador de ação ambulante. As ações de prioridade mais baixa têm precedência sobre as mais altas.
 
-- **Start/End Frame** : 1 and 160[md]the range of your animation.
+- **Start/End Frame** : 1 e 160 [md] o intervalo de sua animação.
 
-- **Blendin** : 11[md]If the pose of the initial frame of the idle animation is the same as the walking, you don't need to blend them (Blendin = 0). Otherwise, this parameter will make the transition smooth.
+- **Blendin** : 11 [md] Se a pose do quadro inicial da animação inativa for a mesma que a de caminhar, você não precisa misturá-los (Blendin = 0). Caso contrário, este parâmetro tornará a transição suave.
 
-- **Continue** : False[md]ye want the animation to start over from frame 1 every time you stop walking.
+- **Continue** : Falso [md], você deseja que a animação comece do quadro 1 toda vez que você parar de andar.
 
-The final file is on _\Book\Chapter4\tutorial\_idle\_6.idlewalkforward.blend_.
+O arquivo final está em _\Book\Chapter4\tutorial\_idle\_6.idlewalkforward.blend_.
 
 ### How Many Bricks Does It Take to Turn Momo? <a id="How_Many_Bricks_Does_It_Take_to_Turn_Momo?"></a>
 
-Momo can walk and stop. Now, if only we had a jump, we would be set for a side-scroller platform game (due to copyright restrictions, you will not see a figure of Momo running after a spinning-spiked hedgehog). For a 3D game, however, you need to be able to freely navigate into the levels. And there is no better way than allowing the character to turn around.
+Momo pode andar e parar. Agora, se pelo menos tivéssemos um salto, estaríamos prontos para um jogo de plataforma side-scroller (devido a restrições de direitos autorais, você não verá uma figura de Momo correndo atrás de um ouriço com espinhos giratórios). Para um jogo 3D, no entanto, você precisa ser capaz de navegar livremente pelos níveis. E não há maneira melhor do que permitir que o personagem se vire.
 
-The simplest way to make Momo turn is by adding new Motion Actuators responding to a new set of Keyboard Sensors. Let's use the key A to turn left and D to turn right. To make it turn left, follow these instructions:
+A maneira mais simples de fazer o Momo girar é adicionando novos Atuadores de Movimento que respondem a um novo conjunto de Sensores de Teclado. Vamos usar a chave A para virar à esquerda e D para virar à direita. Para virar à esquerda, siga estas instruções:
 
-1. Add Keyboard sensor[md]key A.
+1. Adicionar sensor de teclado [md] tecla A.
 
-2. Add Motion actuator with Rot Z 2.5 degrees.
+2. Adicione o atuador de movimento com Rot Z 2,5 graus.
 
-3. Connect Sensor with Actuator, which creates a new And controller.
+3. Conecte o sensor ao atuador, o que cria um novo controlador E.
 
-4. Change the original cWalk controller from And to Or.
+4. Altere o controlador cWalk original de E para Ou.
 
-5. Connect the new sensor to this controller as well.
+5. Conecte o novo sensor a este controlador também.
 
-6. Connect the new sensor to the Nor controller.
+6. Conecte o novo sensor ao controlador Nor.
 
-Now do the same for the right rotation, and you will have the logic bricks shown in Figure 4.56. You may notice that I'm using three States for the controllers here. They are always turned on, thus the main purpose is purely for organization.
+Agora faça o mesmo para a rotação correta e você terá os blocos lógicos mostrados na Figura 4.56. Você pode notar que estou usando três estados para os controladores aqui. Eles estão sempre ativados, portanto, o objetivo principal é puramente de organização.
 
 ![Logic Brick, Part 3 turning](../figures/Chapter4/Fig04-56.png)
 
-Source: Blender Foundation.
+Fonte: Fundação Blender.
 
-The final file is on _\Book\Chapter4\tutorial\_idle\_7.turning.blend_.
+O arquivo final está em _\Book\Chapter4\tutorial\_idle\_7.turning.blend_.
 
 >**The Dilemma of the Sweet Miso Soup
 >
->Once when I was younger, my hand slipped while seasoning the miso soup and, brilliantly, I thought it was a good idea to compensate for the salt by sweetening it. Guess what, it didn't work (and yes, I had to eat it all).
->The same goes for animation. No one needs to turn right and left the same way. It can be because of a soccer injury, a shorter leg, you name it.
->So sometimes (not always, not now), you need more control over the turning. For the _Yo Frankie_ project, they had specific animations for each side Momo would be turning. Those subanimations make for both good transitions between actions and for more artistic control. It's always a matter of compromising between what you can afford to do and what you can't, which is addressed between the technical and artistic teams. Thus, even though a programmer may insist it is so, an animation for "getting up" is not the same as a "sitting down" animation played backward. For our simple walking cycle, this will do.
->Bottomline: a miso soup with sugar is not a break-even[md]it's bad cooking.
+>Uma vez, quando eu era mais jovem, minha mão escorregou enquanto temperava a sopa de missô e, de maneira brilhante, achei uma boa ideia compensar o sal adoçando-o. Adivinha, não funcionou (e sim, tive que comer tudo).
+>O mesmo se aplica à animação. Ninguém precisa virar à direita e à esquerda da mesma maneira. Pode ser por causa de uma lesão no futebol, uma perna mais curta, etc.
+>Portanto, às vezes (nem sempre, não agora), você precisa de mais controle sobre as curvas. Para o projeto _Yo Frankie_, eles tinham animações específicas para cada lado que Momo giraria. Essas subanimações proporcionam boas transições entre as ações e um controle mais artístico. É sempre uma questão de compromisso entre o que você pode fazer e o que não pode, o que é feito entre as equipes técnica e artística. Assim, mesmo que um programador possa insistir nisso, uma animação para "levantar" não é o mesmo que uma animação para "sentar" reproduzida ao contrário. Para o nosso ciclo de caminhada simples, isso bastará.
+> Conclusão: uma sopa de missô com açúcar não é um ponto de equilíbrio [md], é um cozimento ruim.
 
 ### Hats Off to Momo and Vice-Versa <a id="Hats_Off_to_Momo_and_Vice-Versa"></a>
 
-Momo is a classy monkey, often seen at parties of the animal kingdom's high society. However, when with his inner circle of friends, Momo is actually a very casual monkey[md]not much to show, nothing to hide. One character[md]two quite distinct moments. This is the theme of our animation.
+Momo é um macaco elegante, frequentemente visto em festas da alta sociedade do reino animal. No entanto, quando está com seu círculo íntimo de amigos, Momo é na verdade um macaco muito casual [md] não há muito a mostrar, nada a esconder. Um personagem [md] dois momentos bem distintos. Este é o tema da nossa animação.
 
-In this tutorial, we will show how to make Momo switch between two kinds of hats: a bouncing hat and a hat that fits tight on its head. We will not only use two different Blender objects, but also animate them differently when worn. To make an object external to the armature follow it, we need two things: a bone and a parented empty.
+Neste tutorial, mostraremos como fazer o Momo alternar entre dois tipos de chapéu: um chapéu saltitante e um chapéu que se ajusta bem em sua cabeça. Não usaremos apenas dois objetos Blender diferentes, mas também os animaremos de forma diferente quando usados. Para fazer um objeto externo à armadura segui-lo, precisamos de duas coisas: um bone e um parented empty.
 
-The bone, which can be animated as any other bone, will indicate Momo's head location and rotation for every frame. The empty, external to the armature, is parented to the bone, and copies the bone transformations automatically during the game. In this tutorial, this empty, working as a placeholder, will be used to place the hat Momo will be wearing.
+O bone, que pode ser animado como qualquer outro bone, indicará a localização da cabeça de Momo e a rotação para cada quadro. O vazio, externo à armadura, é pai do osso e copia as transformações do osso automaticamente durante o jogo. Neste tutorial, este vazio, funcionando como um espaço reservado, será usado para colocar o chapéu que Momo usará.
 
-Start by opening a variation of the latest walking Momo on the book file _\Book\Chapter4\tutorial\_hat\_1.begin.blend_.
+Comece abrindo uma variação do último Momo ambulante no arquivo do livro _ \ Book \ Chapter4 \ tutorial \ _hat \ _1.begin.blend_.
 
-If you want to carry these changes to your own working file, you need to append the Hats group into your local file. This also includes the camera object and an empty where we are running the script to control the hat switch. You can see the hats in Figure 4.57.
+Se você deseja transportar essas alterações para seu próprio arquivo de trabalho, é necessário anexar o grupo Hats em seu arquivo local. Isso também inclui o objeto de câmera e um vazio onde estamos executando o script para controlar o switch hat. Você pode ver os chapéus na Figura 4.57.
 
 ![Hats for Momo](../figures/Chapter4/Fig04-57.png)
 
-Source: Blender Foundation.
+Fonte: Fundação Blender.
 
-This is a simple tutorial, focusing on illustrating the bone parenting technique. Thus, most of the components are ready for you to hook up with your file (for example, the scripts). Let's first set up one of the hats.
+Este é um tutorial simples, com foco em ilustrar a técnica de paternidade óssea. Portanto, a maioria dos componentes está pronta para você conectar com seu arquivo (por exemplo, os scripts). Vamos primeiro configurar um dos chapéus.
 
-1. Select the armature and go to Edit mode.
+1. Selecione a armadura e vá para o modo Editar.
 
-2. Create one bone in the middle of the head named Head.Hat.Steady.
+2. Crie um osso no meio da cabeça denominado Head.Hat.Steady.
 
-3. Parent the bone to the head bone.
+3. Parente o osso com o osso da cabeça.
 
-4. Change Armature mode to Pose mode.
+4. Mude o modo Armature para o modo Pose.
 
-5. Go to Object mode and create an empty with the same position/rotation as the Head.Hat.Steady bone. Name the empty Head.PH.Hat.Steady.
+5. Vá para o modo Objeto e crie um vazio com a mesma posição/rotação do osso Head.Hat.Steady. Nomeie o vazio Head.PH.Hat.Steady.
 
-6. With the empty selected, select the bone you just created and make it the parent of the empty (Ctrl+P  Set Parent To  Bone).
+6. Com o vazio selecionado, selecione o osso que você acabou de criar e torne-o o pai do vazio (Ctrl + P  Definir pai para  Osso).
 
-With those changes, you can already animate the bone Head.Hat.Steady, and the empty placeholder will follow along. The hat will be placed exactly where the empty is. In the current file, both hats are parented to empties/placeholders close to the camera. In order to animate the hat bones, you need to temporarily bring the hat to the position it will be during the game. For that to work with the Head.Hat.Steady bone, you need to bring the Hat.Cap Blender object to the same position/rotation as the empty placeholder and parent the hat object to it (select the hat, select the empty, in the Transform panel in the 3D view, right-mouse click in the values to "Copy To Selected," Ctrl+P to parent). Now you can go to the armature Edit mode and move the bone to make the hat fit the head properly. Figure 4.58 shows the arrangement of Bone + Empty + Hat. The current snapshot can be found _in \Book\Chapter4\tutorial\_hat\_2.capsetup.blend_.
+Com essas alterações, você já pode animar o bone Head.Hat.Steady, e o espaço reservado vazio seguirá. O chapéu será colocado exatamente onde está o vazio. No arquivo atual, ambos os chapéus são parentais para vazios / espaços reservados próximos à câmera. Para animar os ossos do chapéu, você precisa trazê-lo temporariamente para a posição que ficará durante o jogo. Para que funcione com o osso Head.Hat.Steady, você precisa trazer o objeto Hat.Cap Blender para a mesma posição/rotação que o espaço reservado vazio e pai do objeto chapéu para ele (selecione o chapéu, selecione o vazio, em o painel Transformar na visualização 3D, clique com o botão direito do mouse nos valores para "Copiar para selecionado," Ctrl + P para o pai). Agora você pode ir para o modo de edição de armadura e mover o osso para fazer o chapéu caber na cabeça corretamente. A Figura 4.58 mostra a disposição de Bone + Vazio + Chapéu. O instantâneo atual pode ser encontrado _in\Book\Chapter4\tutorial\_hat\_2.capsetup.blend_.
 
 ![Hat + empty placeholder + hat bone](../figures/Chapter4/Fig04-58.png)
 
-Once the bone is in the right place, you can go over the walking and the idle animations and do some tweaks on its position/rotation over time. For this hat, you don't need to move much. In our case, we only tilted it a bit in the middle of the idle animation to follow the eyebrow raising and some subtle bouncing during the walk. When you now run the game, you will see the hat always in the right place during the animations. To make sure you can follow closely, the file with the animated Hat.Cap can be seen in Figure 4.59 and the book file _\Book\Chapter4\tutorial\_hat\_3.animatedcap.blend_.
+Assim que o osso estiver no lugar certo, você pode revisar as animações de caminhada e ociosidade e fazer alguns ajustes em sua posição/rotação ao longo do tempo. Para este chapéu, você não precisa se mover muito. Em nosso caso, apenas inclinamos um pouco no meio da animação ociosa para acompanhar o levantar de sobrancelhas e alguns saltos sutis durante a caminhada. Ao executar o jogo agora, você verá o chapéu sempre no lugar certo durante as animações. Para ter certeza de que você pode acompanhar de perto, o arquivo com o Hat.Cap animado pode ser visto na Figura 4.59 e o arquivo do livro _\Book\Chapter4\tutorial\_hat\_3.animatedcap.blend_.
 
 ![Momo walking in the game with the cap on his head](../figures/Chapter4/Fig04-59.png)
 
-So far so good. Let's now set up the second hat. For this one, you will create a new bone and a new placeholder. The reason is that you will make a different animation for this hat. The classy top hat will be a bit looser, so it should bounce more during the animations.
+Por enquanto, tudo bem. Vamos agora configurar o segundo chapéu. Para este, você criará um novo osso e um novo espaço reservado. A razão é que você fará uma animação diferente para este chapéu. A cartola elegante ficará um pouco mais solta, então deve pular mais durante as animações.
 
-Start by moving/rotating the Hat.Cap back to its original placeholder by the camera and re-parent it to the empty (Camera.PH.Hat.Cap). Now repeat the same steps you did for the other hat. This time name the bone Head.Hat.Bouncy and the empty Head.PH.Hat.Bouncy. For the animation, make it more exaggerated, with the hat slipping during the walk and the idle actions. Figure 4.60 illustrates one of the moments the hat almost fell off. After moving the Hat.Top object back to its original placeholder (Camera.PH.Hat.Top), your file should be ready for the final adjustments.
+Comece movendo / girando o Hat.Cap de volta ao seu espaço reservado original pela câmera e redirecione-o para o vazio (Camera.PH.Hat.Cap). Agora repita os mesmos passos que você fez para o outro chapéu. Desta vez, nomeie o osso Head.Hat.Bouncy e o vazio Head.PH.Hat.Bouncy. Para a animação, deixe-a mais exagerada, com o chapéu escorregando durante a caminhada e as ações ociosas. A Figura 4.60 ilustra um dos momentos em que o chapéu quase caiu. Depois de mover o objeto Hat.Top de volta para seu espaço reservado original (Camera.PH.Hat.Top), seu arquivo deve estar pronto para os ajustes finais.
 
 ![Classy top hat is too big for Momo's head](../figures/Chapter4/Fig04-60.png)
 
 >**Copy Menu Attributes Add-on**
 >
->As soon as you start parenting your objects, you will see that it's not so easy to copy over transformations. Blender built-in copy tools work only on top of the local transformations, and this is not enough when you want to copy the visual or world transformations. The difference is that the visual transformations (what you see) are an accumulated result from the different local transformations of the chain of parents.
->Blender comes with an add-on that allows you to do all sorts of advanced copy operations. Go to the User Preferences, Add-Ons and enable the Copy Attributes Menu add-on.
->This add-on was originally intended only to bring over the copy menu (Ctrl+C) from Blender 2.49. Bassam Kurdali, its original developer and maintainer, was kind enough to expand it to help with this tutorial. Kudos to him.
->If you don't want to use add-ons, you can go old school with Blender 2.49 work-arounds. Duplicate your empty and do a Clear Parent  Clear and Keep Transformation in the new empty. Now you can use this object to copy the transformations from, delete it, and parent the hat to the original empty.
+>Assim que você começar a criar seus objetos, verá que não é tão fácil copiar transformações. As ferramentas de cópia integradas do Blender funcionam apenas em cima das transformações locais, e isso não é suficiente quando você deseja copiar as transformações visuais ou mundiais. A diferença é que as transformações visuais (o que você vê) são um resultado acumulado das diferentes transformações locais da cadeia de pais.
+> O Blender vem com um add-on que permite que você faça todos os tipos de operações de cópia avançadas. Vá para Preferências do usuário, Add-Ons e habilite o add-on Copy Attributes Menu.
+> Este add-on foi originalmente planejado apenas para trazer o menu de cópia (Ctrl + C) do Blender 2.49. Bassam Kurdali, seu desenvolvedor e mantenedor original, teve a gentileza de expandi-lo para ajudar neste tutorial. Parabéns a ele.
+> Se você não quiser usar add-ons, você pode ir à velha escola com as soluções alternativas do Blender 2.49. Duplique seu vazio e faça um Clear Parent  Clear and Keep Transformation no novo empty. Agora você pode usar este objeto para copiar as transformações, excluí-lo e pai do chapéu para o vazio original.
 
-Now that the animations are done and the armature set up, we can move on to look to the implementation of hats switching on the fly.
+Agora que as animações estão concluídas e a armadura configurada, podemos prosseguir para examinar a implementação da troca de chapéus em tempo real.
 
-Take the final file _\Book\Chapter4\tutorial\_hat\_4.animatedhats.blend_.
+Pegue o arquivo final _ \ Book \ Chapter4 \ tutorial \ _hat \ _4.animatedhats.blend_.
 
-The interaction is simple: click on a hat to switch to it; click anywhere else to bring it back close to the camera. When you pick a hat, the game engine will have to do as you did to tweak the animations: take the selected hat, move it to the head placeholder position, match their rotations, and parent it to this placeholder.
+A interação é simples: clique em um chapéu para alternar para ele; clique em qualquer outro lugar para trazê-lo de volta para perto da câmera. Quando você escolhe um chapéu, o mecanismo de jogo terá que fazer como você fez para ajustar as animações: pegue o chapéu selecionado, mova-o para a posição do marcador de posição da cabeça, combine suas rotações e pare-o com este marcador.
 
-This is done by a script that is already hooked up for the camera. This Python script is very simple, and you should be able to understand it after the Chapter 7, "Python Scripting." The script accesses the objects[md]hats and empty placeholders[md]by their names. Therefore, for your local changes, it's important to follow the names as presented here or tweak the script accordingly.
-
+Isso é feito por um script que já está conectado à câmera. Este script Python é muito simples e você deve ser capaz de entendê-lo após o Capítulo 7, "Script Python". O script acessa os objetos [md] chapéus e espaços reservados vazios [md] por seus nomes. Portanto, para suas alterações locais, é importante seguir os nomes conforme apresentados aqui ou ajustar o script de acordo.
 ### Mango Jambo Special Animation <a id="Mango_Jambo_Special_Animation"></a>
 
-The walking cycle you've seen so far is technically correct, and it follows the workflow you can count on, regardless of your animation skills. The bottom line is: with a good method and the understanding of the techniques, although you may not be brilliant, you can't go wrong either.
+O ciclo de caminhada que você viu até agora é tecnicamente correto e segue o fluxo de trabalho com o qual você pode contar, independentemente de suas habilidades de animação. O ponto principal é: com um bom método e o entendimento das técnicas, embora você possa não ser brilhante, você também não pode errar.
 
-Now, as the icing on the cake, I've asked the animator Moraes Júnior to do the same thing we did together[md]a new walking cycle and idle animation using the same base file. For reference, he created Momo for the _Yo Frankie_ project and its original animations. After our using and abusing of Momo in the previous pages, it's only fair to see what his "father" would have done instead. Here you can see and study his work and the final contribution: \Book\Chapter4\mangojambo.blend
+Agora, como a cereja do bolo, pedi ao animador Moraes Júnior que fizesse a mesma coisa que fizemos juntos [md] um novo ciclo de caminhada e animação ociosa usando o mesmo arquivo base. Para referência, ele criou Momo para o projeto _Yo Frankie_ e suas animações originais. Depois de usarmos e abusarmos de Momo nas páginas anteriores, é justo ver o que seu "pai" teria feito em vez disso. Aqui você pode ver e estudar seu trabalho e a contribuição final: \Book\Chapter4\mangojambo.blend
 
 ## To Learn More <a id="To_Learn_More"></a>
 
-Finally, dedicate the proper time to mastering the ways of animation. Learning how to make animation work in Blender is still not the same thing as knowing what to do. Here is a list of classic materials for learning animation[md]modern references for animation and character control in games and Blender-specific reading.
+Por fim, dedique o tempo adequado para dominar as formas de animação. Aprender como fazer animação funcionar no Blender ainda não é a mesma coisa que saber o que fazer. Aqui está uma lista de materiais clássicos para o aprendizado de animação [md], referências modernas para animação e controle de personagens em jogos e leitura específica do Blender.
 
-- _Drawn to Life_ by Walt Stanchfield
+- _Drawn to Life_ por Walt Stanchfield
 
-- _The Animator's Survival__Kit_ by Richard Williams
+- _The Animator's Survival__Kit_ por Richard Williams
 
-- _Cartoon Animation_ by Preston Blair
+- _Cartoon Animation_ por Preston Blair
 
-- _3rd Person Action Platformer Hero Animation Graph_ by Rune Vendler
+- _3ª pessoa Action Platformer Hero Animation Graph_ por Rune Vendler
 
 - [_http://altdevblogaday.org/2011/04/14/3rd-person-action-platformer-hero-animation-graph_](http://altdevblogaday.org/2011/04/14/3rd-person-action-platformer-hero-animation-graph)
 
-- _Character Animation DVD_ by William Reynish
+- _Dvd de animação de personagens_ por William Reynish
 
-- Blender 2.5 Character Animation Cookbook by Virgilio Vasconcelos
+- Livro de receitas de animação de personagens do Blender 2.5 por Virgilio Vasconcelos
