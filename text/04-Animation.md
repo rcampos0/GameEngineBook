@@ -519,391 +519,389 @@ Abra o arquivo base em _ \ Book \ Chapter04 \ tutorials \ tutorials \ _momobase.
 
 ![Setting up an Action actuator](../figures/Chapter4/Fig04-32.png)
 
-If the fast zooming of the lens still doesn't make everyone dizzy, it's time to animate the camera rotation. It's good to remember that while the rotation is a property of the camera object, the focal length is part of the camera datablock. As such, these transformations are stored in independent actions. Thus, we will need to create a new action (through keyframing the camera rotation) and set up a new Action actuator.
+Se o zoom rápido da lente ainda não deixa todo mundo tonto, é hora de animar a rotação da câmera. É bom lembrar que enquanto a rotação é uma propriedade do objeto da câmera, a distância focal faz parte do bloco de dados da câmera. Como tal, essas transformações são armazenadas em ações independentes. Assim, precisaremos criar uma nova ação (por meio de keyframing a rotação da câmera) e configurar um novo atuador de ação.
 
-1. Change the current frame to 1.
+1. Altere o quadro atual para 1.
 
-2. Select the camera object.
+2. Selecione o objeto da câmera.
 
-3. With the mouse over the 3D viewport, invoke the Keyframe menu (I key) and select Rotation.
+3. Com o mouse sobre a janela de exibição 3D, abra o menu Keyframe (tecla I) e selecione Rotation.
 
-4. Advance 5 frames.
+4. Avance 5 frames.
 
-5. Change camera rotation along its local Z axis by 60 degrees so it keeps looking forward but spinning (press R + Z + Z + 60).
+5. Altere a rotação da câmera ao longo de seu eixo Z local em 60 graus para que ela continue olhando para frente, mas girando (pressione R + Z + Z + 60).
 
-6. Keyframe the rotation again.
+6. Crie um quadro-chave para a rotação novamente.
 
-7. Repeat the previous steps until you get (and keyframe) frame 30,which will complete a full loop of 360 degrees.
+7. Repita as etapas anteriores até obter (e o quadro-chave) o quadro 30, que completará um loop completo de 360 ​​graus.
 
-8. Create an Action actuator. Change frame range from 1 to 30.
+8. Crie um atuador de ação. Altere o intervalo de quadros de 1 a 30.
 
-9. Set CameraAction.001 as the actuator Action. (This is the new action we created.)
+9. Defina CameraAction.001 como a ação do atuador. (Esta é a nova ação que criamos.)
 
-10. Link the And controller with this Action actuator.
+10. Vincule o controlador E a este atuador de ação.
 
-You can get this final file on _\Book\Chapter04\tutorials\pretutorial\_camera\_actions.blend_.
+Você pode obter este arquivo final em _\Book\Chapter04\tutorials\pretutorial\_camera\_actions.blend_.
 
-This effect is a bit annoying if you play the file multiple times to test the animation (as you will soon). So this spinning camera is not included in the base file you will use for the actual tutorial. If, however, you want to bring the camera along, you can append it into your other files. All the logic bricks and actions linked to the camera object and camera datablock will follow the Blender object.
+Este efeito é um pouco irritante se você reproduzir o arquivo várias vezes para testar a animação (como você fará em breve). Portanto, esta câmera giratória não está incluída no arquivo base que você usará para o tutorial real. Se, no entanto, quiser levar a câmera, você pode anexá-la aos outros arquivos. Todos os tijolos lógicos e ações vinculadas ao objeto da câmera e ao bloco de dados da câmera seguirão o objeto do Blender.
 
 ### Animation Cycle Tutorial <a id="Animation_Cycle_Tutorial"></a>
 
-To start, let's open the Momo file and look at the armature. Open the book file _\Book\Chapter4\tutorial\_walk\_1.begin.blend._
+Para começar, vamos abrir o arquivo Momo e olhar a armadura. Abra o arquivo do livro _\Book\Chapter4\tutorial\_walk\_1.begin.blend._
 
-We will create a walking cycle for Momo, following these steps:
+Vamos criar uma bicicleta de caminhada para Momo, seguindo estas etapas:
 
-1. Armature setup
+1. Configuração da armadura
 
-2. Extreme poses
+2. Posturas extremas
 
-3. Moving forward
+3. Seguindo em frente
 
-4. Between poses
+4. Entre as poses
 
-5. Play time
+5. Tempo de jogo
 
-In this tutorial, we will not cover animation extensively. This topic alone could fill a whole book. Instead, we will focus on the workflow of integrating your animation skills with the game engine tools. You'll get some tips you can apply to both Blender and the game engine animations. Both platforms work in a similar fashion.
+Neste tutorial, não cobriremos a animação extensivamente. Este tópico sozinho poderia preencher um livro inteiro. Em vez disso, vamos nos concentrar no fluxo de trabalho de integração de suas habilidades de animação com as ferramentas do motor de jogo. Você obterá algumas dicas que pode aplicar às animações do Blender e do motor de jogo. Ambas as plataformas funcionam de maneira semelhante.
 
 #### Armature Setup <a id="Armature_Setup"></a>
 
-The armature is already created, but not yet ready to animate the character. If you go to the Pose Mode, you can move the individual bones, as shown in Figure 4.33. As you might already know, bones constraints are useful in posing the armature, so let's create some.
+A armadura já foi criada, mas ainda não está pronta para animar o personagem. Se você for para o Modo de postura, poderá mover os ossos individuais, conforme mostrado na Figura 4.33. Como você já deve saber, as restrições de bones são úteis para posicionar a armadura, então vamos criar algumas.
 
 ![Select and move individual bones](../figures/Chapter4/Fig04-33.png)
 
-For Momo, there are two sets of bone constraints that will help your posing. The Inverse Kinematics, IK, for controlling the bone chains from their extreme bones, and Track To for the eyes.
+Para Momo, existem dois conjuntos de restrições ósseas que ajudarão na sua pose. The Inverse Kinematics, IK, para controlar as cadeias de ossos de seus ossos extremos, e Track To para os olhos.
 
 ##### Inverse Kinematics Bone Constraints <a id="Inverse_Kinematics_Bone_Constraints"></a>
 
-First, let's take a look at the IK bone constraints. IK can be used to pose arms and legs by moving only the hands and feet. The position of the arm and leg bones will be automatically calculated to accommodate the hand/feet position. Not only Momo's human counterparts (arms, legs, etc.) benefit from it, but also Momo's tail is perfect to demonstrate the usage of IK, so let's start with it. With the file open, follow these steps to get to the configuration shown in Figure 4.34.
+Primeiro, vamos dar uma olhada nas restrições de osso IK. IK pode ser usado para colocar braços e pernas movendo apenas as mãos e os pés. A posição dos ossos do braço e da perna será calculada automaticamente para acomodar a posição das mãos / pés. Não apenas as contrapartes humanas de Momo (braços, pernas, etc.) se beneficiam disso, mas também a cauda de Momo é perfeita para demonstrar o uso de IK, então vamos começar com isso. Com o arquivo aberto, siga estas etapas para chegar à configuração mostrada na Figura 4.34.
 
 ![Set an IK bone constraint in Momo's tail](../figures/Chapter4/Fig04-34.png)
 
-1. Select the armature object.
+1. Selecione o objeto de armadura.
 
-2. Change to Pose mode.
+2. Mude para o modo Pose.
 
-3. Select the last tail bone (RigMomo.tail.001).
+3. Selecione o último osso da cauda (RigMomo.tail.001).
 
-4. Select Bone Constraints in the Property Editor.
+4. Selecione Restrições de osso no Editor de propriedades.
 
-5. Add an Inverse Kinematics bone constraint.
+5. Adicione uma restrição de osso Inverse Kinematics.
 
-Now the setup is almost done. Before we finish, try to move the tail bone around. This results in all sorts of twists and revolving poses just by moving only a single control bone. You can see this early iteration in Figure 4.35, which went a bit too far, however. All you need is to control the chain of bones that this bone belongs to; in this case, all six bones from the tail bone group.
+Agora a configuração está quase concluída. Antes de terminar, tente mover o cóccix. Isso resulta em todos os tipos de torções e poses giratórias apenas movendo apenas um único osso de controle. Você pode ver essa iteração inicial na Figura 4.35, que foi um pouco longe demais, entretanto. Tudo que você precisa é controlar a cadeia de ossos à qual esse osso pertence; neste caso, todos os seis ossos do grupo cóccix.
 
 ![IK bone constraint with no limit](../figures/Chapter4/Fig04-35.png)
 
-In order to constraint the Influence of the bone control, you need to set the chain length in the IK Bone Constraint panel. The default value, zero, makes the chain of influenced bones as long as possible. For the tail, you can set the chain length to be five bones.
+Para restringir a influência do controle do osso, você precisa definir o comprimento da cadeia no painel Restrição do osso IK. O valor padrão, zero, torna a cadeia de ossos influenciados o mais longa possível. Para a cauda, você pode definir o comprimento da corrente em cinco ossos.
 
-There are other IK bone constraints that we want to set. So far we have been seeing only the bones from the first bone layer. Bone layers work like the object layers in Blender. A bone can be in more than one layer, and you can choose which layer to set at a time. The bone layers can be found in the armature Object Data panel in the Property Editor, as seen in Figure 4.36.
+Existem outras restrições de osso IK que desejamos definir. Até agora, vimos apenas os ossos da primeira camada óssea. Camadas de osso funcionam como camadas de objetos no Blender. Um osso pode estar em mais de uma camada e você pode escolher qual camada definir de cada vez. As camadas de osso podem ser encontradas no painel Armature Object Data no Property Editor, como visto na Figura 4.36.
 
 ![Bone layers](../figures/Chapter4/Fig04-36.png)
 
-If you can turn on the second bone layer, you will see only the hand, foot, and tail bones. They all need IK bone constraints as well. Try copying the steps for the tail bone. To mimic the original file, you need to set the chain length to be two bones for the forearm and the shin bones, and three bones for the feet. These numbers correspond to how many bones are left in the chain of bones. At this point, your file should be like the one on _\Book\Chapter4\tutorial\_walk\_2.ik.blend._
+Se você puder ativar a segunda camada óssea, verá apenas os ossos da mão, do pé e da cauda. Todos eles precisam de restrições ósseas IK também. Tente copiar as etapas para o cóccix. Para imitar o arquivo original, você precisa definir o comprimento da corrente como dois ossos para o antebraço e os ossos da canela e três ossos para os pés. Esses números correspondem a quantos ossos sobraram na cadeia de ossos. Neste ponto, seu arquivo deve ser como o de _\Book\Chapter4\tutorial\_walk\_2.ik.blend._
 
 >**Targetless Constraints**
 >
->Those IK bone constraints are targetless. As explained previously in the bone constraints section, they are a fake IK. They are used only to help in posing and can be removed from the final file once the animation is done.
+>Essas restrições ósseas IK não têm objetivo. Conforme explicado anteriormente na seção de restrições ósseas, eles são um IK falso. Eles são usados apenas para ajudar na pose e podem ser removidos do arquivo final assim que a animação for concluída.
 
 ##### Track To Bone Constraints <a id="Track_To_Bone_Constraints"></a>
 
-Well, if you haven't looked at the hidden third bone layer, now is a good time to do so. As you see in Figure 4.37, in this layer, we have the eye bones and two other bones to be used as trackers. Sure, you could move the eye bones directly, but again, this is not the ideal workflow.
+Bem, se você não olhou para a terceira camada óssea oculta, agora é um bom momento para fazê-lo. Como você pode ver na Figura 4.37, nesta camada, temos os ossos do olho e dois outros ossos para serem usados como rastreadores. Claro, você pode mover os ossos do olho diretamente, mas, novamente, esse não é o fluxo de trabalho ideal.
 
 ![Track To bone system](../figures/Chapter4/Fig04-37.png)
 
-The two bones in front of the eyes are the tracker bones. Each eye bone will need a Track To bone constraint with those bones set as the targets. Think of the bone trackers as the direction in which Momo is looking. For example, if there is a banana on the floor, you can place the trackers right on the fruit. This will make the eyes converge there.
+Os dois ossos na frente dos olhos são os ossos rastreadores. Cada osso do olho precisará de uma restrição Track To bone com esses ossos definidos como alvos. Pense nos rastreadores de ossos como a direção para a qual Momo está olhando. Por exemplo, se houver uma banana no chão, você pode colocar os rastreadores bem na fruta. Isso fará os olhos convergirem para lá.
 
-Setting the Track To bone constraint is not much different than setting the other bone constraints. If you follow the steps in the list below, you should see the settings shown in Figure 4.38:
+Definir a restrição Track to bone não é muito diferente do que definir outras restrições de bone. Se você seguir as etapas na lista abaixo, deverá ver as configurações mostradas na Figura 4.38:
 
-1. Select the armature object.
+1. Selecione o objeto de armadura.
 
-2. Change to Pose mode.
+2. Mude para o modo Pose.
 
-3. Select the left eye bone.
+3. Selecione o osso do olho esquerdo.
 
-4. Select Bone Constraints in the Property Editor.
+4. Selecione Restrições de osso no Editor de propriedades.
 
-5. Add a Track To bone constraint.
+5. Adicione uma restrição Track to bone.
 
 ![Track To Bone Constraint panel](../figures/Chapter4/Fig04-38.png)
 
-To finish the setup, select the RigMomo as the target object and eyes.target.L as the target bone. Do the same for the right eye, and you are ready to move the target bones around. The armature is now ready for the first animation. If you just want to have fun animating the character, you can check the current file status at _\Book\Chapter4\tutorial\_walk\_3.trackto.blend._
+Para terminar a configuração, selecione o RigMomo como o objeto alvo e eyes.target.L como o osso alvo. Faça o mesmo para o olho direito e você estará pronto para mover os ossos alvo. A armadura agora está pronta para a primeira animação. Se você apenas deseja se divertir animando o personagem, pode verificar o status do arquivo atual em _ \ Book \ Chapter4 \ tutorial \ _walk \ _3.trackto.blend._
 
 #### Extreme Poses <a id="Extreme_Poses"></a>
 
-The first thing you need for your animation is the start position of the walking cycle. A good cycle shouldn't have a clear beginning or end, so we'll start with the extreme poses. In general, an extreme pose shows a moment when the animation hits a peak, before it changes direction. For the walking cycle, an extreme pose is when one leg is in its maximum stretch and the other is slightly bent, waiting to transfer its weight to the leg in front of it. We will start from there.
+A primeira coisa que você precisa para sua animação é a posição inicial da bicicleta de caminhada. Um bom ciclo não deve ter um começo ou um fim claros, então vamos começar com as poses extremas. Em geral, uma pose extrema mostra um momento em que a animação atinge o pico, antes de mudar de direção. Para o ciclo de caminhada, uma postura extrema é quando uma perna está em seu alongamento máximo e a outra ligeiramente dobrada, esperando para transferir seu peso para a perna à sua frente. Vamos começar a partir daí.
 
-It helps to be able to view images and videos when animating. If you want to spare yourself from a visit to the nearest circus, a drawing or video of a person walking will do just fine.
+Ajuda poder ver imagens e vídeos durante a animação. Se você quiser se livrar de uma visita ao circo mais próximo, um desenho ou vídeo de uma pessoa caminhando bastará.
 
-On the book files, you can find an image of Momo walking in _\Book\Chapter4\ ExtremePoseSide.png_ and _ExtremePoseFront.png._
+Nos arquivos do livro, você pode encontrar uma imagem de Momo caminhando em _ \ Book \ Chapter4 \ ExtremePoseSide.png_ e _ExtremePoseFront.png._
 
-In Figure 4.39, you can see those images being used as background in a file ready for posing. This Blender file is the same one we built in the previous section with additional reference images as background. Find it in _\Book\Chapter4\tutorial\_walk\_4.extreme\_reference.blend_.
+Na Figura 4.39, você pode ver essas imagens sendo usadas como fundo em um arquivo pronto para posar. Este arquivo do Blender é o mesmo que construímos na seção anterior com imagens de referência adicionais como fundo. Encontre-o em _ \ Book \ Chapter4 \ tutorial \ _walk \ _4.extreme \ _reference.blend_.
 
 ![Reference image as background](../figures/Chapter4/Fig04-39.png)
 
 >**Reference Images**
 >
->The reference images are used here in the background. If you prefer to see them on top of the view, you have two options. You can use the "Front" option in the Background Images panel. Or you can use empties instead. Add empties with the Display type set to Image. Place them in the desired location and lock their selection in the Outliner.
+>As imagens de referência são usadas aqui em segundo plano. Se você preferir vê-los no topo da visualização, você tem duas opções. Você pode usar a opção "Frontal" no painel Imagens de fundo. Ou você pode usar vasilhames. Adicione vasilhames com o tipo de exibição definido como Imagem. Coloque-os no local desejado e bloqueie sua seleção no Outliner.
 
-Try to match your armature to the reference image. In the Pose mode, move and rotate the bones around. (You don't want to change the armature in Edit mode.) Pay special attention to the feet bones to make sure they are well planted in the ground.
+Tente combinar sua armadura com a imagem de referência. No modo Pose, mova e gire os ossos. (Você não deseja alterar a armadura no modo Editar.) Preste atenção especial aos ossos dos pés para se certificar de que estão bem plantados no solo.
 
-After you are done with the initial pose, you can go for a bit of monkey see-monkey do. Follow the steps below. The explanation follows.
+Depois de fazer a pose inicial, você pode fazer um pouco de ver macaco fazer. Siga os passos abaixo. A explicação segue.
 
-1. Change current frame to 1.
+1. Altere o quadro atual para 1.
 
-2. Select all bones.
+2. Selecione todos os ossos.
 
-3. Keyframe Loc/Sca/Rot (I key)
+3. Loc / Sca / Rot do quadro-chave (chave I)
 
-4. Change frame to 41[md]this will be the end frame of our animation.
+4. Mude o quadro para 41 [md], este será o quadro final de nossa animação.
 
-5. Keyframe Loc/Sca/Rot again (with the bones still selected).
+5. Keyframe Loc / Sca / Rot novamente (com os bones ainda selecionados).
 
-6. Change frame to 21[md]the half of the animation where the second stride begins.
+6. Mude o quadro para 21 [md] a metade da animação onde a segunda passada começa.
 
-7. Copy all the bone transformations (Ctrl + C or the icon in the 3D View header).
+7. Copie todas as transformações ósseas (Ctrl + C ou o ícone no cabeçalho da visualização 3D).
 
-8. Paste them mirrored (Shift + Ctrl + V or the last icon in the 3D View header).
+8. Cole-os espelhados (Shift + Ctrl + V ou o último ícone no cabeçalho da visualização 3D).
 
-9. Keyframe Loc/Sca/Rot yet again.
+9. Loc / Sca / Rot do quadro-chave novamente.
 
-10. In the F-Curve Editor, select all bones and change Extrapolation Mode to Constant (Shift + E or Channel Menu > Extrapolation Mode).
+10. No Editor da Curva F, selecione todos os ossos e altere o Modo de Extrapolação para Constante (Shift + E ou Menu do Canal> Modo de Extrapolação).
 
-What we just did was first define the animation length for 40 frames (1.3 seconds at 30 fps for one complete set of two strides). The first and last frames need to match; so we copied the transformation of the bones over frame 1 to 41. (You can copy them in the Dopesheet Editor as well.) We copied to frame 41 and not to frame 40 because we don't want a duplicated frame in the animation. We want the transition from the last frame (40) to the first frame (1) to be the same as from the last frame (40) to the next frame (41), which is outside the loop range.
+O que acabamos de fazer foi primeiro definir a duração da animação para 40 quadros (1,3 segundos a 30 fps para um conjunto completo de duas passadas). O primeiro e o último quadros precisam ser iguais; portanto, copiamos a transformação dos ossos do quadro 1 ao 41. (Você também pode copiá-los no Editor de Dopesheet.) Copiamos o quadro 41 e não o quadro 40 porque não queremos um quadro duplicado na animação. Queremos que a transição do último quadro (40) para o primeiro quadro (1) seja a mesma do último quadro (40) para o próximo quadro (41), que está fora do intervalo do loop.
 
-The extreme poses for the left and the right strides are flipped copies of each other. If you named your bones properly (as we did, using .L and .R for symmetric left and right bones respectively), you can mirror copy/paste them. Therefore, in the middle of our animation (frame 20), we place a copy of the poses.
+As poses extremas para os passos esquerdo e direito são cópias invertidas uma da outra. Se você nomeou seus ossos corretamente (como fizemos, usando .L e .R para ossos esquerdo e direito simétricos, respectivamente), você pode copiar / colar os mesmos. Portanto, no meio de nossa animação (quadro 20), colocamos uma cópia das poses.
 
-Finally, the change in the Extrapolation mode ensures that the frames behave as if they were copied over and over in the Dopesheet. The handlers of the initial keyframes change with the handlers of the final frames and vice versa.
+Por fim, a alteração no modo de extrapolação garante que os quadros se comportem como se tivessem sido copiados continuamente no Dopesheet. Os manipuladores dos quadros-chave iniciais mudam com os manipuladores dos quadros finais e vice-versa.
 
-In the Render panel in the Properties Editor, you can set the speed (30fps). The playback range (1 to 40) can be changed in the Timeline Editor or in the same Render panel If you switch the render engine to Blender Render. With this set, you can play back (Alt + A) your file to see the two extreme poses alternating over time. Before finishing, go to the Dopesheet Editor, switch from Dopesheet to Action Editor and rename the previously created action from ArmatureAction to Walking. You can see the panel in Figure 4.40.
+No painel Render do Editor de Propriedades, você pode definir a velocidade (30fps). O intervalo de reprodução (1 a 40) pode ser alterado no Editor de Linha de Tempo ou no mesmo painel Render Se você mudar o mecanismo de renderização para Renderização do Blender. Com este conjunto, você pode reproduzir (Alt + A) seu arquivo para ver as duas poses extremas alternando ao longo do tempo. Antes de terminar, vá para o Editor de Dopesheet, mude de Dopesheet para Action Editor e renomeie a ação criada anteriormente de ArmatureAction para Walking. Você pode ver o painel na Figura 4.40.
 
-The final file can be found in _\Book\Chapter4\tutorial\_walk\_5.extremeposes.blend._
+O arquivo final pode ser encontrado em _\Book\Chapter4\tutorial\_walk\_5.extremeposes.blend._
 
 ![Action Editor - first poses ready](../figures/Chapter4/Fig04-40.png)
 
 #### Moving Forward <a id="Moving_Forward"></a>
 
-The final walking cycle will have no real forward movement: the character stays in the same place. It's similar to those old Looney Tunes cartoons when the coyote runs past the cliff and keeps running without going anywhere. Then he falls. Nevertheless, you still need to set up a system where you can see the character walking as if you had a Motion Actuator attached to it. To help with this, we will look at two methods: using the central bone or moving the environment.
+O ciclo final de caminhada não terá nenhum movimento real para a frente: o personagem permanece no mesmo lugar. É semelhante àqueles antigos desenhos do Looney Tunes quando o coiote passa correndo pelo penhasco e continua correndo sem ir a lugar nenhum. Então ele cai. No entanto, você ainda precisa configurar um sistema onde possa ver o personagem andando como se você tivesse um atuador de movimento conectado a ele. Para ajudar nisso, examinaremos dois métodos: usando o osso central ou movendo o ambiente.
 
 ##### Root Bone <a id="Root_Bone"></a>
 
-The simplest way to make Momo move is by keyframing the root bone along the way. The root bone is the parent of all the bones. Thus, if it moves, the rest of the armature will follow it. To set the root bone to move, go to Pose mode and do the following:
+A maneira mais simples de fazer o Momo se mover é enquadrar o osso raiz ao longo do caminho. O osso da raiz é o pai de todos os ossos. Portanto, se ele se mover, o resto da armadura o seguirá. Para definir o osso da raiz para se mover, vá para o modo Pose e faça o seguinte:
 
-1. Select the bone. In RigMomo you will find the Bone.main on the floor level.
+1. Selecione o osso. No RigMomo você encontrará o Bone.main no nível do chão.
 
-2. Insert a Location keyframe. This will be the initial position of the bone and armature.
+2. Insira um quadro-chave de localização. Esta será a posição inicial do osso e da armadura.
 
-3. Advance from frame 1 to 41.
+3. Avance do quadro 1 para o 41.
 
-4. Move the bone forward the distance of one stride[md]0.23 (see the note below).
+4. Mova o osso para frente a distância de uma passada [md] 0,23 (veja a nota abaixo).
 
-5. Keyframe the new bone position.
+5. Crie um quadro-chave para a posição do novo osso.
 
-6. Change the Channel Extrapolation mode of the root bone to Linear Extrapolation.
+6. Altere o modo de extrapolação do canal do osso da raiz para extrapolação linear.
 
-In the book files, you can see Momo setup with the root bone steps at _\Book\Chapter4\tutorial\_walk\_6.rootbone.blend_.
+Nos arquivos do livro, você pode ver a configuração do Momo com as etapas do osso raiz em _\Book\Chapter4\tutorial\_walk\_6.rootbone.blend_.
 
 >**How Big Is a Stride?**
 >
->If your character is walking, eventually you will need to find where its feet will land after each stride. This varies from person to person, and is a function of the leg's size, the speed of the movement (walking, running, jumping), and other factors such as the environment (for example, snow). For this walking cycle, you can use 23cm (or 0.23 Blender units) for the complete two strides.
+>Se seu personagem estiver caminhando, eventualmente você precisará descobrir onde seus pés pousarão após cada passada. Isso varia de pessoa para pessoa e depende do tamanho da perna, da velocidade do movimento (caminhar, correr, pular) e de outros fatores, como o ambiente (por exemplo, neve). Para este ciclo de caminhada, você pode usar 23 cm (ou 0,23 unidades do Blender) para as duas passadas completas.
 
-After you are done with all the animation (past the polishing stage), you then can clean the bone location F-Curve. During the production of your game, you may need to come back for tweaks in your animation cycle. Therefore, instead of cleaning the bone curve you can simply disable the root bone channel in the Graph Editor. In Figure 4.41, you can see the speaker icon you use for that.
+Depois de concluir toda a animação (após o estágio de polimento), você pode limpar a Curva F de localização do osso. Durante a produção do seu jogo, você pode precisar voltar para ajustes no seu ciclo de animação. Portanto, em vez de limpar a curva óssea, você pode simplesmente desativar o canal ósseo da raiz no Editor de gráfico. Na Figura 4.41 você pode ver o ícone de alto-falante que usa para isso.
 
 ![Graph Editor - disabling individual bone channels](../figures/Chapter4/Fig04-41.png)
 
-The downside of this method comes when you need to change the root bone as part of your animation. For example, sometimes you don't want your animation cycle to be uniformly moving forward. Even for Momo's walk, it's better if there is a break every time he rests one of the feet as he gets ready for the next step. As you know, the movement of the character will be decoupled from the animation cycle. And, no, we don't get tired of repeating that. So, in this case, if you look at the character from a constantly moving point of reference, it will seem as if Momo is moving forward, then backward, and then forward again to the original position. To move all the bones at once, nothing is better than the root bone. It's not a good idea to rely on a bone that you plan to disable though.
+A desvantagem desse método surge quando você precisa alterar o osso da raiz como parte de sua animação. Por exemplo, às vezes você não quer que seu ciclo de animação avance uniformemente. Mesmo para a caminhada de Momo, é melhor se houver uma pausa toda vez que ele descansar um dos pés enquanto se prepara para o próximo passo. Como você sabe, o movimento do personagem será desacoplado do ciclo de animação. E, não, não nos cansamos de repetir isso. Portanto, neste caso, se você olhar para o personagem de um ponto de referência em constante movimento, parecerá que Momo está se movendo para a frente, depois para trás e, em seguida, para a frente novamente para a posição original. Para mover todos os ossos de uma vez, nada é melhor do que o osso da raiz. Não é uma boa idéia confiar em um osso que você planeja desativar.
 
-A work-around for that is to have one root bone to control the external position, and another bone (parented to the root bone) to control the internal position, relative to the object location. To avoid this surplus of global control bones, let's look at our second method.
+Uma solução alternativa para isso é ter um osso raiz para controlar a posição externa e outro osso (parente ao osso raiz) para controlar a posição interna, em relação à localização do objeto. Para evitar esse excesso de ossos de controle global, vamos examinar nosso segundo método.
 
 ##### If Mohamed Won't Go to the Mountain… <a id="If_Mohamed_Won't_Go_to_the_Mountain…"></a>
 
-…he goes to the beach. Our dear monkey, however, is suntanned enough and might as well stay put. In other words, in this method, Momo never moves. We will instead animate the environment around him.
+… ele vai para a praia. Nosso querido macaco, porém, está bastante bronzeado e pode muito bem ficar parado. Em outras palavras, neste método, Momo nunca se move. Em vez disso, vamos animar o ambiente ao seu redor.
 
-This method is based on the principle that perception is always relative. For example, on your computer screen, there is no way to distinguish between moving the camera away from the character and moving the character away from the camera. The result will be exactly the same. We will be adding moving placeholders that you can use as a guide to position the feet. Figure 4.42 shows the setup.
+Este método é baseado no princípio de que a percepção é sempre relativa. Por exemplo, na tela do computador, não há como distinguir entre mover a câmera para longe do personagem e mover o personagem para longe da câmera. O resultado será exatamente o mesmo. Adicionaremos marcadores de posição móveis que podem ser usados como guia para posicionar os pés. A Figura 4.42 mostra a configuração.
 
 ![Animation feet place holders](../figures/Chapter4/Fig04-42.png)
 
-This file is on _\Book\Chapter4\tutorial\_walk\_7.placehold.blend_. You can't tell from the picture, but if you play back the animation, you will see the placeholders moving against Momo (or would it be the other way around?). In fact, the camera is static so Momo doesn't really move.
+Este arquivo está em _\Book\Chapter4\tutorial\_walk\_7.placehold.blend_. Você não pode dizer pela imagem, mas se você reproduzir a animação, verá os marcadores se movendo contra o Momo (ou seria o contrário?). Na verdade, a câmera é estática, então Momo realmente não se move.
 
-1. Create a simple, easy-to-spot object.
+1. Crie um objeto simples e fácil de localizar.
 
-2. Create an Array modifier[md]set the constant offset to be equivalent to one stride and set enough copies to fill the screen.
+2. Crie um modificador Array [md] defina o deslocamento constante para ser equivalente a uma passada e defina cópias suficientes para preencher a tela.
 
-3. Move the Array object to be aligned with Momo. The feet from your extreme pose should match the position of the array elements.
+3. Mova o objeto Array para ser alinhado com Momo. Os pés de sua pose extrema devem corresponder à posição dos elementos da matriz.
 
-4. Insert a location keyframe.
+4. Insira um quadro-chave de localização.
 
-5. Advance from frames 1 to 41.
+5. Avance dos frames 1 ao 41.
 
-6. Move the array object forward the distance of two strides[md]0.46. (See the note on root bone.)
+6. Mova o objeto de matriz para frente a distância de duas passadas [md] 0,46. (Veja a nota sobre osso da raiz.)
 
-7. Keyframe the new array object position.
+7. Crie um quadro-chave para a nova posição do objeto array.
 
-8. In the Graph Editor, change the array object Extrapolation mode to linear extrapolation.
+8. No Editor de gráfico, altere o modo de extrapolação do objeto de matriz para extrapolação linear.
 
-This method requires a bit more setup than the previous one, but it has a big advantage. To work in the between poses (the next step of this tutorial), you will need to keep track of the foot position while the character moves forward. While the body is constantly moving, the feet are planted on the ground until it's their time to get up and get smashed on the floor again. This will prevent the undesirable effect known as _sliding feet_. This problem will be revisited next when we create the poses between the extremes. Figure 4.43 shows the complete walking cycle in different moments; note that the feet are always in the same place relative to the placeholders.
-
+Este método requer um pouco mais de configuração do que o anterior, mas tem uma grande vantagem. Para trabalhar entre as poses (a próxima etapa deste tutorial), você precisará controlar a posição do pé enquanto o personagem se move para frente. Enquanto o corpo está em constante movimento, os pés ficam plantados no chão até que seja a hora de se levantarem e serem esmagados no chão novamente. Isso evitará o efeito indesejável conhecido como _pés deslizantes_. Esse problema será revisitado a seguir, quando criarmos as poses entre os extremos. A Figura 4.43 mostra o ciclo completo de caminhada em diferentes momentos; observe que os pés estão sempre no mesmo lugar em relação aos espaços reservados.
 ![Animation feet placeholders](../figures/Chapter4/Fig04-43.png)
 
 #### Between Poses <a id="Between_Poses"></a>
 
-So far we have only two poses, the extreme left and the extreme right stride poses. By default, Blender interpolates the keyframed poses, creating a smooth transition between them. This mathematic interpolation is of no use for the final animation. That leaves us with 20 frames to fill between those extreme poses.
+Até agora, temos apenas duas poses, a extrema esquerda e a extrema direita. Por padrão, o Blender interpola as poses do quadro-chave, criando uma transição suave entre elas. Esta interpolação matemática não tem utilidade para a animação final. Isso nos deixa com 20 quadros para preencher entre essas poses extremas.
 
-From traditional animation literature, you can use two main techniques to create those in-between frames: straight-ahead action and pose-to-pose.
+Da literatura de animação tradicional, você pode usar duas técnicas principais para criar esses quadros intermediários: ação direta e pose a pose.
 
-Regardless of the advantages of one or another method (you can learn more about them in the material in the reference section of this chapter), we should attend to the differences in their workflows. In straight-ahead action, you animate frames one-by-one as you go. In pose-to-pose, you create sub-extreme poses and fill in the intervals systematically.
+Independentemente das vantagens de um ou outro método (você pode aprender mais sobre eles no material da seção de referência deste capítulo), devemos atentar para as diferenças em seus fluxos de trabalho. Na ação direta, você anima os quadros um a um conforme avança. Em pose a pose, você cria poses sub-extremas e preenche os intervalos sistematicamente.
 
-In both cases, you need to ensure that the feet are not sliding while you pose them. Use the technique presented in the previous section to prevent this. Sliding feet and feet going under the ground are hallmarks of not enough frames and automatic interpolation. Avoid them at all costs.
+Em ambos os casos, você precisa se certificar de que os pés não deslizem ao colocá-los. Use a técnica apresentada na seção anterior para evitar isso. Pés deslizantes e pés sob o solo são marcas de quadros insuficientes e interpolação automática. Evite-os a todo custo.
 
-Also, although you can create the animation by posing and keyframing the bones in the 3D view, you might want to tweak them in the Graph Editor. That can spare you from creating too many frames and using the handlers for fine-tuning your transitions. The fewer frames you have, the easier it is to change your animation. In Figure 4.44, you can see the current F-Curves edited for this walking cycle.
+Além disso, embora você possa criar a animação posicionando e enquadrando os bones na visualização 3D, você pode querer ajustá-los no Editor de gráfico. Isso pode evitar que você crie muitos quadros e use os manipuladores para ajustar suas transições. Quanto menos quadros você tiver, mais fácil será alterar sua animação. Na Figura 4.44, você pode ver as curvas F atuais editadas para este ciclo de caminhada.
 
 ![F-Curve tweaks](../figures/Chapter4/Fig04-44.png)
 
-This is no different from the traditional workflow of animation in Blender. It's not even much different from the animation workflow in other 3D software. From the vast amount of techniques and tools available, I used the following for this cycle:
+Isso não é diferente do fluxo de trabalho tradicional de animação no Blender. Não é nem muito diferente do fluxo de trabalho de animação em outro software 3D. Da vasta quantidade de técnicas e ferramentas disponíveis, usei o seguinte para este ciclo:
 
-- **IK bone constraints:** Use the IK constrained bones as guides, but remember to keyframe the affected bones as well.
+- **IK bone constraints:** Use os ossos restritos IK como guias, mas lembre-se de enquadrar os ossos afetados também.
 
-- **AutoKey:** Automatic keyframe insertion in the Timeline Editor header, especially for the straight-ahead action will spare you from a lot of manual keyframing.
+- **AutoKey:** A inserção automática de quadros-chave no cabeçalho do Editor de linha de tempo, especialmente para a ação direta, o poupará de muitos quadros-chave manuais.
 
-- **Show/Hide Handlers (Ctrl+H):** My personal favorite shortcut in the Graph Editor.
+- **Show/Hide Handlers (Ctrl+H):** Meu atalho pessoal favorito no Editor de gráfico.
 
-- **UV grid:** In the floor to spot feet sliding.
+- **UV grid:** No chão para detectar pés escorregando.
 
-In Figure 4.45, you can see the final result of our take on this. This file is in _\Book\Chapter4\tutorial\_walk\_8.pose\_to\_pose.blend_. Play it back to see it animated. From here, you can either keep working out of your file, take it from the book file, or merge both together. An action, as any other data block in Blender, can be imported and saved over different files (as long as the armature bones don't change their names).
+Na Figura 4.45, você pode ver o resultado final de nossa opinião sobre isso. Este arquivo está em _ \ Book \ Chapter4 \ tutorial \ _walk \ _8.pose \ _to \ _pose.blend_. Reproduza-o para vê-lo animado. A partir daqui, você pode continuar trabalhando no seu arquivo, retirá-lo do arquivo do livro ou mesclar os dois. Uma ação, como qualquer outro bloco de dados no Blender, pode ser importada e salva em arquivos diferentes (contanto que os ossos da armadura não mudem seus nomes).
 
 ![Walking cycle complete](../figures/Chapter4/Fig04-45.png)
 
 #### Play Time <a id="Play_Time"></a>
+Agora que o ciclo de animação está concluído, é hora de trazê-lo do Blender para o jogo. Você precisa definir um atuador de ação para executar a ação de caminhada e um atuador de movimento para fazê-lo se mover de acordo.
 
-Now that the animation cycle is done, it's time to bring it from Blender into the game. You need to set an Action actuator to play the walking action and a Motion Actuator to make it move accordingly.
+Vamos começar criando os blocos lógicos para a armadura. Com o RigMomo selecionado, siga as etapas em ordem. Na Figura 4.46, você pode ver a aparência do Logic Editor.
 
-Let's start by creating the Logic Bricks for the armature. With RigMomo selected, follow the steps in order. In Figure 4.46, you can see how the Logic Editor will look.
+1. Adicione um sensor Always e ative o pulso positivo.
 
-1. Add an Always sensor and set Positive Pulse on.
+2. Adicione um atuador de ação. Defina a ação criada (por exemplo, Walk), o modo Play para Loop End e os frames inicial e final como 1 e 40 respectivamente.
 
-2. Add an Action actuator. Set the action created (for example, Walk), the Play mode to Loop End, and the Start and End Frames to 1 and 40 respectively.
+3. Vincule o atuador Action ao sensor Always; isso criará automaticamente um controlador And.
 
-3. Link the Action actuator with the Always sensor; this will automatically create an And controller.
+4. Adicione um atuador de movimento e deixe os valores em branco por enquanto.
 
-4. Add a Motion actuator and leave the values blank for now.
-
-5. Link the Motion actuator with the same And controller.
+5. Vincule o atuador de movimento ao mesmo controlador E.
 
 ![Logic Bricks for animation playback](../figures/Chapter4/Fig04-46.png)
 
-To set the value in the Motion actuator, you need to calculate the object speed in Blender and convert it to the game engine. The calculation is simple and is going to give you the precise speed. If, however, you don't feel like doing math today, let trial and error be your guide.
+Para definir o valor no atuador de movimento, você precisa calcular a velocidade do objeto no Blender e convertê-lo para o motor de jogo. O cálculo é simples e vai te dar a velocidade precisa. Se, no entanto, você não sentir vontade de fazer matemática hoje, deixe a tentativa e o erro ser seu guia.
 
-The speed-in Blender units by seconds-is equal to two strides (0.23 x 2) divided by the number of cycles per second - the frame range of your animation cycle (40) divided by the Blender fps playback value. The game engine uses the same frame rate as Blender, to be set in the Render panel to 30fps. So for Momo, the speed we are working with is 0.35 Blender units per second: 0.46 / (40/30).
+A velocidade - em unidades do Blender em segundos - é igual a duas passadas (0,23 x 2) divididas pelo número de ciclos por segundo - o intervalo de quadros do seu ciclo de animação (40) dividido pelo valor de reprodução de fps do Blender. O motor do jogo usa a mesma taxa de quadros do Blender, a ser definida no painel Render para 30fps. Então, para Momo, a velocidade com a qual estamos trabalhando é de 0,35 unidades do Blender por segundo: 0,46 / (40/30).
 
-The value to use in the Motion actuator is the object speed times the frequency on which the Motion actuator is activated. Since we are using an Always sensor triggering every logic tic, the frequency is 1/60 or 0.017. If you change your game to run at 30 logic tics per second, the frequency would be double (2/60 or 0.033). The multiplication of the speed times the frequency is the value you will add to the component of the actuator. The final Loc is [0, -0.0059, 0] X, Y, and Z respectively (see Figure 4.47).
+O valor a ser usado no atuador de movimento é a velocidade do objeto vezes a frequência na qual o atuador de movimento é ativado. Como estamos usando um sensor Always disparando todos os tiques lógicos, a frequência é 1/60 ou 0,017. Se você mudar seu jogo para rodar a 30 tiques lógicos por segundo, a frequência será o dobro (2/60 ou 0,033). A multiplicação da velocidade pela frequência é o valor que você adicionará ao componente do atuador. O Loc final é [0, -0,0059, 0] X, Y e Z respectivamente (consulte a Figura 4.47).
 
 ![Walking Momo](../figures/Chapter4/Fig04-47.png)
 
-In the end, you might want to set the camera to track Momo during the walk. In the sample file, you will see the camera is parented to an empty with an Edit Object > Track To Actuator to follow Momo. Also, the zoom and rotate camera intro effect was brought back from the pretutorial. A checkerboard pattern on the floor will also help to follow the pace of his progression. The final file is shown in Figure 4.47 and can be found on _\Book\Chapter4\tutorial\_walk\_9.playtime.blend_.
+No final, você pode querer configurar a câmera para rastrear Momo durante a caminhada. No arquivo de amostra, você verá que a câmera está direcionada a um vazio com Editar objeto> Faixa para atuador para seguir Momo. Além disso, o efeito de introdução de zoom e rotação da câmera foi trazido do pré-tutorial. Um padrão xadrez no chão também ajudará a acompanhar o ritmo de sua progressão. O arquivo final é mostrado na Figura 4.47 e pode ser encontrado em _\Book\Chapter4\tutorial\_walk\_9.playtime.blend_.
 
 ### Idle Animation <a id="Idle_Animation"></a>
 
-In the latest file, we set up Momo to walk. We never set it up for him to stop walking, though[md]the Always sensor will play the animation in an infinite loop until you quit the game. To push our animation exercises further, let's create an idle animation for Momo. We will then set up Momo to walk, stop, and walk again. Idle animations are played when the character is waiting for you to make a decision (whether to keep walking, to run, to turn, etc.). So as soon as we stop walking, we will set the character to act accordingly.
+No arquivo mais recente, configuramos o Momo para andar. Nunca configuramos para que ele pare de andar, embora [md] o sensor Always reproduza a animação em um loop infinito até que você saia do jogo. Para levar nossos exercícios de animação adiante, vamos criar uma animação inativa para Momo. Em seguida, configuraremos Momo para andar, parar e andar novamente. Animações inativas são reproduzidas quando o personagem está esperando por você para tomar uma decisão (se deve continuar caminhando, correr, virar, etc.). Portanto, assim que pararmos de andar, definiremos o personagem para agir de acordo.
 
-Start off by opening the file _\Book\Chapter4\tutorial\_idle\_1.begin.blend_. This is the same file we made in the previous tutorial, duplicated here for convenience (the spinning camera effect was removed again). Select RigMomo and create a new action in the Action Editor inside the Dopesheet. You actually have two options here: you can either create a new blank action or use the Walk action as reference (duplicate it and make changes on top of it). To duplicate the existing action into a new one, you have to click in the number by the action name, as shown in Figure 4.48. This is useful when you are creating variations of the same action (different walking styles, different jumps, and so on).
+Comece abrindo o arquivo _\Book\Chapter4\tutorial\_idle\_1.begin.blend_. Este é o mesmo arquivo que fizemos no tutorial anterior, duplicado aqui por conveniência (o efeito de câmera giratória foi removido novamente). Selecione RigMomo e crie uma nova ação no Action Editor dentro do Dopesheet. Na verdade, você tem duas opções aqui: você pode criar uma nova ação em branco ou usar a ação Walk como referência (duplique-a e faça alterações em cima dela). Para duplicar a ação existente em uma nova, você deve clicar no número ao lado do nome da ação, conforme mostrado na Figura 4.48. Isso é útil quando você está criando variações da mesma ação (diferentes estilos de caminhada, diferentes saltos e assim por diante).
 
 ![Insert a new action](../figures/Chapter4/Fig04-48.png)
 
-In this case, since the actions are very different, there is not much to recycle from the walking cycle to the idle animation. You want to keep only the first and final frames to guarantee a smoother transition between the two animations. If you don't want to bother deleting keyframes, you can create a new action from scratch, maintaining the initial pose by following these steps:
+Nesse caso, como as ações são muito diferentes, não há muito o que reciclar desde o ciclo de caminhada até a animação ociosa. Você deseja manter apenas o primeiro e o último quadros para garantir uma transição mais suave entre as duas animações. Se você não quiser se preocupar em excluir quadros-chave, pode criar uma nova ação do zero, mantendo a pose inicial seguindo estas etapas:
 
-1. Go to frame 1.
+1. Vá para o frame 1.
 
-2. Unlink the Walk action from the armature (click the X button).
+2. Desvincule a ação Walk da armadura (clique no botão X).
 
-3. Create a new action (click in the + or New button).
+3. Crie uma nova ação (clique no botão + ou Novo).
 
-4. Rename your new action "Idle."
+4. Renomeie sua nova ação como "Ocioso".
 
-5. Select all the bones of the armature and keyframe them.
+5. Selecione todos os bones da armadura e crie um quadro-chave para eles.
 
-6. Go to a later frame, which will be the final frame for your idle animation. For example, to make an idle animation of 4 seconds, go to frame 121.
+6. Vá para um quadro posterior, que será o quadro final da animação inativa. Por exemplo, para fazer uma animação inativa de 4 segundos, vá para o quadro 121.
 
-7. Set a keyframe for all the bones again.
+7. Defina um quadro-chave para todos os ossos novamente.
 
-Now you have a new, blank action to play with. The only rule you need to follow is to avoid animations that require Momo to move around. The reason is that you may need to interrupt the idle animation at any moment as soon as you get back to walking.
+Agora você tem uma nova ação em branco para jogar. A única regra que você precisa seguir é evitar animações que exijam que o Momo se mova. O motivo é que você pode precisar interromper a animação inativa a qualquer momento, assim que voltar a andar.
 
-The transition between the walking animation and the idle one can be seamless. In the Logic Brick section next, we will explain how to make the walk finish its complete cycle before starting the idle animation. Also, this will have to rely on the blend between poses from both actions for a few frames. This will work only if the pose in the current frame of the idle animation is not very distinct from the pose at the initial frame of the walking action. If the poses are extremely different (for example, Momo is facing opposite directions), the automatic calculated in-between poses will be mathematically correct but artistically awful. This is similar to our reasons for making the between poses in the previous tutorial.
+A transição entre a animação de caminhada e a de inatividade pode ser perfeita. Na seção Logic Brick a seguir, explicaremos como fazer a caminhada terminar seu ciclo completo antes de iniciar a animação inativa. Além disso, isso terá que depender da combinação entre as poses de ambas as ações por alguns quadros. Isso funcionará apenas se a pose no quadro atual da animação inativa não for muito distinta da pose no quadro inicial da ação de caminhar. Se as poses forem extremamente diferentes (por exemplo, Momo está voltado para direções opostas), o cálculo automático entre as poses será matematicamente correto, mas artisticamente horrível. Isso é semelhante às nossas razões para fazer as poses entre no tutorial anterior.
 
-As long as your poses are inside the range of the initial and final frames, the idle animation will play fine. Since you want to avoid moving Momo around, it's a good time to learn how to enhance his facial expressions.
+Contanto que suas poses estejam dentro da faixa dos quadros inicial e final, a animação ociosa será reproduzida bem. Já que você deseja evitar mover Momo, é um bom momento para aprender como melhorar suas expressões faciais.
 
-Before you finish the idle animation, you need to set up drivers for your shape keys. You can find the current snapshot file at the end of the next section.
+Antes de terminar a animação inativa, você precisa configurar os drivers para suas chaves de forma. Você pode encontrar o arquivo de instantâneo atual no final da próxima seção.
 
 ### Making a Face <a id="Making_a_Face"></a>
 
-Do you know the difference between television and a live performance? In television the director has full control of the framing of the shots. It's common to use and abuse close-ups and strong facial expressions as a replacement for expressive body language. In the live theater, the audience may be sitting close or far away from the stage, and they all need to be pleased. (Sure, people fight over a front seat, but the show still has to make sense to everyone.)
+Você sabe a diferença entre televisão e uma performance ao vivo? Na televisão, o diretor tem total controle do enquadramento das tomadas. É comum usar e abusar de closes e expressões faciais fortes como substitutos para uma linguagem corporal expressiva. No teatro ao vivo, o público pode estar sentado perto ou longe do palco, e todos precisam estar satisfeitos. (Claro, as pessoas brigam por um assento dianteiro, mas o show ainda precisa fazer sentido para todos.)
 
-Good artists do fine in both mediums. But a pretty face on your HD television screen can be a very boring, disappointing I-want-my-ticket-back experience in a live theater (been there, done that, and slept).
+Bons artistas se dão bem em ambos os meios. Mas um rosto bonito na tela da sua televisão HD pode ser uma experiência muito enfadonha e decepcionante de quero meu ingresso de volta em um teatro ao vivo (estive lá, fiz aquilo e dormi).
 
-In a game, we have the best and the worst of both worlds. You still can use directed framing for cut scenes. But for most of the game, you must be prepared to produce good, effective animations for close and far distances.
+Em um jogo, temos o melhor e o pior dos dois mundos. Você ainda pode usar o enquadramento direcionado para cut scenes. Mas, na maior parte do jogo, você deve estar preparado para produzir animações boas e eficazes para distâncias curtas e longas.
 
-In the previous tutorial, we covered the techniques for a good, full body-language posing. Add some more classic animation techniques (for example, strong silhouettes, lines of action, and exaggeration), and you are good to go. For facial expression, however, we will look at something new. If you have not been reading these chapters in order, now is a good time to go back and read about the shape keys.
+No tutorial anterior, cobrimos as técnicas para uma boa pose de linguagem corporal completa. Adicione algumas técnicas de animação mais clássicas (por exemplo, silhuetas fortes, linhas de ação e exagero) e você está pronto para ir. Para a expressão facial, entretanto, veremos algo novo. Se você não leu esses capítulos na ordem, agora é um bom momento para voltar e ler sobre as chaves de forma.
 
 #### Shape Keys and Bone Drivers <a id="Shape_Keys_and_Bone_Drivers"></a>
 
-A shape key is like an individual piece of grammar. You need to build a library of poses to use in your animation. Momo already has a few poses previously created. We will use them in our animation posing with the bone-driven technique.
+Uma chave de forma é como uma parte individual da gramática. Você precisa construir uma biblioteca de poses para usar em sua animação. Momo já tem algumas poses criadas anteriormente. Iremos usá-los em nossa animação posando com a técnica bone-driven.
 
-Open the file _\Book\Chapter4\tutorial\_idle\_2.shapekeys\_ui.blend_. This is the initial file with the UI rearranged to work better with the shape keys.
+Abra o arquivo _\Book\Chapter4\tutorial\_idle\_2.shapekeys\_ui.blend_. Este é o arquivo inicial com a IU reorganizada para funcionar melhor com as teclas de forma.
 
-In Figure 4.49, you can see all the poses in the Mesh data panel in the Property Editor for the MeshMomo object. The different poses were created in pairs: smile and ooh; eyebrowsUP and eyebrowsDOWN; eyelidUP and eyelidDOWN. They are all relative to the basis shape. To see the poses change the value by their names in the shape keys slot[md]set the influence value to 1.0 and all the other poses to 0.0. If you want to tweak any of the poses, you need to select the shape and go to the Edit mode. You will no longer be working in the basis shape, so any changes will only be applied to this particular shape.
+Na Figura 4.49, você pode ver todas as poses no painel de dados Mesh no Editor de Propriedades para o objeto MeshMomo. As diferentes poses foram criadas em pares: sorriso e ooh; sobrancelhas UP e sobrancelhasDOWN; eyelidUP e eyelidDOWN. Eles são todos relativos à forma de base. Para ver as poses, altere o valor por seus nomes no slot das teclas de forma [md], defina o valor de influência como 1.0 e todas as outras poses como 0.0. Se você quiser ajustar qualquer uma das poses, você precisa selecionar a forma e ir para o modo Editar. Você não estará mais trabalhando na forma de base, portanto, quaisquer alterações serão aplicadas apenas a esta forma específica.
 
 ![Shape smile - Edit mode](../figures/Chapter4/Fig04-49.png)
 
-The shapes are not exclusive. Often, you will have more than one pose active at the same time. Therefore, each shape has very isolated changes. For Momo, you could have a single pose with both the eyelid up and the eyebrow up shapes. However, this would give you no way to play with their influence individually in different actions. Unlike armatures, you have no way to mask out the shapes by using only a few "bones" (or part of the mesh).
+As formas não são exclusivas. Freqüentemente, você terá mais de uma pose ativa ao mesmo tempo. Portanto, cada forma tem mudanças muito isoladas. Para Momo, você pode ter uma única pose com as formas das pálpebras e sobrancelhas para cima. No entanto, isso não lhe daria nenhuma maneira de brincar com a influência deles individualmente em ações diferentes. Ao contrário das armaduras, você não tem como mascarar as formas usando apenas alguns "ossos" (ou parte da malha).
 
-Now you can integrate the shape keys into your idle animation. The first thing you need to do is to set bones to drive the shapes. The idea is to use shape keys as "pose libraries" inside your armature animation workflow. Therefore, you will be using control bones from RigMomo to control the influence of each individual shape.
+Agora você pode integrar as chaves de forma em sua animação inativa. A primeira coisa que você precisa fazer é definir os ossos para direcionar as formas. A ideia é usar chaves de forma como "bibliotecas de pose" dentro do fluxo de trabalho de animação de armadura. Portanto, você usará ossos de controle do RigMomo para controlar a influência de cada forma individual.
 
-Select RigMomo and switch to the Pose mode. In the walking tutorial, we looked at the bones in the bone layers 1 to 3. Now you can finally turn on layer 4 to see the last bones of Momo's armature. The bones in this layer are all detached from the main armature, as you can see in Figure 4.50.
+Selecione RigMomo e mude para o modo Pose. No tutorial de caminhada, vimos os ossos nas camadas de osso 1 a 3. Agora você pode finalmente ativar a camada 4 para ver os últimos ossos da armadura de Momo. Os ossos nesta camada são todos destacados da armadura principal, como você pode ver na Figura 4.50.
 
 ![Shape key control bones](../figures/Chapter4/Fig04-50.png)
 
-To hook up the control bones with the shape keys, you need to follow the steps. The final driver in the Graph Editor will look like Figure 4.51.
+Para conectar os bones de controle com as teclas de forma, você precisa seguir as etapas. O driver final no Editor de gráfico será semelhante à Figura 4.51.
 
-1. Select the MeshMomo object.
+1. Selecione o objeto MeshMomo.
 
-2. Select a shape key (for example, smile).
+2. Selecione uma chave de forma (por exemplo, sorriso).
 
-3. Click with the right mouse button in the Influence value.
+3. Clique com o botão direito do mouse no valor de Influência.
 
-4. Select Add Driver.
+4. Selecione Adicionar driver.
 
-5. Open the Graph Editor.
+5. Abra o editor de gráfico.
 
-6. Switch the Edit mode from F-Curve Editor to Drivers.
+6. Mude o modo de edição de F-Curve Editor para Drivers.
 
-7. Inside the "Key" channel, select the curve to edit (for example, Value(smile)).
+7. Dentro do canal "Key", selecione a curva a ser editada (por exemplo, Value (smile)).
 
-8. Open the Property panel (N).
+8. Abra o painel Propriedade (N).
 
-9. Change Type from Script Expression into Averaged Value.
+9. Altere o tipo de Expressão de script para Valor médio.
 
-10. Delete the F-Curve modifier (created by default).
+10. Exclua o modificador F-Curve (criado por padrão).
 
-11. In the Object/Bone panel, set RigMomo and the bone to use as controller (for example, Mouth).
+11. No painel Object / Bone, defina RigMomo e o bone para usar como controlador (por exemplo, Mouth).
 
 ![Shape key driver](../figures/Chapter4/Fig04-51.png)
 
-By default, Blender sets the global X coordinate of the bone to drive the shape influence. In the Pose mode, you can move the mouth bone sideways to see the shape influence increasing and decreasing respectively. As with any other bone, you can keyframe the position of this bone controller (mouth) to animate this shape key influence over time.
+Por padrão, o Blender define a coordenada X global do osso para direcionar a influência da forma. No modo Pose, você pode mover o osso da boca para os lados para ver a influência da forma aumentando e diminuindo respectivamente. Como com qualquer outro osso, você pode definir o quadro-chave da posição desse controlador de osso (boca) para animar a influência dessa forma ao longo do tempo.
 
-This is not an effective setup, though. First, it's more intuitive to use the vertical position of the bone to drive this particular shape. Second, it's better if you don't need to move the bone as much as you do now to have significant changes. Sure, these are not deal breakers, but we are here to learn, aren't we?
+No entanto, esta não é uma configuração eficaz. Primeiro, é mais intuitivo usar a posição vertical do osso para direcionar essa forma particular. Em segundo lugar, é melhor se você não precisar mover o osso tanto quanto precisa agora para ter mudanças significativas. Claro, estes não são obstáculos, mas estamos aqui para aprender, não estamos?
 
-First, in the Driver panel, change the Transform channel influence from X Location to Z Location and change Space to Local Space. Optionally, you can lock the transformation of X, Y and rotation of the bone[md]we will be using only its Z movements.
+Primeiro, no painel Driver, altere a influência do canal Transform de X Location para Z Location e altere Space para Local Space. Opcionalmente, você pode bloquear a transformação de X, Y e a rotação do osso [md], usaremos apenas seus movimentos Z.
 
-Second, you need to map the bone transformations to shape influence. To keep the bone positions not far away for the rest of the armature, we will use the short distance of a tenth Blender unit to control all the shape influences. That creates a curve with two points, [0.0, 0.0] and [0.1, 1.0]. This will map the shape influence to 0.0 when the bone Z pose location is 0.0, and 1.0 when the location is 0.1.
+Em segundo lugar, você precisa mapear as transformações ósseas para influenciar a forma. Para manter as posições dos ossos não muito longe para o resto da armadura, usaremos a curta distância de uma décima unidade do Blender para controlar todas as influências de forma. Isso cria uma curva com dois pontos, [0,0, 0,0] e [0,1, 1,0]. Isso mapeará a influência da forma para 0,0 quando o local da pose Z do osso for 0,0 e 1,0 quando o local for 0,1.
 
-To move the bone up and down will now drive the shape influence as you want. Your file now should match the book file: _\Book\Chapter4\tutorial\_idle\_3.smile\_shapekeydriver.blend_.
+Mover o osso para cima e para baixo agora irá direcionar a influência da forma como você deseja. Seu arquivo agora deve corresponder ao arquivo de livro: _ \ Book \ Chapter4 \ tutorial \ _idle \ _3.smile \ _shapekeydriver.blend_.
 
-For the second pose, "ooh," you will use the same bone controller but with a different mapping. We want to set the "ooh" pose when the bone is in -0.1 and "smile" when it's 0.1, as we have. This will allow a smooth transition between those two extreme poses. Repeat the previous steps all the way to the creation of the F-Curve.
+Para a segunda pose, "ooh", você usará o mesmo controlador de osso, mas com um mapeamento diferente. Queremos definir a pose "ooh" quando o osso estiver em -0,1 e "sorrir" quando estiver 0,1, como fizemos. Isso permitirá uma transição suave entre essas duas poses extremas. Repita as etapas anteriores até a criação da Curva-F.
 
-This time the curve will be the reverse of the smile, with two points: [-0.1, 1.0] and [0.0, 0.0]. Figure 4.52 illustrates the final arrangement.
+Desta vez, a curva será o reverso do sorriso, com dois pontos: [-0,1, 1,0] e [0,0, 0,0]. A Figura 4.52 ilustra o arranjo final.
 
 ![F-Curves of shape driver influence](../figures/Chapter4/Fig04-52.png)
 
-Additionally, you can add a bone constraint to make sure the bone controller is moving only vertically and that it's always inside the range you are using (-0.1 to 0.1).
+Além disso, você pode adicionar uma restrição de osso para garantir que o controlador de osso esteja se movendo apenas verticalmente e que esteja sempre dentro do intervalo que você está usando (-0,1 a 0,1).
 
-Finally, you need to set up the remaining poses[md]eyelid up and down and eyebrow up and down. The setup is the same as for the pair ooh and smile. This time, we will leave them for you, but you can check the final setup file in _\Book\Chapter4\tutorial\_idle\_4.shapekeysdriver.blend_.
+Finalmente, você precisa configurar as poses restantes [md] pálpebra para cima e para baixo e sobrancelha para cima e para baixo. A configuração é a mesma do par ooh e sorriso. Desta vez, vamos deixá-los para você, mas você pode verificar o arquivo de configuração final em _ \ Book \ Chapter4 \ tutorial \ _idle \ _4.shapekeysdriver.blend_.
 
 ### Get Your Hands Dirty <a id="Get_Your_Hands_Dirty"></a>
 
