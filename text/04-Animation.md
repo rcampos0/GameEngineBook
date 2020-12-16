@@ -353,165 +353,169 @@ Nos arquivos do livro, você pode encontrar um exemplo de uma técnica mais avan
 
 #### Relationship <a id="Relationship"></a>
 
-The following are the bone constraints that are supported the least. Ironically, apart from the category name, there is not much relationship between them.
+A seguir estão as restrições ósseas que são menos suportadas. Ironicamente, além do nome da categoria, não há muita relação entre eles.
 
-A bone constraint worth mention is the Action bone constraint. With it, you can play complete actions in the armature by moving one single bone around. Given the complexity of this constraint, the example part of this text evolved as a pseudo-tutorial. I say _pseudo-tutorial_ because we are working on top of no file, although you should be able to follow the instructions and reproduce the effect yourself.
+Uma restrição de bone que vale a pena mencionar é a restrição de bone de ação. Com ele, você pode executar ações completas na armadura movendo um único osso. Dada a complexidade dessa restrição, a parte de exemplo deste texto evoluiu como um pseudo-tutorial. Digo _pseudo-tutorial_ porque não estamos trabalhando em nenhum arquivo, embora você deva ser capaz de seguir as instruções e reproduzir o efeito sozinho.
 
 ##### Action <a id="Action"></a>
 
-With the Action bone constraint, you can play back an entire action by controlling one single bone (see Figure 4.21). Make sure that the target bone is not animated in the action you are playing; otherwise, this will produce unpredictable results. Since this is a more complicated bone constraint, the best way to show possible usages is by a pseudo-mini-tutorial as you see next.
+Com a restrição Action bone, você pode reproduzir uma ação inteira controlando um único bone (veja a Figura 4.21). Certifique-se de que o osso alvo não seja animado na ação que você está jogando; caso contrário, isso produzirá resultados imprevisíveis. Como essa é uma restrição de osso mais complicada, a melhor maneira de mostrar os possíveis usos é por meio de um pseudo-mini-tutorial, como você verá a seguir.
 
 ![Action bone constraint](../figures/Chapter4/Fig04-21.png)
 
-An example of using this is for Transformers-like animations. Let's say you need to create a character similar to Optimus Prime. The armature has two very distinct base poses: a regular car and a bad-ass robot. Some of your animation cycles will happen in the car shape and others in the robot.
+Um exemplo de uso é para animações do tipo Transformers. Digamos que você precise criar um personagem semelhante ao Optimus Prime. A armadura tem duas poses básicas muito distintas: um carro normal e um robô durão. Alguns de seus ciclos de animação acontecerão na forma de carro e outros no robô.
 
-You first create a separated action with two extremes[md]the car and the robot bones' conformation. The action itself contains the transformation between those two shapes.
+Você primeiro cria uma ação separada com dois extremos [md] a conformação do carro e dos ossos do robô. A própria ação contém a transformação entre essas duas formas.
 
-Now you create a bone[md]disconnected from the main chain[md]to control the influence of this action over the bone's pose. This bone will be used as a target in the Action bone constraints you need to create for all the bones (and by that I mean create one bone constraint, set it properly, and copy over to the other bones).
+Agora você cria um bone [md] desconectado da cadeia principal [md] para controlar a influência desta ação sobre a pose do bone. Este osso será usado como um alvo nas restrições de osso de ação que você precisa criar para todos os ossos (e com isso quero dizer criar uma restrição de osso, configurá-la corretamente e copiar para os outros ossos).
 
 >**Slider-like Controllers**
 >
->This is indeed a classic usage of a bone controller as a slider. Since only one of the transformations of the bone ( Location X) will be used to influence the played action, you can even lock the other pose transformations (Location YZ, Rotation XYZ, Scale XYZ) and create a limit location bone constraint for this bone. In Figure 4.22 you can see an example of this setup.
+>Este é realmente um uso clássico de um controlador de osso como um controle deslizante. Uma vez que apenas uma das transformações do osso (Localização X) será usada para influenciar a ação jogada, você pode até mesmo bloquear as outras transformações de pose (Localização YZ, Rotação XYZ, Escala XYZ) e criar uma restrição de localização limite para este osso . Na Figura 4.22 você pode ver um exemplo dessa configuração.
 
 ![Bone constraint slider](../figures/Chapter4/Fig04-22.png)
 
-After all the setup is done, you only need to worry about the target bone when you need to switch between the poses. Move the bone to the left, and you have a car. Move it to the right, and you have a robot. Animate the bone going from left to right, and you can integrate the "Transformers" animation as part of any other action.
+Depois que toda a configuração estiver feita, você só precisa se preocupar com o osso alvo quando precisar alternar entre as poses. Mova o osso para a esquerda e você terá um carro. Mova-o para a direita e você terá um robô. Anime o osso indo da esquerda para a direita e você poderá integrar a animação "Transformers" como parte de qualquer outra ação.
 
-Another use for this bone constraint is to play two actions influencing the same bones at the same time. This is a work-around for the game engine's limitation of only being able to play one action that influences a bone at a time. In the book files, you can see a sample of this in _\Book\Chapter04\3\_action\_constraint.blend_. Note in the file that each Action actuator is set to its own layer, so they can be stacked together for the same object.
+Outro uso para essa restrição de bone é reproduzir duas ações que influenciam os mesmos bones ao mesmo tempo. Esta é uma solução para a limitação do motor de jogo de ser capaz de jogar apenas uma ação que influencia um osso por vez. Nos arquivos do livro, você pode ver uma amostra disso em _\Book\Chapter04\3\_action\_constraint.blend_. Observe no arquivo que cada atuador de ação é definido em sua própria camada, para que possam ser empilhados juntos para o mesmo objeto.
 
 ##### Child Of <a id="Child_Of"></a>
 
-_It's only partially supported._
+_É apenas parcialmente suportado._
 
-The ability to dynamically set parent relations for bones during the game is essential for some animations. Imagine that you are building a samurai game. In the nonfight moments, the sword will be inside a scabbard, and therefore it should be parented to it. During combat, the sword will move from the scabbard to the samurai's hands. From that point on, the sword should be parented to the hands so that it follows their position and rotation during the slicing-heads animation.
+A capacidade de definir relações parentais dinamicamente para bones durante o jogo é essencial para algumas animações. Imagine que você está construindo um jogo de samurai. Nos momentos sem luta, a espada estará dentro de uma bainha e, portanto, deve ser dada como pai a ela. Durante o combate, a espada se moverá da bainha para as mãos do samurai. A partir desse ponto, a espada deve ser direcionada às mãos para que siga sua posição e rotação durante a animação das cabeças de corte.
 
-The bone to be dynamic parented (for example, the sword bone) needs to have no transformation in Pose mode (it needs to be in its local origin [0,0,0] and with zero rotation). It also can't have a parent, other than the ones dynamically defined by the constraint.
+O osso para ser pai dinâmico (por exemplo, o osso da espada) não precisa ter nenhuma transformação no modo Pose (ele precisa estar em sua origem local [0,0,0] e com rotação zero). Também não pode ter um pai, a não ser os definidos dinamicamente pela restrição.
 
-In Blender, you can have multiple Child Of bone constraints and alternate between the current parent for a bone. In the game engine, however, since you can't animate the Influence of bone constraint, the use is not so flexible. In the end, you will be using it as if it were the Copy Transformations bone constraints. The difference is that the Child Of allows you to select which transformations to copy over (for example, Location and Rotation), and its Set Inverse option is similar to the Offset option of the Copy Location, Rotation, and Scale bone constrains (see Figure 4.23).
+No Blender, você pode ter várias restrições de osso filho de e alternar entre o pai atual para um osso. No motor de jogo, entretanto, como você não pode animar a restrição de influência do osso, o uso não é tão flexível. No final, você o usará como se fossem as restrições ósseas Copy Transformations. A diferença é que o Filho de permite que você selecione quais transformações copiar (por exemplo, Localização e Rotação), e sua opção Definir Inverso é semelhante à opção Deslocamento das restrições ósseas de Copiar Localização, Rotação e Escala (ver Figura 4,23).
 
 ![Child Of bone constraint](../figures/Chapter4/Fig04-23.png)
 
-Another option for this type of animation is to use bone parenting. With that, the sword can even be a Physics object and interact with other elements of the game. This is covered in the last tutorial of this chapter, titled "Hats off for Momo and vice-versa."
+Outra opção para este tipo de animação é usar parentalidade óssea. Com isso, a espada pode até ser um objeto da Física e interagir com outros elementos do jogo. Isso é abordado no último tutorial deste capítulo, intitulado "Tiremos o chapéu para Momo e vice-versa".
 
 >**Not Supported Yet Useful**
 >
->As with the other bone constraints not properly supported in the game engine, you can still use it fully to help animating in Blender. However, you will need to bake the constrained bone transformations in order to see the changes in the game engine. This topic is covered later in Chapter 8, "Workflow and Optimization Chapter 8."
+>Tal como acontece com as outras restrições ósseas não suportadas adequadamente no motor de jogo, você ainda pode usá-lo totalmente para ajudar a animar no Blender. No entanto, você precisará preparar as transformações ósseas restritas para ver as mudanças no mecanismo de jogo. Este tópico é abordado posteriormente no Capítulo 8, "Fluxo de Trabalho e Otimização, Capítulo 8."
 
 ##### Floor <a id="Floor"></a>
 
-The floor allows you to create an imaginary plane to constraint your bone transformations to. It creates the equivalent of a floor, a ceiling, or a wall that cannot be transposed. The pose location from the constrained bone must be cleaned for the clamping to the plane to work (Alt+G). See Figure 4.24.
+O piso permite que você crie um plano imaginário ao qual restringir suas transformações ósseas. Ele cria o equivalente a um piso, teto ou parede que não pode ser transposto. O local da pose do osso restrito deve ser limpo para que a fixação ao plano funcione (Alt + G). Veja a Figura 4.24.
 
 ![Floor bone constraint](../figures/Chapter4/Fig04-24.png)
 
 ##### Pivot <a id="Pivot"></a>
 
-This bone constraint helps rotate bones around a specific bone. An example would be to create a screwdriver animation. The screw position would be represented by a bone used as a pivot (the target bone in this bone constraint). The hand with the screwdriver would have its rotation locked to the pivot. To make the Influence propagate through the bone chain, you would need the hand bone to have an IK bone constraint (see Figure 4.25).
+Essa restrição de osso ajuda a girar os ossos em torno de um osso específico. Um exemplo seria criar uma animação de chave de fenda. A posição do parafuso seria representada por um osso usado como pivô (o osso alvo nesta restrição de osso). A mão com a chave de fenda teria sua rotação travada no pivô. Para fazer a influência se propagar através da cadeia óssea, você precisaria que o osso da mão tivesse uma restrição óssea IK (consulte a Figura 4.25).
 
-Given that often the screw will not be part of the mesh directly deformed by the armature (unless you are animating Frankenstein preparing himself for an IQ test), the Pivot bone can be the parent of an external object you use as a placeholder for the screw. More on that in the next section.
+Dado que muitas vezes o parafuso não fará parte da malha diretamente deformada pela armadura (a menos que você esteja animando Frankenstein se preparando para um teste de QI), o osso Pivot pode ser o pai de um objeto externo que você usa como um espaço reservado para o parafuso . Mais sobre isso na próxima seção.
 
 ![Pivot bone constraint](../figures/Chapter4/Fig04-25.png)
 
 ## Bone Parenting <a id="Bone_Parenting"></a>
 
-It's not Vegas, but what happens in the armature does stay in the armature. So, how do you make your animation affect other objects? The armature affects the deformed mesh, but that's not all.
+Não é Vegas, mas o que acontece na armadura permanece na armadura. Então, como você faz sua animação afetar outros objetos? A armadura afeta a malha deformada, mas não é tudo.
 
-Bone parenting allows you to sync external events with the internal animation. It's a very simple feature, similar to object-to-object parenting. The difference here is that you parent one object to a bone. Whenever you animate the armature, the bone position will be copied over to the child object. This child object actually acts as a parent for other objects. It works as an integrated extension of the armature into the game world.
+A paternidade óssea permite que você sincronize eventos externos com a animação interna. É um recurso muito simples, semelhante à parentalidade objeto a objeto. A diferença aqui é que você atribui um objeto a um osso. Sempre que você anima a armadura, a posição do bone será copiada para o objeto filho. Este objeto filho realmente atua como um pai para outros objetos. Ele funciona como uma extensão integrada da armadura para o mundo do jogo.
 
-Earlier, when talking about armature and poses, we mentioned that the Physic mesh of your deformed mesh is not deformed. Nevertheless, you still can use bone parenting to interact physically with your world.
+Anteriormente, ao falar sobre armadura e poses, mencionamos que a malha física de sua malha deformada não é deformada. No entanto, você ainda pode usar a paternidade óssea para interagir fisicamente com o seu mundo.
 
-Let's look at an example. Imagine that you need to pick up an element (a key, a coin) in your game with your character's hand. You start by animating your arm armature and arm meshes as you would do normally. You then need an empty object parented to your hand bone and placed right on top of it. This empty will be your object. It will automatically move with your hand and can be used with any Logic Brick you want.
+Vejamos um exemplo. Imagine que você precisa pegar um elemento (uma chave, uma moeda) em seu jogo com a mão de seu personagem. Você começa animando a armadura do braço e as malhas do braço como faria normalmente. Em seguida, você precisa de um objeto vazio ligado ao osso da sua mão e colocado bem em cima dele. Este vazio será seu objeto. Ele se moverá automaticamente com sua mão e pode ser usado com qualquer Logic Brick que você quiser.
 
-After your hand takes the key, you need to make sure the key doesn't fall to the ground or drop into a drain and meet its end next to rusted pennies, cockroaches, and my old yoyo.
+Depois que sua mão pegar a chave, você precisa se certificar de que a chave não caia no chão ou caia em um ralo e encontre seu fim ao lado de moedas enferrujadas, baratas e meu velho yoyo.
 
-As soon as the Collision object (our parented empty) touches the target object, you can set this object to be temporarily parented to this empty (which is then parented to the hand bone). Now, if you keep playing your "picking up key" animation, you will have the target element always "at hand." For more details and instructions please refer to the "Hats off for Momo and vice-versa" tutorial.
+Assim que o objeto Collision (nosso vazio pai) toca o objeto alvo, você pode definir este objeto para ser temporariamente pai deste vazio (que então é pai do osso da mão). Agora, se você continuar reproduzindo a animação "pegando a chave", terá o elemento de destino sempre "à mão". Para obter mais detalhes e instruções, consulte o tutorial "Tiramos o chapéu para Momo e vice-versa".
 
-In the _Yo Frankie!_ game, they use this feature in a similar way. Both main characters[md]Frankie and Momo[md]have an empty parented to the wrist bone. When the player tries to catch some nuts or sheep, the game calls a Python script to control that interaction. Internally, a collision sensor checks to see if the picked object is close to the player, and it parents the picked object to the "Throw Place Carry," the bone-parented empty. In Figure 4.26, you can see Momo's "Throw Place Carry" empty in the middle of the throwing animation.
+No jogo _Yo Frankie! _, Eles usam esse recurso de maneira semelhante. Ambos os personagens principais [md] Frankie e Momo [md] têm um parente vazio até o osso do pulso. Quando o jogador tenta pegar algumas nozes ou ovelhas, o jogo chama um script Python para controlar essa interação. Internamente, um sensor de colisão verifica se o objeto escolhido está perto do jogador e o direciona para o "Lançamento do Carregador de Lugar", o vazio parental ósseo. Na Figura 4.26, você pode ver o "Throw Place Carry" de Momo vazio no meio da animação de arremesso.
 
 ![Momo bone-parenting system](../figures/Chapter4/Fig04-26.png)
 
 ## Shape Keys <a id="Shape_Keys"></a>
+Às vezes, a animação do osso pode não fornecer controle suficiente sobre a deformação da malha. Nesses casos, você pode animar a malha diretamente por meio das teclas de forma. Assim como no Blender, você pode definir múltiplas formas de teclas representando diferentes poses para seu personagem. Cada pose mantém a posição de todos os vértices de sua malha.
 
-Sometimes bone animation may not give you enough control over the mesh deformation. In those cases, you can animate the mesh directly via Shape Keys. As in Blender, you can define multiple shape keys representing different poses for your character. Each pose holds the position of all the vertices of your mesh.
-
-The workflow with shape keys is different from armature animations. You start defining your base pose, and on top of that, you create pose variations. If you change your geometry later on, it will be a painful process to merge the change back to all the previously created poses, so make sure your mesh is ready before you create your shapes.
+O fluxo de trabalho com chaves de forma é diferente das animações de armadura. Você começa a definir sua pose base e, além disso, cria variações de pose. Se você alterar sua geometria posteriormente, será um processo doloroso mesclar a alteração de volta a todas as poses criadas anteriormente, portanto, certifique-se de que sua malha esteja pronta antes de criar suas formas.
 
 >**Shape Keys Performance**
 >
->The level of control that you get from Shape Keys comes with a price. The performance required for the per-vertex calculation is considerably heavier than regular armature control. Thus, you should not abuse this technique.
+>O nível de controle que você obtém com as Shape Keys tem um preço. O desempenho necessário para o cálculo por vértice é consideravelmente mais pesado do que o controle de armadura regular. Portanto, você não deve abusar dessa técnica.
 
 ### When to Use Shape Keys <a id="When_to_Use_Shape_Keys"></a>
 
-Use shape keys whenever the animation is too complex for armature animations. That's not the whole story, though. Shape key animations are often integrated with the traditional armature animations, not as something separate. They can work as stand-alone animations, of course; there is indeed an actuator dedicated only to that. However, the greatest application of shape keys is not to replace the bone animation but to complement it.
+Use as teclas de forma sempre que a animação for muito complexa para animações de armadura. Essa não é toda a história, no entanto. As animações de chave de forma são frequentemente integradas às animações de armadura tradicionais, não como algo separado. Eles podem funcionar como animações independentes, é claro; há de fato um atuador dedicado apenas a isso. No entanto, a maior aplicação das chaves de forma não é substituir a animação do osso, mas complementá-la.
 
-The most popular usage is for character facial animation. You can create a face pose for every extreme position of your expressions and rely on basic interpolations between the poses to simulate the animation. This can be used for specific applications, such as lip-sync, to general animation, such as expression of moods (happiness, sadness, Monday-ness).
+O uso mais popular é para animação facial de personagens. Você pode criar uma pose de rosto para cada posição extrema de suas expressões e contar com interpolações básicas entre as poses para simular a animação. Isso pode ser usado para aplicações específicas, como sincronização labial, para animação geral, como expressão de estados de espírito (felicidade, tristeza, segunda-feira).
 
-In the game _Yo Frankie_, both of the main characters used shape key animations together with armatures. Momo used six shape poses to help its animations. The simple ones help with eye blinking. What would our cute monkey be if it couldn't wink at its mates? In Figure 4.27, you can see the Momo base pose and variations of it created by changing only the influence of the four eye poses[md]eye lids up, eye lids down, eye brows up, and eye brow down.
+No jogo _Yo Frankie_, ambos os personagens principais usaram animações chave de forma junto com armaduras. Momo usou seis poses de forma para ajudar em suas animações. Os mais simples ajudam a piscar os olhos. O que seria o nosso macaco fofo se não pudesse piscar para seus companheiros? Na Figura 4.27, você pode ver a pose da base Momo e variações dela criadas mudando apenas a influência das quatro posturas dos olhos [md] pálpebras para cima, para baixo, sobrancelha para cima e sobrancelha para baixo.
 
 ![Momo blinking shape key poses](../figures/Chapter4/Fig04-27.png)
 
 >**Isn't This Overkill?**
 >
->You may be wondering if those poses could have been created with regular bone poses. You bet they could. However, the _Yo Frankie_ project has an important educational mission. One of the goals of the project was to demonstrate the multiple features of the game engine. Actually, the support for shape keys in the game engine was implemented specifically for this project. Thus, those files are the first reference that animators studied on how to use them.
+>Você pode estar se perguntando se essas poses poderiam ter sido criadas com poses regulares de ossos. Pode apostar que sim. No entanto, o projeto _Yo Frankie_ tem uma importante missão educacional. Um dos objetivos do projeto era demonstrar os múltiplos recursos do motor de jogo. Na verdade, o suporte para chaves de forma na engine do jogo foi implementado especificamente para este projeto. Assim, esses arquivos são a primeira referência que os animadores estudaram sobre como usá-los.
 
-The poses left[md]Smile and Ooh[md]are a bit more complex. They are opposite extremes of the same shape key animation with the Natural pose in between them. Momo can be smiling, natural, or ooh'ing. Since the latter is not a real verb, take a look at Figure 4.28 to better appreciate all the monkey sex appeal. It would be hard to get those results without adding lots of bones, which would create a system hard to animate. So shape keys are a far more elegant solution.
-
+As poses restantes [md] Smile e Ooh [md] são um pouco mais complexas. Eles são extremos opostos da mesma animação de chave de forma com a pose Natural entre eles. Momo pode ser sorridente, natural ou ooh'ing. Como o último não é um verbo real, dê uma olhada na Figura 4.28 para apreciar melhor todo o apelo sexual do macaco. Seria difícil obter esses resultados sem adicionar muitos ossos, o que criaria um sistema difícil de animar. Portanto, as teclas de formato são uma solução muito mais elegante.
 ![Momo shape keys poses: ooh, basis, and smile](../figures/Chapter4/Fig04-28.png)
 
-Frankie, the flying squirrel, also uses shape keys for some facial expressions and to control its wings. Like Momo, it would be too hard to control the wings' deformation using only bones. Therefore, a shape pose was created to show how the mesh should be when the wing is tucked in. In Figure 4.29, you can see Frankie in a natural pose and with wings active.
+Frankie, o esquilo voador, também usa formas para algumas expressões faciais e para controlar suas asas. Como Momo, seria muito difícil controlar a deformação das asas usando apenas ossos. Portanto, uma pose de forma foi criada para mostrar como a malha deve ser quando a asa está dobrada. Na Figura 4.29, você pode ver Frankie em uma pose natural e com as asas ativas.
 
 ![Frankie - Ready to fly (left) and a natural pose (right)](../figures/Chapter4/Fig04-29.png)
 
-Those shape keys are not used isolated as an action. Instead, they are used as part of an armature pose, driven by a bone, like all the other animation bones. This bone is used as a driver for the shape action it is intended to control. Like the other bone-over-bone controls with constraints (which we will see next), the driver bone itself is unaware of its role as the shape key controller. Figure 4.30 shows the regular setting of the shape action to a control bone. You will learn more about this later in the tutorial section.
+Essas teclas de forma não são usadas isoladas como uma ação. Em vez disso, eles são usados como parte de uma pose de armadura, impulsionados por um bone, como todos os outros bones de animação. Este osso é usado como um direcionador para a ação da forma que pretende controlar. Como os outros controles osso sobre osso com restrições (que veremos a seguir), o osso condutor em si não está ciente de sua função como controlador de chave de forma. A Figura 4.30 mostra a configuração regular da ação da forma para um osso de controle. Você aprenderá mais sobre isso posteriormente na seção do tutorial.
 
 ![Shape key driven by a control bone](../figures/Chapter4/Fig04-30.png)
 
 >**Action Actuator**
 >
->Shape keys can also be used directly by the Action actuator. This is useful when you need to animate your whole mesh exclusively through the vertex manipulation. Although you will probably not use it for your main character, you can make nice groundbreaking effects with this.
+>As teclas de forma também podem ser usadas diretamente pelo atuador Action. Isso é útil quando você precisa animar toda a sua malha exclusivamente por meio da manipulação de vértices. Embora você provavelmente não vá usá-lo para seu personagem principal, você pode fazer bons efeitos inovadores com isso.
 
 ## Tutorials <a id="Tutorials"></a>
 
-_No keyframes were hurt in the making of those tutorials._
+_Nenhum quadro-chave foi prejudicado durante a criação desses tutoriais._
 
-In the following pages, we are going to make a character walk, interact with objects, and have some nice facial expressions for you to play with. For the model, we will be using the monkey, Momo (see Figure 4.31). I cleaned up the original file, removing the shape keys and the animation cycles previously created. You can get Momo in his fresh state in _\Book\Chapter04\tutorials\__tutorials\_momobase.blend_.
+Nas páginas seguintes, vamos fazer um personagem andar, interagir com objetos e ter algumas expressões faciais legais para você brincar. Para o modelo, usaremos o macaco, Momo (consulte a Figura 4.31). Limpei o arquivo original, removendo as chaves de forma e os ciclos de animação criados anteriormente. Você pode obter o Momo em seu novo estado em _ \ Book \ Chapter04 \ tutorials \ __ tutorials \ _momobase.blend_.
 
 ![Dear Momo, get ready for rock 'n' roll!](../figures/Chapter4/Fig04-31.png)
 
 ### Pre-Tutorial <a id="Pre-Tutorial"></a>
 
-In this short pre-tutorial, we will the animate the camera rotation and the camera focal length as an opening effect for the game.
+Neste pequeno pré-tutorial, vamos animar a rotação da câmera e a distância focal da câmera como um efeito de abertura para o jogo.
 
-The whole tutorial is based on using the Action actuators to control the Momo animations. As we explained previously, there are different action types that can be used. Regardless of the action type, the way to use the actuator is the same. So we will start with a very simple action, and progressively go over more complex topics such as bone and shape key animations.
+Todo o tutorial é baseado no uso de atuadores de ação para controlar as animações Momo. Como explicamos anteriormente, existem diferentes tipos de ação que podem ser usados. Independentemente do tipo de ação, a forma de usar o atuador é a mesma. Portanto, começaremos com uma ação muito simples e passaremos progressivamente por tópicos mais complexos, como animações-chave de ossos e formas.
 
-Open the base file from the _\Book\Chapter04\tutorials\tutorials\_momobase.blend_.
+Abra o arquivo base em _ \ Book \ Chapter04 \ tutorials \ tutorials \ _momobase.blend_.
 
-1. Change the current frame to 1.
+1. Altere o quadro atual para 1.
 
-2. Select the camera object.
+2. Selecione o objeto da câmera.
 
-3. In the Camera panel in the Properties Editor, set focal length to 10.0.
+3. No painel Câmera no Editor de propriedades, defina a distância focal para 10,0.
 
-4. With the mouse over the value, press I to keyframe it for frame 1.
+4. Com o mouse sobre o valor, pressione I para atribuir o quadro-chave ao quadro 1.
 
-5. Go to the frame 30.
+5. Vá para o quadro 30.
 
-6. Change the focal length to 100.0.
+6. Altere a distância focal para 100,0.
 
-7. Keyframe the new value for this frame.
+7. Keyframe o novo valor para este quadro.
 
-What we did was set an initial focal length for the camera to animate over a specific range (90mm over 30 frames ~ 1 second). If you play back the animation in Blender (Alt + A), you can see the camera zoom changing quickly over the initial frames
+Neste pequeno pré-tutorial, vamos animar a rotação da câmera e a distância focal da câmera como um efeito de abertura para o jogo.
 
-However, if you enter the game engine, the camera is not animated. We still need to hook this animation with the logic bricks. So with the camera still selected, we need to do the following:
+Todo o tutorial é baseado no uso de atuadores de ação para controlar as animações Momo. Como explicamos anteriormente, existem diferentes tipos de ação que podem ser usados. Independentemente do tipo de ação, a forma de usar o atuador é a mesma. Portanto, começaremos com uma ação muito simples e passaremos progressivamente por tópicos mais complexos, como animações-chave de ossos e formas.
 
-1. Create an Always sensor. Leave the default options so it runs only once.
+Abra o arquivo base em _ \ Book \ Chapter04 \ tutorials \ tutorials \ _momobase.blend_.
 
-2. Create an Action actuator. Change the frame range from 1 to 30.
+1. Altere o quadro atual para 1.
 
-3. Set CameraAction as the actuator Action. (This is the action we created by keyframing the camera lens; it's automatic named by Blender).
+2. Selecione o objeto da câmera.
 
-4. Connect both bricks. (This will create an And controller.)
+3. No painel Câmera no Editor de propriedades, defina a distância focal para 10,0.
 
-The logic brick can be seen in Figure 4.32. There is really not much to it other than to make sure that the animation plays once after you run the game.
+4. Com o mouse sobre o valor, pressione I para atribuir o quadro-chave ao quadro 1.
+
+5. Vá para o quadro 30.
+
+6. Altere a distância focal para 100,0.
+
+7. Keyframe o novo valor para este quadro.
 
 ![Setting up an Action actuator](../figures/Chapter4/Fig04-32.png)
 
