@@ -133,15 +133,15 @@ Tabela 5.1 Comparação dos modos de sombreamento no mecanismo de jogo
 | ---------------------------------------------	| ------------ | ----------- |
 | Data de Introdução	 			| 2006         | 2008        |
 | Compatibilidade de Hardware 			| OpenGL 1.3+  | OpenGL 2.0+ |
-| Precisão de iluminação     			| Per vertex   | Per pixel   |
+| Precisão de iluminação     			| Por vértice  | Per pixel   |
 | Número de Luzes    				| 8            | 8+          |
-| Sombra em tempo real	        		| No           | Yes         |
+| Sombra em tempo real	        		| Não          | Sim         |
 | Camada de textura máxima     	 		| 4            | 16          |
-| Mistura de textura	        		| Yes          | Yes         |
-| Shader personalizado   			| No           | Yes         |
-| Nós de material     				| No           | Yes         |
-| Visualização da janela de visualização        | Partial      | Full        |
-| Devo usar?				        | Nah...       | Yes!        |
+| Mistura de textura	        		| Sim          | Sim         |
+| Shader personalizado   			| Não          | Sim         |
+| Nós de material     				| Não          | Sim         |
+| Visualização da janela de visualização        | Parcial      | Total       |
+| Devo usar?				        | Não...       | Sim!        |
 
 Como a maneira de aplicar materiais e texturas varia um pouco dependendo do modo de sombreamento, é uma boa ideia decidir sobre um modo de sombreamento antes de iniciar o projeto para evitar conversões desnecessárias posteriormente. Um exemplo do que cada modo oferece é mostrado aqui usando este modelo de carro.
 
@@ -181,63 +181,63 @@ As próximas duas seções abordarão cada opção nos painéis Material e Textu
 
 #####  The Material Panel <a id="The_Material_Panel"></a>
 
-In GLSL1.blend, you'll see the Material panel on the right side of the 3D Viewport. In the demo setup, the material attached to the floor is shown by default. Recall that this panel was already discussed briefly in Chapter 2, so go ahead and play around with the settings and see how they affect the model in the 3D view in real time.
+Em GLSL1.blend, você verá o painel Material no lado direito do Viewport 3D. Na configuração de demonstração, o material preso ao chão é mostrado por padrão. Lembre-se de que esse painel já foi discutido brevemente no Capítulo 2, então vá em frente e brinque com as configurações e veja como elas afetam o modelo na visualização 3D em tempo real.
 
 <img alt="The Material Panel" src="../figures/Chapter5/Fig05-10.png" width="25%" align="right">
 
 
 
-If you are already familiar with the material system of Blender, you'll be right at home with this section. As an artist, just remember that the game engine supports a smaller subset of features found in the regular Material panel. Advanced shading features such as ray-traced reflections and refractions and subsurface scattering are not available in the game engine. So they are hidden from the Material panel when Blender Game is selected as the active render engine.
+Se você já está familiarizado com o sistema de materiais do Blender, estará em casa com esta seção. Como artista, lembre-se de que o mecanismo de jogo oferece suporte a um subconjunto menor de recursos encontrados no painel Material normal. Recursos avançados de sombreamento, como reflexos traçados por raio e refrações e espalhamento de subsuperfície, não estão disponíveis no motor de jogo. Portanto, eles ficam ocultos do painel Material quando o Blender Game é selecionado como o mecanismo de renderização ativo.
 
 
 
 ###### Material Management <a id="Material_Management"></a>
 
-The very top section of the Material panel lets you manage the material data blocks. Since each object can have multiple materials, the box shows a list of all the materials attached to the active object. Selected materials are highlighted in blue.
+A seção superior do painel Material permite gerenciar os blocos de dados de materiais. Como cada objeto pode ter vários materiais, a caixa mostra uma lista de todos os materiais anexados ao objeto ativo. Os materiais selecionados são destacados em azul.
 
-To create a first material for an object:
+Para criar um primeiro material para um objeto:
 
-1. In the 3D view, select an object without a material (for example, the monkey in GLSL1.blend).
-2. In the Material panel below the Material Slot List, click on the [+ New] icon to create a new material for the object.
-3. Since the object has no material, by default the new material will be applied to the entire object.
+1. Na visualização 3D, selecione um objeto sem um material (por exemplo, o macaco em GLSL1.blend).
+2. No painel Material abaixo da Lista de Slot de Material, clique no ícone [+ Novo] para criar um novo material para o objeto.
+3. Como o objeto não tem material, por padrão, o novo material será aplicado a todo o objeto.
 
 ###### Multi-Material Objects <a id="Multi-Material_Objects"></a>
 
-If the object has an existing material, you can create another material and assign the new materials to part of the mesh as follows:
+Se o objeto tiver um material existente, você pode criar outro material e atribuir os novos materiais a parte da malha da seguinte maneira:
 
-1. In the 3D view, select the object.
+1. Na visualização 3D, selecione o objeto.
 
-2. In the Material Panel below the Material Slot List, click on the [+ New] icon to create a new base material for the object.
+2. No Painel de Material abaixo da Lista de Slot de Material, clique no ícone [+ Novo] para criar um novo material de base para o objeto.
 
-3. In the Material Panel, click on the [+] icon to the right of the material slots to create another material slot, followed by clicking on the [+ New] button to create a new material. You will assign this material to the selected part of the object.
+3. No Painel de Material, clique no ícone [+] à direita dos slots de material para criar outro slot de material, seguido de clicar no botão [+ Novo] para criar um novo material. Você atribuirá este material à parte selecionada do objeto.
 
    ![Fig05-11](../figures/Chapter5/Fig05-11.png)
 
-4. Change the color of the newly created material to green just so that you can tell the materials apart.
+4. Mude a cor do material recém-criado para verde apenas para que você possa diferenciar os materiais.
 
-5. In the 3D view, enter Edit mode for the object using Tab. Select all the vertices that you want to be assigned the new material.
+5. Na vista 3D, entre no modo Editar para o objeto usando Tab. Selecione todos os vértices aos quais deseja atribuir o novo material.
 
-6. With the new material highlighted, press the Assign button to apply the new material to the selected part of the object. 
+6. Com o novo material destacado, pressione o botão Assign para aplicar o novo material à parte selecionada do objeto.
 
    ![Fig05-12](../figures/Chapter5/Fig05-12.png)
 
-Below the Material Slot List is the control for the selected material. You can (and should) rename a material to be more descriptive. This will help you immensely in a large project, since it's usually not very obvious what "Material.001" is, "Orange" is better, "OrangePlastic" is even better, and "MatteYellowishOrangeSoftPlasticWithSmallBumps" is overdoing it.
+Abaixo da Lista de Slot de Material está o controle para o material selecionado. Você pode (e deve) renomear um material para ser mais descritivo. Isso o ajudará imensamente em um grande projeto, já que geralmente não é muito óbvio o que "Material.001" é, "Orange" é melhor, "OrangePlastic" é ainda melhor e "MatteYellowishOrangeSoftPlasticWithSmallBumps" é exagero.
 
-A material datablock can be shared by multiple objects. Clicking on the miniature material icon (Labeled as Browse ID Data) will bring up a list of all the existing materials within the current Blender file. To assign an object to an existing material, simply select a material datablock from that list.
+Um bloco de dados de material pode ser compartilhado por vários objetos. Clicar no ícone do material em miniatura (rotulado como Browse ID Data) trará uma lista de todos os materiais existentes no arquivo atual do Blender. Para atribuir um objeto a um material existente, basta selecionar um bloco de dados de material dessa lista.
 
 ![The Material panel: datablock management.](../figures/Chapter5/Fig05-13.png) 
 
-The concept of datablock is very important in Blender: it allows you to effectively organize all the assets into a logical hierarchy. Datablocks are discussed in detail in Chapter 2.
+O conceito de bloco de dados é muito importante no Blender: ele permite que você organize efetivamente todos os ativos em uma hierarquia lógica. Os blocos de dados são discutidos em detalhes no Capítulo 2.
 
 
 
 ###### Object vs. Data <a id="Object_vs._Data"></a>
 
-You might have noticed another pull-down menu beside the New Material button. This link selector controls whether the material is linked to the object or the object data (also known as _mesh_). This distinction is practically negligible for single objects, but if you have an object with shared mesh in the scene, the difference becomes important.
+Você deve ter notado outro menu suspenso ao lado do botão Novo material. Este seletor de link controla se o material está vinculado ao objeto ou aos dados do objeto (também conhecido como _mesh_). Essa distinção é praticamente desprezível para objetos únicos, mas se você tiver um objeto com malha compartilhada na cena, a diferença se torna importante.
 
-When a material is linked to a mesh (and not the object), duplicating the object using Alt+D to create a copy of the object that shares the same mesh as the original object will result in the material being shared across both objects.
+Quando um material está vinculado a uma malha (e não ao objeto), duplicar o objeto usando Alt + D para criar uma cópia do objeto que compartilha a mesma malha do objeto original resultará no material sendo compartilhado entre os dois objetos.
 
-On the other hand, if the material is linked to an object, duplicating the object with Alt+D will result in the material being linked directly to the object. This way, you can assign a different material to each object even if they share the same mesh.
+Por outro lado, se o material estiver vinculado a um objeto, duplicar o objeto com Alt + D resultará no material sendo vinculado diretamente ao objeto. Dessa forma, você pode atribuir um material diferente a cada objeto, mesmo que eles compartilhem a mesma malha.
 
 **Material datablock linked to the mesh:**
 
@@ -253,17 +253,17 @@ On the other hand, if the material is linked to an object, duplicating the objec
 
 ###### Preview <a id="Preview"></a>
 
-The Preview panel shows how the selected material would look if rendered. Because of the generic models and a single light source, the accuracy of the preview is limited if the material relies on a complex lighting setup. You can usually get a more accurate preview directly from the 3D Viewport. Just remember to make sure that Viewport shading is set to Textured by toggling Alt+Z.
+O painel Visualização mostra como o material selecionado ficaria se renderizado. Por causa dos modelos genéricos e de uma única fonte de luz, a precisão da visualização é limitada se o material depende de uma configuração de iluminação complexa. Normalmente, você pode obter uma visualização mais precisa diretamente da janela de exibição 3D. Apenas lembre-se de ter certeza de que o sombreamento da janela de visualização está definido como Texturizado alternando Alt + Z.
 
 
 
 ###### Diffuse <a id="Diffuse"></a>
 
-Diffuse is the soft (matte), reflected component of a surface. Compared to specular highlights below, diffused light is not viewing-angle dependent.
+Difuso é o componente macio (fosco) refletido de uma superfície. Em comparação com os destaques especulares abaixo, a luz difusa não depende do ângulo de visão.
 
-Using the color selector, you can change the diffuse color of the material.
+Usando o seletor de cores, você pode alterar a cor difusa do material.
 
-The intensity slider controls how much diffuse light is reflected off the surface-in another words, how bright a surface is when it is exposed to light. Use this in conjunction with the color selector to get the surface color you want. For example, to create a white material, not only do you need to select a white color in the color palette, but you'll also need to crank up the diffuse intensity to 1.0; otherwise, you'll end up with a medium gray. Setting the intensity to 0 instantly creates a black surface, no matter what color is set in the color selector. Figure below shows the difference between a low diffuse value material and a high diffuse value material.
+O controle deslizante de intensidade controla a quantidade de luz difusa refletida na superfície - em outras palavras, o brilho de uma superfície quando exposta à luz. Use-o em conjunto com o seletor de cores para obter a cor de superfície desejada. Por exemplo, para criar um material branco, você não apenas precisa selecionar uma cor branca na paleta de cores, mas também precisa aumentar a intensidade de difusão para 1,0; caso contrário, você acabará com um cinza médio. Definir a intensidade para 0 cria instantaneamente uma superfície preta, independentemente da cor definida no seletor de cores. A figura abaixo mostra a diferença entre um material de baixo valor difuso e um material de alto valor difuso.
 
 ![Left: Low diffuse value. Right: High diffuse value.](../figures/Chapter5/Fig05-16.png)
 
