@@ -267,100 +267,100 @@ O controle deslizante de intensidade controla a quantidade de luz difusa refleti
 
 ![Left: Low diffuse value. Right: High diffuse value.](../figures/Chapter5/Fig05-16.png)
 
-- Lambert is the default diffuse shading algorithm; it is suitable for most surfaces.
-- Oren-Nayer better approximates rough surfaces, as it provides a more gradual transition from light to dark than Lambert. Thus Oren-Nayer is generally "softer" looking than Lambert.
-- Minnaert is like a regular Lambert shader but with additional processing on the edge of the object where the surface normal is parallel to the camera. It can achieve a somewhat velvety-looking material without the use of a ramp shader.
-- Toon shader creates a very distinct banding effect, resulting in a cartoonish look that's suitable for a cell-shaded game.
-- Fresnel shader uses the incident light angle to achieve an interesting look that can be best described as "anisotropic," perfect for those brushed metal objects that reflect lights in bands or radial patterns.
+- Lambert é o algoritmo de sombreamento difuso padrão; é adequado para a maioria das superfícies.
+- Oren-Nayer se aproxima melhor das superfícies ásperas, pois fornece uma transição mais gradual da luz para a escuridão do que Lambert. Assim, Oren-Nayer geralmente tem uma aparência "mais suave" do que Lambert.
+- O Minnaert é como um sombreador Lambert regular, mas com processamento adicional na borda do objeto onde a superfície normal é paralela à câmera. Ele pode atingir um material de aparência um tanto aveludada sem o uso de um sombreador de rampa.
+- Toon shader cria um efeito de faixa muito distinto, resultando em uma aparência de desenho animado que é adequado para um jogo com sombra de células.
+- O shader de Fresnel usa o ângulo de luz incidente para obter uma aparência interessante que pode ser melhor descrita como "anisotrópica", perfeita para aqueles objetos de metal escovado que refletem luzes em faixas ou padrões radiais.
 
-Of all the diffuse shading algorithms, Lambert is the simplest in terms of shader complexity. So for performance reasons, it is best to stick with Lambert unless you can truly utilize the additional benefits from the other specialized algorithms.
+De todos os algoritmos de sombreamento difuso, Lambert é o mais simples em termos de complexidade de sombreamento. Portanto, por motivos de desempenho, é melhor ficar com Lambert, a menos que você possa realmente utilizar os benefícios adicionais de outros algoritmos especializados.
 
-As a different shading algorithm is selected, additional options for that particular mode may appear. Rather than trying to explain these extra settings for each shading algorithm (which is futile without talking about the math behind it), we invite you to try them out yourself and see how they affect the outcome. In the end, all that matters is how it looks.
+Conforme um algoritmo de sombreamento diferente é selecionado, opções adicionais para esse modo específico podem aparecer. Em vez de tentar explicar essas configurações extras para cada algoritmo de sombreamento (o que é fútil sem falar sobre a matemática por trás disso), convidamos você a experimentá-las e ver como elas afetam o resultado. No final, tudo o que importa é a aparência.
 
 
 
 ###### Specular <a id="Specular"></a>
 
-Specular is the hard (glossy), reflected component of a surface. It is viewing-angle dependent: as the camera, object, or light moves relative to each other, the specular highlight appears to move along the surface. With the color selector, you can change the color of the specular highlight. Most materials (plastic, wood, glass) have a white specular highlight. The only common material that can physically have a colored specular highlight is colored metal, such as gold and copper. Figure 5.17 shows three different specular settings.
+Especular é o componente duro (brilhante) refletido de uma superfície. Depende do ângulo de visão: conforme a câmera, objeto ou luz se move em relação um ao outro, o realce especular parece se mover ao longo da superfície. Com o seletor de cores, você pode alterar a cor do realce especular. A maioria dos materiais (plástico, madeira, vidro) tem um realce especular branco. O único material comum que pode fisicamente ter um realce especular colorido é o metal colorido, como ouro e cobre. A Figura 5.17 mostra três configurações especulares diferentes.
 
 ![From left to right: medium specular intensity and low hardness; high specular intensity and high hardness, specular shader set to Toon.](../figures/Chapter5/Fig05-17.png)
 
-Intensity controls how bright the specular highlight is, while hardness controls the size of the specular hotspot. A high hardness value is useful for shiny material, such as hard plastic or glass. A low hardness value is useful for matte objects, such as rough plastic or plants. For surfaces with almost no visible specular component, such as dry brick walls, dirt, or carpet, you can even disable Specular entirely by setting the intensity to 0. This can improve the performance of the game slightly.
+A intensidade controla o quão brilhante é o realce especular, enquanto a dureza controla o tamanho do ponto ativo especular. Um alto valor de dureza é útil para materiais brilhantes, como plástico rígido ou vidro. Um valor de dureza baixo é útil para objetos foscos, como plástico áspero ou plantas. Para superfícies com quase nenhum componente especular visível, como paredes de tijolos secos, sujeira ou carpete, você pode até desativar o Specular inteiramente configurando a intensidade para 0. Isso pode melhorar ligeiramente o desempenho do jogo.
 
-Just like diffuse, there are different algorithms to achieve different-looking specular highlights: Wardlso can be used to create very tiny specular highlights, and Toon is used for creating that sharp fall-off often desired in a cartoon. CookTorr is the default algorithm, but Phong is another popular choice. Visually, cookTorr and Phong are very similar.
+Assim como o difuso, existem diferentes algoritmos para obter realces especulares de aparência diferente: Wardlso pode ser usado para criar realces especulares muito pequenos e Toon é usado para criar aquela queda acentuada frequentemente desejada em um desenho animado. CookTorr é o algoritmo padrão, mas Phong é outra escolha popular. Visualmente, cookTorr e Phong são muito semelhantes.
 
 
 
 ###### Ramp <a id="Ramp"></a>
 
-Ramp lets you add an arbitrary color gradient to the object. Its power lies in the fact that you can map a color palette onto the object in many different ways. Some common uses for the ramp shader include adding a "peach fuzz" to skin material and adding rim light to objects for dramatic effect.
+Ramp permite adicionar um gradiente de cor arbitrário ao objeto. Seu poder reside no fato de que você pode mapear uma paleta de cores no objeto de muitas maneiras diferentes. Alguns usos comuns para o sombreador de rampa incluem adicionar uma "penugem de pêssego" ao material de pele e adicionar luz de borda a objetos para um efeito dramático.
 
 <img alt="The Ramp shader interface" src="../figures/Chapter5/Fig05-18.png" width="33%" align="left">
 
 
 
-The top part of the ramp is used to set up the color band. To define a gradient, you can add or delete color stops; each color stop has its own position, color, and alpha value. By default, when you enable ramp, two color stops are created for you. To select a particular color stop, left-click on it. Active color stops are drawn with a dotted line. Once a color stop is selected, you can drag to change its position and alter its color and alpha values using the color selector below it.
+A parte superior da rampa é usada para configurar a faixa de cor. Para definir um gradiente, você pode adicionar ou excluir interrupções de cor; cada interrupção de cor tem sua própria posição, cor e valor alfa. Por padrão, quando você ativa a rampa, duas paradas de cor são criadas para você. Para selecionar uma determinada cor de parada, clique com o botão esquerdo nela. As paradas de cores ativas são desenhadas com uma linha pontilhada. Depois que uma interrupção de cor é selecionada, você pode arrastar para alterar sua posição e alterar sua cor e valores alfa usando o seletor de cores abaixo dela.
 
-The bottom part of the Ramp Shader panel controls how the color band is mapped onto the object. Available input options include:
+A parte inferior do painel Ramp Shader controla como a banda de cores é mapeada no objeto. As opções de entrada disponíveis incluem:
 
-- **Normal:** The color band is mapped to the surface normal of the object in camera space. Thus, any surfaces perpendicular to the camera (facing the camera) will obtain their color from the right side of the color band, while surfaces that are parallel to the camera (facing sideways) will get assigned the left side of the color band.
+- **Normal:** A banda colorida é mapeada para a normal da superfície do objeto no espaço da câmera. Assim, quaisquer superfícies perpendiculares à câmera (de frente para a câmera) obterão sua cor do lado direito da faixa de cor, enquanto as superfícies paralelas à câmera (voltadas para os lados) serão atribuídas ao lado esquerdo da faixa de cor.
 
-- **Energy:** The color band is mapped to the incident energy of all the lamps. High energy areas are mapped to the color band right and vice versa.
+- **Energy:** A faixa de cores é mapeada para a energia incidente de todas as lâmpadas. As áreas de alta energia são mapeadas para a faixa de cor à direita e vice-versa.
 
-- **Shader:** The color band is mapped to the result of the calculated shader intensity. This option is similar to energy, except it also takes the shading model into account.
+- **Shader:** A banda de cores é mapeada para o resultado da intensidade do sombreador calculada. Esta opção é semelhante à energia, exceto que também leva em consideração o modelo de sombreamento.
 
-- **Result:** The color band is mapped to the final resulting material color, including all shading and texture information. Bright pixels are mapped to the right of the color band, and dark pixels are mapped to the left-most color band.
+- **Result:** A banda de cores é mapeada para a cor final do material resultante, incluindo todas as informações de sombreamento e textura. Pixels brilhantes são mapeados para a direita da faixa colorida e pixels escuros são mapeados para a faixa colorida mais à esquerda.
 
   ​
 
-The Blend option controls how the color-band colors are mixed with the existing color, not unlike the layer-blending option in a 2D image-manipulation software such as Photoshop. These blending methods frequently appear in Blender, so you should be familiar with them.
+A opção Mistura controla como as cores da banda de cores são misturadas com a cor existente, não muito diferente da opção de mistura de camadas em um software de manipulação de imagens 2D como o Photoshop. Esses métodos de mistura freqüentemente aparecem no Blender, então você deve estar familiarizado com eles.
 
-- **Mix:** Uses a combination of the both inputs. A factor of 0.5 means each input contributes exactly half toward the final color. A factor of 1 means one of the inputs completely dominates the other.
-- **Add:** The two input colors are numerically added together, often resulting in a brighter image.
-- **Multiply:** The two input colors are numerically multiplied together, often resulting in a darker image.
-- **Subtract:** One input is subtracted from the other, sometimes resulting in a darker image, and sometimes resulting in a "negative" image where the colors are inverted.
+- **Mix:** Usa uma combinação de ambas as entradas. Um fator de 0,5 significa que cada entrada contribui exatamente com a metade para a cor final. Um fator de 1 significa que uma das entradas domina completamente a outra.
+- **Add:** As duas cores de entrada são somadas numericamente, geralmente resultando em uma imagem mais brilhante.
+- **Multiply:** As duas cores de entrada são multiplicadas numericamente juntas, geralmente resultando em uma imagem mais escura.
+- **Subtract:** Uma entrada é subtraída da outra, às vezes resultando em uma imagem mais escura e às vezes resultando em uma imagem "negativa" em que as cores são invertidas.
 
-Both diffuse and specular channels can have their own ramp. While the diffuse ramp shader can be visible on the entire object, the ramp for specular is only visible in the region where specular highlights are visible. Other than that, the Ramp Shader panel for specular is exactly the same as the Ramp Shader panel for Diffuse Shader.
+Tanto os canais difusos quanto os especulares podem ter sua própria rampa. Enquanto o sombreador de rampa difuso pode ser visível em todo o objeto, a rampa para especular só é visível na região onde os realces especulares são visíveis. Fora isso, o painel Ramp Shader para especular é exatamente o mesmo que o painel Ramp Shader para Diffuse Shader.
 
 
 
 ###### Shading <a id="Shading"></a>
 
-**Emit**: Controls how much light a surface appears to give off. A non-zero value means a surface is visible even when it's completely unlit. Because emit is a material property, and not a real light source, you cannot rely on using emit materials to light up other objects in the scene. Emit is often used to simulate surfaces that give off light on their own.
+**Emit**: Controla a quantidade de luz que uma superfície parece emitir. Um valor diferente de zero significa que uma superfície é visível mesmo quando está completamente apagada. Como emit é uma propriedade do material e não uma fonte de luz real, você não pode contar com o uso de materiais emit para iluminar outros objetos na cena. Emit é frequentemente usado para simular superfícies que emitem luz por conta própria.
 
-**Ambient**: Controls how much influence the ambient color has on the material. Ambient color is a global color that is added on top of all materials, including objects without an explicit material. By default, the ambient color is black, effectively disabling itself. The ambient color can be changed in the World panel. If you want to uniformly lift the brightness of the scene without adding additional lamp, ambient color is a fast way to achieve this. You can also create a color tint in the world by using a nonwhite ambient color, which is a great way to set the mood of your scene.
+**Ambient**: Controla quanta influência a cor ambiente tem sobre o material. A cor ambiente é uma cor global adicionada sobre todos os materiais, incluindo objetos sem um material explícito. Por padrão, a cor ambiente é preta, desativando-se efetivamente. A cor do ambiente pode ser alterada no painel Mundial. Se você deseja aumentar uniformemente o brilho da cena sem adicionar lâmpada adicional, a cor ambiente é uma maneira rápida de conseguir isso. Você também pode criar uma tonalidade de cor no mundo usando uma cor ambiente não branca, que é uma ótima maneira de definir o clima de sua cena.
 
 
 
 > **Ambient Drawbacks**
 >
-> Ambient does have its drawbacks. Because it adds light to all surfaces uniformly, excessive ambient will reduce the contrast of the scene, making everything look flat and washed out.
+> O ambiente tem suas desvantagens. Por adicionar luz a todas as superfícies de maneira uniforme, o ambiente excessivo reduzirá o contraste da cena, fazendo com que tudo pareça plano e desbotado.
 
 
 
-**Shadeless:** When enabled, disables all light calculation for this material. This option bypasses all the complex shading calculations; thus, it can improve performance at the cost of no lighting calculation. This option is useful for situations where you do not want the object to react to light.
+**Shadeless:** Quando ativado, desativa todos os cálculos de luz para este material. Esta opção ignora todos os cálculos complexos de sombreamento; assim, pode melhorar o desempenho sem nenhum cálculo de iluminação. Esta opção é útil para situações em que você não deseja que o objeto reaja à luz.
 
-**Cubic Interpolation:** When enabled, gives a smoother transition from light to shadow, at the cost of a slight performance decrease. For certain smooth shapes like spheres, this option helps the shape look more natural.
+**Cubic Interpolation:** Quando ativado, oferece uma transição mais suave da luz para a sombra, ao custo de uma ligeira diminuição do desempenho. Para certas formas suaves, como esferas, esta opção ajuda a aparência da forma mais natural.
 
 ###### Game Settings <a id="Game_Settings"></a>
 
-**Backface Culling:** When disabled, makes both sides of a face visible when running the game. By default, only the front side of the face is rendered for performance reasons, while the backside of a face is invisible. This is not critical for most new computers, if you are to handle a few faces. However, it's better to take the safe approach and disable backface culling only when you need double-sided faces.
+**Backface Culling:** Quando desativado, torna os dois lados de um rosto visíveis ao executar o jogo. Por padrão, apenas a parte frontal da face é renderizada por motivos de desempenho, enquanto a parte traseira de uma face é invisível. Isso não é crítico para a maioria dos novos computadores, se você quiser lidar com alguns rostos. No entanto, é melhor adotar uma abordagem segura e desativar a seleção da face posterior apenas quando você precisar de faces de dois lados.
 
- **Invisible:** When enabled, makes the surface completely invisible. This option is often used for creating hidden physics collision objects. Objects can be also made invisible from the Physics panel (see Chapter 6).
+ **Invisible:** Quando ativado, torna a superfície completamente invisível. Esta opção é freqüentemente usada para criar objetos ocultos de colisão física. Os objetos também podem ficar invisíveis no painel Física (consulte o Capítulo 6).
 
-**Text:** When enabled, tells Blender that this object is used to display bitmap text. Using bitmap text in the game engine is covered later in this chapter. Because bitmap text is rather difficult to set up, using the Blender text object is an easy alternative.
+**Text:** Quando habilitado, diz ao Blender que este objeto é usado para exibir texto de bitmap. O uso de texto de bitmap no mecanismo de jogo é abordado posteriormente neste capítulo. Como o texto de bitmap é bastante difícil de configurar, usar o objeto de texto do Blender é uma alternativa fácil.
 
- **Alpha Blend:** Selects the way faces are drawn. Options are shown in Figure 5.19 and in details in Figure 5.19b.
+ **Alpha Blend:** Seleciona a maneira como as faces são desenhadas. As opções são mostradas na Figura 5.19 e em detalhes na Figura 5.19b.
 
-- **Opaque** : Treats the material as a regular solid. This is the fastest draw mode.
+- **Opaque** : Trata o material como um sólido regular. Este é o modo de desenho mais rápido.
 
-- **Add:** Numerically adds its own surface color with what's behind it, making the combined surface brighter. This option can be used to simulate halo lights, particles, and other "bright" special effects.
+- **Add:** Adiciona numericamente sua própria cor de superfície com o que está por trás, tornando a superfície combinada mais brilhante. Esta opção pode ser usada para simular luzes de halo, partículas e outros efeitos especiais "brilhantes".
 
-- **Alpha Clip:** Enables binary transparency. Used frequently for texture where there is a very distinct edge, such as tree leaves and a chain-link fence. This is the fastest way to render textures with alpha since there is no alpha blending: a pixel is either fully opaque or fully transparent.
+- **Alpha Clip:** Ativa a transparência binária. Usado com frequência para texturas em que há uma borda muito distinta, como folhas de árvores e uma cerca de arame. Esta é a maneira mais rápida de renderizar texturas com alfa, já que não há mistura alfa: um pixel é totalmente opaco ou totalmente transparente.
 
-- **Alpha Blend:** Enables alpha blending between its own color and the background. It is used for truly transparent materials such as glass. One drawback of Alpha Blend is that multiple layers of Alpha Blend surfaces are often not displayed in the correct Z-order. This is a common issue with hardware-accelerated alpha rendering. The solution is to use Alpha Sort, as explained below.
+- **Alpha Blend:** Ativa o alfa blend entre sua própria cor e o plano de fundo. É usado para materiais verdadeiramente transparentes como o vidro. Uma desvantagem do Alpha Blend é que várias camadas de superfícies do Alpha Blend geralmente não são exibidas na ordem Z correta. Este é um problema comum com a renderização alfa acelerada por hardware. A solução é usar o Alpha Sort, conforme explicado a seguir.
 
-- **Alpha Sort:** Similar to Alpha Blend, but it solves the Z-sorting issue inherent with Alpha Blend. If you see an alpha-mapped object that is showing through other transparent objects, or if multiple layers of alpha are displayed in the wrong order, then you should use Alpha Sort instead of Alpha Blend. Keep in mind that Alpha Sort is much slower than regular Alpha Blend.
+- **Alpha Sort:** Semelhante ao Alpha Blend, mas resolve o problema de classificação Z inerente ao Alpha Blend. Se você vir um objeto com mapeamento alfa que está aparecendo por meio de outros objetos transparentes, ou se várias camadas de alfa forem exibidas na ordem errada, você deve usar Alpha Sort em vez de Alpha Blend. Lembre-se de que o Alpha Sort é muito mais lento do que o Alpha Blend normal.
 
   ![Blending Modes: (from left to right) Add, Alpha Clip, Alpha Blend, and Alpha Sort.](../figures/Chapter5/Fig05-19.jpg)
 
@@ -371,15 +371,19 @@ Both diffuse and specular channels can have their own ramp. While the diffuse ra
 
 
 
-- **Face Orientations:** Rotates the faces away from their original orientation. Note that face orientations are not visible in the Viewport; therefore, to preview the effect of these settings, you need to enter the game mode.
+- **Face Orientations:** Gira as faces para longe de sua orientação original. Observe que as orientações das faces não são visíveis na viewport; portanto, para visualizar o efeito dessas configurações, você precisa entrar no modo de jogo.
+
 - ![Face orientation illustrated. The top-row images show the actual geometry. The bottom row shows the face set to normal(A), billboard(B), halo(C), and shadow(D).](../figures/Chapter5/Fig05-20.jpg)
-  - Normal: The default option. No extra orientation is applied and faces are rendered as normal. (See A)
-  - Billboard: Forces the X-axis of the object to face the camera while keeping the Z-axis of the object upright. To visualize this, imagine someone is holding a billboard and trying to get your attention by always rotating the billboard to face you. Billboard is used frequently to render simplistic vegetation and trees in architectural visualization, so that a tree can be represented by a single plane that always rotates around its center. (See B)
-  - Halo: Forces the X-axis of the object to always face the camera. This is similar to the billboard option, but no axis is locked. Halo, as the name implies, can be used to render particles and other non-3D sprites (see C).
-  - Shadow: Objects will reposition and reorient themselves so that the center of the object will match the closest object directly below it in the Z axis. This is used to make an object "fall" and stick to the ground, such as when faking a drop shadow (see D).
 
-Remember that face orientation is applied after logic and physics calculations. This means that the collision mesh will still be in its original position, so what you see on the screen could be different than the internal physical collision mesh.
-
+ - Normal: a opção padrão. Nenhuma orientação extra é aplicada e as faces são renderizadas normalmente. (Ver um)
+ 
+ - Billboard: Força o eixo X do objeto a ficar de frente para a câmera, enquanto mantém o eixo Z do objeto na posição vertical. Para visualizar isso, imagine alguém segurando um outdoor e tentando chamar sua atenção sempre girando o outdoor para ficar de frente para você. Billboard é freqüentemente usado para renderizar vegetação e árvores simplistas na visualização arquitetônica, de forma que uma árvore possa ser representada por um único plano que sempre gira em torno de seu centro. (Veja B)
+ 
+ - Halo: Força o eixo X do objeto a sempre ficar de frente para a câmera. Isso é semelhante à opção do quadro de avisos, mas nenhum eixo está bloqueado. Halo, como o nome indica, pode ser usado para renderizar partículas e outros sprites não 3D (consulte C).
+ 
+ - Sombra: os objetos irão se reposicionar e se reorientar para que o centro do objeto corresponda ao objeto mais próximo diretamente abaixo dele no eixo Z. Isso é usado para fazer um objeto "cair" e grudar no chão, como ao fingir uma sombra projetada (ver D).
+ 
+Lembre-se de que a orientação facial é aplicada após cálculos lógicos e físicos. Isso significa que a malha de colisão ainda estará em sua posição original, então o que você vê na tela pode ser diferente da malha de colisão física interna.
 
 
 ###### Physics <a id="Physics"></a>
