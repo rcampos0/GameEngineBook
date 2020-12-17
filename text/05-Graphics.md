@@ -388,24 +388,24 @@ Lembre-se de que a orientação facial é aplicada após cálculos lógicos e f�
 
 ###### Physics <a id="Physics"></a>
 
-The physics setting controls some of the physics property of the surface. They do not affect the visual property of the object but change the way the object interacts under the physics engine. Jump to Chapter 6 if you want to learn about these settings.
+A configuração física controla algumas das propriedades físicas da superfície. Eles não afetam a propriedade visual do objeto, mas alteram a maneira como o objeto interage sob o mecanismo de física. Vá para o Capítulo 6 se quiser aprender sobre essas configurações.
 
 ###### Additional Options <a id="Additional_Options"></a>
 
-- **Exclude Mist:** Excludes the object from the mist calculation when enabled. Mist is a world setting that can be accessed from the World panel.
-  - Face Textures: Forces Blender to replace the diffuse color of the material with the UV texture. This is an easy way to apply a simple texture onto a material without creating a texture data block for the material.
-  - Face Textures Alpha: This option is only visible when Face Textures is enabled. It will also override the transparency of the material using the alpha channels of the texture, in addition to replacing the diffuse color of the material.
-  - Vertex Color Paint: Multiplies the vertex color of the mesh on top of the regular material.
-  - Receive Shadows: Makes real-time shadows cast by lamps visible on the surface. Only spot and sun lamps cast shadows.
-- **Object Color:** Modulates the material color with the object color. Useful for getting different objects sharing the same material to have different colors. The object color can be set from the object Properties Editor.
+- **Exclude Mist:** Exclui o objeto do cálculo de névoa quando ativado. Mist é um cenário mundial que pode ser acessado no painel Mundial.
+   - Texturas Faciais: Força o Blender a substituir a cor difusa do material pela textura UV. Esta é uma maneira fácil de aplicar uma textura simples em um material sem criar um bloco de dados de textura para o material.
+   - Texturas Faciais Alpha: Esta opção só é visível quando as Texturas Faciais estão ativadas. Também substituirá a transparência do material usando os canais alfa da textura, além de substituir a cor difusa do material.
+   - Vertex Color Paint: Multiplica a cor do vértice da malha sobre o material regular.
+   - Receber sombras: torna as sombras em tempo real lançadas por lâmpadas visíveis na superfície. Apenas lâmpadas de spot e sol projetam sombras.
+- **Object Color:** Modula a cor do material com a cor do objeto. Útil para fazer com que objetos diferentes compartilhando o mesmo material tenham cores diferentes. A cor do objeto pode ser definida no Editor de propriedades do objeto.
 
-So far, we have covered all the functionalities of the Material panel. Most of the settings are very intuitive, and their effects can be seen directly in the Viewport, with the exception of the face orientation settings, which require the game engine to be running to see their effects.
+Até agora, cobrimos todas as funcionalidades do painel Material. A maioria das configurações é muito intuitiva e seus efeitos podem ser vistos diretamente na janela de visualização, com exceção das configurações de orientação de rosto, que exigem que o mecanismo de jogo esteja funcionando para ver seus efeitos.
 
 
 
 ##### The Texture Panel <a id="The_Texture_Panel"></a>
 
-Texture is the main way to add details to a surface without adding extra polygons. It is done by mapping a 2D image onto the surface of the 3D object. Figure 5.21 illustrates the concept of texture mapping.
+A textura é a principal forma de adicionar detalhes a uma superfície sem adicionar polígonos extras. Isso é feito mapeando uma imagem 2D na superfície do objeto 3D. A Figura 5.21 ilustra o conceito de mapeamento de textura.
 
 <img alt="How texture mapping works." src="../figures/Chapter5/Fig05-21.jpg" width="50%" align="left">
 
