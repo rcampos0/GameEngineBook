@@ -1,18 +1,18 @@
 **Table of Contents**
 
-- [Chapter 5: Graphics](#Chapter_5_Graphics)
-	- [Visual Style](#Visual_Style)
-	- [Designing for Real Time](#Designing_for_Real_Time)
-	- [Geometry](#Geometry)
-	- [Materials and Textures](#Materials_and_Textures)
-	- [Lights](#Lights)
-	- [Shading Modes](#Shading_Modes)
-		- [GLSL Mode](#GLSL_Mode)
-			- [Material and Textures](#Material_and_Textures)
-				- [The Material Panel](#The_Material_Panel)
-					- [Material Management](#Material_Management)
-					- [Multi-Material Objects](#Multi-Material_Objects)
-					- [Object vs. Data](#Object_vs._Data)
+- [Capítulo 5: Gráficos](#Chapter_5_Graphics)
+	- [Estilo Visual](#Visual_Style)
+	- [Projetando para Tempo Real](#Designing_for_Real_Time)
+	- [Geometria](#Geometry)
+	- [Materiais e Texturas](#Materials_and_Textures)
+	- [Iluminação](#Lights)
+	- [Modos de Sombreamento](#Shading_Modes)
+		- [Modo GLSL](#GLSL_Mode)
+			- [Materiais e Texturas](#Material_and_Textures)
+				- [O Painel de Material](#The_Material_Panel)
+					- [Gerencimento de Material](#Material_Management)
+					- [Objetos de Multi-Material](#Multi-Material_Objects)
+					- [Objeto vs. Dado](#Object_vs._Data)
 					- [Preview](#Preview)
 					- [Diffuse](#Diffuse)
 					- [Specular](#Specular)
@@ -51,16 +51,16 @@
 	- [Stereo](#Stereo)
 	- [Dome](#Dome)
 
-# Chapter 5: Graphics <a id="Chapter_5_Graphics"></a>
+# Capítulo 5: Gráficos <a id="Chapter_5_Graphics"></a>
 
-Welcome to Chapter 5, where it's all about the visuals! When you play a game, the graphics are usually the first element to make an impression, long before you can form a more rounded opinion of the game based on other aspects like gameplay, story, physics, or sound. Whether it's a screenshot, a video trailer, or a printed poster, graphics is the one element that publishers constantly rely on to draw the public's attention. So it's only fair that we should look at this topic in great detail.
+Bem-vindo ao Capítulo 5, onde se trata de recursos visuais! Quando você joga, os gráficos geralmente são o primeiro elemento a causar uma boa impressão, muito antes de você poder formar uma opinião mais abrangente sobre o jogo com base em outros aspectos como jogabilidade, história, física ou som. Quer se trate de uma captura de tela, um trailer de vídeo ou um pôster impresso, os gráficos são o único elemento em que os editores contam constantemente para chamar a atenção do público. Portanto, é justo que examinemos esse tópico em detalhes.
 
-![Blender game arts by Martins Upitis.](..\figures\Chapter5\Fig05-01.jpg)
+![Blender game arts de Martins Upitis.](..\figures\Chapter5\Fig05-01.jpg)
 
 
-In a modern game, it is not unusual for the computer to spend the majority of its processing time in rendering the graphics, while game logic, physics, and sound typically take up only a tiny fraction of the total computation time. This fact alone should convince you of the complexity of real-time computer graphics.
+Em um jogo moderno, não é incomum que o computador gaste a maior parte de seu tempo de processamento renderizando os gráficos, enquanto a lógica, a física e o som do jogo normalmente ocupam apenas uma pequena fração do tempo total de computação. Esse fato por si só deve convencê-lo da complexidade da computação gráfica em tempo real.
 
-In this chapter, we will learn first how to work with the material, texture, and shading systems in the game engine; followed by a quick introduction to GLSL – OpenGL Shading Language, the shading language that would let you further extend the graphic capability of the game engine; and conclude the chapter by showing off some of the more specialized tools and features that can be used in a game.
+Neste capítulo, aprenderemos primeiro como trabalhar com os sistemas de material, textura e sombreamento no motor de jogo; seguido por uma rápida introdução ao GLSL - OpenGL Shading Language, a linguagem de sombreamento que permite estender ainda mais a capacidade gráfica do motor de jogo; e conclua o capítulo mostrando algumas das ferramentas e recursos mais especializados que podem ser usados em um jogo.
 
 ## Visual Style <a id="Visual_Style"></a>
 
