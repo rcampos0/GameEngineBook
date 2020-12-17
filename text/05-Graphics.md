@@ -63,8 +63,7 @@ Em um jogo moderno, não é incomum que o computador gaste a maior parte de seu 
 Neste capítulo, aprenderemos primeiro como trabalhar com os sistemas de material, textura e sombreamento no motor de jogo; seguido por uma rápida introdução ao GLSL - OpenGL Shading Language, a linguagem de sombreamento que permite estender ainda mais a capacidade gráfica do motor de jogo; e conclua o capítulo mostrando algumas das ferramentas e recursos mais especializados que podem ser usados em um jogo.
 
 ## Visual Style <a id="Visual_Style"></a>
-
-For most graphic artists, the ultimate goal of their work has always been photorealism. Photorealism means that the scene looks as believable as possible by replicating all the intricate geometries, light interactions, and surface properties of the physical world. While photorealism is a perfectly valid goal for games that strive to achieve the most realistic graphics possible, many games intentionally employ non-photorealistic styles. Achieving looks such as a cartoon style, anime style, or even a retro 8-bit style is certainly possible within the game engine. With some slight changes in the content-creation process, combined with a good understanding of shading, texturing, and lighting, you'll be able to create stunning artwork of any visual style.
+Para a maioria dos artistas gráficos, o objetivo final de seu trabalho sempre foi o fotorrealismo. Fotorrealismo significa que a cena parece o mais verossímil possível, replicando todas as geometrias intrincadas, interações de luz e propriedades de superfície do mundo físico. Embora o fotorrealismo seja uma meta perfeitamente válida para jogos que se esforçam para obter os gráficos mais realistas possíveis, muitos jogos empregam intencionalmente estilos não fotorrealistas. Conseguir looks como um estilo de desenho animado, estilo anime ou mesmo um estilo retro de 8 bits certamente é possível dentro do motor de jogo. Com algumas pequenas mudanças no processo de criação de conteúdo, combinadas com um bom entendimento de sombreamento, texturização e iluminação, você poderá criar uma arte impressionante de qualquer estilo visual.
 
 ![Different visual styles of games.](..\figures\Chapter5\Fig05-02.jpg)
 
@@ -74,51 +73,50 @@ For a typical computer animation, the rendering time is effectively unlimited. A
 
 > **Art Assets**
 >
-> Art asset refers to any piece of work that is used in a game. It includes models, textures, animations, sound, and even shader codes.
+> Ativo de arte refere-se a qualquer peça de trabalho usada em um jogo. Inclui modelos, texturas, animações, som e até códigos de shader.
 
-Because games are generally distributed to a large audience with a wide range of computer hardware, you need to make sure that the games will run at acceptable speeds on different hardware configurations. This way, you avoid alienating people without top-of-the-line computers. Blender has support for switching between different shading modes to help artists create games that work with different generations of computer hardware. This will be discussed in detail later in this chapter.
+Como os jogos são geralmente distribuídos para um grande público com uma ampla variedade de hardware de computador, você precisa se certificar de que os jogos serão executados em velocidades aceitáveis em diferentes configurações de hardware. Dessa forma, você evita alienar pessoas sem computadores de última geração. O Blender tem suporte para alternar entre diferentes modos de sombreamento para ajudar os artistas a criar jogos que funcionam com diferentes gerações de hardware de computador. Isso será discutido em detalhes posteriormente neste capítulo.
 
-Modern graphics cards are surprisingly fast at pushing out high-quality images at astonishing speed, but you still need to keep a few things in mind when making art assets, in order to avoid slowdowns.
+Placas de vídeo modernas são surpreendentemente rápidas em enviar imagens de alta qualidade em uma velocidade surpreendente, mas você ainda precisa manter algumas coisas em mente ao fazer ativos de arte, a fim de evitar lentidão.
 
 ## Geometry <a id="Geometry"></a>
 
 <img alt="Low polygon model vs. high polygon model" src="../figures/Chapter5/Fig05-03.jpg" width="50%" align="right">
 
-Geometry is the basis for any 3D scene. You can quantitatively measure the amount of geometry data in a scene using a "polygon count," which refers to the number of faces (triangles or quads, in Blender's case) in a scene. The more geometry data there is, the slower the game will be. So how many polygons are too much? Rather than imposing an absolute limitation, just remember to use polygons sensibly, spend them where they are needed, and don't waste excessive polygons on unnecessary parts that will not be visible to the gamer. That said, today's average computer should be able to render a million polygons at an interactive frame rate, so polygon count isn't as much of a concern as it used to be. A high-resolution model is smoother, more detailed, but is slower to process by the computer.
+A geometria é a base para qualquer cena 3D. Você pode medir quantitativamente a quantidade de dados geométricos em uma cena usando uma "contagem de polígonos", que se refere ao número de faces (triângulos ou quadrantes, no caso do Blender) em uma cena. Quanto mais dados de geometria houver, mais lento será o jogo. Então, quantos polígonos são demais? Em vez de impor uma limitação absoluta, lembre-se de usar polígonos de maneira sensata, gaste-os onde são necessários e não desperdice polígonos excessivos em partes desnecessárias que não serão visíveis para o jogador. Dito isso, o computador médio de hoje deve ser capaz de renderizar um milhão de polígonos em uma taxa de quadros interativa, então a contagem de polígonos não é tão preocupante quanto costumava ser. Um modelo de alta resolução é mais suave, mais detalhado, mas é mais lento para processar pelo computador.
 
-The supported Blender object types in the game engine are: camera, light, empty, mesh, and text.
+Os tipos de objetos do Blender suportados no motor de jogo são: câmera, luz, vazio, malha e texto.
 
-Non-supported Blender object types are: curve, surface, and metaball. These objects will be hidden during the game.
+Os tipos de objetos do Blender não suportados são: curva, superfície e metaball. Esses objetos ficarão escondidos durante o jogo.
 
 ## Materials and Textures <a id="Materials_and_Textures"></a>
 
 <img alt="Oil barrel models without and with textures applied" src="../figures/Chapter5/Fig05-04.jpg" width="50%" align="right">
 
-Once the modeling is done, materials and textures, which add visual fidelity, can be applied to the mesh. Using a combination of materials and textures, you can define surface characteristics such as color, shininess, bumpiness, and transparency. Textures also allow you to "bake" certain effects, such as complex light maps and shadows, onto the object, because these effects would otherwise take too long to compute in real time. Due to the importance of materials and textures, a large portion of this chapter will focus on materials and textures. (For a more in-depth discussion on texture baking, refer to Chapter 8.)
+Uma vez que a modelagem é feita, materiais e texturas, que adicionam fidelidade visual, podem ser aplicados à malha. Usando uma combinação de materiais e texturas, você pode definir as características da superfície, como cor, brilho, saliência e transparência. As texturas também permitem "assar" certos efeitos, como mapas de luz e sombras complexos, no objeto, porque de outra forma esses efeitos demorariam muito para serem computados em tempo real. Devido à importância dos materiais e texturas, uma grande parte deste capítulo se concentrará em materiais e texturas. (Para uma discussão mais aprofundada sobre cozimento de textura, consulte o Capítulo 8.)
 
-The Blender game engine implements a subset with some overlapping of all the features found in the regular Blender. Not all options available to the Blender internal renderer are available in the game engine; many advanced graphics features are simply too slow to be implemented in real time. But as you will soon find out, even some of the complex effects like reflection, soft shadows, and ambient occlusion can all be approximated in the game engine using clever tricks on modern graphic cards.
+O motor de jogo do Blender implementa um subconjunto com alguma sobreposição de todos os recursos encontrados no Blender regular. Nem todas as opções disponíveis para o renderizador interno do Blender estão disponíveis no motor de jogo; muitos recursos gráficos avançados são simplesmente muito lentos para serem implementados em tempo real. Mas como você logo descobrirá, até mesmo alguns dos efeitos complexos como reflexão, sombras suaves e oclusão de ambiente podem ser aproximados no motor de jogo usando truques inteligentes em placas gráficas modernas.
 
 ## Lights <a id="Lights"></a>
 
-Lighting not only sets the overall tone of the scene, but it also helps highlight certain details while hiding others. Older hardware or mobile devices cannot afford to use dynamic lighting for performance reasons, so they often employ precomputed static lighting, which is faster to render, but does not have the flexibility that dynamic lighting offers (such as swinging bathroom lights that cast moving shadows).
+A iluminação não apenas define o tom geral da cena, mas também ajuda a destacar certos detalhes enquanto oculta outros. Hardware mais antigo ou dispositivos móveis não podem se dar ao luxo de usar iluminação dinâmica por motivos de desempenho, então eles geralmente empregam iluminação estática pré-computada, que é mais rápida de renderizar, mas não tem a flexibilidade que a iluminação dinâmica oferece (como luzes de banheiro oscilantes que projetam sombras em movimento) .
 
-In fact, without lighting, the virtual world you create would be pitch black.
+Na verdade, sem iluminação, o mundo virtual que você cria ficaria totalmente escuro.
 
 ![The effect of lighting on an object.](..\figures\Chapter5\Fig05-05.png)
 
-The game engine supports eight real-time lights in Multitexture mode and at least eight in GLSL mode (more on the different shading modes later). But lights are expensive, and more lights will slow the game down significantly. Advanced features such as real-time shadow will slow down the game even more. Light is a very complex phenomenon; effects such as ambient occlusion, bounced light, and volumetric light shafts are all very computationally intensive and simply not feasible for most real-time projects. It is up to the artist to devise ways to fake these effects when needed.
+O motor de jogo suporta oito luzes em tempo real no modo multitextura e pelo menos oito no modo GLSL (mais sobre os diferentes modos de sombreamento posteriormente). Mas as luzes são caras e mais luzes tornarão o jogo significativamente mais lento. Recursos avançados, como sombra em tempo real, tornarão o jogo ainda mais lento. A luz é um fenômeno muito complexo; efeitos como oclusão de ambiente, luz refletida e feixes de luz volumétricos são todos muito intensivos em computação e simplesmente inviáveis para a maioria dos projetos em tempo real. Cabe ao artista criar maneiras de falsificar esses efeitos, quando necessário.
 
-> Advanced Shading Techniques
+> Técnicas Avançadas de Sombreamento
 >
-> Thanks to the rapid advances in shading language and graphics processing units (GPU), effects such as ambient occlusion, bounced light, and many others that were considered "impossible" are now possible using some very complex shaders. Explaining these advanced techniques is outside the scope of this book, but a selection of sample files is included on the accompanying disk. For advanced shader examples you can look at the book _GPU Gems_ from Nvidia.
-
+> Graças aos rápidos avanços na linguagem de sombreamento e unidades de processamento gráfico (GPU), efeitos como oclusão de ambiente, luz refletida e muitos outros que eram considerados "impossíveis" agora são possíveis usando alguns sombreamentos muito complexos. Explicar essas técnicas avançadas está fora do escopo deste livro, mas uma seleção de arquivos de amostra está incluída no disco que acompanha. Para exemplos de shaders avançados, você pode olhar o livro _GPU Gems_ da Nvidia.
 
 
 ## Shading Modes <a id="Shading_Modes"></a>
 
-The game engine offers two different real-time shading modes. Think of them as different rendering pipelines - one is more limiting, the other is moore advanced. In this chapter, you will first be introduced to the most feature-rich shading mode: **GLSL**. Then we will talk a bit about the older **Multitexture** mode.
+O motor de jogo oferece dois modos diferentes de sombreamento em tempo real. Pense neles como diferentes canais de renderização - um é mais limitante, o outro é mais avançado. Neste capítulo, você será apresentado ao modo de sombreamento mais rico em recursos: **GLSL**. Então vamos falar um pouco sobre os mais antigos modo de **Multitexture**.
 
-To switch between shading modes, go to the Render Property Editor.
+Para alternar entre os modos de sombreamento, vá para o Editor de propriedades de renderização.
 
 ![Shading mode options.](..\figures\Chapter5\Fig05-06.png)
 
@@ -126,27 +124,26 @@ To switch between shading modes, go to the Render Property Editor.
 
 > **Game Engine Interface**
 >
-> If you are following this chapter on your own without using the supplied template file from the book, remember to set the render engine to Game Blender once you started Blender. This will reveal all the relevant game engine features in the user interface and hide non-relevant interface elements. ![Fig05-07](../figures/Chapter5/Fig05-07.png)
+> Se você está seguindo este capítulo por conta própria sem usar o arquivo de modelo fornecido no livro, lembre-se de definir o mecanismo de renderização para o Game Blender assim que iniciar o Blender. Isso revelará todos os recursos relevantes do mecanismo de jogo na interface do usuário e ocultará elementos não relevantes da interface. ! [Fig05-07] (../Figures/Chapter5/Fig05-07.png)
 
-Here is a table that shows the advantages and disadvantages of the two shading mode. The GLSL mode, despite being the most advanced shading mode in Blender, also happens to be the easiest to use because we can accomplish the effect using the regular material and Texture panel. Unless backward compatibility with older hardware is a big concern, I strongly recommend using the GLSL shading mode for all your projects. Even if you are not planning on using all the advanced features, it's good to know that they are there if you need them later on.
+Aqui está uma tabela que mostra as vantagens e desvantagens dos dois modos de sombreamento. O modo GLSL, apesar de ser o modo de sombreamento mais avançado do Blender, também é o mais fácil de usar, pois podemos realizar o efeito usando o material regular e o painel de textura. A menos que a compatibilidade com versões anteriores de hardware mais antigo seja uma grande preocupação, eu recomendo fortemente o uso do modo de sombreamento GLSL para todos os seus projetos. Mesmo se você não estiver planejando usar todos os recursos avançados, é bom saber que eles estão disponíveis se você precisar deles mais tarde.
 
-Table 5.1 Comparison of Shading Modes in the Game Engine
+Tabela 5.1 Comparação dos modos de sombreamento no mecanismo de jogo
+|                        			| Multitexture | GLSL        |
+| ---------------------------------------------	| ------------ | ----------- |
+| Data de Introdução	 			| 2006         | 2008        |
+| Compatibilidade de Hardware 			| OpenGL 1.3+  | OpenGL 2.0+ |
+| Precisão de iluminação     			| Per vertex   | Per pixel   |
+| Número de Luzes    				| 8            | 8+          |
+| Sombra em tempo real	        		| No           | Yes         |
+| Camada de textura máxima     	 		| 4            | 16          |
+| Mistura de textura	        		| Yes          | Yes         |
+| Shader personalizado   			| No           | Yes         |
+| Nós de material     				| No           | Yes         |
+| Visualização da janela de visualização        | Partial      | Full        |
+| Devo usar?				        | Nah...       | Yes!        |
 
-|                        | Multitexture | GLSL        |
-| ---------------------- | ------------ | ----------- |
-| Date of introduction   | 2006         | 2008        |
-| Hardware Compatibility | OpenGL 1.3+  | OpenGL 2.0+ |
-| Lighting  accuracy     | Per vertex   | Per pixel   |
-| Number of Lights       | 8            | 8+          |
-| Real-time shadow       | No           | Yes         |
-| Max texture layer      | 4            | 16          |
-| Texture blending       | Yes          | Yes         |
-| Custom shader          | No           | Yes         |
-| Material nodes         | No           | Yes         |
-| Viewport Preview       | Partial      | Full        |
-| Should I use it?       | Nah...       | Yes!        |
-
-Because the way to apply materials and textures varies somewhat depending on the shading mode, it is a good idea to decide on a shading mode before you start the project to avoid unnecessary conversion later. An example of what each mode offers is shown here using this car model.
+Como a maneira de aplicar materiais e texturas varia um pouco dependendo do modo de sombreamento, é uma boa ideia decidir sobre um modo de sombreamento antes de iniciar o projeto para evitar conversões desnecessárias posteriormente. Um exemplo do que cada modo oferece é mostrado aqui usando este modelo de carro.
 
 ![Different shading modes: Multitexture, GLSL.](..\figures\Chapter5\Fig05-08.png)
 
@@ -154,31 +151,31 @@ Because the way to apply materials and textures varies somewhat depending on the
 
 ### GLSL Mode <a id="GLSL_Mode"></a>
 
-The GLSL shading mode is the newest real-time Shading mode in Blender, added to augment the old Multitexture modes. In a nutshell, GLSL mode tries to emulate the functionality of the internal rendering engine as much as possible. In doing so, it blurs the distinction between the Blender internal renderer and the game engine. In GLSL mode, the artist uses the familiar Material panel and Texture panel to apply shading and texture to an object, as one would normally do when working with the internal renderer. This means materials created for the game engine in GLSL mode can be used for rendering almost without doing any modification.
+O modo de sombreamento GLSL é o mais novo modo de sombreamento em tempo real no Blender, adicionado para aumentar os antigos modos de multitextura. Resumindo, o modo GLSL tenta emular a funcionalidade do mecanismo de renderização interno tanto quanto possível. Ao fazer isso, ele confunde a distinção entre o renderizador interno do Blender e o motor de jogo. No modo GLSL, o artista usa o painel Material familiar e o painel Textura para aplicar sombreamento e textura a um objeto, como alguém normalmente faria ao trabalhar com o renderizador interno. Isso significa que os materiais criados para o mecanismo de jogo no modo GLSL podem ser usados para renderizar quase sem fazer nenhuma modificação.
 
 > **Technical Background**
 >
-> GLSL, or the OpenGL Shading Language, is a C-like programming language that runs on the graphics card (as opposed to most other programming languages, which run on the CPU). GLSL lets the artist define custom shaders to achieve more complex animation, material, shading, and texture effects than are possible with traditional fixed-pipeline processing. Blender is capable of generating GLSL codes automatically, so don't get scared just because we mentioned "programming language." Blender converts your settings from the Material and Texture panel into GLSL internally. In fact, the entire process is completely transparent to the artist. The only reason we bring it up now is so that you have a better understanding of what goes on behind the scenes.
+> GLSL, ou OpenGL Shading Language, é uma linguagem de programação semelhante a C que roda na placa de vídeo (ao contrário da maioria das outras linguagens de programação, que funcionam na CPU). GLSL permite que o artista defina sombreadores personalizados para obter efeitos de animação, material, sombreamento e textura mais complexos do que são possíveis com o processamento tradicional de pipeline fixo. O Blender é capaz de gerar códigos GLSL automaticamente, então não se assuste só porque mencionamos "linguagem de programação". O Blender converte suas configurações do painel Material e Textura em GLSL internamente. Na verdade, todo o processo é totalmente transparente para o artista. A única razão pela qual mencionamos isso agora é para que você tenha uma melhor compreensão do que está acontecendo nos bastidores.
 
-This is the easiest Shading mode to use, since the same materials and textures settings that are used in regular Blender are also used in the game engine.
+Este é o modo de sombreamento mais fácil de usar, já que os mesmos materiais e configurações de texturas que são usados no Blender normal também são usados no motor de jogo.
 
 > **GLSL Requirements**
 >
-> Being the most advanced Shading mode, GLSL requires a relatively modern graphics card that supports OpenGL 2.0 or higher. If you have a computer with onboard Intel graphics, GLSL might not run as expected. It also helps to update your display drivers by visiting amd.com, nvidia.com, or intel.com, depending on your graphic card manufacture.
+> Sendo o modo de sombreamento mais avançado, GLSL requer uma placa gráfica relativamente moderna que suporte OpenGL 2.0 ou superior. Se você tiver um computador com gráficos Intel integrados, o GLSL pode não funcionar como esperado. Também ajuda a atualizar os drivers de vídeo visitando amd.com, nvidia.com ou intel.com, dependendo do fabricante da placa gráfica.
 
 
 
 #### Material and Textures <a id="Material_and_Textures"></a>
 
-To help you get to know the material system better, let's play around with a sample file.
+Para ajudá-lo a conhecer melhor o sistema de materiais, vamos brincar com um arquivo de amostra.
 
-Open  /files/Chapter5/GLSL1.blend. You'll see a very simple scene, with the lights and a monkey head already set up for you as shown here. Press P to start the game and see what it looks like in-game.
+Abra /files/Chapter5/GLSL1.blend. Você verá uma cena muito simples, com as luzes e uma cabeça de macaco já configuradas para você, conforme mostrado aqui. Pressione P para iniciar o jogo e ver como fica no jogo.
 
 ![Basic material demo setup.](../figures/Chapter5/Fig05-09.png)
 
-Notice the visuals in the 3D Viewport are exactly as in-game. This true "what-you-see-is-what-you-get" is only possible in GLSL mode. This means that as you set up material and texture settings in the Property Editor, changes will be reflected in real time in the 3D Viewport. In fact, as long as the viewport shading is set to Texture, there is no need to run the game in order to preview how the object will really look.
+Observe que o visual na janela de exibição 3D é exatamente igual ao do jogo. Este verdadeiro "o que você vê é o que você obtém" só é possível no modo GLSL. Isso significa que, conforme você configura as configurações de material e textura no Editor de propriedades, as alterações serão refletidas em tempo real na janela de exibição 3D. Na verdade, desde que o sombreamento da janela de exibição esteja definido como Texture, não há necessidade de executar o jogo para visualizar como o objeto realmente será.
 
-The next two sections will go over each option in the Material and Texture panels, explain what they do, and when to use them. Follow along as we work through the massive list of sliders and options shown in this panel.
+As próximas duas seções abordarão cada opção nos painéis Material e Texture, explicarão o que eles fazem e quando usá-los. Acompanhe enquanto trabalhamos na enorme lista de controles deslizantes e opções mostradas neste painel.
 
 
 
