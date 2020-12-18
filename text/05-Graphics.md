@@ -773,32 +773,31 @@ GLSL suporta controle de fluxo básico semelhante ao C, como loops while, loops 
 
 >**Using "If"**
 >
->If you must use "if," be careful with writing your conditions. Floating point values in GLSL are usually not precise enough for an equality comparison operation to work. So instead of writing
->`if (myVar == 1.0)`
->which might never evaluate to true, use the much safer
->`if  (abs(myVar - 1.0) < 0.001)`
->This code will look at the absolute difference between the two values it is comparing, and return true as long as the difference between them is small enough (0.001, in this case).
+> Se você deve usar "if", tenha cuidado ao escrever suas condições. Valores de ponto flutuante em GLSL geralmente não são precisos o suficiente para que uma operação de comparação de igualdade funcione. Então, ao invés de escrever
+> `if (myVar == 1.0)`
+> que pode nunca ser avaliado como verdadeiro, use o muito mais seguro
+> `if (abs (myVar - 1,0) <0,001)`
+> Este código examinará a diferença absoluta entre os dois valores que está comparando e retornará verdadeiro, desde que a diferença entre eles seja pequena o suficiente (0,001, neste caso).
 
-While we know you would enjoy learning about trigonometry, 3D math, matrix, orthogonality, Euclidean vector space, and lerp, teaching GLSL is not the aim of this book. The book _OpenGL Shading Language_ by Randi J. Rost does a fantastic job of explaining what GLSL is all about.
+Embora saibamos que você gostaria de aprender sobre trigonometria, matemática 3D, matriz, ortogonalidade, espaço vetorial euclidiano e lerp, ensinar GLSL não é o objetivo deste livro. O livro _OpenGL Shading Language_ de Randi J. Rost faz um trabalho fantástico ao explicar do que se trata o GLSL.
 
 >**GLSL Implementations "Gotchas"**
 >
->Because GLSL is compiled by the graphic driver, each vendor (AMD, Nvidia, Intel, etc.) does it a bit differently. This means that codes that work on one might not work on another. For example, on Nvidia, the noise() function always returns 0. (However, this is technically still within the GLSL specification, which states that the return value for the noise() function must be between -1.0 and 1.0.)
->Just keep in mind that some drivers are stricter than others, so a GLSL program that works on one computer might not work on another.
+> Como o GLSL é compilado pelo driver gráfico, cada fornecedor (AMD, Nvidia, Intel, etc.) faz isso de maneira um pouco diferente. Isso significa que os códigos que funcionam em um podem não funcionar em outro. Por exemplo, na Nvidia, a função noise () sempre retorna 0. (No entanto, isso ainda está tecnicamente dentro da especificação GLSL, que afirma que o valor de retorno para a função noise () deve estar entre -1,0 e 1,0.)
+> Apenas tenha em mente que alguns drivers são mais rígidos do que outros, portanto, um programa GLSL que funciona em um computador pode não funcionar em outro.
 
 ## Custom GLSL Shaders <a id="Custom_GLSL_Shaders"></a>
 
-So now that you have learned the basics of GLSL, are you ready to tackle your first complete GLSL shader?
-
+Então, agora que você aprendeu o básico de GLSL, está pronto para lidar com seu primeiro shader GLSL completo?
 ```c++
 void main(){
 gl_FragColor.rgba = vec4(0.9,0.4,0.2,1.0);
 }
 ```
 
-That's it. This one-line fragment shader will assign each output pixel (a predefined variable by the name of gl\_FragColor) the color (0.9,0.4,0.2), which happens to be a pleasant orange. The last value sets the alpha to 1.0, to make sure the face is completely visible.
+É isso aí. Este shader de fragmento de uma linha atribuirá a cada pixel de saída (uma variável predefinida com o nome de gl \ _FragColor) a cor (0.9,0.4,0.2), que é um laranja agradável. O último valor define o alfa em 1,0, para garantir que o rosto esteja completamente visível.
 
-One of the requirements for any valid GLSL shader is that it contains both a vertex shader and a fragment shader. So, supplying only the fragment shader above is not quite enough; you need a vertex shader as well. But in most cases, you don't want to do anything fancy with the vertices, so a simple
+Um dos requisitos para qualquer sombreador GLSL válido é que ele contenha um sombreador de vértice e um sombreador de fragmento. Portanto, fornecer apenas o sombreador de fragmento acima não é suficiente; você também precisa de um sombreador de vértice. Mas na maioria dos casos, você não quer fazer nada extravagante com os vértices, então um simples
 
 ```c++
 void main(){
@@ -806,9 +805,9 @@ gl_Position = ftransform();
 }
 ```
 
-is enough. It tells GLSL that you want the vertex to stay in the same position as it would if you used a fixed-transform pipeline.
+basta. Ele diz ao GLSL que você deseja que o vértice permaneça na mesma posição que ficaria se você usasse um pipeline de transformação fixa.
 
-In Blender, to use custom GLSL shaders as a replacement for any regular material, you need to run a Python script that helps bind the GLSL shader to a material at runtime. A complete script is shown below:
+No Blender, para usar shaders GLSL customizados como um substituto para qualquer material regular, você precisa rodar um script Python que ajuda a vincular o shader GLSL a um material em tempo de execução. Um script completo é mostrado abaixo:
 
 ```python
 01 from bge import logic
@@ -836,13 +835,13 @@ In Blender, to use custom GLSL shaders as a replacement for any regular material
 22             shader.setSource(VertexShader, FragmentShader, True)
 ```
 
-If you are feeling faint, don't panic! (Just wait until you get to Chapter 7.) This script has a nice blend of Python and GLSL, but it's not complicated once you break it down.
+Se você estiver se sentindo tonto, não entre em pânico! (Apenas espere até chegar ao Capítulo 7.) Este script tem uma boa combinação de Python e GLSL, mas não é complicado depois de decompô-lo.
 
-Python will be formally introduced in Chapter 7. You can skip ahead and read the relevant part first before continuing on from here.
+Python será formalmente apresentado no Capítulo 7. Você pode pular e ler a parte relevante antes de continuar a partir daqui.
 
-Line 1 loads the bge Python module, which allows us to use the BGE API within the Python script.
+A linha 1 carrega o módulo bge Python, que nos permite usar a API BGE dentro do script Python.
 
-Line 2 is equivalent to
+Linha 2 é equivalente a
 
 ```python
 scene = logic.getCurrentScene()
@@ -852,49 +851,48 @@ objects = scene.objects
 ShaderObject = objects.get("Cube")
 ```
 
-One important concept to remember is that the GLSL shader is linked to material. Even though you got the material by referencing an object, the GLSL shader is always replacing a material. This means that if multiple objects share the same material, the shader will run on all the objects.
+Um conceito importante a ser lembrado é que o sombreador GLSL está vinculado ao material. Mesmo que você tenha obtido o material referenciando um objeto, o sombreador GLSL está sempre substituindo um material. Isso significa que se vários objetos compartilham o mesmo material, o sombreador será executado em todos os objetos.
 
-So you are looking for an object named "Cube" within a list of all the objects in the current scene, and you assign the Cube object to a variable named ShaderObject. So, if an object with the name Cube exists, ShaderObject will now contain a reference to that object. If no object by that name is found, ShaderObject has the value None.
+Portanto, você está procurando um objeto chamado "Cube" em uma lista de todos os objetos na cena atual e atribui o objeto Cube a uma variável chamada ShaderObject. Portanto, se um objeto com o nome Cube existir, ShaderObject agora conterá uma referência a esse objeto. Se nenhum objeto com esse nome for encontrado, ShaderObject terá o valor Nenhum.
 
-On line 4, VertexShader is simply a multiline Python string. Multiline strings are declared by triple quotation marks. The content of the string is the actual GLSL code. (To clarify, the variable VertexShader is still a Python string object, but the content happens to be another language: GLSL. But it's all the same to Python: the string could be in Chinese and Python wouldn't care.). Notice the vertex shader is wrapped in a main() function, just like in C. This is where the execution of the code will start.
+Na linha 4, VertexShader é simplesmente uma string Python de várias linhas. Strings multilinha são declaradas por aspas triplas. O conteúdo da string é o código GLSL real. (Para esclarecer, a variável VertexShader ainda é um objeto string Python, mas o conteúdo passa a ser outra linguagem: GLSL. Mas é tudo a mesma coisa para Python: a string poderia estar em chinês e Python não se importaria.). Observe que o sombreador de vértice está envolvido em uma função main (), assim como em C. É aqui que a execução do código começará.
 
-Starting on line 11, analogous to the VertexShader, FragmentShader is another multiline Python string containing the fragment shader GLSL code.
+Começando na linha 11, análogo ao VertexShader, FragmentShader é outra string Python multilinha contendo o código GLSL do sombreador de fragmento.
 
-From line 18 onward until the end, the Python code is used to invoke the GLSL shader declared above. First, you loop through the internal meshes attached to the object. Then iterating through each mesh, you find all the materials attached to it. Since meshes can have multiple materials (up to 16), iterating through all of them ensures that you replace all the materials on that object with your shader. (Conversely, you can modify the code to apply a unique shader to each material on the same mesh.)
+Da linha 18 em diante até o final, o código Python é usado para invocar o sombreador GLSL declarado acima. Primeiro, você percorre as malhas internas anexadas ao objeto. Em seguida, iterando em cada malha, você encontra todos os materiais anexados a ela. Como as malhas podem ter vários materiais (até 16), a iteração por todos eles garante a substituição de todos os materiais naquele objeto pelo sombreador. (Por outro lado, você pode modificar o código para aplicar um sombreador exclusivo a cada material na mesma malha.)
 
 >**Don't Write This Code!**
 >
->Since we were trying to keep this example as short and simple as possible, the code has very bad error-handling ability. For example, it would not be good if an object by the name of Cube is not found in the scene, or if the object named Cube isn't a mesh. Do not write code like this in real life!
+> Como estávamos tentando manter este exemplo o mais curto e simples possível, o código tem uma capacidade muito ruim de tratamento de erros. Por exemplo, não seria bom se um objeto com o nome de Cube não fosse encontrado na cena, ou se o objeto chamado Cube não fosse uma malha. Não escreva código como este na vida real!
 
-Line 21 might look a bit convoluted. But in English, it simply means that if there is a shader, the script goes on to check if the shader is valid. If it's not, a new shader is created using the VertexShader and FragmentShader text string as the input. If there is already a valid shader, nothing more is done. (Shaders only need to be compiled and bound once at the start of the game, not every frame. Otherwise, the GLSL compilation will significantly slow down the game)
+A linha 21 pode parecer um pouco complicada. Mas em inglês, significa simplesmente que, se houver um shader, o script continua para verificar se o shader é válido. Se não for, um novo shader é criado usando a string de texto VertexShader e FragmentShader como entrada. Se já houver um sombreador válido, nada mais será feito. (Shaders só precisam ser compilados e vinculados uma vez no início do jogo, não em todos os quadros. Caso contrário, a compilação GLSL tornará o jogo significativamente mais lento)
 
-Save the script as a new text file in Blender. To use the above GLSL shader script, it needs to be invoked once within the game engine. You can easily accomplish this by setting up a simple logic brick chain, as shown in Figure 5.36.
+Salve o script como um novo arquivo de texto no Blender. Para usar o script de sombreador GLSL acima, ele precisa ser invocado uma vez no mecanismo de jogo. Você pode fazer isso facilmente configurando uma cadeia simples de blocos lógicos, conforme mostrado na Figura 5.36.
 
 ![Logic brick setup to load a custom GLSL shader](../figures/Chapter5/Fig05-36.png)
 
-You can try to copy this setup with the provided Blender file at \Book\Chapter5\GLSL1.blend.
+Você pode tentar copiar esta configuração com o arquivo Blender fornecido em \ Book \ Chapter5 \ GLSL1.blend.
 
-In this case, because there is no object named _Cube_, you need to modify the script a bit by replacing the line:
+Nesse caso, como não há nenhum objeto denominado _Cube_, você precisa modificar um pouco o script, substituindo a linha:
 
 ```python
 ShaderObject = logic.getCurrentScene().objects.get("Cube")
 ```
-
-with
+por
 
 ```python
 ShaderObject = logic.getCurrentScene().objects.get("Monkey")
 ```
 
-Run the game and enjoy the new orange monkey.
+Execute o jogo e curta o novo macaco laranja.
 
-Because GLSL replaces the entire material pipeline with your own code, no shading is applied on the model unless you explicitly tell it to. This is why the monkey head is a flat shade of orange.
+Como o GLSL substitui todo o pipeline de material pelo seu próprio código, nenhum sombreamento é aplicado ao modelo, a menos que você explicitamente o indique. É por isso que a cabeça do macaco tem um tom liso de laranja.
 
-Remember that custom GLSL shaders are always applied to each material, not the object, nor the mesh. This means any objects with the same material will all share the same shader.
+Lembre-se de que sombreadores GLSL personalizados são sempre aplicados a cada material, não ao objeto, nem à malha. Isso significa que todos os objetos com o mesmo material compartilharão o mesmo sombreador.
 
 ### A Useful Fragment Shader <a id="A_Useful_Fragment_Shader"></a>
 
-The first GLSL shader you were introduced to is pretty trivial and nearly useless. Here is a much more useful Lambert diffuse shader:
+O primeiro shader GLSL que você conheceu é bastante trivial e quase inútil. Aqui está um shader difuso de Lambert muito mais útil:
 
 ```python
 from bge import logic
@@ -939,13 +937,13 @@ for material in mesh.materials:
   shader.setUniformfv('light_position', lamp.position)
 ```
 
-This shader uses the Lambert diffuse shading algorithm to apply some basic shading to the object, taking into account the position of the lamp and the surface normal at each pixel. This is still not a terribly useful shader, since the same effect can be achieved without a single line of coding via the Material panel.
+Este sombreador usa o algoritmo de sombreamento difuso de Lambert para aplicar algum sombreamento básico ao objeto, levando em consideração a posição da lâmpada e a normal da superfície em cada pixel. Este ainda não é um shader muito útil, já que o mesmo efeito pode ser obtido sem uma única linha de codificação por meio do painel Material.
 
-We'll leave it to you to discover more complex shaders on your own.
+Deixaremos que você descubra sombreadores mais complexos por conta própria.
 
 ### A Useful Vertex Shader <a id="A_Useful_Vertex_Shader"></a>
 
-This GLSL shader applies a transformation to each vertex along the X-axis, producing a "wavy" effect, similar to that of leaves swaying in the wind. Using vertex shaders to deform geometry is a fast alternative to using bones.
+Este sombreador GLSL aplica uma transformação a cada vértice ao longo do eixo X, produzindo um efeito "ondulado", semelhante ao das folhas balançando ao vento. Usar sombreadores de vértice para deformar a geometria é uma alternativa rápida ao uso de bones.
 
 ```python
 from bge import logic
@@ -991,64 +989,63 @@ for material in mesh.materials:
   shader.setUniform1f('timer',ShaderObject["timer"])
 ```
 
-This shader introduces yet another new concept, called _uniforms_. Using uniforms is one way to pass data from the Blender world into the shader.
+Este sombreador introduz outro novo conceito, chamado _uniformes_. Usar uniformes é uma maneira de passar dados do mundo do Blender para o sombreador.
 
 ### Going Further <a id="Going_Further"></a>
 
-Even though GLSL can seem daunting at first, plenty of learning material is available. The accompanying disk has a few more examples of how GLSL can be used; they can be found under \Book\Chapter5\.
+Embora a GLSL possa parecer assustadora no início, muito material de aprendizado está disponível. O disco que acompanha tem mais alguns exemplos de como o GLSL pode ser usado; eles podem ser encontrados em \Book\Chapter5\.
 
 ## 2D Filters <a id="2D_Filters"></a>
 
-2D filters are post-processing GLSL shaders that are applied to each frame right before it is displayed. 2D filters can be used to enhance the looks of the image and add special screen-space effects. There are a few built-in shaders that come with Blender to get you started, but 2D filters also allow custom-written GLSL shaders to give you the freedom to do potentially a lot more.
+Filtros 2D são sombreadores GLSL pós-processamento que são aplicados a cada quadro antes de ele ser exibido. Filtros 2D podem ser usados para aprimorar a aparência da imagem e adicionar efeitos especiais de espaço na tela. Existem alguns shaders integrados que vêm com o Blender para você começar, mas os filtros 2D também permitem shaders GLSL personalizados para lhe dar a liberdade de fazer potencialmente muito mais.
 
 ### Why Use 2D Filters? <a id="Why_Use_2D_Filters?"></a>
 
-Using 2D filters makes it easy to tweak the mood of your visual, without having to rework the lighting, material, or textures. Because a 2D filter operates on an image (the frame buffer) and not the individual 3D objects, the 2D filter's performance is not dependent on the complexity of the scene, only the number of pixels on the screen and the complexity of the effect itself.
+O uso de filtros 2D facilita ajustar o clima do seu visual, sem ter que refazer a iluminação, o material ou as texturas. Como um filtro 2D opera em uma imagem (o buffer de quadro) e não nos objetos 3D individuais, o desempenho do filtro 2D não depende da complexidade da cena, apenas do número de pixels na tela e da complexidade do próprio efeito.
 
-GLSL fragment shader is the language that powers all the 2D filters. Figure 5.37 shows some samples of what 2D filters can do:
+O sombreador de fragmento GLSL é a linguagem que capacita todos os filtros 2D. A Figura 5.37 mostra alguns exemplos do que os filtros 2D podem fazer:
 
 ![Sample Filters: Normal color, grayscale, blur, sepia](../figures/Chapter5/Fig05-37.jpg)
 
-The capabilities of 2D filters:
+Os recursos dos filtros 2D:
 
-- Apply effects such as sharpen, edge detection, anti-aliasing, and motion blur.
+- Aplique efeitos como nitidez, detecção de bordas, anti-aliasing e desfoque de movimento.
 
-- Alter basic color attributes such as brightness, contrast, and color saturation.
+- Altere os atributos básicos da cor, como brilho, contraste e saturação da cor.
 
-- Add screen-space effects such as Gaussian blur, radial blur, light bloom, and distortion.
+- Adicione efeitos de espaço na tela, como desfoque gaussiano, desfoque radial, flor de luz e distorção.
 
-- Add cinematic effect such as depth of field, film grain, sepia tone, and lens vignetting.
+- Adicione efeitos cinematográficos, como profundidade de campo, granulação do filme, tom sépia e vinheta de lente.
 
-- Simulate complex lighting effects such as ambient occlusion and light scattering.
-
+- Simule efeitos de iluminação complexos, como oclusão de ambiente e dispersão de luz.
 
 ### How to Use 2D Filters <a id="How_to_Use_2D_Filters"></a>
 
-The 2D filters can be accessed as a standard actuator in the Logic Editor window. If you are rusty on what the Logic Editor does, refer to Chapter 3.
+Os filtros 2D podem ser acessados como um atuador padrão na janela do Logic Editor. Se você não souber o que o Logic Editor faz, consulte o Capítulo 3.
 
-To enable a basic 2D filter, add an Always sensor, an And controller, and a 2D filter actuator, and link them together. Remember, even though you want the effect to be applied to every frame, there is no need to turn on the "true" pulse in the Always sensor. Because once the shader is bound (initialized), it will stay active until you explicitly disable it. Binding the 2D filter every frame will only slow down the game.
+Para habilitar um filtro 2D básico, adicione um sensor Always, um controlador And e um atuador de filtro 2D e vincule-os. Lembre-se de que, embora você queira que o efeito seja aplicado a todos os quadros, não há necessidade de ligar o pulso "verdadeiro" no sensor Always. Porque uma vez que o sombreador é vinculado (inicializado), ele permanecerá ativo até que você o desative explicitamente. Vincular o filtro 2D a cada quadro só tornará o jogo mais lento.
 
-It also does not matter which object the logic brick is attached to; 2D filter is a screen effect and, thus, does not depend on the object it is attached to. You can attach it to any convenient object. Attaching the 2D filter logic to the main camera is a good idea, because it's an intuitive reminder that the 2D filter is a screen effect. Figure 5.38 shows a basic 2D filter setup.
+Também não importa a qual objeto o tijolo lógico está anexado; O filtro 2D é um efeito de tela e, portanto, não depende do objeto ao qual está anexado. Você pode anexá-lo a qualquer objeto conveniente. Anexar a lógica do filtro 2D à câmera principal é uma boa ideia, porque é um lembrete intuitivo de que o filtro 2D é um efeito de tela. A Figura 5.38 mostra uma configuração básica de filtro 2D.
 
 ![Logic brick setup to load a custom GLSL shader](../figures/Chapter5/Fig05-38.png)
 
-Once you have set up the logic bricks, let's take a closer look at the 2D Filter actuator. The exact function of each option in the Actuator panel is explained in Chapter 3.
+Depois de configurar os blocos lógicos, vamos dar uma olhada mais de perto no atuador Filtro 2D. A função exata de cada opção no painel do atuador é explicada no Capítulo 3.
 
-The Pass Number at the bottom acts as a "layer" setting where the 2D filter effect resides. Each "layer" can only have one filter, but you can stack filter layers to get a more complex effect. Just make sure that each effect has a unique Pass Number so they don't override each other. Obviously, to set up multiple 2D filter effects, more than one actuator is needed.
+O número de passe na parte inferior atua como uma configuração de "camada" onde reside o efeito de filtro 2D. Cada "camada" pode ter apenas um filtro, mas você pode empilhar camadas de filtro para obter um efeito mais complexo. Apenas certifique-se de que cada efeito tenha um número de passe exclusivo para que eles não se sobreponham. Obviamente, para configurar vários efeitos de filtro 2D, mais de um atuador é necessário.
 
-In the drop-down menu, you'll see a small selection of predefined effects (Invert, Sepia, Grayscale, Motion Blur). Select one and run the game to see how it looks.
+No menu suspenso, você verá uma pequena seleção de efeitos predefinidos (Inverter, Sépia, Escala de cinza, Desfoque de movimento). Selecione um e execute o jogo para ver como fica.
 
-Enable and Disable turn a certain effect on or off. You need to supply a valid Pass Number. Thus, if you bound a 2D filter to Pass Number 5 at one point, you can turn off the effect with Disable and set the Pass Number to 5. Conversely, you can quickly turn the same effect back on by using Enable.
+Habilitar e Desabilitar ligam ou desligam um certo efeito. Você precisa fornecer um número de passe válido. Portanto, se você vinculou um filtro 2D à passagem número 5 em um ponto, pode desligar o efeito com Desativar e definir o número da passagem como 5. Por outro lado, você pode ativar rapidamente o mesmo efeito usando Ativar.
 
-Remove Filter is similar to Disable: it turns off a certain effect on a given Pass Number. Additionally, Remove Filter also completely unbinds the shader, making it impossible to enable the same filter (i.e., Pass number) again.
+Remover Filtro é semelhante a Desativar: ele desativa um certo efeito em um determinado número de passe. Além disso, Remover filtro também desassocia completamente o sombreador, tornando impossível habilitar o mesmo filtro (ou seja, número de passagem) novamente.
 
-Custom Filter is used to specify arbitrary shaders. It is useful when the built-in filters can't achieve the effect that you are looking for. To use a custom filter, Blender needs the name of a text file. The text file must be one of the text data blocks stored within the Blender file.
+Filtro personalizado é usado para especificar sombreadores arbitrários. É útil quando os filtros integrados não conseguem obter o efeito que você está procurando. Para usar um filtro personalizado, o Blender precisa do nome de um arquivo de texto. O arquivo de texto deve ser um dos blocos de dados de texto armazenados no arquivo do Blender.
 
-With the pass system, you can make a very robust post-processing stack. You can set up a few filters to be run on an Always sensor to do some basic color correction and add the effects that will always be enabled. Then you can set up a few more filters that are enabled momentarily when you need them.
+Com o sistema de passagem, você pode fazer uma pilha de pós-processamento muito robusta. Você pode configurar alguns filtros para serem executados em um sensor Always para fazer alguma correção básica de cores e adicionar os efeitos que sempre estarão ativados. Em seguida, você pode configurar mais alguns filtros que são ativados momentaneamente quando você precisar deles.
 
 ### Custom Filter <a id="Custom_Filter"></a>
 
-A very simple custom 2D filter is shown below:
+Um filtro 2D personalizado muito simples é mostrado abaixo:
 
 ```c++
 uniform sampler2D bgl_RenderedTexture;
@@ -1061,47 +1058,47 @@ void main(void)
 }
 ```
 
-If the above code looks somewhat familiar, it's probably because a 2D filter is really just a GLSL fragment shader. This shader fetches the color of the current pixel, multiplies it by 1.5, and displays the result. This produces an image with higher contrast than the original.
+Se o código acima parece um tanto familiar, provavelmente é porque um filtro 2D é na verdade apenas um sombreador de fragmento GLSL. Este sombreador busca a cor do pixel atual, multiplica-o por 1,5 e exibe o resultado. Isso produz uma imagem com maior contraste do que o original.
 
 ### Limitations <a id="Limitations"></a>
 
-2D filter can be read from the following inputs:
+O filtro 2D pode ser lido a partir das seguintes entradas:
 
-- Frame Buffer Color Image (sampler2D bgl\_RenderedTexture)
+- Frame Buffer Color Image (sampler2D bgl \ _RenderedTexture)
 
-- Frame Buffer Depth (sampler2D bgl\_DepthTexture)
+- Profundidade do buffer de quadro (sampler2D bgl \ _DepthTexture)
 
-- Frame Buffer Luminance(sampler2D bgl\_LuminanceTexture)
+- Frame Buffer Luminance (sampler2D bgl \ _LuminanceTexture)
 
-- Image Size (float bgl\_RenderedTextureWidth, float RenderedTextureHeight)
+- Tamanho da imagem (float bgl \ _RenderedTextureWidth, float RenderedTextureHeight)
 
-- Custom Textures as Input (sampler2D)
+- Texturas personalizadas como entrada (sampler2D)
 
-2D filters are applied per scene, with the effect building one on top of the other. For example, if you have a main scene and an overlay scene, the game engine will proceed as follows:
+Filtros 2D são aplicados por cena, com o efeito sendo construído um sobre o outro. Por exemplo, se você tiver uma cena principal e uma cena de sobreposição, o mecanismo de jogo irá proceder da seguinte forma:
 
-1. Render the main scene.
+1. Renderize a cena principal.
 
-2. Apply the filters available on that scene into the screen.
+2. Aplique na tela os filtros disponíveis naquela cena.
 
-3. Render the overlay scene on top of the already post-processed main scene.
+3. Renderize a cena de sobreposição em cima da cena principal já pós-processada.
 
-4. Apply the filters on top of this multilayered pixel lasagna.
+4. Aplique os filtros na parte superior desta lasanha de pixel de várias camadas.
 
 ## Text <a id="Text"></a>
 
-To display text, you can pre-make a mesh object that has the real geometry of the text or texture map a plane. This method is simple, but is very limiting because the text cannot be changed during the game. To show different text, the artist would need to create a new asset for each text string the game needs.
+Para exibir texto, você pode pré-criar um objeto de malha que tenha a geometria real do texto ou um mapa de textura de um plano. Este método é simples, mas é muito limitante porque o texto não pode ser alterado durante o jogo. Para mostrar um texto diferente, o artista precisaria criar um novo recurso para cada string de texto de que o jogo precisava.
 
-To display text that can potentially change during the game, there are four ways to display dynamic texts within the game engine. Two of them are useful for only static text: text that doesn't change throughout the game. The other two are dynamic: the text they display can be changed on the fly.
+Para exibir texto que pode mudar potencialmente durante o jogo, existem quatro maneiras de exibir textos dinâmicos dentro do mecanismo de jogo. Dois deles são úteis apenas para texto estático: texto que não muda durante o jogo. Os outros dois são dinâmicos: o texto que eles exibem pode ser alterado instantaneamente.
 
-- Static text using real geometry.
+- Texto estático usando geometria real.
 
-- Static text using pre-made textures.
+- Texto estático usando texturas pré-fabricadas.
 
-- Dynamic bitmap text.
+- Texto de bitmap dinâmico.
 
-- Dynamic text object.
+- Objeto de texto dinâmico.
 
-Static text is not treated any differently than regular Blender objects. For the rest of this section, we will look at ways to create dynamic texts.
+Texto estático não é tratado de forma diferente dos objetos normais do Blender. No restante desta seção, examinaremos maneiras de criar textos dinâmicos.
 
 ## Bitmap Text <a id="Bitmap_Text"></a>
 
