@@ -489,9 +489,9 @@ _Normal_ é outra configuração de influência comumente usada. Usando um mapa 
 
 
 
-> Mapas normais e mapas de altura
+> Normals maps e height maps
 >
-> Um mapa normal é armazenado como um arquivo de imagem regular, mas em vez de alterar a cor da superfície como uma textura de cor regular, os mapas normais são usados para alterar a superfície normal por pixel. Ao alterar a normal da superfície, você pode alterar a irregularidade aparente de uma superfície.
+> Um normal map é armazenado como um arquivo de imagem regular, mas em vez de alterar a cor da superfície como uma textura de cor regular, os mapas normais são usados para alterar a superfície normal por pixel. Ao alterar a normal da superfície, você pode alterar a irregularidade aparente de uma superfície.
 >
 > Internamente, um mapa normal usa os três canais de cores (RGB) para armazenar as direções normais (XYZ) de uma superfície. Como a maioria dos normais de superfície está apontando para cima, eles têm um valor normal de (X = 0,5, Y = 0,5, Z = 1,0), que é o que dá aos mapas normais aquela cor roxa distinta (quando no espaço tangente).
 >
@@ -577,167 +577,167 @@ Agora, a janela de visualização 3D deve ser semelhante à Figura 5.29
 
 >**Material Caching**
 >
->There is a new setting in Blender 2.66 under the Render Properties Editor called _Material Caching._ With this turned on, loading of the game will be faster because GLSL materials are cached. This setting does not work well in Multitexture and Singletexture mode.
+> Há uma nova configuração no Blender 2.66 no Editor de Propriedades de Renderização chamada _Material Caching._ Com isso ativado, o carregamento do jogo será mais rápido porque os materiais GLSL são armazenados em cache. Esta configuração não funciona bem nos modos Multitextura e Singletexture.
 
 #### Nodes <a id="Nodes"></a>
 
-Node is a new way to work with materials and textures in Blender. Instead of using a panel-style user interface to define a material, nodes allow you to build up materials using basic components. This may seem like a step backward because it will probably take much longer to create a simple material in the Node Editor than using the Material and Texture panels to achieve the same effect. But node offers the artist the freedom to accomplish much more than what is possible using the fixed Material and Texture panels.
+Node é uma nova forma de trabalhar com materiais e texturas no Blender. Em vez de usar uma interface de usuário em estilo de painel para definir um material, os nós permitem que você crie materiais usando componentes básicos. Isso pode parecer um retrocesso porque provavelmente levará muito mais tempo para criar um material simples no Editor de Nó do que usar os painéis Material e Textura para obter o mesmo efeito. Mas o node oferece ao artista a liberdade de realizar muito mais do que é possível usando os painéis fixos de Material e Textura.
 
-Working with Node materials and textures is more of a process, so this section will be presented as a continuous tutorial. Once you have mastered this simple example, you will be able to adapt the workflow to create much more complex effects.
+Trabalhar com materiais e texturas do Node é mais um processo, portanto, esta seção será apresentada como um tutorial contínuo. Depois de dominar este exemplo simples, você será capaz de adaptar o fluxo de trabalho para criar efeitos muito mais complexos.
 
-1. Open /Book/Chapter5/GLSL3.blend and familiarize yourself with the scene setup; note there is a sphere object without any material attached. The bottom half of the screen has been changed to the Node Editor.
+1. Abra /Book/Chapter5/GLSL3.blend e familiarize-se com a configuração da cena; observe que há um objeto de esfera sem qualquer material anexado. A metade inferior da tela foi alterada para o Node Editor.
 
-2. Create a new material by clicking on the New bottom in the Material panel. Rename the material to NodeMat so we can refer to it later.
+2. Crie um novo material clicando no botão Novo no painel Material. Renomeie o material para NodeMat para que possamos consultá-lo mais tarde.
 
-3. Click on the Use Shader Nodes button to enable nodes. The Node Editor should now look like Figure 5.32. Notice that the object in the 3D Viewport has turned black; this is because node material has just been activated, but since you have not actually set up a valid node material, the default color is black.
+3. Clique no botão Use Shader Nodes para habilitar os nós. O Node Editor agora deve ser semelhante à Figura 5.32. Observe que o objeto na viewport 3D ficou preto; isso ocorre porque o material do nó acabou de ser ativado, mas como você não configurou realmente um material do nó válido, a cor padrão é preto.
 
 ![The Node Editor](../figures/Chapter5/Fig05-32.png)
 
-4. Because we don't want to create the material from scratch, we can use an existing material as the basis for the node material. To do that, in the Material node, click on the Browse Material icon and select NodeMat. Now the input material for the node is the material defined in the Material panel on the right side of the screen. Change any of the properties in the Material panel, and you can see the change is reflected in the node material system. Try setting the material color to red.
+4. Como não queremos criar o material do zero, podemos usar um material existente como base para o material do nó. Para fazer isso, no nó Material, clique no ícone Browse Material e selecione NodeMat. Agora, o material de entrada para o nó é o material definido no painel Material no lado direito da tela. Altere qualquer uma das propriedades no painel Material e você poderá ver que a alteração se reflete no sistema de material do nó. Tente definir a cor do material para vermelho.
 
-5. Insert a new Hue-Saturation-Value node in between the input and the output node, and connect them by drawing a line from one yellow dot to the other. The resulting setup should be the same as Figure 5.33.
+5. Insira um novo nó Hue-Saturation-Value entre o nó de entrada e o nó de saída e conecte-os desenhando uma linha de um ponto amarelo ao outro. A configuração resultante deve ser a mesma da Figura 5.33.
 
 ![The Node Editor-reusing a material](../figures/Chapter5/Fig05-33.jpg)
 
-Congratulations! You are using node materials! Although the example we worked through is very basic, the power of the Node Editor is the ability to create almost infinite combinations of looks by only using a few basic building-block nodes.
+Parabéns! Você está usando materiais de nó! Embora o exemplo que trabalhamos seja muito básico, o poder do Editor de Nó é a capacidade de criar combinações quase infinitas de aparências usando apenas alguns nós de blocos de construção básicos.
 
-Some typical uses for node-based materials include:
+Alguns usos típicos para materiais baseados em nós incluem:
 
-- **Mixing multiple materials:** With the Node Editor, you can load multiple materials as input and mix them together to create a meta-material.
+- **Mixing multiple materials:** Com o Node Editor, você pode carregar vários materiais como entrada e combiná-los para criar um meta-material.
 
-- **More control:** Want the object position to affect the texture brightness? Want lighting intensity to affect the object transparency? With nodes, you can set up almost any effect you can think of.
+- **More control:** Quer que a posição do objeto afete o brilho da textura? Deseja que a intensidade da iluminação afete a transparência do objeto? Com nós, você pode configurar quase qualquer efeito que imaginar.
 
-- **Experimentation:** Using the node system as a sandbox to experiment with different effects is a lot faster than writing shader code to accomplish the same effect. In many cases, you can use the node system as a prototyping platform to build shaders.
+- **Experimentation:** Usar o sistema de nó como uma caixa de areia para experimentar diferentes efeitos é muito mais rápido do que escrever código de sombreador para obter o mesmo efeito. Em muitos casos, você pode usar o sistema de nós como uma plataforma de prototipagem para construir shaders.
 
 ### Multitexture <a id="Multitexture"></a>
 
-Multitexture is older than the GLSL shading mode, but still far more capable than the singletexture material system.
+A multitextura é mais antiga que o modo de sombreamento GLSL, mas ainda muito mais capaz do que o sistema de material de textura simples.
 
-As outlined in Table 5.1, multitexture uses per-vertex light rather than the per-pixel light of the GLSL. This means that multitexture is generally faster at the cost of less accurate shading.
+Conforme descrito na Tabela 5.1, a multitextura usa luz por vértice em vez da luz por pixel do GLSL. Isso significa que a multitextura é geralmente mais rápida ao custo de um sombreamento menos preciso.
 
-In Multitexture mode, the artists still use the Material and Texture panels to apply shadings and textures. Compared to GLSL mode, the following material options have no effect in Multitexture mode:
+No modo Multitextura, os artistas ainda usam os painéis Material e Textura para aplicar sombras e texturas. Comparado ao modo GLSL, as seguintes opções de material não têm efeito no modo Multitextura:
 
-- **Diffuse Shader Model:** The default one will always be used.
+- **Diffuse Shader Model:** O padrão sempre será usado.
 
-- **Specular Shader Model:** The default one will always be used.
+- **Specular Shader Model:** O padrão sempre será usado.
 
-- **Cubic Interpolation:** Always disabled because the lighting calculation is per-vertex.
+- **Cubic Interpolation:** Sempre desativado porque o cálculo da iluminação é por vértice.
 
-- **Ramp Shaders:** Always disabled.
+- **Ramp Shaders:** Sempre desativado.
 
-- **Shadow Settings:** Always disabled. No object casts shadows in Multitexture mode.
+- **Shadow Settings:** Sempre desativado. Nenhum objeto projeta sombras no modo Multitextura.
 
 
-Compared to GLSL mode, the following texture options have no effect in Multitexture mode:
+Comparado ao modo GLSL, as seguintes opções de textura não têm efeito no modo Multitextura:
 
-- **Blending Mode:** Other than Mix, Add, Subtract, Multiply, and Screen.
+- **Blending Mode:** Diferente de Mix, Add, Subtract, Multiply e Screen.
 
-- **Influence Setting:** Other than Color and Alpha.
+- **Influence Setting:** Diferente de cor e alfa.
 
-- **Mapping Coordinates:** Other than Global, Generated, Reflection, and UV.
+- **Mapping Coordinates:** Diferente de Global, Gerado, Reflexo e UV.
 
-To add a texture for the Multitexture shading mode, you need to use the UV/Image Editor. The Material panel can be used to change some of the surface properties of the model, such as diffuse intensity, specular intensity, and specular hardness.
+Para adicionar uma textura para o modo de sombreamento Multitexture, você precisa usar o Editor de UV/Imagem. O painel Material pode ser usado para alterar algumas das propriedades da superfície do modelo, como intensidade difusa, intensidade especular e dureza especular.
 
 ## Lights <a id="Lights"></a>
 
-Lights were covered briefly in Chapter 2. We will revisit them here in more detail.
+As luzes foram abordadas brevemente no Capítulo 2. Iremos revisá-las aqui com mais detalhes.
 
-In GLSL mode, supported lamp types are Point, Sun, Spot, and Hemi. Area lamp is unsupported and will be ignored by the game engine. Spot and Sun lamps are capable of casting dynamic shadows if the Shadow button is enabled. Table 5.2 summarizes the features of the lamps.
+No modo GLSL, os tipos de lâmpadas suportados são Point, Sun, Spot e Hemi. A lâmpada de área não é compatível e será ignorada pelo mecanismo de jogo. As lâmpadas Spot e Sun são capazes de projetar sombras dinâmicas se o botão Shadow estiver habilitado. A Tabela 5.2 resume as características das lâmpadas.
 
-_Table 5.2 Lights Types_
+_Tabela 5.2 Tipos de luzes_
 
-| Type  | Supported      | Directional  | Shadow      |
+| Tipo  | Suportada      | Direcional	| Sombra      |
 |:-----:|:--------------:|:------------:|:-----------:|
-| Point | Singletexture+ | No           | No          |
-| Sun   | Singletexture+ | Yes          | Parallel    |
-| Spot  | Singletexture+ | Yes          | Perspective |
-| Hemi  | GLSL           | Yes          | No          |
-| Area  | No             | Yes          | No          |
+| Point | Singletexture+ | Não          | Não         |
+| Sun   | Singletexture+ | Sim          | Paralela    |
+| Spot  | Singletexture+ | Sim          | Perspectiva |
+| Hemi  | GLSL           | Sim          | Não         |
+| Area  | Não            | Sim          | Não         |
 
-In Multitexture and Singletexture mode, Point, Sun, and Spot are supported, all other non-supported lamp types will be treated as point lamps. There is no shadow support in these two modes.
+Nos modos Multitexture e Singletexture, Point, Sun e Spot são suportados, todos os outros tipos de lâmpadas não suportados serão tratados como lâmpadas pontuais. Não há suporte para sombra nesses dois modos.
 
 ## World Settings <a id="World_Settings"></a>
 
-From the world Property Editor, you can change things that affect the entire world, such as background color and mist settings:
+No World Property Editor, você pode alterar coisas que afetam o mundo inteiro, como a cor de fundo e as configurações de névoa:
 
-- **Horizon Color:** Defines the sky color. In textured view, this color fills the background.
+- **Horizon Color:** Define a cor do céu. Na visualização texturizada, essa cor preenche o plano de fundo.
 
-- **Ambient Color:** Defines the ambient light color. Ambient light is a fill light that illuminates an object evenly from all angles. It makes shadows less dark, at the cost of making everything look "washed out." By default, ambient color is set to black, which is equivalent to the ambient color being disabled.
+- **Ambient Color:** Define a cor da luz ambiente. A luz ambiente é uma luz de preenchimento que ilumina um objeto uniformemente de todos os ângulos. Isso torna as sombras menos escuras, ao custo de fazer tudo parecer "desbotado". Por padrão, a cor ambiente é definida como preto, o que é equivalente à cor ambiente sendo desativada.
 
-- **Mist:** Enable mist to add an atmospheric fog to the entire scene. Objects farther away will fade into the sky color (as defined by horizon color).
+- **Mist:** Ative a névoa para adicionar uma névoa atmosférica a toda a cena. Objetos mais distantes irão desbotar na cor do céu (conforme definido pela cor do horizonte).
 
-- **Mist Start:** As illustrated by Figure 5.34, the start distance at which the fog is applied.
+- **Mist Start:** Conforme ilustrado na Figura 5.34, a distância inicial na qual a névoa é aplicada.
 
-- **Mist Depth:** As illustrated by Figure 5.34, the distance at which an object is entirely obscured by the mist color.
+- **Mist Depth:** Conforme ilustrado na Figura 5.34, a distância na qual um objeto é totalmente obscurecido pela cor da névoa.
 
 ![Mist distance illustrated](../figures/Chapter5/Fig05-34.jpg)
 
 >**Smog Can Be Good**
 >
->Mist can help you hide the boundary of your make-believe world by smoothly blending the far object into the horizon. Furthermore, fog can increase the atmosphere of the scene by giving a better sense of depth to the scene.
->A good example of mist in games is the extremely foggy _Silent Hill_ games. Their development team was able to put more details into the models by combining a more aggressive camera clipping with high mist values.
+> O Névoa pode ajudá-lo a ocultar os limites do seu mundo de faz-de-conta, mesclando suavemente o objeto distante no horizonte. Além disso, a névoa pode aumentar a atmosfera da cena, dando uma melhor sensação de profundidade à cena.
+> Um bom exemplo de névoa em jogos são os jogos extremamente nebulosos de _Silent Hill_. Sua equipe de desenvolvimento foi capaz de colocar mais detalhes nos modelos, combinando um corte de câmera mais agressivo com altos valores de névoa.
 
 ## Texture Painting <a id="Texture_Painting"></a>
 
-Typically, editing an image texture must be done with external software such as GIMP or Photoshop. Using texture painting, you can edit the texture directly on the model from within Blender (see Figure 5.35). Not only does this give you the ability to see the changes interactively on the model, but brush strokes made on the model will also be automatically projected back onto the image texture. This makes texture painting ideal as a rough outlining tool to mark out some key points on the model for reference or put the finishing touches on the texture. (It's much easier to paint on the model directly than to paint a 2D texture.)
+Normalmente, a edição de uma textura de imagem deve ser feita com um software externo, como GIMP ou Photoshop. Usando a pintura de textura, você pode editar a textura diretamente no modelo de dentro do Blender (veja a Figura 5.35). Isso não apenas dá a você a capacidade de ver as alterações interativamente no modelo, mas as pinceladas feitas no modelo também serão automaticamente projetadas de volta na textura da imagem. Isso torna a pintura de textura ideal como uma ferramenta de esboço grosseiro para marcar alguns pontos-chave no modelo para referência ou dar os toques finais na textura. (É muito mais fácil pintar no modelo diretamente do que pintar uma textura 2D.)
 
 ![Entering Texture Painting mode](../figures/Chapter5/Fig05-35.png)
 
-To see how texture painting works:
+Para ver como a pintura de textura funciona:
 
-1. Start a new file and set the 3D view to Texture mode (Alt+Z).
+1. Inicie um novo arquivo e defina a visualização 3D para o modo Textura (Alt + Z).
 
-2. To paint directly on an object, you will need to set up a UV texture image first. So in the 3D view, make sure the object you want to paint (the initial cube in this case) is selected, and then enter Edit mode by pressing Tab.
+2. Para pintar diretamente em um objeto, você precisará configurar uma imagem de textura UV primeiro. Portanto, na visualização 3D, certifique-se de que o objeto que deseja pintar (o cubo inicial, neste caso) esteja selecionado e entre no modo de edição pressionando Tab.
 
-3. Make sure that all vertices are selected (toggle A until they are all highlighted).
+3. Certifique-se de que todos os vértices estão selecionados (alterne A até que todos estejam destacados).
 
-4. In the 3D viewport, press U to invoke the UV menu. Select Smart UV Project with the default parameters.
+4. Na janela de exibição 3D, pressione U para chamar o menu UV. Selecione Smart UV Project com os parâmetros padrão.
 
-5. In the UV/Image Editor, create a new image by clicking on the New button. From the pop-up menu, select UV Grid or Color Grid as the Generated Type and click OK.
+5. No Editor de UV / Imagem, crie uma nova imagem clicando no botão Novo. No menu pop-up, selecione UV Grid ou Color Grid como o tipo gerado e clique em OK.
 
-6. Notice that the model now has the newly created image texture mapped on it.
+6. Observe que o modelo agora tem a textura de imagem recém-criada mapeada nele.
 
-7. Switch from Edit mode to Texture Paint mode.
+7. Mude do modo de edição para o modo de pintura de textura.
 
-8. Start drawing on the model!
+8. Comece a desenhar no modelo!
 
-9. You can change options for the tools using the tool shelf on the left of the 3D Viewport.
+9. Você pode alterar as opções das ferramentas usando a estante de ferramentas à esquerda da janela de exibição 3D.
 
-10. At the time of writing, images updated by texture painting were not saved automatically. So once you are done, be sure to go back to the UV/Image Editor and save the texture by clicking on Image > Save.
+10. No momento da escrita, as imagens atualizadas pela pintura de textura não foram salvas automaticamente. Assim que terminar, certifique-se de voltar ao Editor de UV / Imagem e salve a textura clicando em Imagem> Salvar.
 
-11. Optionally, if you are working with the GLSL mode, you will need to create a new texture in the object's material and assigned the newly created image to it. In this case, you also need to set UV as Coordinates in the Mapping panel.
+11. Opcionalmente, se você estiver trabalhando com o modo GLSL, você precisará criar uma nova textura no material do objeto e atribuir a imagem recém-criada a ele. Neste caso, você também precisa definir UV como Coordenadas no painel Mapeamento.
 
 ## Custom GLSL Shaders <a id="Custom_GLSL_Shaders"></a>
 
-Another way to apply material to an object is to override the game-engine material system completely by applying custom-written GLSL shaders. This will give you the ultimate control over exactly how the object looks, and you can achieve certain effects that are not possible with the built-in Material and Texture panels.
+Outra maneira de aplicar material a um objeto é substituir o sistema de material do mecanismo de jogo completamente aplicando shaders GLSL personalizados. Isso lhe dará o controle final sobre a aparência exata do objeto, e você pode obter certos efeitos que não são possíveis com os painéis de Material e Textura integrados.
 
 >**More GLSL?**
 >
->Custom GLSL shaders are not to be confused to with 2D filters, which also use GLSL codes. A 2D filter is GLSL code that is applied to the entire screen as a post-processing effect, while custom GLSL shaders are applied to objects.
+>Os shaders GLSL personalizados não devem ser confundidos com filtros 2D, que também usam códigos GLSL. Um filtro 2D é o código GLSL que é aplicado a toda a tela como um efeito de pós-processamento, enquanto shaders GLSL personalizados são aplicados aos objetos.
 
-Custom GLSL shaders work in the GLSL and Multitexture shading mode; they do not work in Singletexture mode. Custom GLSL shaders are not visible in the 3D Viewport: you must run the game to see them. To use custom GLSL shaders, you will need to use a little bit of Python scripting to link shaders to the object. But first, here is a crash course on GLSL.
+Os sombreadores GLSL personalizados funcionam no modo de sombreamento GLSL e Multitexture; eles não funcionam no modo Singletexture. Shaders GLSL personalizados não são visíveis na janela de exibição 3D: você deve executar o jogo para vê-los. Para usar sombreadores GLSL personalizados, você precisará usar um pouco de script Python para vincular sombreadores ao objeto. Mas, primeiro, aqui está um curso intensivo sobre GLSL.
 
 ## GLSL Primer <a id="GLSL_Primer"></a>
 
-GLSL is the shading language for the OpenGL graphic API. It has a C-like syntax and is compiled into assembly code by the graphic driver at runtime. It is also cross-platform and vendor-neutral (big words for saying they run on everything: Windows, Linux, Mac, AMD, Nvidia, and Intel). The primary purpose of GLSL is to give artists more control over how they want a surface to look by allowing them to write custom code that changes the way an object is rendered.
+GLSL é a linguagem de sombreamento para a API gráfica OpenGL. Ele tem uma sintaxe semelhante ao C e é compilado em código assembly pelo driver gráfico em tempo de execução. É também multiplataforma e neutro em relação ao fornecedor (palavrões para dizer que eles rodam em tudo: Windows, Linux, Mac, AMD, Nvidia e Intel). O objetivo principal do GLSL é dar aos artistas mais controle sobre como eles querem que uma superfície pareça, permitindo-lhes escrever um código personalizado que muda a maneira como um objeto é renderizado.
 
-GLSL shaders can be divided into three types. They differ in where in the graphic pipeline the codes are executed and what types of data they have access to.
+Os shaders GLSL podem ser divididos em três tipos. Eles diferem em onde no pipeline gráfico os códigos são executados e a quais tipos de dados eles têm acesso.
 
-- **Vertex shader:** Operates on vertices, allowing geometry transformation.
+- **Vertex shader:** Opera em vértices, permitindo a transformação da geometria.
 
-- **Geometry shader:** Capable of generating or deleting vertices.
+- **Geometry shader:** Capaz de gerar ou deletar vértices.
 
-- **Fragment shader:** Operates on each pixel on the screen, allowing texture and shading effects.
+- **Fragment shader:** Opera em cada pixel da tela, permitindo efeitos de textura e sombreamento.
 
-All three categories of shaders share the same language construct and follow the same general syntax. The GLSL programs are executed in this order:
+Todas as três categorias de sombreadores compartilham a mesma construção de linguagem e seguem a mesma sintaxe geral. Os programas GLSL são executados nesta ordem:
 
- vertex shader > geometry shader > fragment shader
+ vertex shader> geometry shader> fragment shader
 
-Because geometry shader is still relatively new and requires OpenGL 3.2 or higher, Blender does not support it. Only vertex shader and fragment shader can be used within the game engine at the moment.
+Como o shader de geometria ainda é relativamente novo e requer OpenGL 3.2 ou superior, o Blender não o suporta. No momento, apenas o sombreador de vértice e o sombreador de fragmento podem ser usados ​​no mecanismo de jogo.
 
-Rather than wading through all the basics of GLSL, we will assume that you have a background in at least one programming language, and we'll simply outline what makes GLSL unique as a GPU-based language. GLSL is not too different from languages such as C. It has familiar data types such as float (0.5, -3.5), int (0,1,-3), and bool (true, false). Also, because GLSL is designed to work with graphic data, which typically include color information (RGB or RGBA), location data (XYZ or XYZW), and matrices (3x3 matrix, 4x4 matrix), there are many vectorized data types designed just for this purpose.
+Em vez de percorrer todos os fundamentos de GLSL, presumiremos que você tenha experiência em pelo menos uma linguagem de programação e simplesmente descreveremos o que torna a GLSL única como linguagem baseada em GPU. GLSL não é muito diferente de linguagens como C. Tem tipos de dados familiares, como float (0,5, -3,5), int (0,1, -3) e bool (verdadeiro, falso). Além disso, como GLSL é projetado para trabalhar com dados gráficos, que normalmente incluem informações de cor (RGB ou RGBA), dados de localização (XYZ ou XYZW) e matrizes (matriz 3x3, matriz 4x4), existem muitos tipos de dados vetorizados projetados apenas para este propósito.
 
-Consider this snippet of GLSL code:
+Considere este snippet de código GLSL:
 
 ```c++
 vec4 color1 = vec4(1.0,0.0,0.0,1.0);
@@ -747,11 +747,11 @@ vec4 color2 = vec4(0.0,0.5,0.0,1.0);
 vec4 final = color1 + color2;
 ```
 
-vec4 initializes the variable to be a four-component floating point vector. color1 and color2 are the variable names. And finally vec4() can be viewed as a constructor that takes four literal constants and generates a vec4 data type from them.
+vec4 inicializa a variável para ser um vetor de ponto flutuante de quatro componentes. color1 e color2 são os nomes das variáveis. E, finalmente, vec4 () pode ser visto como um construtor que pega quatro constantes literais e gera um tipo de dados vec4 a partir delas.
 
-But what does the code actually do? Here, we first declare two four-component vectors, color1 and color2. The values to the right of the assignment operator (=) are mapped to the red, green, blue, and alpha channels of the vector, respectively. Thus, color1 is initialized to a red color with an alpha of 1; while color2 is initialized to a dark green color, also with an alpha of 1. In the last line of the code, we add color1 to color2, and copy the result to a new variable called _final,_ which should have the value (1.0,0.5,0.0,1.0).
+Mas o que o código realmente faz? Aqui, primeiro declaramos dois vetores de quatro componentes, color1 e color2. Os valores à direita do operador de atribuição (=) são mapeados para os canais vermelho, verde, azul e alfa do vetor, respectivamente. Assim, color1 é inicializado com uma cor vermelha com um alfa de 1; enquanto color2 é inicializado com uma cor verde escura, também com um alfa de 1. Na última linha do código, adicionamos color1 a color2 e copiamos o resultado para uma nova variável chamada _final, _ que deve ter o valor (1.0 , 0,5,0,0,1.0).
 
-The funny-looking swizzling operators of the GLSL language are one of its distinct features. They look like this:
+Os operadores swizzling de aparência engraçada da linguagem GLSL são uma de suas características distintas. Eles se parecem com isto:
 
 ```c++
 vec4 myColor = vec4 (0.0,1.0,0.5,0.6);
@@ -759,7 +759,7 @@ vec4 myColor = vec4 (0.0,1.0,0.5,0.6);
 float intensity  = myColor.r + myColor.g + myColor.b;
 ```
 
-The dot (.) notation at the end of the color variable is used to select a single component from the four-component vector. In the above case, we took the red, green, and blue components of myColor and added them up to get a sum of the three channels. The result is stored in a variable called _intensity_ as a single floating point number. Valid selectors include RGBA, XYZW, and STQR. You can also repeat swizzling operators or rearrange them.
+A notação de ponto (.) No final da variável de cor é usada para selecionar um único componente do vetor de quatro componentes. No caso acima, pegamos os componentes vermelho, verde e azul de myColor e os adicionamos para obter a soma dos três canais. O resultado é armazenado em uma variável chamada _intensidade_ como um único número de ponto flutuante. Os seletores válidos incluem RGBA, XYZW e STQR. Você também pode repetir os operadores de swizzling ou reorganizá-los.
 
 ```c++
 vec4 myColor = vec4 (0.0,1.0,0.5,0.6);
@@ -767,9 +767,9 @@ vec4 myColor = vec4 (0.0,1.0,0.5,0.6);
 vec4 newColor  = myColor.ggrr;
 ```
 
-newColor now has the value (1.0,1.0,0.0,0.0) because the content of myColor's green channel is copied into newColor's red and green channels, and myColor's red channel is copied into newColor's blue and alpha channels. The value of myColor is not changed.
+newColor agora tem o valor (1.0,1.0,0.0,0.0) porque o conteúdo do canal verde de myColor é copiado para os canais vermelho e verde de newColor, e o canal vermelho de myColor é copiado para os canais azul e alfa de newColor. O valor de myColor não é alterado.
 
-GLSL supports basic C-like flow control, such as while loops, for loops, if statements, and function declarations. Although supported, branching with if statements is usually avoided because they are relatively slow.
+GLSL suporta controle de fluxo básico semelhante ao C, como loops while, loops for, instruções if e declarações de função. Embora com suporte, a ramificação com instruções if é geralmente evitada porque são relativamente lentas.
 
 >**Using "If"**
 >
