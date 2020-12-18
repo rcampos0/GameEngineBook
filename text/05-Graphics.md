@@ -436,147 +436,144 @@ Note que no Blender, os slots de textura são ordenados de forma que as texturas
 
 ###### Image <a id="Image"></a>
 
-To load an image as a texture, you can either:
+Para carregar uma imagem como textura, você pode:
 
-- Load an existing image data block (one that is already being used in this Blender file).
-- Generate a new image directly from within Blender.
-- Browse and load an image file from your computer.
+- Carregue um bloco de dados de imagem existente (um que já esteja sendo usado neste arquivo do Blender).
+- Gere uma nova imagem diretamente de dentro do Blender.
+- Navegue e carregue um arquivo de imagem de seu computador.
 
 ![Create a new image by selecting New or browse for an existing image by selecting Open.](../figures/Chapter5/Fig05-24.png)
 
-Once an image is loaded, you have some options to change the way the color space and alpha channel are interpreted.
+Depois que uma imagem é carregada, você tem algumas opções para alterar a maneira como o espaço de cores e o canal alfa são interpretados.
 
-- **Input Color Space:** Controls the color space transformation that happens when the image is used. Normally, textures are created in the sRGB color space, so the default setting is sufficient. For color-sensitive work, you can change the Input Color Space to match the image file.
-- **View as Render:** Apply an additional color transform in order to take into account the color transform when rendering.
--  **Use Alpha:** Uses the alpha channel of an image when available. If enabled, you can also pick between Straight alpha and Premultiplied alpha. The difference is beyond the scope of this chapter, but if your alpha texture has a dark or bright fringe around the edge, then sometimes switching between straight alpha and premultiplied alpha can solve it.
-
+- **Input Color Space:** Controla a transformação do espaço de cores que ocorre quando a imagem é usada. Normalmente, as texturas são criadas no espaço de cores sRGB, portanto, a configuração padrão é suficiente. Para trabalhos sensíveis às cores, você pode alterar o Espaço de cores de entrada para corresponder ao arquivo de imagem.
+- **View as Render:** Aplique uma transformação de cor adicional para levar em consideração a transformação de cor ao renderizar.
+-  **Use Alpha:** Usa o canal alfa de uma imagem, quando disponível. Se ativado, você também pode escolher entre Alfa direto e Alfa pré-multiplicado. A diferença está além do escopo deste capítulo, mas se a textura alfa tiver uma franja escura ou brilhante ao redor da borda, às vezes alternar entre alfa direto e alfa pré-multiplicado pode resolvê-lo.
 
 
 ###### Image Sampling Panel <a id="Image_Sampling_Panel"></a>
 
-The Image Sampling panel contains some of the options that change how the image is interpreted inside Blender:
+O painel de Amostragem de Imagem contém algumas das opções que mudam como a imagem é interpretada dentro do Blender:
 
-- **Calculate (Alpha):** Ignores the real alpha channel from the image file and instead calculates the alpha channel from the intensity of the image. This treats black pixels as transparent and white pixels as opaque.
-- **Normal Map:** Tells Blender to treat the image as a normal map, so that the RGB value is interpreted as surface normal, which can be mapped to the normal channel of the material to create bumpiness on the surface.
+- **Calculate (Alpha):** Ignora o canal alfa real do arquivo de imagem e, em vez disso, calcula o canal alfa a partir da intensidade da imagem. Isso trata os pixels pretos como transparentes e os pixels brancos como opacos.
 
-
+- **Normal Map:** Diz ao Blender para tratar a imagem como um mapa normal, de forma que o valor RGB seja interpretado como normal da superfície, que pode ser mapeado para o canal normal do material para criar saliências na superfície.
 
 ###### Mapping Panel <a id="Mapping_Panel"></a>
 
-Mapping controls how the 2D texture is mapped onto the 3D object. Available options include global, object, generated, UV, reflection, and normal. The default option, generated, might work in some very simple cases. But most of the time, you will need to use the UV/Image Editor to control exactly how the image is projected onto the object. Using the UV/Image Editor is covered in Chapter 2. When the UV mapping is selected, you can specify which UV channel to use, if there is more than one UV layout for the mesh.
+O mapeamento controla como a textura 2D é mapeada no objeto 3D. As opções disponíveis incluem global, objeto, gerado, UV, reflexão e normal. A opção padrão, gerada, pode funcionar em alguns casos muito simples. Mas na maioria das vezes, você precisará usar o Editor de UV / Imagem para controlar exatamente como a imagem é projetada no objeto. O uso do UV / Image Editor é abordado no Capítulo 2. Quando o mapeamento UV é selecionado, você pode especificar qual canal UV usar, se houver mais de um layout UV para a malha.
 
-- Offset: Translate the texture coordinates.
+- Offset: Traduzir as coordenadas da textura.
 
-- Size: Changes the scale of the texture coordinates.
+- Tamanho: altera a escala das coordenadas da textura.
 
   ​
 
 ###### Influence Panel <a id="Influence_Panel"></a>
 
-This panel controls how the value of the texture is actually applied onto the surface. By default, color is selected with the influence set to 1. This means that the texture completely replaces the diffuse color of the material. A setting of 0 means there is no influence, effectively disabling the texture channel. Any in-between number will blend the current texture with the layer preceding it.
+Este painel controla como o valor da textura é realmente aplicado à superfície. Por padrão, a cor é selecionada com a influência definida como 1. Isso significa que a textura substitui completamente a cor difusa do material. Uma configuração de 0 significa que não há influência, desativando efetivamente o canal de textura. Qualquer número intermediário mesclará a textura atual com a camada anterior.
 
-_Normal_ is another commonly used influence setting. By using a normal map, you can create fake but convincing surface irregularities without using massive amounts of geometry. To apply a normal map to an existing material:
+_Normal_ é outra configuração de influência comumente usada. Usando um mapa normal, você pode criar irregularidades de superfície falsas, mas convincentes, sem usar grandes quantidades de geometria. Para aplicar um mapa normal a um material existente:
 
-1. In the Texture panel, create a new texture slot by pressing the [+] icon.
+1. No painel Texture, crie um novo slot de textura pressionando o ícone [+].
 
-2. Set the texture type to image and load a normal map image from disk.
+2. Defina o tipo de textura para imagem e carregue uma imagem de mapa normal do disco.
 
-3. Enable the normal map option under the Image Sampling panel.
+3. Ative a opção de mapa normal no painel Amostra de imagem.
 
-4. Disable texture influence on material color by unchecking color under the Influence panel.
+4. Desative a influência da textura na cor do material, desmarcando a cor no painel Influência.
 
-5. Enable the texture influence on material normal by checking normal under the Influence panel. Move the slider to adjust the strength of the effect.
+5. Habilite a influência da textura no normal do material marcando normal no painel Influência. Mova o controle deslizante para ajustar a intensidade do efeito.
 
    ![A low resolution model and a normal mapped model.](../figures/Chapter5/Fig05-25.jpg)
 
 
 
-> Normal Maps and Height Maps
+> Mapas normais e mapas de altura
 >
-> A normal map is stored as a regular image file, but instead of changing the color of the surface like a regular color texture, normal maps are used to alter the per-pixel surface normal. By altering the surface normal, you can change the apparent bumpiness of a surface.
+> Um mapa normal é armazenado como um arquivo de imagem regular, mas em vez de alterar a cor da superfície como uma textura de cor regular, os mapas normais são usados para alterar a superfície normal por pixel. Ao alterar a normal da superfície, você pode alterar a irregularidade aparente de uma superfície.
 >
-> Internally, a normal map uses the three color-channels (RGB) to store the normal directions (XYZ) of a surface. Because most surface normals are pointing straight up, they have a normal value of (X=0.5,Y=0.5, Z=1.0), which is what gives normal maps that distinct purple color (when in tangent space).
+> Internamente, um mapa normal usa os três canais de cores (RGB) para armazenar as direções normais (XYZ) de uma superfície. Como a maioria dos normais de superfície está apontando para cima, eles têm um valor normal de (X = 0,5, Y = 0,5, Z = 1,0), que é o que dá aos mapas normais aquela cor roxa distinta (quando no espaço tangente).
 >
-> Speaking of tangent space, normal maps can be stored in various different spaces, such as tangent, object, world, and camera space. They affect how the normal maps are interpreted and used in lighting computations. Suffice it to say that tangent space is the most commonly used option.
+> Por falar em espaço tangente, os mapas normais podem ser armazenados em vários espaços diferentes, como tangente, objeto, mundo e espaço da câmera. Eles afetam como os mapas normais são interpretados e usados em cálculos de iluminação. Basta dizer que o espaço tangente é a opção mais comumente usada.
 >
 
 
 
-The other options in the influence section work in the exact way as color and normal. They each influence a different aspect of the material. For example, if you want a texture to influence the alpha value of a material, enable alpha and set the influence to 1. Then, in the Material panel, make sure alpha is set to 0.
+As outras opções na seção de influência funcionam da maneira exata como cor e normal. Cada um deles influencia um aspecto diferente do material. Por exemplo, se você deseja que uma textura influencie o valor alfa de um material, ative alfa e defina a influência como 1. Em seguida, no painel Material, certifique-se de que alfa esteja definido como 0.
 
-- Blend : The blend selector is another key setting that controls how textures are mixed with each other. The blend option controls how the texture is mixed with the existing material color.
-- Negative: Inverts the color of the texture.
-- RGB to intensity: As the tooltip suggests, converts a RGB image to a grayscale image.
-
+- Mistura: O seletor de mistura é outra configuração chave que controla como as texturas são misturadas umas com as outras. A opção de mistura controla como a textura é misturada com a cor do material existente.
+- Negativo: Inverte a cor da textura.
+- RGB em intensidade: Como a dica de ferramenta sugere, converte uma imagem RGB em uma imagem em tons de cinza.
 
 
 #### Combined Exercise <a id="Combined_Exercise"></a>
 
-If all the checkboxes and sliders seem daunting, don't worry! Now let's put what we just read about material and textures to use. Soon it will become clear how everything fits together.
+Se todas as caixas de seleção e controles deslizantes parecerem assustadores, não se preocupe! Agora vamos colocar em prática o que acabamos de ler sobre materiais e texturas. Logo ficará claro como tudo se encaixa.
 
-1. Open \Book\Chapter5\GLSL2.2blend
+1. Abra\Book\Chapter5\GLSL2.2blend
 
-2. You will be greeted with a partial car model that we have prepared, as shown in Figure 5.26. Hopefully, you will agree that the model is of decent quality and that all it is lacking is a good material to make it, er, shine.
+2. Você será saudado com um modelo parcial de carro que preparamos, conforme mostrado na Figura 5.26. Com sorte, você concordará que o modelo é de qualidade decente e que tudo o que falta é um bom material para fazê-lo, er, brilhar.
 
 ![A car model with the default materials](../figures/Chapter5/Fig05-26.jpg)
 
-When working with materials, it is important to make sure there is sufficient lighting to see the model, as the lights can significantly affect the way materials are perceived. In fact, without lighting, everything will be pitch black!
+Ao trabalhar com materiais, é importante garantir que haja iluminação suficiente para ver o modelo, pois as luzes podem afetar significativamente a forma como os materiais são percebidos. Na verdade, sem iluminação, tudo ficará escuro como breu!
 
-In this car example, since we are trying to duplicate a photo studio setup, we have set up a single hemi lamp in the scene, pointing straight down over the car body. This basic lighting setup gives a very uniform lighting on the entire surface of the car, without any harsh shadows.
+Neste exemplo de carro, como estamos tentando duplicar uma configuração de estúdio fotográfico, configuramos uma única lâmpada hemi na cena, apontando diretamente para baixo sobre o corpo do carro. Esta configuração básica de iluminação oferece uma iluminação muito uniforme em toda a superfície do carro, sem sombras fortes.
 
-We want to give this sporty machine a shiny metallic finish so that looks like it just drove out of a car commercial. To achieve this effect, we will need two texture layers: one layer responsible for creating that sparkle found in metallic car paint, and another layer that contains a reflection texture to convey the idea of a glossy finish. The two textures shown in Figure 5.27 are provided online.
+Queremos dar a esta máquina esportiva um acabamento metálico brilhante para que pareça que acabou de sair de um comercial de carro. Para conseguir esse efeito, precisaremos de duas camadas de textura: uma camada responsável por criar aquele brilho encontrado na pintura metálica de automóveis, e outra camada que contém uma textura reflexiva para transmitir a ideia de um acabamento brilhante. As duas texturas mostradas na Figura 5.27 são fornecidas online.
 
 ![The two textures (magnified) that will be used for the car body material](../figures/Chapter5/Fig05-27.jpg)
 
-3. Select the body of the car (object "Shell") in the 3D Viewport. Notice there is a default material attached to it. But before we spend too much time tweaking the material, let's add the textures first.
+3. Selecione o corpo do carro (objeto "Shell") na janela de exibição 3D. Observe que há um material padrão anexado a ele. Mas antes de perdermos muito tempo ajustando o material, vamos adicionar as texturas primeiro.
 
-4. Go to the texture Properties Editor. Click on New to add a new texture. Notice that the first texture slot is now occupied. Rename the data block from "Texture" to something more descriptive like "MetallicSpeck."
+4. Vá para o Editor de propriedades da textura. Clique em Novo para adicionar uma nova textura. Observe que o primeiro slot de textura agora está ocupado. Renomeie o bloco de dados de "Textura" para algo mais descritivo como "MetallicSpeck".
 
-5. Since procedural textures are not supported in the game engine, we have created our own noise image in an external image-manipulation software. You can find one already made for you online, named Noise.png
+5. Como as texturas procedurais não são suportadas no motor de jogo, criamos nossa própria imagem de ruído em um software de manipulação de imagem externo. Você pode encontrar um já feito para você online, chamado Noise.png
 
-6. Change the texture type to image. Then click on Open to reveal the file browser. Navigate to \Book\Chapter5\Textures and select Noise.png. Open it. Now the car should be covered with the texture you just loaded.
+6. Mude o tipo de textura para imagem. Em seguida, clique em Abrir para revelar o navegador de arquivos. Navegue até \ Book \ Chapter5 \ Textures e selecione Noise.png. Abra. Agora o carro deve estar coberto com a textura que você acabou de carregar.
 
-The first problem you'll notice is that the texture is stretched across a certain  vertical part of the shell. This is because a proper UV texture layout has not been  set up, so Blender is trying its best at using a default texture mapping. So let's  first make sure the texture is mapped uniformly across the object.
+O primeiro problema que você notará é que a textura é esticada em uma certa parte vertical da casca. Isso ocorre porque um layout de textura UV adequado não foi configurado, então o Blender está tentando o seu melhor usando um mapeamento de textura padrão. Portanto, vamos primeiro ter certeza de que a textura está mapeada uniformemente no objeto.
 
-7. With the car body object still selected, enter Edit mode with the tab key; select all the vertices with a few taps on the A key until all the faces are highlighted.
+7. Com o objeto de carroceria ainda selecionado, entre no modo de edição com a tecla tab; selecione todos os vértices com alguns toques na tecla A até que todas as faces sejam destacadas.
 
-8. With your mouse still over the 3D Viewport, press the U key to invoke the UV mapping menu. Select Smart UV Project and leave the options as default. This will intelligently project the entire model onto a UV map with minimal distortion. This operation takes a few seconds to complete.
+8. Com o mouse ainda sobre a janela de exibição 3D, pressione a tecla U para abrir o menu de mapeamento UV. Selecione Smart UV Project e deixe as opções como padrão. Isso projetará de forma inteligente todo o modelo em um mapa UV com distorção mínima. Esta operação leva alguns segundos para ser concluída.
 
-9. Optionally, set one of the window types to UV Image Editor to see the result of smart project.
+9. Opcionalmente, defina um dos tipos de janela para Editor de Imagens UV para ver o resultado do projeto inteligente.
 
-10. Don't worry that you can't see the new UV map yet on the 3D model. In the Texture panel, change the mapping coordinates from generated to UV and select UVMap from the drop-down menu, as shown in Figure 5.28. This will tell Blender to use the new UV map that you just created.
+10. Não se preocupe se você ainda não puder ver o novo mapa UV no modelo 3D. No painel Texture, altere as coordenadas de mapeamento de geradas para UV e selecione UVMap no menu suspenso, conforme mostrado na Figura 5.28. Isto dirá ao Blender para usar o novo mapa UV que você acabou de criar.
 
 ![Setting the texture mapping to UV](../figures/Chapter5/Fig05-28.png)
 
-Now the 3D Viewport should look like Figure 5.29
+Agora, a janela de visualização 3D deve ser semelhante à Figura 5.29
 
 ![Noise texture with adjusted UV layout](../figures/Chapter5/Fig05-29.jpg)
 
-11. It is apparent that the noise is way too big to be realistic. To scale it down, change the Size attribute under Mapping from 1.0 to 10.0 for all the X, Y, and Z axes.
+11. É evidente que o ruído é muito grande para ser realista. Para reduzir, altere o atributo Tamanho em Mapeamento de 1,0 para 10,0 para todos os eixos X, Y e Z.
 
- To get the metallic shine, you don't want the texture to affect the color channel of  the material.
+  Para obter o brilho metálico, você não quer que a textura afete o canal de cor do material.
 
-11.Scroll down to the bottom of the Texture panel and locate the Influence panel. Turn off Color. Now, turn on Intensity and Color under Specular. This will make the texture affect only the specular channel of the material. This way, the speckle will only be visible when there is light shining on it, which is exactly what you want. Figure 5.30 shows all the relevant settings in the Texture panel. Settings not shown are left untouched.
+11. Role para baixo até a parte inferior do painel Textura e localize o painel Influência. Desative a cor. Agora, ligue Intensidade e Cor em Especular. Isso fará com que a textura afete apenas o canal especular do material. Dessa forma, o speckle só será visível quando houver luz brilhando sobre ele, que é exatamente o que você deseja. A Figura 5.30 mostra todas as configurações relevantes no painel Textura. As configurações não mostradas não são alteradas.
 
 ![Texture options for the noise image texture](../figures/Chapter5/Fig05-30.png)
 
-12. To add a second texture layer, go back to the very top of the Texture panel and select the top-most empty texture slot from the list. It should be one with a red-and-white checkerboard pattern icon.
+12. Para adicionar uma segunda camada de textura, volte ao topo do painel Textura e selecione o slot de textura vazio na parte superior da lista. Deve ser um com um ícone de padrão quadriculado vermelho e branco.
 
-13. Click on New to create another texture data block. This will be your reflection layer. So name it "ReflectionMap."
+13. Clique em Novo para criar outro bloco de dados de textura. Esta será sua camada de reflexão. Então, chame-o de "ReflectionMap".
 
-14. Again, set the texture type to image. Click on Open, navigate to \Book\Chapter5\Textures, and load uffizi\_rectangular.jpg. This image will be used as your environment map.
+14. Novamente, defina o tipo de textura para imagem. Clique em Abrir, navegue até \ Book \ Chapter5 \ Textures e carregue uffizi \ _rectangular.jpg. Esta imagem será usada como seu mapa de ambiente.
 
-15. Under Mapping, set the Coordinates to Reflection. This will automatically wrap the texture onto the object in such a way that resembles a real reflection.
+15. Em Mapeamento, defina as Coordenadas como Reflexão. Isso envolverá automaticamente a textura no objeto de forma que se pareça com um reflexo real.
 
-16. However, notice that the sparkle you created in the previous texture slot has disappeared. This is because the new ReflectionMap texture is covering the previous texture. To make the reflection less intense, set the color Influence value from 1.0 to 0.75.
+16. No entanto, observe que o brilho que você criou no slot de textura anterior desapareceu. Isso ocorre porque a nova textura ReflectionMap está cobrindo a textura anterior. Para tornar a reflexão menos intensa, defina o valor de Influência da cor de 1,0 a 0,75.
 
-17. Change the Blending mode from Mix to Multiply. This will allow the reflection map to look better on base color.
+17. Mude o modo de mesclagem de Mix para Multiply. Isso permitirá que o mapa de reflexão tenha uma aparência melhor na cor de base.
 
- At this point, you should have something that looks like Figure 5.31.
+ Neste ponto, você deve ter algo semelhante à Figura 5.31.
 
 ![The completed car material](../figures/Chapter5/Fig05-31.jpg)
 
-18. You can now go back to the Material panel and change base color of the car by altering the diffuse color however you wish.
+18. Agora você pode voltar ao painel Material e alterar a cor base do carro alterando a cor difusa como desejar.
 
 >**Material Caching**
 >
