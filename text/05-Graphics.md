@@ -413,22 +413,22 @@ A textura é a principal forma de adicionar detalhes a uma superfície sem adici
 
 ###### Texture Data Blocks <a id="Texture_Data_Blocks"></a>
 
-Texture data blocks are almost always linked to a material (see note below for exception). Each material can have multiple textures, and through layering and blending of textures, complex effects can be achieved. The top area of the Texture Panel shows you all the textures attached to the active material.
+Os blocos de dados de textura quase sempre estão vinculados a um material (veja a nota abaixo para exceção). Cada material pode ter várias texturas e, por meio de camadas e combinação de texturas, podem ser obtidos efeitos complexos. A área superior do Painel de textura mostra todas as texturas anexadas ao material ativo.
 
-> Non-Material Textures
+> Texturas não materiais
 >
-> The only exception is a "world" texture, which is linked directly to the world settings without a material, and the Brush texture, which is used for painting or sculpting. However, both of them are only supported in the Blender internal renderer and not implemented in the game engine. Therefore, for our game purposes, all the texture data blocks must indeed be linked to a material.
+> A única exceção é uma textura "mundo", que está ligada diretamente às configurações do mundo sem um material, e a textura Pincel, que é usada para pintar ou esculpir. No entanto, ambos são suportados apenas no renderizador interno do Blender e não são implementados no motor de jogo. Portanto, para os nossos objetivos de jogo, todos os blocos de dados de textura devem de fato estar vinculados a um material.
 >
 
-Note that in Blender, texture slots are ordered so that textures further down the texture slots override textures on top of the list. This is opposite from how most image editors treat layers. 
+Note que no Blender, os slots de textura são ordenados de forma que as texturas mais abaixo nos slots de textura substituem as texturas no topo da lista. Isso é o oposto de como a maioria dos editores de imagem trata as camadas.
 
 <img alt="The Texture panel with two textures slots in use." src="../figures/Chapter5/Fig05-22.png" width="40%" align="left">
 
 
 
-1. To create a new texture, the object must already have a material. Select the object and add a new material, if necessary.
-2. Then, in the texture panel, click on the [+ New] icon to create a new texture in the first texture slot (see Figure 5.23).
-3. For working with the game engine, set the type for the texture to image. (Image texture is what we will be using most of the time.) The only other available texture type option is environment map. Procedural textures, such as clouds and noise, are not supported in the game engine.
+1. Para criar uma nova textura, o objeto já deve ter um material. Selecione o objeto e adicione um novo material, se necessário.
+2. Em seguida, no painel de textura, clique no ícone [+ Novo] para criar uma nova textura no primeiro slot de textura (consulte a Figura 5.23).
+3. Para trabalhar com o motor de jogo, defina o tipo da textura para a imagem. (A textura da imagem é o que usaremos na maioria das vezes.) A única outra opção de tipo de textura disponível é o mapa de ambiente. Texturas procedurais, como nuvens e ruído, não são suportadas no motor de jogo.
 
 ![Using an image texture](../figures/Chapter5/Fig05-23.png)
 
