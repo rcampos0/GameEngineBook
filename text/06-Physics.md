@@ -51,101 +51,101 @@ Como de costume, este capítulo vem com uma coleção de arquivos de exemplo que
 
 ## Overview <a id="Overview"></a>
 
-Because physics is such an integral part of the Blender game engine, physics-related settings are found in many different places. However scattered they might look at first glance, there is a pattern in this chaos.
+Como a física é uma parte integrante do motor de jogo do Blender, configurações relacionadas à física são encontradas em muitos lugares diferentes. Por mais dispersos que possam parecer à primeira vista, há um padrão nesse caos.
 
-The physics settings can be broken down into these sections:
+As configurações de física podem ser divididas nestas seções:
 
-- **World settings:** Contain settings that affect the entire scene. Global settings such as gravity strength can be found here. Figure 6.2 shows the World Properties Editor.
+- **World settings:** Contém configurações que afetam toda a cena. Configurações globais, como força da gravidade, podem ser encontradas aqui. A Figura 6.2 mostra o Editor de Propriedades do Mundo.
 
 ![World Properties Editor](../figures/Chapter6/Fig06-02.png)
 
-- **Object Physics settings:** Any game-engine object (mesh, lamp, camera, empty, and text) can be turned into a physical object. Once physics is enabled for an object, it starts obeying the rules of the physics engine, transforming the object from a static object into something that falls, collides, tumbles, and deforms. Figure 6.3 shows the Physics Properties Editor.
+- **Object Physics settings:** Qualquer objeto do motor de jogo (malha, lâmpada, câmera, vazio e texto) pode ser transformado em um objeto físico. Uma vez que a física é habilitada para um objeto, ele começa a obedecer às regras do motor da física, transformando o objeto de um objeto estático em algo que cai, colide, tomba e deforma. A Figura 6.3 mostra o Editor de Propriedades Físicas.
 
 ![Physics Properties Editor](../figures/Chapter6/Fig06-03.png)
 
-- **Material Physics settings:** The Material panel is not only a place where all the graphic magic happens; it also contains additional physics that control how the surface of the object behaves. Settings such as surface friction can be found here. Because an object can have multiple materials, material physics settings allow the artist to assign different surface materials for different parts of a single object. Figure 6.4 shows the Material Properties Editor.
+- **Material Physics settings:** O painel Material não é apenas um lugar onde toda a magia gráfica acontece; ele também contém física adicional que controla como a superfície do objeto se comporta. Configurações como fricção de superfície podem ser encontradas aqui. Como um objeto pode ter vários materiais, as configurações de física dos materiais permitem que o artista atribua diferentes materiais de superfície para diferentes partes de um único objeto. A Figura 6.4 mostra o Editor de Propriedades do Material.
 
 ![Material Properties Editor](../figures/Chapter6/Fig06-04.png)
 
-- **Object constraints:** When you were young, your parents probably set out certain rules that you needed to abide by. If any of the rules were broken, bad things happened. Physics constraints work in roughly the same way (without all the drama and door slamming). They allow you to set up simple rules that the objects follow, rules such as tracking one object to another or limiting their range of motion. With constraints, it's possible to realistically represent many of the structures that have a limited degree of motion, such as hinges, wheels, and chains. Figure 6.5 shows the Object Constraints Properties Editor.
+- **Object constraints:** Quando você era jovem, seus pais provavelmente estabeleceram certas regras que você precisava seguir. Se alguma das regras fosse quebrada, coisas ruins aconteceriam. As restrições físicas funcionam aproximadamente da mesma maneira (sem todo o drama e portas fechadas). Eles permitem que você configure regras simples que os objetos seguem, regras como rastrear um objeto para outro ou limitar sua amplitude de movimento. Com restrições, é possível representar de forma realista muitas das estruturas que têm um grau limitado de movimento, como dobradiças, rodas e correntes. A Figura 6.5 mostra o Editor de propriedades de restrições de objeto.
 
 ![Object Constraints Properties Editor](../figures/Chapter6/Fig06-05.png)
 
-- **Physics sensors and actuators:** Except for maybe the case of a Rube Goldberg machine, where everything happens in a predetermined manner, most games would be pretty boring if there were no way to make an object move at a user's command or to trigger a reaction when two objects collide. Actuators and sensors fulfill these two roles, respectively. Actuators are part of logic brick that carries out an action (such as applying a force to the object to make it move). Sensors are triggers that detect when something happens in the game, such as when two objects touch. A combination of sensors and actuators makes a game truly interactive, by giving the game engine the ability to make decisions. Figure 6.6 shows the Logic Brick Editor. In case you forgot, Chapter 3 is all about logic bricks.
+- **Physics sensors and actuators:** Exceto talvez no caso de uma máquina de Rube Goldberg, onde tudo acontece de uma maneira predeterminada, a maioria dos jogos seria muito chata se não houvesse uma maneira de fazer um objeto se mover ao comando do usuário ou de provocar uma reação quando dois objetos colidem. Atuadores e sensores cumprem essas duas funções, respectivamente. Os atuadores são parte de um tijolo lógico que realiza uma ação (como aplicar uma força ao objeto para fazê-lo se mover). Sensores são gatilhos que detectam quando algo acontece no jogo, como quando dois objetos se tocam. Uma combinação de sensores e atuadores torna o jogo verdadeiramente interativo, dando ao motor de jogo a capacidade de tomar decisões. A Figura 6.6 mostra o Logic Brick Editor. Caso você tenha esquecido, o Capítulo 3 trata de blocos lógicos.
 
 ![Logic Brick Editor](../figures/Chapter6/Fig06-06.png)
 
-- **Python:** In addition to all the physics settings one can access from the graphic user interface, an extensive Python API is at your disposal. The Python API gives you programmable control over many aspects of the physics engine. With Python, you can dynamically set many of the physics options while the game is running. It even allows you to accomplish a few things that are not possible from the graphic interface. For instance, Python can be used to create realistic vehicle physics. Figure 6.7 shows the Text Editor with a Python script open.
+- **Python:** Além de todas as configurações de física que podem ser acessadas na interface gráfica do usuário, uma extensa API Python está à sua disposição. A API Python oferece controle programável sobre muitos aspectos do mecanismo de física. Com Python, você pode definir dinamicamente muitas das opções físicas enquanto o jogo está sendo executado. Ele ainda permite que você realize algumas coisas que não são possíveis na interface gráfica. Por exemplo, Python pode ser usado para criar física de veículos realista. A Figura 6.7 mostra o Editor de Texto com um script Python aberto.
 
 ![Text Editor](../figures/Chapter6/Fig06-07.png)
 
-So now that you have an overview of what physics is all about and where to find all the settings, the rest of the chapter will explain how to use these settings in combination to achieve various effects.
+Portanto, agora que você tem uma visão geral do que é a física e onde encontrar todas as configurações, o restante do capítulo explicará como usar essas configurações em combinação para obter vários efeitos.
 
 ## World Properties <a id="World_Properties"></a>
 
-World Properties Editor is generally the first place to visit when setting up physics, simply because the settings here are truly global: they affect the entire scene.
+O World Properties Editor é geralmente o primeiro lugar a se visitar ao configurar a física, simplesmente porque as configurações aqui são verdadeiramente globais: elas afetam toda a cena.
 
-In the World Properties Editor, there are numerous global physics settings that affect how the scene behaves. Again, remember that game-specific settings are only visible when the engine selector is set to Blender Game, as shown in Figure 6.8.
+No World Properties Editor, existem várias configurações globais de física que afetam como a cena se comporta. Novamente, lembre-se de que as configurações específicas do jogo só são visíveis quando o seletor do motor está definido como Blender Game, conforme mostrado na Figura 6.8.
 
 ![Set engine to Blender Game to see the relevant game settings](../figures/Chapter6/Fig06-08.png)
 
 ## Physics Engine <a id="Physics_Engine"></a>
 
-Under the Physics section of the World Properties Editor, you are presented with a choice to select a physics engine. A physics engine is the underlying computer algorithm that drives all physics simulation. Blender uses Bullet Physics, which is a powerful and open-source physics library developed by Erwin Coumans and others. Not only is Bullet used in Blender, but it is also used by other commercial games, as well as movie productions, as part of the visual effects pipeline.
+Na seção Physics do World Properties Editor, você terá a opção de selecionar um mecanismo de física. Um mecanismo de física é o algoritmo de computador subjacente que conduz todas as simulações de física. O Blender usa Bullet Physics, que é uma biblioteca de física poderosa e de código aberto desenvolvida por Erwin Coumans e outros. O Bullet não é apenas usado no Blender, mas também é usado por outros jogos comerciais, bem como produções de filmes, como parte do pipeline de efeitos visuais.
 
-When the engine selector is set to none, all physics calculation is disabled. Dynamic objects will not move when a force is applied, and collisions will not be detected. Most games will use some degree of physics, so keep physics turned on unless you are absolutely sure you don't need it. If you choose to disable physics, the majority of the features mentioned in the rest of this chapter will not work.
+Quando o seletor do motor é definido como nenhum, todos os cálculos físicos são desabilitados. Os objetos dinâmicos não se movem quando uma força é aplicada e as colisões não são detectadas. A maioria dos jogos usará algum grau de física, então mantenha a física ativada, a menos que você tenha certeza absoluta de que não precisa dela. Se você optar por desabilitar a física, a maioria dos recursos mencionados no restante deste capítulo não funcionará.
 
-Figure 6.9 shows the World Physics settings.
+A Figura 6.9 mostra as configurações de Física Mundial.
 
 ![World Physics settings](../figures/Chapter6/Fig06-09.png)
 
 >**Disabling Physics**
 >
->Some functions that seem to be unrelated to the physics engine, such as the raycast and mouseover sensors, also use the physics engine to detect objects. Therefore, disabling physics will break these functions as well.
+>Algumas funções que parecem não estar relacionadas ao mecanismo de física, como os sensores de raycast e mouseover, também usam o mecanismo de física para detectar objetos. Portanto, desativar a física também interromperá essas funções.
 
-With the physics engine set to Bullet, you can set the world gravity value. The higher the number, the faster an object falls. The default value of 9.8 corresponds to acceleration due to gravity on earth; for comparison, Mars has a gravity of 3.7 m/s².
+Com o mecanismo de física definido como Bullet, você pode definir o valor da gravidade mundial. Quanto maior o número, mais rápido um objeto cai. O valor padrão de 9,8 corresponde à aceleração devido à gravidade na terra; para comparação, Marte tem uma gravidade de 3,7 m / s².
 
 >**World and Scene Gravity Settings**
 >
->There are two separate gravity settings in Blender. One in the World panel[md]which controls gravity for the game physics, and one in the Scene panel[md]which controls gravity for the non-game aspect of Blender physics (fluid, particles, and smoke simulation). They are only visible in their respective engines (Blender Game and Blender Render or Cycles Render, respectively).When working with games, make sure you adjust the right setting under World.
+>Existem duas configurações de gravidade separadas no Blender. Um no painel World [md] que controla a gravidade para a física do jogo, e um no painel Scene [md] que controla a gravidade para o aspecto não-jogo da física do Blender (fluido, partículas e simulação de fumaça). Eles são visíveis apenas em seus respectivos engines (Blender Game e Blender Render ou Cycles Render, respectivamente). Ao trabalhar com jogos, certifique-se de ajustar a configuração correta em World.
 
 ### Hands-on: World Settings for Multiple Scenes <a id="Hands-on_World_Settings_for_Multiple_Scenes"></a>
 
-Because Blender supports multiple scenes and each scene can have its own World data block, the physics settings can be set independently per scene. This means it is possible to create multiple worlds (or _levels_, as they are commonly called in games), each with different physics settings, all contained within one Blender file. For example, one could create a game with two scenes, one taking place on earth and another taking place on Mars. By altering world settings such as sky color, mist depth, and the gravity strength for each scene, you can easily convey the idea of a foreign planet.
+Como o Blender suporta múltiplas cenas e cada cena pode ter seu próprio bloco de dados World, as configurações físicas podem ser definidas independentemente por cena. Isso significa que é possível criar vários mundos (ou _níveis_, como são comumente chamados em jogos), cada um com configurações físicas diferentes, todos contidos em um arquivo do Blender. Por exemplo, pode-se criar um jogo com duas cenas, uma ocorrendo na Terra e outra ocorrendo em Marte. Ao alterar as configurações do mundo, como a cor do céu, a profundidade da névoa e a força da gravidade de cada cena, você pode facilmente transmitir a ideia de um planeta estranho.
 
-To create a game with two scenes:
+Para criar um jogo com duas cenas:
 
-1. Open /Book/Chapter6/earthMars.blend. When the game is running, you are in control of a first-person-shooter style camera, which can be moved with the W, A, S, and D keys and rotated with the mouse. Cubes are generated out of thin air and they fall to the ground according to gravity.
+1. Abra /Book/Chapter6/earthMars.blend. Quando o jogo está rodando, você está no controle de uma câmera estilo tiro em primeira pessoa, que pode ser movida com as teclas W, A, S e D e girada com o mouse. Os cubos são gerados do nada e caem no solo de acordo com a gravidade.
 
-2. First, rename the default scene from "Scene" to something more descriptive, such as "Earth," by clicking on the Scene data block and typing in a new name, as shown in Figure 6.10.
+2. Primeiro, renomeie a cena padrão de "Cena" para algo mais descritivo, como "Terra", clicando no bloco de dados Cena e digitando um novo nome, conforme mostrado na Figura 6.10.
 
 ![Renaming the scene](../figures/Chapter6/Fig06-10.png)
 
-3. Go to the World Properties Editor; set the Horizon color to a light blue, as shown in Figure 6.11. This way, you can easily tell which scene is which.
+3. Vá para o Editor de Propriedades do Mundo; defina a cor do horizonte para azul claro, conforme mostrado na Figura 6.11. Dessa forma, você pode facilmente dizer qual cena é qual.
 
 ![Changing the color of the world](../figures/Chapter6/Fig06-11.png)
 
-4. To make another world, you create a copy of Earth scene by clicking on the + sign beside the scene browser. From the drop-down list, select Full Copy, as shown in Figure 6.12. This will be the scene for your second world.
+4. Para fazer outro mundo, você cria uma cópia da cena da Terra clicando no sinal + ao lado do navegador de cena. Na lista suspensa, selecione Full Copy, conforme mostrado na Figura 6.12. Este será o cenário do seu segundo mundo.
 
 ![Making a full copy of the scene](../figures/Chapter6/Fig06-12.png)
 
-5. Rename the new scene you just created from "Earth.001" to "Mars."
+5. Renomeie a nova cena que você acabou de criar de "Terra.001" para "Marte".
 
-6. Go to the World Properties Editor; set the Horizon color to a dark orange (see Figure 6.13).
+6. Vá para o Editor de Propriedades do Mundo; defina a cor do horizonte para laranja escuro (consulte a Figura 6.13).
 
 !["Mars" world settings](../figures/Chapter6/Fig06-13.png)
 
-7. Lower the gravity from 9.8 to 3.7, which is the gravity on Mars.
+7. Abaixe a gravidade de 9,8 para 3,7, que é a gravidade em Marte.
 
-8. To toggle between the two scenes, you need to add a simple logic brick to both of your scenes, so that when the spacebar is pressed in the Earth scene, it will jump to the Mars scene, and vice versa. Set up the logic brick as shown in Figure 6.14. In this case, it doesn't matter which object the logic brick is attached to because the action it carries out is global. The camera is used in our example to host the logic brick.
+8. Para alternar entre as duas cenas, você precisa adicionar um bloco lógico simples a ambas as cenas, de forma que quando a barra de espaço for pressionada na cena da Terra, ela pule para a cena de Marte e vice-versa. Configure o bloco lógico conforme mostrado na Figura 6.14. Nesse caso, não importa a qual objeto o tijolo lógico está anexado, pois a ação que ele realiza é global. A câmera é usada em nosso exemplo para hospedar o bloco lógico.
 
 ![Logic brick setup](../figures/Chapter6/Fig06-14.png)
 
-9. Recreate the logic brick in the other scene as well. Set it to load the corresponding scene.
+9. Recrie o tijolo lógico na outra cena também. Configure-o para carregar a cena correspondente.
 
-10. Now press P to play the game. Jump between the two scenes using the spacebar. Notice that the gravity and the sky color changes depending on which scene you are on.
+10. Agora pressione P para jogar. Salte entre as duas cenas usando a barra de espaço. Observe que a gravidade e a cor do céu mudam dependendo da cena em que você está.
 
-11. That's it! The finished game can be found under the name earthMars-finished.blend. To extend this game, you can play around with the physics properties of the cube, which is hidden in layer 2.
+11. É isso aí! O jogo finalizado pode ser encontrado com o nome earthMars-ended.blend. Para estender este jogo, você pode brincar com as propriedades físicas do cubo, que estão ocultas na camada 2.
 
 ## Culling Resolution <a id="Culling_Resolution"></a>
 
