@@ -173,35 +173,35 @@ Se você se deparar com alguma instabilidade física, pode ficar tentado a aumen
 
 ## On the Issue of Time <a id="On_the_Issue_of_Time"></a>
 
-For the following discussion, the word _realworld-time_ refers to the flow of time in the real world, the world that we live in. Relativistic physics aside, real time is always constant for our purpose. There are no magic devices, fabled incantations, or speeding DeLoreans to alter the flow of time.
+Para a discussão a seguir, a palavra _realworld-time_ refere-se ao fluxo do tempo no mundo real, o mundo em que vivemos. Física relativística à parte, o tempo real é sempre constante para o nosso propósito. Não existem dispositivos mágicos, encantamentos fabulosos ou DeLoreans acelerados para alterar o fluxo do tempo.
 
-The term _game-time_ refers to the flow of time in the virtual game world. The flow of game-time is generally constant as well, except for special cases where slow motion or time lapse is used.
+O termo _game-time_ refere-se ao fluxo do tempo no mundo do jogo virtual. O fluxo do tempo de jogo geralmente também é constante, exceto em casos especiais em que câmera lenta ou lapso de tempo é usado.
 
-Why is this important? For most games, the game-time should be directly proportional to the realworld-time and completely independent of the frame rate. So that no matter how high or low the frame rate is, the game-time will always flow at a constant rate. Having the game-time independent of the frame rate has many benefits. A game that runs on a constant game-time does not slow down when the frame rate is low, nor does it speed up when the frame rate is high. This is to ensure that people with different computers can enjoy the game at the same speed. You wouldn't want to play a driving game that makes the car go faster on a fast computer but slows down to a crawl on a slow computer!
+Por que isso é importante? Para a maioria dos jogos, o tempo de jogo deve ser diretamente proporcional ao tempo do mundo real e completamente independente da taxa de quadros. Assim, não importa quão alta ou baixa seja a taxa de quadros, o tempo de jogo sempre fluirá a uma taxa constante. Ter o tempo de jogo independente da taxa de quadros tem muitos benefícios. Um jogo executado em um tempo de jogo constante não diminui a velocidade quando a taxa de quadros é baixa, nem acelera quando a taxa de quadros é alta. Isso garante que pessoas com computadores diferentes possam desfrutar do jogo na mesma velocidade. Você não gostaria de jogar um jogo de direção que faz o carro andar mais rápido em um computador rápido, mas diminui a velocidade para um rastreamento em um computador lento!
 
-It turns out that ensuring a constant game-time despite fluctuations in the frame rate is hard! The following few settings are used to control how the game-time is tied together with the frame rate.
+Acontece que é difícil garantir um tempo de jogo constante apesar das flutuações na taxa de quadros! As configurações a seguir são usadas para controlar como o tempo de jogo é vinculado à taxa de quadros.
 
 ## Physics Steps <a id="Physics_Steps"></a>
 
-The Max Physics Steps control how many consecutive physical simulation frames the game engine is allowed to run for each rendered frame. A high value (5) is more physically accurate, because it gives the physics engine enough time to complete the physics calculation, regardless of the game frame rate, therefore yielding a more consistent game-time that is independent of the frame rate, at the cost of taking up more processing time. A low value (1) can increase the frame rate of the game slightly by reducing the number of consecutive physical simulation frames the game engine is allowed to run every frame, but at the cost of inaccurate physics behavior, because the game-time would be linked to the frame rate.
+As etapas máximas de física controlam quantos quadros de simulação física consecutivos o mecanismo de jogo pode rodar para cada quadro renderizado. Um valor alto (5) é fisicamente mais preciso, porque dá ao mecanismo de física tempo suficiente para concluir o cálculo da física, independentemente da taxa de quadros do jogo, resultando, portanto, em um tempo de jogo mais consistente que é independente da taxa de quadros, no custo de ocupar mais tempo de processamento. Um valor baixo (1) pode aumentar a taxa de quadros do jogo ligeiramente, reduzindo o número de quadros de simulação física consecutivos que o motor do jogo tem permissão para executar cada quadro, mas ao custo de um comportamento físico impreciso, porque o tempo de jogo seria vinculado à taxa de quadros.
 
 >**Bottom Line**
 >
->If you are still confused, just set the Max Physics Steps to 5. This ensures that the game-time is as constant as possible, no matter what the frame rate is.
+>Se você ainda estiver confuso, apenas defina Max Physics Steps como 5. Isso garante que o tempo de jogo seja o mais constante possível, não importa qual seja a taxa de quadros.
 
 ## Logic Steps <a id="Logic_Steps"></a>
 
-Very similar to the Max Physics Steps, the Max Logic Steps control how many consecutive game logic tics the game engine is allowed to run for each rendered frame. When the game frame rate is lower than the nominal FPS setting, a high value (5) is more accurate because it makes sure the logic step always gets enough time to finish all the logic computation. Conversely, a low value (1) will yield slightly better performance at the cost of a fluctuation in game-time. So this means that when the frame rate is high, the game will run normally, but if the frame rate drops, the game will appear to slow down.
+Muito semelhante ao Max Physics Steps, o Max Logic Steps controla quantos tiques lógicos de jogo consecutivos o motor do jogo pode rodar para cada quadro renderizado. Quando a taxa de quadros do jogo é menor do que a configuração de FPS nominal, um valor alto (5) é mais preciso porque garante que a etapa lógica sempre tenha tempo suficiente para terminar todo o cálculo lógico. Por outro lado, um valor baixo (1) renderá um desempenho ligeiramente melhor ao custo de uma flutuação no tempo de jogo. Portanto, isso significa que quando a taxa de quadros é alta, o jogo será executado normalmente, mas se a taxa de quadros cair, o jogo parecerá desacelerar.
 
 >**Bottom Line**
 >
->The default value of 5 means that the logic always gets enough time to run, no matter what frame rate the game runs at. This ensures that the game-time does not slow down when the frame rate is low.
+>O valor padrão de 5 significa que a lógica sempre tem tempo suficiente para ser executada, não importando a taxa de quadros do jogo. Isso garante que o tempo de jogo não diminua quando a taxa de quadros estiver baixa.
 
 ## FPS <a id="FPS"></a>
 
-Frames per second is the Holy Grail of performance benchmarking. For a video game, a high frame rate is always desired because it means smoother action and faster response to user input. Frame rate is a function of the complexity of the scene and the speed of the computer. Unfortunately, the setting here only acts as a frame rate cap, not the actual frame rate the game is guaranteed to run at. The default value of 60fps means that each second, the game engine evaluates the game logic 60 times. This particular number is chosen since most LCD monitors do not refresh faster than 60Hz, so, any extra frame rendered by the computer will just be wasted.
+Quadros por segundo é o Santo Graal do benchmarking de desempenho. Para um videogame, uma alta taxa de quadros é sempre desejada, pois significa uma ação mais suave e uma resposta mais rápida à entrada do usuário. A taxa de quadros é uma função da complexidade da cena e da velocidade do computador. Infelizmente, a configuração aqui age apenas como um limite da taxa de quadros, não a taxa de quadros real que o jogo tem garantia de rodar. O valor padrão de 60fps significa que a cada segundo, o mecanismo de jogo avalia a lógica do jogo 60 vezes. Esse número específico é escolhido porque a maioria dos monitores LCD não atualiza mais rápido do que 60 Hz, portanto, qualquer quadro extra renderizado pelo computador será simplesmente desperdiçado.
 
-Internally, fps sets the number of logic tics and physics tics the game engine runs at. So as you lower the fps setting, the number of logic and physics tics performed by the game will decrease accordingly. This has the effect of slowing down the game-time_._ In another word, if the fps is set too low, not only will the game feel choppy, but it will actually appear as if it's running in slow motion.
+Internamente, fps define o número de tiques lógicos e tics físicos nos quais o mecanismo de jogo é executado. Portanto, à medida que você diminui a configuração de fps, o número de tiques lógicos e físicos executados pelo jogo diminui de acordo. Isso tem o efeito de desacelerar o tempo de jogo _._ Em outras palavras, se o fps for definido muito baixo, não apenas o jogo parecerá instável, mas na verdade parecerá estar rodando em câmera lenta.
 
 >**Bottom Line**
 >
