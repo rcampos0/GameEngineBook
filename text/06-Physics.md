@@ -37,17 +37,17 @@
 
 # Chapter 6: Physics <a id="Chapter_6:_Physics"></a>
 
-Welcome to Physics 101! We are going to be your professors for this chapter. Follow along as we dive into a dynamic world of falling apples, run alongside bouncing balls, and soar with flying spaghetti (see Figure 6.1).
+Bem-vindo à Física 101! Vamos ser seus professores neste capítulo. Acompanhe enquanto mergulhamos em um mundo dinâmico de maçãs caindo, corremos ao lado de bolas quicando e voamos voando espaguete (veja a Figura 6.1).
 
 ![A physics demo](../figures/Chapter6/Fig06-01.png)
 
 ## What Is Physics? <a id="What_Is_Physics?"></a>
 
-In the real world, the laws of physics govern everything from the smallest subatomic particle to the largest galaxy far, far away. Luckily for us, we don't have to understand quantum mechanics, Newtonian physics, or Euclidean space in order to make a fun game. A physics engine handles game events such as collision detection between objects, moves objects in a physically realistic way, and even deforms objects as if they are made up of a soft material.
+No mundo real, as leis da física governam tudo, desde a menor partícula subatômica até a maior galáxia muito, muito distante. Felizmente para nós, não precisamos entender a mecânica quântica, a física newtoniana ou o espaço euclidiano para fazer um jogo divertido. Um mecanismo de física lida com eventos de jogo, como detecção de colisão entre objetos, move objetos de uma forma fisicamente realista e até deforma objetos como se fossem feitos de um material macio.
 
-A physics engine moves things based on a set of predefined rules so that you, the artist, don't have to manually animate every object interaction. Compared to traditional keyframe animations, which are premade, the dynamic nature of the physics engine means that it is inherently non-deterministic[md]the motion of the object depends on the physical property of the object and its state in the physical world. This unique property makes games that utilize real-time physics fun to play around with, if not unpredictable sometimes.
+Um mecanismo de física move as coisas com base em um conjunto de regras predefinidas para que você, o artista, não precise animar manualmente cada interação de objeto. Em comparação com as animações de quadro-chave tradicionais, que são predefinidas, a natureza dinâmica do mecanismo de física significa que é inerentemente não determinístico [md] o movimento do objeto depende da propriedade física do objeto e de seu estado no mundo físico. Esta propriedade única torna os jogos que utilizam a física em tempo real divertidos, se não imprevisíveis às vezes.
 
-As usual, this chapter comes with a collection of example files that showcase what the physics engine can do. You can find them in the folder /chapters6/demos.
+Como de costume, este capítulo vem com uma coleção de arquivos de exemplo que mostram o que o mecanismo de física pode fazer. Você pode encontrá-los na pasta/chapters6/demos.
 
 ## Overview <a id="Overview"></a>
 
