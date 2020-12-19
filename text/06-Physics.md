@@ -149,27 +149,27 @@ Para criar um jogo com duas cenas:
 
 ## Culling Resolution <a id="Culling_Resolution"></a>
 
-Occlusion culling skips the rendering of objects that are out of view or behind an Occluder object. By not drawing these objects, you can speed up the display performance of the game. Occlusion culling used to be an option that could be turned off by the user, but in the most recent versions, occlusion culling is always turned on.
+A seleção de oclusão pula a renderização de objetos que estão fora de vista ou atrás de um objeto Oclusor. Ao não desenhar esses objetos, você pode acelerar o desempenho de exibição do jogo. A seleção de oclusão costumava ser uma opção que poderia ser desativada pelo usuário, mas nas versões mais recentes, a seleção de oclusão está sempre ativada.
 
-Occluder objects must be manually defined. For more information on how to set up occlusion culling, refer to Chapter 8, "Workflow and Optimization."
+Os objetos Occluder devem ser definidos manualmente. Para obter mais informações sobre como configurar a seleção de oclusão, consulte o Capítulo 8, "Fluxo de trabalho e otimização".
 
-The culling resolution setting controls how fine the occlusion test is. Higher value leads to slower performance, but it gives more accurate culling of smaller objects that might otherwise be missed by a low-resolution occlusion buffer. The default value of 128 is optimum for most cases.
+A configuração da resolução de eliminação controla a precisão do teste de oclusão. Um valor mais alto leva a um desempenho mais lento, mas fornece uma seleção mais precisa de objetos menores que, de outra forma, poderiam ser perdidos por um buffer de oclusão de baixa resolução. O valor padrão de 128 é ideal para a maioria dos casos.
 
 >**Not Visible but Still There**
 >
->Occlusion culling only skips the display of an object. The object would still be processed by the logic and physics engine. So any physical interaction, logic brick setup, or Python script attached to the object will run as usual even when the object is culled from the display.
+>A seleção de oclusão apenas ignora a exibição de um objeto. O objeto ainda seria processado pelo mecanismo lógico e físico. Portanto, qualquer interação física, configuração de tijolo lógico ou script Python anexado ao objeto será executado normalmente, mesmo quando o objeto é selecionado da tela.
 
 ## Physics Substeps <a id="Physics_Substeps"></a>
 
-The Physics Steps and Logic Steps are two settings that control the behavior of the physics engine. They are considered advanced tweaks that generally should not be tinkered with. And even if you do, the effect might not be obvious at first. This section tries to demystify those settings. Refer to Figure 6.15 as you follow along.
+As etapas de física e as etapas de lógica são duas configurações que controlam o comportamento do mecanismo de física. Eles são considerados ajustes avançados que geralmente não devem ser modificados. E mesmo se você fizer isso, o efeito pode não ser óbvio a princípio. Esta seção tenta desmistificar essas configurações. Consulte a Figura 6.15 conforme você segue.
 
-When physics simulation is not accurate enough, you might see objects going through each other, especially when objects are moving very fast relative to each other. To increase the accuracy of the physics simulation, you can force Blender to break down the physics simulation into a smaller slice of time. You do so by increasing the value of the subset in the interface. Essentially, a substep accounts for the number of physics iterations we have per frame. So 1 substep stands for one interaction per frame, 2 substeps is two iterations (this twice the physics calculations), etc. A higher number makes the physics simulation run with better accuracy, at the cost of a dramatic decrease in performance for physics-heavy scenes.
+Quando a simulação de física não é precisa o suficiente, você pode ver objetos passando uns pelos outros, especialmente quando os objetos se movem muito rápido em relação uns aos outros. Para aumentar a precisão da simulação de física, você pode forçar o Blender a quebrar a simulação de física em um intervalo menor de tempo. Você faz isso aumentando o valor do subconjunto na interface. Essencialmente, uma subetapa é responsável pelo número de iterações físicas que temos por quadro. Portanto, 1 subetapa representa uma interação por quadro, 2 subetapas são duas iterações (isto é o dobro dos cálculos físicos), etc. Um número mais alto faz a simulação de física funcionar com melhor precisão, ao custo de uma diminuição drástica no desempenho para físicos pesados cenas.
 
-If you run into any physical instability, you might be tempted to immediately raise the substep value. Avoid this impulse: do not rely entirely on substeps to hide a badly designed physics setup; the physics engine is designed to run with a substep of 1 or 2. Use other ways to stabilize the physics as described later in the chapter. Only raise the substep value when all else fails.
+Se você se deparar com alguma instabilidade física, pode ficar tentado a aumentar imediatamente o valor da subetapa. Evite este impulso: não confie inteiramente em subetapas para ocultar uma configuração de física mal projetada; o mecanismo de física é projetado para funcionar com uma subetapa de 1 ou 2. Use outras maneiras de estabilizar a física, conforme descrito posteriormente neste capítulo. Apenas aumente o valor da subetapa quando todo o resto falhar.
 
 >**Bottom Line**
 >
->Generally speaking, a value of 1 is sufficient for slow-moving games; 2 is optimum for fast-moving arcade games and action games with lots of physics interactions; driving games might require a 3 or a 4 (well, depending on how fast the car can go); do not use 5 unless your game contains supersonic objects.
+>De modo geral, o valor 1 é suficiente para jogos lentos; 2 é ideal para jogos de arcade de movimento rápido e jogos de ação com muitas interações físicas; os jogos de direção podem exigir um 3 ou um 4 (bem, dependendo de quão rápido o carro pode ir); não use 5 a menos que seu jogo contenha objetos supersônicos.
 
 ## On the Issue of Time <a id="On_the_Issue_of_Time"></a>
 
