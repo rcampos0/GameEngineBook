@@ -247,17 +247,17 @@ Tabela 6.1: Tipos de Física
 
 Para se familiarizar com os diferentes tipos de física, abra o arquivo de demonstração disponível em /Book/Chapter6/demo/physicsTypes.blend. Mostra alguns dos tipos comuns de física e seu comportamento, conforme mostrado na Figura 6.15.
 
-![Different physics types visualized](../figures/Chapter6/Fig06-15.png)
+![Diferentes tipos de física visualizados](../figures/Chapter6/Fig06-15.png)
 
-Let's look at the settings in more detail.
+Vejamos as configurações com mais detalhes.
 
 ### No Collision <a id="No_Collision"></a>
 
-No Collision skips all physics calculation. The objects will be effectively invisible to the physics engine. Other objects will not be able to detect collision with the object, nor collide with it. No Collision objects can still be moved using the Motion actuator. Use this for objects that you don't intend to interact with at all during the game, such as leaves of vegetation.
+No Collision pula todos os cálculos físicos. Os objetos serão efetivamente invisíveis para o mecanismo de física. Outros objetos não serão capazes de detectar a colisão com o objeto, nem colidir com ele. Nenhum objeto de colisão ainda pode ser movido usando o atuador de movimento. Use isso para objetos com os quais você não pretende interagir durante o jogo, como folhas de vegetação.
 
 >**Collision Proxy**
 >
->Setting an object to No Collision completely skips collision detection on the object, which can speed up the game considerably on a high-polygon mesh. A common practice is to set the high-polygon mesh to No Collision and then manually create a simplified "collision proxy" mesh object that approximates the shape of the high-polygon mesh. Then attach the high-polygon mesh to the collision proxy using parenting. This way, the low-polygon mesh will be used for all collision calculation, which is fast, and a high-polygon version of the object will be used for display, which is visually nicer. As this is an optimization technique, a step-by-step tutorial on creating a collision proxy is covered in Chapter 8.
+>Definir um objeto como Sem Colisão pula completamente a detecção de colisão no objeto, o que pode acelerar o jogo consideravelmente em uma malha de polígono alto. Uma prática comum é definir a malha de polígono alto como Sem colisão e então criar manualmente um objeto de malha "proxy de colisão" simplificado que se aproxima da forma da malha de polígono alto. Em seguida, anexe a malha de polígono alto ao proxy de colisão usando os pais. Desta forma, a malha de polígono baixo será usada para todos os cálculos de colisão, que é rápido, e uma versão de polígono alto do objeto será usada para exibição, que é visualmente melhor. Como esta é uma técnica de otimização, um tutorial passo a passo sobre como criar um proxy de colisão é abordado no Capítulo 8.
 
 ### Static <a id="Static"></a>
 
