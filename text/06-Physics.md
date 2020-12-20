@@ -205,39 +205,38 @@ Internamente, fps define o número de tiques lógicos e tics físicos nos quais 
 
 >**Bottom Line**
 >
->The default value of 60 is good for most game applications. Setting this value higher does not give you better performance. It is also customary for some games to set the fps to a lower value such as 30. The idea is that a game running at a constant 30fps feels smoother than a game that is fluctuating between 30fps and 60fps. Additionally, you can set vsync in your graphic card to force a frame rate ceiling. You don't have control over that in the player's computer, though.
+>O valor padrão de 60 é bom para a maioria dos aplicativos de jogos. Definir esse valor mais alto não oferece melhor desempenho. Também é comum para alguns jogos definir os fps para um valor mais baixo, como 30. A ideia é que um jogo rodando em 30fps constantes seja mais suave do que um jogo que flutua entre 30fps e 60fps. Além disso, você pode definir o vsync em sua placa gráfica para forçar um teto de taxa de quadros. Você não tem controle sobre isso no computador do jogador, no entanto.
 
 ## Physics Deactivation <a id="Physics_Deactivation"></a>
 
-The values Linear Threshold, Angular Threshold, and Time all control how aggressively the physics engine puts objects to "sleep" in order to reduce the load on the game.
+Os valores Limiar Linear, Limiar Angular e Tempo controlam a agressividade com que o mecanismo de física coloca os objetos "hibernando" para reduzir a carga no jogo.
 
-Setting the deactivation time to 0 effectively disables this optimization. Since sleep can also be disabled per object from the Physics Properties Editor, it's generally not recommended to disable deactivation here.
-
+Definir o tempo de desativação como 0 desativa efetivamente esta otimização. Como o sono também pode ser desabilitado por objeto no Editor de Propriedades de Física, geralmente não é recomendado desabilitar aqui.
 Lower the Linear Threshold if an object comes to a stop earlier than expected.
 
-Lower the Angular Threshold if an object comes to a stop from spinning earlier than expected.
+Abaixe o limite angular se um objeto parar de girar antes do esperado.
 
 ## Physics Panel Settings <a id="Physics_Panel_Settings"></a>
 
-So now that you are familiar with the World Properties Editor, which contains settings that apply to all physical objects indiscriminately, let's take a look at the Physics Properties Editor. From here, you can alter the physical characteristics of individual objects.
+Agora que você está familiarizado com o World Properties Editor, que contém configurações que se aplicam a todos os objetos físicos indiscriminadamente, vamos dar uma olhada no Physics Properties Editor. A partir daqui, você pode alterar as características físicas de objetos individuais.
 
-Physics settings apply to all game objects types, including mesh, empty, lamp, and camera.
+As configurações físicas se aplicam a todos os tipos de objetos do jogo, incluindo malha, vazio, lâmpada e câmera.
 
 ## Physics Types <a id="Physics_Types"></a>
 
-How do you decide which physics type to pick for an object? That largely depends on the role of the object in the game. Table 6.1 shows all the physics types that are available in Blender and their corresponding characteristics.
+Como você decide que tipo de física escolher para um objeto? Isso depende muito do papel do objeto no jogo. A Tabela 6.1 mostra todos os tipos de física que estão disponíveis no Blender e suas características correspondentes.
 
-|    Type       |    Collision G,F,T    |    Roll Typical Use                      |
-| ------------- |:---------------------:|:-----------------------------------------|
-| No collision  | No  No  No            | Effects, high-resolution mesh            |
-| Static        | Yes  No  No           | Buildings, immovable structures          |
-| Dynamic       | Yes  Yes  No          | None                                     |
-| Rigid Body    | Yes  Yes  Yes         | Movable barrels, crates, general objects |
-| Soft Body     | Yes  Partial  Yes     | Hair, cloth, rubber ducky                |
-| Occluder      | No  No  No            | Walls for performance optimization       |
-| Sensor        | Yes  No  No           | Event triggers                           |
-| Navigation    | No  No  No            | Pathfinding helper                       |
-| Character     | Yes  No  No           | Designed specifically for characters     |
+|    Tipo         |    Colisão G,F,T      |    Rolo de uso típico                      |
+| ----------------|:---------------------:|:-------------------------------------------|
+| Nenhuma colisão | Não  Não  Não         | Efeitos, malha de alta resolução           |
+| Estático        | Sim  Não  Não         | Edifícios, estruturas imóveis              |
+| Dinamico        | Sim  Sim  Não         | Nenhum                                     |
+| Corpo Rígido    | Sim  Sim  Sim         | Barris móveis, engradados, objetos gerais  |
+| Corpo Macio     | Sim  Parcial  Sim     | Cabelo, pano, patinho de borracha          |
+| Oclusor         | Não  Não  Não         | Paredes para otimização de desempenho      |
+| Sensor          | Sim  Não  Não         | Gatilhos de Evento                         |
+| Navigação       | Não  Não  Não         | Ajudante de Pathfinding                    |
+| Personagem      | Sim  Não  Não         | Projetado especificamente para personagens |
 
 Table 6.1: Physics Types
 - **Collision**: Whether the object detects collision.
