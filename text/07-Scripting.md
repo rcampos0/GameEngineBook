@@ -98,7 +98,7 @@ Através do uso de uma linguagem de script chamada _Python_, o motor de jogo (co
 
 Após uma breve visão geral dos fundamentos do Python, explicaremos como aplicar seu conhecimento de Python dentro do mecanismo de jogo. Você também aprenderá como acessar os métodos, propriedades e objetos do Python que usará.
 
-## Por que criar scripts quando você pode bloquear o Logic? <a id="Why_Script_When_You_Can_Logic_Brick_It?"></a>
+## Por que criar scripts quando você pode usar o Logic Bricks? <a id="Why_Script_When_You_Can_Logic_Brick_It?"></a>
 
 Podemos comparar tijolos lógicos com tijolos reais. Por um lado, temos elementos fortes sobre os quais construir nosso sistema, mas, por outro lado, temos um sistema tão flexível quanto uma parede cega.
 
