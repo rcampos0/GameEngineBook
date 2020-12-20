@@ -84,53 +84,53 @@
 			- [blf - Font Drawing](#blf_-_Font_Drawing)
 				- [Example: Writing Hello World](#Example_Writing_Hello_World)
 
-# Chapter 7: Python Scripting <a id="Chapter_7_Python_Scripting"></a>
+# Capítulo 7: Scripting Python <a id="Chapter_7_Python_Scripting"></a>
 
-Congratulations, you finally arrived at one of the most technical parts of the book. Keep that in mind in case you get lost.
+Parabéns, você finalmente chegou a uma das partes mais técnicas do livro. Tenha isso em mente no caso de você se perder.
 
-The Blender game engine was once famous for letting you create a full game without touching a single piece of code. Although this may sound attractive, it also leads to a very limited game-making experience. Logic bricks, as presented in Chapter 3, are very handy for quick prototyping. However, once you need to access advanced resources, external libraries and devices, or simply optimize your application, a programming language becomes your new best friend.
+O mecanismo de jogo do Blender já foi famoso por permitir que você crie um jogo completo sem tocar em uma única parte do código. Embora isso possa parecer atraente, também leva a uma experiência muito limitada de criação de jogos. Os blocos lógicos, conforme apresentados no Capítulo 3, são muito úteis para uma prototipagem rápida. No entanto, uma vez que você precisa acessar recursos avançados, bibliotecas e dispositivos externos, ou simplesmente otimizar seu aplicativo, uma linguagem de programação se torna seu novo melhor amigo.
 
-Through the use of a scripting language called _Python_, the game engine (as Blender itself) is fully extensible. This programming language is easy to learn, although extremely powerful. Be aware, though, that you will not find a complete guide to learning Python here. There are plenty of resources online and offline that will serve you better. However, even if you are not inclined to study Python deeply now, sooner or later you will find yourself struggling with script files. So, it's important to know what you are dealing with.
+Através do uso de uma linguagem de script chamada _Python_, o motor de jogo (como o próprio Blender) é totalmente extensível. Esta linguagem de programação é fácil de aprender, embora extremamente poderosa. Esteja ciente, porém, de que você não encontrará um guia completo para aprender Python aqui. Existem muitos recursos online e offline que irão atendê-lo melhor. No entanto, mesmo que você não esteja inclinado a estudar profundamente Python agora, mais cedo ou mais tarde você se encontrará lutando com arquivos de script. Portanto, é importante saber com o que você está lidando.
 
->**Yes, You Can**
+>**Sim você pode**
 >
->For those experienced Python programmers (or for those catching up with the reference learning material), always remember: if you can do something with Python, chances are, you can do it in the game engine.
+> Para os programadores Python experientes (ou para aqueles que estão se atualizando com o material de aprendizagem de referência), lembre-se sempre: se você pode fazer algo com Python, é provável que você possa fazê-lo no motor de jogo.
 
-After the brief overview in the Python basics, we will explain how to apply your knowledge of Python inside the game engine. You'll also learn how to access the Python methods, properties, and objects you'll be using.
+Após uma breve visão geral dos fundamentos do Python, explicaremos como aplicar seu conhecimento de Python dentro do mecanismo de jogo. Você também aprenderá como acessar os métodos, propriedades e objetos do Python que usará.
 
-## Why Script When You Can Logic Brick It? <a id="Why_Script_When_You_Can_Logic_Brick_It?"></a>
+## Por que criar scripts quando você pode bloquear o Logic? <a id="Why_Script_When_You_Can_Logic_Brick_It?"></a>
 
-We can compare logic bricks with real bricks. On the one hand, we have strong elements on which to build our system, but, on the other hand, we have a system as flexible as a blind wall.
+Podemos comparar tijolos lógicos com tijolos reais. Por um lado, temos elementos fortes sobre os quais construir nosso sistema, mas, por outro lado, temos um sistema tão flexível quanto uma parede cega.
 
-There are many occasions when the same effect can be achieved in different ways. Different phases of the production may also require varied workflows. The reason for picking a particular method is often personal. Nevertheless, we present here a few arguments that may convince you to crack a good Python book and start learning more about it:
+Existem muitas ocasiões em que o mesmo efeito pode ser obtido de maneiras diferentes. As diferentes fases da produção também podem exigir fluxos de trabalho variados. A razão para escolher um método específico costuma ser pessoal. No entanto, apresentamos aqui alguns argumentos que podem convencê-lo a ler um bom livro de Python e começar a aprender mais sobre ele:
 
-- Sane replacement for large-scale logic-bricked objects.
+- Substituição sensata para objetos de tijolos lógicos em grande escala.
 
-- Better handling of multiple objects.
+- Melhor manuseio de vários objetos.
 
-- Access to Blender's advanced features.
+- Acesso aos recursos avançados do Blender.
 
-- Use features that are not part of Blender.
+- Use recursos que não fazem parte do Blender.
 
-- Keep track of your changes with a version control system.
+- Acompanhe suas mudanças com um sistema de controle de versão.
 
-- Debug your game while it runs.
+- Depure seu jogo enquanto ele é executado.
 
->**Logic Brick, the Necessary Good**
+>**Tijolo lógico, o bem necessário**
 >
->You can't ever get away from logic bricks. Even when using Python exclusively for your game, you will need to invoke the scripts from a Python controller. The ideal is to find the balance that fits your project.
+> Você nunca pode fugir dos tijolos lógicos. Mesmo ao usar Python exclusivamente para o seu jogo, você precisará invocar os scripts de um controlador Python. O ideal é encontrar o equilíbrio que se adapta ao seu projeto.
 
-### Sane Replacement for Large-Scale Logic-Bricked Objects <a id="Sane_Replacement_for_Large-Scale_Logic-Bricked_Objects"></a>
+### Substituição Sensata para Objetos Logic Bricked em grande escala <a id="Sane_Replacement_for_Large-Scale_Logic-Bricked_Objects"></a>
 
-It's always good to have an excuse to show an image in a programming chapter, and here it is. In Figure 7.1 you see the logic bricks for Frankie, the main character of the open game _Yo Frankie!_
+É sempre bom ter uma desculpa para mostrar uma imagem em um capítulo de programação, e aqui está. Na Figura 7.1 você vê os blocos lógicos de Frankie, o personagem principal do jogo aberto _Yo Frankie! _
 
 ![Chapagetti](../figures/Chapter7/Fig07-01.png)
 
-This system is well organized: different actions belong to different states and sensors; controllers and actuators are properly named. Nevertheless, it's not hard to lose yourself trying to understand which sensor connects to which controller. One of the reasons for such a complex project to rely on logic bricks is because _Yo Frankie!_ serves as a didactic project for artists wanting to start with the game engine. Anyone with a little programming experience can take the files and expand the game freely. (Have you tried it yet?)
+Este sistema é bem organizado: diferentes ações pertencem a diferentes estados e sensores; controladores e atuadores são devidamente nomeados. No entanto, não é difícil se perder tentando entender qual sensor se conecta a qual controlador. Uma das razões para um projeto tão complexo depender de blocos lógicos é porque _Yo Frankie! _ Serve como um projeto didático para artistas que desejam começar com o motor de jogo. Qualquer pessoa com um pouco de experiência em programação pode pegar os arquivos e expandir o jogo livremente. (Você já experimentou?)
 
-However, you often aim for performance and workflow. Having everything centralized in a single script file can save you a lot of time.
+No entanto, você geralmente busca desempenho e fluxo de trabalho. Ter tudo centralizado em um único arquivo de script pode economizar muito tempo.
 
-Another important aspect while working is to document your project. It's easy to open a file only a few months old and find yourself completely lost. Script files, on the other hand, are naturally structured to be self-documented. To document logic bricks, you need to rely on text files inside or outside your Blender files (and neat image diagrams). It's definitively not as handy as inline comments along your code. (Code diagrams can still be useful, but that's a different topic.)
+Outro aspecto importante durante o trabalho é documentar seu projeto. É fácil abrir um arquivo de apenas alguns meses e ficar completamente perdido. Os arquivos de script, por outro lado, são naturalmente estruturados para serem autodocumentados. Para documentar tijolos lógicos, você precisa confiar em arquivos de texto dentro ou fora de seus arquivos do Blender (e diagramas de imagem legais). Definitivamente, não é tão útil quanto os comentários embutidos no seu código. (Os diagramas de código ainda podem ser úteis, mas esse é um tópico diferente.)
 
 >**For the Artist Behind the Programmer Façade**
 >
