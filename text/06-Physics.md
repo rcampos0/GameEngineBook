@@ -261,51 +261,51 @@ No Collision pula todos os cálculos físicos. Os objetos serão efetivamente in
 
 ### Static <a id="Static"></a>
 
-Static objects are the default physics type for objects. They do not fall due to gravity, nor do they move by external impact, such as another object striking them. By default, the mesh itself is used as the collision mesh, which can be slow if the object has a lot of polygons. Static objects never move on collision with another object. Use this setting for objects that require collision but don't move, such as buildings and fixed structures.
+Objetos estáticos são o tipo de física padrão para objetos. Eles não caem devido à gravidade, nem se movem por impacto externo, como outro objeto os atingindo. Por padrão, a própria malha é usada como malha de colisão, que pode ser lenta se o objeto tiver muitos polígonos. Objetos estáticos nunca se movem em colisão com outro objeto. Use esta configuração para objetos que requerem colisão, mas não se movem, como edifícios e estruturas fixas.
 
 ### Dynamic <a id="Dynamic"></a>
 
-Dynamic objects are different from static objects in that they have a defined mass and follow the basic Newtonian law of mass and acceleration. They fall due to gravity and react when another object collides with them. By default, the collision bound for dynamic objects is a sphere for performance reasons. Sometimes this is sufficient, but most of the time, it's better to use another shape as the collision bound. More on collision bounds in Chapter 8. Moreover, because dynamic objects do not roll, their usefulness is limited. If you want to simulate a realistic 3D object, Rigid Body is what you want.
+Os objetos dinâmicos são diferentes dos objetos estáticos porque têm uma massa definida e seguem a lei newtoniana básica de massa e aceleração. Eles caem devido à gravidade e reagem quando outro objeto colide com eles. Por padrão, o limite de colisão para objetos dinâmicos é uma esfera por motivos de desempenho. Às vezes, isso é suficiente, mas na maioria das vezes, é melhor usar outra forma como limite de colisão. Mais sobre limites de colisão no Capítulo 8. Além disso, como os objetos dinâmicos não rolam, sua utilidade é limitada. Se você deseja simular um objeto 3D realista, Rigid Body é o que você deseja.
 
 ### Rigid Body <a id="Rigid_Body"></a>
 
-Rigid body behaves very similarly to a dynamic object: they have a defined mass, accelerate due to gravity, and react to collisions. On top of that, rigid body objects have the ability to tumble when needed, whereas a dynamic object will slide awkwardly down a ramp without rotating.
+O corpo rígido se comporta de maneira muito semelhante a um objeto dinâmico: eles têm uma massa definida, aceleram devido à gravidade e reagem a colisões. Além disso, objetos de corpo rígido têm a capacidade de rolar quando necessário, enquanto um objeto dinâmico desliza desajeitadamente por uma rampa sem girar.
 
-If the Suzanne model in the aforementioned sample Blender file is set to Rigid Body, it will behave like a real object, fall toward the ground, and come to rest on one of its ears.
+Se o modelo Suzanne no arquivo de amostra do Blender mencionado acima for definido como Corpo Rígido, ele se comportará como um objeto real, cairá em direção ao solo e parará em uma de suas orelhas.
 
 >**Avoid DLoc Movement**
 >
->When using a dynamics based object (Dynamic, Rigid Body, and so on), you should use physics-based options, such as force and linear velocity for movement, and not change its location directly by dLoc.
+>Ao usar um objeto baseado em dinâmica (Dynamic, Rigid Body e assim por diante), você deve usar opções baseadas em física, como força e velocidade linear para movimento, e não alterar sua localização diretamente por dLoc.
 
 ### Soft Body <a id="Soft_Body"></a>
 
-Whereas all the previously described physics types operate on the objects by moving and rotating them around without changing the underlying geometry, Soft Body physics uses a mass-spring system to apply deformations to the actual geometry. With Soft Body, you can create convincing cloth and other soft objects. Although it is very cool to play around with, Soft Body is very computationally intensive compared to the other physics types, and not as stable, so use it sparingly.
+Enquanto todos os tipos de física descritos anteriormente operam nos objetos movendo-os e girando-os sem alterar a geometria subjacente, a física Soft Body usa um sistema de massa-mola para aplicar deformações à geometria real. Com Soft Body, você pode criar tecidos convincentes e outros objetos macios. Embora seja muito legal para brincar, Soft Body é muito computacionalmente intensivo em comparação com os outros tipos de física, e não é tão estável, então use-o com moderação.
 
-As seen in the Suzanne model in the sample file, it will fall due to gravity, and once it hits the ground, it collapses as if it's made of a rubber shell. This is the power of Soft Body physics.
+Conforme visto no modelo Suzanne no arquivo de amostra, ele cairá devido à gravidade e, quando atingir o solo, desmorona como se fosse feito de uma casca de borracha. Este é o poder da física do Soft Body.
 
 >**Apply Scale**
 >
->The physics engine works more reliably when the objects have a scale of 1. Thus, it is highly recommended to Apply Scale by pressing Ctrl+A on most of the objects before you run the game. This will prevent a lot of the strange issues that might crop up later.
+>O mecanismo de física funciona de forma mais confiável quando os objetos têm uma escala de 1. Portanto, é altamente recomendável Aplicar escala pressionando Ctrl + A na maioria dos objetos antes de executar o jogo. Isso evitará muitos dos problemas estranhos que podem surgir mais tarde.
 
 ### Occluder <a id="Occluder"></a>
 
-Occluder objects do not react to gravity and collision. Their only function is to make any objects behind them invisible. Occluder objects are used to help the game engine decide when to remove objects from view to speed up the rendering performance. Strategically-placed occluders can significantly increase the performance of the game.
+Objetos oclusores não reagem à gravidade e à colisão. Sua única função é tornar invisíveis todos os objetos atrás deles. Os objetos Occluder são usados para ajudar o mecanismo de jogo a decidir quando remover objetos da vista para acelerar o desempenho de renderização. Os oclusores estrategicamente posicionados podem aumentar significativamente o desempenho do jogo.
 
-Figure 6.16 explains how occluders work.
+A Figura 6.16 explica como funcionam os oclusores.
 
-From left to right, the first image shows the scene setup of /Book/Chapter6/PhysicsOccluder.blend. The second image shows what the camera sees. Notice the monkey head is not visible because the plane is blocking it. The third image is the view from the same camera while in-game, in wireframe mode. Notice that even though the monkey head is behind the wall, it is still being rendered, thus wasting precious computing time. The last image is the same in-game view as the previous image, but with the wall set to Occluder, the monkey head is not displayed.
+Da esquerda para a direita, a primeira imagem mostra a configuração da cena de /Book/Chapter6/PhysicsOccluder.blend. A segunda imagem mostra o que a câmera vê. Observe que a cabeça do macaco não está visível porque o avião a está bloqueando. A terceira imagem é a vista da mesma câmera durante o jogo, no modo wireframe. Observe que, embora a cabeça do macaco esteja atrás da parede, ela ainda está sendo renderizada, desperdiçando um precioso tempo de computação. A última imagem é a mesma visualização do jogo que a imagem anterior, mas com a parede configurada para Occluder, a cabeça do macaco não é exibida.
 
 ![Occluder culling](../figures/Chapter6/Fig06-16.png)
 
 ### Sensor <a id="Sensor"></a>
 
-Similar to Static Object, a Sensor object detects collision with another object. It is usually used as a replacement for the "radar" or "near" sensor because a Sensor object can be made into any arbitrary shape. Furthermore, Sensors will detect collisions, but they do not register a response. In other words, they behave like ghost objects. Additional logic bricks are needed to utilize a Sensor object effectively.
+Semelhante ao objeto estático, um objeto Sensor detecta a colisão com outro objeto. É geralmente usado como um substituto para o sensor "radar" ou "próximo" porque um objeto Sensor pode ser feito em qualquer forma arbitrária. Além disso, os sensores detectam colisões, mas não registram uma resposta. Em outras palavras, eles se comportam como objetos fantasmas. Tijolos lógicos adicionais são necessários para utilizar um objeto Sensor com eficácia.
 
 ### Navigation Mesh <a id="Navigation_Mesh"></a>
 
-This setting turns an object into a helper object that is used for pathfinding navigation.
+Esta configuração transforma um objeto em um objeto auxiliar que é usado para navegação de pathfinding.
 
-Since Blender 2.6, the game engine has a fully automated AI pathfinding routine. It can be used to direct an AI character through the 3D world, reaching a target, while avoiding obstacles.
+Desde o Blender 2.6, o motor de jogo tem uma rotina de pathfinding AI totalmente automatizada. Ele pode ser usado para direcionar um personagem de IA através do mundo 3D, alcançando um alvo, enquanto evita destruir.
 
 #### Hands-on Tutorial: Navigation <a id="Hands-on_Tutorial_Navigation"></a>
 
