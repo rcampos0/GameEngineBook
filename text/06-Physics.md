@@ -309,156 +309,156 @@ Desde o Blender 2.6, o motor de jogo tem uma rotina de pathfinding AI totalmente
 
 #### Hands-on Tutorial: Navigation <a id="Hands-on_Tutorial_Navigation"></a>
 
-1. Open /Book/Chapter6/navigation.blend
+1. Abra /Book/Chapter6/navigation.blend
 
-2. This scene is set up with four objects (excluding the lamp and the camera).
+2. Esta cena é configurada com quatro objetos (excluindo a lâmpada e a câmera).
 
-3. _Monkey_ is our main character; it will be navigating through the maze (the VisualMesh) to get to the Target. To aid its quest, we have created a simple helper geometry that outlines where the character can walk. This object is known as the _NavMesh_. Figure 6.17 shows the initial setup.
+3. _Monkey_ é nosso personagem principal; ele estará navegando pelo labirinto (o VisualMesh) para chegar ao alvo. Para ajudar em sua busca, criamos uma geometria auxiliar simples que descreve por onde o personagem pode andar. Este objeto é conhecido como _NavMesh_. A Figura 6.17 mostra a configuração inicial.
 
 ![Navigation system](../figures/Chapter6/Fig06-17.png)
 
-4. A navigation mesh is a helper object (invisible while the game is running) that is used to help guide other objects along a path. The NavMesh object is a regular mesh object that defines the shape of the accessible area for the pathfinding routine.
+4. Uma malha de navegação é um objeto auxiliar (invisível enquanto o jogo está em execução) que é usado para ajudar a guiar outros objetos ao longo de um caminho. O objeto NavMesh é um objeto de malha regular que define a forma da área acessível para a rotina de pathfinding.
 
-5. There are two ways to create a navigation mesh. One is to manually model a geometry that covers all the areas that are accessible to a character. This is what we have done with NavMesh.
+5. Existem duas maneiras de criar uma malha de navegação. Uma é modelar manualmente uma geometria que cobre todas as áreas acessíveis a um personagem. Isso é o que fizemos com NavMesh.
 
-6. Another option is to ask Blender to create a navigation automatically. It might be easier for larger maps, but the result is far less predictable. We will cover this functionality at the end of this hands-on tutorial.
+6. Outra opção é pedir ao Blender para criar uma navegação automaticamente. Pode ser mais fácil para mapas maiores, mas o resultado é muito menos previsível. Abordaremos essa funcionalidade no final deste tutorial prático.
 
-7. Make sure that the NavMesh object is selected and change its physics type to Navigation Mesh. The NavMesh will turn into a colorful grid, but don't be alarmed[md]this is normal. It means the object now can be used to aid in navigation. Navigation meshes becomes invisible when the game is running.
+7. Certifique-se de que o objeto NavMesh esteja selecionado e altere seu tipo de física para Navigation Mesh. O NavMesh se transformará em uma grade colorida, mas não se assuste [md], isso é normal. Isso significa que o objeto agora pode ser usado para auxiliar na navegação. As malhas de navegação ficam invisíveis durante o jogo.
 
-8. Select the Monkey object and add a "steering" Logic Brick actuator to it, as shown in Figure 6.18. Define the target and navigation mesh object, as shown in Figure 6.19.
+8. Selecione o objeto Monkey e adicione um atuador Logic Brick de "direção" a ele, conforme mostrado na Figura 6.18. Defina o alvo e o objeto de malha de navegação, conforme mostrado na Figura 6.19.
 
 ![Steering actuator setup](../figures/Chapter6/Fig06-18.png)
 
-9. And you are done! Start the game and watch the monkey seek out the cone. The Steering actuator contains additional options that you can explore.
+9. E pronto! Comece o jogo e observe o macaco procurar o cone. O Atuador de direção contém opções adicionais que você pode explorar.
 
-10. Figure 6.19 shows the finished game running in the Blender game engine. You can check out navigation-finished.blend.
+10. A Figura 6.19 mostra o jogo finalizado rodando no motor de jogo do Blender. Você pode verificar navigation-ended.blend.
 
 ![Finished](../figures/Chapter6/Fig06-19.png)
 
-11. As promised, another way to create a navigation mesh is to use the automatic generator. To do this, delete the NavMeshobject first so you can start with a clean slate.
+11. Como prometido, outra maneira de criar uma malha de navegação é usar o gerador automático. Para fazer isso, exclua o NavMeshobject primeiro para que você possa começar do zero.
 
-12. Select the object you want to use as the guide in creating the navigation mesh. In this case, you need to select VisualMesh. Blender will build a new navigation mesh based on this mesh.
+12. Selecione o objeto que deseja usar como guia na criação da malha de navegação. Nesse caso, você precisa selecionar VisualMesh. O Blender irá construir uma nova malha de navegação baseada nesta malha.
 
-13. Go to the Scene tab of the Properties Editor, as seen in Figure 6.20. You should see a "Build Navigation Mesh" button, along with a whole slew of settings.
+13. Vá para a guia Scene do Properties Editor, conforme mostrado na Figura 6.20. Você deve ver um botão "Build Navigation Mesh", junto com uma série de configurações.
 
 ![Automatic navigation mesh generation](../figures/Chapter6/Fig06-20.png)
 
-14. Pressing the aforementioned button will create a navigation mesh automatically from the visual mesh.
+14. Pressionar o botão mencionado criará uma malha de navegação automaticamente a partir da malha visual.
 
-15. If the result isn't optimal, play with the settings. Agent Radius is a good place to start.
+15. Se o resultado não for o ideal, brinque com as configurações. O agente Radius é um bom lugar para começar.
 
 ### Characters <a id="Characters"></a>
 
-This is a specialized physics type that is designed specifically for player-controlled characters. This physics type follows the basic rules of kinematics, while ignoring some of the other physical rules in order to make the object's behavior more predicable. For example, the character object type doesn't bounce off walls or slide on ramps. PhysicsType.blend has an example of a playable character object that walks around. Try to move it with the arrow keys.
+Este é um tipo de física especializado projetado especificamente para personagens controlados pelo jogador. Este tipo de física segue as regras básicas da cinemática, enquanto ignora algumas das outras regras físicas para tornar o comportamento do objeto mais previsível. Por exemplo, o tipo de objeto de personagem não ricocheteia nas paredes ou desliza nas rampas. PhysicsType.blend tem um exemplo de um objeto de personagem jogável que anda por aí. Tente movê-lo com as setas do teclado.
 
 ## Common Settings <a id="Common_Settings"></a>
 
-Whew. With all the physics types out of the way, let's look at some of the shared settings common to most of the physics types described earlier.
+Uau. Com todos os tipos de física fora do caminho, vamos dar uma olhada em algumas das configurações compartilhadas comuns à maioria dos tipos de física descritos anteriormente.
 
-- **Actor:** Makes the object part of the physics evaluation loop. An object not marked as an actor is ignored by the Near and Radar sensors, although it will still obey the laws of physics.
+- **Actor:** Torna o objeto parte do ciclo de avaliação física. Um objeto não marcado como ator é ignorado pelos sensores Near e Radar, embora ainda obedeça às leis da física.
 
-- **Ghost:** Makes an object not react to collisions such that it will pass through another[md]like a ghost. Collisions are still detected for ghost objects, so any sensors that detect collision between two ghost objects will still fire, but the objects will not bounce apart as they normally would.
+- **Ghost:** Faz com que um objeto não reaja a colisões de forma que passe por outro [md] como um fantasma. As colisões ainda são detectadas para objetos fantasmas, então quaisquer sensores que detectem a colisão entre dois objetos fantasmas ainda irão disparar, mas os objetos não irão se separar como normalmente fariam.
 
-- **Invisible:** Skips rendering of the object while still calculating all the physics and logic. This is useful for creating invisible walls and edges of maps to prevent players from visiting places you do not want them to go.
+- **Invisible:** Pula a renderização do objeto enquanto ainda calcula toda a física e lógica. Isso é útil para criar paredes e bordas invisíveis de mapas para evitar que os jogadores visitem lugares que você não quer que eles vão.
 
-- **Mass:** Sets the mass of the object. A heavier object requires more force to move. Contrary to intuition, a heavier object does not fall faster than a lighter object (see note, "Hammer and Feather"). So increasing the mass will not make your object fall faster. To make objects fall faster, lower the damping on the object or increase the gravity in World settings.
+- **Mass:** Define a massa do objeto. Um objeto mais pesado requer mais força para se mover. Ao contrário da intuição, um objeto mais pesado não cai mais rápido do que um objeto mais leve (veja a nota, "Martelo e Pena"). Portanto, aumentar a massa não fará seu objeto cair mais rápido. Para fazer os objetos caírem mais rápido, diminua o amortecimento no objeto ou aumente a gravidade nas configurações do mundo.
 
 >**Hammer and Feather**
 >>
->A hammer and a feather fall at the same rate in vacuum! In air, the drag force will slow down a lighter object more than a heavier object, so a heavier object indeed falls faster than a lighter object. But since Blender does not model air friction, object mass does not affect how fast they fall. This is not a bug!
+>Um martelo e uma pena caem na mesma proporção no vácuo! No ar, a força de arrasto vai desacelerar um objeto mais leve mais do que um objeto mais pesado, então um objeto mais pesado realmente cai mais rápido do que um objeto mais leve. Porém, como o Blender não modela o atrito do ar, a massa do objeto não afeta a velocidade com que eles caem. Isso não é um bug!
 
-Just as an 18-wheeler truck hitting a bunny won't have a happy ending (for the bunny), the physics engine works best when the objects interacting have masses of a similar magnitude. When an object with a very large mass collides with an object with a very small mass, instability might be created in the physics engine. As a general rule, keep all objects within 2 magnitudes of mass to each other. So, if an object weighs 1.0, it shouldn't interact with an object that is much heavier than 100.0.
+Assim como um caminhão de 18 rodas batendo em um coelho não terá um final feliz (para o coelho), o mecanismo de física funciona melhor quando os objetos interagindo têm massas de magnitude semelhante. Quando um objeto com uma massa muito grande colide com um objeto com uma massa muito pequena, pode ser criada instabilidade no mecanismo de física. Como regra geral, mantenha todos os objetos dentro de 2 magnitudes de massa entre si. Portanto, se um objeto pesa 1,0, ele não deve interagir com um objeto muito mais pesado do que 100,0.
 
-- **Radius:** Controls the radius of the collision sphere. If a collision bound other than Sphere is selected, this setting has no effect.
+- **Radius:** Controla o raio da esfera de colisão. Se um limite de colisão diferente de Sphere for selecionado, esta configuração não terá efeito.
 
-- **No sleeping:** By default, the physics engine automatically suspends the physics calculation for an object when its motion is sufficiently slow. This is known as "sleeping." Putting the object to sleep can free up the CPU cycle and increase game performance until another object interacts with it again. Putting objects to sleep can cause some odd-looking behaviors, such as slow-moving objects coming to a sudden stop. "No sleeping" disables this optimization. The downside is that "no sleeping" might lead to some odd, jittery behavior for objects that are not perfectly stable.
+- **No sleeping:** Por padrão, o mecanismo de física suspende automaticamente o cálculo da física para um objeto quando seu movimento é suficientemente lento. Isso é conhecido como "dormir". Colocar o objeto para dormir pode liberar o ciclo da CPU e aumentar o desempenho do jogo até que outro objeto interaja com ele novamente. Colocar objetos para dormir pode causar alguns comportamentos estranhos, como objetos que se movem lentamente e param repentinamente. "Sem dormir" desativa esta otimização. A desvantagem é que "não dormir" pode levar a um comportamento estranho e nervoso para objetos que não são perfeitamente estáveis.
 
-Additionally, there are options for controlling when objects go to sleep in the World properties under the "Physics Deactivation" label. This settings can be used to change the global delay before objects are deactivated.
+Além disso, existem opções para controlar quando os objetos vão dormir nas propriedades do mundo sob o rótulo "Desativação física". Essas configurações podem ser usadas para alterar o atraso global antes que os objetos sejam desativados.
 
-- **Damping:** Applies a drag force on an object. A damping of 0 corresponds to no friction at all, just like a spherical cow traveling in a vacuum. A damping of 1.0 corresponds to a drag force so strong that the object will be unable to move. Translational damping slows down an object's movement; rotational damping slows down an object's spinning.
+- **Damping:** Aplica uma força de arrasto em um objeto. Um amortecimento de 0 corresponde a nenhum atrito, assim como uma vaca esférica viajando no vácuo. Um amortecimento de 1,0 corresponde a uma força de arrasto tão forte que o objeto será incapaz de se mover. O amortecimento translacional retarda o movimento de um objeto; o amortecimento rotacional diminui a rotação de um objeto.
 
-- **Anisotropic Friction:** Controls the friction force per axis. You can use this to mimic objects that have different coefficients of friction, depending on the orientation of the object. For example, a skateboard slides easily along its length, but is almost unmovable sideways.
+- **Anisotropic Friction:** Controla a força de atrito por eixo. Você pode usar isso para imitar objetos que possuem coeficientes de atrito diferentes, dependendo da orientação do objeto. Por exemplo, um skate desliza facilmente ao longo de seu comprimento, mas é quase imóvel de lado.
 
-- **Form Factor:** The tooltip says this setting "scales the inertia tensor." Make sense? No? Well, aren't you glad you have this book! Form factor controls the tendency for an object to roll. The bigger the value, the less likely an object will roll and tumble. A smaller value makes the object much more likely to rotate. Set the value too low, and the object will become unstable. The default value is a good balance between physics stability and realism.
+- **Form Factor:** A dica de ferramenta diz que essa configuração "dimensiona o tensor de inércia". Faz sentido? Não? Bem, você não está feliz por ter este livro! O fator de forma controla a tendência de um objeto rolar. Quanto maior o valor, menor a probabilidade de um objeto rolar e tombar. Um valor menor torna o objeto muito mais provável de girar. Defina o valor muito baixo e o objeto se tornará instável. O valor padrão é um bom equilíbrio entre estabilidade física e realismo.
 
-- **Collision Bounds:** This is the shape of the object as it appears to the physics engine. This might sound surprising, but the shape of the object used for physics calculation is not always the same as the one that is displayed. The distinction is important because, for performance reasons, a rough proxy shape is often used in place of the actual geometry. This way, the user still sees a fully detailed object on the screen, but the physics engine can run a lot faster using a simplified collision bound. It is important to try to use the simplest collision bounds possible in order to keep the game engine's performance fast.
+- **Collision Bounds:** Esta é a forma do objeto conforme aparece para o motor de física. Isso pode parecer surpreendente, mas a forma do objeto usado para cálculos físicos nem sempre é a mesma que é exibida. A distinção é importante porque, por motivos de desempenho, uma forma aproximada de proxy é freqüentemente usada no lugar da geometria real. Dessa forma, o usuário ainda vê um objeto totalmente detalhado na tela, mas o mecanismo de física pode funcionar muito mais rápido usando um limite de colisão simplificado. É importante tentar usar os limites de colisão mais simples possíveis para manter o desempenho do motor de jogo rápido.
 
-- **Capsule** , **Box** , **Sphere** , **Cylinder,** and **Cone:** These are some of the basic primitives that can be used to approximate different collision bounds (see Figure 6.21). Their shapes are self-explanatory. To see exactly how the bounding box is applied to your model in-game, turn on "Show Physics Visualization" in the Game Options screen.
+- **Capsule** , **Box** , **Sphere** , **Cylinder,** e **Cone:** Essas são algumas das primitivas básicas que podem ser usadas para aproximar diferentes limites de colisão (consulte a Figura 6.21). Suas formas são autoexplicativas. Para ver exatamente como a caixa delimitadora é aplicada ao seu modelo no jogo, ative "Mostrar Visualização Física" na tela Opções do Jogo.
 
-When the collision bound is set to Convex Hull, the collision bound takes the shape of the object, but with all the concave areas filled in. Convex Hull can accurately approximate an object of any shape as long as it doesn't have any "negative" space, such as holes. For example, a doughnut-shaped rigid body object set to Convex Hull will be treated as if the hole isn't there.
+Quando o limite de colisão é definido como Convex Hull, o limite de colisão assume a forma do objeto, mas com todas as áreas côncavas preenchidas. Convex Hull pode aproximar com precisão um objeto de qualquer forma, desde que não tenha nenhum "negativo "espaço, como orifícios. Por exemplo, um objeto de corpo rígido em forma de rosca definido como Convex Hull será tratado como se o furo não existisse.
 
-![Collision bounds visualization: Top row: box, sphere, cylinder; Bottom row: cone, convex hull, triangle mesh](../figures/Chapter6/Fig06-21.png)
+![Visualização de limites de colisão: Linha superior: caixa, esfera, cilindro; Linha inferior: cone, casco convexo, malha triangular](../figures/Chapter6/Fig06-21.png)
 
-- **Triangle Mesh:** This is the most robust collision bound type. It will create a collision bound that is an exact duplicate of the actual mesh. If you want to ensure that the collision bound matches the visual mesh exactly, this is the setting to use. So why don't we use this setting all the time? The reason is performance and stability. The physics engine is far better optimized for simple primitives, such as a box, than an arbitrarily shaped triangle mesh.
+- **Triangle Mesh:** Este é o tipo de limite de colisão mais robusto. Isso criará um limite de colisão que é uma duplicata exata da malha real. Se você quiser garantir que o limite de colisão corresponda exatamente à malha visual, esta é a configuração a ser usada. Então, por que não usamos essa configuração o tempo todo? O motivo é desempenho e estabilidade. O mecanismo de física é muito melhor otimizado para primitivos simples, como uma caixa, do que uma malha de triângulo de forma arbitrária.
 
 >**Visualizing Collision Bounds**
 >
->Once the collision bound is set, you should notice that the collision bound is visualized as a dashed lines in the 3D viewport. This helps you visualize the relationship between the collision bounds and the visual mesh.
->To visualize the collision bounds in-game, turn on "Show Physics Visualization" in the Game Options screen and run the game.
+>Uma vez que o limite de colisão é definido, você deve notar que o limite de colisão é visualizado como linhas tracejadas na janela de exibição 3D. Isso ajuda a visualizar a relação entre os limites de colisão e a malha visual.
+> Para visualizar os limites da colisão no jogo, ative "Mostrar Visualização Física" na tela Opções do Jogo e execute o jogo.
 
-- **Collision Margin:** The Bullet Physics Engine SDK Manual explains that the collision margin is an internal setting that improves the performance and stability of the collision detection by giving thickness to each face. It is highly recommended that you do not adjust this setting outside its normal range (0.05). In some cases, too high of a value will result in a tiny air gap between colliding objects. Too small of a value will increase the chance of missed collisions between objects.
+- **Collision Margin:** O Manual do Bullet Physics Engine SDK explica que a margem de colisão é uma configuração interna que melhora o desempenho e a estabilidade da detecção de colisão, dando espessura a cada face. É altamente recomendável que você não ajuste esta configuração fora de sua faixa normal (0,05). Em alguns casos, um valor muito alto resultará em um pequeno intervalo de ar entre os objetos em colisão. Um valor muito pequeno aumentará a chance de colisões perdidas entre objetos.
 
-- **Compound:** The compound setting makes objects linked together by parent-children relationships behave as if they are a single physics entity.
+- **Compound:** A configuração composta faz com que os objetos vinculados por relacionamentos pai-filhos se comportem como se fossem uma única entidade física.
 
-But, why use compound when you can just join your objects together with Ctrl+J? Apart from the fact that there might be times when you need to control individual objects (so joining them might not be an option), using compound collision bounds made up of simple primitives is actually recommended over using one triangle mesh collision bound. The reason is again that a combination of simple primitives is faster to compute than a triangle meshes.
+Mas, por que usar compostos quando você pode simplesmente unir seus objetos com Ctrl + J? Além do fato de que pode haver momentos em que você precisa controlar objetos individuais (então juntá-los pode não ser uma opção), usar limites de colisão compostos feitos de primitivas simples é realmente recomendado em vez de usar um limite de colisão de malha de triângulo. A razão é novamente que uma combinação de primitivas simples é mais rápida de calcular do que malhas de triângulo.
 
 ### Hands-on Tutorial: Creating Compound Objects <a id="Hands-on_Tutorial_Creating_Compound_Objects"></a>
 
-To create a compound physics object (see Figure 6.22):
+Para criar um objeto de física composta (ver Figura 6.22):
 
-1. Open /Book/Chapter6/compound.blend.
+1. Abra /Book/Chapter6/compound.blend.
 
-2. Run the game. Notice that even though the three objects are parented together, they do not react to the ground plane in a convincing way. Only the parent object collides with the ground.
+2. Execute o jogo. Observe que, embora os três objetos sejam parentes, eles não reagem ao plano do solo de maneira convincente. Apenas o objeto pai colide com o solo.
 
-3. To change that, from the Physics Properties Editor, turn on Compound for each of the three objects.
+3. Para mudar isso, no Editor de Propriedades de Física, ative Composto para cada um dos três objetos.
 
-4. Run the game now and notice that all objects contribute to the kinematics of the group.
+4. Execute o jogo agora e observe que todos os objetos contribuem para a cinemática do grupo.
 
-![Compound objects physics](../figures/Chapter6/Fig06-22.png)
+![Física de objetos compostos](../figures/Chapter6/Fig06-22.png)
 
 ## Material Panel Physics Settings <a id="Material_Panel_Physics_Settings"></a>
 
-By adding a material to the object, you enable additional options that give you finer control over some of the physical properties of the surface. Figure 6.23 shows the physics settings found in the Material panel.
+Ao adicionar um material ao objeto, você ativa opções adicionais que fornecem um controle mais preciso sobre algumas das propriedades físicas da superfície. A Figura 6.23 mostra as configurações físicas encontradas no painel Material.
 
-![Material physics settings](../figures/Chapter6/Fig06-23.png)
+![Configurações de física de materiais](../figures/Chapter6/Fig06-23.png)
 
-- **Friction:** Controls the force that slows down a moving object when it comes in contact with another object. The effective friction force between two objects is dependent on the friction settings on both objects. So if one object with a high friction setting comes in contact with another object with low friction, the effective friction force would be somewhere in the middle of the two values.
+- **Friction:** Controla a força que desacelera um objeto em movimento quando ele entra em contato com outro objeto. A força de atrito efetiva entre dois objetos depende das configurações de atrito em ambos os objetos. Portanto, se um objeto com uma configuração de alto atrito entrar em contato com outro objeto com baixo atrito, a força de atrito efetiva estaria em algum lugar no meio dos dois valores.
 
-- **Elasticity:** Controls the "bounciness" of the objects when they collide with another. An object with low elasticity does not bounce away as far after a collision; an object with high elasticity loses almost no momentum in a collision and bounces away at almost the same speed as it came in. The effective elasticity between two colliding objects takes both objects into account. A tennis ball hitting a hardwood floor would be an example of an elastic object colliding with another elastic object. A tennis ball hitting carpet would be an example of an elastic object colliding with a non-elastic object.
+- **Elasticity:** Controla o "salto" dos objetos quando eles colidem com outro. Um objeto com baixa elasticidade não rebate tanto após uma colisão; um objeto com alta elasticidade quase não perde impulso em uma colisão e salta quase na mesma velocidade em que entrou. A elasticidade efetiva entre dois objetos em colisão leva os dois objetos em consideração. Uma bola de tênis batendo em um piso de madeira seria um exemplo de um objeto elástico colidindo com outro objeto elástico. Uma bola de tênis atingindo o tapete seria um exemplo de um objeto elástico colidindo com um objeto não elástico.
 
-- **Force Field:** The next set of settings controls what Blender calls _force field._ When the force and distance are set to non-zero, a force field is generated on all the faces so that any object that comes within range (as specified by the distance setting) is pushed away with a certain force (as specified by the force setting). The result of this is that object that comes close to a force field surface will be repelled. The effect on the object is exactly as the name implies: it mimics a magnetic field. The damping setting slows down the object.
+- **Force Field:** O próximo conjunto de configurações controla o que o Blender chama de _ campo de força._ Quando a força e a distância são definidas como diferentes de zero, um campo de força é gerado em todas as faces para que qualquer objeto que esteja dentro do alcance (conforme especificado pela configuração de distância) é empurrado para longe com uma certa força (conforme especificado pela configuração de força). O resultado disso é que o objeto que se aproxima de uma superfície de campo de força será repelido. O efeito no objeto é exatamente o que o nome indica: ele imita um campo magnético. A configuração de amortecimento torna o objeto mais lento.
 
-Once Force Field is enabled in the Material panel, you will need to tell individual objects to respect that setting by going into the Physics Properties Editor and turning on Use Material Force Field.
+Depois que Force Field estiver habilitado no painel Material, você precisará dizer a objetos individuais para respeitar essa configuração acessando o Editor de Propriedades de Física e ativando Use Material Force Field.
 
 ### Hands-on Tutorial: Force Field Water Surface <a id="Hands-on_Tutorial_Force_Field_Water_Surface"></a>
 
-Force field can be used to create a convincing[md]you guessed it![md]force field effect, where an object moving toward a force field seems to be slowed down by invisible energy. This is very different from the usual rigid body interactions, which are always hard collisions.
+O campo de força pode ser usado para criar um efeito de campo de força convincente [md] você adivinhou! [Md], onde um objeto se movendo em direção a um campo de força parece ser retardado por uma energia invisível. Isso é muito diferente das interações usuais de corpos rígidos, que são sempre colisões fortes.
 
-As you might imagine, the Force Field setting is used to simulate the realistic interaction of floating objects on a calm water surface. To do this:
+Como você pode imaginar, a configuração Campo de força é usada para simular a interação realista de objetos flutuantes em uma superfície de água calma. Para fazer isso:
 
-1. Open /Book/Chapter6/water.blend.
+1. Abra /Book/Chapter6/water.blend.
 
-2. Select the _Cube_. You want this object to behave like a basic wooden crate, a crate that bounces, tumbles, and floats in water. So let's add some dynamics to it. Go to the Physics Properties Editor and set the Type from Static to Rigid Body.
+2. Selecione o _Cube_. Você deseja que esse objeto se comporte como uma caixa de madeira básica, uma caixa que salta, tomba e flutua na água. Então, vamos adicionar alguma dinâmica a ele. Vá para o Editor de Propriedades de Física e defina o Tipo de Estático para Corpo Rígido.
 
-3. For extra fun, let's make a lot of these crates! But instead of manually creating them, we'll dynamically add them in-game on the player's command.
+3. Para diversão extra, vamos fazer muitos desses caixotes! Mas, em vez de criá-los manualmente, nós os adicionaremos dinamicamente no jogo sob o comando do jogador.
 
-4. Select the Camera object in the Logic Editor panel and add a new Keyboard sensor, a new And controller, and an Edit Object actuator, as shown in Figure 6.24.
+4. Selecione o objeto Camera no painel Logic Editor e adicione um novo sensor de teclado, um novo controlador And e um atuador Edit Object, conforme mostrado na Figura 6.24.
 
 ![Logic bricks](../figures/Chapter6/Fig06-24.png)
 
-5. To make sure that the cube objects get instantiated when you run the game, you need to hide the original cube object. To do this, simply move the Cube to the second layer by pressing M and then 2.
+5. Para certificar-se de que os objetos de cubo sejam instanciados ao executar o jogo, você precisa ocultar o objeto de cubo original. Para fazer isso, basta mover o cubo para a segunda camada pressionando M e, em seguida, 2.
 
-6. With only layer one selected, run the game now. Notice how the cubes all collide with the ground plane, but because the ground plane is hard, the motion is rather jarring. It doesn't look like objects floating on water at all.
+6. Com apenas a camada um selecionada, execute o jogo agora. Observe como todos os cubos colidem com o plano do solo, mas como o plano do solo é duro, o movimento é um tanto chocante. Não se parece com objetos flutuando na água.
 
-7. To make the ground plane have a water-like property, we will turn on Force Field. First, select the object called _WaterPlane._
+7. Para fazer com que o plano terrestre tenha uma propriedade semelhante à da água, ligaremos o Campo de Força. Primeiro, selecione o objeto chamado _WaterPlane._
 
-8. Head to the Material Properties Editor and create a new material. Then simply copy the force field physics setting, as shown in Figure 6.25.
+8. Vá para o Editor de Propriedades de Material e crie um novo material. Em seguida, simplesmente copie a configuração da física do campo de força, conforme mostrado na Figura 6.25.
 
-![Material physics settings](../figures/Chapter6/Fig06-25.png)
+![Configurações de física de materiais](../figures/Chapter6/Fig06-25.png)
 
-9. Et voilà! Start the game, press the spacebar, and watch the crates tumble into the ocean.
+9. Et voilà! Comece o jogo, pressione a barra de espaço e veja as caixas caírem no oceano.
 
-10. For added realism, create a No-Collision Plane on top of the WaterPlane to act as the water surface.
+10. Para adicionar realismo, crie um plano sem colisão no topo do WaterPlane para atuar como a superfície da água.
 
 ## Constraints <a id="Constraints"></a>
 
