@@ -546,16 +546,15 @@ Ok, então o que é física instável, afinal? Quando você vê objetos se agita
 
 Aqui estão algumas dicas para ajudá-lo a recuperar o controle do jogo. Todas as configurações aqui já foram abordadas no capítulo; esta lista é simplesmente uma coleção das ações mais comuns para estabilizar a física.
 
-- **Avoid Extremes:** Avoid interaction between an extremely heavy object and an exceptionally light object. Avoid interaction between extremely fast objects. Avoid interaction between objects of very different sizes, especially if neither object is static.
+- **Avoid Extremes:** Evite a interação entre um objeto extremamente pesado e um objeto excepcionalmente leve. Evite a interação entre objetos extremamente rápidos. Evite a interação entre objetos de tamanhos muito diferentes, especialmente se nenhum dos objetos for estático.
 
-- **Physics Substeps**** (World Properties Editor):** Crank it. Higher will be slower but gives much a more accurate physics simulation result.
+- **Physics Substeps**** (Editor de propriedades do mundo): ** Ponha em marcha. Maior será mais lento, mas fornece um resultado de simulação de física muito mais preciso.
 
-- **Bounding Box (Physics Properties Editor):** Try to use collision primitives (sphere, cube, cylinder) rather than mesh-based collision boxes (triangle mesh or convex hull). The former will be more stable and perform faster.
+- **Bounding Box (Physics Properties Editor):** Tente usar primitivas de colisão (esfera, cubo, cilindro) em vez de caixas de colisão baseadas em malha (malha triangular ou casco convexo). O primeiro será mais estável e terá um desempenho mais rápido.
 
-- **Form Factor (Physics Properties Editor):** Controls the rotational tendency of an object. Setting this too small will make moving objects extremely unstable. Increasing the form factor usually helps calm down the object, at the cost of making the object feel sluggish on collision.
+- **Form Factor (Physics Properties Editor):** Controla a tendência rotacional de um objeto. Definir muito pequeno tornará os objetos em movimento extremamente instáveis. Aumentar o fator de forma geralmente ajuda a acalmar o objeto, ao custo de torná-lo lento na colisão.
 
-- **No Sleeping (Physics Properties Editor):** By default, this option is off, meaning objects "freeze" when their movement falls below a certain threshold for a certain time. Keeping the option off improves physics stability and performance.
+- **No Sleeping (Physics Properties Editor):** Por padrão, esta opção está desligada, o que significa que os objetos "congelam" quando seu movimento cai abaixo de um certo limite por um certo tempo. Manter a opção desativada melhora a estabilidade física e o desempenho.
 
-- **Object Damping (Physics Properties Editor):** For non-static objects, Translational Damping and Rotational Damping can be used to slow objects down. Setting this to a non-zero value ensures that objects eventually will slow down to a stop, which might help with stability.
-
-- **Margin (Physics Properties Editor):** If objects go through each other when they are not supposed to, and you've exhausted the other options listed above, increasing the object collision margin might help.
+- **Object Damping (Physics Properties Editor):** Para objetos não estáticos, o amortecimento translacional e o amortecimento rotacional podem ser usados para desacelerar os objetos. Definir isso para um valor diferente de zero garante que os objetos eventualmente irão desacelerar até parar, o que pode ajudar na estabilidade.
+- **Margin (Physics Properties Editor):** Se os objetos passarem uns pelos outros quando não deveriam, e você tiver esgotado as outras opções listadas acima, aumentar a margem de colisão do objeto pode ajudar.
