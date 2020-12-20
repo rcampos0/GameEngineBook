@@ -238,14 +238,14 @@ Como você decide que tipo de física escolher para um objeto? Isso depende muit
 | Navigação       | Não  Não  Não         | Ajudante de Pathfinding                    |
 | Personagem      | Sim  Não  Não         | Projetado especificamente para personagens |
 
-Table 6.1: Physics Types
-- **Collision**: Whether the object detects collision.
+Tabela 6.1: Tipos de Física
+- **Collision**: Se o objeto detecta colisão.
 
-- **G,F,T**: Whether the object can be moved by Gravity, Force, and Torque.
+- **G,F,T**: Se o objeto pode ser movido por gravidade, força e torque.
 
-- **Roll**: Whether the objects roll and tumble when they are on an incline.
+- **Roll**: Se os objetos rolam e tombam quando estão em uma inclinação.
 
-To familiarize yourself with the different physics types, open the demo file available from /Book/Chapter6/demo/physicsTypes.blend. It shows some of the common physics types and their behavior, as shown in Figure 6.15.
+Para se familiarizar com os diferentes tipos de física, abra o arquivo de demonstração disponível em /Book/Chapter6/demo/physicsTypes.blend. Mostra alguns dos tipos comuns de física e seu comportamento, conforme mostrado na Figura 6.15.
 
 ![Different physics types visualized](../figures/Chapter6/Fig06-15.png)
 
