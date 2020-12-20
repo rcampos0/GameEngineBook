@@ -474,77 +474,77 @@ A Figura 6.27 ilustra a variedade de tipos de pivô.
 
 - **Ball:** Une dois objetos usando uma articulação esférica. Este tipo de restrição pode girar livremente em torno dos três eixos.
 
-- **Hinge:** Joins two objects together using one axis[md]the hinge axis. This constraint is often used to simulate a door hinge or a wheel on an axle.
+- **Hinge:** Une dois objetos usando um eixo [md] o eixo da dobradiça. Essa restrição é freqüentemente usada para simular uma dobradiça de porta ou uma roda em um eixo.
 
-- **Cone-twist:** This is an extension of the Ball constraint that supports limiting the angle of rotation. This is especially useful for animating limbs using ragdoll physics. You can set the individual angle limits for each of the three axes.
+- **Cone-twist:** Esta é uma extensão da restrição Ball que suporta a limitação do ângulo de rotação. Isso é especialmente útil para animar membros usando a física ragdoll. Você pode definir os limites de ângulo individuais para cada um dos três eixos.
 
-- **Generic 6 DoF:** If none of the above constraints meet your needs, chances are this generic constraint will give you enough control to accomplish any mechanical linkage you can dream up.
+- **Generic 6 DoF:** Se nenhuma das restrições acima atender às suas necessidades, é provável que essa restrição genérica lhe dê controle suficiente para realizar qualquer ligação mecânica que você possa imaginar.
 
-Once you have decided on the pivot type you need, you'll need to set the Targetobject. The Target object is the object that the current object will be linking to.
+Depois de decidir o tipo de pivô necessário, você precisará definir o objeto-alvo. O objeto Destino é o objeto ao qual o objeto atual será vinculado.
 
-The rest of the settings should be very self-explanatory. Refer to /Book/Chapter6/demo/constraints.blend to see each constraint's type in action.
+O restante das configurações deve ser autoexplicativo. Consulte /Book/Chapter6/demo/constraints.blend para ver cada tipo de restrição em ação.
 
-- **Extending Constraints:** While one constraint might not be too useful, constraints can be daisy-chained to simulate many different objects. See ConstraintsChain.blend, ConstraintsWaterMill.blend and ConstraintsTrampoline.blend for examples of how to set up multiple constraints.
+- **Extending Constraints:** Embora uma restrição possa não ser muito útil, as restrições podem ser encadeadas para simular muitos objetos diferentes. Consulte ConstraintsChain.blend, ConstraintsWaterMill.blend e ConstraintsTrampoline.blend para exemplos de como configurar várias restrições.
 
 ## Vehicle Physics <a id="Vehicle_Physics"></a>
 
-The Blender physics engine has built-in support for vehicle physics. It is a very stable physics constraints system that provides easy-to-set-up car physics. The result is a fast-performing vehicle physics engine with easily tweakable settings that maps well into a real vehicle (steering, suspension length, suspension stiffness)
+O mecanismo de física do Blender possui suporte integrado para a física do veículo. É um sistema de restrições físicas muito estável que fornece uma física de carro fácil de configurar. O resultado é um motor de física de veículo de desempenho rápido com configurações facilmente ajustáveis que mapeiam bem em um veículo real (direção, comprimento da suspensão, rigidez da suspensão)
 
-Of course, you can also try to create a car physics setup without using the built-in physics constraints; however, it will be far more time-consuming. This section will demonstrate how to set up a playable car object in the game engine using the built-in Bullet engine and a bit of Python scripting.
+Claro, você também pode tentar criar uma configuração de física do carro sem usar as restrições físicas integradas; no entanto, será muito mais demorado. Esta seção demonstrará como configurar um objeto de carro jogável no motor de jogo usando o motor Bullet integrado e um pouco de script Python.
 
 ### Hands-on Tutorial: Vehicle Physics Using Python <a id="Hands-on_Tutorial_Vehicle_Physics_Using_Python"></a>
 
-To get started, open /Book/Chapter6/vehicle/car.blend.
+Para começar, abra /Book/Chapter6/vehicle/car.blend.
 
-Rather than presenting this as a step-by-step tutorial, we will dissect a fully working, pre-made file.
+Em vez de apresentar isso como um tutorial passo a passo, dissecaremos um arquivo pré-fabricado totalmente funcional.
 
-Our basic car is composed of a body object and four wheel objects. The wheels are separate from the car for now. The physics engine will be responsible for keeping the wheels attached to the body, so the location of the wheel objects does not matter at this point. In this file, they are placed close to the car body for convenience.
+Nosso carro básico é composto de um objeto de corpo e objetos de quatro rodas. As rodas estão separadas do carro por enquanto. O motor de física será responsável por manter as rodas presas ao corpo, portanto, a localização dos objetos da roda não importa neste momento. Nesse arquivo, eles são colocados próximos à carroceria do carro por conveniência.
 
-Because attaching the wheels to the body will be done by a script, it is crucial for the rotation of the wheel to be correctly set; otherwise, the wheel will be linked to the car in the wrong orientation once the physics engine takes over. In the sample file, notice that the wheel objects all have their rotation set to [0,0,0]. This is important because the local rotation on the objects will interfere with the physics engine and confuse the game engine, resulting in unexpected behavior when you try to attach the wheels to the car. If a wheel needs to have its rotation reset, press Ctrl+A to apply any rotation.
+Como a fixação das rodas ao corpo será feita por um script, é fundamental que a rotação da roda seja ajustada corretamente; caso contrário, a roda será ligada ao carro na orientação errada assim que o motor físico assumir. No arquivo de amostra, observe que todos os objetos de roda têm sua rotação definida para [0,0,0]. Isso é importante porque a rotação local nos objetos irá interferir com o motor de física e confundir o motor do jogo, resultando em um comportamento inesperado quando você tenta prender as rodas no carro. Se uma roda precisar ter sua rotação redefinida, pressione Ctrl + A para aplicar qualquer rotação.
 
-Also notice that the car body is a rigid body object with ghost turned on. This setting is crucial for the car physics to run correctly.
+Observe também que o corpo do carro é um objeto de corpo rígido com o fantasma ativado. Essa configuração é crucial para que a física do carro funcione corretamente.
 
-That's pretty much it[md]a car body object and four tires make up the vehicle.
+É basicamente um objeto de corpo de carro e quatro pneus compõem o veículo.
 
-As already mentioned, the actual vehicle physics relies on some Python script to function. Figure 6.28 shows all the logic bricks that are attached to the car body object. Notice that script plays a big part in it.
+Como já mencionado, a física real do veículo depende de algum script Python para funcionar. A Figura 6.28 mostra todos os blocos lógicos que estão anexados ao objeto da carroceria. Observe que o script desempenha um grande papel nisso.
 
 ![Vehicle logic brick setup](../figures/Chapter6/Fig06-28.png)
 
-The script.carInit() functionality is run when the game is started. Here, it initializes the car as a "vehicle constraint," also known as constraint type11, and stores it as a Python object called _vehicle_. The same script then looks for the four wheels by accessing an actuator with specific names (in this case, wheel1, wheel2, etc.), and then the script attaches the wheels to the car body using the settings specified in the script. Variables such as RollInfluence, SuspensionStiffness, and TyreFriction can all be set on a per-tire basis once the vehicle object is created. The job of carInit() is now done. Your car body is now considered to be a vehicle by the game engine, and it will behave like one.
+A funcionalidade script.carInit () é executada quando o jogo é iniciado. Aqui, ele inicializa o carro como uma "restrição de veículo", também conhecido como tipo de restrição 11, e o armazena como um objeto Python chamado _vehicle_. O mesmo script procura as quatro rodas acessando um atuador com nomes específicos (neste caso, wheel1, wheel2, etc.), e então o script anexa as rodas à carroceria do carro usando as configurações especificadas no script. Variáveis ​​como RollInfluence, SuspensionStiffness e TyreFriction podem ser definidas em uma base por pneu, uma vez que o objeto de veículo é criado. O trabalho de carInit () está concluído. A carroceria do seu carro agora é considerada um veículo pelo motor do jogo e se comportará como tal.
 
-The second most important function, script.carHandler(), is run every frame. This script does the actual moving of the car, and it applies engine force and steering to the vehicle object. But this script gets the user input (keyboard sensor inputs) from another source (see below). The vehicle wrapper has built-in methods such as applyBreaking(), applyEngineForce(), getWheelRotation(), and getNumWheels, which you can call.
+A segunda função mais importante, script.carHandler (), é executada a cada quadro. Este script faz o movimento real do carro e aplica a força do motor e direção ao objeto do veículo. Mas este script obtém a entrada do usuário (entradas do sensor do teclado) de outra fonte (veja abaixo). O wrapper do veículo possui métodos integrados, como applyBreaking (), applyEngineForce (), getWheelRotation () e getNumWheels, que você pode chamar.
 
-Every time a key is pressed, script.keyHandler() is run. It figures out which key is pressed and sets the intermediate variable so that the scripts.carHandler function will know how much throttle to apply, which way to steer, and so on. This script is separated from scripts.carHandler() not because of technical limitations but by design, so that it's easier to manage the code.
+Cada vez que uma tecla é pressionada, script.keyHandler () é executado. Ele descobre qual tecla é pressionada e define a variável intermediária para que a função scripts.carHandler saiba quanto acelerador aplicar, que direção dirigir e assim por diante. Este script é separado de scripts.carHandler () não por causa de limitações técnicas, mas por design, para que seja mais fácil gerenciar o código.
 
-With these three Python functions, the car comes alive.
+Com essas três funções Python, o carro ganha vida.
 
 ## Game Settings <a id="Game_Settings"></a>
 
-Game settings are global settings that affect the running of the game. These settings are shown in Figure 6.29 and can be found in the Render panel.
+As configurações do jogo são configurações globais que afetam o funcionamento do jogo. Essas configurações são mostradas na Figura 6.29 e podem ser encontradas no painel Render.
 
 ![Additional game settings](../figures/Chapter6/Fig06-29.png)
 
-- **Animation Playback Speed:** Closely related to the frame-rate setting is the animation playback speed. This setting controls the speed of the F-Curve and armature animation. By default, the value is set to 24, meaning all F-Curve and actions will be played back as if they are running at a 24fps timebase. This setting can be found in the Render panel.
+- **Animation Playback Speed:** Intimamente relacionada à configuração da taxa de quadros está a velocidade de reprodução da animação. Esta configuração controla a velocidade da curva F e da animação da armadura. Por padrão, o valor é definido como 24, o que significa que todas as curvas F e ações serão reproduzidas como se estivessem em execução em uma base de tempo de 24 fps. Essa configuração pode ser encontrada no painel Render.
 
-- **Debug Property:** Shows the value of the Game Properties that are marked with the Debug flag. This can be useful when you want to keep an eye on the values of certain variables while the game is running.
+- **Debug Property:** Mostra o valor das propriedades do jogo marcadas com o sinalizador Debug. Isso pode ser útil quando você deseja ficar de olho nos valores de certas variáveis enquanto o jogo está em execução.
 
-- **Frame Rate and Profile:** Shows the frame rate and other performance statistics in-game. These statistics will be displayed in the top-left corner of the screen in-game.
+- **Frame Rate and Profile:** Mostra a taxa de quadros e outras estatísticas de desempenho no jogo. Essas estatísticas serão exibidas no canto superior esquerdo da tela do jogo.
 
-- **Physics Visualization:** Visualizes the internal computation of the physics engine. This can help you see what the physics engine is really doing when the game is running.
+- **Physics Visualization:** Visualiza a computação interna do motor de física. Isso pode ajudá-lo a ver o que o mecanismo de física realmente está fazendo quando o jogo está rodando.
 
-Rigid Body objects are displayed in white, and sleeping objects are drawn in green.
+Os objetos de corpo rígido são exibidos em branco e os objetos adormecidos são desenhados em verde.
 
-- **Deprecation Warning:** Gives warnings about outdated Python API called in the console (see Chapter 7).
+- **Deprecation Warning:** Dá avisos sobre API Python desatualizada chamada no console (consulte o Capítulo 7).
 
-- **Mouse Cursor:** Draws the mouse cursor in-game. This is useful if the game uses mouse-input. Mouse cursor can also be turned on and off via Python.
+- **Mouse Cursor:** Desenha o cursor do mouse no jogo. Isso é útil se o jogo usa entrada do mouse. O cursor do mouse também pode ser ligado e desligado via Python.
 
 ## Stabilizing Physics <a id="Stabilizing_Physics"></a>
 
-The Bullet physics engine is good. Really good. But as with anything that is powered by a computer, it is still possible to get into a situation where things go haywire.
+O motor de física do Bullet é bom. Muito bom. Mas, como com qualquer coisa que é alimentada por um computador, ainda é possível entrar em uma situação em que as coisas dão errado.
 
-Okay, so what is unstable physics anyway? When you see objects jitter around when they are not supposed to, or when objects go through each other when they are supposed to collide, you know it's time for a reality check.
+Ok, então o que é física instável, afinal? Quando você vê objetos se agitando quando não deveriam, ou quando objetos passam uns pelos outros quando deveriam colidir, você sabe que é hora de verificar a realidade.
 
-Here are some tips to help you regain control of your game. All of the settings here are already covered in the chapter; this list is simply a collection of the most common actions to take to stabilize physics.
+Aqui estão algumas dicas para ajudá-lo a recuperar o controle do jogo. Todas as configurações aqui já foram abordadas no capítulo; esta lista é simplesmente uma coleção das ações mais comuns para estabilizar a física.
 
 - **Avoid Extremes:** Avoid interaction between an extremely heavy object and an exceptionally light object. Avoid interaction between extremely fast objects. Avoid interaction between objects of very different sizes, especially if neither object is static.
 
