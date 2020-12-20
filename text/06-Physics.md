@@ -462,17 +462,17 @@ Como você pode imaginar, a configuração Campo de força é usada para simular
 
 ## Constraints <a id="Constraints"></a>
 
-Constraints are frequently used to create joints and mechanical linkages, indispensible components of many games. The Constraints Properties Editor is shown in Figure 6.26.
+Restrições são freqüentemente usadas para criar juntas e ligações mecânicas, componentes indispensáveis de muitos jogos. O Editor de Propriedades de Restrições é mostrado na Figura 6.26.
 
-![Adding a Rigid Body Joint in the Constraints Properties Editor](../figures/Chapter6/Fig06-26.png)
+![Adicionando uma junta de corpo rígido no Editor de propriedades de restrições](../figures/Chapter6/Fig06-26.png)
 
-The only supported object constraint is the Rigid Body Joint. It is used to connect two objects together using a user-defined joint.
+A única restrição de objeto suportada é a junta de corpo rígido. É usado para conectar dois objetos juntos usando uma junta definida pelo usuário.
 
-Figure 6.27 illustrates the variety of pivot types.
+A Figura 6.27 ilustra a variedade de tipos de pivô.
 
-![Constraints illustrated](../figures/Chapter6/Fig06-27.png)
+![Restrições ilustradas](../figures/Chapter6/Fig06-27.png)
 
-- **Ball:** Joins two objects together using a ball-and-socket joint. This type of constraint is free to rotate around all three axes.
+- **Ball:** Une dois objetos usando uma articulação esférica. Este tipo de restrição pode girar livremente em torno dos três eixos.
 
 - **Hinge:** Joins two objects together using one axis[md]the hinge axis. This constraint is often used to simulate a door hinge or a wheel on an axle.
 
