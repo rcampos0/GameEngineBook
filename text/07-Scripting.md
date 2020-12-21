@@ -1401,15 +1401,15 @@ Um snapshot com essas mudanças pode ser encontrado em:
 >
 > Todas as casas, o solo e os outros objetos 3D já têm a colisão habilitada neste arquivo. Em outras situações, no entanto, você pode precisar alterar os objetos de colisão, habilitando ou desabilitando suas colisões de acordo. O raycast Python usa o mecanismo interno Bullet Physics sob o capô. Para evitar que a câmera atravesse as paredes e o solo, defina superfícies de colisão suficientes (mas não muito, para não comprometer o desempenho do jogo).
 
-###### Script Tweaks <a id="Script_Tweaks"></a>
+###### Ajustes de script <a id="Script_Tweaks"></a>
 
-Finally, it's good to fiddle a bit with the script. Due to the particularities of this project (mainly its scale), you may feel that everything happens a bit too fast. It's up to you to change the settings in the `init_world` function. Also, it would be interesting to explore multiple viewpoints for this presentation. We have already positioned the side and back empties. Although we were not using them previously, their names are present in the script as part of the available cameras list:
+Finalmente, é bom mexer um pouco no script. Devido às particularidades deste projeto (principalmente sua escala), você pode sentir que tudo acontece um pouco rápido demais. Depende de você alterar as configurações na função `init_world`. Além disso, seria interessante explorar vários pontos de vista para esta apresentação. Já posicionamos os vasilhames laterais e traseiros. Embora não os estivéssemos usando anteriormente, seus nomes estão presentes no script como parte da lista de câmeras disponíveis:
 
 ```python
 93     available_cameras = ["front", "back", "side", "top"]
 ```
 
-The difference now is that we will make the camera actually change to the side and back views when you press the keys four and five respectively. As you can see here, it's really easy to expand a system like this. Try to create a fifth camera (add a new empty) and see how it goes. To enable the "side" and "back" cameras, the only code we have to add is:
+A diferença agora é que faremos a câmera realmente mudar para as visualizações lateral e traseira quando você pressionar as teclas quatro e cinco, respectivamente. Como você pode ver aqui, é muito fácil expandir um sistema como este. Tente criar uma quinta câmera (adicione um novo vazio) e veja como funciona. Para habilitar as câmeras "lateral" e "posterior", o único código que precisamos adicionar é:
 
 ```python
 110 def keyboard(cont):
@@ -1425,21 +1425,21 @@ new             elif value == GK.FIVEKEY:
 new                 change_view("back", "fly")
 ```
 
-There is not much more to be done here. This is a simple script, but its structure and the workflow we presented are not much different from what you will find in more complex systems you may have to implement or work with. There are different ways to implement a navigation system. This one was designed focusing on a didactic structure (clean code as opposed to a highly optimized system that is hard to read) and robustness (easy to expand). Try to find other examples or, better yet, build one yourself.
+Não há muito mais a ser feito aqui. Este é um script simples, mas sua estrutura e o fluxo de trabalho que apresentamos não são muito diferentes do que você encontrará em sistemas mais complexos que você pode ter que implementar ou trabalhar. Existem diferentes maneiras de implementar um sistema de navegação. Este foi projetado com foco em uma estrutura didática (código limpo em oposição a um sistema altamente otimizado que é difícil de ler) e robustez (fácil de expandir). Tente encontrar outros exemplos ou, melhor ainda, crie um você mesmo.
 
-The final file is on the book files as:
+O arquivo final está nos arquivos do livro como:
 
 /Book/Chapter7/4_navigation_system/walkthrough_4_final/walkthrough.blend.
 
-### Using the Game Engine API - Application Programming Interface <a id="Using_the_Game_Engine_API_-_Application_Programming_Interface"></a>
+### Usando a API Game Engine - Interface de Programação de Aplicativo <a id="Using_the_Game_Engine_API_-_Application_Programming_Interface"></a>
 
-The game engine API is a bridge connecting your Python scripts with your game data. Through those modules, methods, and variables you can interact with your existent logic bricks, game objects, and general game functions.
+A API do mecanismo de jogo é uma ponte que conecta seus scripts Python aos dados do jogo. Por meio desses módulos, métodos e variáveis, você pode interagir com seus blocos lógicos, objetos de jogo e funções gerais de jogo existentes.
 
-The official documentation can be found online in the Blender Foundation website:
+A documentação oficial pode ser encontrada online no site da Blender Foundation:
 
 _http://www.blender.org/documentation/blender_python_api_2_66_release_
 
-We will now walk through the highlights of the modules. After you are familiar with their main functionality, you should feel comfortable to navigate the documentation and find other resources.
+Vamos agora percorrer os destaques dos módulos. Depois de se familiarizar com suas principais funcionalidades, você deve se sentir confortável para navegar pela documentação e encontrar outros recursos.
 
 **Game Engine Internal Modules**
 
