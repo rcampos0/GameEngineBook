@@ -1742,33 +1742,33 @@ Obtenha a distância focal atual para o modo estéreo. Ele usa a distância foca
 
 `getMaterialMode(mode) / setMaterialMode(mode)`
 
-Get/set the material mode to use for OpenGL rendering. The available modes are:
+Obtenha/defina o modo de material a ser usado para renderização OpenGL. Os modos disponíveis são:
 
 `KX_TEXFACE_MATERIAL, KX_BLENDER_MULTITEX_MATERIAL, KX_BLENDER_GLSL_MATERIAL`
 
 `getGLSLMaterialSetting(setting) / setGLSLMaterialSetting(setting, enable)`
 
-Get/set the state of a GLSL material setting. The available settings are:
+Obter/definir o estado de uma configuração de material GLSL. As configurações disponíveis são:
 
 `"lights", "shaders", "shadows", "ramps", "nodes", "extra\_textures"`
 
-##### Others <a id="Others"></a>
+##### Outros <a id="Others"></a>
 
 `drawLine(fromVec, toVec, color)`
 
-Draw a line in the 3D scene.
+Desenhe uma linha na cena 3D.
 
 `enableMotionBlur(factor) / disableMotionBlur()`
 
-Enable/disable the motion blue effect.
+Ative / desative o efeito azul de movimento.
 
 `makeScreenshot(filename)`
 
-Write a screenshot to the given filename.
+Escreva uma captura de tela para o nome de arquivo fornecido.
 
 #### bge.events <a id="bge.events"></a>
 
-The Keyboard sensor allows you to set individual keys. As you can see in Figure 7.15, it can also be triggered by any key once you enable the option "All Keys." This is very useful to configure text input in your game or to centralize all keyboard events with a single sensor and script.
+O sensor do teclado permite definir teclas individuais. Como você pode ver na Figura 7.15, ele também pode ser disparado por qualquer tecla, uma vez que você habilite a opção "Todas as Chaves". Isso é muito útil para configurar a entrada de texto em seu jogo ou para centralizar todos os eventos do teclado com um único sensor e script.
 
 ![Key codes visualizer](../figures/Chapter7/Fig07-15.png)
 
