@@ -1703,7 +1703,8 @@ Os parâmetros que podem ser alterados com Python incluem tudo o que pode ser an
 #### bge.render <a id="bge.render"></a>
 
 Se compararmos os jogos com a arte 3D tradicional, o rasterizador seria a fase de renderização do processo. Internamente, é quando toda a geometria é finalmente desenhada para a tela com o cálculo de luz, os filtros aplicados e o conjunto de telas. Por esse motivo, o módulo Rasterizer apresenta funções relacionadas à estereoscopia, gerenciamento de janelas e mouse, configurações mundiais e configurações globais de material GLSL.
-##### Window and Mouse <a id="Window_and_Mouse"></a>
+
+##### Janela e Mouse <a id="Window_and_Mouse"></a>
 
 `getWindowWidth() / getWindowHeight()`
 
@@ -1717,7 +1718,7 @@ Habilite ou desabilite o cursor do mouse do sistema operacional.
 
 Defina a posição do cursor do mouse (em pixels).
 
-##### World Settings <a id="World_Settings"></a>
+##### Configurações mundiais <a id="World_Settings"></a>
 
 `setBackgroundColor(rgba), setAmbientColor(rgb)`
 
@@ -1725,19 +1726,19 @@ Defina a cor do ambiente e do plano de fundo.
 
 `setMistColor(rgb), disableMist(), setMistStart(start), setMistEnd(end)`
 
-Configure the mist (fog) settings.
+Defina as configurações de névoa (névoa).
 
-##### Stereo Settings <a id="Stereo_Settings"></a>
+##### Configurações estéreo <a id="Stereo_Settings"></a>
 
 `getEyeSeparation() / setEyeSeparation(eyesep)`
 
-Get the current eye separation for stereo mode. Usually focal length/30 provides a comfortable value.
+Obtenha a separação atual dos olhos para o modo estéreo. Normalmente, a distância focal/30 fornece um valor confortável.
 
 `getFocalLength() / setFocalLength(focallength)`
 
-Get the current focal length for stereo mode. It uses the current camera focal length as initial value
+Obtenha a distância focal atual para o modo estéreo. Ele usa a distância focal atual da câmera como valor inicial
 
-##### Material Settings <a id="Material_Settings"></a>
+##### Configurações de material <a id="Material_Settings"></a>
 
 `getMaterialMode(mode) / setMaterialMode(mode)`
 
