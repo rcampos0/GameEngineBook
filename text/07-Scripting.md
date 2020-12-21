@@ -1493,7 +1493,7 @@ def moduleFunction(cont):
     
 ##### getCurrentScene() <a id="getCurrentScene()"></a>
 
-This function returns the current scene the script was called from. The most common usage is to give you a list of all the game objects:
+Esta função retorna a cena atual a partir da qual o script foi chamado. O uso mais comum é fornecer uma lista de todos os objetos do jogo:
 
 ```python
 for object in bge.logic.getCurrentScene().objects: print(object)
@@ -1501,31 +1501,30 @@ for object in bge.logic.getCurrentScene().objects: print(object)
 
 ##### expandPath() <a id="expandPath()"></a>
 
-If you need to access an external file (image, video, Blender, etc.), you need to first get its absolute path in the computer. Use single backslash (/) to separate folders and double backslash (//) if you need to refer to the current folder:
-
+Se você precisa acessar um arquivo externo (imagem, vídeo, Blender, etc.), você precisa primeiro obter seu caminho absoluto no computador. Use uma barra invertida (/) para separar as pastas e uma barra invertida dupla (//) se precisar se referir à pasta atual:
 ```python
 video_absolute_path  = bge.logic.expandPath('//videos/video01.ogg')
 ```
 
 ##### sendMessage(), addScene(), start/restart/endGame(), <a id="sendMessage(),_addScene(),_start/restart/endGame()"></a>
 
-These functions copy the functionality of existent actuators. They are Python replacement for those global events when you need a direct way to call them, bypassing the logic bricks.
+Essas funções copiam a funcionalidade de atuadores existentes. Eles são a substituição do Python para aqueles eventos globais quando você precisa de uma maneira direta de chamá-los, contornando os blocos lógicos.
 
 ##### LibLoad(), LibNew(), LibFree(), LibList() <a id="LibLoad(),_LibNew(),_LibFree(),_LibList()"></a>
 
-There are cases when you need to load the content of an external Blender file at runtime. This is known as _dynamic loading._ The game engine supports dynamic loading of actions, meshes, or complete scenes. The new data blocks are merged into the current scene and behave just like internal objects:
+Existem casos em que você precisa carregar o conteúdo de um arquivo externo do Blender durante a execução. Isso é conhecido como _carregamento dinâmico._ O mecanismo de jogo oferece suporte ao carregamento dinâmico de ações, malhas ou cenas completas. Os novos blocos de dados são mesclados com a cena atual e se comportam como objetos internos:
 
 ```python
 bge.logic.LibLoad("//entities.blend", "Scene")
 ```
 
->**Beware of Lamps**
+>**Cuidado com as lâmpadas**
 >
->New Lamp objects can be dynamically loaded from external files. However, in GLSL mode, they will not work as a light source for the material shaders, since the shaders would need to be recompiled for that.
+> Novos objetos Lamp podem ser carregados dinamicamente de arquivos externos. No entanto, no modo GLSL, eles não funcionarão como fonte de luz para os shaders de material, uma vez que os shaders precisariam ser recompilados para isso.
 
 ##### globalDict, loadGlobalDict(), saveGlobalDict() <a id="globalDict,_loadGlobalDict(),_saveGlobalDict()"></a>
 
-The bge.logic.globalDict is a Python dictionary that is alive during the whole game. It's a game place to store data if you need to restart the game or load a new file (level) and need to save some properties. In fact, you can even save the globalDict with the Blender file during the game and reload later.
+O bge.logic.globalDict é um dicionário Python que está vivo durante todo o jogo. É um local de jogo para armazenar dados se você precisar reiniciar o jogo ou carregar um novo arquivo (nível) e precisar salvar algumas propriedades. Na verdade, você pode até salvar o globalDict com o arquivo do Blender durante o jogo e recarregar mais tarde.
 
 ```python
 bge.logic.globalDict["password"] = "kidding, kids never save your passwords in files!"
@@ -1537,9 +1536,9 @@ bge.logic.loadGlobalDict() # replace the current globalDict with the saved one
 
 ##### keyboard <a id="keyboard"></a>
 
-You can handle all the keyboard inputs directly from a script. The usage and syntax are very similar to the Keyboard sensor. You need a script running every logic tic (Always sensor pulsing with a frequency of 0 or every time a key is pressed; Keyboard sensor with "All Keys" set) where you can read the status of all the keys in the bge.logic.keyboard. events dictionary. If instead of inquiry for the status of a particular key (e.g., if spacebar is pressed), you want to list all the pressed keys, you can use the dictionary bge.logic.keyboard.active\_events.
+Você pode controlar todas as entradas do teclado diretamente de um script. O uso e a sintaxe são muito semelhantes aos do sensor do teclado. Você precisa de um script que execute todos os tiques lógicos (Sensor sempre pulsando com frequência 0 ou toda vez que uma tecla é pressionada; sensor de teclado com "Todas as teclas" definido) onde você pode ler o status de todas as teclas no bge.logic. teclado. dicionário de eventos. Se, em vez de consultar o status de uma tecla específica (por exemplo, se a barra de espaço for pressionada), você quiser listar todas as teclas pressionadas, pode usar o dicionário bge.logic.keyboard.active \ _events.
 
-The keys for both event dictionaries are the same you use with the Keyboard sensor (see the bge.events module). The status of each key (whether it was pressed, released, kept pressed, or nothing) is the value stored in the dictionary. The keys values are defined in the bge.logic module itself:
+As teclas para ambos os dicionários de eventos são as mesmas que você usa com o sensor do teclado (consulte o módulo bge.events). O status de cada tecla (se foi pressionada, liberada, mantida pressionada ou nada) é o valor armazenado no dicionário. Os valores das chaves são definidos no próprio módulo bge.logic:
 
 ```python
 keyboard = bge.logic.keyboard
@@ -1563,17 +1562,17 @@ else: # bge.logic.KX_INPUT_NONE
     pass
 ```
     
-A sample file can be seen at \Book\Chapter7\5\_game\_keys\key\_detector\_python.blend . This shows the more Python-centric way of handling keyboard. For the classic method of using a Keyboard sensor, look further in this chapter into the "bge.events" section.
+Um arquivo de amostra pode ser visto em \Book\Chapter7\5\_game\_keys\key\_detector\_python.blend. Isso mostra a maneira mais centrada em Python de lidar com o teclado. Para obter o método clássico de usar um sensor de teclado, procure mais neste capítulo na seção "bge.events".
 
 ##### mouse <a id="mouse"></a>
 
-Similar to the keyboard, this Python object can work as a replacement for the Mouse sensor. There are a few differences that make it even more appealing for scripting[md]in particular, the fact that the mouse coordinates are already normalized. As we explained in the tutorial, this helps you get consistent results, regardless of the desktop resolution. The available attributes are:
+Semelhante ao teclado, este objeto Python pode funcionar como um substituto para o sensor do Mouse. Existem algumas diferenças que o tornam ainda mais atraente para scripts [md] em particular, o fato de que as coordenadas do mouse já estão normalizadas. Conforme explicamos no tutorial, isso ajuda a obter resultados consistentes, independentemente da resolução da área de trabalho. Os atributos disponíveis são:
 
-- **events:** A dictionary with all the events of the mouse (left-click, wheel up, and so on) and their status (for example, bge.logic.KX_INPUT_JUST_ACTIVED).
+- **events:** Um dicionário com todos os eventos do mouse (clique com o botão esquerdo, roda para cima e assim por diante) e seus status (por exemplo, bge.logic.KX_INPUT_JUST_ACTIVED).
 
-- **position** : Normalized position of the mouse cursor in the screen (from [0,0] to [1,1]).
+- **position** : Posição normalizada do cursor do mouse na tela (de [0,0] a [1,1]).
 
-- **visible** : Dhow/hide the mouse cursor (can also be set in the Render panel for the initial state).
+- **visible** : Mostrar/ocultar o cursor do mouse (também pode ser definido no painel Render para o estado inicial).
 
 ##### joysticks <a id="joysticks"></a>
 
