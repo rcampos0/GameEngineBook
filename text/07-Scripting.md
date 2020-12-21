@@ -497,55 +497,55 @@ _Learning Python,_ by Mark Lutz and David Ascher, published by O'Reilly Media
 
 Você pode aprender Python em uma semana com este livro. Você também pode encontrá-lo como um e-book, o que é útil para pesquisas rápidas. Tente obter a edição mais recente do livro que encontrar. Diferentes séries Python (2.x, 3.x) têm certas particularidades com as quais você não deseja lidar.
 
->**Before Buying a Book**
+>**Antes de comprar um livro**
 >
->If you are going to buy a Python book, be aware of its target audience. Some books are written for people with absolutely no previous knowledge in programming languages, while others assume otherwise. And make sure the book covers the Python version that is included in Blender (at the time of writing, Python 3.2).
+> Se você for comprar um livro de Python, esteja ciente de seu público-alvo. Alguns livros são escritos para pessoas com absolutamente nenhum conhecimento prévio em linguagens de programação, enquanto outros assumem o contrário. E certifique-se de que o livro cobre a versão do Python que está incluída no Blender (no momento da escrita, Python 3.2).
 
 _Yo Frankie! DVD www.yofrankie.org_
 
-An open game made with the game engine by the Blender Foundation. You can download all the files of this project for free and go over their scripts. Although this can be confusing for someone in the first phases of learning Python, it's good reference material for later on.
+Um jogo aberto feito com o motor de jogo da Fundação Blender. Você pode baixar todos os arquivos deste projeto gratuitamente e revisar seus scripts. Embora isso possa ser confuso para alguém nas primeiras fases de aprendizagem do Python, é um bom material de referência para mais tarde.
 
-### Python Built-in Help <a id="Python_Built-in_Help"></a>
+### Ajuda integrada do Python <a id="Python_Built-in_Help"></a>
 
-You can also access help directly in Python.
+Você também pode acessar a ajuda diretamente no Python.
 
 ```python
 dir(python_object)
 ```
 
-The Python function "dir" creates a list with all the functions/modules/attributes available to be accessed from this object.
+A função Python "dir" cria uma lista com todas as funções/módulos/atributos disponíveis para serem acessados a partir deste objeto.
 
 ```python
 help(python_function)
 ```
 
-This built-in function reveals the official documentation for this module or data type.
+Esta função embutida revela a documentação oficial para este módulo ou tipo de dados.
 
-## Python and the Game Engine <a id="Python_and_the_Game_Engine"></a>
+## Python e o mecanismo de jogo <a id="Python_and_the_Game_Engine"></a>
 
-This whole chapter is organized into three main parts: why, what, and how. Thus, if you have read from the beginning, you already have solid reasons to start using scripts for your project, and you understand what Python is. The final part of this chapter will cover how to use your Python knowledge inside the game engine. This part is divided into four submodules:
+Todo este capítulo está organizado em três partes principais: por que, o quê e como. Portanto, se você leu desde o início, já tem motivos sólidos para começar a usar scripts em seu projeto e entende o que é Python. A parte final deste capítulo cobrirá como usar seu conhecimento Python dentro do motor de jogo. Esta parte é dividida em quatro submódulos:
 
-- Integrating Python in the game engine.
+- Integrando Python no motor de jogo.
 
-- Writing your Python scripts.
+- Escrevendo seus scripts Python.
 
-- Designing your script.
+- Desenhando seu roteiro.
 
-- Using the Game Engine API.
+- Usando a API Game Engine.
 
-### Integrating Python in the Game Engine <a id="Integrating_Python_in_the_Game_Engine"></a>
+### Integrando Python no Game Engine <a id="Integrating_Python_in_the_Game_Engine"></a>
 
-In the game engine, the script interface is controller-centric by design. Therefore, you can consider the Python script simply as a more complex controller to replace the Expression or the Boolean controllers. In those cases, the script will be responsible for controlling how the sensors are related with the actuators of a given object. In fact, the sensors, actuators, and even the object where you are calling the script from are all attributes of the controller.
+No mecanismo de jogo, a interface do script é centrada no controlador por design. Portanto, você pode considerar o script Python simplesmente como um controlador mais complexo para substituir os controladores Expression ou Boolean. Nesses casos, o script ficará responsável por controlar como os sensores se relacionam com os atuadores de um determinado objeto. Na verdade, os sensores, atuadores e até mesmo o objeto de onde você está chamando o script são todos atributos do controlador.
 
-As we mentioned earlier, with a Python script you can control external devices, control multiple objects at once, and much more. However, you will never be free from using a logic brick framework. And from the combination of logic bricks, individual sensors, global sensors, and actuators, the elegance of your system will arise.
+Como mencionamos anteriormente, com um script Python você pode controlar dispositivos externos, controlar vários objetos de uma vez e muito mais. No entanto, você nunca estará livre de usar uma estrutura de tijolo lógico. E da combinação de blocos lógicos, sensores individuais, sensores globais e atuadores, a elegância de seu sistema surgirá.
 
-In the first example, you will find a very simple case study of how to make your Python controller work. It will cover the basic behavior of receiving sensors' input in the script and triggering actuators from it.
+No primeiro exemplo, você encontrará um estudo de caso muito simples de como fazer seu controlador Python funcionar. Ele cobrirá o comportamento básico de receber entrada de sensores no script e disparar atuadores a partir dele.
 
-Open the file \Book\Chapter7\3\_template\abracadabra.blend.
+Abra o arquivo \Book\Chapter7\3\_template\abracadabra.blend.
 
 ![Abracadabra](../figures/Chapter7/Fig07-05.png)
 
-Launch the game and keep the spacebar pressed. In Figure 7.5, you can see the result before and after you press the key. Can you read the spinning text? It may not be impressive, but it certainly is didactic. Here is the script behind this effect:
+Inicie o jogo e mantenha a barra de espaço pressionada. Na Figura 7.5, você pode ver o resultado antes e depois de pressionar a tecla. Você pode ler o texto girando? Pode não ser impressionante, mas certamente é didático. Aqui está o script por trás desse efeito:
 
 ```python
 import bge
@@ -568,25 +568,25 @@ else:
     text_obj.text = "ABRA"
 ```
 
-This script is triggered from a keyboard sensor, runs from a controller in the camera object, activates an actuator in the camera itself, and changes a property in the text object. Figure 7.6 shows logic bricks for this one.
+Este script é disparado a partir de um sensor de teclado, executado a partir de um controlador no objeto de câmera, ativa um atuador na própria câmera e altera uma propriedade no objeto de texto. A Figura 7.6 mostra blocos lógicos para este.
 
-![Simple logic bricks with a Python controller](../figures/Chapter7/Fig07-06.png)
+![Tijolos lógicos simples com um controlador Python](../figures/Chapter7/Fig07-06.png)
 
-Let's look at it from the beginning:
+Vejamos desde o início:
 
 ```python
 import bge
 from bge import logic
 ```
 
-The first lines import the module bge and then the submodule logic. No big deal here. We actually don't need to explicitly import the bge module since we are importing a submodule directly. However, it doesn't hurt to do it. Lines 4 and 5 will store the current controller in a variable and create a pointer to the object where it was called from (known as _owner_). We are not using the owner variable here, but it's good to be familiar with it. You will be using it a lot.
+As primeiras linhas importam o módulo bge e depois a lógica do submódulo. Não é grande coisa aqui. Na verdade, não precisamos importar explicitamente o módulo bge, pois estamos importando um submódulo diretamente. No entanto, não custa nada fazer. As linhas 4 e 5 armazenarão o controlador atual em uma variável e criarão um ponteiro para o objeto de onde foi chamado (conhecido como _owner_). Não estamos usando a variável owner aqui, mas é bom estar familiarizado com ela. Você o usará muito.
 
 ```python
 cont = logic.getCurrentController()
 owner = cont.owner
 ```
 
-The following lines get more elements from the game to be used in the script: scene will give you direct access to the current scene; objects is the current list to be used later; text\_obj is one element of the objects list (accessed by its name in Blender).
+As linhas a seguir obtêm mais elementos do jogo para serem usados no script: cena lhe dará acesso direto à cena atual; objetos é a lista atual a ser usada posteriormente; text\_obj é um elemento da lista de objetos (acessado por seu nome no Blender).
 
 ```python
 scene = logic.getCurrentScene()
@@ -594,14 +594,14 @@ objects = scene.objects
 text_obj = objects["Text"]
 ```
 
-Remember when we said that the game engine is controller-centric? All the sensors and actuators are accessed from the controller, not from the object they belong to (its owner), as you might expect. Lines 11 and 12, respectively, read the built-in sensor and actuator list to get the ones we are looking for.
+Lembra quando dissemos que o motor de jogo é centrado no controlador? Todos os sensores e atuadores são acessados a partir do controlador, não do objeto ao qual pertencem (seu proprietário), como você pode esperar. As linhas 11 e 12, respectivamente, leem a lista de sensores e atuadores integrados para obter os que estamos procurando.
 
 ```python
 sens = cont.sensors['my\_sensor']
 act = cont.actuators['my\_actuator']
 ```
 
-In a way similar to how logic bricks work, we are going to activate the actuator if the sensor triggers positive and deactivate it otherwise. The deactivation happens in the frame after the sensor ceases to validate, for example, the key is unpressed or the mouse button is released.
+De forma semelhante a como funcionam os tijolos lógicos, vamos ativar o atuador se o sensor disparar positivo e desativá-lo caso contrário. A desativação ocorre no quadro após o sensor deixar de validar, por exemplo, a tecla não é pressionada ou o botão do mouse é liberado.
 
 ```python
 if sens.positive:
@@ -610,7 +610,7 @@ else:
     cont.deactivate(act)
 ```
 
-We are not restricted to controlling only actuators, though. Lines 15 and 18 change the text of the object when you press/release the spacebar:
+Não estamos restritos a controlar apenas atuadores, no entanto. As linhas 15 e 18 alteram o texto do objeto quando você pressiona/solta a barra de espaço:
 
 ```python
 15  text_obj.text = "CADABRA"
@@ -618,7 +618,7 @@ We are not restricted to controlling only actuators, though. Lines 15 and 18 cha
 18  text_obj.text = "ABRA"
 ```
 
-This file can be simple, but holds the essence of the game engine architecture design. Now is a good time to go over the three game engine template files that come with Blender. Go to Text Editor  Templates  GameLogic\* and spend some time studying those examples. You can also get them on the book files under \Book\Chapter7\3\_template\.
+Este arquivo pode ser simples, mas contém a essência do design da arquitetura do motor de jogo. Agora é um bom momento para revisar os três arquivos de modelo do mecanismo de jogo que vêm com o Blender. Vá para Editor de Texto  Modelos  GameLogic \ * e passe algum tempo estudando esses exemplos. Você também pode obtê-los nos arquivos do livro em \Book\Chapter7\3\_template\.
 
 ### Writing Your Python Scripts <a id="Writing_Your_Python_Scripts"></a>
 
