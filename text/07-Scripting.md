@@ -620,92 +620,93 @@ Não estamos restritos a controlar apenas atuadores, no entanto. As linhas 15 e 
 
 Este arquivo pode ser simples, mas contém a essência do design da arquitetura do motor de jogo. Agora é um bom momento para revisar os três arquivos de modelo do mecanismo de jogo que vêm com o Blender. Vá para Editor de Texto  Modelos  GameLogic \ * e passe algum tempo estudando esses exemplos. Você também pode obtê-los nos arquivos do livro em \Book\Chapter7\3\_template\.
 
-### Writing Your Python Scripts <a id="Writing_Your_Python_Scripts"></a>
+### Escrevendo seus scripts Python <a id="Writing_Your_Python_Scripts"></a>
 
-If you haven't started your own scripts, now is a good time to do so. You will need a text editor, the API modules documented, and a good way to test your files.
+Se você ainda não iniciou seus próprios scripts, agora é um bom momento para fazê-lo. Você precisará de um editor de texto, dos módulos da API documentados e de uma boa maneira de testar seus arquivos.
 
-#### Text Editors <a id="Text_Editors"></a>
+#### Editores de texto. <a id="Text_Editors"></a>
 
-It's important to find a script editor that you find pleasant to work with. The most important features you will be looking for are: syntax coloring and highlighting, auto indentation, and auto completion. You can find editors with even more features than these, so experiment with different alternatives and decide what's best for you.
+É importante encontrar um editor de scripts com o qual você ache agradável trabalhar. Os recursos mais importantes que você procura são: coloração e realce de sintaxe, recuo automático e preenchimento automático. Você pode encontrar editores com ainda mais recursos do que esses, então experimente diferentes alternativas e decida o que é melhor para você.
 
 >**Notepad? Notepad++**
 >
->Most of the scripts presented in this chapter were coded using Notepad++. This Windows-based open source text editor is not Python specific, but handles Python syntax highlighting well. You can download Notepad++ from their website:
+>A maioria dos scripts apresentados neste capítulo foi codificada usando o Notepad ++. Este editor de texto de código aberto baseado no Windows não é específico para Python, mas lida bem com o realce da sintaxe Python. Você pode baixar o Notepad ++ do site:
 > http://notepad-plus.sourceforge.net
->If you are using Linux or OSX, there are plenty of native alternatives that may serve you even better.
+> Se você estiver usando Linux ou OSX, existem muitas alternativas nativas que podem atendê-lo ainda melhor.
 
-##### Blender Text Editor <a id="Blender_Text_Editor"></a>
+##### Editor de Texto do Blender <a id="Blender_Text_Editor"></a>
 
-As you probably know, Blender has its own internal text editor (see Figure 7.7). Although it may not be as powerful as software designed exclusively for this particular task, it can be very convenient. It's useful for quick tests, small scripts, or when you want to keep everything bundled inside the Blender file. Here are its main features:
+Como você provavelmente sabe, o Blender tem seu próprio editor de texto interno (veja a Figura 7.7). Embora possa não ser tão poderoso quanto um software desenvolvido exclusivamente para essa tarefa específica, pode ser muito conveniente. É útil para testes rápidos, pequenos scripts ou quando você deseja manter tudo empacotado dentro do arquivo do Blender. Aqui estão seus principais recursos:
 
-- Syntax highlighting
+- Realce de sintaxe
 
-- Dynamic font sizes
+- Tamanhos de fonte dinâmicos
 
-- Indentation conversion (spaces to tabs and vice versa)
+- Conversão de recuo (espaços para tabulações e vice-versa)
 
-- Line counting and navigation
+- Contagem de linha e navegação
 
-- Search over multiple internal files
+- Pesquise vários arquivos internos
 
-- Sync with external files
+- Sincronizar com arquivos externos
 
-![Blender internal text editor](../figures/Chapter7/Fig07-07.png)
+![Editor de texto interno do Blender](../figures/Chapter7/Fig07-07.png)
 
-#### Reference Material and Documentation <a id="Reference_Material_and_Documentation"></a>
+#### Material de referência e documentação <a id="Reference_Material_and_Documentation"></a>
 
-Since the game engine Python API is available online, you have an official excuse to keep a Web browser open while you work. It's not a bad idea to keep an offline version of it, too. (You can find it on the book files.) Use it when you need to be more productive and the Internet is getting in your way (as in, always).
+Como a API Python do mecanismo de jogo está disponível online, você tem uma desculpa oficial para manter um navegador da Web aberto enquanto trabalha. Não é uma má ideia manter uma versão offline dele também. (Você pode encontrá-lo nos arquivos do livro.) Use-o quando precisar ser mais produtivo e a Internet estiver atrapalhando (como sempre).
 
-It's good if you can start to gather example materials from the Internet and keep them organized. If you use the append feature in Blender to navigate to and import text files from your "collection," you will not even need to open another Blender application. Also, if you are consistent with your naming style, indentation rules, and file structures, you will find easy to reuse your own scripts.
+É bom começar a reunir materiais de exemplo da Internet e mantê-los organizados. Se você usar o recurso append no Blender para navegar e importar arquivos de texto de sua "coleção", você nem precisará abrir outro aplicativo Blender. Além disso, se você for consistente com seu estilo de nomenclatura, regras de recuo e estruturas de arquivo, será fácil reutilizar seus próprios scripts.
 
-#### Testing Your Scripts <a id="Testing_Your_Scripts"></a>
+#### Testando seus scripts <a id="Testing_Your_Scripts"></a>
 
-It doesn't matter how easy Python is, you will spend evenings testing and retesting your scripts before you have them working properly. The more complete way to test your script is to play it inside the game engine. However, you may not want to load your game every time you need to be sure of some Python syntax, data types' built-in functions, or simply to check if the math of a result is correct.
+Não importa o quão fácil é o Python, você passará noites testando e testando novamente seus scripts antes de fazê-los funcionar corretamente. A maneira mais completa de testar seu script é reproduzi-lo dentro do mecanismo de jogo. No entanto, você pode não querer carregar seu jogo toda vez que precisar ter certeza de alguma sintaxe Python, funções embutidas dos tipos de dados ou simplesmente verificar se a matemática de um resultado está correta.
 
-In those cases, you can use an interactive interpreter to help you. If you have Python installed on your system, you have it already. If you are using Windows, this will be the python.exe application in your Python installation directory (C:\Python31\ by default, considering the installation of Python 3.1), as seen in Figure 7.8. In Linux or OSX, you have to type "python" in any console and you are good to go.
+Nesses casos, você pode usar um intérprete interativo para ajudá-lo. Se você tem o Python instalado em seu sistema, você já o tem. Se você estiver usando o Windows, este será o aplicativo python.exe em seu diretório de instalação do Python (C:\Python31\ por padrão, considerando a instalação do Python 3.1), conforme visto na Figura 7.8. No Linux ou OSX, você precisa digitar "python" em qualquer console e pronto.
 
 ![Python IDE](../figures/Chapter7/Fig07-08.png)
 
-You can also use the Blender Python console. Change one of your current windows into the console, and you should see the screen shown in Figure 7.9.
+Você também pode usar o console do Blender Python. Mude uma de suas janelas atuais para o console e você verá a tela mostrada na Figura 7.9.
 
 ![Blender Python console](../figures/Chapter7/Fig07-09.png)
 
-Now you can use it to type simple codes, or to run a help or a dir into any of the Python modules. Unfortunately, only Blender modules have the auto-complete working from there.
+Agora você pode usá-lo para digitar códigos simples ou para executar uma ajuda ou um diretório em qualquer um dos módulos Python. Infelizmente, apenas os módulos do Blender têm o autocompletar funcionando a partir daí.
 
-Another important strategy is to keep the development of new functionalities outside the main file. For example, if you need to develop a navigation system (as we will soon), you don't need to use your real big, high-textured scenario. Definitively not for the early tests. If you keep independent systems that work together, you will be able to identify errors faster and easier and even to port fixes over to other projects smoothly.
+Outra estratégia importante é manter o desenvolvimento de novas funcionalidades fora do arquivo principal. Por exemplo, se você precisa desenvolver um sistema de navegação (como faremos em breve), você não precisa usar seu cenário real grande e de alta textura. Definitivamente, não para os primeiros testes. Se você mantiver sistemas independentes que funcionam juntos, você será capaz de identificar erros de forma mais rápida e fácil e até mesmo transferir correções para outros projetos sem problemas.
 
-### Designing Your Python Script - Study Example <a id="Designing_Your_Python_Script_-_Study_Example"></a>
+### Projetando Seu Script Python - Exemplo de Estudo <a id="Designing_Your_Python_Script_-_Study_Example"></a>
 
-We are now going to dive into an example of writing and planning a Python script for the game engine from scratch. We will assume that you have already covered all the basics of Python scripting and the general understanding of game engine internals so we can move on to its real usage. More specifically, we are going over the writing process of a camera navigation system for an architectural visualization walkthrough. This study case is actually the system developed for a commercial project for an Italian book project. In general, we needed to implement a system to navigate and interact in a virtual model of an Italian Doric temple. Here, however, we are going to develop it under a sandbox and reapply it into another file, emulating what you could do with your own projects.
+Agora vamos mergulhar em um exemplo de como escrever e planejar um script Python para o mecanismo de jogo do zero. Assumiremos que você já cobriu todos os fundamentos do script Python e o entendimento geral da parte interna do mecanismo de jogo para que possamos prosseguir para seu uso real. Mais especificamente, vamos revisar o processo de escrita de um sistema de navegação por câmera para um passo a passo de visualização arquitetônica. Este estudo de caso é na verdade o sistema desenvolvido para um projeto comercial de um projeto de livro italiano. Em geral, precisávamos implementar um sistema para navegar e interagir em um modelo virtual de um templo dórico italiano. Aqui, no entanto, vamos desenvolvê-lo em uma sandbox e reaplicá-lo em outro arquivo, emulando o que você poderia fazer com seus próprios projetos.
 
-Unlike gaming cameras, a virtual walkthrough can use a very simple navigation system compound of (1) an orbit mode to look at the exterior of the building; (2) a walk mode to navigate inside the building with gravity simulation and collision; (3) and a fly mode to freely explore the virtual environment with collision only. The other requirement was to make the system as portable as possible, and with the least amount of logic bricks.
+Ao contrário das câmeras de jogos, um passeio virtual pode usar um sistema de navegação muito simples composto de (1) um modo de órbita para ver o exterior do edifício; (2) um modo de caminhada para navegar dentro do edifício com simulação de gravidade e colisão; (3) e um modo de voo para explorar livremente o ambiente virtual apenas com colisão. O outro requisito era tornar o sistema o mais portátil possível e com o mínimo de peças lógicas.
 
-All of those aspects must be considered from the first phases of the coding process. With a well-defined design, you can plan the most efficient system in the short and long run.
+Todos esses aspectos devem ser considerados desde as primeiras fases do processo de codificação. Com um design bem definido, você pode planejar o sistema mais eficiente a curto e longo prazo.
 
->**Pencil and Paper, Valuable Coding Assets**
+>**Lápis e papel, ativos valiosos de codificação**
 >
->One of the most remarkable moments during my coding studies was at Blender Conference 2008. I was still in my first steps of learning C++ and OpenGL coding, and I got the chance to explain a game engine bug to Brecht van Lommel[md]a really experienced and acknowledged Blender coder and a very inspiring person. The bug itself was hard to explain through the Internet; it's the one behind the implementation of canvas coordinates for 2D filters presented in Chapter 5. I was pleased enough to have his input on this, but even more impressive was seeing him code a partial solution right in front of me.
->At this point, I learned an important lesson. It doesn't matter how advanced and technical the coding is that you are working on; you can always have a great time sketching your ideas and plans with old-fashioned pencil and paper. This is how he solved the problem, clearly laying down the ideas and organizing them logically. I never forgot that[md]thanks, Brecht!
+> Um dos momentos mais marcantes durante meus estudos de codificação foi na Blender Conference 2008. Eu ainda estava em meus primeiros passos de aprendizagem de codificação C ++ e OpenGL e tive a chance de explicar um bug do motor de jogo para Brecht van Lommel [md] a um programador de Blender realmente experiente e reconhecido e uma pessoa muito inspiradora. O bug em si era difícil de explicar pela Internet; é o que está por trás da implementação das coordenadas do canvas para filtros 2D apresentadas no Capítulo 5. Fiquei bastante satisfeito com sua opinião sobre isso, mas ainda mais impressionante foi vê-lo codificar uma solução parcial bem na minha frente.
 
-The system will consist of one camera for the orbit mode, and one to be used for both the fly and walk mode. Each mode works as described in Table 7.1.
+> Nesse ponto, aprendi uma lição importante. Não importa o quão avançada e técnica seja a codificação em que você está trabalhando; você sempre pode se divertir esboçando suas idéias e planos com lápis e papel antiquados. Foi assim que ele resolveu o problema, estabelecendo claramente as ideias e organizando-as de forma lógica. Nunca me esqueci disso [md] obrigado, Brecht!
 
-_Table 7.1 Comparison of Different Navigation Cameras_
+O sistema consistirá em uma câmera para o modo de órbita e uma para ser usada para o modo voar e andar. Cada modo funciona conforme descrito na Tabela 7.1.
 
-|                               | Orbit         | Walk             | Fly    |
-|:-----------------------------:|:-------------:|:----------------:|:------:|
-| Vertical Rotation Angle (Z)   | -200º to 200º | Free             | Free   |
-| Horizontal Rotation Angle (X) | 10º to 70º    | -15º to 45º      | Free   |
-| Moving Pivot                  | None          | Empty            | Empty  |
-| Horizontal Rotation Pivot     | Empty         | Empty and Camera | Camera |
-| Vertical Rotation Pivot       | Empty         | Empty            | Empty  |
+_Tabela 7.1 Comparação de diferentes câmeras de navegação_
 
-- **Empty:** is an empty object the camera is parented to.
+|                                  | Órbita        | caminhar         | voar   |
+|:--------------------------------:|:-------------:|:----------------:|:------:|
+| Ângulo de Rotação Vertical (Z)   | -200º à  200º | Livre            | Livre  |
+| Ângulo de Rotação Horizontal (X) | 10º à 70º     | -15º to 45º      | Livre  |
+| Movendo o Pivot                  | Nenhuma       | Empty            | Empty  |
+| Pivô de rotação horizontal       | Empty         | Empty e Camera   | Camera |
+| Pivô de rotação vertical         | Empty         | Empty            | Empty  |
+
+- **Empty:** é um objeto vazio ao qual a câmera é parente.
 
 
->**Try It Out**
+>**Experimente**
 >
->In order to illustrate it better, you can see the working system demonstrated in the book file: \Book\Chapter7\4\_navigation\_system\camera\_navigation.blend.
->To switch modes press 1, 2, or 3. This will change the mode to orbit, walk, and fly, respectively. To navigate, you can use the mouse and the keys WASD.
+> Para ilustrar melhor, você pode ver o sistema de trabalho demonstrado no arquivo do livro: \Book\Chapter7\4\_navigation\_system\camera\_navigation.blend.
+> Para alternar entre os modos, pressione 1, 2 ou 3. Isso mudará o modo para orbitar, andar e voar, respectivamente. Para navegar, você pode usar o mouse e as teclas WASD.
 
 #### 3D World Elements <a id="3D_World_Elements"></a>
 
