@@ -708,46 +708,46 @@ _Tabela 7.1 Comparação de diferentes câmeras de navegação_
 > Para ilustrar melhor, você pode ver o sistema de trabalho demonstrado no arquivo do livro: \Book\Chapter7\4\_navigation\_system\camera\_navigation.blend.
 > Para alternar entre os modos, pressione 1, 2 ou 3. Isso mudará o modo para orbitar, andar e voar, respectivamente. Para navegar, você pode usar o mouse e as teclas WASD.
 
-#### 3D World Elements <a id="3D_World_Elements"></a>
+#### Elementos do mundo 3D <a id="3D_World_Elements"></a>
 
-Open up the file \Book\Chapter7\4\_navigation\_system\camera\_navigation.blend.
+Abra o arquivo \Book\Chapter7\4\_navigation\_system\camera\_navigation.blend.
 
-You will find two cameras and different empty objects in the first layer:
+Você encontrará duas câmeras e diferentes objetos vazios na primeira camada:
 
-- scripts - an empty to calls all the scripts.
+- scripts - um vazio para chamar todos os scripts.
 
-- CAM_Move - the camera for the walk and fly mode.
+- CAM_Move - a câmera para o modo andar e voar.
 
-- CAM_Orbit - the camera for the orbit mode.
+- CAM_Orbit - a câmera para o modo de órbita.
 
-- CAM_back, CAM_front, CAM_side, CAM_top - empties to store the position and orientation for the game cameras.
+- CAM_back, CAM_front, CAM_side, CAM_top - esvazia para armazenar a posição e orientação das câmeras do jogo.
 
-- MOVE_PIVOT - the pivot for the walk and fly camera.
+- MOVE_PIVOT - o pivô para a câmera walk and fly.
 
-- ORB_PIVOT - the pivot for the orbit camera.
+- ORB_PIVOT - o pivô para a câmera orbital.
 
-In the second layer, you will find the collision meshes[md]the ground and the vertical elements. Everything is very simple here, since we only need to test the system, and for that a few low poly obstacles work fine.
+Na segunda camada, você encontrará as malhas de colisão [md] do solo e os elementos verticais. Tudo é muito simples aqui, já que só precisamos testar o sistema, e para isso alguns obstáculos de baixo polímero funcionam bem.
 
-#### Understanding the Code <a id="Understanding_the_Code"></a>
+#### Entendendo o Código <a id="Understanding_the_Code"></a>
 
 /Book/Chapter7/4_navigation_system/camera_navigation.py
 
-This program is divided into five different parts:
-1. Global Initialization,
-2. Event Management,
-3. Internal Functions,
-4. Game Interaction,
-5. More Python.
+Este programa está dividido em cinco partes diferentes:
+1. Inicialização global,
+2. Gerenciamento de eventos,
+3. Funções internas,
+4. Interação do jogo,
+5. Mais Python.
 
-The diagram in Figure 7.10 illustrates how they relate to one another. Now let's take an inside look at each of them.
+O diagrama da Figura 7.10 ilustra como eles se relacionam. Agora, vamos dar uma olhada em cada um deles.
 
-![Script architecture](../figures/Chapter7/Fig07-10.png)
+![Arquitetura de Script](../figures/Chapter7/Fig07-10.png)
 
-##### Global Initialization <a id="Global_Initialization"></a>
+##### Inicialização Global <a id="Global_Initialization"></a>
 
 `camera_navigation.init_world()`
 
-There is one function that is loaded once at the beginning of the game; we call it "init world"[md]init\_world inside scripts.py. We are going to check the priority option in the Python controller to make sure this script runs on top of all the others. In this function, you will first find the global initialization. We are going to store in the global module logic all the elements we are going to reuse over the scripts. That way we don't need to get the object list every time we need a particular object. A common technique is to store the scene object as well. Therefore, for every scene, you can run a script at the beginning of the game that stores a reference to the current scene globally:
+Existe uma função que é carregada uma vez no início do jogo; nós o chamamos de "init world" [md] init \_world dentro de scripts.py. Vamos verificar a opção de prioridade no controlador Python para garantir que este script seja executado em cima de todos os outros. Nesta função, você encontrará primeiro a inicialização global. Vamos armazenar na lógica do módulo global todos os elementos que vamos reutilizar nos scripts. Dessa forma, não precisamos obter a lista de objetos toda vez que precisarmos de um determinado objeto. Uma técnica comum é armazenar o objeto da cena também. Portanto, para cada cena, você pode executar um script no início do jogo que armazena uma referência à cena atual globalmente:
 
 ```python
 33 G.scenes = {"main":G.getCurrentScene()}
@@ -755,11 +755,11 @@ There is one function that is loaded once at the beginning of the game; we call 
 34 objects = G.scenes["main"].objects
 ```
 
->**Save and Load a game with GlobalDict**
+>**Salve e Carregue um Jogo com GlobalDict**
 >
->Since the module logic is accessible from all the functions and all the scenes, it can be used to store "global" objects. If you need to preserve those objects and variables between game sessions (i.e., after you close your game), you can store them inside the dictionary logic.globalDict and use logic.saveGlobalDict() and logic.loadGlobalDict() to save and load it.
+> Uma vez que a lógica do módulo é acessível a partir de todas as funções e todas as cenas, ela pode ser usada para armazenar objetos "globais". Se precisar preservar esses objetos e variáveis entre as sessões do jogo (ou seja, depois de fechar o jogo), você pode armazená-los dentro do dicionário logic.globalDict e usar logic.saveGlobalDict () e logic.loadGlobalDict () para salvá-lo e carregá-lo .
 
-To store the camera information, we are first going to create a global dictionary named cameras. We will use it to store the camera objects, their pivot, and the original orientation of the orbit pivot:
+Para armazenar as informações da câmera, vamos primeiro criar um dicionário global denominado câmeras. Vamos usá-lo para armazenar os objetos da câmera, seu pivô e a orientação original do pivô da órbita:
 
 ```python
 43     G.cameras = {}
@@ -781,7 +781,7 @@ To store the camera information, we are first going to create a global dictionar
 52     G.cameras["MOVE"] = [camera, {"orientation":pivot.worldOrientation, "position":pivot.worldPosition}, pivot]
 ```
 
-Now that we have our objects instanced, we can set the initial values for our functions, such as the camera rotation restrictions. We don't want the cameras to look under the ground; thus, we need to manually set our limits. Although we could set those limits directly in the orbit and look functions, having all the parameters in the same part of code is easier to tweak (and slightly faster since they don't need to be reassigned every frame).
+Agora que instanciamos nossos objetos, podemos definir os valores iniciais para nossas funções, como as restrições de rotação da câmera. Não queremos que as câmeras olhem para o subsolo; portanto, precisamos definir manualmente nossos limites. Embora pudéssemos definir esses limites diretamente nas funções de órbita e aparência, ter todos os parâmetros na mesma parte do código é mais fácil de ajustar (e um pouco mais rápido, pois não precisam ser reatribuídos a cada quadro).
 
 >**External Settings File**
 >
