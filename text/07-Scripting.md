@@ -366,17 +366,17 @@ O recuo é o aspecto mais importante da sintaxe Python. O código Python usa o n
 7 here_i_am() # calling the first function
 ```
 
-Here we are defining a function (1–2), calling a built-in print function (3), defining another function (4–5), calling another built-in print function (6), and finally calling the first function we declared (7).
+Aqui estamos definindo uma função (1–2), chamando uma função de impressão embutida (3), definindo outra função (4–5), chamando outra função de impressão embutida (6) e, finalmente, chamando a primeira função que declarado (7).
 
-The output of such script will be:
+A saída desse script será:
 
 `I'm outside the function.`
 `I'm still outside the function.`
 `I'm inside the first function.`
 
-The first thing you may notice is that Python runs from top to bottom. Therefore, you must define your function before you call it. Secondly, you can see that the second function is never called. So how can the code interpreter determine which print statements to call? The answer is: indentation! Whenever you change the indentation level (lines 1–2, 2–3, 4–5, and 5–6), you determine the hierarchical relation between the elements. Therefore line 2 belongs to the function defined in line 1, line 5 to line 4, and the other lines are all at the same level.
+A primeira coisa que você pode notar é que o Python é executado de cima para baixo. Portanto, você deve definir sua função antes de chamá-la. Em segundo lugar, você pode ver que a segunda função nunca é chamada. Então, como o interpretador de código pode determinar quais instruções de impressão chamar? A resposta é: recuo! Sempre que você altera o nível de recuo (linhas 1–2, 2–3, 4–5 e 5–6), você determina a relação hierárquica entre os elementos. Portanto, a linha 2 pertence à função definida na linha 1, da linha 5 à linha 4 e as outras linhas estão todas no mesmo nível.
 
-Whether to use spaces or tabs in your scripts is a matter of personal preference. But be consistent[md]it makes it easier to copy and paste your code for reutilizing it.
+Usar espaços ou tabulações em seus scripts é uma questão de preferência pessoal. Mas seja consistente [md] torna mais fácil copiar e colar seu código para reutilizá-lo.
 
 >**Pound Sign, I (Finally) Love You**
 >
