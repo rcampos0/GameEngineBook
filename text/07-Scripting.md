@@ -132,9 +132,9 @@ No entanto, você geralmente busca desempenho e fluxo de trabalho. Ter tudo cent
 
 Outro aspecto importante durante o trabalho é documentar seu projeto. É fácil abrir um arquivo de apenas alguns meses e ficar completamente perdido. Os arquivos de script, por outro lado, são naturalmente estruturados para serem autodocumentados. Para documentar tijolos lógicos, você precisa confiar em arquivos de texto dentro ou fora de seus arquivos do Blender (e diagramas de imagem legais). Definitivamente, não é tão útil quanto os comentários embutidos no seu código. (Os diagramas de código ainda podem ser úteis, mas esse é um tópico diferente.)
 
->**For the Artist Behind the Programmer Façade**
+>**Para o artista por trás da fachada do programador**
 >
->Please resist to the temptation to create ASCII art while documenting your scripts.
+> Resista à tentação de criar arte ASCII enquanto documenta seus scripts.
 
 ```
    \_\_\_\_\_.-.\_\_\_\_\_
