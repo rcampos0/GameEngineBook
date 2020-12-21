@@ -1770,11 +1770,11 @@ Escreva uma captura de tela para o nome de arquivo fornecido.
 
 O sensor do teclado permite definir teclas individuais. Como você pode ver na Figura 7.15, ele também pode ser disparado por qualquer tecla, uma vez que você habilite a opção "Todas as Chaves". Isso é muito útil para configurar a entrada de texto em seu jogo ou para centralizar todos os eventos do teclado com um único sensor e script.
 
-![Key codes visualizer](../figures/Chapter7/Fig07-15.png)
+![Visualizador de códigos-chave](../figures/Chapter7/Fig07-15.png)
 
-In this case, every key pressed into a Keyboard sensor, will be registered as a unique integer. Each number corresponds to a specific key, and finding them allows you to control your actions accordingly to the desired key map. In order to clarify this a bit more, try the file in /Book/Chapter7/5_game_keys\key_detector_logicbrick.blend.
+Neste caso, cada tecla pressionada em um sensor de teclado, será registrada como um número inteiro exclusivo. Cada número corresponde a uma tecla específica, e encontrá-los permite que você controle suas ações de acordo com o mapa de teclas desejado. Para esclarecer um pouco mais, tente o arquivo em /Book/Chapter7/5_game_keys\key_detector_logicbrick.blend.
 
-This file is similar to the key\_detector\_python.blend we used to demonstrate bge.logic.keyboard. However, this file is using the Keyboard sensor directly, instead of its wrapper.
+Este arquivo é semelhante ao key\_detector\_python.blend que usamos para demonstrar bge.logic.keyboard. No entanto, esse arquivo está usando o sensor do teclado diretamente, em vez de seu invólucro.
 
 ```python
 from bge import logic
@@ -1796,11 +1796,11 @@ if sensor.positive:
     owner["Text"] = text
 ```
 
-This script is called every time someone presses a key. The key (or keys) are registers as a list of events, each one being a list with the pressed key and its status. In this case, we are reading only the first pressed key:
+Este script é chamado sempre que alguém pressiona uma tecla. A chave (ou chaves) são registros como uma lista de eventos, cada um sendo uma lista com a tecla pressionada e seu estado. Neste caso, estamos lendo apenas a primeira tecla pressionada:
 
 `pressed_key = sensor.events[0][0]`
 
-This line stores the integer that identifies the pressed key. However, we usually would need to know the actual pressed key, not its internal integer value. Therefore, we are using the only two functions available in this module to convert our key to an understandable value:
+Esta linha armazena o inteiro que identifica a tecla pressionada. No entanto, normalmente precisaríamos saber a tecla real pressionada, não seu valor inteiro interno. Portanto, estamos usando as duas únicas funções disponíveis neste módulo para converter nossa chave em um valor compreensível:
 
 ```python
     text += "the key value is: %s\n" % events.EventToString(pressed_key)
@@ -1808,21 +1808,21 @@ This line stores the integer that identifies the pressed key. However, we usuall
     text += "the character is: %s" % events.EventToCharacter(pressed_key, 0)
 ```
     
-After that, we are checking for a specific key (spacebar). bge.events.SPACEKEY is actually an integer (to find the other keys' names, visit the API page):
+Depois disso, estamos verificando por uma chave específica (barra de espaço). bge.events.SPACEKEY é na verdade um número inteiro (para encontrar os nomes das outras chaves, visite a página da API):
 
 ```python
     if pressed_key == events.SPACEKEY: text = "Please, press any key."
 ```
 
-And, voilà, now we only need to visualize the pressed key:
+E, voilà, agora só precisamos visualizar a tecla pressionada:
 
 ```python
     owner["Text"] = text
 ```
 
->**Key Status**
+>**Status da chave**
 >
->The status of a key is what informs you whether the key has just been pressed or if it was pressed already. The Keyboard sensor is always positive as long as any key is held, and you may need to trigger different functions when some keys are pressed and released. The status values are actually stored in bge.logic:
+>O status de uma tecla é o que informa se a tecla acabou de ser pressionada ou se já foi pressionada. O sensor do teclado é sempre positivo enquanto qualquer tecla for pressionada, e você pode precisar acionar funções diferentes quando algumas teclas forem pressionadas e liberadas. Os valores de status são armazenados em bge.logic:
 
 ```python
 0 = bge.logic.KX_INPUT_NONE
