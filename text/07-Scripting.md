@@ -1576,7 +1576,7 @@ Semelhante ao teclado, este objeto Python pode funcionar como um substituto para
 
 ##### joysticks <a id="joysticks"></a>
 
-This is a list of all the joysticks your computer supports. That means the list is mainly populated by None objects, and a few, if any, joystick Python objects. To print the index, name, number of axis, and active buttons of the connected joysticks, you can do:
+Esta é uma lista de todos os joysticks compatíveis com o seu computador. Isso significa que a lista é preenchida principalmente por objetos None e alguns, se houver, objetos Python de joystick. Para imprimir o índice, nome, número de eixo e botões ativos dos joysticks conectados, você pode fazer:
 
 ```python
 for i in bge.logic.joysticks:
@@ -1588,77 +1588,77 @@ for i in bge.logic.joysticks:
         print(i, joystick.name, joystick.numAxis, joystick.activeButtons)
 ```
         
-For the complete list of all the parameters supported by the Joystick python object, visit the official API: _http://www.blender.org/documentation/blender\_python\_api\_2\_66\_release/bge.types.SCA\_JoystickSensor.html_
+Para obter a lista completa de todos os parâmetros suportados pelo objeto Joystick python, visite a API oficial: _http://www.blender.org/documentation/blender\_python\_api\_2\_66\_release/bge.types.SCA\_JoystickSensor.html_
 
-A sample file can be found on \Book\Chapter7\joystick.blend.
+Um arquivo de amostra pode ser encontrado em \Book\Chapter7\joystick.blend.
 
-##### Others <a id="Others"></a>
+##### Outros <a id="Others"></a>
 
-There are even more functions available in this module (setMist, getLogicTicRate, and setGravity, for example). Make sure that you visit the online documentation (or the documentation included on the book files) to see them all.
+Existem ainda mais funções disponíveis neste módulo (setMist, getLogicTicRate e setGravity, por exemplo). Certifique-se de visitar a documentação online (ou a documentação incluída nos arquivos do livro) para ver todos eles.
 
 #### bge.types <a id="bge.types"></a>
 
-Objects, meshes, logic bricks, and even shaders are all different game types. Every time you call an internal function from one of them, you are accessing one of those functions. This happens when you get a position of an object, change an actuator value, and so on.
+Objetos, malhas, blocos lógicos e até sombreadores são todos tipos de jogos diferentes. Cada vez que você chama uma função interna de um deles, você está acessando uma dessas funções. Isso acontece quando você obtém a posição de um objeto, altera o valor de um atuador e assim por diante.
 
-Each one of the classes has the same anatomy. You can access instance methods and instance variables. In order to explain their use properly, we will go over one of the most commonly used modules, the game object.
+Cada uma das aulas tem a mesma anatomia. Você pode acessar métodos e variáveis de instância. Para explicar seu uso de maneira adequada, examinaremos um dos módulos mais usados, o objeto de jogo.
 
-Some of the variables will only work inside the correct context. Therefore, you can't get the mouse position of a Mouse sensor if the sensor was not triggered yet. Be aware of the right context and the game type.
+Algumas das variáveis só funcionarão dentro do contexto correto. Portanto, você não pode obter a posição do mouse de um sensor de mouse se o sensor ainda não foi acionado. Esteja ciente do contexto certo e do tipo de jogo.
 
 ##### Class KX\_GameObject <a id="Class_KX_GameObject"></a>
 
-If you run a print(dir (object)) inside your script, you will get a very confusing list. It includes Python internal methods, instance methods, and instance variables. Most of them are common to all objects, so we are going to talk about them first. However, lamps and cameras not only inherit all the game object methods but also extend them with specific ones.
+Se você executar um print (dir (objeto)) dentro do seu script, obterá uma lista muito confusa. Inclui métodos internos Python, métodos de instância e variáveis de instância. A maioria deles é comum a todos os objetos, então vamos falar sobre eles primeiro. No entanto, lâmpadas e câmeras não apenas herdam todos os métodos de objetos do jogo, mas também os estendem com métodos específicos.
 
->**The Truth Is Out There**
+>**A verdade está lá fora**
 >
->In order to see all available methods, please refer to the documentation. We are only covering a few of them here.
+>Para ver todos os métodos disponíveis, consulte a documentação. Estamos cobrindo apenas alguns deles aqui.
 
-###### Python Internal Methods <a id="Python_Internal_Methods"></a>
+###### Métodos internos Python <a id="Python_Internal_Methods"></a>
 
 `__class__, __doc__, __delattr__ . . .`
 
-Most of those methods are inherited from the Python object we are dealing with. However, given the nature of the Python classes presented in Blender, some of those methods may not be fully accessible. It's unlikely you will be using them. So for now it's safe to ignore any method starting and ending with double underlines (__ignoreme__).
+A maioria desses métodos são herdados do objeto Python com o qual estamos lidando. Entretanto, dada a natureza das classes Python apresentadas no Blender, alguns desses métodos podem não ser totalmente acessíveis. É improvável que você os use. Por enquanto, é seguro ignorar qualquer método que comece e termine com sublinhados duplos (__ignoreme__).
 
 ###### Instance Methods <a id="Instance_Methods"></a>
 
 `endObject(), rayCast(), getAxisVect(), suspendDynamics(), getPropertyNames() . . .`
 
-If it looks like a function, it should be one. Every game engine object provides you with a set of functions to interact with them or from them to the others. Here are some methods you should know about:
+Se parecer uma função, deveria ser. Cada objeto do motor de jogo fornece um conjunto de funções para interagir com eles ou deles para os outros. Aqui estão alguns métodos que você deve conhecer:
 
 - **rayCast (objto, objfrom, dist, prop, face, xray, poly)**
 
-_ "Look from a point/object to another point/object and find first object hit within dist that matches prop."_
+_ "Olhe de um ponto/objeto para outro ponto/objeto e encontre o primeiro objeto atingido em dist que corresponda a prop."_
 
-This method is a more complete version of the rayCastTo(). It has so many applications that it becomes hard to delimitate its usage. For instance, this was the method used to calculate the collision in the navigation system script we studied previously.
+Este método é uma versão mais completa de rayCastTo (). Possui tantas aplicações que fica difícil delimitar seu uso. Por exemplo, esse foi o método usado para calcular a colisão no script do sistema de navegação que estudamos anteriormente.
 
 - **getPropertyNames()**
 
 _"Get a list of all property names."_
 
-Once you retrieve the list of property names, you can use it to see if the object has a specific property before using it. To get individual properties, you can use _if "prop" in object_: or _object.get("prop", default=None)_.
+Depois de recuperar a lista de nomes de propriedades, você pode usá-la para ver se o objeto tem uma propriedade específica antes de usá-lo. Para obter propriedades individuais, você pode usar _if "prop" in object_: ou _object.get("prop", default=None)_.
 
->**A Use for Properties**
+>**Um uso para propriedades**
 >
->Properties have multiple uses in the game engine. One of those uses is to mark an object to be identified by the Python script. Why not use their names instead? While names work fine to retrieve individual objects, properties allow you to easily mark and access multiple objects at once. Frankly, it's easier to create an organized, named, and tagged MP3 collection than it is to find time to properly name all your Blender data blocks[ms]objects, meshes, materials, textures, images, and so on.
+>As propriedades têm vários usos no motor de jogo. Um desses usos é marcar um objeto a ser identificado pelo script Python. Por que não usar seus nomes? Enquanto os nomes funcionam bem para recuperar objetos individuais, as propriedades permitem que você marque e acesse vários objetos de uma vez. Francamente, é mais fácil criar uma coleção de MP3 organizada, nomeada e marcada do que encontrar tempo para nomear corretamente todos os seus blocos de dados do Blender [ms], objetos, malhas, materiais, texturas, imagens e assim por diante.
 
 - **endObject()**
 
-_"Delete this object can be used in place of the EndObject Actuator."_
+_"Excluir este objeto pode ser usado no lugar do EndObject Actuator."_
 
-This method is one of the functions that mimic existent actuators. You will also find this design in methods such as sendMessage(), setParent(), and replaceMesh().
+Este método é uma das funções que imitam atuadores existentes. Você também encontrará esse design em métodos como sendMessage (), setParent () e replaceMesh ().
 
 - **applyRotation()**
 
-_"Set the game object's movement/rotation."_
+_"Defina o movimento/rotação do objeto do jogo."_
 
-There are a few methods that will free you from doing 3D math manually. This particular one is a replacement for multiplying the object orientation matrix by a rotation matrix. (If you are "old school," you can still set the orientation matrix directly though.)
+Existem alguns métodos que o deixarão livre de fazer matemática 3D manualmente. Este em particular é um substituto para a multiplicação da matriz de orientação de objeto por uma matriz de rotação. (Se você for da "velha escola", ainda pode definir a matriz de orientação diretamente.)
 
-Other methods are applyMovement(), applyForce(), applyTorque(), getDistanceTo(), getVectTo(), getAxisVect(), and alignAxisToVect().
+Outros métodos são applyMovement (), applyForce (), applyTorque (), getDistanceTo (), getVectTo (), getAxisVect () e alignAxisToVect ().
 
-###### Instance Variables <a id="Instance_Variables"></a>
+###### Variáveis de instância <a id="Instance_Variables"></a>
 
 `_name, position, mass, sensors, actuators . . ._`
 
-Last but definitively not least, we have the built-in variables. They work as internal parameters of the object (for example, name, position, orientation) or class objects linked to it (for example, parent, sensors, actuators). In Blender versions prior to 2.49, those variables were only accessible through a conjunct of get and set statements (setPosition(), getOrientation(), and so on). In Blender 2.5, 2.6 and on, they not only can be accessed directly, but also manipulated as any other variable, list, dictionary, vector, or matrix you may have:
+Por último, mas definitivamente não menos importante, temos as variáveis embutidas. Eles funcionam como parâmetros internos do objeto (por exemplo, nome, posição, orientação) ou objetos de classe vinculados a ele (por exemplo, pai, sensores, atuadores). Nas versões do Blender anteriores a 2.49, essas variáveis eram acessíveis apenas por meio de um conjunto de instruções get e set (setPosition (), getOrientation () e assim por diante). No Blender 2.5, 2.6 e em diante, eles não só podem ser acessados diretamente, mas também manipulados como qualquer outra variável, lista, dicionário, vetor ou matriz que você possa ter:
 
 ```python
 obj.mass = 5.0
@@ -1674,55 +1674,54 @@ print(obj.worldTransform)
 
 - **position, localPosition, worldPosition**
 
-Position is a vector [x, y, z] with the location of the object in the scene. We can get the absolute position (worldPosition) or the position relative to the parent of the object (localPosition). And what about accessing the position variable directly? This is deprecated, but you may run into it in old files you find online. If you access the position variable directly, you get the world position on reading and set the local position on writing. Confusing? That is why this is deprecated ;)
+Posição é um vetor [x, y, z] com a localização do objeto na cena. Podemos obter a posição absoluta (worldPosition) ou a posição relativa ao pai do objeto (localPosition). E que tal acessar a variável de posição diretamente? Ele está obsoleto, mas você pode encontrá-lo em arquivos antigos que encontrar online. Se você acessar a variável de posição diretamente, obtém a posição mundial na leitura e define a posição local na escrita. Está confuso? É por isso que está obsoleto;)
 
 - **orientation, localOrientation, worldOrientation**
 
-This variable gives you access to a matrix 3x3 with the orientation of the object. The orientation matrix is the result of the rotation transformation of an object and the influence of its parent object. As with position, the orientation variable will give you the world orientation on reading and set the local orientation on writing. As with position, you should always specify whether you want the local or world orientation.
+Esta variável dá acesso a uma matriz 3x3 com a orientação do objeto. A matriz de orientação é o resultado da transformação de rotação de um objeto e da influência de seu objeto pai. Assim como a posição, a variável de orientação fornecerá a orientação mundial na leitura e definirá a orientação local na escrita. Assim como com a posição, você sempre deve especificar se deseja a orientação local ou mundial.
 
 - **visible**
 
-We have different ways to set the visibility of an object. If your material is not set to invisible in the game panel, you can use this method. To change the visibility recursively (to the children of the object), you must use the method setVisibility.
+Temos diferentes maneiras de definir a visibilidade de um objeto. Se o seu material não estiver definido como invisível no painel do jogo, você pode usar este método. Para alterar a visibilidade recursivamente (para os filhos do objeto), você deve usar o método setVisibility.
 
 - **sensors, controllers, actuators**
 
-All the logic bricks of an object can be accessed through those dictionaries. The name of the sensor/controller/actuator will be used as the dictionary key, for it's important to name them correctly.
+Todos os blocos lógicos de um objeto podem ser acessados por meio desses dicionários. O nome do sensor / controlador / atuador será usado como a chave do dicionário, pois é importante nomeá-los corretamente.
 
 ###### Sub-Class KX\_Camera <a id="Sub-Class_KX_Camera"></a>
 
-Not all the objects have access to the same methods and variables. For example, an empty object doesn't have mass, and a static object doesn't have torque.
+Nem todos os objetos têm acesso aos mesmos métodos e variáveis. Por exemplo, um objeto vazio não tem massa e um objeto estático não tem torque.
 
-When the object is a camera, the difference is even more distinct. The camera object has its own class derived from KX_GameObject. It inherits all the instance variables and methods and expands it with its own. You will find some screen space functions (getScreenPosition(),getScreenVect(), getScreenRay()), some frustum methods (sphereInsideFrustum(), boxInsideFrustum(), pointInsideFrustum()), and some instance variables (lens, near, far, frustum_culling, world_to_camera, camera_to_world).
+Quando o objeto é uma câmera, a diferença é ainda mais nítida. O objeto de câmera tem sua própria classe derivada de KX_GameObject. Ele herda todas as variáveis e métodos de instância e os expande com seus próprios. Você encontrará algumas funções de espaço de tela (getScreenPosition (), getScreenVect (), getScreenRay ()), alguns métodos de frustum (sphereInsideFrustum (), boxInsideFrustum (), pointInsideFrustum ()) e algumas variáveis de instância (lente, perto, longe, frustum_culling , world_to_camera, camera_to_world).
 
 ###### Sub-Class KX\_Lamp <a id="Sub-Class_KX_Lamp"></a>
 
-Like cameras, lamps also have their own subclass. It inherits all the instance variables and methods, and only expands the available variables.
+Assim como as câmeras, as lâmpadas também têm sua própria subclasse. Ele herda todas as variáveis e métodos de instância e apenas expande as variáveis disponíveis.
 
-The parameters that can be changed with Python include all that can be animated with the Action actuator: energy, color, distance, attenuation, spot size, and spot blend. Additionally, you can change the lamp layer in runtime.
+Os parâmetros que podem ser alterados com Python incluem tudo o que pode ser animado com o atuador Action: energia, cor, distância, atenuação, tamanho do ponto e mistura do ponto. Além disso, você pode alterar a camada da lâmpada em tempo de execução.
 
 #### bge.render <a id="bge.render"></a>
 
-If we compare gaming with traditional 3D artwork, rasterizer would be the rendering phase of the process. Internally, it's when all the geometry is finally drawn to the screen with the light calculation, the filters applied, and the canvas set. For this reason, the Rasterizer module presents functions related to stereoscopy, windows and mouse management, world settings, and global GLSL material settings.
-
+Se compararmos os jogos com a arte 3D tradicional, o rasterizador seria a fase de renderização do processo. Internamente, é quando toda a geometria é finalmente desenhada para a tela com o cálculo de luz, os filtros aplicados e o conjunto de telas. Por esse motivo, o módulo Rasterizer apresenta funções relacionadas à estereoscopia, gerenciamento de janelas e mouse, configurações mundiais e configurações globais de material GLSL.
 ##### Window and Mouse <a id="Window_and_Mouse"></a>
 
 `getWindowWidth() / getWindowHeight()`
 
-Get the width/height of the window (in pixels).
+Obtenha a largura/altura da janela (em pixels).
 
 `showMouse(visible)`
 
-Enable or disable the operating system mouse cursor.
+Habilite ou desabilite o cursor do mouse do sistema operacional.
 
 `setMousePosition(x, y)`
 
-Set the mouse cursor position (in pixels).
+Defina a posição do cursor do mouse (em pixels).
 
 ##### World Settings <a id="World_Settings"></a>
 
 `setBackgroundColor(rgba), setAmbientColor(rgb)`
 
-Set the ambient and background color.
+Defina a cor do ambiente e do plano de fundo.
 
 `setMistColor(rgb), disableMist(), setMistStart(start), setMistEnd(end)`
 
