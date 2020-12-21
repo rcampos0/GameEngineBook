@@ -783,9 +783,9 @@ Para armazenar as informações da câmera, vamos primeiro criar um dicionário 
 
 Agora que instanciamos nossos objetos, podemos definir os valores iniciais para nossas funções, como as restrições de rotação da câmera. Não queremos que as câmeras olhem para o subsolo; portanto, precisamos definir manualmente nossos limites. Embora pudéssemos definir esses limites diretamente nas funções de órbita e aparência, ter todos os parâmetros na mesma parte do código é mais fácil de ajustar (e um pouco mais rápido, pois não precisam ser reatribuídos a cada quadro).
 
->**External Settings File**
+>**Arquivo de configurações externas**
 >
->Another common workflow is to have a separate python file (for example, settings.py) with all the variables set. Then in your working script, you simply have to do: import settings.py and use e.g. settings.left.
+> Outro fluxo de trabalho comum é ter um arquivo python separado (por exemplo, settings.py) com todas as variáveis definidas. Então, em seu script de trabalho, você simplesmente precisa fazer: import settings.py e use e.g. settings.left.
 
 ```python
        # Camera Orbit settings:
@@ -819,7 +819,7 @@ Agora que instanciamos nossos objetos, podemos definir os valores iniciais para 
        (. . .)
 ```
        
-Last, but not least, we need to create the variables we are going to read and write between the functions. Initializing them here allows us to read them since the first frame of the game. This is especially important for variables that are going to be used in the event management functions - for different values of nav_mode and walk_fly, we are going to run different functions for the camera movement.
+Por último, mas não menos importante, precisamos criar as variáveis que vamos ler e escrever entre as funções. Inicializá-los aqui nos permite lê-los desde o primeiro frame do jogo. Isso é especialmente importante para variáveis que serão usadas nas funções de gerenciamento de eventos - para diferentes valores de nav_mode e walk_fly, iremos executar diferentes funções para o movimento da câmera.
 
 ```python
 103 G.walk_fly = "walk"
@@ -827,7 +827,7 @@ Last, but not least, we need to create the variables we are going to read and wr
 104 G.nav_mode = "orbit"
 ```
 
-##### Event Management <a id="Event_Management"></a>
+##### Gestão de Eventos <a id="Event_Management"></a>
 
 ```python
 camera_navigation.mouse_move
@@ -835,11 +835,11 @@ camera_navigation.mouse_move
 camera_navigation.keyboard
 ```
 
-Apart from the Always sensor needed for the `camera_navigation.init_world()` function, there are two other sensors we need - a keyboard and a mouse sensor. All the interaction you will have with this navigation system will run through those functions.
+Além do sensor Always necessário para a função `camera_navigation.init_world ()`, existem dois outros sensores de que precisamos - um teclado e um sensor de mouse. Toda a interação que você terá com este sistema de navegação será executada por meio dessas funções.
 
 ###### scripts.mouse\_move <a id="scripts.mouse_move"></a>
 
-Let's first take a look at the mouse sensor controlling system:
+Vamos primeiro dar uma olhada no sistema de controle do sensor do mouse:
 
 ```python
 210 def mouse_move(cont):
@@ -861,7 +861,7 @@ Let's first take a look at the mouse sensor controlling system:
 218             look_camera(sensor)
 ```
 
-It looks quite similar to the script template we saw recently. A difference is that instead of activating an actuator, we are calling a function to rotate the view. Actually, according to the current camera (orbit or fly/walk), we will have to call different functions (`orbit_camera` and `look_camera` respectively). Also, you can see that the function gets the controller passed as an argument. The game engine passes the controller by default for the module when using the Python Module controller. The argument declaration in the function is actually optional. So you could replace line 210 of the code with the following two lines, and it would work just as well:
+Vamos primeiro dar uma olhada no sistema de controle do sensor do mouse:
 
 ```python
 def mouse_move():
@@ -870,7 +870,7 @@ def mouse_move():
 
 ###### scripts.keyboard <a id="scripts.keyboard"></a>
 
-The second event management function handles keyboard inputs. This function takes the sensor input and calls internal functions according to the pressed key. If the pressed key is W, A, S, or D, we move the camera. If the key is 1, 2, or 3, we switch it.
+A segunda função de gerenciamento de eventos trata das entradas do teclado. Esta função recebe a entrada do sensor e chama funções internas de acordo com a tecla pressionada. Se a tecla pressionada for W, A, S ou D, movemos a câmera. Se a chave for 1, 2 ou 3, nós a trocamos.
 
 ```python
 110 def keyboard(cont):
@@ -936,11 +936,11 @@ The second event management function handles keyboard inputs. This function take
     (...)
 ```
 
->**For a World with Fewer Logic Bricks**
+>**Por um mundo com menos peças lógicas**
 >
->If you don't want to use a keyboard sensor, you can use an internal instance of the keyboard module. You can read about this in the "bge.logic API" section later in this chapter, or on the online API page: _http://www.blender.org/documentation/blender\_python\_api\_2\_66\_release/bge.logic.html#bge.logic.keyboard._
+> Se você não quiser usar um sensor de teclado, pode usar uma instância interna do módulo de teclado. Você pode ler sobre isso na seção "API bge.logic" posteriormente neste capítulo ou na página da API online: _http://www.blender.org/documentation/blender\_python\_api\_2\_66\_release/bge.logic.html # bge.logic.keyboard._
 
-##### Internal Functions <a id="Internal_Functions"></a>
+##### Funções Internas <a id="Internal_Functions"></a>
 
 ```python
 scripts.move_camera
@@ -950,11 +950,11 @@ scripts.orbit_camera
 scripts.look_camera
 ```
 
-These three functions are called from the event management functions. In their lines, you can find the math responsible for the camera movement. We're calling them "internal functions" because they are the bridge between the sensors' inputs and the outputs in the game engine world.
+Essas três funções são chamadas a partir das funções de gerenciamento de eventos. Em suas falas, você encontra a matemática responsável pelo movimento da câmera. Estamos chamando-as de "funções internas" porque são a ponte entre as entradas dos sensores e as saídas no mundo do motor de jogo.
 
 ###### scripts.move\_camera <a id="scripts.move_camera"></a>
 
-The function responsible for the camera movement is very simple. In the walk and fly mode, we are going to move the pivot in the desired direction (which is passed as argument). Therefore, we first need to create a vector to this course. If you are unfamiliar with vectorial math, think of vector as the direction between the origin [0, 0, 0] and the vector coordinates [X, Y, Z].
+A função responsável pelo movimento da câmera é muito simples. No modo andar e voar, vamos mover o pivô na direção desejada (que é passada como argumento). Portanto, primeiro precisamos criar um vetor para este curso. Se você não está familiarizado com matemática vetorial, pense em vetor como a direção entre a origem [0, 0, 0] e as coordenadas do vetor [X, Y, Z].
 
 ```python
 336 def move_camera(direction):
