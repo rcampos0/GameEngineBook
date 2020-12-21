@@ -162,17 +162,17 @@ Outro aspecto importante durante o trabalho é documentar seu projeto. É fácil
 '-----------------'
 ```
 
-### Better Handling of Multiple Objects <a id="Better_Handling_of_Multiple_Objects"></a>
+### Melhor manuseio de vários objetos <a id="Better_Handling_of_Multiple_Objects"></a>
 
-Big projects lead to multiple files[md]this is an inevitable truth. Even when you use external linking and libraries, it's crucial to optimize the time spent in changing multiple sets at once. This is one of the weaknesses of logic bricks[md]they make it hard to automatically change a big range of elements at the same time.
+Grandes projetos levam a vários arquivos [md] esta é uma verdade inevitável. Mesmo quando você usa links externos e bibliotecas, é crucial otimizar o tempo gasto na alteração de vários conjuntos de uma vez. Este é um dos pontos fracos dos blocos lógicos [md], eles tornam difícil alterar automaticamente uma grande variedade de elementos ao mesmo tempo.
 
-If you need to change a property name or initial value of an object, you will need to repeat that change in other instances of the same. We have ways to make it easier by using copy and paste of logic bricks/properties between objects or even through logic sharing. Nevertheless, you will still have to update all the Property sensors, controllers, and actuators that may rely on the old value. That's especially true for objects with logic bricks across them[md]as we saw, the game engine allows you to link logic bricks from different objects. However, self-contained objects/logic bricks are easier to work with (and with less spaghetti ).
+Se você precisar alterar um nome de propriedade ou valor inicial de um objeto, precisará repetir essa alteração em outras instâncias do mesmo. Temos maneiras de tornar isso mais fácil usando copiar e colar blocos / propriedades lógicas entre objetos ou até mesmo através do compartilhamento de lógica. No entanto, você ainda terá que atualizar todos os sensores de propriedade, controladores e atuadores que podem contar com o valor antigo. Isso é especialmente verdadeiro para objetos com blocos lógicos entre eles [md], como vimos, o mecanismo de jogo permite que você vincule blocos lógicos de diferentes objetos. No entanto, objetos autocontidos / blocos lógicos são mais fáceis de trabalhar (e com menos espaguete).
 
-If you thought that Figure 7.1 was a mess, try to make sense of Figure 7.2. Here we have the logic bricks of _Frankie,_ plus the objects that have logic bricks connected to it. As you recall, you can restrict the visible logics through the Show Panel option, but this illustrates how difficult it is to get a global view of your system.
+Se você achou que a Figura 7.1 era uma bagunça, tente entender a Figura 7.2. Aqui temos os blocos lógicos de _Frankie, _ mais os objetos que possuem blocos lógicos conectados a ele. Como você deve se lembrar, você pode restringir as lógicas visíveis por meio da opção Mostrar Painel, mas isso ilustra como é difícil obter uma visão global do seu sistema.
 
 ![Spaghetti](../figures/Chapter7/Fig07-02.png)
 
-Once you start to work with scripts, you will see how easy it is to assume control over all your scene elements in a global way. It will give you lots of benefits in the long run.
+Depois de começar a trabalhar com scripts, você verá como é fácil assumir o controle de todos os elementos da cena de forma global. Isso lhe trará muitos benefícios a longo prazo.
 
 ### Access to Blender's Advanced Features <a id="Access_to_Blender's_Advanced_Features"></a>
 
