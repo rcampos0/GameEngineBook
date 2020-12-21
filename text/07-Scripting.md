@@ -988,13 +988,13 @@ A função responsável pelo movimento da câmera é muito simples. No modo anda
 357     # to be continued in the Game Interaction section
 ```
 
-Here the vector is the movement we need to apply to the pivot in order to get it moving. The size of the vector (MOVE) will act as intensity or speed of the movement.
+Aqui, o vetor é o movimento que precisamos aplicar ao pivô para fazê-lo se mover. O tamanho do vetor (MOVE) atuará como intensidade ou velocidade do movimento.
 
 ###### scripts.orbit\_camera <a id="scripts.orbit_camera"></a>
 
-We decided to use different methods for the walk/fly camera and the orbit one. In the orbit camera, every position on the screen corresponds to an orientation of the camera.
+Decidimos usar métodos diferentes para a câmera walk/fly e a de órbita. Na câmera de órbita, cada posição na tela corresponde a uma orientação da câmera.
 
-If you want to study this part of the script in particular, you can turn on the Mouse Cursor in the Render Panel. That way, you can see that the same cursor position will (or should) always generate the same view.
+Se você deseja estudar esta parte do script em particular, pode ativar o cursor do mouse no painel de renderização. Dessa forma, você pode ver que a mesma posição do cursor irá (ou deverá) sempre gerar a mesma visualização.
 
 ```python
 224 def orbit_camera(sensor):
@@ -1070,40 +1070,43 @@ If you want to study this part of the script in particular, you can turn on the 
         (...)
 ```
         
-The first lines that deserve our attention here are the normalizing operation. To normalize a value means to convert it to a range from 0.0 to 1.0.  In our case, it can be understood as the mouse pointer coordinates relative to the screen dimensions (width and height):
+As primeiras linhas que merecem nossa atenção aqui são a operação de normalização. Normalizar um valor significa convertê-lo em um intervalo de 0,0 a 1,0. No nosso caso, pode ser entendido como as coordenadas do ponteiro do mouse em relação às dimensões da tela (largura e altura):
 
 ```python
 242     x = win_x / screen_width
 ```
 
->**Even Fewer Logic Bricks and Normalized Mouse Coordinates**
+>**Mesmo menos blocos lógicos e coordenadas normalizadas do mouse**
 >
->It's important to always use normalized coordinates for your screen operations. Otherwise, different desktop resolutions will produce different results in a game. As a counter edge case, you may need the absolute coordinates for mouse events if you want to assure minimum clickable areas for your events.
->You don't always need to normalize the mouse coordinates manually. Like the keyboard sensor, you can replace the mouse sensor by an internal instance of the mouse module.
->The coordinates from bge.logic.mouse run from 0.0 to 1.0 and can be read anytime. (You can even link your script to an Always sensor, leaving the Mouse sensor for the times where you are using more logic bricks.)
->You can read about this in the "bge.logic API" section in this chapter or on the online API page: _http://www.blender.org/documentation/blender_python_api_2_66_release/bge.logic.html#bge.logic.keyboard_
+> É importante sempre usar coordenadas normalizadas para suas operações de tela. Caso contrário, diferentes resoluções da área de trabalho produzirão resultados diferentes em um jogo. Como um caso de contra-ataque, você pode precisar das coordenadas absolutas para eventos de mouse se quiser garantir áreas clicáveis ​​mínimas para seus eventos.
 
-Now a simple operation to convert the normalized value into a value inside our horizontal angle range (-220º to 220º):
+> Você nem sempre precisa normalizar as coordenadas do mouse manualmente. Como o sensor do teclado, você pode substituir o sensor do mouse por uma instância interna do módulo do mouse.
+
+> As coordenadas de bge.logic.mouse vão de 0,0 a 1,0 e podem ser lidas a qualquer momento. (Você pode até vincular seu script a um sensor Always, deixando o sensor de Mouse para os momentos em que estiver usando mais peças lógicas.)
+
+> Você pode ler sobre isso na seção "API bge.logic" neste capítulo ou na página da API online: _http://www.blender.org/documentation/blender_python_api_2_66_release/bge.logic.html#bge.logic.keyboard_
+
+Agora, uma operação simples para converter o valor normalizado em um valor dentro de nossa faixa de ângulo horizontal (-220º a 220º):
 
 ```python
 243     x = left_limit + (x * (right_limit - left_limit))
 ```
 
-We run the same operation for the vertical coordinate of the mouse. Though you must be aware that the canvas height runs from the top (0) to the bottom (height), this is different from what we could expect (or from OpenGL coordinates, for example). In order to better understand the flipping operation (line 257), you can first comment/uncomment the code to see the difference.
+Executamos a mesma operação para a coordenada vertical do mouse. Embora você deva estar ciente de que a altura da tela vai do topo (0) para o fundo (altura), isso é diferente do que poderíamos esperar (ou das coordenadas OpenGL, por exemplo). Para entender melhor a operação de inversão (linha 257), você pode primeiro comentar / descomentar o código para ver a diferença.
 
-Next find in the .blend file the pivot empty (ORB\_PIVOT) and play with its rotation in the X axis. The rotation is demonstrated in Figure 7.11. Therefore, if we subtract our angle from 90º (__PI__/2 in radians), we get the proper angle to rotate the pivot vertically.
+A seguir encontre no arquivo .blend o pivô vazio (ORB \ _PIVOT) e brinque com sua rotação no eixo X. A rotação é demonstrada na Figura 7.11. Portanto, se subtrairmos nosso ângulo de 90º (__PI__/2 em radianos), obtemos o ângulo adequado para girar o pivô verticalmente.
 
 ```python
 250     y = m.pi/2 – y
 ```
 
-![Orbit pivot rotation](../figures/Chapter7/Fig07-11.png)
+![Rotação do pivô de órbita](../figures/Chapter7/Fig07-11.png)
 
 ###### scripts.look\_camera <a id="scripts.look_camera"></a>
 
-The function to rotate the walk/fly camera is quite different from the orbit one. We don't have a direct relation between mouse coordinate and camera rotation anymore. Here we get the relative position of the cursor (from the center) and later force the mouse to be re-centered[md]to avoid continuous movement unless the mouse is moved again.
+A função de girar a câmera caminhar/voar é bastante diferente da órbita. Não temos mais uma relação direta entre as coordenadas do mouse e a rotação da câmera. Aqui obtemos a posição relativa do cursor (do centro) e depois forçamos o mouse a ser centralizado novamente [md] para evitar o movimento contínuo, a menos que o mouse seja movido novamente.
 
-In order to get the relative position of the cursor, the normalizing function needs to be different. This time we want the center of the screen to be 0.0 and the extreme edges of the canvas (border of the game window) to be -0.5 and 0.5.
+Para obter a posição relativa do cursor, a função de normalização precisa ser diferente. Desta vez, queremos que o centro da tela seja 0,0 e as bordas extremas da tela (borda da janela do jogo) sejam -0,5 e 0,5.
 
 ```python
 291     x = (win_x / screen_width)  - 0.5
@@ -1111,9 +1114,9 @@ In order to get the relative position of the cursor, the normalizing function ne
 292     y = (win_y / screen_height) - 0.5
 ```
 
-The values of x and y can be used directly as radians angles to rotate the camera. However, when we are walking, we want to restrict the view vertically. This design decision means that we need to limit the view angle to a maximum and minimum range. Sure, this turns tying your shoes into a circus challenge. Though it may seem like overkill, this limitation helps add a better sense of reality to our navigation system.
+Os valores de x e y podem ser usados diretamente como ângulos radianos para girar a câmera. No entanto, quando estamos caminhando, queremos restringir a visão verticalmente. Esta decisão de design significa que precisamos limitar o ângulo de visão a um intervalo máximo e mínimo. Claro, isso transforma amarrar seus sapatos em um desafio de circo. Embora possa parecer um exagero, essa limitação ajuda a adicionar um melhor senso de realidade ao nosso sistema de navegação.
 
-The solution is to get the current camera vertical angle and see if by adding the new angle  (i.e., vertical mouse move) we would end up over the limit of 45º. If so, we clamp the new angle to respect this value. To get the vertical angle, remember that the camera pivot (an empty object) is always parallel to the ground. Therefore, the vertical angle can be extracted from the camera's local orientation matrix. If that still doesn't make sense to you, try to find some 3D math tutorials online).
+A solução é obter o ângulo vertical da câmera atual e ver se, adicionando o novo ângulo (ou seja, movimento vertical do mouse), acabaríamos ultrapassando o limite de 45º. Nesse caso, fixamos o novo ângulo para respeitar esse valor. Para obter o ângulo vertical, lembre-se de que o pivô da câmera (um objeto vazio) está sempre paralelo ao solo. Portanto, o ângulo vertical pode ser extraído da matriz de orientação local da câmera. Se isso ainda não fizer sentido para você, tente encontrar alguns tutoriais de matemática 3D online).
 
 ```python
 302     # limit top - bottom angles
@@ -1133,7 +1136,7 @@ The solution is to get the current camera vertical angle and see if by adding th
 309         elif (angle + y) < bottom_limit: y = bottom_limit - angle
 ```
 
-For the actual project this was originally designed for, we ended up moving the orbit camera code to be a subset of the walk/fly. Having the mouse always centered comes in handy when you have a user interface on top of that, and it needs to alternate between mouse clicking and camera rotating. Although the methods are different, the results are the same.
+Para o projeto real para o qual este foi originalmente projetado, acabamos movendo o código da câmera de órbita para ser um subconjunto do andar/voar. Ter o mouse sempre centralizado é útil quando você tem uma interface de usuário em cima disso e precisa alternar entre o clique do mouse e a rotação da câmera. Embora os métodos sejam diferentes, os resultados são os mesmos.
 
 ##### Game Interaction <a id="Game_Interaction"></a>
 
@@ -1141,7 +1144,7 @@ For the actual project this was originally designed for, we ended up moving the 
 camera_navigation.change_view
 ```
 
-And the outcome of the functions:
+E o resultado das funções:
 
 ```python
 camera_navigation.move_camera
@@ -1150,14 +1153,13 @@ camera_navigation.look_camera
 
 camera_navigation.orbit_camera
 ```
+Na seção anterior, vimos como os ângulos e direções foram calculados com Python. No entanto, deliberadamente pulamos a parte mais importante: aplicá-lo aos elementos do motor de jogo. Inclui a ativação de atuadores (como fazemos na função change\_view ()) ou a interferência direta em nossos elementos de jogo (câmeras e pivôs).
 
-In the previous section, we saw how the angles and directions were calculated with Python. However, we deliberately skipped the most important part: applying it to the game engine elements. It includes activating actuators (as we do in the change\_view() function) or directly interfering in our game elements (cameras and pivots).
+###### Outcome of the functions: scripts.move\_camera, scripts.look\_camera, and scripts.orbit\_camera <a id = "Outcome_of_the_functions_scripts.move_camera, _scripts.look_camera, _and_scripts.orbit_camera"></a>
 
-###### Outcome of the functions: scripts.move\_camera, scripts.look\_camera, and scripts.orbit\_camera <a id="Outcome_of_the_functions_scripts.move_camera,_scripts.look_camera,_and_scripts.orbit_camera"></a>
+Vamos juntar as peças agora. Já sabemos a orientação e a posição futura da câmera. Portanto, não há quase nada a ser calculado aqui. No entanto, existem maneiras distintas de alterar a posição e orientação do objeto.
 
-Let's put the pieces together now. We already know the camera future orientation and position. Therefore, there is almost nothing left to be calculated here. Nevertheless, there are distinct ways to change the object position and orientation.
-
-In move_camera(), we are going to use an instance method of the pivot object called applyMovement (vector, local). This is part of the game engine methods (another one is applyRotation you will see next) we explain later in this chapter in the "Using the Game Engine API" section. This built-in function translates the object using the vector passed as a parameter. It can either be relative to the local or world coordinates:
+Em move_camera (), vamos usar um método de instância do objeto pivô chamado applyMovement (vector, local). Isso faz parte dos métodos do mecanismo de jogo (outro é applyRotation que você verá a seguir) que explicamos mais tarde neste capítulo na seção "Usando a API do mecanismo de jogo". Esta função embutida traduz o objeto usando o vetor passado como parâmetro. Pode ser relativo às coordenadas locais ou mundiais:
 
 ```python
 336 def move_camera(direction):
@@ -1171,7 +1173,7 @@ In move_camera(), we are going to use an instance method of the pivot object cal
 358     pivot.applyMovement(vector, True)
 ```
 
-In a similar way in the look_camera() function, we will apply the rotation in the camera object. This has the advantage of sparing the hassles of 3D math, matrixes, and orientations. Also, instead of manually computing the new orientation matrix in Python, we can rely on the game engine C++ native (i.e., fast) implementation for that task.
+De forma semelhante na função look_camera (), vamos aplicar a rotação no objeto de câmera. Isso tem a vantagem de evitar os aborrecimentos da matemática, matrizes e orientações 3D. Além disso, em vez de calcular manualmente a nova matriz de orientação em Python, podemos contar com a implementação nativa do motor de jogo C ++ (ou seja, rápida) para essa tarefa.
 
 ```python
 269 def look_camera(sensor):
@@ -1191,7 +1193,7 @@ In a similar way in the look_camera() function, we will apply the rotation in th
 319         pivot.applyRotation([0, -x, 0], 1)
 ```
 
-Although we are leaving the math calculation to the game engine, we should still be aware of how it works. The applyRotation() routine works with Euler angles (as a gimbal machine). The effects for the walk and the fly modes are very similar. The only difference is whether the rotation is local or global and the axis to rotate around:
+Embora estejamos deixando o cálculo matemático para o motor de jogo, ainda devemos estar cientes de como ele funciona. A rotina applyRotation () funciona com ângulos de Euler (como uma máquina de cardan). Os efeitos para os modos andar e voar são muito semelhantes. A única diferença é se a rotação é local ou global e o eixo para girar:
 
 ```python
 322     else: # G.walk_fly == "fly"
@@ -1207,9 +1209,9 @@ Although we are leaving the math calculation to the game engine, we should still
 327         pivot.applyRotation([y, 0, 0], 1)
 ```
 
-In the orbit_camera() function, we calculated the orientation matrix of the pivot. This matrix is no more than a fancy mathematical way of describing a rotation. Since we already have the matrix, all we need to do is to set it to our pivot orientation.
+Na função orbit_camera (), calculamos a matriz de orientação do pivô. Essa matriz nada mais é do que uma maneira matemática sofisticada de descrever uma rotação. Como já temos a matriz, tudo o que precisamos fazer é configurá-la para nossa orientação de pivô.
 
-The orientation is a Python built-in variable that can be read and written directly by our script. We will talk more about this in the "Using the Game Engine API - Application Programming Interface" part of this chapter.
+A orientação é uma variável embutida do Python que pode ser lida e escrita diretamente por nosso script. Falaremos mais sobre isso na parte "Usando a API Game Engine - Interface de programação de aplicativo" deste capítulo.
 
 ```python
 223 def orbit_camera(sensor):
@@ -1225,13 +1227,13 @@ The orientation is a Python built-in variable that can be read and written direc
 
 ###### scripts.change\_view <a id="scripts.change_view"></a>
 
-After the user presses a key (1, 2, or 3) to change the view, we call the change\_view() function to switch to the new camera (with a parameter specifying which camera to use). This function consists of two parts: first, we set the correct position and orientation for the camera and pivot; secondly, we change the current camera to the new one.
+Depois que o usuário pressiona uma tecla (1, 2 ou 3) para alterar a visualização, chamamos a função change \ _view () para alternar para a nova câmera (com um parâmetro especificando qual câmera usar). Esta função consiste em duas partes: primeiro, definimos a posição e a orientação corretas para a câmera e o pivô; em segundo lugar, mudamos a câmera atual para a nova.
 
->**Decomposing the View Orientation**
+>**Decompondo a orientação da vista**
 >
->Keep in mind that the desired orientation (stored in the empty and accessed through the G.views dictionary) represents the new view orientation. In our system, this view orientation is the combination of the parent object (pivot) orientation with the child one (camera).
+> Lembre-se que a orientação desejada (armazenada no vazio e acessada através do dicionário G.views) representa a nova orientação da vista. Em nosso sistema, esta orientação de vista é a combinação da orientação do objeto pai (pivô) com a orientação filho (câmera).
 
-Let's start simple and build up as we go. First the orbit camera: in the orbit mode the camera is stationary[md]its position never changes. All we need to do is reset the pivot orientation to its initial values. Its orientation was globally stored back in the init\_world() function. So now we can retrieve and apply it to the pivot:
+Vamos começar de forma simples e aumentar à medida que avançamos. Primeiro a câmera de órbita: no modo de órbita a câmera fica parada [md] sua posição nunca muda. Tudo o que precisamos fazer é redefinir a orientação do pivô para seus valores iniciais. Sua orientação foi globalmente armazenada de volta na função init \_world (). Portanto, agora podemos recuperá-lo e aplicá-lo ao pivô:
 
 ```python
 155         dict = G.cameras["ORB"]
@@ -1241,7 +1243,7 @@ Let's start simple and build up as we go. First the orbit camera: in the orbit m
 158         pivot.orientation = dict[1]["orientation"]
 ```
 
-The fly camera is slightly different. In this case, the camera orientation contains no rotation (i.e., an identity matrix). Therefore, it's up to the pivot orientation to match the view orientation. In other words, the pivot orientation matrix is exactly the same as the view orientation matrix:
+A câmera da mosca é ligeiramente diferente. Neste caso, a orientação da câmera não contém rotação (ou seja, uma matriz de identidade). Portanto, cabe à orientação do pivô corresponder à orientação da vista. Em outras palavras, a matriz de orientação do pivô é exatamente a mesma que a matriz de orientação da vista:
 
 ```python
 169         pivot.position = G.views[view].position
@@ -1255,9 +1257,9 @@ The fly camera is slightly different. In this case, the camera orientation conta
 178             fly_to_walk()
 ```
 
-For the walk camera, we have yet another situation. The mode we are coming from (fly) has the camera pivot orientation (same as camera.worldOrientation) as the current view orientation.  However, for the walk mode, the pivot needs to be parallel to the ground.
+Para a câmera de caminhada, temos mais uma situação. O modo de onde estamos vindo (voar) tem a orientação do pivô da câmera (igual a camera.worldOrientation) como a orientação de vista atual. No entanto, para o modo de caminhada, o pivô precisa estar paralelo ao solo.
 
-For that, we need to rotate it a few degrees to align with the horizon. The camera now will be looking to a different point (above/below the original direction). In order to realign the camera with the view orientation, we need to rotate the camera in the opposite direction. This way, the pivot and camera rotations void each other (with the benefit of having the pivot now properly aligned with the ground).
+Para isso, precisamos girá-lo alguns graus para alinhá-lo com o horizonte. A câmera agora estará olhando para um ponto diferente (acima / abaixo da direção original). Para realinhar a câmera com a orientação da vista, precisamos girar a câmera na direção oposta. Dessa forma, o pivô e as rotações da câmera se anulam (com a vantagem de ter o pivô agora devidamente alinhado com o solo).
 
 ```python
 190 def fly_to_walk():
@@ -1277,11 +1279,11 @@ For that, we need to rotate it a few degrees to align with the horizon. The came
 199     camera.applyRotation([angle,0,0],1)
 ```
 
->**Reasoning Behind the Design**
+>**Raciocínio por trás do design**
 >
->There is another reason for keeping this as a separate function. Originally, I was planning to switch modes (walk/fly) while keeping the same camera position and view. Although I dropped the idea, I decided to keep the system flexible in case of any turn of events (clients[md]who understands their minds?).
+> Há outra razão para manter isso como uma função separada. Originalmente, planejava alternar os modos (andar/voar), mantendo a mesma posição e visão da câmera. Apesar de ter abandonado a ideia, decidi manter o sistema flexível em caso de qualquer mudança nos acontecimentos (clientes [md] quem entende o que pensam?).
 
-Now that the new camera and pivot have the correct position and orientation, we can effectively switch cameras. For that, we first set the new camera in the Scene Set Camera actuator. Next, we activate the actuator and the camera will change:
+Agora que a nova câmera e o pivô estão na posição e orientação corretas, podemos trocar as câmeras com eficácia. Para isso, primeiro configuramos a nova câmera no atuador Scene Set Camera. Em seguida, ativamos o atuador e a câmera mudará:
 
 ```python
 181     act_camera.camera = dict[0]
@@ -1289,7 +1291,7 @@ Now that the new camera and pivot have the correct position and orientation, we 
 182     cont.activate(act_camera)
 ```
 
-##### More Python <a id="More_Python"></a>
+##### Mais Python <a id="More_Python"></a>
 
 ```python
 scripts.collision_check
@@ -1297,9 +1299,9 @@ scripts.collision_check
 scripts.stick_to_ground
 ```
 
-The script system shown so far handles all the interaction from the game engine sensors to the 3D world elements. Even though this covers most parts of a typical script architecture, I'd be lying if I said this is all you will be doing in your projects. Very often, you will need a script called once in a while that deals directly with the game engine data. In our case, we will have two "PySensors" to control the collision and to stick our camera to the ground while walking.
+O sistema de script mostrado até agora lida com toda a interação dos sensores do motor do jogo aos elementos do mundo 3D. Mesmo que isso cubra a maioria das partes de uma arquitetura de script típica, eu estaria mentindo se dissesse que isso é tudo o que você fará em seus projetos. Freqüentemente, você precisará de um script chamado de vez em quando que lida diretamente com os dados do mecanismo de jogo. No nosso caso, teremos dois "PySensors" para controlar a colisão e fixar nossa câmera no chão enquanto caminhamos.
 
-We could have them both working attached to an Always sensor. However, this would not be too efficient. Since we only need them while walking and flying, they can be integrated with the Keyboard sensor pipeline. The stick\_to\_ground() function will be called after any key is pressed if the current mode is "walk":
+Poderíamos ter os dois trabalhando ligados a um sensor Always. No entanto, isso não seria muito eficiente. Como só precisamos deles enquanto caminhamos e voamos, eles podem ser integrados ao pipeline do sensor do teclado. A função stick \ _to \ _ground () será chamada depois que qualquer tecla for pressionada se o modo atual for "andar":
 
 ```python
 142         if G.nav_mode == "walk" and G.walk_fly == "walk":
@@ -1307,7 +1309,7 @@ We could have them both working attached to an Always sensor. However, this woul
 143             stick_to_ground()
 ```
 
-The collision system can be used even more specifically. Inside the move\_camera() function, we will use the collision test to validate or discard our moving vector:
+O sistema de colisão pode ser usado ainda mais especificamente. Dentro da função move \ _camera (), usaremos o teste de colisão para validar ou descartar nosso vetor móvel:
 
 ```python
 353         # if there is any obstacle reset the vector
@@ -1315,81 +1317,79 @@ The collision system can be used even more specifically. Inside the move\_camera
 354         vector = collision_check(vector, direction)
 ```
 
-If the collision\_check() test finds any obstacle in front of the camera, it returns a null vector ([0, 0, 0]). Otherwise, it leaves the vector as it was set, which will then move the camera.
+Se o teste de colisão\_check () encontra algum obstáculo na frente da câmera, ele retorna um vetor nulo ([0, 0, 0]). Caso contrário, ele deixa o vetor como foi definido, o que moverá a câmera.
 
-The code of those functions is very particular to this project; therefore, we're not going into more detail here. (You are encouraged to take a look at the complete code in the book file, though). Nevertheless, the key point is to understand the role of those functions in the script architecture. Those scripts can complement the functionality of other functions, to rule your game in a global and direct way, or simply to tie things together.
+O código dessas funções é muito específico para este projeto; portanto, não entraremos em mais detalhes aqui. (No entanto, recomendamos que você dê uma olhada no código completo no arquivo do livro). No entanto, o ponto principal é entender o papel dessas funções na arquitetura do script. Esses scripts podem complementar a funcionalidade de outras funções, para governar seu jogo de forma global e direta, ou simplesmente para amarrar as coisas.
 
-#### Reusing Your Script <a id="Reusing_Your_Script"></a>
+#### Re-usando Seu Script <a id="Reusing_Your_Script"></a>
 
-One of the reasons this system was designed so carefully is because of the need for portability. You don't want to rewrite a navigation system every time you have a new project. This is not particular to this script example. Very often, you will be recycling your own scripts to adapt them to new files. Let's go over some principles you should know.
+Uma das razões pelas quais este sistema foi projetado com tanto cuidado é a necessidade de portabilidade. Você não quer reescrever um sistema de navegação sempre que tiver um novo projeto. Isso não é específico para este exemplo de script. Freqüentemente, você reciclará seus próprios scripts para adaptá-los a novos arquivos. Vamos repassar alguns princípios que você deve conhecer.
 
-##### File Organization - Groups and Layers <a id="File_Organization_-_Groups_and_Layers"></a>
+##### Organização de arquivos - grupos e camadas <a id="File_Organization_-_Groups_and_Layers"></a>
 
-The first thing to have in mind is how your final file will look. Do you want the script system to be merged with the rest of the existent Blender file? Do you want to keep them in separated scenes (very common for user interfaces)? Will you need to access/edit the script system elements later?
+A primeira coisa a ter em mente é a aparência do arquivo final. Você deseja que o sistema de script seja mesclado com o resto do arquivo existente do Blender? Você deseja mantê-los em cenas separadas (muito comum para interfaces de usuário)? Você precisará acessar/editar os elementos do sistema de script posteriormente?
 
-In our case, there is no need for an extra scene. However, we need to make sure that the navigation system elements are easy to access (especially the empties with the cameras' positions). If you can afford to dedicate one layer exclusively to the navigation system elements, do it. Make sure that the desired layer is empty in the model file and that all the objects you want to import are contained in this layer.
+No nosso caso, não há necessidade de uma cena extra. No entanto, precisamos ter certeza de que os elementos do sistema de navegação são de fácil acesso (especialmente os vazios com as posições das câmeras). Se você pode dedicar uma camada exclusivamente aos elementos do sistema de navegação, faça-o. Certifique-se de que a camada desejada esteja vazia no arquivo de modelo e que todos os objetos que deseja importar estejam contidos nesta camada.
 
-If it's not possible to have all your elements in a single layer, you can create a group for them. That way, you can always quickly isolate them to be listed in the outliner and selected individually. The other advantage of using groups is during importing. It's easier to select a group to be imported than to go over all the individual objects, determining which one should be imported and which one is part of the test environment (which usually doesn't have to be imported).
+Se não for possível ter todos os seus elementos em uma única camada, você pode criar um grupo para eles. Dessa forma, você sempre pode isolá-los rapidamente para serem listados no outliner e selecionados individualmente. A outra vantagem de usar grupos é durante a importação. É mais fácil selecionar um grupo a ser importado do que percorrer todos os objetos individuais, determinando qual deles deve ser importado e qual faz parte do ambiente de teste (que geralmente não precisa ser importado).
 
-##### Tweaks and Adjustments - Getting Your Hands Dirty <a id="Tweaks_and_Adjustments_-_Getting_Your_Hands_Dirty"></a>
+##### Ajustes e ajustes - Sujar as mãos <a id="Tweaks_and_Adjustments_-_Getting_Your_Hands_Dirty"></a>
 
-Open the file /Book/Chapter7/4_navigation_system/walkthrough_1_base/walkthrough.blend
+Abra o arquivo /Book/Chapter7/4_navigation_system/walkthrough_1_base/walkthrough.blend
 
-This small file is part of the presentation of an architectural walkthrough of an urban project (see Figure 7.12) that I (Dalai) did. It's an academic project and only my second project using the game engine. As you can see, there are absolutely no scripts in it[md]all the interaction is done with logic bricks. I didn't use Python for this project mainly because I had absolutely no knowledge of Python at all back then (and the project was done in six days).
+Este pequeno arquivo é parte da apresentação de um passo a passo arquitetônico de um projeto urbano (ver Figura 7.12) que eu (Dalai) fiz. É um projeto acadêmico e apenas meu segundo projeto usando o motor de jogo. Como você pode ver, não há absolutamente nenhum script nele [md] toda a interação é feita com blocos lógicos. Não usei Python para este projeto principalmente porque não tinha absolutamente nenhum conhecimento de Python naquela época (e o projeto foi concluído em seis dias).
 
-![Architectural walkthrough example file](../figures/Chapter7/Fig07-12.png)
+![Arquivo de exemplo de explicação arquitetônica](../figures/Chapter7/Fig07-12.png)
 
-It's time for redemption. Let's replace its navigation system with the Python system we just studied. For convenience, this file was already organized to receive the navigation elements (cameras, empties, and so on.).
+É hora de redenção. Vamos substituir seu sistema de navegação pelo sistema Python que acabamos de estudar. Por conveniência, este arquivo já estava organizado para receber os elementos de navegação (câmeras, vasilhames, etc.).
 
-###### Organize and Append Your File <a id="Organize_and_Append_Your_File"></a>
+###### Organize e anexe seu arquivo <a id="Organize_and_Append_Your_File"></a>
 
-In this case, we decided to group all the navigation elements in a group called NAVIGATIONSYSTEM and to make sure they are all in layer 1. You can use the Outliner to make sure you didn't miss any object out of the group. Leave the lamps and the collision objects out of the group.
+Neste caso, decidimos agrupar todos os elementos de navegação em um grupo chamado NAVIGATIONSYSTEM e ter certeza de que estão todos na camada 1. Você pode usar o Outliner para ter certeza de que não perdeu nenhum objeto fora do grupo. Deixe as lâmpadas e os objetos de colisão fora do grupo.
 
-To see a snapshot of the file at this moment, you can find it in the book files at: /Book/Chapter7/4_navigation_system/walkthrough_2_partial/camera_navigation.blend
+Para ver um instantâneo do arquivo neste momento, você pode encontrá-lo nos arquivos do livro em: /Book/Chapter7/4_navigation_system/walkthrough_2_partial/camera_navigation.blend
 
-Now open the walkthrough file again and append the NAVIGATIONSYSTEMwe created. It's important not to link the group but to append it. Linked elements can only be moved in their original files; thus, you should avoid them in this case.
+Agora abra o arquivo de explicação passo a passo novamente e anexe o NAVIGATIONSYSTEM que criamos. É importante não vincular o grupo, mas anexá-lo. Os elementos vinculados só podem ser movidos em seus arquivos originais; portanto, você deve evitá-los neste caso.
 
-1. Open the Append Objects Dialog (Shift+F1).
+1. Abra a caixa de diálogo Anexar objetos (Shift + F1).
 
-2. Find the NAVIGATIONSYSTEM group inside the camera_navigation file.
+2. Encontre o grupo NAVIGATIONSYSTEM dentro do arquivo camera_navigation.
 
-3. Make sure the option "Instance Groups" is not checked. (This would insert the group, not the individual elements.)
+3. Certifique-se de que a opção "Grupos de instâncias" não esteja marcada. (Isso inseriria o grupo, não os elementos individuais.)
 
-4. Click on the "Link/Append from Library." (This will add the group.)
+4. Clique em "Link / Anexar da Biblioteca". (Isso adicionará o grupo.)
 
-5. Set CAM_Orbit as the default camera. (Tip: Use the Outliner to find the object; it's inside the ORB\_PIVOT.)
+5. Defina CAM_Orbit como a câmera padrão. (Dica: use o Outliner para encontrar o objeto; ele está dentro do ORB\_PIVOT.)
 
-A snapshot with those changes can be found at:
+Um instantâneo com essas mudanças pode ser encontrado em: /Book/Chapter7/4_navigation_system/walkthrough_2_partial/walkthrough.blend
 
-/Book/Chapter7/4_navigation_system/walkthrough_2_partial/walkthrough.blend
+Agora, se você executar o aplicativo, o sistema de navegação deve funcionar - mais ou menos (consulte a Figura 7.13).
 
-Now if you run the application, the navigation system should work - kind of (see Figure 7.13).
+![Ainda não ai](../figures/Chapter7/Fig07-13.png)
 
-![Still not there](../figures/Chapter7/Fig07-13.png)
+###### Ajustes in Loco <a id="Adjustments_in_Loco"></a>
 
-###### Adjustments in Loco <a id="Adjustments_in_Loco"></a>
+Como você pode ver na Figura 7.13, o novo sistema de câmeras parece absurdamente errado. Existem duas razões principais para isso: os elementos do arquivo de passo a passo estão distantes da origem do arquivo [0, 0, 0] e as câmeras não estão preparadas para um projeto com essa magnitude (seus parâmetros de recorte são muito baixos). Precisaremos mover os objetos para seus novos lugares corretos, ajustar os parâmetros da câmera e fazer uma pequena intervenção no arquivo de script:
 
-As you can see in Figure 7.13, the new camera system looks absurdly wrong. There are two main reasons for that: the walkthrough file elements are far away from the file origin [0, 0, 0], and the cameras are not prepared for a project with this magnitude (their clipping parameters are way too low). We will need to move the objects to their new correct places, adjust the camera parameters, and do a small intervention in the script file:
+Todos os elementos do grupo NAVIGATIONSYSTEM (camada 1):
 
-All the elements from NAVIGATIONSYSTEM group (layer 1):
-
-Move them 2000 in X and 350 in Y.
+Mova-os 2.000 em X e 350 em Y.
 
 **Empties** :
 
-- CAM_front and CAM_back - Those empties will hold the position for walk cameras. Make sure their position from the ground is at the human eyes (~1.68).
+- CAM_front e CAM_back - Esses empties manterão a posição das câmeras de caminhada. Certifique-se de que a posição deles a partir do solo esteja nos olhos humanos (~ 1,68).
 
-- CAM_top and CAM_side - Those empties will be used in Fly Mode. Here, we should also make sure their initial orientation looks good. The easiest way to do that is by using the Fly Mode (select the object, set it as current camera, and use Shift+F).
+- CAM_top e CAM_side - Esses empties serão usados no modo Fly. Aqui, também devemos ter certeza de que sua orientação inicial parece boa. A maneira mais fácil de fazer isso é usando o modo Fly (selecione o objeto, defina-o como câmera atual e use Shift + F).
 
-The one thing missing for the camera is to increase the clipping distance. That way, we can see all the skydome around the camera (see before and after in Figure 7.14).
+A única coisa que falta para a câmera é aumentar a distância de recorte. Dessa forma, podemos ver todo o skydome ao redor da câmera (veja antes e depois na Figura 7.14).
 
 **Cameras** :
 
-- CAM_Orbit - Adjust initial Z, change clip ending to 1000.
+- CAM_Orbit - Ajuste o Z inicial, mude o final do clipe para 1000.
 
-- CAM_Move - change clip ending to 1000.
+- CAM_Move - mude o clipe que termina em 1000.
 
-A snapshot with those changes can be found at:
+Um snapshot com essas mudanças pode ser encontrado em:
 
 /Book/Chapter7/4_navigation_system/walkthrough_3_partial/walkthrough.blend
 
@@ -1397,9 +1397,9 @@ A snapshot with those changes can be found at:
 |:-------------------------:|:-------------------------:|
 ![Camera clipping of 400](../figures/Chapter7/Fig07-14a.png)  |  ![Camera clipping of 1000](../figures/Chapter7/Fig07-14b.png)
 
->**Make Sure That Collision Is Set Properly**
+>**Certifique-se de que a colisão está configurada corretamente**
 >
->All the houses, the ground, and the other 3D objects already have collision enabled in this file. In other situations, however, you may need to change the collision objects, enabling or disabling their collisions accordingly. The Python raycast uses the internal Bullet Physics engine under the hood. In order to prevent the camera from going through the walls and the ground, set enough collision surfaces (but not too much, so that you don't compromise the performance of your game).
+> Todas as casas, o solo e os outros objetos 3D já têm a colisão habilitada neste arquivo. Em outras situações, no entanto, você pode precisar alterar os objetos de colisão, habilitando ou desabilitando suas colisões de acordo. O raycast Python usa o mecanismo interno Bullet Physics sob o capô. Para evitar que a câmera atravesse as paredes e o solo, defina superfícies de colisão suficientes (mas não muito, para não comprometer o desempenho do jogo).
 
 ###### Script Tweaks <a id="Script_Tweaks"></a>
 
