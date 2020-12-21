@@ -378,19 +378,19 @@ A primeira coisa que você pode notar é que o Python é executado de cima para 
 
 Usar espaços ou tabulações em seus scripts é uma questão de preferência pessoal. Mas seja consistente [md] torna mais fácil copiar e colar seu código para reutilizá-lo.
 
->**Pound Sign, I (Finally) Love You**
+>**Sinal de libra, eu (finalmente) te amo**
 >
->If, like me, you never understood the reason for the number/pound sign key (#) on your phone, you will eventually find it very useful. In Python, any text to the right of a pound sign is ignored by the interpreter. Therefore, the pound sign is used to add commentaries to your code or to temporarily deactivate part of it.
+> Se, como eu, você nunca entendeu o motivo da tecla do número / jogo da velha (#) em seu telefone, você acabará considerando-a muito útil. Em Python, qualquer texto à direita de um sinal de libra é ignorado pelo interpretador. Portanto, o sinal de libra é usado para adicionar comentários ao seu código ou para desativar temporariamente parte dele.
 
-### OOP - Object-Oriented Programming <a id="OOP_-_Object-Oriented_Programming"></a>
+### OOP - Programação Orientada a Objetos <a id="OOP_-_Object-Oriented_Programming"></a>
 
-Since games deal with 3D world objects, it makes sense to use a language that is oriented to them. The game engine itself is written in C++, a very strong and object-oriented language, and Python OOP capabilities let you handle the game data in a Python-native way. It reflects in the game engine objects having their own set of functions and variables directly accessed from a Python API (to be explained later in this chapter in the section "Using the Game Engine API - Application Programming Interface").
+Como os jogos lidam com objetos do mundo 3D, faz sentido usar uma linguagem orientada para eles. O motor do jogo em si é escrito em C ++, uma linguagem muito forte e orientada a objetos, e os recursos Python OOP permitem que você manipule os dados do jogo de uma forma nativa do Python. Isso se reflete nos objetos do motor de jogo tendo seu próprio conjunto de funções e variáveis ​​acessadas diretamente de uma API Python (a ser explicado posteriormente neste capítulo na seção "Usando a API Game Engine - Interface de programação de aplicativo").
 
-In the Python code, you can (and will) create your own classes, modules, and elements. For example, you may want to control some 3D elements as a group defined by your code. It will make it easy to get to all of them at once. Therefore, you can have a custom class that will store all the related objects you want to access and preserve some properties as a group.
+No código Python, você pode (e irá) criar suas próprias classes, módulos e elementos. Por exemplo, você pode querer controlar alguns elementos 3D como um grupo definido por seu código. Isso tornará mais fácil chegar a todos eles de uma vez. Portanto, você pode ter uma classe personalizada que armazenará todos os objetos relacionados que deseja acessar e preservará algumas propriedades como um grupo.
 
-Open the book file: \Book\Chapter7\2\_oop\oop.blend
+Abra o arquivo do livro: \Book\Chapter7\2\_oop\oop.blend
 
-The first script that runs in this file is the init\_world.py. Here we are creating two groups to store different kind of elements (cube and sphere). In order to sort the objects between the groups, we go over the entire scene object list and check for objects with a property "cube" or "sphere" and append them to their respective lists.
+O primeiro script executado neste arquivo é o init \_world.py. Aqui estamos criando dois grupos para armazenar diferentes tipos de elementos (cubo e esfera). Para ordenar os objetos entre os grupos, percorremos toda a lista de objetos da cena e verificamos se há objetos com uma propriedade "cubo" ou "esfera" e os acrescentamos às suas respectivas listas.
 
 ```python
 # ############### #
@@ -432,7 +432,7 @@ for obj in scene.objects:
 G.groups = {"cube":cube_group, "sphere":sphere_group}
 ```
 
-After storing them in the global module `bge.logic`, we wait for the user to click in the cube or sphere in the middle of the scene. When that happens, it will toggle the value of the on/off property of the cube or sphere. The following script (which runs every frame) will then hide/unhide the group's objects accordingly.
+Após armazená-los no módulo global `bge.logic`, esperamos que o usuário clique no cubo ou esfera no meio da cena. Quando isso acontecer, ele alternará o valor da propriedade on/off do cubo ou esfera. O seguinte script (que executa todos os quadros) irá então ocultar/mostrar os objetos do grupo de acordo.
 
 ```python
 ## ################## #
@@ -461,41 +461,41 @@ change_visibility(cube_group.objects, cube_visible)
 change_visibility(sphere_group.objects, sphere_visible)
 ```
 
-And we are done with this interaction. Play with the file by adding new elements (tubes, planes, monkeys) and make them interact as we have here. A few copies and pastes should be enough to adapt this code to your new situation. Remember to note the current indentation used.
+E terminamos com essa interação. Brinque com o arquivo adicionando novos elementos (tubos, aviões, macacos) e faça com que eles interajam como temos aqui. Algumas cópias e pastas devem ser suficientes para adaptar este código à sua nova situação. Lembre-se de observar o recuo atual usado.
 
-## Where to Learn Python <a id="Where_to_Learn_Python"></a>
+## Onde aprender Pythonn <a id="Where_to_Learn_Python"></a>
 
-If you have previous experience with another programming language, you will learn Python in no time. If you go over some basic Python tutorials, look at some script examples, and check the Blender game engine API, that might be enough. But if learning Python is your first step into coding experience, don't worry. Take the time to read through the basics of the language, start with the simplest tasks, and never give up.
+Se você tiver experiência anterior com outra linguagem de programação, aprenderá Python rapidamente. Se você ler alguns tutoriais básicos do Python, olhar alguns exemplos de script e verificar a API do mecanismo de jogo do Blender, isso pode ser o suficiente. Mas se aprender Python é seu primeiro passo na experiência de codificação, não se preocupe. Reserve um tempo para ler o básico da linguagem, comece com as tarefas mais simples e nunca desista.
 
-Usually, a good way to start is tweaking ready-to-use scripts, which doesn't require you to understand all the aspects of the language before your first experiments. Also, it gives you a good motivational boost by producing quick results for your efforts. We recommend you first learn Python and then focus on its application in the game engine. But you may be more comfortable messing with game engine files first and then later learning Python more deeply.
+Normalmente, uma boa maneira de começar é ajustando scripts prontos para uso, o que não exige que você entenda todos os aspectos da linguagem antes de seus primeiros experimentos. Além disso, dá a você um bom impulso motivacional, produzindo resultados rápidos para seus esforços. Recomendamos que você primeiro aprenda Python e depois se concentre em sua aplicação no mecanismo de jogo. Mas você pode se sentir mais confortável mexendo com os arquivos do mecanismo de jogo primeiro e depois aprendendo Python mais profundamente.
 
 ### Online Material <a id="Online_Material"></a>
 
-Below are some websites where you can learn more about Python.
+Abaixo estão alguns sites onde você pode aprender mais sobre Python.
 
 _www.python.org_
 
-Learn about new Python versions, API changes, and module documentation.
+Aprenda sobre as novas versões do Python, mudanças na API e documentação do módulo.
 
 _www.blender.org/documentation/blender_python_api_2_66_release/#game-engine-modules_
 
-Official BGE API Documentation[md]all the built-in modules that can be used with the game engine.
+Documentação oficial da API BGE [md] todos os módulos integrados que podem ser usados com o motor de jogo.
 
 _www.blenderartists.org/forum_
 
-Blender Artists forum[md]you can find good script examples in the Python section (general Blender Python) and in the Blender game engine section.
+No fórum Blender Artists [md], você pode encontrar bons exemplos de scripts na seção Python (geral, Blender Python) e na seção do mecanismo de jogo do Blender.
 
 [_www.diveintopython3.net_](http://www.diveintopython3.net)
 
-Dive Into Python 3 covers Python 3 and its differences from Python 2. A complete book available online.
+Dive Into Python 3 cobre o Python 3 e suas diferenças com o Python 2. Um livro completo disponível online.
 
 ### Offline Material <a id="Offline_Material"></a>
 
-Here are some other resources to help you learn Python.
+Aqui estão alguns outros recursos para ajudá-lo a aprender Python.
 
 _Learning Python,_ by Mark Lutz and David Ascher, published by O'Reilly Media
 
-You can learn Python in a week with this book. You can also find it as an e-book, which is useful for searching quickly. Try to get the newest edition of the book you can find. Different Python series (2.x, 3.x) have certain particularities you don't want to have to deal with.
+Você pode aprender Python em uma semana com este livro. Você também pode encontrá-lo como um e-book, o que é útil para pesquisas rápidas. Tente obter a edição mais recente do livro que encontrar. Diferentes séries Python (2.x, 3.x) têm certas particularidades com as quais você não deseja lidar.
 
 >**Before Buying a Book**
 >
