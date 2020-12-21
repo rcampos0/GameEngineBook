@@ -190,43 +190,43 @@ Você ficará feliz em saber que o motor de jogo possui um conjunto poderoso de 
 
 Existem algumas razões para não ter todos os métodos acessíveis por meio de blocos lógicos. Primeiro, uma interface gráfica é muito limitada para codificação complexa. Você pode acabar com um sistema lento que está longe de ser otimizado. Em segundo lugar, ter métodos independentes da interface permite que ela seja expandida de forma mais fácil e constante (do ponto de vista do desenvolvimento). Alguns recursos avançados, como sistema de espelhamento, carregamento dinâmico de malhas, chamadas OpenGL e restrições personalizadas dificilmente caberiam na interface do mecanismo de jogo atual do Blender. Eles provavelmente acabariam não sendo implementados devido à quantidade de trabalho extra necessária. Outras coisas que você encontrará nos métodos integrados do mecanismo de jogo são: fazer capturas de tela; alterar as configurações do mundo (gravidade, taxas de tique lógico); acessar os dados retornados dos sensores (teclas pressionadas, posição do mouse); alterar as propriedades do objeto (lente da câmera, cores claras, massa do objeto); e muitos outros que iremos cobrir no decorrer deste capítulo.
 
-### Use Features That Are Not Part of Blender <a id="Use_Features_That_Are_Not_Part_of_Blender"></a>
+### Use recursos que não fazem parte do Blender <a id="Use_Features_That_Are_Not_Part_of_Blender"></a>
 
-No man is an island. No game is an island either (except _Monkey Island_). And the easiest way to integrate your Blender game with the exterior world is with Python. If you want to use external devices to control the game input or to tie external applications to your game, you may find Python suitable for that task.
+Nenhum homem é uma ilha. Nenhum jogo é uma ilha (exceto _Monkey Island_). E a maneira mais fácil de integrar o seu jogo Blender com o mundo exterior é com Python. Se você deseja usar dispositivos externos para controlar a entrada do jogo ou vincular aplicativos externos ao seu jogo, você pode achar o Python adequado para essa tarefa.
 
-Here are some examples that showcase what can be done with Python external libraries:
+Aqui estão alguns exemplos que mostram o que pode ser feito com bibliotecas externas Python:
 
-- Grab data off the Internet for game score.
+- Pegue dados da Internet para a pontuação do jogo.
 
-- Control your game with a Nintendo Wiimote controller.
+- Controle seu jogo com um controlador Nintendo Wiimote.
 
-- Combine Head-tracking and immersive displays for augmented reality.
+- Combine Head-tracking e displays imersivos para realidade aumentada.
 
-Those possibilities go with the previous statement that almost everything that you can do with Python, you can do in the game engine. And since Python can be used with modules written in other languages (properly wrapped), you can virtually use any application as a basis for your system.
+Essas possibilidades vêm com a declaração anterior de que quase tudo o que você pode fazer com Python, você pode fazer no motor de jogo. E, como o Python pode ser usado com módulos escritos em outras linguagens (devidamente agrupados), você pode usar virtualmente qualquer aplicativo como base para seu sistema.
 
->**Cross-Platform, Yes; Cross-Version, Not**
+>**Plataforma cruzada, sim; Versão cruzada, não**
 >
->To use external libraries, you must know the Python version they were built against. The Python library you are using must be compatible with the Python version that comes with your Blender. It's also valuable to check how often the library is updated and if it will be maintained in the future.
+> Para usar bibliotecas externas, você deve saber a versão do Python com a qual foram construídas. A biblioteca Python que você está usando deve ser compatível com a versão Python que vem com seu Blender. Também é importante verificar com que frequência a biblioteca é atualizada e se será mantida no futuro.
 
-### Keep Track of Your Changes with a Version Control System <a id="Keep_Track_of_Your_Changes_with_a_Version_Control_System"></a>
+### Acompanhe suas alterações com um sistema de controle de versão <a id="Keep_Track_of_Your_Changes_with_a_Version_Control_System"></a>
 
-If you take a Blender file in two different moments of your production, you will have a hard time finding what has changed between them. This is because Blender's native file format is a binary type. Binary files are written in a way that you can't get to them directly[md]they are designed to be accessed by programs and not by human beings.
+Se você pegar um arquivo do Blender em dois momentos diferentes de sua produção, terá dificuldade em encontrar o que mudou entre eles. Isso ocorre porque o formato de arquivo nativo do Blender é um tipo binário. Os arquivos binários são escritos de uma maneira que você não pode acessá-los diretamente [md] eles são projetados para serem acessados por programas e não por seres humanos.
 
-Scripts, on the other hand, are plain text files. You can open a script in any text editor and immediately see the differences between two similar files. Finding those differences are vital to going forward and backward with your experimentations during work. Actually, if you don't want to check for differences manually, you may want to consider using external script files with a version control system such as Git, SVN, Mercury, or CVN.
+Os scripts, por outro lado, são arquivos de texto simples. Você pode abrir um script em qualquer editor de texto e ver imediatamente as diferenças entre dois arquivos semelhantes. Encontrar essas diferenças é vital para avançar e retroceder em suas experimentações durante o trabalho. Na verdade, se você não deseja verificar as diferenças manualmente, pode considerar o uso de arquivos de script externos com um sistema de controle de versão como Git, SVN, Mercury ou CVN.
 
->**And the Catch Is …**
+>**E a captura é ...**
 >
->This works only for scripts maintained outside Blender. This is one of the strong reasons to prefer Python Module controllers as opposed to Python Script controllers.
+> Isso funciona apenas para scripts mantidos fora do Blender. Este é um dos fortes motivos para preferir os controladores de módulo Python em vez dos controladores de script Python.
 
-A version control system allows you to move between working versions of your project files. It makes it relatively safe to experiment with different methods in a destructive way. In other words, it's a system to protect you from yourself. In Figure 7.3, you can see an application of this. Someone changed the script file online while we were working locally on it. Instead of manually tracking down the differences, we could use a tool to merge both changes into a new file and commit it. We were using TortoiseSVN for Windows here, a graphic interface to use with a SVN system. For Linux systems, svn command-line plus the software "meld" work just as well.
+Um sistema de controle de versão permite que você alterne entre as versões de trabalho de seus arquivos de projeto. Torna-se relativamente seguro experimentar diferentes métodos de forma destrutiva. Em outras palavras, é um sistema para protegê-lo de você mesmo. Na Figura 7.3, você pode ver uma aplicação disso. Alguém alterou o arquivo de script online enquanto trabalhávamos localmente nele. Em vez de rastrear manualmente as diferenças, poderíamos usar uma ferramenta para mesclar as alterações em um novo arquivo e confirmá-lo. Estávamos usando TortoiseSVN para Windows aqui, uma interface gráfica para usar com um sistema SVN. Para sistemas Linux, a linha de comando svn mais o software "meld" funcionam da mesma forma.
 
 ![TortoiseSVN merging](../figures/Chapter7/Fig07-03.png)
 
-### Debug Your Game While It Runs <a id="Debug_Your_Game_While_It_Runs"></a>
+### Depure o seu jogo durante a execução <a id="Debug_Your_Game_While_It_Runs"></a>
 
-Interpreted languages (also known as scripting languages) are slower than compiled code. Therefore, to speed up their performance they are precompiled and cached the first time they run (when you launch your game). This is not mandatory, though, and if you are using external Python scripts (instead of those created inside Blender), you can use the debugging button to have them reloaded every time they are called.
+Linguagens interpretadas (também conhecidas como linguagens de script) são mais lentas que o código compilado. Portanto, para acelerar seu desempenho, eles são pré-compilados e armazenados em cache na primeira vez em que são executados (quando você inicia o jogo). Isso não é obrigatório, entretanto, e se você estiver usando scripts Python externos (em vez daqueles criados dentro do Blender), você pode usar o botão de depuração para recarregá-los toda vez que forem chamados.
 
-In Figure 7.4, we have the scripts.reload\_me module that will be reloaded every frame. That way you can dynamically change the content of your scripts, variables, and functions without having to restart the game. Try it yourself: copy the content of the folder \Book\Chapter7\1\_reloadme to your computer and launch debug\_python.blend. Play your game, and you will see a spinning cube. The speed of the cube is controlled by the 14th line of the file script.py, found in the same folder.
+Na Figura 7.4, temos o módulo scripts.reload\_me que será recarregado a cada quadro. Dessa forma, você pode alterar dinamicamente o conteúdo de seus scripts, variáveis e funções sem ter que reiniciar o jogo. Experimente você mesmo: copie o conteúdo da pasta\Book\Chapter7\1\_reloadme para o seu computador e execute debug\_python.blend. Jogue o seu jogo e você verá um cubo giratório. A velocidade do cubo é controlada pela 14ª linha do arquivo script.py, localizado na mesma pasta.
 
 ```python
  # edit the speed value and you will see the rotation changing
@@ -236,35 +236,35 @@ In Figure 7.4, we have the scripts.reload\_me module that will be reloaded every
  speed = 0.025
 ```
 
-![Python Module controllers](../figures/Chapter7/Fig07-04.png)
+![Controladores de módulo Python](../figures/Chapter7/Fig07-04.png)
 
-Without closing Blender or even stopping your game, open the file script.py in a text editor, change this line to 0.05, for example, and save it. You will see the speed changing immediately. Your game is literally being updated at runtime, and you can change any module that's been called with the debug option on.
+Sem fechar o Blender ou mesmo parar o jogo, abra o arquivo script.py em um editor de texto, altere esta linha para 0,05, por exemplo, e salve. Você verá a velocidade mudando imediatamente. Seu jogo está literalmente sendo atualizado em tempo de execução e você pode alterar qualquer módulo que tenha sido chamado com a opção de depuração ativada.
 
->**Turn It Off When You Leave**
+>**Desligue quando você sair**
 >
->Remember to turn debugging off when you are done with this script. Reloading the script every frame can drastically reduce your performance.
+> Lembre-se de desligar a depuração quando terminar com este script. Recarregar o script a cada quadro pode reduzir drasticamente o seu desempenho.
 
-## So What Exactly Is Python? <a id="So_What_Exactly_Is_Python?"></a>
+## Então, o que exatamente é Python? <a id="So_What_Exactly_Is_Python?"></a>
 
-Now that you are aware of all the benefits of using Python, it's time to understand what Python is. Once again, we can't go over all the aspects of the language here. Nevertheless, a general overview is still desirable to help you understand the examples presented in this book.
+Agora que você está ciente de todos os benefícios de usar Python, é hora de entender o que é Python. Mais uma vez, não podemos examinar todos os aspectos da linguagem aqui. No entanto, uma visão geral ainda é desejável para ajudá-lo a entender os exemplos apresentados neste livro.
 
-To study your scripts, you must be aware of the following aspects:
+Para estudar seus scripts, você deve estar ciente dos seguintes aspectos:
 
-- Flexible data types
+- Tipos de dados flexíveis
 
-- Indentation
+- Recuo
 
-- OOP[md]Object-Oriented Programming
+- Programação Orientada a Objetos OOP [md]
 
-### Flexible Data Types <a id="Flexible_Data_Types"></a>
+### Tipos de dados flexíveis <a id="Flexible_Data_Types"></a>
 
-Whenever you write a program, you have to use variables to store changing values at runtime. Unlike languages such as C and Java, Python variables are very flexible: they can be declared on the fly when you first use them; you can assign different data types for the same variable; and you can even name them dynamically:
+Sempre que você escreve um programa, você deve usar variáveis para armazenar os valores alterados em tempo de execução. Ao contrário de linguagens como C e Java, as variáveis do Python são muito flexíveis: elas podem ser declaradas instantaneamente quando você as usa pela primeira vez; você pode atribuir diferentes tipos de dados para a mesma variável; e você pode até mesmo nomeá-los dinamicamente:
 
 ```python
 for i in range(10): exec("var\_%d = %d" % (i,i))
 ```
 
-This snip of code is the equivalent to the following:
+Este fragmento de código é equivalente ao seguinte:
 
 ```python
 var_1 = 1
@@ -276,7 +276,7 @@ var_3 = 3
 (...)
 ```
 
-As you can see, the variable names are created at runtime. Therefore, if you name your objects correctly in the Blender file, you can store them in variables named after them. The following code snip assigns the scene objects (retrieved from the game engine) to variables named after their names.
+Como você pode ver, os nomes das variáveis são criados no tempo de execução. Portanto, se você nomear seus objetos corretamente no arquivo do Blender, você pode armazená-los em variáveis nomeadas após eles. O fragmento de código a seguir atribui os objetos de cena (recuperados do mecanismo de jogo) a variáveis nomeadas após seus nomes.
 
 ```python
 (...)
@@ -286,15 +286,15 @@ for object in scene.objects:
     exec("%s = \"object\" " % (object.name))
 ```
 
-Although we have flexible data types, we must respect variable types while manipulating and passing/returning them to functions. Here you can see a list of the data types you will find in the Blender game engine API:
+Embora tenhamos tipos de dados flexíveis, devemos respeitar os tipos de variáveis ao manipulá-los e transmiti-los/retorná-los às funções. Aqui você pode ver uma lista dos tipos de dados que encontrará na API do mecanismo de jogo do Blender:
 
-- **Integer:** This is the most common of the numerical types. It can store any number that fits in your computer memory. You can perform any regular math operations on it, such as sum, subtraction, division, modulus, and potency.
+- **Integer:** Este é o mais comum dos tipos numéricos. Ele pode armazenar qualquer número que caiba na memória do computador. Você pode realizar qualquer operação matemática regular nele, como soma, subtração, divisão, módulo e potência.
 
 ```python
  my_integer  = 112358132134
 ```
 
-- **Float:** This type is very similar to integers, but has a range of numbers that includes fractions. If you divide an even number by its half, Python will automatically convert your integer to a float number.
+- **Float:** Este tipo é muito semelhante aos inteiros, mas possui uma gama de números que inclui frações. Se você dividir um número par pela metade, o Python converterá automaticamente seu número inteiro em um número flutuante.
 
 ```python
  simple_float = 0.5
@@ -302,7 +302,7 @@ Although we have flexible data types, we must respect variable types while manip
  phi = (1 + math.sqrt(5)) / 2 # ~1.618
 ```
 
-- **Boolean:** As simple as it sounds, this data type stores a true or a false value. It can also be understood as an integer with the value of 1 or 0.
+- **Boolean:** Tão simples quanto parece, este tipo de dados armazena um valor verdadeiro ou falso. Também pode ser entendido como um número inteiro com o valor de 1 ou 0.
 
 ```python
  i_am_enjoying_the_book = True
@@ -310,31 +310,31 @@ Although we have flexible data types, we must respect variable types while manip
  i_am_understanding_the_book = i_am_enjoying_the_book - 1
 ```
 
-- **List:** A list contains a conjunct of elements ordered by ascending indexes. Although the size of a list can change on the fly, you can't access a list index that wasn't created yet (this will crash Python). List can have mixed elements such as integers, strings, and objects.
+- **List:** Uma lista contém um conjunto de elementos ordenados por índices crescentes. Embora o tamanho de uma lista possa mudar rapidamente, você não pode acessar um índice de lista que ainda não foi criado (isso irá travar o Python). A lista pode ter elementos mistos, como inteiros, strings e objetos.
 
 ```python
  my_list = [3.14159265359, "PI", True]
 ```
 
-- **Tuple:** This is another kind of list where elements can't be overwritten. As with lists, you can read them using indexes. But it's more common to access all the values at once, assigning them to different variables.
+- **Tuple:** Este é outro tipo de lista onde os elementos não podem ser substituídos. Tal como acontece com as listas, você pode lê-las usando índices. Mas é mais comum acessar todos os valores de uma vez, atribuindo-os a diferentes variáveis.
 
 ```python
  t,u,p,l,e = (1,2,3,4,5) # works as: t = 1, u = 2, p = 3, ...
 ```
 
-- **String:** Whenever you need to store a text, you will use strings. As words are a combination of individual letters, a string consists of individual characters. Indeed, strings can be understood as a list of characters because you can access them using their location index, though you can't overwrite them (like in a tuple).
+- **String:** Sempre que precisar armazenar um texto, você usará strings. Como as palavras são uma combinação de letras individuais, uma string consiste em caracteres individuais. Na verdade, strings podem ser entendidas como uma lista de caracteres porque você pode acessá-los usando seu índice de localização, embora não possa sobrescrevê-los (como em uma tupla).
 
 ```python
  python = "rulez"
 ```
 
-- **Dictionary:** Like a list, a dictionary can store multiple values. Unlike a list, a dictionary is not based on numerical index access. Therefore, we have strings working as "keys" to store and retrieve the individual variables. In fact, anything can be a key to a dictionary, a number, an object, a class …
+- **Dictionary:** Como uma lista, um dicionário pode armazenar vários valores. Ao contrário de uma lista, um dicionário não se baseia no acesso ao índice numérico. Portanto, temos strings trabalhando como "chaves" para armazenar e recuperar as variáveis individuais. Na verdade, qualquer coisa pode ser uma chave para um dicionário, um número, um objeto, uma classe ...
 
 ```python
  _3d_software = {"name ": "Blender", "version": 2.6}
 ```
 
-- **Custom Types:** These are things such as vectors and matrixes. The game engine combines some of the basic data types to create more complex ones. They are mainly used for vectors and matrixes. That way you can interact mathematically with them in a way that basic types won't do.
+- **Custom Types:** São coisas como vetores e matrizes. O mecanismo de jogo combina alguns dos tipos de dados básicos para criar outros mais complexos. Eles são usados principalmente para vetores e matrizes. Dessa forma, você pode interagir matematicamente com eles de uma forma que os tipos básicos não farão.
 
 ```python
  mathutils.Vector(1,0,0) * object.orientation # the result is a Matrix
@@ -344,11 +344,11 @@ Although we have flexible data types, we must respect variable types while manip
 
 _Indentation[md]the amount of white spaces or tabs you leave before a new line._
 
-When coding in a particular programming language, it's mandatory to follow its general syntax. In that regard, Python is one of the most restricted languages out there. Think of this as a tough grammar exam. You won't be able to score high unless you follow all the pre-established grammar rules. Now imagine that it could be even worse[md]as bad as a written legal document. We are talking about strict paragraphs, indentation, information hierarchy, and similar rules.
+Ao codificar em uma linguagem de programação específica, é obrigatório seguir sua sintaxe geral. Nesse sentido, Python é uma das linguagens mais restritas que existe. Pense nisso como um exame de gramática difícil. Você não conseguirá uma pontuação alta a menos que siga todas as regras gramaticais pré-estabelecidas. Agora imagine que poderia ser ainda pior [md] tão ruim quanto um documento legal escrito. Estamos falando de parágrafos rígidos, recuo, hierarquia de informações e regras semelhantes.
 
-As in a legal document, those rules have a raison d'etrê. With strict form/syntax, you can focus more on the content of the text. And ambiguity in the context of code making is fatal.
+Como em um documento legal, essas regras têm uma razão de ser. Com forma / sintaxe estrita, você pode se concentrar mais no conteúdo do texto. E a ambiguidade no contexto da criação de código é fatal.
 
-Indentation is the most important aspect of Python syntax. Python code uses the indentation level to define where loops, functions, and general nesting start/end. Take a look at this example:
+O recuo é o aspecto mais importante da sintaxe Python. O código Python usa o nível de indentação para definir onde os loops, as funções e o aninhamento geral começam/terminam. Dê uma olhada neste exemplo:
 
 ```python
 1 def here_i_am(): # definition of the first function
