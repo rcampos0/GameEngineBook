@@ -1441,40 +1441,39 @@ _http://www.blender.org/documentation/blender_python_api_2_66_release_
 
 Vamos agora percorrer os destaques dos módulos. Depois de se familiarizar com suas principais funcionalidades, você deve se sentir confortável para navegar pela documentação e encontrar outros recursos.
 
-**Game Engine Internal Modules**
+**Módulos internos do motor de jogo**
 
 - Game Logic (bge.logic)
 
-- Game Types (bge.types)
+- Tipos de jogos (bge.types)
 
 - Rasterizer (bge.render)
 
-- Game Keys (bge.events)
+- Chaves de jogo (bge.events)
 
-- Video Texture (bge.texture)
+- Textura de vídeo (bge.texture)
 
-- Physics Constraints (bge.constraints)
+- Restrições físicas (bge.constraints)
 
-- Application Data (bge.app)  //TODO
+- Dados do aplicativo (bge.app) // TODO
 
+**Módulos autônomos**
 
-**Stand-Alone Modules**
+- Sistema de áudio (aud)
 
-- Audio System (aud)
+- Tipos e utilitários matemáticos (mathutils)
 
-- Math Types and Utilities (mathutils)
+- Wrapper OpenGL (bgl)
 
-- OpenGL Wrapper (bgl)
-
-- Font Drawing (blf)
+- Desenho de fonte (blf)
 
 #### bge.logic <a id="bge.logic"></a>
 
-The main module is a mix of utility functions, global game settings, and logic bricks replacements. Some of those functions were already covered in the tutorial, but they are here again for convenience sake. We will look at some of the highlights.
+O módulo principal é uma mistura de funções utilitárias, configurações globais do jogo e substituições de blocos lógicos. Algumas dessas funções já foram abordadas no tutorial, mas estão aqui novamente por uma questão de conveniência. Veremos alguns dos destaques.
 
 ##### getCurrentController() <a id="getCurrentController()"></a>
 
-Returns the current controller. This is used to get a list of sensors and actuators (to check status and deactivate respectively), and the object the controller belongs to:
+Retorna o controlador atual. Isso é usado para obter uma lista de sensores e atuadores (para verificar o status e desativar, respectivamente) e o objeto ao qual o controlador pertence:
 
 ```python
 controller  = bge.logic.getCurrentController()
@@ -1484,7 +1483,7 @@ object = controller.owner
 sensor = controller.sensors['mysensor']
 ```
 
-If you are using Python modules instead of Python scripts directly (see Python Controller), the controller is passed as an argument for the function:
+Se você estiver usando módulos Python em vez de scripts Python diretamente (consulte Controlador Python), o controlador é passado como um argumento para a função:
 
 ```python
 def moduleFunction(cont):
