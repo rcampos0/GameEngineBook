@@ -121,29 +121,28 @@ A Figura 8.5 mostra o artefato de compactação JPEG vs. TGA, que é compactado 
 
 >**The Tale of Two Tabs**
 >
->For the underwater marine visualization project Dalai Felinto and I were involved with at the University of British Columbia, I was given the task to "see if you can squeeze more fish into the scene and make it run faster"[md]a typical request from a Monday-morning meeting. Because this BGE visualization already contains hundreds of objects in the scene, I just assumed that Blender wasn't good at handling a large number of separate objects. But despite the hunch (which proved to be so very wrong), I kept trying different scenarios, turning objects on and off, turning off Python scripts, playing with physics, and culling settings. Then I found a script that, when disabled, would speed up the game performance by five times! When 12fps suddenly became 60fps, I knew I'd found the proverbial silver bullet. But being the author of the script, I was not convinced that a 70-lines script could slow down the game by that much, so I dug further, until I finally realized that there was an error in the code that made an inner loop run way more than it should.
->So, after two hours of profiling, the only finding was a badly nested Python loop. The fix took all of two seconds and involved unindentation of the offending code. But the end result was spectacular, to say the least.
->Silly bugs like this might not be present in your project. Without finding a bug like this, you'll never increase your performance five-fold by fixing a few indentations in the code. But never assume you know where the problem is[md]always profile.
+> Para o projeto de visualização marinha subaquática em que Dalai Felinto e eu estávamos envolvidos na University of British Columbia, recebi a tarefa de "ver se você consegue colocar mais peixes na cena e fazê-la funcionar mais rápido" [md] um pedido típico de uma reunião de segunda-feira de manhã. Como esta visualização BGE já contém centenas de objetos na cena, eu simplesmente assumi que o Blender não era bom em lidar com um grande número de objetos separados. Mas, apesar do palpite (que se mostrou muito errado), continuei tentando diferentes cenários, ligando e desligando objetos, desligando scripts Python, brincando com a física e selecionando configurações. Então eu encontrei um script que, quando desabilitado, aceleraria o desempenho do jogo em cinco vezes! Quando 12fps de repente se tornou 60fps, eu sabia que havia encontrado a proverbial bala de prata. Mas, sendo o autor do script, não estava convencido de que um script de 70 linhas pudesse retardar o jogo tanto, então cavei mais, até que finalmente percebi que havia um erro no código que fazia um loop interno rodar muito mais do que deveria.
+> Portanto, após duas horas de criação de perfil, a única descoberta foi um loop Python mal aninhado. A correção demorou dois segundos e envolveu a remoção da indentação do código ofensivo. Mas o resultado final foi espetacular, para dizer o mínimo.
+> Erros bobos como esse podem não estar presentes em seu projeto. Sem encontrar um bug como esse, você nunca aumentará seu desempenho cinco vezes corrigindo alguns recuos no código. Mas nunca presuma que você sabe onde está o problema [md] sempre o perfil.
 
-## How to Optimize <a id="How_to_Optimize"></a>
+## Como Otimizar <a id="How_to_Optimize"></a>
 
-As obvious as it sounds, the first step in optimization is locating the bottleneck. A bottleneck is the point in the game where it is taking the longest time to compute. Focusing on the bottleneck will make sure that the work you do in optimizing the game will have the largest impact on performance.
+Por mais óbvio que pareça, a primeira etapa da otimização é localizar o gargalo. Um gargalo é o ponto do jogo em que está demorando mais para ser computado. Focar no gargalo garantirá que o trabalho que você faz na otimização do jogo tenha o maior impacto no desempenho.
 
-Common wisdom in the programming world says never assume you know where the bottleneck is. Experience might tell you where the slowdown should be, but if there is an unexpected bug somewhere, the bottleneck might not be where you think it is. Always make sure that you locate the bottleneck before trying to remove it. The performance profiler in Blender can give you some very insightful information about the performance of the game and where the bottleneck might be.
+O senso comum no mundo da programação diz nunca presuma que você sabe onde está o gargalo. A experiência pode dizer onde deve estar a desaceleração, mas se houver um bug inesperado em algum lugar, o gargalo pode não estar onde você pensa que está. Sempre certifique-se de localizar o gargalo antes de tentar removê-lo. O perfil de desempenho no Blender pode lhe dar algumas informações muito perspicazes sobre o desempenho do jogo e onde pode estar o gargalo.
 
-## The Performance Profiler <a id="The_Performance_Profiler"></a>
+## O Perfil de Desempenho <a id="The_Performance_Profiler"></a>
+O Blender tem um perfil de desempenho básico disponível para você. Ele fornece informações de tempo sobre quanto tempo um quadro leva para ser atualizado, bem como o detalhamento de quanto tempo o mecanismo de jogo gastou em tarefas específicas.
 
-Blender has a basic performance profiler available to you. It gives you timing information on how long a frame takes to update, as well as the breakdown of how long the game engine spent on specific tasks.
+Para ligá-lo, vá para o Editor de Propriedades de Renderização e marque Framerate e Profile em Performance, como mostrado na Figura 8.6.
 
-To turn it on, go to the Render Properties Editor and check Framerate and Profile under Performance, as shown in Figure 8.6.
+![Opções de desempenho no Editor de propriedades de renderização](../figures/Chapter8/Fig08-06.png)
 
-![Performance options in the Render Properties Editor](../figures/Chapter8/Fig08-06.png)
+O criador de perfil também pode ser acessado no menu superior em Jogo.
 
-The profiler can also be accessed from the top menu under Game.
+Depois de habilitado, você verá uma sobreposição de texto conforme ilustrado na Figura 8.7 no canto superior esquerdo ao executar o jogo.
 
-Once that's enabled, you will see a text overlay as depicted in Figure 8.7 in the top-left corner when running the game.
-
-![Framerate and Profile information overlay](../figures/Chapter8/Fig08-07.png)
+![Sobreposição de informações de taxa de quadros e perfil](../figures/Chapter8/Fig08-07.png)
 
 ### The Profiler <a id="The_Profiler"></a>
 
