@@ -146,34 +146,34 @@ Depois de habilitado, você verá uma sobreposição de texto conforme ilustrado
 
 ### The Profiler <a id="The_Profiler"></a>
 
-The most common measurement of performance for a real-time application is frame per second; that's how many images the computer can render per second. This number is shown at the very top of the profiler in two ways. First, as "swap," which refers to the time it takes to swap out the previous frame for the new one, expressed in milliseconds. Secondly, as a more readable "frames per second" value, expressed in hertz.
+A medida mais comum de desempenho para um aplicativo em tempo real é o quadro por segundo; é quantas imagens o computador pode renderizar por segundo. Esse número é mostrado na parte superior do criador de perfil de duas maneiras. Primeiro, como "troca", que se refere ao tempo que leva para trocar o quadro anterior pelo novo, expresso em milissegundos. Em segundo lugar, como um valor de "quadros por segundo" mais legível, expresso em hertz.
 
-Moving down, you can see that the number in the first column is the time it took to complete the operation in milliseconds; the second column is the same value expressed as a percentage of the total time.
+Descendo, você pode ver que o número na primeira coluna é o tempo que levou para concluir a operação em milissegundos; a segunda coluna é o mesmo valor expresso como uma porcentagem do tempo total.
 
-To understand the profiler, simply look at the relative percentage of time it takes to complete all the operations. The table below shows you the meaning of each.
+Para entender o criador de perfil, basta olhar para a porcentagem relativa de tempo que leva para concluir todas as operações. A tabela abaixo mostra o significado de cada um.
 
-_Table 8.1 Profiler Breakdown_
+_Tabela 8.1 Análise do Profiler_
 
-| Label      | Meaning             | Hardware Used | Typical Ratio |
-|:----------:|:-------------------:|:-------------:|:-------------:|
-| Frametime  | Combined time       | Entire system | 100%          |
-| Physics    | Bullet physics time | CPU           | 10%           |
-| Logic      | Game logic time     | CPU           | 5%            |
-| Animation  | Animation time      | CPU           | 5%            |
-| Network    | Network time        | Network       | 0%            |
-| Scenegraph | Scene setup time    | CPU           | 10%           |
-| Rasterizer | Rendering time      | Graphics card | 65%           |
-| Services   | Misc. time          | CPU           | 2%            |
-| Overhead   | Misc. time          | CPU           | 2%            |
-| Outside    | Idle time           | CPU           | 0%            |
+| Rótulo      | Signficado                  | Hadware Usado | Taxa típica   |
+|:----------:|:----------------------------:|:-------------:|:-------------:|
+| Frametime  | Tempo Combinado              | Entire system | 100%          |
+| Physics    | Tempo do Bullet physics      | CPU           | 10%           |
+| Logic      | Tempo do Game Logic          | CPU           | 5%            |
+| Animation  | Tempo de Animação            | CPU           | 5%            |
+| Network    | Tempo de Rede                | Network       | 0%            |
+| Scenegraph | Tempo de configuração de cena| CPU           | 10%           |
+| Rasterizer | Tempo de Renderização        | Placa Gráfica | 65%           |
+| Services   | Tempo Misc.                  | CPU           | 2%            |
+| Overhead   | Tempo Misc.                  | CPU           | 2%            |
+| Outside    | Tempo Ocioso                 | CPU           | 0%            |
 
-It is impossible to say what would be an ideal profiler-time ratio. The typical ratio is only meant to give you a very rough idea of how an "average" game will perform. Each application is different. A fast-action game with lots of physics could easily spend 25 percent of the time on physics, a graphic-intense cut scene might spend 95 percent of the time on rasterizer, while a scientific visualization might use 40 percent of the time on logic.
+É impossível dizer qual seria a proporção ideal do profiler-tempo. O rácio típico destina-se apenas a dar-lhe uma ideia geral do desempenho de um jogo "médio". Cada aplicativo é diferente. Um jogo de ação rápida com muita física poderia facilmente gastar 25 por cento do tempo em física, uma cena de corte com gráficos intensos pode gastar 95 por cento do tempo em rasterizador, enquanto uma visualização científica pode usar 40 por cento do tempo em lógica.
 
-The "outside" time deserves special mention. This time represents the idle time that is not spent actively doing anything. So do not be alarmed if the outside value is too high, especially when the framerate is capped at 60.
+O tempo "fora" merece menção especial. Este tempo representa o tempo ocioso que não é gasto ativamente fazendo nada. Portanto, não se assuste se o valor externo for muito alto, especialmente quando a taxa de quadros estiver limitada a 60.
 
-Furthermore, the ratios change depending on the computer hardware. For example, a computer with a fast graphics card would breeze through the rendering in almost no time, making the rasterizer-time ratio much smaller. Because of this, the profiler works best when it is run on a computer with hardware that matches the intended target audience. Otherwise, it might give you a false sense of where the bottleneck is.
+Além disso, as proporções mudam dependendo do hardware do computador. Por exemplo, um computador com uma placa de vídeo rápida passaria rapidamente pela renderização em quase nenhum momento, tornando a proporção de tempo de rasterização muito menor. Por isso, o criador de perfil funciona melhor quando é executado em um computador com hardware compatível com o público-alvo pretendido. Caso contrário, pode dar uma falsa sensação de onde está o gargalo.
 
-For a detailed analysis of what each of the components do, Mitchell Stokes has written a very comprehensive article on the subject. It can be found at http://wiki.blender.org/index.php/Doc:2.6/manual/Game_Engine/Performance/Display/Framerate_and_Profile.
+Para uma análise detalhada do que cada um dos componentes faz, Mitchell Stokes escreveu um artigo muito abrangente sobre o assunto. Pode ser encontrado em http://wiki.blender.org/index.php/Doc:2.6/manual/Game_Engine/Performance/Display/Framerate_and_Profile.
 
 ## Quick 'n Dirty Optimization Techniques <a id="Quick_'n_Dirty_Optimization_Techniques"></a>
 
