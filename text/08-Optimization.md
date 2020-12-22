@@ -236,35 +236,35 @@ Se mais definição for necessária, você pode criar um proxy de colisão para 
 ![Proxy de colisão: malha visual (L) vs. malha de colisão (R)](../figures/Chapter8/Fig08-09.png)
 
 _**Tutorial**_
-To use collision proxy:
+Para usar o proxy de colisão:
 
-1. Open /Chapter8/collisionProxy.blend.
+1. Abra /Chapter8/collisionProxy.blend.
 
-2. The scene contains a high-polygon model of a tree. Start the game and notice that all of its faces react to collision. You can confirm this by pressing the spacebar to throw balls at the tree. Notice that no matter where the ball hits the tree, it will detect the collision.
+2. A cena contém um modelo de árvore com alto polígono. Inicie o jogo e observe que todos os seus rostos reagem à colisão. Você pode confirmar pressionando a barra de espaço para lançar bolas na árvore. Observe que não importa onde a bola atinja a árvore, ela detectará a colisão.
 
-3. If you have a slower CPU, also notice that the physics is taking a large amount of the time, mainly because of the complexity of the tree mesh.
+3. Se você tem uma CPU mais lenta, observe também que a física está demorando muito, principalmente por causa da complexidade da malha da árvore.
 
-4. To further visualize what's going on, enable Show Physics Visualization from the top menu. All the faces that have collision enabled will be outlined in green when the game is running.
+4. Para visualizar melhor o que está acontecendo, ative Mostrar visualização física no menu superior. Todas as faces com colisão ativada serão destacadas em verde quando o jogo estiver em execução.
 
-5. If we have to build a collision proxy for the tree object manually, it would involve modeling out a mesh that has the rough shape of the tree, but using much less detail. For this exercise, a simplified version of the tree has been created for you. In layer 2 of the file, you will find a collision proxy that fits over the tree. The model consists of the main tree trunks, combined with a sphere to approximate the canopy.
+5. Se tivermos que construir um proxy de colisão para o objeto árvore manualmente, isso envolverá a modelagem de uma malha que tem o formato bruto da árvore, mas usando muito menos detalhes. Para este exercício, uma versão simplificada da árvore foi criada para você. Na camada 2 do arquivo, você encontrará um proxy de colisão que se ajusta à árvore. O modelo consiste nos troncos principais das árvores, combinados com uma esfera para aproximar a copa.
 
-6. Turn on both layers 1 and 2: Press the 1 key, then, while holding down Shift, press the 2 key.
+6. Ative as camadas 1 e 2: Pressione a tecla 1 e, enquanto mantém pressionada a tecla Shift, pressione a tecla 2.
 
-7. To link the high-detail tree model to the low-detail tree model, we will parent them together. First, right-click on the treeHigh object to select it; then while holding down the Shift Key, right-click on the treeProxy object to select that as well. Now simply parent the treeHigh object to the treeProxy object by pressing Ctrl+P. Note that the order in which we selected the two objects is important!
+7. Para vincular o modelo de árvore de alto detalhe ao modelo de árvore de baixo detalhe, iremos gerenciá-los juntos. Primeiro, clique com o botão direito do mouse no objeto treeHigh para selecioná-lo; em seguida, enquanto mantém pressionada a tecla Shift, clique com o botão direito no objeto TreeProxy para selecioná-lo também. Agora, simplesmente pareie o objeto treeHigh ao objeto treeProxy pressionando Ctrl + P. Observe que a ordem em que selecionamos os dois objetos é importante!
 
-8. Right now, both objects still have collision and display turned on. If you were to play the game right now, the game engine would have a difficult time trying to resolve the collision between two objects that are occupying the same space, and display a mess of colliding polygons.
+8. No momento, ambos os objetos ainda estão com a colisão e a tela ativadas. Se você fosse jogar agora, o mecanismo do jogo teria dificuldade para tentar resolver a colisão entre dois objetos que estão ocupando o mesmo espaço e exibir uma confusão de polígonos em colisão.
 
-9. To remove the collision property on the treeHigh: Select treeHigh. In the Physics Properties Editor, set the physics type to No Collision.
+9. Para remover a propriedade de colisão em treeHigh: Selecione treeHigh. No Editor de propriedades de física, defina o tipo de física como Sem colisão.
 
-10. To disable the visibility of the treeProxy, Select treeProxy. In the Physics Properties Editor, enable the Invisible button.
+10. Para desativar a visibilidade do treeProxy, selecione treeProxy. No Editor de propriedades físicas, ative o botão Invisível.
 
-11. Run the game now to see how the collision is handled by treeProxy, while the treeHigh gets displayed.
+11. Execute o jogo agora para ver como a colisão é tratada por treeProxy, enquanto treeHigh é exibido.
 
-12. Keep in mind that since the treeProxy is the parent of treeHigh, any logic brick should be attached to the proxy object. treeHigh is simply a collision-less, logic-less, nice-looking model.
+12. Lembre-se de que, como treeProxy é o pai de treeHigh, qualquer tijolo lógico deve ser anexado ao objeto proxy. treeHigh é simplesmente um modelo sem colisões, sem lógica e de boa aparência.
 
-![Collision proxy: visual mesh (L) vs. collision mesh (R)](../figures/Chapter8/Fig08-10.png)
+![Proxy de colisão: malha visual (L) vs. malha de colisão (R)](../figures/Chapter8/Fig08-10.png)
 
-So that's collision proxy in a nutshell. As you can see, a lot of steps are involved with this approach, which makes using collision proxy suitable only for very complex models that have a unique shape. Otherwise, it is much easier (and efficient) to use one of the predefined collision bound primitives.
+Então, isso é proxy de colisão em poucas palavras. Como você pode ver, muitas etapas estão envolvidas nessa abordagem, o que torna o uso de proxy de colisão adequado apenas para modelos muito complexos que têm uma forma única. Caso contrário, é muito mais fácil (e eficiente) usar uma das primitivas de limite de colisão predefinidas.
 
 ### Partial Collision <a id="Partial_Collision"></a>
 
