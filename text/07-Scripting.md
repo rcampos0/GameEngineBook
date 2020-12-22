@@ -2163,23 +2163,23 @@ E, finalmente, vamos aplicar a cor do pixel à lâmpada:
 lamp.color = [pixels[0], pixels[1], pixels[2]]
 ```
 
-#### blf - Font Drawing <a id="blf_-_Font_Drawing"></a>
+#### blf - Desenho de fonte <a id="blf_-_Font_Drawing"></a>
 
-If you need to control text drawing directly from your scripts, you may need to use this module. Be aware, though, that this module is a low-level API that has to be combined with the OpenGL wrapper to handle texts properly.
+Se você precisa controlar o desenho de texto diretamente de seus scripts, pode ser necessário usar este módulo. Esteja ciente, entretanto, que este módulo é uma API de baixo nível que deve ser combinada com o wrapper OpenGL para lidar com os textos corretamente.
 
-The blf module works in three stages:
+O módulo blf funciona em três etapas:
 
-1. Create a new font object.
+1. Crie um novo objeto de fonte.
 
-2. Set the parameters for the text (size, position, and so on).
+2. Defina os parâmetros do texto (tamanho, posição e assim por diante).
 
-3. Draw the text on the screen.
+3. Desenhe o texto na tela.
 
-##### Example: Writing Hello World <a id="Example_Writing_Hello_World"></a>
+##### Exemplo: Escrevendo Hello World <a id="Example_Writing_Hello_World"></a>
 
-Open the file /Book/Chapter7/8_blf/hello_world.blend.
+Abra o arquivo /Book/Chapter7/8_blf/hello_world.blend.
 
-In the init function, we load a new font in memory and store the generated font ID to use later.
+Na função init, carregamos uma nova fonte na memória e armazenamos a ID da fonte gerada para uso posterior.
 
 ```python
 def init():
@@ -2195,7 +2195,7 @@ def init():
     scene.post_draw=[write]
 ```
 
-The actual function responsible for writing the text is stored in the scene post\_draw routine. Apart from the OpenGL calls, the setup for using the text is quite simple.
+A função real responsável por escrever o texto é armazenada na rotina de pós-desenho da cena. Além das chamadas OpenGL, a configuração para usar o texto é bastante simples.
 
 ```python
 def write():
@@ -2218,4 +2218,4 @@ def write():
     blf.draw(font_id, "Hello World")
 ```
 
-On the book files, in the same folder, you can find two other examples following the same framework_: hello_world_2.blend_ and _object_names.blend_.
+Nos arquivos do livro, na mesma pasta, você pode encontrar dois outros exemplos seguindo o mesmo framework_: hello_world_2.blend_ and _object_names.blend_.
