@@ -27,48 +27,48 @@
 		- [Layers](#Layers)
 	- [Beauty Trumps Complexity](#Beauty_Trumps_Complexity)
 
-# Chapter 8: Workflow and Optimization <a id="Chapter_8_Workflow_and_Optimization"></a>
+# Capítulo 8: Fluxo de Trabalho e Otimização <a id="Chapter_8_Workflow_and_Optimization"></a>
 
-We were once told that making a video game is a constant struggle between four elemental forces:
-- Quality
+Certa vez, disseram-nos que fazer um videogame é uma luta constante entre quatro forças elementares:
+- Qualidade
 
-- Performance
+- Atuação
 
-- Development time
+- Tempo de desenvolvimento
 
-- Monday-morning meetings
+- reuniões de segunda-feira de manhã
 
-Okay, so maybe the last item shouldn't be on the list, which Figure 8.1 reflects. But the point is that it's easy to make a visually impressive game when performance is not an issue. Conversely, it's also easy to make a game perform well if the game has very basic graphics. The difficult part is achieving both at the same time. Luckily, this can usually be accomplished by investing more development time in the project. Finally, if you have worked in a team environment, you undoubtedly know that Monday-morning meetings do not guarantee a better game, but are guaranteed to end in frustration and spilled coffee.
+Ok, talvez o último item não deva estar na lista, o que a Figura 8.1 reflete. Mas a questão é que é fácil fazer um jogo visualmente impressionante quando o desempenho não é um problema. Por outro lado, também é fácil fazer um jogo ter um bom desempenho se o jogo tiver gráficos muito básicos. A parte difícil é conseguir os dois ao mesmo tempo. Felizmente, isso geralmente pode ser feito investindo mais tempo de desenvolvimento no projeto. Por fim, se você trabalhou em um ambiente de equipe, sem dúvida sabe que as reuniões de segunda-feira de manhã não garantem um jogo melhor, mas terminam em frustração e café derramado.
 
-![The holy trinity of game development](../figures/Chapter8/Fig08-01.png)
+![A sagrada trindade do desenvolvimento de jogos](../figures/Chapter8/Fig08-01.png)
 
-In this chapter, we'll talk about some of the techniques used to improve the performance of the game, speed up development, and how to survive Monday-morning meetings to keep the upper management happy.
+Neste capítulo, falaremos sobre algumas das técnicas usadas para melhorar o desempenho do jogo, acelerar o desenvolvimento e como sobreviver às reuniões de segunda-feira pela manhã para manter a alta administração feliz.
 
-## Optimization Basics <a id="Optimization_Basics"></a>
+## Noções básicas de otimização <a id="Optimization_Basics"></a>
 
-Making a video game is both a science and an art. The creative aspect of a game can't be realized without technology, and the technology alone is useless without the creative work.
+Fazer um videogame é uma ciência e uma arte. O aspecto criativo de um jogo não pode ser realizado sem tecnologia, e a tecnologia sozinha é inútil sem o trabalho criativo.
 
-When we play a game, we rarely think about the hundreds of program functions that are invoked each second, nor the millions of lines of codes that are executed every frame, nor the billions of transistors that change state every nanosecond to make all that happen. We don't think of all these things because our game runs on a game engine, which runs on top of the operating system, which in turn manages all the low-level hardware. So as the developer,you can focus on making the game fun.
+Quando jogamos, raramente pensamos nas centenas de funções do programa que são invocadas a cada segundo, nem nos milhões de linhas de códigos que são executados a cada quadro, nem nos bilhões de transistores que mudam de estado a cada nanossegundo para fazer tudo isso acontecer. Não pensamos em todas essas coisas porque nosso jogo roda em um motor de jogo, que roda em cima do sistema operacional, que por sua vez gerencia todo o hardware de baixo nível. Portanto, como desenvolvedor, você pode se concentrar em tornar o jogo divertido.
 
-## Understanding Hardware <a id="Understanding_Hardware"></a>
+## Entendendo Hardware <a id="Understanding_Hardware"></a>
 
-That said, having a good understanding of computer hardware is essential in the game-creation process, because it allows you to manage the limited hardware resources efficiently. Making the most of the available hardware enables the game to perform as fast as possible.
+Dito isso, ter um bom conhecimento do hardware do computador é essencial no processo de criação do jogo, porque permite gerenciar os recursos de hardware limitados de forma eficiente. Tirar o máximo proveito do hardware disponível permite que o jogo seja executado o mais rápido possível.
 
-The key components of a modern computer are listed below:
+Os principais componentes de um computador moderno estão listados abaixo:
 
-- **CPU** (central processing unit), or processor, is often aptly called the brain of the computer. Everything is controlled by the CPU, with the exception of graphics, which are handled by the graphics card. A faster CPU allows more complex logic and physics, as these things are calculated on the CPU. Today, many CPUs are multicore, so they can do multiple tasks simultaneously without slowing down. However, a multicore CPU does not automatically make a game run faster; the software needs to be multithreaded in a way that utilizes multiple cores. Currently, Blender's game engine is not optimized to take advantage of multiple cores. So having even a quad-core processor does not increase the game's performance significantly.
+- **CPU** (unidade de processamento central), ou processador, é freqüentemente chamado de cérebro do computador. Tudo é controlado pela CPU, com exceção dos gráficos, que são controlados pela placa de vídeo. Uma CPU mais rápida permite lógica e física mais complexas, pois essas coisas são calculadas na CPU. Hoje, muitas CPUs são multicore, portanto, podem fazer várias tarefas simultaneamente sem desacelerar. No entanto, uma CPU multicore não torna o jogo automaticamente mais rápido; o software precisa ser multithread de uma maneira que utiliza vários núcleos. Atualmente, o motor de jogo do Blender não está otimizado para tirar vantagem de múltiplos núcleos. Portanto, ter até mesmo um processador quad-core não aumenta significativamente o desempenho do jogo.
 
-- **RAM** (random-access memory), or memory, is a place to store temporary data for running programs. The more complex the scene, the more RAM will be used. With most computers having 4GB of RAM or more, we usually don't have to worry about running out of memory unless the game is exceptionally large. For a small-to-medium-scale game, memory size is effectively not an issue.
+- **RAM** (memória de acesso aleatório), ou memória, é um local para armazenar dados temporários para programas em execução. Quanto mais complexa a cena, mais RAM será usada. Como a maioria dos computadores tem 4 GB de RAM ou mais, geralmente não precisamos nos preocupar em ficar sem memória, a menos que o jogo seja excepcionalmente grande. Para um jogo de pequena a média escala, o tamanho da memória efetivamente não é um problema.
 
-- **GPU** (Graphic Processing Unit), or graphics card, is a processor that is specially designed to display 3D graphics. Blender uses the GPU to render the 3D world, so a faster graphics card definitely helps make the game perform faster. Generally speaking, a faster GPU would allow the game to have more complex geometry, more lights, and more complex graphic effects.
+- **GPU** (Unidade de processamento gráfico), ou placa gráfica, é um processador especialmente projetado para exibir gráficos 3D. O Blender usa a GPU para renderizar o mundo 3D, então uma placa de vídeo mais rápida definitivamente ajuda a tornar o jogo mais rápido. De modo geral, uma GPU mais rápida permitiria ao jogo ter uma geometria mais complexa, mais luzes e efeitos gráficos mais complexos.
 
-## Performance Target <a id="Performance_Target"></a>
+## Alvo de desempenho <a id="Performance_Target"></a>
 
-If you are a PC gamer, you are no doubt familiar with the (perhaps frustrating) notion of minimum system requirement. Unlike video game consoles, which have a fixed set of hardware, computers vary a great deal in capacity and performance. Minimum system requirement is a way to guarantee that the game will run at a sufficiently acceptable performance level given a certain hardware configuration.
+Se você é um jogador de PC, sem dúvida está familiarizado com a noção (talvez frustrante) de requisitos mínimos do sistema. Ao contrário dos consoles de videogame, que têm um conjunto fixo de hardware, os computadores variam muito em capacidade e desempenho. O requisito mínimo do sistema é uma forma de garantir que o jogo será executado em um nível de desempenho suficientemente aceitável para uma determinada configuração de hardware.
 
-One of the questions that you should ask yourself before starting any project is: Who is your target audience?
+Uma das perguntas que você deve se fazer antes de iniciar qualquer projeto é: Quem é o seu público-alvo?
 
-For example, if you are making a casual Web-based online game, you probably want to keep the system requirements relatively low, so that a larger number of casual gamers can enjoy it. On the other hand, if your game is a full-blown action game, then there is a higher chance that your game will be enjoyed by "serious" gamers with relatively fast computers. Figure 8.2 illustrates the difference in graphics between one of the first video games and a modern 3D game made in Blender.
+Por exemplo, se você está fazendo um jogo online casual baseado na Web, provavelmente deseja manter os requisitos de sistema relativamente baixos, para que um número maior de jogadores casuais possa apreciá-lo. Por outro lado, se o seu jogo for um jogo de ação totalmente desenvolvido, há uma chance maior de que ele seja apreciado por jogadores "sérios" com computadores relativamente rápidos. A Figura 8.2 ilustra a diferença gráfica entre um dos primeiros videogames e um jogo 3D moderno feito no Blender.
 
 ![_Pong_ (1972) vs. _Dead Cyborg_ (2010)](../figures/Chapter8/Fig08-02.png)
 _Pong_ Source: Atari, Inc. Dead Cyborg [c] 2014 Endre Barath.
