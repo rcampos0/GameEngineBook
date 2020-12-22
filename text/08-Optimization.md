@@ -73,51 +73,51 @@ Por exemplo, se você está fazendo um jogo online casual baseado na Web, provav
 ![_Pong_ (1972) vs. _Dead Cyborg_ (2010)](../figures/Chapter8/Fig08-02.png)
 _Pong_ Source: Atari, Inc. Dead Cyborg [c] 2014 Endre Barath.
 
->**Blender on the Web**
+>**Blender na Web**
 >
->Publishing a Blender game as a browser game is mentioned in Chapter 9, "Publishing and Beyond."
+> A publicação de um jogo Blender como um jogo de navegador é mencionada no Capítulo 9, "Publicação e além".
 
-Once a minimum system target is set, you can start creating your game knowing exactly how much detail and complexity you can put into it. You can compromise details to achieve the performance you are looking for. Luckily for us, lowering the overall level of detail usually means the artists have less work to do.
+Uma vez que uma meta mínima do sistema é definida, você pode começar a criar seu jogo sabendo exatamente quantos detalhes e complexidade você pode colocar nele. Você pode comprometer os detalhes para obter o desempenho que procura. Felizmente para nós, reduzir o nível geral de detalhes geralmente significa que os artistas têm menos trabalho a fazer.
 
-## Performance Scaling <a id="Performance_Scaling"></a>
+## Escala de Desempenho <a id="Performance_Scaling"></a>
 
-After a performance target has been decided, most game studios still have to think about how the game will run on hardware that is significantly faster or slower than the target platform.
+Depois que uma meta de desempenho foi decidida, a maioria dos estúdios de jogos ainda precisa pensar em como o jogo será executado em um hardware significativamente mais rápido ou mais lento do que a plataforma de destino.
 
-Big, commercial PC games are excellent at scaling. They accomplish this by giving the user the options to change the game settings to fit a wide range of computers. However, making a game run well on a wide range of computers is time consuming, because additional development time is necessary to make sure the game works well at every combination of settings. For example, you don't want the game to leave out a graphic effect that is crucial to the gameplay just because the user has a slower computer.
+Grandes jogos comerciais para PC são excelentes em termos de dimensionamento. Eles conseguem isso dando ao usuário as opções de alterar as configurações do jogo para caber em uma ampla gama de computadores. No entanto, fazer um jogo rodar bem em uma ampla variedade de computadores consome tempo, porque tempo adicional de desenvolvimento é necessário para garantir que o jogo funcione bem em todas as combinações de configurações. Por exemplo, você não quer que o jogo deixe de fora um efeito gráfico que é crucial para a jogabilidade apenas porque o usuário tem um computador mais lento.
 
-Blender has some built-in support for disabling certain advanced graphical features, which can help you in adapting the game to older computers. Figure 8.3 shows _Yo Frankie!_ running at different levels of detail.
+O Blender possui algum suporte embutido para desabilitar certos recursos gráficos avançados, que podem ajudá-lo a adaptar o jogo a computadores mais antigos. A Figura 8.3 mostra _Yo Frankie! _ Sendo executado em diferentes níveis de detalhes.
 
-![_Yo Frankie!_ graphics with shader effects disabled on the right](../figures/Chapter8/Fig08-03.png)
+![_Yo Frankie! _ Gráficos com efeitos de sombreamento desativados à direita](../figures/Chapter8/Fig08-03.png)
 
-When running in GLSL mode, advanced shader effects can be turned off to reduce the workload on the graphics card. These settings can be found in the Render Properties Editor, as shown in Figure 8.4.
+Ao executar no modo GLSL, os efeitos avançados de sombreador podem ser desativados para reduzir a carga de trabalho na placa gráfica. Essas configurações podem ser encontradas no Editor de Propriedades de Renderização, conforme mostrado na Figura 8.4.
 
-![Render Properties Editor](../figures/Chapter8/Fig08-04.png)
+![Editor de propriedades de renderização](../figures/Chapter8/Fig08-04.png)
 
-- **Lights:** Disables all GLSL lighting calculation. Has the largest impact on performance as well as visuals.
+- **Lights:** Desativa todos os cálculos de iluminação GLSL. Tem o maior impacto no desempenho, bem como no visual.
 
-- **Shaders:** Disables advanced GLSL surface shaders, only basic diffuse and specular shaders will be used.
+- **Shaders:** Desativa shaders de superfície GLSL avançados, apenas shaders básicos difusos e especulares serão usados.
 
-- **Shadows:** Disables shadows cast by lamps.
+- **Shadows:** Desativa sombras projetadas por lâmpadas.
 
-- **Ramps:** Disables Ramp Material shaders.
+- **Ramps:** Shaders de material de rampa desativados.
 
-- **Nodes:** Disables Node Materials shaders.
+- **Nodes:** Desativa os sombreadores de Materiais do Nó.
 
-- **Extra Textures:** Disables textures that are not mapped to the diffuse channel of a material. So, in effect, this will disable any specular map, normal map, or emit texture, and only keep the diffuse texture on the surface.
+- **Texturas Extras:** Desabilita texturas que não são mapeadas para o canal difuso de um material. Portanto, na verdade, isso desativará qualquer mapa especular, mapa normal ou emitirá textura, e apenas manterá a textura difusa na superfície.
 
-All of the above options are only changeable in GLSL mode. In Singletexture and Multitexture mode, the game engine will always render everything in exactly the same way.
+Todas as opções acima só podem ser alteradas no modo GLSL. Nos modos Singletexture e Multitexture, o mecanismo de jogo sempre renderizará tudo exatamente da mesma maneira.
 
-Apart from tinkering with graphical features to influence the performance of the game, many commercial games also vary the object level of detail, reduce particles effects density, and even change the audio quality in order to make the game play smoother on older hardware. Some of these techniques are explained in this chapter.
+Além de mexer em recursos gráficos para influenciar o desempenho do jogo, muitos jogos comerciais também variam o nível de detalhe do objeto, reduzem a densidade dos efeitos das partículas e até mudam a qualidade do áudio para tornar o jogo mais suave em hardware mais antigo. Algumas dessas técnicas são explicadas neste capítulo.
 
-## When to Optimize <a id="When_to_Optimize"></a>
+## Quando otimizar <a id="When_to_Optimize"></a>
 
-Throughout the development process, you will have to make high-level decisions that will affect how the game performs, so it's important to keep performance in mind at all times. On the other hand, doing micro-optimization too early will only slow down your workflow, leading to bugs and sometimes making the game hard to maintain, which is all bad.
+Ao longo do processo de desenvolvimento, você terá que tomar decisões de alto nível que afetarão o desempenho do jogo, por isso é importante manter o desempenho em mente o tempo todo. Por outro lado, fazer a micro-otimização muito cedo só vai desacelerar seu fluxo de trabalho, levando a bugs e às vezes tornando o jogo difícil de manter, o que é ruim.
 
-An example of premature optimization is to compress all the textures to JPEG so that they take up less space. Why is it bad? JPEG is a lossy compression[md]every time you open and resave a JPEG file, some data is lost. So by constantly editing a JPEG file, its image quality will decrease considerably. During development, it is always better to save files in lossless formats, such as TGA or PNG. This applies to audio files as well; editing should always be done on lossless formats such as WAV.
+Um exemplo de otimização prematura é compactar todas as texturas em JPEG para que ocupem menos espaço. Por que isso é ruim? JPEG é uma compactação com perdas [md] sempre que você abre e salva novamente um arquivo JPEG, alguns dados são perdidos. Portanto, ao editar constantemente um arquivo JPEG, sua qualidade de imagem diminuirá consideravelmente. Durante o desenvolvimento, é sempre melhor salvar os arquivos em formatos sem perdas, como TGA ou PNG. Isso se aplica a arquivos de áudio também; a edição deve sempre ser feita em formatos sem perdas, como WAV.
 
-Figure 8.5 shows JPEG compression artifact vs. TGA, which compresses losslessly.
+A Figura 8.5 mostra o artefato de compactação JPEG vs. TGA, que é compactado sem perdas.
 
-![Lossless TGA (left) vs. highly compressed JPEG (right)](../figures/Chapter8/Fig08-05.png)
+![TGA sem perdas (esquerda) vs. JPEG altamente compactado (direita)](../figures/Chapter8/Fig08-05.png)
 
 >**The Tale of Two Tabs**
 >
