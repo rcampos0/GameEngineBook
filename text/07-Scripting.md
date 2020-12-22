@@ -2073,15 +2073,15 @@ Este módulo é um empacotamento de constantes e funções OpenGL. Ele permite q
 
 Às vezes, você precisará executar seu código OpenGL especificamente antes ou depois da rotina de desenho do motor de jogo, para que possa armazenar sua função Python como um elemento de lista nos atributos de cena pre_draw e / ou post_draw. Isso será demonstrado em nosso primeiro exemplo.
 
->**To Learn OpenGL**
+>**Para aprender OpenGL**
 >
->You can find good OpenGL learning material on the Internet or in a bookstore. _The Official Guide to Learning OpenGL_ (also known as _The Red Book_) is highly recommended, and some older versions of it can be found online for download.
+> Você pode encontrar bons materiais de aprendizagem OpenGL na Internet ou em uma livraria. _O Guia Oficial para Aprender OpenGL_ (também conhecido como _O Livro Vermelho_) é altamente recomendado, e algumas versões mais antigas dele podem ser encontradas online para download.
 
-##### Example 01: Line Width Changing <a id="Example_01_Line_Width_Changing"></a>
+##### Exemplo 01: Alteração da largura da linha <a id="Example_01_Line_Width_Changing"></a>
 
-Open the file /Book/Chapter7/7_bgl/line_width.blend.
+Abra o arquivo /Book/Chapter7/7_bgl/line_width.blend.
 
-(run it in wireframe mode)
+(execute-o no modo wireframe)
 
 ```python
 from bge import logic
@@ -2095,15 +2095,15 @@ if line_width not in scene.pre_draw:
     scene.pre_draw.append(line_width)
 ```
 
-This code needs to run only once per frame and will change the line width of the objects. Be aware that the line is only drawn in the wireframe mode.
+Este código precisa ser executado apenas uma vez por quadro e mudará a largura da linha dos objetos. Esteja ciente de que a linha só é desenhada no modo wireframe.
 
-You will find on the book files another example where the line width changes dynamically - /Book/Chapter7/7_bgl/line_width_animate.blend.
+Você encontrará nos arquivos do livro outro exemplo em que a largura da linha muda dinamicamente - /Book/Chapter7/7_bgl/line_width_animate.blend.
 
-##### Example 02: Color Picker <a id="Example_02_Color_Picker"></a>
+##### Exemplo 02: Seletor de cores <a id="Example_02_Color_Picker"></a>
 
-Open the file /Book/Chapter7/7_bgl/color_pickup.blend.
+Abra o arquivo /Book/Chapter7/7_bgl/color_pickup.blend.
 
-In this file, you can change the light color according to where you click.
+Neste arquivo, você pode alterar a cor da luz de acordo com onde você clicar.
 
 ```python
 from bge import logic
@@ -2129,8 +2129,7 @@ if sensor.positive:
     # Change the Light colour
     lamp.color = [pixels[0], pixels[1], pixels[2]]
 ```
-
-There are three important bgl methods been used here. The first one is bgl.Buffer. It creates space in the memory to be filled in with information taken from the graphics driver:
+Existem três métodos bgl importantes usados aqui. O primeiro é bgl.Buffer. Ele cria um espaço na memória para ser preenchido com informações retiradas do driver gráfico:
 
 ```python
 viewport = bgl.Buffer(bgl.GL_INT, 4)
@@ -2138,13 +2137,13 @@ viewport = bgl.Buffer(bgl.GL_INT, 4)
 pixels = bgl.Buffer(bgl.GL_FLOAT, [4])
 ```
 
-The second one is the `bgl.glGetIntegerv`. We use it to get the current Viewport position and dimension to the buffer object previously created:
+O segundo é o `bgl.glGetIntegerv`. Nós o usamos para obter a posição atual da janela de visualização e a dimensão do objeto buffer criado anteriormente:
 
 ```python
 glGetIntegerv(bgl.GL_VIEWPORT, viewport);
 ```
 
-The buffer coordinates run from the left bottom [0.0, 0.0] to the right top [1.0, 1.0]. The mouse coordinates, on the other hand, run from left top [0, 0] to the right bottom [width, height]. We need to convert the mouse coordinate position to the correspondent one in the Buffer.
+As coordenadas do buffer vão da parte inferior esquerda [0,0, 0,0] para a parte superior direita [1,0, 1,0]. As coordenadas do mouse, por outro lado, vão da parte superior esquerda [0, 0] para a parte inferior direita [largura, altura]. Precisamos converter a posição das coordenadas do mouse para a correspondente no Buffer.
 
 ```python
 x = viewport[0] + sensor.position[0]
@@ -2152,13 +2151,13 @@ x = viewport[0] + sensor.position[0]
 y = viewport[1] + (height - sensor.position[1])
 ```
 
-The third one is bgl.glReadPixels. This is the method that's actually reading the pixel color and storing it in the other buffer object:
+O terceiro é bgl.glReadPixels. Este é o método que realmente lê a cor do pixel e a armazena no outro objeto de buffer:
 
 ```python
 bgl.glReadPixels(x, y, 1, 1, bgl.GL_RGBA, bgl.GL_FLOAT, pixels)
 ```
 
-And, finally, let's apply the pixel color to the lamp:
+E, finalmente, vamos aplicar a cor do pixel à lâmpada:
 
 ```python
 lamp.color = [pixels[0], pixels[1], pixels[2]]
