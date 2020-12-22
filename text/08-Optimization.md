@@ -177,63 +177,63 @@ Para uma análise detalhada do que cada um dos componentes faz, Mitchell Stokes 
 
 ## Quick 'n Dirty Optimization Techniques <a id="Quick_'n_Dirty_Optimization_Techniques"></a>
 
-Once you've located the slowest portion of the game by looking at the profiler, here are some things you can try to speed up the game:
+Depois de localizar a parte mais lenta do jogo olhando para o criador de perfil, aqui estão algumas coisas que você pode tentar para acelerar o jogo:
 
-- **Disable physics for non-essential objects:** If physics is taking a large portion of the CPU time, then maybe consider disabling collision for non-essential objects. By default, all objects in the scene have collision detection turned on, so this can be slow. Changing the physics type from static to no collision will make the physics engine work less. Setting is found in the Physics Properties Editor for the object.
+- **Desative a física para objetos não essenciais:** Se a física está consumindo uma grande parte do tempo da CPU, então talvez considere desativar a colisão para objetos não essenciais. Por padrão, todos os objetos na cena têm a detecção de colisão ativada, então isso pode ser lento. Mudar o tipo de física de estático para sem colisão fará com que o mecanismo de física funcione menos. A configuração é encontrada no Editor de propriedades físicas do objeto.
 
-- **Switch to simple collision shapes:** The more complex the collision bounds, the harder the physics engine has to work. Consider using simple shapes that approximate the models by switching to a different bounding box. Setting is found in the Physics Properties Editor for the object.
+- **Mude para formas de colisão simples:** Quanto mais complexos os limites de colisão, mais difícil será o mecanismo de física. Considere o uso de formas simples que se aproximam dos modelos, alternando para uma caixa delimitadora diferente. A configuração é encontrada no Editor de propriedades físicas do objeto.
 
-- **Use display list:** When enabled, display list caches the geometry data on the graphic card so that they do not have to be sent to the graphics card every frame; this significantly increases the performance of games that contains complex geometry. Setting is found in the Render Properties Editor. There is almost no downside to this feature. Some very old graphics cards might not support it, but at the time of writing, display list works for almost all the computers in use.
+- **Use a lista de exibição:** Quando ativada, a lista de exibição armazena em cache os dados de geometria na placa gráfica para que eles não tenham que ser enviados para a placa gráfica a cada quadro; isso aumenta significativamente o desempenho de jogos que contêm geometria complexa. A configuração é encontrada no Editor de propriedades de renderização. Quase não há nenhuma desvantagem nesse recurso. Algumas placas gráficas muito antigas podem não suportá-lo, mas no momento em que este artigo foi escrito, a lista de exibição funcionava para quase todos os computadores em uso.
 
-[lb] **Use power-of-two textures:** Older graphics cards expect textures to have dimensions that are powers of twos. For example, 512 x 512 pixels, 2048 x 2048 pixels, and 512 x 64 pixels are all good sizes. Traditionally, non-power-of-two textures are automatically extended to the next highest power of two, so a 513 x 513 pixel texture will take up as much memory as a 1024 x 1024 image texture when the game is running. Even though most newer graphics cards do not impose this requirement on image sizes, it's always a good idea to manually save all your images in a more compatible size.
+[lb] **Use texturas potentes:** As placas gráficas mais antigas esperam que as texturas tenham dimensões que são potências de dois. Por exemplo, 512 x 512 pixels, 2048 x 2048 pixels e 512 x 64 pixels são todos bons tamanhos. Tradicionalmente, texturas sem potência de dois são automaticamente estendidas para a próxima potência de dois mais alta, então uma textura de 513 x 513 pixels ocupará tanta memória quanto uma textura de imagem de 1024 x 1024 quando o jogo estiver rodando. Mesmo que a maioria das placas gráficas mais recentes não imponha esse requisito para tamanhos de imagem, é sempre uma boa ideia salvar manualmente todas as suas imagens em um tamanho mais compatível.
 
-- **Use DDS-compressed textures:** If your game contains a lot of high-resolution texture maps, they will take up a lot of video memory. File formats such as PNG, JPEG, or TGA are compressed on the file level, but when these images are loaded into Blender, they are uncompressed into a raw format so that the graphics card can quickly decode them. This makes estimating texture memory usage based on file size very difficult, since 40MB worth of JPEG might take up 200MB of real texture memory on the graphics card. If a game has a lot of textures, it might be worthwhile to look into Direct Draw Surface (DDS) compressed textures.
+- **Use texturas compactadas DDS:** Se o seu jogo contiver muitos mapas de textura de alta resolução, eles ocuparão muita memória de vídeo. Formatos de arquivo como PNG, JPEG ou TGA são compactados no nível do arquivo, mas quando essas imagens são carregadas no Blender, elas são descompactadas em um formato bruto para que a placa gráfica possa decodificá-las rapidamente. Isso torna muito difícil estimar o uso da memória de textura com base no tamanho do arquivo, já que 40 MB de JPEG podem ocupar 200 MB de memória de textura real na placa gráfica. Se um jogo tiver muitas texturas, pode valer a pena olhar para as texturas compactadas Direct Draw Surface (DDS).
 
-DDS is a common name that refers to a set of compressed image formats (specifically DXT1 through DXT5) that is designed for real-time use. In Blender, DDS textures remain compressed even after they are loaded into memory. Therefore, they take up significantly less memory than a conventional image texture.
+DDS é um nome comum que se refere a um conjunto de formatos de imagem compactados (especificamente DXT1 a DXT5) projetados para uso em tempo real. No Blender, as texturas DDS permanecem compactadas mesmo após serem carregadas na memória. Portanto, eles ocupam muito menos memória do que uma textura de imagem convencional.
 
-Popular image editors such as Photoshop and GIMP have plug-ins that support the loading and saving of DDS files.
+Editores de imagens populares, como Photoshop e GIMP, possuem plug-ins que suportam o carregamento e o salvamento de arquivos DDS.
 
-- **Reduce the number of dynamic lights:** If rasterizer is taking up too much time on the profiler, consider reducing the number of dynamic lights. Dynamic lights are wonderful. When skillfully placed and animated, they contribute so much realism to the scene. Unfortunately, they come at a hefty cost to the graphics card: more lights mean slower performance. So use them sparingly. Generally speaking, it's best to keeping the number of lights under four. Remember, you can accomplish a lot by prebaking the light effects, discussed later in the chapter.
+- **Reduza o número de luzes dinâmicas:** Se o rasterizador estiver ocupando muito tempo no criador de perfil, considere reduzir o número de luzes dinâmicas. Luzes dinâmicas são maravilhosas. Quando habilmente colocados e animados, eles contribuem com muito realismo para a cena. Infelizmente, eles têm um custo alto para a placa de vídeo: mais luzes significam desempenho mais lento. Portanto, use-os com moderação. De modo geral, é melhor manter o número de luzes abaixo de quatro. Lembre-se de que você pode realizar muitas coisas pré-fabricando os efeitos de luz, discutidos posteriormente neste capítulo.
 
-Lights with real-time shadows are even slower.
+Luzes com sombras em tempo real são ainda mais lentas.
 
-- **Reduce the number of objects:** It goes without saying that fewer objects are faster. Sometimes, even just by batching up all the static objects into one, you can achieve an impressive performance boost. A large number of objects usually cause the scenegraph time in the profiler to be unusually high.
+- **Reduza o número de objetos:** Nem é preciso dizer que menos objetos são mais rápidos. Às vezes, mesmo reunindo todos os objetos estáticos em um, você pode obter um aumento de desempenho impressionante. Um grande número de objetos geralmente faz com que o tempo do gráfico de cenário no criador de perfil seja incomumente alto.
 
-- **Use instancing:** If your game world is populated by hundreds of identical objects, make sure they share one mesh. This is done by pressing Alt+D to duplicate the object, rather than the usual Shift+D. Data-block sharing makes the game load and run faster. When using instancing, Object Color can be a handy way to add some variation to the material without having to create multiple materials.
+- **Use instanciamento:** Se o seu mundo de jogo é povoado por centenas de objetos idênticos, certifique-se de que eles compartilham uma malha. Isso é feito pressionando Alt + D para duplicar o objeto, em vez do Shift + D usual. O compartilhamento de blocos de dados torna o jogo carregado e executado mais rápido. Ao usar a instanciação, a cor do objeto pode ser uma maneira prática de adicionar alguma variação ao material sem ter que criar vários materiais.
 
-- **Play with window size:** If by resizing the 3D Viewport to a smaller size, you get a larger increase in performance, it means your game is limited by the fill-rate performance of your graphics card. Transparent objects, complex shaders, and 2D filters are all fill-rate heavy. Reducing these effects will make the game run faster on slower graphics cards.
+- **Brinque com o tamanho da janela:** Se ao redimensionar a janela de exibição 3D para um tamanho menor, você obtém um aumento maior no desempenho, significa que o jogo é limitado pelo desempenho da taxa de preenchimento da placa gráfica. Objetos transparentes, sombreadores complexos e filtros 2D são todos pesados na taxa de preenchimento. Reduzir esses efeitos tornará o jogo mais rápido em placas gráficas mais lentas.
 
-- **Use Blenderplayer:** Blenderplayer, the stand-alone game engine of Blender, can be a bit faster than Blender. So if you are looking for one last bit of performance out of the game, try switching to Blenderplayer. In fact, it's always a good idea to use Blenderplay when publishing your game anyway.
+- **Use o Blenderplayer:** O Blenderplayer, o motor de jogo autônomo do Blender, pode ser um pouco mais rápido que o Blender. Então, se você está procurando um último pedaço de desempenho fora do jogo, tente mudar para o Blenderplayer. Na verdade, é sempre uma boa ideia usar o Blenderplay ao publicar seu jogo.
 
-- **Watch the console:** By default, the Blender console window is hidden on all operating systems. Turn on the console and see if there are any error messages being printed. Error messages generally indicate a much greater problem with the game. Not to mention that an excessive amount of console printing can slow down the game significantly.
+- **Observe o console:** Por padrão, a janela do console do Blender está oculta em todos os sistemas operacionais. Ligue o console e veja se há alguma mensagem de erro sendo impressa. As mensagens de erro geralmente indicam um problema muito maior com o jogo. Sem mencionar que uma quantidade excessiva de impressão do console pode tornar o jogo significativamente lento.
 
-To turn on the console window on Windows: Go to Main Menu > Window > Toggle System Console
+Para ativar a janela do console no Windows: Vá para Menu Principal> Janela> Alternar Console do Sistema
 
-To run Blender with a console window on OS X or Linux, launch the application from the command line.
+Para executar o Blender com uma janela de console no OS X ou Linux, execute o aplicativo a partir da linha de comando.
 
-- **Try another version of Blender:** When all else fails, consider the possibility that there is a bug in Blender that's causing the slowdown. (This has happened before.) Try your file with another (older or newer) version of Blender and see if the performance problem is still there. If you believe something is abnormally slow when it shouldn't be, file a bug report so the developers can have a chance at fixing it. This might not only solve your problem, but it makes the program better for everyone else, too.
+- **Experimente outra versão do Blender:** Quando tudo mais falhar, considere a possibilidade de que haja um bug no Blender que esteja causando a lentidão. (Isso já aconteceu antes.) Tente seu arquivo com outra versão (mais antiga ou mais recente) do Blender e veja se o problema de desempenho ainda está lá. Se você acredita que algo está anormalmente lento quando não deveria, envie um relatório de bug para que os desenvolvedores tenham a chance de consertá-lo. Isso pode não apenas resolver o seu problema, mas também torna o programa melhor para todos.
 
-## Advanced Optimization Techniques <a id="Advanced_Optimization_Techniques"></a>
+## Técnicas de Otimização Avançada <a id="Advanced_Optimization_Techniques"></a>
 
-Here are some other, more advanced, optimization techniques to try.
+Aqui estão algumas outras técnicas de otimização mais avançadas para tentar.
 
-### Think Small <a id="Think_Small"></a>
+### Pense pequeno <a id="Think_Small"></a>
 
-If you are making a large game, instead of making a sprawling million-acre landscape, consider separating the map into many smaller pieces and use cleverly designed tunnels, elevators, or entryways to trigger the loading of a new section of the map. Half-Life 2 is a wonderful example of this; their massive terrain is actually made up of many zones. This way, the computer doesn't have to load and render nearly as many assets at once.
+Se você estiver fazendo um jogo grande, em vez de fazer uma paisagem extensa de um milhão de acres, considere separar o mapa em muitos pedaços menores e usar túneis, elevadores ou entradas habilmente projetados para acionar o carregamento de uma nova seção do mapa. Half-Life 2 é um exemplo maravilhoso disso; seu enorme terreno é, na verdade, composto de muitas zonas. Dessa forma, o computador não precisa carregar e renderizar tantos ativos de uma vez.
 
-Additionally, if the level chunks are kept in different files, as opposed to different scenes in the same file, you could also have multiple people working on the levels and not cause version control issues.
+Além disso, se os blocos de nível forem mantidos em arquivos diferentes, ao contrário de diferentes cenas no mesmo arquivo, você também pode ter várias pessoas trabalhando nos níveis e não causar problemas de controle de versão.
 
-Once the level is broken up into different sections, each can occupy a Scene. You can use the Scene actuator to switch between Scenes, as shown in Figure 8.8.
+Depois que o nível é dividido em seções diferentes, cada uma pode ocupar uma cena. Você pode usar o atuador Scene para alternar entre as cenas, conforme mostrado na Figura 8.8.
 
-![Using the Scene actuators to load a different level](../figures/Chapter8/Fig08-08.png)
+![Usando os atuadores de cena para carregar um nível diferente](../figures/Chapter8/Fig08-08.png)
 
-### Collision Proxy <a id="Collision_Proxy"></a>
+### Proxy de colisão <a id="Collision_Proxy"></a>
 
-While it is justifiable to spend hundreds, if not thousands, of polygons on a model to make it look nice onscreen, the collision mesh used for physics rarely needs to be as detailed as the visual representation. Because of this, a common technique used in games is to approximate physics meshes with built-in primitives, such as cubes or spheres. These are the fastest to compute.
+Embora seja justificável gastar centenas, senão milhares, de polígonos em um modelo para torná-lo bonito na tela, a malha de colisão usada para física raramente precisa ser tão detalhada quanto a representação visual. Por causa disso, uma técnica comum usada em jogos é aproximar malhas físicas com primitivos embutidos, como cubos ou esferas. Esses são os mais rápidos de calcular.
 
-If more definition is needed, you can create a collision proxy for a complex object. A collision proxy is a simplified, invisible shell that occupies the same space as the visual model but is only used for collision detection. Figure 8.9 explains.
+Se mais definição for necessária, você pode criar um proxy de colisão para um objeto complexo. Um proxy de colisão é um shell simplificado e invisível que ocupa o mesmo espaço que o modelo visual, mas só é usado para detecção de colisão. A Figura 8.9 explica.
 
-![Collision proxy: visual mesh (L) vs. collision mesh (R)](../figures/Chapter8/Fig08-09.png)
+![Proxy de colisão: malha visual (L) vs. malha de colisão (R)](../figures/Chapter8/Fig08-09.png)
 
 _**Tutorial**_
 To use collision proxy:
