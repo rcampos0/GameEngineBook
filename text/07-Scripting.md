@@ -1836,11 +1836,11 @@ E, voilà, agora só precisamos visualizar a tecla pressionada:
 
 #### bge.texture <a id="bge.texture"></a>
 
-The texture module was first discussed in the Chapter 5, "Graphics." With the texture module, you can change any texture from your game while the game is running. The texture can be replaced by a single image, a video, a game camera, and even a webcam stream.
+O módulo de textura foi discutido pela primeira vez no Capítulo 5, "Gráficos". Com o módulo de textura, você pode alterar qualquer textura do seu jogo durante a execução do jogo. A textura pode ser substituída por uma única imagem, um vídeo, uma câmera de jogo e até mesmo um stream de webcam.
 
-Let's look at a basic example. Please open the file: Book\Chapter7\6\_ texture\basic\_texture\_replacement.blend.
+Vejamos um exemplo básico. Abra o arquivo: Book\Chapter7\6\_texture\basic\_texture\_replacement.blend.
 
-This file has a single plane with a texture we will replace with an external image. Press the spacebar to change the image and Enter to return to the original one. The script responsible for the texture switching is:
+Este arquivo possui um único plano com uma textura que substituiremos por uma imagem externa. Pressione a barra de espaço para mudar a imagem e Enter para voltar ao original. O script responsável pela troca de textura é:
 
 ```python
 from bge import logic
@@ -1872,106 +1872,106 @@ def removeTexture(cont):
     except: pass
 ```
 
-It's a simple script, but let's look at the individual steps. We start by getting the material ID (that can be retrieved for an image used by an object, hence the prefix IM) or a material that uses a texture (with the prefix MA).
+É um script simples, mas vamos examinar as etapas individuais. Começamos obtendo o ID do material (que pode ser recuperado para uma imagem usada por um objeto, daí o prefixo IM) ou um material que usa uma textura (com o prefixo MA).
 
 ```python
     ID = texture.materialID(object, 'IMoriginal.png')
 ```
 
-With this ID, we can create a Texture object that controls the texture to be used by this object (and the other objects sharing the same image/material).
+Com este ID, podemos criar um objeto Texture que controla a textura a ser usada por este objeto (e os outros objetos compartilhando a mesma imagem / material).
 
 ```python
     dynamic_texture = texture.Texture(object, ID)
 ```
 
-The next step is to create the source to replace the texture with. The bge.texture module supports the following sources: ImageFFmpeg (images), VideoFFmpeg (videos), ImageBuff (data buffer), ImageMirror (mirror), ImageRender (game camera), ImageViewport (current viewport), and ImageMix (a mix of sources).
+A próxima etapa é criar a fonte para substituir a textura. O módulo bge.texture suporta as seguintes fontes: ImageFFmpeg (imagens), VideoFFmpeg (vídeos), ImageBuff (buffer de dados), ImageMirror (espelho), ImageRender (câmera do jogo), ImageViewport (janela de visualização atual) e ImageMix (uma mistura de fontes)
 
 ```python
     new_source = texture.ImageFFmpeg(url)
 ```
 
-Now we only need to assign the new source to be used by the object texture and to refresh the latter. The refresh function has a Boolean argument for advanced settings. A rule of thumb is: for videos, use refresh (True); for everything else, try refresh (False) first.
+Agora, só precisamos atribuir a nova fonte a ser usada pela textura do objeto e atualizá-la. A função de atualização tem um argumento booleano para configurações avançadas. A regra é: para vídeos, use atualizar (True); para todo o resto, tente atualizar (False) primeiro.
 
 ```python
     dynamic_texture.source = new_source
     dynamic_texture.refresh(False)
 ```
 
-For the image to be permanent, we have to make sure the new dynamic_texture is not destructed after we leave our Python function. Therefore, we store it in the global module bge.logic. If you need to reset the texture to its original source, simply delete the stored object (for example, _del logic.dynamic_texture_).
+Para que a imagem seja permanente, temos que garantir que a nova dynamic_texture não seja destruída após deixarmos nossa função Python. Portanto, nós o armazenamos no módulo global bge.logic. Se você precisar redefinir a textura para sua fonte original, simplesmente exclua o objeto armazenado (por exemplo, _del logic.dynamic_texture_).
 
-Since this is a simple image, you don't need to do anything after that. If you are using a video as source, you need to keep refreshing the texture every frame. Videos also support an audio-video syncing system. To make them play harmoniously together, you first play the audio and then query its current position to pass as a parameter when updating the video frame (for example,  _logic.video.refresh(True, logic.sound.time)_). The audio can come from an Audaspace object or even a Sound actuator.
+Como esta é uma imagem simples, você não precisa fazer nada depois disso. Se estiver usando um vídeo como fonte, você precisa atualizar a textura a cada quadro. Os vídeos também oferecem suporte a um sistema de sincronização de áudio e vídeo. Para fazê-los tocar harmoniosamente, primeiro você reproduz o áudio e depois consulta sua posição atual para passar como um parâmetro ao atualizar o quadro do vídeo (por exemplo, _logic.video.refresh (True, logic.sound.time) _). O áudio pode vir de um objeto Audaspace ou mesmo de um atuador de som.
 
-In the book files, you can find other examples using different sorts of source objects:
+Nos arquivos do livro, você pode encontrar outros exemplos usando diferentes tipos de objetos de origem:
 
-Basic replacement of texture:
+Substituição básica de textura:
 
 _/Book/Chapter7/6_texture/basic_texture_replacement.blend_
 
-Basic video playback with Sound actuator:
+Reprodução de vídeo básica com atuador de som:
 
 _/Book/Chapter7/6_texture\basic_video_sound.blend_
 
-Video player with interface controllers:
+Player de vídeo com controladores de interface:
 
 _/Book/Chapter7/6_texture/player_video_audio.blend_
 
-Basic video playback with Audaspace:
+Reprodução básica de vídeo com Audaspace:
 
 _/Book/Chapter7/6_texture/video_audaspace.blend_
 
-Mirror effect:
+Efeito de espelho:
 
 _/Book/Chapter7/6_texture/mirror.blend_
 
-Render to texture:
+Renderizar para textura:
 
 _/Book/Chapter7/6_texture/render_to_texture.blend_
 
-Webcam sample:
+Amostra de Webcam :
 
 _/Book/Chapter7/6_texture/webcam.blend_
 
 #### bge.constraints <a id="bge.constraints"></a>
 
-The Bullet Physics engine allows for advanced control over the physics simulation in your game. Using Bullet as a backend, this module (formerly known as _Physics Constraints_) allows you to create and set up rigid joints, dynamic constraints, and even a vehicle wrapper. The constraints' functionalities make sense only when you understand the context in which they are to be used (with physic dynamic objects). Therefore, this module is covered in the previous chapter on game physics.
+O mecanismo Bullet Physics permite controle avançado sobre a simulação de física em seu jogo. Usando Bullet como back-end, este módulo (anteriormente conhecido como_Physics Constraints_) permite que você crie e configure juntas rígidas, restrições dinâmicas e até mesmo uma embalagem de veículo. As funcionalidades das restrições só fazem sentido quando você entende o contexto no qual elas devem ser usadas (com objetos físicos dinâmicos). Portanto, este módulo é abordado no capítulo anterior sobre a física do jogo.
 
-#### Mathutils - Math Types and Utilities <a id="Mathutils_-_Math_Types_and_Utilities"></a>
+#### Mathutils - Tipos e utilitários matemáticos <a id="Mathutils_-_Math_Types_and_Utilities"></a>
 
-Mathutils is a generic module common to both Blender and the game engine. There are a lot of methods to facilitate your script in handling 3D math operations. You won't have to reinvent the wheel every time you need to multiply vectors or transpose matrixes. Simply using the mathutils classes and built-in methods frees you to invest your time in something far more important: relearning all of the long-forgotten math lessons you skipped.
+Mathutils é um módulo genérico comum ao Blender e ao motor de jogo. Existem muitos métodos para facilitar o seu script ao lidar com operações matemáticas 3D. Você não terá que reinventar a roda toda vez que precisar multiplicar vetores ou transpor matrizes. O simples uso de classes de matemática e métodos integrados libera você para investir seu tempo em algo muito mais importante: reaprender todas as aulas de matemática há muito esquecidas que você pulou.
 
-Unless your background is in math, physics, or engineering, you won't use this module any time soon. For those already familiar with the passionate secrets of math, you'll be glad to know that those module's functions are mainly self-explanatory. Names such as cross, dot, slerp (what?), and a quick look at their specifications will be all you need to know to start working with them. Nevertheless, newcomers often use this module without even knowing it. Every time you change an object position, get the vector from an object, or apply a rotation, you are using mathutils classes and methods. Therefore, it's good to have this module as a reference for further studies and more advanced coding. (We all get there eventually.)
+A menos que sua formação seja em matemática, física ou engenharia, você não usará este módulo tão cedo. Para aqueles que já estão familiarizados com os apaixonados segredos da matemática, você ficará feliz em saber que as funções desses módulos são autoexplicativas. Nomes como cruz, ponto, slerp (o quê?) E uma rápida olhada em suas especificações serão tudo o que você precisa saber para começar a trabalhar com eles. No entanto, os recém-chegados costumam usar este módulo mesmo sem saber. Cada vez que você muda a posição de um objeto, obtém o vetor de um objeto ou aplica uma rotação, você está usando classes e métodos mathutils. Portanto, é bom ter este módulo como referência para estudos futuros e codificação mais avançada. (Todos nós chegamos lá eventualmente.)
 
-We are going to present the four available classes in this module: vector, matrix, Euler, and quaternion. For a list of the available methods, refer to the API documentation.
+Apresentaremos as quatro classes disponíveis neste módulo: vetorial, matriz, Euler e quaternion. Para obter uma lista dos métodos disponíveis, consulte a documentação da API.
 
-##### Vector <a id="Vector"></a>
+##### Vetor <a id="Vector"></a>
 
-This class was already present in the KX\_GameObject class and in the script example. It behaves like a list object, with some advanced features (for example, swizzle and slicing) expanded with its instance methods. Some of those methods are: reflect, dot, cross, and normalize.
+Esta classe já estava presente na classe KX \ _GameObject e no exemplo de script. Ele se comporta como um objeto de lista, com alguns recursos avançados (por exemplo, swizzle e slice) expandidos com seus métodos de instância. Alguns desses métodos são: refletir, pontuar, cruzar e normalizar.
 
-A recurring problem that new Python programmers have is with list copying. If you forget to manually copy the list when assigning it to a new variable, you end up with two variables sharing the same list values forever (each of the variables becomes a pointer to the same data).
+Um problema recorrente que os novos programadores de Python têm é com a cópia de listas. Se você esquecer de copiar manualmente a lista ao atribuí-la a uma nova variável, você acaba com duas variáveis compartilhando os mesmos valores da lista para sempre (cada uma das variáveis se torna um ponteiro para os mesmos dados).
 
-The same behavior happens with Vectors. Look at the differences:
+O mesmo comportamento ocorre com os vetores. Veja as diferenças:
 
 `new_vector = old_vector`
 
-if you change new\_vector you will automatically change old_vector (and vice-versa).
+se você alterar o novo\_vetor, irá alterar automaticamente o antigo_vetor (e vice-versa).
 
 `new_vector = old_vector[:]`
 
-new_vector is a new independent list object initialized with the old_vector values.
+new_vector é um novo objeto de lista independente inicializado com os valores old_vector.
 
 `new_vector = vector.copy()`
 
-new_vector is a new Vector, an independent copy of the old_vector object.
+new_vector é um novo Vector, uma cópia independente do objeto old_vector.
 
 ##### Matrix <a id="Matrix"></a>
 
-While vectors behave similarly to lists, matrices behave similarly to multidimensional lists. A multidimensional list is a list of a list, organized either in columns or rows.
+Enquanto os vetores se comportam de maneira semelhante às listas, as matrizes se comportam de maneira semelhante às listas multidimensionais. Uma lista multidimensional é uma lista de uma lista, organizada em colunas ou linhas.
 
-While in Python, a list of a list is always the same:
+Enquanto em Python, uma lista de uma lista é sempre a mesma:
 
 `matrix_row = [[1,2,3], [4,5,6], [7,8,9]]`
 
-In a mathutils.Matrix, the data can be stored differently, accordingly to the matrix orientation (row/column). Following you can see how the order of the elements in a matrix changes, according to its orientation (note, this is not actual Python code):
+Em um mathutils.Matrix, os dados podem ser armazenados de forma diferente, de acordo com a orientação da matriz (linha / coluna). A seguir, você pode ver como a ordem dos elementos em uma matriz muda, de acordo com sua orientação (observe que este não é um código Python real):
 
 ```python
 matrix_row_major    =  [[1 2 3]
@@ -1987,77 +1987,77 @@ matrix_column_major = [|2||5||8|]
                       [3][6][9]
 ```
 
-It's important to be aware of the ordering of your matrices; otherwise, you end up using a transposed matrix for your calculations. Since all the game engine internal matrices (orientation, camera to world, and so on) are column-major oriented, you will be safer sticking to this standard.
+É importante estar ciente da ordenação de suas matrizes; caso contrário, você acaba usando uma matriz transposta para seus cálculos. Como todas as matrizes internas do mecanismo de jogo (orientação, câmera para o mundo e assim por diante) são orientadas por colunas principais, você estará mais seguro aderindo a esse padrão.
 
-If your matrix represents a transformation matrix (rotation, translation, and scale) you can get its values separately. Matrix.to_quaternion() and Matrix.to_euler() will give you the rotation part of the matrix in the form you prefer (see next section), and Matrix.to_translation() and Matrix.to_scale () will give you the translation and the scale vector, respectively.
+Se sua matriz representa uma matriz de transformação (rotação, translação e escala), você pode obter seus valores separadamente. Matrix.to_quaternion () e Matrix.to_euler () darão a você a parte de rotação da matriz na forma que você preferir (consulte a próxima seção), e Matrix.to_translation () e Matrix.to_scale () darão a você a tradução e o vetor de escala, respectivamente.
 
-##### Euler and Quaternion <a id="Euler_and_Quaternion"></a>
+##### Euler e Quaternion <a id="Euler_and_Quaternion"></a>
 
-Euler and quaternion are different rotation systems. The same rotation can be represented using Euler, quaternion, or an orientation matrix.
+Euler e quaternion são sistemas de rotação diferentes. A mesma rotação pode ser representada usando Euler, quaternion ou uma matriz de orientação.
 
 >**Guerrilla CG**
 >
->You can find two great video tutorials on the Guerrilla CG vimeo channel that explain and compare the two rotation system:
->Euler Rotations Explained: http://vimeo.com/2824431
->The Rotation Problem: http://vimeo.com/2649637
+> Você pode encontrar dois grandes tutoriais em vídeo no canal Guerrilla CG vimeo que explicam e comparam os dois sistemas de rotação:
+> Rotações de Euler explicadas: http://vimeo.com/2824431
+> O problema da rotação: http://vimeo.com/2649637
 
->When you convert an orientation matrix to Euler (`Matrix.to_euler()`), you get a list with three angles. They represent the rotation in the x, y, z axis of the object. In the navigation system script example, we are using this exact method to determine the horizontal camera angle. You can find this usage in the function `fly_to_walk()` (lines 190 to 199 of navigation\_system.py or in the early pages of this chapter).
+> Quando você converte uma matriz de orientação para Euler (`Matrix.to_euler ()`), você obtém uma lista com três ângulos. Eles representam a rotação nos eixos x, y, z do objeto. No exemplo de script do sistema de navegação, estamos usando este método exato para determinar o ângulo horizontal da câmera. Você pode encontrar esse uso na função `fly_to_walk ()` (linhas 190 a 199 de navigation \ _system.py ou nas primeiras páginas deste capítulo).
 >
->Conversion Between Different Rotation Forms
->You can convert an orientation matrix to Euler, an Euler to a quaternion, a quaternion to an orientation matrix, and on and on and on:
+> Conversão entre diferentes formas de rotação
+> Você pode converter uma matriz de orientação em Euler, um Euler em um quatérnio, um quatérnio em uma matriz de orientação e assim por diante:
 
 ```python
 original_matrix=mathutils.Matrix.Rotation(math.pi, 3, "X")
 
 converted_matrix=original_matrix.to_euler().to_quaternion().to_matrix().to_euler().to_matrix().to_quaternion().to_euler().to_matrix().to_quaternion().to_euler().to_quaternion().to_matrix()
 ```
->In this example, converted_matrix ends up as the same matrix as original_matrix.
+> Neste exemplo, converted_matrix termina com a mesma matriz que original_matrix.
 
-#### aud - Audio System <a id="aud_-_Audio_System"></a>
+#### aud - Sistema de Áudio <a id="aud_-_Audio_System"></a>
 
-This module allows you to play sounds directly from your scripts. There are three classes you will be working with: Device, Factory, and Handle.
+Este módulo permite reproduzir sons diretamente de seus scripts. Existem três classes com as quais você trabalhará: Dispositivo, Fábrica e Identificador.
 
-The audaspace module in a nutshell: you need to create one audio Device per game. You need one Factory per audio file (which can also be any video file containing a sound track). And every time you need to play a sound, a new Handle object will be generated from the Factory (this is where its name comes from).
+O módulo audaspace em poucas palavras: você precisa criar um dispositivo de áudio por jogo. Você precisa de um Factory por arquivo de áudio (que também pode ser qualquer arquivo de vídeo contendo uma trilha sonora). E toda vez que você precisar tocar um som, um novo objeto Handle será gerado no Factory (é daí que vem o nome).
 
-##### Example: Basic Audio Playback <a id="Example_Basic_Audio_Playback"></a>
+##### Exemplo: reprodução de áudio básica <a id="Example_Basic_Audio_Playback"></a>
 
 ```python
 import aud
 device = aud.device()
 ```
 
-## load sound file (it can be a video file with audio)
+## carregar arquivo de som (pode ser um arquivo de vídeo com áudio)
 
 ```python
 factory = aud.Factory('music.ogg')
 ```
 
-## play the audio, this return a handle to control play/pause
+## reproduzir o áudio, isso retorna uma alça para controlar a reprodução / pausa
 
 ```python
 handle = device.play(factory)
 ```
 
-## if the audio is not too big and will be used often you can buffer it
+## se o áudio não for muito grande e for usado com frequência, você pode armazená-lo em buffer
 
 ```python
 factory_buffered = aud.Factory.buffer(factory)
 handle_buffered = device.play(buffered)
 ```
 
-## stop the sounds (otherwise they play until their ends)
+## pare os sons (caso contrário, eles tocam até o fim)
 
 ```python
 handle.stop()
 handle_buffered.stop()
 ```
 
-We start by creating an audio device. This is simply a Python object you will use to play your sounds. Next, we create a Factory object. A factory is a container for a sound file. When we pass the Factory object into the device play function, it will start playing the sound and return a handle. Handles are used to control pause/resume and to stop an audio.
+Começamos criando um dispositivo de áudio. Este é simplesmente um objeto Python que você usará para reproduzir seus sons. A seguir, criamos um objeto Factory. Uma fábrica é um contêiner para um arquivo de som. Quando passamos o objeto Factory para a função de reprodução do dispositivo, ele começará a reproduzir o som e retornará um identificador. Alças são usadas para controlar a pausa / retomada e para interromper um áudio.
 
->**When Will This Music Stop?**
+>**Quando essa música vai parar?**
 >
->After you initialize a sound, you can get its current position in seconds with the handle.position Python property. This is especially useful to keep videos and audio in sync. If you need to check whether or not the audio is ended, you shouldn't rely on the position, though. Instead, you can get the status of the sound by the property handle.status. If you are using the sound position to control a video playback, the sound status will also tell you if the video is over (handle.status = aud.AUD\_STATUS\_INVALID).
->The possible statuses are:
+> Depois de inicializar um som, você pode obter sua posição atual em segundos com a propriedade Python handle.position. Isso é especialmente útil para manter os vídeos e áudio sincronizados. Se você precisa verificar se o áudio foi encerrado ou não, você não deve confiar na posição. Em vez disso, você pode obter o status do som pela propriedade handle.status. Se você estiver usando a posição do som para controlar a reprodução de um vídeo, o status do som também informará se o vídeo acabou (handle.status = aud.AUD \ _STATUS \ _INVALID).
+> Os status possíveis são:
 
 ```python
 0 = aud.AUD_STATUS_INVALID
@@ -2067,11 +2067,11 @@ We start by creating an audio device. This is simply a Python object you will us
 2 = aud.AUD_STATUS_PAUSED
 ```
 
-#### bgl - OpenGL Wrapper <a id="bgl_-_OpenGL_Wrapper"></a>
+#### bgl - Wrapper OpenGL <a id="bgl_-_OpenGL_Wrapper"></a>
 
-This module is a wrapping of OpenGL constants and functions. It allows you to access low-level graphic resources within the game engine. You can use this module to draw directly to the screen or to read OpenGL matrices and buffers directly.
+Este módulo é um empacotamento de constantes e funções OpenGL. Ele permite que você acesse recursos gráficos de baixo nível dentro do motor de jogo. Você pode usar este módulo para desenhar diretamente na tela ou para ler matrizes e buffers OpenGL diretamente.
 
-Sometimes, you will need to run your OpenGL code specifically before or after the game engine drawing routine, so you can store your Python function as a list element either in the scene attributes pre_draw and/or in the post_draw. This will be demonstrated in our first example.
+Às vezes, você precisará executar seu código OpenGL especificamente antes ou depois da rotina de desenho do motor de jogo, para que possa armazenar sua função Python como um elemento de lista nos atributos de cena pre_draw e / ou post_draw. Isso será demonstrado em nosso primeiro exemplo.
 
 >**To Learn OpenGL**
 >
