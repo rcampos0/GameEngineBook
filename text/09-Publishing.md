@@ -20,27 +20,27 @@
 	- [How to Report Bugs](#How_to_Report_Bugs)
 	- [Do It Yourself](#Do_It_Yourself)
 
-# Chapter 9: Publishing and Beyond <a id="Chapter_9_Publishing_and_Beyond"></a>
+# Capítulo 9: Publicação e além <a id="Chapter_9_Publishing_and_Beyond"></a>
 
-You've made it this far! By now you should have a solid understanding of everything it takes to make a game. Now the question is: How do you get that game into the hands of the public?
+Você chegou até aqui! Agora você deve ter um conhecimento sólido de tudo o que é necessário para fazer um jogo. Agora a questão é: como você colocar esse jogo nas mãos do público?
 
-This chapter will focus on publishing the game, including how to package your game, using the stand-alone Blenderplayer, and understanding the licensing issues related to using Blender. We will also explore alternatives to the Blender game engine while still using Blender as the main content-creation tool. Even though this is a Blender-specific book, we encourage you to familiarize yourself with other game engines and to understand their pros and cons so you can decide for yourself what is the best publishing platform to use for a particular game.
+Este capítulo se concentrará na publicação do jogo, incluindo como empacotar seu jogo, usando o Blenderplayer autônomo e entendendo os problemas de licenciamento relacionados ao uso do Blender. Também exploraremos alternativas para o mecanismo de jogo do Blender enquanto ainda usamos o Blender como a principal ferramenta de criação de conteúdo. Mesmo que este seja um livro específico do Blender, nós encorajamos você a se familiarizar com outros motores de jogo e entender seus prós e contras para que possa decidir por si mesmo qual é a melhor plataforma de publicação para usar em um jogo específico.
 
-## Getting Ready for Publishing <a id="Getting_Ready_for_Publishing"></a>
+## Preparando-se para publicar <a id="Getting_Ready_for_Publishing"></a>
 
-You finished your game, now what? Apart from stress-test, promote, and polish it, there are a few technical things you need to do in order to deploy your project. They apply to almost any of the options discussed in this chapter, and even if you are using external engines, you should take them into consideration.
+Você terminou seu jogo, e agora? Além do teste de resistência, promoção e aperfeiçoamento, existem algumas coisas técnicas que você precisa fazer para implantar seu projeto. Eles se aplicam a quase todas as opções discutidas neste capítulo e, mesmo se você estiver usando mecanismos externos, deve levá-los em consideração.
 
-## Resources <a id="Resources"></a>
+## Recursos <a id="Resources"></a>
 
-Generally speaking, for other users to run a game created by Blender, they will need all of the following files:
+De modo geral, para outros usuários rodarem um jogo criado pelo Blender, eles precisarão de todos os seguintes arquivos:
 
-- **Blender file** : This is a .blend file that contains your 3D scene and game logic.
+- **arquivo Blender** : Este é um arquivo .blend que contém sua cena 3D e a lógica do jogo.
 
-- **Resources** : These include image textures, audios, fonts, and scripts.
+- **Recursos** : Isso inclui texturas de imagem, áudios, fontes e scripts.
 
-- **Blender Binary (or executable)**: This can be the Blender or Blenderplayer binary that is needed to run the game for people who don't already have Blender installed.
+- **Binário do Blender (ou executável)**: Pode ser o binário do Blender ou do Blenderplayer que é necessário para rodar o jogo para pessoas que ainda não têm o Blender instalado.
 
-This list is simplified. For example, in a larger project, instead of a single Blender file, a game could be composed of multiple Blender files, but there will always be one file that acts as an entry point to start the game. Resources are external files that are used in the game. Resources can be packed, which basically copies these files into the Blender file. Finally, Blender binary is also not usually a single file. It contains libraries and scripts that Blender will need. It is usually a good idea to include the binary with the release, because unless the game is distributed exclusively within the Blender community, the user probably will not have Blender (or the correct version of Blender) installed to run the Blender file.
+Esta lista é simplificada. Por exemplo, em um projeto maior, em vez de um único arquivo do Blender, um jogo pode ser composto de vários arquivos do Blender, mas sempre haverá um arquivo que atua como um ponto de entrada para iniciar o jogo. Recursos são arquivos externos usados no jogo. Os recursos podem ser compactados, o que basicamente copia esses arquivos para o arquivo do Blender. Finalmente, o binário do Blender geralmente não é um único arquivo. Ele contém bibliotecas e scripts que o Blender irá precisar. Normalmente é uma boa ideia incluir o binário com o lançamento, porque a menos que o jogo seja distribuído exclusivamente dentro da comunidade Blender, o usuário provavelmente não terá o Blender (ou a versão correta do Blender) instalado para executar o arquivo do Blender.
 
 ## The Theory of Relativity <a id="The_Theory_of_Relativity"></a>
 
