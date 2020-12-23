@@ -93,25 +93,25 @@ Desempacotar faz o contrário de embalar; ele pega todos os dados compactados de
 
 ## Blenderplayer <a id="Blenderplayer"></a>
 
-One of the strengths of the game engine is its tight integration with Blender and the almost instantaneous feedback you get when starting a game inside the Blender Viewport. This mix of level editor, character design, and general asset management is indeed a trend in the game industry nowadays. Often, we see game engines that have been brought inside the 3D editing tools. There needs to be a distinction between the editing tool and the deployment tool, though. Your game, once published, needs to be a software application on its own. The player shouldn't be aware of the tool you are using[md]not that magicians never reveal their tricks. (You can include a good description of your tools in your credits if that pleases you.) But to go through the Blender interface to open your game will certainly break the spell.
+Um dos pontos fortes do motor de jogo é sua forte integração com o Blender e o feedback quase instantâneo que você obtém ao iniciar um jogo dentro da janela de visualização do Blender. Esta mistura de editor de níveis, design de personagens e gerenciamento de ativos em geral é de fato uma tendência na indústria de jogos hoje em dia. Freqüentemente, vemos motores de jogo que foram trazidos para dentro das ferramentas de edição 3D. No entanto, deve haver uma distinção entre a ferramenta de edição e a ferramenta de implantação. Seu jogo, uma vez publicado, precisa ser um aplicativo de software próprio. O jogador não deve estar ciente da ferramenta que você está usando [md], não que os mágicos nunca revelem seus truques. (Você pode incluir uma boa descrição de suas ferramentas em seus créditos se isso lhe agradar.) Mas passar pela interface do Blender para abrir seu jogo certamente quebrará o encanto.
 
-### Export as Runtime <a id="Export_as_Runtime"></a>
+### Exportar como Runtime <a id="Export_as_Runtime"></a>
 
-As we mentioned earlier, Blenderplayer is a way to play back your files independently of Blender. The first step is to make sure the "Save As Game Engine Runtime" add-on is enabled. The next is to run it through the menu File  Export  Save As Game Engine Runtime. See Figure 9.1.
+Como mencionamos anteriormente, o Blenderplayer é uma forma de reproduzir seus arquivos independentemente do Blender. A primeira etapa é certificar-se de que o complemento "Salvar como Game Engine Runtime" esteja ativado. O próximo é executá-lo através do menu Arquivo  Exportar  Salvar como Game Engine Runtime. Veja a Figura 9.1.
 
-This will open up a dialog for you to choose where to save your binary file, which works differently in different operating systems:
+Isso abrirá uma caixa de diálogo para você escolher onde salvar seu arquivo binário, que funciona de maneira diferente em diferentes sistemas operacionais:
 
-![Export as Game Engine Runtime](../figures/Chapter9/Fig09-01.png)
+![Exportar como Game Engine Runtime](../figures/Chapter9/Fig09-01.png)
 
-- **Windows:** A few files will be copied to the folder you exported the runtime to. The main file is an executable (.exe) that you will be using to launch your game. The name of the file is the one you choose in the Export dialog. It contains both your Blender file (.blend) and Blenderplayer (.exe) bundled together. A few libraries (.dll) are presented as well. They are needed to play your game, so make sure to bring them with your executable wherever it goes (copy, zip, pack).
+- **Windows:** Alguns arquivos serão copiados para a pasta para a qual você exportou o tempo de execução. O arquivo principal é um executável (.exe) que você usará para iniciar o jogo. O nome do arquivo é aquele que você escolhe na caixa de diálogo Exportar. Ele contém seu arquivo do Blender (.blend) e o Blenderplayer (.exe) agrupados. Algumas bibliotecas (.dll) também são apresentadas. Eles são necessários para jogar seu jogo, portanto, certifique-se de levá-los com seu executável aonde quer que vá (copiar, compactar, compactar).
 
-Finally, something that is present in all operating systems, you will find a folder that contains the files needed to run Python scripts. The folder is named after the current Blender version (for example, 2.66\python\).
+Por fim, algo que está presente em todos os sistemas operacionais, você encontrará uma pasta que contém os arquivos necessários para executar scripts Python. A pasta é nomeada após a versão atual do Blender (por exemplo, 2.66\python\).
 
-- **Linux:** In Linux (and Mac OSX), the Blenderplayer binary is static-linked to the libraries. That means that you have one single executable file that contains almost everything you will need. The newly created file (named from the Export as Runtime dialog) already has the proper user permission to be run by any user.
+- **Linux:** No Linux (e Mac OSX), o binário do Blenderplayer é vinculado estático às bibliotecas. Isso significa que você tem um único arquivo executável que contém quase tudo que você precisa. O arquivo recém-criado (nomeado na caixa de diálogo Exportar como tempo de execução) já possui a permissão de usuário adequada para ser executado por qualquer usuário.
 
-Just like the Windows runtime, in Linux we have a folder with the files needed for the Python scripts. Even if the system already has Python installed, Blenderplayer (and Blender for that matter) relies on one particular version of Python for its execution. This prevents your games from running into compatibility issues with different Python versions that may exist on the user's system. This also allows you to use compiled Python scripts as we will soon see.
+Assim como o tempo de execução do Windows, no Linux temos uma pasta com os arquivos necessários para os scripts Python. Mesmo se o sistema já tiver o Python instalado, o Blenderplayer (e o Blender para esse assunto) depende de uma versão particular do Python para sua execução. Isso evita que seus jogos apresentem problemas de compatibilidade com diferentes versões de Python que podem existir no sistema do usuário. Isso também permite que você use scripts Python compilados, como veremos em breve.
 
-- **Mac OSX:** In this case, the Export as Runtime creates an executable (.app) that you can run by double-clicking on it. This executable is named from the Export dialog, but it's no more than a folder you can explore via the command line. This folder contains the Blenderplayer executable, the Blender file (game.blend), the Python libraries, and the icons used for game file.
+- **Mac OSX:** Neste caso, o Export as Runtime cria um executável (.app) que você pode rodar clicando duas vezes nele. Este executável é nomeado a partir da caixa de diálogo Exportar, mas não é mais do que uma pasta que você pode explorar através da linha de comando. Esta pasta contém o executável do Blenderplayer, o arquivo do Blender (game.blend), as bibliotecas Python e os ícones usados para o arquivo do jogo.
 
 >**Using Blenderplayer Without Exporting Your Game**
 >
