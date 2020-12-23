@@ -438,47 +438,47 @@ Agora, defina o objeto WallOccluder para ser um oclusor e execute o jogo novamen
 
 Lembre-se de que a seleção é feita por objeto. O Blender não irá esconder parte do modelo. Portanto, a seleção de oclusão é eficaz apenas quando há muitos objetos pequenos na cena escondidos atrás de um objeto grande.
 
-### Scene Management <a id="Scene_Management"></a>
+### Gestão de Cena <a id="Scene_Management"></a>
 
-Optimization isn't just about making your game fast; it is also about keeping the project organized and easy to manage. As the game project becomes larger, it gets progressively harder to keep everything organized. Here are some things you can do to maintain your own sanity:
+Otimização não é apenas tornar seu jogo mais rápido; é também manter o projeto organizado e fácil de gerenciar. Conforme o projeto do jogo se torna maior, fica cada vez mais difícil manter tudo organizado. Aqui estão algumas coisas que você pode fazer para manter sua própria sanidade:
 
-### Linked Libraries <a id="Linked_Libraries"></a>
+### Bibliotecas vinculadas <a id="Linked_Libraries"></a>
 
-The size of a single Blender file is virtually unlimited, so in theory, you can make a massive game with everything stored in a one Blender file. However, this approach is not practical for many reasons. Only one person at a time can edit a Blender file. So how do you spread a large project out so that multiple people can work on different aspects of it at the same time, without overwriting each other's work?
+O tamanho de um único arquivo do Blender é virtualmente ilimitado, então, em teoria, você pode fazer um jogo massivo com tudo armazenado em um arquivo do Blender. No entanto, essa abordagem não é prática por muitos motivos. Apenas uma pessoa por vez pode editar um arquivo do Blender. Então, como você distribui um grande projeto para que várias pessoas possam trabalhar em diferentes aspectos dele ao mesmo tempo, sem sobrescrever o trabalho umas das outras?
 
-The answer is Blender's library system. You have already been exposed to linking and appending in Chapter 2. It's a system that allows you to bring in data blocks (such as a character model) from other Blender files into the current file. This way, each asset can be worked on at the same time separately. This also makes reusing of assets easier.
+A resposta é o sistema de biblioteca do Blender. Você já foi exposto a links e acréscimos no Capítulo 2. É um sistema que permite a você trazer blocos de dados (como um modelo de personagem) de outros arquivos do Blender para o arquivo atual. Desta forma, cada ativo pode ser trabalhado ao mesmo tempo separadamente. Isso também facilita a reutilização de ativos.
 
-The game _Yo Frankie!_ (available for free online) is a great example of how a large game project is organized. In it, each entity (for example, tree, character model, and rocks) has its own Blender file, which can be linked into a master file, which makes up the game level.
+O jogo _Yo Frankie! _ (Disponível gratuitamente online) é um ótimo exemplo de como um grande projeto de jogo é organizado. Nele, cada entidade (por exemplo, árvore, modelo de personagem e pedras) possui seu próprio arquivo do Blender, que pode ser vinculado a um arquivo mestre, que constitui o nível do jogo.
 
-#### Linking vs. Appending <a id="Linking_vs._Appending"></a>
+#### Vinculando vs. Anexando <a id="Linking_vs._Appending"></a>
 
-Both functions import data blocks in Blender from an external file. The difference is that append makes a copy of the data block, and in doing so, severs the ties with the original library file. Once an append operation is done, you can edit, move, or even delete the library file without any consequences on the appended object.
+Ambas as funções importam blocos de dados no Blender de um arquivo externo. A diferença é que append faz uma cópia do bloco de dados e, ao fazer isso, rompe os laços com o arquivo de biblioteca original. Depois que uma operação de acréscimo é concluída, você pode editar, mover ou até mesmo excluir o arquivo de biblioteca sem quaisquer consequências no objeto anexado.
 
-Link does not make a new copy of the data block, but instead references the library file every time the master Blender file is loaded. This way, changes made to the linked object will be propagated to master file.
+O link não faz uma nova cópia do bloco de dados, mas em vez disso faz referência ao arquivo de biblioteca toda vez que o arquivo mestre do Blender é carregado. Dessa forma, as alterações feitas no objeto vinculado serão propagadas para o arquivo mestre.
 
-Linking is generally preferred over appending since it doesn't replicate the data blocks.
+A vinculação geralmente é preferível a anexar, pois não replica os blocos de dados.
 
-#### Relative Path vs. Absolute Path <a id="Relative_Path_vs._Absolute_Path"></a>
+#### Caminho Relativo vs. Caminho Absoluto <a id="Relative_Path_vs._Absolute_Path"></a>
 
-Once you start referencing external files (such as image textures and audios files) into a project, you need to decide if you want Blender to point to that file using a relative file path (the default option) or an absolute file path. Generally, keeping paths relative means it's easier to move a whole project around, as long as the overall folder structure is maintained. If multiple people are working on a project jointly using a file-share or source-management system, using relative path is absolutely crucial.
+Uma vez que você começou a fazer referência a arquivos externos (como texturas de imagem e arquivos de áudios) em um projeto, você precisa decidir se deseja que o Blender aponte para aquele arquivo usando um caminho de arquivo relativo (a opção padrão) ou um caminho de arquivo absoluto. Geralmente, manter os caminhos relativos significa que é mais fácil mover um projeto inteiro, contanto que a estrutura geral da pasta seja mantida. Se várias pessoas estiverem trabalhando em um projeto em conjunto usando um sistema de compartilhamento de arquivos ou gerenciamento de origem, o uso do caminho relativo é absolutamente crucial.
 
-Blender has some helpful tools under the File > External Files menu that can let you mange file paths.
+O Blender possui algumas ferramentas úteis no menu Arquivo> Arquivos Externos que permitem a você gerenciar os caminhos dos arquivos.
 
 #### StreetLamp vs. Cube.001 <a id="StreetLamp_vs._Cube.001"></a>
 
-A scene teeming with objects with unhelpful names like Cube.001, Cylinder.87, and Material.002 would be a nightmare to manage. First, scripts that refer to objects by their name will be harder to understand if object names aren't clear. By keeping everything named, you reduce the time it takes searching for something.
+Uma cena repleta de objetos com nomes inúteis como Cube.001, Cylinder.87 e Material.002 seria um pesadelo de gerenciar. Primeiro, os scripts que se referem a objetos por seus nomes serão mais difíceis de entender se os nomes dos objetos não forem claros. Ao manter tudo nomeado, você reduz o tempo necessário para pesquisar algo.
 
-Assigning proper names is not only limited to objects. All data blocks in Blender can be renamed. This includes objects, object data, lamps, materials, textures, and image data blocks. Renaming everything might seem like a lot of work, even borderline OCD, but once you are used to it, it really does make the project easier to manage. Think of the poor intern who has to pick up your project six month later!
+A atribuição de nomes próprios não se limita apenas a objetos. Todos os blocos de dados no Blender podem ser renomeados. Isso inclui objetos, dados de objeto, lâmpadas, materiais, texturas e blocos de dados de imagem. Renomear tudo pode parecer muito trabalhoso, até mesmo no limite do TOC, mas uma vez que você se acostumar com isso, realmente torna o projeto mais fácil de gerenciar. Pense no pobre estagiário que precisa retomar seu projeto seis meses depois!
 
-### Layers <a id="Layers"></a>
+### Camadas <a id="Layers"></a>
 
-Not unlike the layer functionality in a 2D image-editing program, the layer functionality in a 3D program is mostly there to keep the scene organized. Blender provides 20 layers for you to work with. How these layers are utilized is up to the artist. Since you cannot assign names to layers, it will be up to you to keep track of, and perhaps document, how the layers are being used.
+Não diferente da funcionalidade de camada em um programa de edição de imagem 2D, a funcionalidade de camada em um programa 3D está lá principalmente para manter a cena organizada. O Blender fornece 20 camadas para você trabalhar. A forma como essas camadas são utilizadas depende do artista. Uma vez que você não pode atribuir nomes às camadas, caberá a você acompanhar, e talvez documentar, como as camadas estão sendo usadas.
 
-## Beauty Trumps Complexity <a id="Beauty_Trumps_Complexity"></a>
+## A beleza supera a complexidade <a id="Beauty_Trumps_Complexity"></a>
 
-Armed with these newly acquired optimization methods, you might be tempted to beef up the game with more details. More polygons! Higher-resolution textures! Larger explosions! (Cough[md]Michael Bay[md]Cough.) It's easy to lose sight of the big picture. A visually beautiful game does not have to be photorealistic, nor does it have to be crammed to the brim with details. Sometimes, simple visuals can be just as powerful.
+Armado com esses métodos de otimização recém-adquiridos, você pode ficar tentado a aprimorar o jogo com mais detalhes. Mais polígonos! Texturas de alta resolução! Explosões maiores! (Tosse [md] Michael Bay [md] tosse.) É fácil perder de vista o quadro geral. Um jogo visualmente bonito não precisa ser fotorrealístico, nem precisa ser cheio até a borda com detalhes. Às vezes, recursos visuais simples podem ser tão poderosos.
 
-Below are a few games that are faithful to the adage that "less is more":
+Abaixo estão alguns jogos que são fiéis ao ditado que "menos é mais":
 
 - **Journey**: http://thatgamecompany.com/games/journey/
 
