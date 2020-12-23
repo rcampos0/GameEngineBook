@@ -113,14 +113,14 @@ Assim como o tempo de execução do Windows, no Linux temos uma pasta com os arq
 
 - **Mac OSX:** Neste caso, o Export as Runtime cria um executável (.app) que você pode rodar clicando duas vezes nele. Este executável é nomeado a partir da caixa de diálogo Exportar, mas não é mais do que uma pasta que você pode explorar através da linha de comando. Esta pasta contém o executável do Blenderplayer, o arquivo do Blender (game.blend), as bibliotecas Python e os ícones usados para o arquivo do jogo.
 
->**Using Blenderplayer Without Exporting Your Game**
+>**Usando o Blenderplayer sem exportar seu jogo**
 >
->You don't need to export your game every time you want to test it in the Blenderplayer.
->In the same folder where you installed Blender, you can find the Blenderplayer executable. Run it from the commandline/console with your file as argument:
+> Você não precisa exportar seu jogo toda vez que quiser testá-lo no Blenderplayer.
+> Na mesma pasta onde você instalou o Blender, você pode encontrar o executável do Blenderplayer. Execute-o a partir da linha de comando / console com seu arquivo como argumento:
 >Blenderplayer.exe C:\MyFileWindows.blend
 >./blenderplayer.app/Contents/MacOS/blenderplayer ~/myFileOSX.blend
 >./blenderplayer ~/myFileLinux.blend
->If you run it with the argument "-h," you can see all the options available through the command-line. Another option is to use the Start button in the Stand-alone Player tab in the Scene menu to launch the current file in Blenderplayer (see "Interface Options" next in this chapter).
+> Se você executá-lo com o argumento "-h", poderá ver todas as opções disponíveis na linha de comando. Outra opção é usar o botão Iniciar na aba Reprodutor Independente no menu Cena para iniciar o arquivo atual no Blenderplayer (veja "Opções de Interface" a seguir neste capítulo).
 
 ### Resource Files <a id="Resource_Files"></a>
 
