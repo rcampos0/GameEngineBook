@@ -345,19 +345,19 @@ Vamos experimentar:
 
 ![A cena cozida (esquerda) vs. a cena original (direita)](../figures/Chapter8/Fig08-15.png)
 
-#### Limitations of Texture Baking <a id="Limitations_of_Texture_Baking"></a>
+#### Limitações do cozimento de textura <a id="Limitations_of_Texture_Baking"></a>
 
-As with anything that "sounds too good to be true," there is usually a catch.
+Como com tudo que "parece bom demais para ser verdade", geralmente há um problema.
 
-- With texture baking, only view-independent lighting effects can be baked. So while diffuse color can be baked to a texture because diffuse color is not linked to the camera-view angle, specular highlights and reflections are ignored during texture baking because specular highlights are view-dependent lights; there is no way to bake them onto a static texture.
+- Com cozimento de textura, apenas efeitos de iluminação independentes de visão podem ser cozidos. Portanto, embora a cor difusa possa ser transformada em textura porque a cor difusa não está vinculada ao ângulo de visão da câmera, os realces e reflexos especulares são ignorados durante o cozimento da textura porque os realces especulares são luzes dependentes da visualização; não há como assá-los em uma textura estática.
 
-- Texture baking is an act of sacrificing flexibility for performance. Once a scene is baked, the scene becomes rather static. For example, moving an object after you baked the lightmap might result in a black spot and some odd-looking phantom shadow. So usually light baking is limited to the static environment only.
+- O cozimento de texturas é um ato de sacrificar a flexibilidade pelo desempenho. Depois que uma cena é preparada, ela se torna bastante estática. Por exemplo, mover um objeto depois de preparar o mapa de luz pode resultar em um ponto preto e alguma sombra fantasma de aparência estranha. Portanto, geralmente o cozimento leve é ​​limitado apenas ao ambiente estático.
 
-- Every object has to be UV mapped in a non-overlapping manner. If two areas of an object share the same texture coordinate, they will not display properly.
+- Cada objeto deve ser mapeado em UV de uma maneira não sobreposta. Se duas áreas de um objeto compartilham a mesma coordenada de textura, elas não serão exibidas corretamente.
 
-- Keep in mind that Blender doesn't save image files automatically, so make sure you manually save the baked texture file by clicking on Image > Save.
+- Tenha em mente que o Blender não salva arquivos de imagem automaticamente, então certifique-se de salvar manualmente o arquivo de textura cozido clicando em Imagem> Salvar.
 
-Despite the limitations, texture baking is a popular method that is widely used to include fancy light effect in real time. In addition to baking full renders, it is also possible to bake just an ambient occlusion map. The baked ambient occlusion texture can then be used as a secondary texture to influence the surface shading of an object.
+Apesar das limitações, o cozimento de texturas é um método popular amplamente usado para incluir efeitos de luz sofisticados em tempo real. Além de assar renderizações completas, também é possível assar apenas um mapa de oclusão do ambiente. A textura de oclusão do ambiente cozido pode então ser usada como uma textura secundária para influenciar o sombreamento da superfície de um objeto.
 
 ### Normal Map <a id="Normal_Map"></a>
 
