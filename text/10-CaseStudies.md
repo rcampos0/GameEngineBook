@@ -47,17 +47,17 @@ O que nos impressiona neste jogo é a sua atenção aos detalhes: cada component
 
 Carlos explica como o jogo foi feito:
 
-"It wasn't till around 2009 that I found Blender. I have never had experience with any kind of 3D software. I actually stumbled onto Blender when I was trying to learn how to make those stereogram images that look like a mess of stuff that you have to cross your eyes to see.
+"Foi só por volta de 2009 que descobri o Blender. Nunca tive experiência com qualquer tipo de software 3D. Na verdade, tropecei no Blender quando estava tentando aprender como fazer aquelas imagens de estereograma que parecem uma bagunça de coisas que você tem que cruzar os olhos para ver.
 
-I picked Blender up pretty quickly. I've always had artistic talent so modeling, texturing, and animating was easy. Learning the Blender interface was the hard part. Once I got over this hump, I decided to tackle the game engine. I made some small demos here and there, but nothing as polished as Super Blender Galaxy[SBG]. The one thing that set SBG apart from all my other games was that I taught myself Python over the duration of the production. I still consider myself a Python newbie, but I pulled off what I needed for the game. There were close to 100 different Python scripts in SBG, and getting them to all work seamlessly was no easy feat.
+Eu peguei o Blender bem rápido. Sempre tive talento artístico, então modelar, texturizar e animar foi fácil. Aprender a interface do Blender foi a parte difícil. Assim que superei esse obstáculo, decidi enfrentar o motor de jogo. Fiz algumas pequenas demos aqui e ali, mas nada tão polido quanto o Super Blender Galaxy [SBG]. A única coisa que diferenciava o SBG de todos os meus outros jogos era que eu aprendi Python sozinho ao longo da produção. Ainda me considero um novato em Python, mas consegui o que precisava para o jogo. Havia cerca de 100 scripts Python diferentes no SBG, e fazer com que funcionassem perfeitamente não foi uma tarefa fácil.
 
-I started on SBG in March of 2010, and it took me eight months to get this demo out. There really was no planning when I started out. I kind of just kept moving forward. Once I modeled, textured, and animated Mario, I focused on all of his functions and smart cameras. I had to watch a lot of Mario stuff to see how the controls and camera systems worked; then I actually duplicated everything I saw. This was extremely difficult for me, considering that I'm just one person, and I'm trying to match what the professionals are doing.
+Comecei no SBG em março de 2010 e demorei oito meses para lançar esta demonstração. Realmente não havia planejamento quando comecei. Eu meio que continuei seguindo em frente. Depois de modelar, texturizar e animar Mario, concentrei-me em todas as suas funções e câmeras inteligentes. Tive que assistir a muitas coisas de Mario para ver como os controles e sistemas de câmera funcionavam; então, na verdade, dupliquei tudo que vi. Isso foi extremamente difícil para mim, considerando que sou apenas uma pessoa, e estou tentando corresponder ao que os profissionais estão fazendo.
 
-Once I got this done, I kind of hit a brick wall. I had no ideas for level design. I did get a lot of help from my girlfriend (Alexis F. Porter) in this department. She had some off-the-wall ideas, such as antlers on Yoshi, a sleigh ride race, and of course Skunk Mario. I ended up just replicating Puzzle Planck Galaxy to rush things through.
+Depois de fazer isso, meio que bati em uma parede de tijolos. Eu não tinha ideias para design de níveis. Recebi muita ajuda de minha namorada (Alexis F. Porter) nesse departamento. Ela teve algumas ideias incríveis, como chifres em Yoshi, uma corrida de trenó e, claro, Skunk Mario. Acabei apenas replicando o Puzzle Planck Galaxy para apressar as coisas.
 
-The Blender community helped me throughout the process, although no one knew what they were helping me with as far as the project goes. When I ran into problems with code, I would post a snippet of my problem, and overnight people would respond with an answer or point me in the right direction. I am very appreciative of that."
+A comunidade do Blender me ajudou em todo o processo, embora ninguém soubesse no que eles estavam me ajudando no decorrer do projeto. Quando eu encontrava problemas com o código, postava um trecho do meu problema e as pessoas da noite para o dia respondiam com uma resposta ou me apontavam a direção certa. Estou muito grato por isso. "
 
-Carlos aspires to become a game developer and is currently studying Game Development and Computer Programming in San Antonio, Texas. A playable version of the game is available on the accompanying disk.
+Carlos deseja se tornar um desenvolvedor de jogos e atualmente está estudando Desenvolvimento de Jogos e Programação de Computadores em San Antonio, Texas. Uma versão jogável do jogo está disponível no disco que acompanha.
 
 ## Lucy and the Time Machine <a id="Lucy_and_the_Time_Machine"></a>
 
@@ -69,29 +69,29 @@ Vitor Balbio, Bernardo Hasselman
 
 ![Vitor Balbio](../figures/Chapter10/Fig10-06.png)
 
-Every year the Blender community hosts game engine contests that invite people to create and share their Blender skills. As a response to the contest, in 2010, Vitor Balbio teamed up with Bernardo Hasselman, who contributed to the concepts, story, and level design. Together, they created a perfectly executed platform-puzzle game that forever raises the bar for Blender-made games. The result is a game with a rich story that involves Jules Verne, a Time Machine, and a robot sidekick, all taking place in a beautifully rendered 3D environment.
+Todos os anos, a comunidade Blender hospeda concursos de mecanismo de jogo que convidam as pessoas a criar e compartilhar suas habilidades no Blender. Em resposta ao concurso, em 2010, Vitor Balbio associou-se a Bernardo Hasselman, que contribuiu com os conceitos, história e level design. Juntos, eles criaram um jogo de quebra-cabeça de plataforma perfeitamente executado que eleva para sempre o padrão dos jogos feitos pelo Blender. O resultado é um jogo com uma história rica que envolve Júlio Verne, uma Máquina do Tempo e um robô ajudante, tudo acontecendo em um ambiente 3D lindamente renderizado.
 
-The game is notable for being one of the most professional-looking Blender games out there. It was produced by just two people over the course of four months. The game makes heavy use of the Bullet Physics engine and relies entirely on logic bricks. No Python is used at all. We can't think of a better way to show off the power of the game engine.
+O jogo é notável por ser um dos jogos de Blender com aparência mais profissional que existe. Foi produzido por apenas duas pessoas ao longo de quatro meses. O jogo faz uso pesado do motor Bullet Physics e depende inteiramente de blocos lógicos. Nenhum Python é usado. Não podemos pensar em uma maneira melhor de mostrar a potência do motor de jogo.
 
-Victor Balbio explains in detail the making of the game:
+Victor Balbio explica em detalhes a construção do jogo:
 
-"Bernardo and I were very rigid in adhering to our work plan. We followed a strict design workbook known as our 'Game Bible' that contained all workflow, game planning, concepts, and notes. This allowed us to see what was doomed to fail early in the project[md]way before ideas materialized into pixels. The Blender community was also quite receptive to the project. Those factors were fundamental for us to complete our creation.
+"Bernardo e eu éramos muito rígidos em aderir ao nosso plano de trabalho. Seguimos um rígido livro de design conhecido como nossa 'Bíblia do Jogo', que continha todo o fluxo de trabalho, planejamento do jogo, conceitos e notas. Isso nos permitiu ver o que estava fadado ao fracasso no início do projeto [md] muito antes das ideias se materializarem em pixels.A comunidade do Blender também foi bastante receptiva ao projeto.Esses fatores foram fundamentais para completarmos nossa criação.
 
-The game aims to be an enjoyable experience for the player, in part accomplished by visuals[md]matching the quality standards of an indie game[md]and its strong plot. The gameplay was based on platform games with puzzles closely connected to the cinematic and time control of the game. The games _Trine_ and _Braid_ were a big inspiration for our work.
+O jogo pretende ser uma experiência agradável para o jogador, em parte conseguida por visuais [md] que correspondem aos padrões de qualidade de um jogo indie [md] e seu enredo forte. A jogabilidade era baseada em jogos de plataforma com quebra-cabeças intimamente ligados ao controle cinematográfico e de tempo do jogo. Os jogos _Trine_ e _Braid_ foram uma grande inspiração para o nosso trabalho.
 
-_Lucy and the Time Machine_ was created entirely with logic bricks. While this made our lives easier on many occasions, this also constrained us a lot. Without using Python, one of the biggest limitations was not being able to animate the values of the Motion actuators. The high number of logic bricks quickly became hard to manage. Thus, we had to rely on strict documentation for naming conventions and other internal rules.
+_Lucy e a Máquina do Tempo_ foi criado inteiramente com peças lógicas. Embora isso tenha facilitado nossas vidas em muitas ocasiões, também nos limitou muito. Sem usar Python, uma das maiores limitações era não poder animar os valores dos atuadores de movimento. O grande número de blocos lógicos rapidamente se tornou difícil de gerenciar. Portanto, tivemos que contar com documentação estrita para convenções de nomenclatura e outras regras internas.
 
-A few months after the demo release, we started working on a second version of the game (not yet released). This time we were using Python scripting for some of the tasks. Thanks to that, we already had the following: save and load, checkpoint, and better animations.
+Alguns meses após o lançamento do demo, começamos a trabalhar em uma segunda versão do jogo (ainda não lançada). Desta vez, estávamos usando script Python para algumas das tarefas. Graças a isso, já tínhamos o seguinte: salvar e carregar, checkpoint e melhores animações.
 
-For this project, the most limiting aspect of the Blender game engine was the lighting. Our inability to dynamically add lights and their slow performance affected some of our design decisions. Sound also proved to be an issue in 2.49 when it came to cross-platform support. Luckily, it's working smoothly in Blender 2.5.
+Para este projeto, o aspecto mais limitante do motor de jogo do Blender foi a iluminação. Nossa incapacidade de adicionar luzes dinamicamente e seu desempenho lento afetou algumas de nossas decisões de design. O som também provou ser um problema na 2.49 quando se tratava de suporte para plataforma cruzada. Felizmente, está funcionando perfeitamente no Blender 2.5.
 
-Despite its limitations, I see Blender as an excellent tool for diverse goals. In the field of prototyping, commercial and scientific visualization, virtual walkthrough … I don't know a tool with a better trade-off between robustness and ease of use. The integration with Blender and the logic brick system allowed us to produce fantastic results in a short window of time. I'm also unaware of another open game engine with a better and easier material system (which is my favorite reason for working with Blender).
+Apesar de suas limitações, vejo o Blender como uma excelente ferramenta para diversos objetivos. No campo da prototipagem, visualização comercial e científica, walkthrough virtual ... Não conheço uma ferramenta com melhor trade-off entre robustez e facilidade de uso. A integração com o Blender e o sistema de blocos lógicos nos permitiu produzir resultados fantásticos em um curto espaço de tempo. Também não conheço outra engine de jogo aberta com um sistema de materiais melhor e mais fácil (que é meu motivo favorito para trabalhar com o Blender).
 
-Our future plans are to port _Lucy_ for other publishing platforms, such as WebPlayer and iOS. Our goal is to stick to Blender for prototyping though.
+Nossos planos futuros são portar _Lucy_ para outras plataformas de publicação, como WebPlayer e iOS. Nosso objetivo é manter o Blender para prototipagem.
 
-Keep Blending!
+Continue misturando!
 
-Vitor Balbio's previous work includes a stunning looking demo scene called "Ruínas" (Ruins), which competed in the graphics category in an early edition of the same competition. Information about _Lucy and The Time Machine_ can be found on Vitor's blog (in Portuguese): [_http://obalbio3d.wordpress.com/_](http://obalbio3d.wordpress.com/)
+O trabalho anterior de Vitor Balbio inclui uma cena de demonstração de visual deslumbrante chamada "Ruínas", que competiu na categoria gráfica em uma das primeiras edições da mesma competição. Informações sobre _Lucy e The Time Machine_ podem ser encontradas no blog do Vitor (em português): [_http://obalbio3d.wordpress.com/_](http://obalbio3d.wordpress.com/)
 
 ## The FPS Project <a id="The_FPS_Project"></a>
 
@@ -101,25 +101,25 @@ Chase Moskal, Geoff Gollmer, Martins Upitis, Mitchell Stokes, Daniel Stokes, Lon
 
 ![The FPS Project](../figures/Chapter10/Fig10-08.png)
 
-The _First-Person-Shooter Project_ was an attempt to create a solid online multiplayer shooter in the game engine. It began a few years ago with Chase and his good friends, Geoff and Lonnie. All three had played around with the game engine for years, and had always wanted to make an FPS, a goal that certainly aligned with the interests of many gamers and game developers alike. The project took off with enthusiasm and energy. Unfortunately, high self-expectations led to a loss of focus as the project progressed[md]the project lost steam as the game's complexity spiraled out of control. This all-too-familiar story is unfortunately common to many amateur game developers. The _FPS Project_ is currently undergoing a refactoring, and Chase hopes that this time, by keeping the project goals clear and reasonable, the project will not reach the same fate as last time.
+O _Projeto Atirador em Primeira Pessoa_ foi uma tentativa de criar um atirador multijogador online sólido no motor de jogo. Tudo começou há alguns anos com Chase e seus bons amigos, Geoff e Lonnie. Todos os três brincaram com o motor de jogo durante anos e sempre quiseram fazer um FPS, um objetivo que certamente se alinhava com os interesses de muitos jogadores e desenvolvedores de jogos. O projeto arrancou com entusiasmo e energia. Infelizmente, altas expectativas pessoais levaram a uma perda de foco conforme o projeto progredia [md] o projeto perdia força conforme a complexidade do jogo ficava fora de controle. Essa história tão familiar infelizmente é comum a muitos desenvolvedores de jogos amadores. O _FPS Project_ está atualmente passando por uma refatoração e Chase espera que desta vez, mantendo os objetivos do projeto claros e razoáveis, o projeto não terá o mesmo destino da última vez.
 
-Chase wants to share their story so that you won't repeat the same mistakes as they did:
+Chase quer compartilhar sua história para que você não repita os mesmos erros que eles fizeram:
 
-"Just a month or so into the start of the project, Martins Upitis spontaneously contacted  Geoff, Lonnie, and me. He had checked out our previous project, _Nanoshooter_ (a top-down multiplayer shooter, which was more or less a precursor networking test for the _FPS Project_), he was very impressed, and explained how he'd like to make an FPS with us. We were ecstatic, as Martins was our favorite artist of the Blender community.
+"Apenas um mês ou mais no início do projeto, Martins Upitis espontaneamente contatou Geoff, Lonnie e eu. Ele havia verificado nosso projeto anterior, _Nanoshooter_ (um jogo de tiro multiplayer de cima para baixo, que foi mais ou menos um teste de rede precursor para o _FPS Project_), ele ficou muito impressionado, e explicou como gostaria de fazer um FPS conosco.Nós ficamos em êxtase, pois Martins era nosso artista favorito da comunidade Blender.
 
-We were soon joined by more talented people, including Daniel and Mitchell Stokes, Fleeky Flanco, and Thomas Lobig. With the help of Mitchell and Geoff, I began developing the code base. Online multiplayer is a lot more than just transferring data over sockets: the entire game engine needs to be structured in a way that is conducive to multiplayer. Concepts like GameState and entity management are not built into the game engine, so we improvised them with Python scripting. It really felt like building a game engine within a game engine.
+Logo mais pessoas talentosas se juntaram a nós, incluindo Daniel e Mitchell Stokes, Fleeky Flanco e Thomas Lobig. Com a ajuda de Mitchell e Geoff, comecei a desenvolver a base de código. O multijogador online é muito mais do que apenas transferir dados por meio de soquetes: todo o mecanismo de jogo precisa ser estruturado de uma forma que seja favorável ao multijogador. Conceitos como GameState e gerenciamento de entidade não são integrados ao mecanismo de jogo, então os improvisamos com scripts Python. Realmente parecia construir um motor de jogo dentro de um motor de jogo.
 
-An early challenge was figuring out how to best organize the project's source. We eventually settled on a system that uses Blender's ability to dynamically link objects in from one blend file to another. Environments (levels) are kept in individual blends. All of the game's programming was external from the game engine, and it all ran from one master script called "mainloop.py." Each level linked in the game's programming (which is in its own blend file) that ran the mainloop script every frame. This system kept the programming separate from the levels, and let us organize the game's programming in any way that we wanted. To play the game, the main menu just started up the chosen level's blend file, passing information such as the server's address.
+Um desafio inicial foi descobrir como organizar melhor a origem do projeto. Eventualmente, decidimos por um sistema que usa a capacidade do Blender de vincular objetos dinamicamente de um arquivo de mesclagem para outro. Ambientes (níveis) são mantidos em combinações individuais. Toda a programação do jogo era externa ao motor do jogo e tudo rodava a partir de um script mestre chamado "mainloop.py". Cada nível vinculado à programação do jogo (que está em seu próprio arquivo de mesclagem) que executou o script mainloop a cada quadro. Este sistema manteve a programação separada dos níveis, e nos permitiu organizar a programação do jogo da maneira que quiséssemos. Para jogar, o menu principal apenas iniciava o arquivo de blend do nível escolhido, passando informações como o endereço do servidor.
 
-We used Google Docs to collaborate on our plans, to-do lists, and just about anything else. It's an invaluable tool for collaboration, as is Subversion and Google Code. Tools like these are absolutely essential to manage a project of almost any magnitude.
+Usamos o Google Docs para colaborar em nossos planos, listas de tarefas e quase tudo. É uma ferramenta inestimável para colaboração, como o Subversion e o Google Code. Ferramentas como essas são absolutamente essenciais para gerenciar um projeto de quase qualquer magnitude.
 
-Despite getting a lot of cool work done and learning a ton in the process, it didn't quite work out. Unfortunately, being an inexperienced project manager, I failed to keep us focused on achieving realistic goals. Our team's goals for the project grew out of control: not only did we want a multiplayer shooter, but soon we had plans for a co-op survival mode with hordes of bots; character classes and weapon customization; vehicles and even drop-ship insertions. Before long, the network code became too complex to work on, and our team's motivation declined to nothing.
+Apesar de fazer um monte de trabalho legal e aprender muito no processo, não deu muito certo. Infelizmente, sendo um gerente de projeto inexperiente, não consegui nos manter focados em alcançar objetivos realistas. Os objetivos da nossa equipe para o projeto ficaram fora de controle: não só queríamos um jogo de tiro multiplayer, mas logo tínhamos planos para um modo de sobrevivência cooperativo com hordas de bots; classes de personagens e personalização de armas; veículos e até inserções drop-ship. Em pouco tempo, o código de rede se tornou muito complexo para trabalhar e a motivação de nossa equipe diminuiu até nada.
 
-I'm sure this story sounds familiar to hobbyists of any kind. Most Blender users I've talked to bear the psychological scars of an abandoned beloved project. It's important to set realistic goals. You need enough ambition to inspire initiative, but you must be careful because motivation can easily drown in over-ambition.
+Tenho certeza de que essa história parece familiar para qualquer tipo de hobbista. A maioria dos usuários do Blender com quem conversei carrega as cicatrizes psicológicas de um projeto amado abandonado. É importante definir metas realistas. Você precisa de ambição suficiente para inspirar iniciativa, mas deve ter cuidado porque a motivação pode facilmente se afogar em ambição excessiva.
 
-It's not all doom and gloom, though. After a long stretch of inactivity, Geoff and I have rebooted the project, but this time vowing to keep things simple. We've stripped away unnecessary ambition, and we're hoping to finish the project as a multiplayer template to be released as open source to the Blender community."
+Nem tudo é desgraça e tristeza, no entanto. Depois de um longo período de inatividade, Geoff e eu reiniciámos o projeto, mas desta vez jurando manter as coisas simples. Eliminamos a ambição desnecessária e esperamos terminar o projeto como um modelo multiplayer a ser lançado como código aberto para a comunidade Blender. "
 
-As the project is undergoing a restructuring, no file is available to the public yet. You can learn more about the FPS project at _https://code.google.com/p/fps-project/._
+Como o projeto está passando por uma reestruturação, nenhum arquivo está disponível ao público ainda. Você pode aprender mais sobre o projeto FPS em_https://code.google.com/p/fps-project/._
 
 ## Whip Frog <a id="Whip_Frog"></a>
 
@@ -128,28 +128,27 @@ David Thompson, Campbell Barton, Daniela Hammer, Alex Fraser, Luca Pavone
 ![David Thomson, Campbell Barton, Daniela Hammer, Alex Fraser, Luca Pavone](../figures/Chapter10/Fig10-09.png)
 
 ![David Thomson, Campbell Barton, Daniela Hammer, Alex Fraser, Luca Pavone](../figures/Chapter10/Fig10-10.png)
+Quão rápido você consegue construir um jogo? Um mês? Uma semana? O que você faria se tivesse apenas 48 horas para fazer um jogo com um grupo de cinco pessoas? Essa é a premissa do Global Game Jam, um evento anual que convida desenvolvedores e artistas a se unirem para criar jogos do zero em 48 horas. Alex Fraser participou do Game Jam 2011 com o desenvolvedor do Blender Campbell Barton e três outros artistas. Durante esses dois dias, cada um deles dormiu apenas algumas horas por noite, cada um realizando o equivalente a uma semana inteira de trabalho até o final do Jam.
 
-How fast can you build a game? A month? A week? What would you do if you only had 48 hours to make a game with a group of five people? This is the premise of Global Game Jam, an annual event that invites developers and artists to come together to create games from scratch within 48 hours. Alex Fraser participated in the 2011 Game Jam with Blender developer Campbell Barton and three other artists. During those two days, they each slept only a few hours per night, each accomplishing the equivalent of a full week's worth of work by the end of the Jam.
+Este jogo mostra uma área do Blender que é ótima para o desenvolvimento de jogos: prototipagem rápida. Graças aos blocos lógicos, uma API Python totalmente funcional e ao fluxo de trabalho integrado, uma equipe pode construir um jogo em nenhum momento. No entanto, o Blender tem seu lado negativo. A equipe expressou preocupação com a falta de controle de versão ou ferramentas colaborativas dentro do Blender. Sem isso, apenas uma pessoa pode trabalhar no arquivo por vez, o que pode ser frustrante ao trabalhar com um prazo tão curto.
 
-This game shows one area of Blender that is great for game development: rapid prototyping. Thanks to logic bricks, a fully functional Python API, and the integrated workflow, a team can build a game in no time. However, Blender isn't without its downside. The team expressed concern over the lack of version control or collaborative tools within Blender. Without this, only one person can work on the file at a time, which can be frustrating when working under such a tight deadline.
+Apesar da pressão, o resultado é um jogo visualmente único e divertido de jogar.
 
-Despite the pressure, the result is a game that is visually unique and fun to play.
+Aqui está a retrospectiva de Alex Fraser e Daniela Hammer sobre as intensas 48 horas:
 
-Here is Alex Fraser and Daniela Hammer's retrospective on the intense 48 hours:
+“A ideia original para a jogabilidade veio de Campbell Barton. Ele teve a ideia a caminho da competição, e então só tivemos que estendê-la para que se encaixasse no tema do evento deste ano: Extinção.
 
-"The original idea for the gameplay came from Campbell Barton. He had the idea on the way to the competition, and then we just had to extend it to make it fit with the theme of this year's event: Extinction.
+Gastamos todo o tempo permitido [md] 48 horas [md] para construir o jogo. A equipe era composta por 1,5 artistas, 1 programador, 1 integrador, 1 músico e 0,5 designers. Apenas metade do tempo alocado foi realmente usado para desenvolver as peças separadas para o produto final do jogo. Quase o mesmo tempo foi usado para testes e discussões entre os membros do grupo. Isso envolveu manter um controle constante do que cada membro da equipe estava criando e garantir que os membros individuais da equipe estivessem atualizados com o resto da equipe. Embora esse método demandasse uma porção significativa de tempo, ele garantiu que trabalhássemos com eficiência e nos permitiu detectar muitos problemas potenciais em sua infância.
 
-We spent the entire allowed time[md]48 hours[md]to build the game. The team consisted of 1.5 artists, 1 programmer, 1 integrator, 1 musician and 0.5 designers. Only half of the allocated time was actually used to develop the separate pieces for the end product of the game. Almost as much time was used for test-playing and discussion between group members. This involved keeping constant track of what each team member was creating and making sure that individual team members were up to speed with the rest of the team. While this method demanded a significant portion of time, it ensured that we worked efficiently and allowed us to catch many potential problems in their infancy.
+Um exemplo disso seria durante alguns dos primeiros testes de mecânica do jogo, onde logo descobrimos que uma abordagem horizontal para o movimento era mais difícil e menos agradável do que uma abordagem vertical. Se apenas jogássemos o teste no final do jogo, teríamos acabado com um produto muito diferente e potencialmente muito menos agradável.
 
-An example of this would be during some of the early game mechanics testing, where we soon found out a horizontal approach for movement was more difficult and less enjoyable than a vertical approach. Were we to only play-test at the end of the game, we would have ended up with a very different and potentially much less enjoyable product.
+Para nós, a gestão de ativos era difícil. Estávamos distribuindo arquivos em dispositivos USB. O grande problema era que apenas uma pessoa poderia trabalhar em um arquivo do Blender por vez. Se pudéssemos mesclar arquivos de mesclagem como você faz com programas. Ou talvez o Verse (uma solução de rede colaborativa que permite que várias pessoas colaborem em um arquivo ao mesmo tempo) ajude. Então, Campbell fez uma integração praticamente em tempo integral dos recursos que os artistas estavam fazendo com o jogo principal.
 
-For us, asset management was hard. We were passing files around on USB sticks. The big problem was that only one person could work on a Blender file at a time. If only we could merge blend files like you can with programs. Or perhaps Verse (a collaborative networking solution that allows multiple people to collaborate on one file at the same time) would help. So we had Campbell doing pretty much full-time integration of the assets that the artists were making with the main game.
+Amamos a forte integração do motor de jogo com o Blender. É uma ótima maneira de desenvolver algo, dadas as limitações de tempo que tínhamos.
 
-We loved the tight integration of the game engine with Blender. It's such a great way to develop something, given the time constraints we had.
+Todos concordam que o maior desafio durante o Game Jam é se forçar a sair do desenvolvimento para dormir.
 
-Everyone agrees that the biggest challenge during the Game Jam is  forcing yourself to walk away from development to go to sleep.
-
-You can learn more about this game at _http://globalgamejam.org/2011/whip-frog._
+Você pode aprender mais sobre este jogo em _http://globalgamejam.org/2011/whip-frog._
 
 ## Tectonic <a id="Tectonic"></a>
 
@@ -159,27 +158,27 @@ Andrew Bentley
 
 ![Tectonic](../figures/Chapter10/Fig10-12.png)
 
-Being a 2D game that looks like something ported from the Nintendo 64 era, _Tectonic_ might not look like a groundbreaking game at first glance. But after trying it out, you will be thoroughly impressed with the innovative gameplay mechanics and progressively harder levels that have many of the hallmarks of a professionally made game. If you take it one step further and dive into the source code of the game, you will be impressed as well by the design and programming behind the game's puzzle engine.
+Sendo um jogo 2D que parece algo portado da era Nintendo 64, _Tectonic_ pode não parecer um jogo inovador à primeira vista. Mas depois de experimentá-lo, você ficará completamente impressionado com a mecânica de jogo inovadora e os níveis cada vez mais difíceis que possuem muitas das características de um jogo feito profissionalmente. Se você der um passo adiante e mergulhar no código-fonte do jogo, ficará impressionado também com o design e a programação por trás do mecanismo de quebra-cabeça do jogo.
 
-For Pythonistas interested in extending their programming skills, this game is a treasure box. Andrew uses Python extensively for the game. The game also made use of Mitchell Stokes' BGUI module, which is a Python module for Blender that helps in the creation of user-interface in the game engine.
+Para Pythonistas interessados em estender suas habilidades de programação, este jogo é uma caixa de tesouro. Andrew usa Python extensivamente para o jogo. O jogo também fez uso do módulo BGUI de Mitchell Stokes, que é um módulo Python para Blender que auxilia na criação da interface do usuário no motor do jogo.
 
-Despite the extremely late start, Andrew made an impressive puzzle game that won third place in the 2010 Blender Game Competition.
+Apesar do início extremamente tarde, Andrew fez um jogo de quebra-cabeça impressionante que conquistou o terceiro lugar na competição de jogos do Blender de 2010.
 
-Andrew explains how he made the game in three days:
+Andrew explica como ele fez o jogo em três dias:
 
-"I first got the idea for _Tectonic_ three days before the competition deadline. I was attempting to solve the Rubik's Cube when I thought "hey, this could make a pretty cool mechanic in a game" and "oh hey, there's a game competition on right now." So I guess the game competition and stiff schedule really made me work hard on it. I wanted to get something playable out before the deadline, sort of like a prototype. So I jumped on Blender and dived straight into it. I didn't do any planning or anything; I just wanted to get some sort of Rubik's Cube-esque 2D game mechanic working inside Blender, which didn't take long at all. What I had was a grid of tiles that could be slid around, and that was it.
+"Tive a ideia do _Tectonic_ três dias antes do prazo final da competição. Eu estava tentando resolver o cubo de Rubik quando pensei" ei, isso poderia fazer uma mecânica muito legal em um jogo "e" oh, ei, há uma competição de jogo em agora. "Acho que a competição do jogo e a programação rígida realmente me fizeram trabalhar muito. Eu queria fazer algo jogável antes do prazo, como um protótipo. Então, pulei no Blender e mergulhei direto nele. Eu não fiz nenhum planejamento nem nada; eu só queria ter algum tipo de mecânica de jogo 2D no estilo Cubo de Rubik trabalhando dentro do Blender, o que não demorou muito. O que eu tinha era uma grade de blocos que pudesse ser deslizada , e foi isso.
 
-So I decided I probably needed to figure out what I wanted to do before moving on. I was intending for it to be a top-down perspective at first, so you could see a lot of variables called "y" defining a lot of z ordinates in the code. I still didn't really do any solid planning. I just decided on what the gameplay was going to be. Thinking back, I probably should have thought out the game in a little more detail. I'm still actively developing the game, and still haven't done any planning. I find that once I finished adding a feature or fixing a bug, I just sat there playing in the menu and thinking "what now?" It's a lot of wasted time, but the way I structured the game was quite future-proof, so if I suddenly get an idea I can just add it in. I don't have to spend hours fiddling in the code trying to make it accept the new changes. As well as my structure, I probably have Python to thank for making it so easy.
+Então, decidi que provavelmente precisava descobrir o que queria fazer antes de prosseguir. A princípio, eu pretendia que fosse uma perspectiva de cima para baixo, então você poderia ver muitas variáveis ​​chamadas "y" definindo muitas ordenadas z no código. Eu ainda não fiz nenhum planejamento sólido. Eu apenas decidi como seria o jogo. Pensando bem, eu provavelmente deveria ter pensado no jogo com um pouco mais de detalhes. Ainda estou desenvolvendo ativamente o jogo e ainda não fiz nenhum planejamento. Descobri que assim que terminei de adicionar um recurso ou consertar um bug, simplesmente fiquei ali sentado, brincando no menu e pensando "e agora?" É muito tempo perdido, mas a maneira como estruturei o jogo era bastante preparada para o futuro, então, se de repente eu tiver uma ideia, posso simplesmente adicioná-la. Não preciso passar horas mexendo no código tentando fazê-lo aceite as novas mudanças. Além da minha estrutura, provavelmente devo agradecer ao Python por torná-lo tão fácil.
 
-Structure is something I really worked on in Tectonic. Not so much in the three days leading up to the competition, but definitely after it. I read someone who once said that you should never use prototype code in a finished game. I took that advice and spent most of January recoding the game, although at a much slower pace than those first three days, since the pressure was off. I've been frustrated at the Blender's API in the past, especially in the pre-2.49 days, but I think it has come a long way. I was able to implement some OOP, especially when handling the game objects, which was nice. It allowed a better structure and control of everything from a Python point of view.
+Estrutura é algo que eu realmente trabalhei na Tectonic. Não tanto nos três dias que antecederam a competição, mas definitivamente depois dela. Eu li alguém que disse uma vez que você nunca deve usar o código de protótipo em um jogo acabado. Segui esse conselho e passei a maior parte de janeiro recodificando o jogo, embora em um ritmo muito mais lento do que nos primeiros três dias, pois a pressão havia diminuído. Eu estava frustrado com a API do Blender no passado, especialmente nos dias pré-2,49, mas acho que já percorreu um longo caminho. Consegui implementar alguns OOP, especialmente ao manusear os objetos do jogo, o que foi bom. Permitiu uma melhor estrutura e controle de tudo do ponto de vista do Python.
 
-I used sfxr to make the sound effects. It's a nice, small, open source utility. It also has a flash port."
+Usei o sfxr para fazer os efeitos sonoros. É um utilitário bom, pequeno e de código aberto. Ele também tem uma porta flash. "
 
-Andrew (19-years-old) lives in Melbourne, Australia and is attending university. He started using Blender about four years ago for its game engine. Andrew also made _Pit Monsters_, another quite successful game.
+Andrew (19 anos) mora em Melbourne, Austrália, e está cursando a universidade. Ele começou a usar o Blender cerca de quatro anos atrás para seu motor de jogo. Andrew também fez _Pit Monsters_, outro jogo de bastante sucesso.
 
-sfxr is a simple sound synthesizer, which can be found at [https://code.google.com/p/sfxr/](https://code.google.com/p/sfxr/)
+sfxr é um sintetizador de som simples, que pode ser encontrado em [https://code.google.com/p/sfxr/](https://code.google.com/p/sfxr/)
 
-BGUI is maintained by Mitchell Stokes (Moguri) and can be found at [https://github.com/Moguri/bgui](https://github.com/Moguri/bgui)
+O BGUI é mantido por Mitchell Stokes (Moguri) e pode ser encontrado em [https://github.com/Moguri/bgui](https://github.com/Moguri/bgui)
 
 ## Sintel The Game <a id="Sintel_The_Game"></a>
 
@@ -189,43 +188,43 @@ Jonathan Buresh, Noah Summers, Malcolm Corliss, David Barker , James Raymond, Da
 
 ![Sintel The Game](../figures/Chapter10/Fig10-14.png)
 
-_Sintel_ is Blender Institute's third open movie project, after _Elephants Dream_ and _Big Buck Bunny.__Sintel_, like its predecessors, is unique because all the production files used in the film were released under a Creative Commons License. This encourages remixing and reusing of the character, storyline, and the asset files. _Sintel The Game_ takes advantage of this by taking story inspirations and characters from the movie. It is an adventure role-playing game that is set in the Sintel universe.
+_Sintel_ is Blender Institute's third open movie project, after _Elephants Dream_ and _Big Buck Bunny.__Sintel_, como seus predecessores, é único porque todos os arquivos de produção usados no filme foram lançados sob uma Licença Creative Commons. Isso incentiva a remixagem e a reutilização do personagem, do enredo e dos arquivos de recursos. _Sintel The Game_ tira proveito disso ao tirar inspirações de histórias e personagens do filme. É um RPG de aventura que se passa no universo Sintel.
 
-The development team consists of five main developers, with additional contributions from many artists, including David Revoy, the art directory for Sintel. The dedication of these Blender hobbyist and encouragement from many supporters has kept the project going. _Sintel The Game_ is still under development.
 
-The team gives a behind-the-scenes look at how they are doing:
+A equipe de desenvolvimento consiste em cinco desenvolvedores principais, com contribuições adicionais de muitos artistas, incluindo David Revoy, o diretório de arte da Sintel. A dedicação desses amadores do Blender e o incentivo de muitos apoiadores mantiveram o projeto funcionando. _Sintel The Game_ ainda está em desenvolvimento.
 
-"We all know each other from working on other Blender-related endeavors and game projects. During the summer of 2009, we were looking to start a new game project. Then the Blender Foundation announced Sintel, and we decided to jump into it. We started writing a script and throwing ideas around in September of 2009. Our team works on _Sintel The Game_ in our free time (as most of us are attending college and  another is in the Air Force). We collaborate via the Internet. It's like a hobby project. This method of development is easier to work around, but makes it pretty difficult to meet deadlines. Unfortunately, the unpredictable nature of our working schedule also means that dates can rarely be set for development milestones, such as release dates.
+A equipe dá uma olhada nos bastidores sobre como eles estão se saindo:
 
-As well as support from the Blender community, we have also received offers of help from individuals and groups who have been able to enhance or fill in gaps that our core team is not well versed in. For instance, Philippe Rey has create some fantastic and immersive music for the game; and a group called Digital Bard are working with us to bring our characters to life by contributing voice talent.
+"Todos nós nos conhecemos de trabalhar em outros empreendimentos relacionados ao Blender e projetos de jogos. Durante o verão de 2009, estávamos procurando iniciar um novo projeto de jogo. Então a Fundação Blender anunciou a Sintel, e decidimos pular para ele. Nós começamos a escrever um roteiro e a lançar ideias em setembro de 2009. Nossa equipe trabalha no _Sintel The Game_ em nosso tempo livre (já que a maioria está cursando a faculdade e outra está na Força Aérea). Colaboramos via Internet. É como um projeto hobby. Esse método de desenvolvimento é mais fácil de contornar, mas torna muito difícil cumprir os prazos. Infelizmente, a natureza imprevisível de nossa programação de trabalho também significa que raramente é possível definir datas para marcos de desenvolvimento, como datas de lançamento.
 
-We are using models and textures from the movie. Although not every model and texture is game ready (due to the high level of detail), there are plenty of useful assets. Not only does this take a load off our shoulders, but it also makes use of the open source nature of the film.
+Além do suporte da comunidade do Blender, também recebemos ofertas de ajuda de indivíduos e grupos que têm sido capazes de melhorar ou preencher lacunas nas quais nossa equipe principal não está bem treinada. Por exemplo, Philippe Rey criou alguns fantásticos e música envolvente para o jogo; e um grupo chamado Digital Bard estão trabalhando conosco para dar vida aos nossos personagens, contribuindo com talentos de voz.
 
-The original decision was to use the Blender 2.4 Game Engine. Everyone on the team was more familiar with Blender 2.4. However, after testing the new Blender builds, the many new features that 2.5 could bring to the table proved irresistible. Initial tests of running the game in 2.5 went surprisingly well. No major changes were needed for the code to run with the new Blender API.
+Estamos usando modelos e texturas do filme. Embora nem todos os modelos e texturas estejam prontos para o jogo (devido ao alto nível de detalhes), existem muitos recursos úteis. Isso não apenas tira um peso de nossos ombros, mas também faz uso da natureza de código aberto do filme.
 
-Even though the game engine does suffer from limitations, it is always improving. There are many small improvements in the new 2.5 engine that make game production in Blender less daunting. For example, logic bricks now updates when you change the name of an object, and a drop-down menu shows you a nice list of all the available objects, properties, and scripts. It's small helpful features like these that are turning the Blender Game Engine into a fantastic beginner's tool.
+A decisão original foi usar o Blender 2.4 Game Engine. Todos na equipe estavam mais familiarizados com o Blender 2.4. No entanto, após testar as novas compilações do Blender, os muitos novos recursos que o 2.5 poderia trazer para a mesa provaram ser irresistíveis. Os testes iniciais de execução do jogo no 2.5 foram surpreendentemente bem. Nenhuma grande mudança foi necessária para o código rodar com a nova API do Blender.
 
-The development team of _Sintel The Game_ is not affiliated with the Blender Institute. _Sintel The Game_ is still under development. You can watch their progress, support them, or contribute at _http://sintelgame.org/._
+Mesmo que o motor de jogo sofra de limitações, ele está sempre melhorando. Existem muitas pequenas melhorias no novo motor 2.5 que tornam a produção de jogos no Blender menos assustadora. Por exemplo, os blocos lógicos agora são atualizados quando você altera o nome de um objeto, e um menu suspenso mostra uma boa lista de todos os objetos, propriedades e scripts disponíveis. São pequenos recursos úteis como esses que estão transformando o Blender Game Engine em uma ferramenta fantástica para iniciantes.
 
+A equipe de desenvolvimento do _Sintel The Game_ não é afiliada ao Blender Institute. _Sintel The Game_ ainda está em desenvolvimento. Você pode acompanhar o progresso deles, apoiá-los ou contribuir em _http: //sintelgame.org/._
 ## CAVE <a id="CAVE"></a>
 
 Jorge Gascón Pérez
 
 ![CAVE](../figures/Chapter10/Fig10-15.png)
 
-CAVE stands for Cave Automatic Virtual Environment, and it is a cubical room where all the ceiling, floor, and walls are screens. Used for virtual reality applications, a participant standing in a CAVE would be completely surrounded by projected images. Each wall shows the image cast by a video projector, and each in turn is driven by a computer. For this project, the game engine is used to create the virtual reality world displayed by the CAVE. However, unlike most virtual reality applications where the display is a single screen, the CAVE is made up of many screens, each with a field of view of 90 degrees. So a special arrangement is required to set up the game engine to render the scene from multiple angles at the same time. In this particular installation, Jorge put together a system that allows multiple instances of Blender to run on different computers in order to provide a unique view of each wall of the CAVE. This approach requires a method to synchronize the game state across multiple computers so that the image outputted by each instance of Blender is completely synchronized with the others.
+CAVE significa Cave Automatic Virtual Environment, e é uma sala cúbica em que todo o teto, piso e paredes são telas. Usado para aplicações de realidade virtual, um participante de pé em uma CAVE seria completamente cercado por imagens projetadas. Cada parede mostra a imagem projetada por um projetor de vídeo, e cada uma delas é acionada por um computador. Para este projeto, o motor de jogo é usado para criar o mundo de realidade virtual exibido pela CAVE. No entanto, ao contrário da maioria dos aplicativos de realidade virtual em que a exibição é uma única tela, a CAVE é composta de várias telas, cada uma com um campo de visão de 90 graus. Portanto, um arranjo especial é necessário para configurar o mecanismo de jogo para renderizar a cena de vários ângulos ao mesmo tempo. Nesta instalação particular, Jorge montou um sistema que permite que múltiplas instâncias do Blender rodem em diferentes computadores de forma a fornecer uma visão única de cada parede da CAVE. Esta abordagem requer um método para sincronizar o estado do jogo em vários computadores para que a imagem gerada por cada instância do Blender seja completamente sincronizada com as outras.
 
-Jorge explains how Blender is used in this project:
+Jorge explica como o Blender é usado neste projeto:
 
-"In our implementation, we have a Blender instance running in each computer. Each instance has loaded the same Blender scene, but each one uses a different camera as an active one. All of these instances need to communicate with each other; for that we have developed a network communication protocol in Python. The communication architecture follows the Master-Slaves approach[md]the master node is the instance that drives the front screen directly; and in addition, only this instance needs external control peripherals mouse and keyboard so far.
+"Em nossa implementação, temos uma instância do Blender rodando em cada computador. Cada instância carregou a mesma cena do Blender, mas cada uma usa uma câmera diferente como uma ativa. Todas essas instâncias precisam se comunicar entre si; para isso, nós desenvolveram um protocolo de comunicação de rede em Python. A arquitetura de comunicação segue a abordagem Mestre-Escravo [md] o nó mestre é a instância que aciona a tela frontal diretamente; e, além disso, apenas esta instância precisa de periféricos de controle externo mouse e teclado até o momento .
 
-In order to synchronize each instance,  network protocol was developed. This protocol is event-based, which means that when the user (users) presses a key or moves the mouse, it generates one or more events that are sent to the other instances. Each instance processes all of these events using standard logic bricks.
+Para sincronizar cada instância, foi desenvolvido o protocolo de rede. Este protocolo é baseado em eventos, o que significa que quando o usuário (usuários) pressiona uma tecla ou move o mouse, ele gera um ou mais eventos que são enviados para as outras instâncias. Cada instância processa todos esses eventos usando blocos lógicos padrão.
 
-For matching screen borders, each scene in Blender has one camera per screen, and these cameras are configured to be perpendicular to each other, and all of them are parented to the "same" virtual user. (We call it "Virtual Camera Cluster.") The user can move and look around in a first-person view with the master instance, and all the cameras are translated and rotated with it.
+Para combinar as bordas da tela, cada cena no Blender tem uma câmera por tela, e essas câmeras são configuradas para serem perpendiculares entre si, e todas elas são parentais do "mesmo" usuário virtual. (Nós o chamamos de "cluster de câmera virtual".) O usuário pode se mover e olhar ao redor em uma visualização em primeira pessoa com a instância mestre, e todas as câmeras são transladadas e giradas com ela.
 
-Although the Blender game engine has no network capabilities (yet), it is really flexible, and it allows the use of complex Python scripts."
+Embora o mecanismo de jogo do Blender (ainda) não tenha recursos de rede, é realmente flexível e permite o uso de scripts Python complexos. "
 
-BlenderCave is an ongoing research project. You can follow its progress and download source code at [_http://gmrv.es/~jgascon/BlenderCave/index.html_](http://gmrv.es/~jgascon/BlenderCave/index.html)_._
+BlenderCave é um projeto de pesquisa em andamento. Você pode acompanhar seu progresso e baixar o código-fonte em [_http: //gmrv.es/~jgascon/BlenderCave/index.html_] (http://gmrv.es/~jgascon/BlenderCave/index.html) _._
 
 ## Color Cube <a id="Color_Cube"></a>
 
@@ -235,45 +234,44 @@ Quentin Bolsée, Benoit Bolsée
 
 ![Color Cube](../figures/Chapter10/Fig10-17.png)
 
-What do you get when you combine an original gameplay idea, a talented artist, and the Blender game engine? Something that might look like _Color Cube._
+O que você ganha quando combina uma ideia de jogo original, um artista talentoso e o mecanismo de jogo do Blender? Algo que pode se parecer com _Color Cube._
 
-_ColorCube_ is an addictive puzzle game that requires the user to flip a cube onto a series of targets, while "painting" the floor underneath it with the matching color the cube picked up from elsewhere. While the game mechanics might sound confusing on paper, it's very intuitive once you see the game in action. This is a great example of a "casual game" design: the game mechanic is easy to learn, but challenging at the same time as the levels gets progressively harder.
+_ColorCube_ é um jogo viciante que requer que o usuário gire um cubo em uma série de alvos, enquanto "pinta" o chão abaixo dele com a cor correspondente que o cubo pegou de outro lugar. Embora a mecânica do jogo possa parecer confusa no papel, é muito intuitiva quando você vê o jogo em ação. Este é um ótimo exemplo de design de "jogo casual": a mecânica do jogo é fácil de aprender, mas desafiadora ao mesmo tempo que os níveis se tornam cada vez mais difíceis.
 
-An iPhone version of the game is also available, which uses a 3D engine written from scratch by Benoit Bolsée, who is Quentin's father, as well as an active Blender developer.
+Uma versão do jogo para iPhone também está disponível, que usa um motor 3D escrito do zero por Benoit Bolsée, que é o pai de Quentin, e também um desenvolvedor Blender ativo.
 
-Quentin was 14-years-old when he started working on the game two years ago:
+Quentin tinha 14 anos quando começou a trabalhar no jogo há dois anos:
 
-"The first version of my game was only made with Logic Bricks. It was for a competition on the BlenderArtist forum. I won second place, but a lot of people said to me that I had to make it commercial. So I did. I wanted to have a level editor, so I had to learn Python. It was complicated at first, and I needed help from my father. The new version was finished a few months after I started it. I didn't make any plan; I just worked day by day on it until it was finished. I also created a website to promote the game.
+“A primeira versão do meu jogo foi feita apenas com Logic Bricks. Era para uma competição no fórum BlenderArtist. Eu ganhei o segundo lugar, mas muitas pessoas me disseram que eu tinha que torná-lo comercial. Então eu fiz. queria um editor de níveis, então tive que aprender Python. No começo foi complicado e precisei da ajuda do meu pai. A nova versão foi finalizada alguns meses depois de iniciada. Não fiz nenhum plano; apenas trabalhei dia a dia nele até que fosse finalizado.Também criei um site para promover o jogo.
 
-The game engine is really powerful for this kind of game. You can easily produce nice graphics using GLSL. The problem was that it's a bit slow and doesn't work on every computer, so I had to create a version of my game running without GLSL, because too many users were complaining.
+O motor do jogo é realmente poderoso para este tipo de jogo. Você pode facilmente produzir bons gráficos usando GLSL. O problema é que ele é um pouco lento e não funciona em todos os computadores, então tive que criar uma versão do meu jogo rodando sem GLSL, porque muitos usuários estavam reclamando.
 
-Another problem with the game engine, in my opinion, was the lighting system. I had to simply give up with the shadows. And if you want to create lights during the game, you will also get into trouble. Here's the thing: adding the same light multiple times doesn't work. I had no solution for my game, because the bug is visible if you pick up the same color twice with your cube. But I suppose it's just a detail."
+Outro problema com o motor do jogo, na minha opinião, era o sistema de iluminação. Tive que simplesmente desistir das sombras. E se você quiser criar luzes durante o jogo, também terá problemas. É o seguinte: adicionar a mesma luz várias vezes não funciona. Não tive solução para o meu jogo, pois o bug é visível se você pegar a mesma cor duas vezes com seu cubo. Mas suponho que seja apenas um detalhe. "
 
-_Colorcube_ is available as a trial and commercial game for Windows, Mac, Linux, and iPhone from [_http://www.colorcubestudio.com/_](http://www.colorcubestudio.com/)_._
+_Colorcube_ está disponível como um jogo de teste e comercial para Windows, Mac, Linux e iPhone em [_http: //www.colorcubestudio.com/_] (http://www.colorcubestudio.com/) _._
 
-A demo version of the game is available from the accompanying online material.
-
+Uma versão demo do jogo está disponível no material online que o acompanha.
 ## Jogo da Coleta - Recycle It 2.0 <a id="Jogo_da_Coleta_-_Recycle_It_2.0"></a>
 
 Diego Rangel
 
 ![Jogo da Coleta - Recycle It 2.0](../figures/Chapter10/Fig10-18.png)
 
-A game doesn't have to be complex or epic. There is a huge market for casual games[md]games that you can play from a smartphone or a Web browser without having to sit through endless cut scenes and cinematic storytelling. _Recyle It_ is one such game that is simple to play, but carries a strong message.
+Um jogo não precisa ser complexo ou épico. Há um grande mercado para jogos casuais [md] que você pode jogar em um smartphone ou navegador da Web sem ter que passar por intermináveis ​​cutscenes e narrativas cinematográficas. _Recyle It_ é um jogo simples de jogar, mas que traz uma mensagem forte.
 
-Diego explains:
+Diego explica:
 
-"The _Recycle It_ game was initially developed as an educational tool for the project "Ambientação"[md]conceived by the state of Minas Gerais in Brazil. The goal of this game project was to raise environmental awareness of the workers in governmental buildings regarding the recycling procedures.
+“O jogo _Recycle It_ foi inicialmente desenvolvido como uma ferramenta educacional para o projeto“ Ambientação ”[md] idealizado pelo estado de Minas Gerais no Brasil. O objetivo deste projeto de jogo era conscientizar os trabalhadores de prédios governamentais sobre o meio ambiente. procedimentos de reciclagem.
 
-The game had as its primary goal to collect the maximum amount of recyclable garbage by using the correct trash cans. (In Brazil. the different recyclable materials are collected in bins with a specific color code.) In order to achieve that, the player must use mouse clicking and movement to translate and rotate the recycle bins into place to catch the falling objects.
+O jogo teve como principal objetivo coletar a quantidade máxima de lixo reciclável, utilizando as lixeiras corretas. (No Brasil, os diferentes materiais recicláveis ​​são coletados em lixeiras com um código de cor específico.) Para isso, o jogador deve usar o clique e movimento do mouse para transladar e girar as lixeiras no lugar para pegar os objetos que caem.
 
-This new version is an upgrade over the original one developed as a personal project. It's a complete revamp with new models and a different dynamic to make it more entertaining. Despite the refactoring, the game maintains the same goal: to collect garbage using the recycle bins properly.
+Esta nova versão é uma atualização sobre a original desenvolvida como um projeto pessoal. É uma reformulação completa com novos modelos e uma dinâmica diferente para torná-la mais divertida. Apesar da refatoração, o jogo mantém o mesmo objetivo: coletar o lixo usando as lixeiras de maneira adequada.
 
-The game contains only one single level, which gets harder as more garbage is correctly collected. When the player fails to collect the garbage (or puts it into the wrong bin), its energy decreases. When the energy ends, the game is over and hopefully a new record is set.
+O jogo contém apenas um único nível, que fica mais difícil à medida que mais lixo é coletado corretamente. Quando o jogador não consegue coletar o lixo (ou o coloca na lixeira errada), sua energia diminui. Quando a energia acaba, o jogo acaba e espero que um novo recorde seja estabelecido.
 
-All the gameplay logic was planned ahead of the modeling and programming stages. This helped a lot, since it avoided drastic changes later in the development process. The production time, from its conception to the final game, took no more than a week. The speed was due to the size of the project, which spared me from doing highpoly artwork and complex programming[md]and because Blender is great software for quick prototyping and development of small projects.
+Toda a lógica do jogo foi planejada antes das etapas de modelagem e programação. Isso ajudou muito, já que evitou mudanças drásticas posteriormente no processo de desenvolvimento. O tempo de produção, desde a concepção até o jogo final, não demorou mais que uma semana. A velocidade foi devido ao tamanho do projeto, que me poupou de fazer arte altamente polida e programação complexa [md] e porque o Blender é um ótimo software para prototipagem rápida e desenvolvimento de pequenos projetos.
 
-During the course of this game development, the Blender game engine met all my requirements. The logic brick system allowed for quick implementation of ideas. Furthermore, the speed gain from having the game engine integrated with a full asset creation package (for example, Blender itself) was wonderful. The Blender game engine fulfilled its duties for this project. It seemed especially attractive for small and medium projects, in particular for one-man projects like this."
+Durante o desenvolvimento deste jogo, o motor de jogo do Blender atendeu a todos os meus requisitos. O sistema de blocos lógicos permitiu a implementação rápida de ideias. Além disso, o ganho de velocidade de ter o motor de jogo integrado com um pacote completo de criação de ativos (por exemplo, o próprio Blender) foi maravilhoso. A engine de jogo do Blender cumpriu suas funções para este projeto. Parecia especialmente atraente para projetos pequenos e médios, em particular para projetos individuais como este. "
 
 ## World Cup Stadiums <a id="World_Cup_Stadiums"></a>
 
