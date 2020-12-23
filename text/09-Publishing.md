@@ -72,24 +72,24 @@ Como todos os caminhos relativos são relativos ao arquivo do Blender aberto atu
 
 Se estiver usando scripts Python para carregar um arquivo do computador, você deve sempre usar o módulo "os" (os.path.sep, os.path.join,…) para lidar com a localização desses arquivos.
 
->**It's Never Too Late to Make It Right**
+>**Nunca é tarde demais para fazer a coisa certa**
 >
->If you forgot to save your file before appending assets, or missed the "Relative Path" option in the load menu, don't worry. There is an option in the file menu that helps rearrange the assets' file paths:
+> Se você esqueceu de salvar seu arquivo antes de anexar ativos, ou perdeu a opção "Caminho Relativo" no menu de carregamento, não se preocupe. Há uma opção no menu de arquivo que ajuda a reorganizar os caminhos de arquivo dos ativos:
 > `File > External Data > Make all Paths Relative`
 
-## Packing <a id="Packing"></a>
+## Empacotando <a id="Packing"></a>
 
-If you don't want to deal with external files, Blender also offers another helpful tool to simplify the distribution of a game[md]packing. Packing makes the Blender file self-sufficient by collecting all external assets such as images, sounds, and fonts into the current Blender file.
+Se você não quer lidar com arquivos externos, o Blender também oferece outra ferramenta útil para simplificar a distribuição de uma embalagem de jogo [md]. O empacotamento torna o arquivo do Blender auto-suficiente, coletando todos os recursos externos, como imagens, sons e fontes no arquivo atual do Blender.
 
-To pack a file, click on File > External Data > Pack into .blend file.
+Para empacotar um arquivo, clique em File > External Data > Pack into .blend file.
 
-Needless to say, packing will make the Blender file increase in size. Packing is a very crude way to hide the file structure of your game from casual observers, but in no way does packing ensure the security of these files. It is easy for someone to unpack the files and have access to the entire game asset you created. Packing is a convenience tool, not an encryption method.
+Não é preciso dizer que a embalagem fará o arquivo do Blender aumentar de tamanho. A embalagem é uma maneira muito grosseira de ocultar a estrutura de arquivos do seu jogo de observadores casuais, mas de forma alguma a embalagem garante a segurança desses arquivos. É fácil para alguém descompactar os arquivos e ter acesso a todo o ativo do jogo que você criou. A embalagem é uma ferramenta conveniente, não um método de criptografia.
 
-Unpacking does the reverse of packing; it takes all the packed data from a Blender file and writes them out as separate files.
+Desempacotar faz o contrário de embalar; ele pega todos os dados compactados de um arquivo do Blender e os grava como arquivos separados.
 
->**For the Lazy and Unorganized**
+>**Para os preguiçosos e desorganizados**
 >
->When you start a project, use external data from wherever on your computer, with no regard to its location. When you feel like getting organized, simply do a pack operation, and then immediately follow it with an unpack operation (with the Unpack to Current Directory option). This will first pack all the images into Blender and then unpack them neatly into a directory called _textures_. This way, there is no need to manually move stuff around. All the external data used will be automatically moved to a single folder for easy distribution. Images in their original location are untouched.
+> Ao iniciar um projeto, use dados externos de qualquer lugar em seu computador, sem se preocupar com sua localização. Quando você quiser se organizar, simplesmente execute uma operação de empacotamento e, em seguida, execute imediatamente uma operação de descompactação (com a opção Descompactar para o diretório atual). Isto irá primeiro empacotar todas as imagens no Blender e então descompactá-las ordenadamente em um diretório chamado _textures_. Dessa forma, não há necessidade de mover as coisas manualmente. Todos os dados externos usados serão movidos automaticamente para uma única pasta para fácil distribuição. As imagens em seus locais originais permanecem intocadas.
 
 ## Blenderplayer <a id="Blenderplayer"></a>
 
