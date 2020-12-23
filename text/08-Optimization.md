@@ -290,61 +290,60 @@ _**Tutorial**_
 
 ### Texture Baking <a id="Texture_Baking"></a>
 
-The Blender rendering engine is capable of creating some stunning effects. Don't you wish you could have that level of graphic quality in your game? With texture baking, you can! Texture baking is the process of rendering effects such as shadow map, ambient occlusion, and lightmaps onto a texture, so they do not have to be computed in real time.
+O mecanismo de renderização do Blender é capaz de criar alguns efeitos impressionantes. Você não gostaria de ter esse nível de qualidade gráfica em seu jogo? Com cozimento de textura, você pode! O cozimento de textura é o processo de renderização de efeitos, como mapa de sombras, oclusão de ambiente e mapas de luz em uma textura, para que eles não precisem ser calculados em tempo real.
 
-Texture baking requires the material to be set up so that it can be rendered by the internal rendering engine. Then, with a few more clicks, the renderable material will be baked onto an image texture that can be used in-game.
+O cozimento de textura requer que o material seja configurado de forma que possa ser renderizado pelo mecanismo de renderização interno. Então, com mais alguns cliques, o material renderizável será cozido em uma textura de imagem que pode ser usada no jogo.
 
-The entire workflow can be summarized as:
+Todo o fluxo de trabalho pode ser resumido como:
 
-1. Make object material compatible for rendering.
+1. Torne o material do objeto compatível para renderização.
 
-2. UV unwrap object.
+2. Objeto de desembrulhar UV.
 
-3. Bake.
+3. Asse.
 
-4. Reassign the baked texture onto the object.
-
+4. Reatribua a textura cozida ao objeto.
 
 _**Tutorial**_
-Let's try this out:
+Vamos experimentar:
 
-1. Open /Chapter8/TextureBaking.blend.
+1. Abra /Chapter8/TextureBaking.blend.
 
-2. Run the game and notice that this interior scene is very flat, and the lighting isn't very realistic.
+2. Execute o jogo e observe que a cena interna é muito plana e a iluminação não é muito realista.
 
-3. Quit the game and press F12 to do a render of the scene. This is what we want our scene to look like in-game. Close the rendered image by pressing F11.
+3. Saia do jogo e pressione F12 para fazer uma renderização da cena. É assim que queremos que nossa cena se pareça no jogo. Feche a imagem renderizada pressionando F11.
 
-4. To bake texture, you need to first UV unwrap the scene so that the baked texture has a place to go. To do this, right-click to select the room object. Enter Edit mode with a quick tap on the tab key. Press U key to invoke the UV Unwrap menu. Select Lightmap Pack.
+4. Para assar a textura, você precisa primeiro desdobrar a cena por UV para que a textura assada tenha um lugar para ir. Para fazer isso, clique com o botão direito para selecionar o objeto do quarto. Entre no modo de edição com um toque rápido na tecla tab. Pressione a tecla U para invocar o menu UV Unwrap. Selecione Pacote de mapas de luz.
 
-5. In the pop-up menu shown in Figure 8.12, make sure that the New Image checkbox is enabled; this will ensure that an empty image texture is created for you. Click OK to unwrap the model.
+5. No menu pop-up mostrado na Figura 8.12, certifique-se de que a caixa de seleção New Image esteja ativada; isso irá garantir que uma textura de imagem vazia seja criada para você. Clique em OK para desembrulhar o modelo.
 
-![Lightmap Pack UV dialog box](../figures/Chapter8/Fig08-12.png)
+![Caixa de diálogo Lightmap Pack UV](../figures/Chapter8/Fig08-12.png)
 
-6. For a more complex model, it might be necessary to manually UV unwrap a model, but for this exercise, the automated unwrapping is sufficient. Keep in mind that for texture baking to work correctly, the UV layout should not have any overlapping region. Otherwise, the baking will render to the same texture coordinate multiple times, causing an artifact.
+6. Para um modelo mais complexo, pode ser necessário desdobrar manualmente um modelo por UV, mas para este exercício, o desdobramento automatizado é suficiente. Lembre-se de que para que o cozimento da textura funcione corretamente, o layout UV não deve ter nenhuma região sobreposta. Caso contrário, o cozimento será renderizado na mesma coordenada de textura várias vezes, causando um artefato.
 
-7. To bake texture for the room object, go to the bottom of the Render Properties Editor, where the Bake function is found, as shown in Figure 8.13.
+7. Para preparar textura para o objeto de quarto, vá para a parte inferior do Editor de propriedades de renderização, onde a função Bake é encontrada, conforme mostrado na Figura 8.13.
 
-![Bake panel](../figures/Chapter8/Fig08-13.png)
+![Painel Bake ](../figures/Chapter8/Fig08-13.png)
 
-8. The Bake Mode selector controls what will be baked to a texture. Full Render will bake the full color, light, shadow, and texture onto the texture. Ambient Occlusion is another commonly used one.
+8. O seletor Modo de cozimento controla o que será cozido em uma textura. Full Render irá assar toda a cor, luz, sombra e textura na textura. Oclusão de ambiente é outra comumente usada.
 
-9. Select Full Render for this project and click on Bake. This might take a few minutes, depending on the complexity of the model. As the texture is getting rendered out, you can see the baked texture filling up the Image Editor on the bottom of the screen.
+9. Selecione Full Render para este projeto e clique em Bake. Isso pode levar alguns minutos, dependendo da complexidade do modelo. Conforme a textura é renderizada, você pode ver a textura cozida preenchendo o Editor de Imagens na parte inferior da tela.
 
-10. When the texture baking is finished, it should look something like Figure 8.14
+10. Quando o cozimento da textura estiver concluído, deve ser semelhante à Figura 8.14
 
-![The baked texture](../figures/Chapter8/Fig08-14.png)
+![A textura cozida](../figures/Chapter8/Fig08-14.png)
 
-11. Now that the baking is finished, quit out of Edit mode by toggling the Tab key.
+11. Agora que o cozimento está concluído, saia do modo de edição alternando a tecla Tab.
 
-12. Finally, you need to tell the game engine to use the texture you just baked, instead of the old materials. The easiest way is to delete all three materials from the object by clicking on the [-] button in the Material Properties Editor. This is a cheap and fast way to force Blender to use the texture you just created.
+12. Finalmente, você precisa dizer ao motor de jogo para usar a textura que você acabou de assar, ao invés dos materiais antigos. A maneira mais fácil é deletar todos os três materiais do objeto clicando no botão [-] no Editor de Propriedades do Material. Esta é uma maneira barata e rápida de forçar o Blender a usar a textura que você acabou de criar.
 
-13. Run the game now. Notice that all the light and color you saw in the render are visible in real time. However, specular effects, such as specular highlights and reflections, cannot be baked. Therefore, those are still not visible.
+13. Execute o jogo agora. Observe que toda a luz e cor que você viu na renderização são visíveis em tempo real. No entanto, os efeitos especulares, como realces especulares e reflexos, não podem ser cozidos. Portanto, eles ainda não estão visíveis.
 
-14. The lightmap image is not automatically saved. To save the image, click on Image > Save As from the Image Editor. You can also save the image by pressing F3 with the mouse over the image editor.
+14. A imagem lightmap não é salva automaticamente. Para salvar a imagem, clique em Imagem> Salvar como no Editor de imagens. Você também pode salvar a imagem pressionando F3 com o mouse sobre o editor de imagens.
 
-15. Figure 8.15 shows the finished version, which can be found at /Chapter8/TextureBaking-finished.blend
+15. A Figura 8.15 mostra a versão finalizada, que pode ser encontrada em /Chapter8/TextureBaking-finished.blend
 
-![The baked scene (left) vs. the original scene (right)](../figures/Chapter8/Fig08-15.png)
+![A cena cozida (esquerda) vs. a cena original (direita)](../figures/Chapter8/Fig08-15.png)
 
 #### Limitations of Texture Baking <a id="Limitations_of_Texture_Baking"></a>
 
