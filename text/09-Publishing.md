@@ -170,27 +170,30 @@ O motor do jogo tem um problema, entretanto. O Blender e o Blenderplayer são li
 
 Em outras palavras, você precisa garantir que todos os arquivos que não deseja licenciar sob a GPL não estejam incluídos no Blenderplayer. A opção de exportar como Runtime ainda pode ser usada, mas seu arquivo inicial (aquele incorporado no Blenderplayer) terá que ser licenciado sob GPL.
 
-Uma maneira simples de manter seus arquivos separados do Blenderplayer é criar um arquivo de carregamento inicial. Este arquivo terá um atuador de jogo que só então carregará seu arquivo principal real. Dessa forma, todos os seus arquivos de jogo reais podem ser mantidos externos ao binário. Seu arquivo nem precisa terminar em ".blend" para que o atuador do jogo funcione.>**Why the Blender Game Engine Won't Run on iOS**
->
->There is a downside of the GPL license when publishing in some distribution platforms. For legal (and perhaps economic) reasons, most distribution game platforms do not accept GPL code in their components. That means it will be hard to get the game engine ported over to consoles and some more restrictive mobile and portable devices.
+Uma maneira simples de manter seus arquivos separados do Blenderplayer é criar um arquivo de carregamento inicial. Este arquivo terá um atuador de jogo que só então carregará seu arquivo principal real. Dessa forma, todos os seus arquivos de jogo reais podem ser mantidos externos ao binário. Seu arquivo nem precisa terminar em ".blend" para que o atuador do jogo funcione.
 
-## Web Publishing: Burster <a id="Web_Publishing_Burster"></a>
+>**Por que o Blender Game Engine não funciona no iOS**
+>
+> Há uma desvantagem da licença GPL ao publicar em algumas plataformas de distribuição. Por razões legais (e talvez econômicas), a maioria das plataformas de distribuição de jogos não aceita código GPL em seus componentes. Isso significa que será difícil transportar o motor de jogo para consoles e alguns dispositivos móveis e portáteis mais restritivos.
+
+## Publicação na Web: Burster <a id="Web_Publishing_Burster"></a>
 
 _www.geta3d.com_
 
-Burster is a plug-in that allows you to publish and play your games in a Web browser. The plug-in was developed and is supported by a third-party company, independently of Blender Foundation. The plug-in contains a slightly modified version of Blenderplayer that runs as fast as if it were installed natively.
+Burster é um plug-in que permite publicar e jogar seus jogos em um navegador da web. O plug-in foi desenvolvido e é suportado por uma empresa terceirizada, independente da Blender Foundation. O plug-in contém uma versão ligeiramente modificada do Blenderplayer que roda tão rápido como se tivesse sido instalado nativamente.
 
-Not all Python modules are supported (for security reasons), but external assets (for example, textures and videos) work pretty well. Additionally, Burster offers a protection system for your work through online on-the-fly decryption of your Blender files. This does not violate the GPL and can provide the necessary security that some commercial works demand.
+Nem todos os módulos Python são suportados (por razões de segurança), mas ativos externos (por exemplo, texturas e vídeos) funcionam muito bem. Além disso, o Burster oferece um sistema de proteção para o seu trabalho por meio da descriptografia on-the-fly de seus arquivos do Blender. Isso não viola a GPL e pode fornecer a segurança necessária que algumas obras comerciais exigem.
 
-If you are considering using the Web as a publishing platform, you can find updated information in the Burster website. Make sure you test your game extensively. Even though most of the features are supported, more advanced resources can get a bit tricky (for example, video texture is supported, but the only way to play videos is with external URLs in a server that supports streaming).
+Se você está pensando em usar a Web como plataforma de publicação, pode encontrar informações atualizadas no site da Burster. Certifique-se de testar seu jogo extensivamente. Mesmo que a maioria dos recursos sejam suportados, recursos mais avançados podem ser um pouco complicados (por exemplo, a textura do vídeo é suportada, mas a única maneira de reproduzir vídeos é com URLs externos em um servidor que suporte streaming).
 
->**Beyond Packing**
+>**Além da embalagem**
 >
->For Web deployment and mobile, you need to include all the external dependencies into the main file. While textures can be incorporated with the Packing option, the files and scripts need to be merged in manually.
->If you are using Python scripts follow these advanced instructions:
->- Open all the external scripts (e.g., originally in //scripts/) in the Blender Text Editor
->- Remove all the "from ." from the scripts
->- Fix all the Python Module controllers by copying this into the Blender Text Editor and running it as a script (in Blender, not inside the game engine):
+> Para implantação na Web e móvel, você precisa incluir todas as dependências externas no arquivo principal. Embora as texturas possam ser incorporadas com a opção Packing, os arquivos e scripts precisam ser mesclados manualmente.
+> Se você estiver usando scripts Python, siga estas instruções avançadas:
+> - Abra todos os scripts externos (por exemplo, originalmente em // scripts /) no Editor de Texto do Blender
+> - Remova todos os "de". dos scripts
+> - Corrija todos os controladores do Módulo Python copiando isso para o Editor de Texto do Blender e executando-o como um script (no Blender, não dentro do motor de jogo):
+
 ```python
 import bpy
 for obj in bpy.data.objects:
@@ -199,114 +202,114 @@ for obj in bpy.data.objects:
             cont.module = cont.module.replace('script.', '')
 ```
 
-## Mobile Publishing: Android <a id="Mobile_Publishing_Android"></a>
+## Publicação móvel: Android <a id="Mobile_Publishing_Android"></a>
 
 _wiki__.blender.org/index.php/Doc:2.6/Manual/Game_Engine/Blender_Player/Android_
 
-Although it is early to know how far this will go, the Android deployment for the game engine is starting to get in shape. An experimental branch of Blender, "soc-2012-swiss\_cheese" makes an Android-compatible Blenderplayer that can open simple .blend game files. Animation, Physics, GLSL materials, and mouse interaction are already supported.
+Embora seja cedo para saber até onde isso irá, a implantação do Android para o mecanismo de jogo está começando a entrar em forma. Um ramo experimental do Blender, "soc-2012-swiss\_cheese" faz um Blenderplayer compatível com Android que pode abrir arquivos de jogo .blend simples. Animação, física, materiais GLSL e interação com o mouse já são suportados.
 
-In Figure 9.3, you can see the final sample file from Chapter 4 running in an Android phone. To see this in action go to: [http://youtu.be/bF1m5b4jEKs](http://youtu.be/bF1m5b4jEKs).
+Na Figura 9.3, você pode ver o arquivo de amostra final do Capítulo 4 em execução em um telefone Android. Para ver isso em ação, vá para: [http://youtu.be/bF1m5b4jEKs](http://youtu.be/bF1m5b4jEKs).
 
-![Android deployment](../figures/Chapter9/Fig09-03.png)
+![Implantação Android](../figures/Chapter9/Fig09-03.png)
 
-To run your game, you can download the Blenderplayer Android app and open the game from it. As of the time of writing, the app is not yet on the Android market. You can download it from this BlenderArtists forum thread: [http://blenderartists.org/forum/showthread.php?255746](http://blenderartists.org/forum/showthread.php?255746)
+Para executar o jogo, você pode baixar o aplicativo Blenderplayer para Android e abrir o jogo a partir dele. No momento em que este artigo foi escrito, o aplicativo ainda não estava no Android Market. Você pode baixá-lo neste tópico do fórum BlenderArtists: [http://blenderartists.org/forum/showthread.php?255746](http://blenderartists.org/forum/showthread.php?255746)
 
-A mobile platform is a limited deployment target. The phones and tablets are getting more powerful every day, yet they still lack in hardware horsepower compared to gaming PCs. As such, you need to be especially careful with optimizing your games.
+Uma plataforma móvel é um alvo de implantação limitado. Os telefones e tablets estão ficando mais potentes a cada dia, mas ainda faltam potência de hardware em comparação com PCs para jogos. Como tal, você precisa ter um cuidado especial ao otimizar seus jogos.
 
-Some general guidelines:
+Algumas diretrizes gerais:
 
-- Simplify the geometry.
+- Simplifique a geometria.
 
-- Chop down big objects into small parts.
+- Corte objetos grandes em partes pequenas.
 
-- Use Occlusion Culling when possible.
+- Use a seleção de oclusão quando possível.
 
-- Work with power of two textures.
+- Trabalho com potência de duas texturas.
 
-## Other Tools <a id="Other_Tools"></a>
+## Outras Ferramentas <a id="Other_Tools"></a>
 
-The Blender game engine can be used for prototyping, before the game is fully developed in another game engine. Or, another common situation, you can use Blender only for asset making for an external engine, and the Blender game engine for previewing the animation playbacks and basic interactions. In those cases, you will not be using the logic components of the game, but mostly making sure your assets (objects, materials, animations) can be transferred easily to other engines.
+O motor de jogo do Blender pode ser usado para prototipagem, antes que o jogo seja totalmente desenvolvido em outro motor de jogo. Ou, outra situação comum, você pode usar o Blender apenas para criação de ativos para um mecanismo externo, e o mecanismo de jogo do Blender para visualizar as reproduções de animação e interações básicas. Nesses casos, você não usará os componentes lógicos do jogo, mas principalmente se certificará de que seus ativos (objetos, materiais, animações) podem ser transferidos facilmente para outros motores.
 
->**Exchange File Formats**
+>**Formatos de arquivo do Exchange**
 >
->When your engine does not support Blender files directly, you have to find the best format to export from Blender. There is one format in Blender intended for games. It supports not only mesh and texture, but also animation, shading, and physics.
->Collada is an open exchange file format maintained by Khronos consortium (the same group behind the well known OpenGL, OpenCL, and others). >Although the support for it in Blender is not complete yet, it's getting there.
->Another format broadly used is FBX. This is a proprietary format created and maintained by Autodesk with proper support in Blender going on and off in the past releases.
+> Quando o seu motor não suporta arquivos do Blender diretamente, você deve encontrar o melhor formato para exportar do Blender. Existe um formato no Blender voltado para jogos. Ele suporta não apenas malha e textura, mas também animação, sombreamento e física.
+> Collada é um formato de arquivo de intercâmbio aberto mantido pelo consórcio Khronos (o mesmo grupo por trás do conhecido OpenGL, OpenCL e outros). > Embora o suporte para ele no Blender ainda não esteja completo, ele está chegando lá.
+> Outro formato amplamente utilizado é o FBX. Este é um formato proprietário criado e mantido pela Autodesk com o suporte adequado no Blender sendo ativado e desativado nas versões anteriores.
 
-Even when you are using Blender only to build your assets, the game engine can be of great value. It should be simple to create test levels for your character animations, test ideas, and, in some cases, even build a whole game prototype before migrating to another engine.
+Mesmo quando você está usando o Blender apenas para construir seus ativos, o motor de jogo pode ser de grande valor. Deve ser simples criar níveis de teste para as animações de seu personagem, ideias de teste e, em alguns casos, até mesmo construir um protótipo de jogo inteiro antes de migrar para outro motor.
 
-In the next chapter, you will learn about some projects that used the game engine in one way or another. One of these projects is _Cubic World,_ originally created in the game engine for a game contest. The project was so well received that the main developer decided to port it to the iPhone, writing a specific engine from scratch. Whether you are building your own engine, porting it to an open or commercial alternative, or deploying with the game engine, be aware of the alternatives to better support your decisions. This is an ever-changing topic. New technologies come and go, and it's up to you to keep yourself updated on the subject. Sign up for newsletters, visit forums, and go to conferences (and although it may eventually help, we don't mean wandering around on Twitter or Facebook).
+No próximo capítulo, você aprenderá sobre alguns projetos que usaram a engine do jogo de uma forma ou de outra. Um desses projetos é o _Cubic World, _ originalmente criado no motor de jogo para um concurso de jogo. O projeto foi tão bem recebido que o principal desenvolvedor decidiu portá-lo para o iPhone, escrevendo um motor específico do zero. Esteja você construindo seu próprio motor, portando-o para uma alternativa aberta ou comercial, ou implantando com o motor de jogo, esteja ciente das alternativas para melhor apoiar suas decisões. Este é um tópico em constante mudança. As novas tecnologias vêm e vão, e cabe a você manter-se atualizado sobre o assunto. Inscreva-se para receber boletins informativos, visite fóruns e vá a conferências (embora possa eventualmente ajudar, não queremos dizer vagando pelo Twitter ou Facebook).
 
 ### GameKit <a id="GameKit"></a>
 
 _www.gamekit.org_
 
-GameKit is a "basic game engine that allows fast prototyping built around open source software free for commercial use." GameKit uses Bullet for physics, Ogre for rendering, OpenAL for sound, Lua for scripting, and AnimKit for animation (a stand-alone library created specifically for this engine but open for use elsewhere). It reads Blender files and supports all of its Logic Bricks.
+GameKit é um "mecanismo de jogo básico que permite a prototipagem rápida construída em torno de software de código aberto gratuito para uso comercial". O GameKit usa Bullet para física, Ogre para renderização, OpenAL para som, Lua para scripts e AnimKit para animação (uma biblioteca autônoma criada especificamente para este mecanismo, mas aberta para uso em outros lugares). Ele lê arquivos do Blender e suporta todos os seus blocos lógicos.
 
-This modular approach makes it quite interesting for indie developers who often need to design their own engine from scratch. You can borrow their support for Blender files and Render engine and implement a unique logic system, for example.
+Essa abordagem modular o torna bastante interessante para desenvolvedores independentes que frequentemente precisam projetar seu próprio mecanismo do zero. Você pode pegar emprestado o suporte para arquivos do Blender e motor de Renderização e implementar um sistema lógico único, por exemplo.
 
-One of its key benefits over the Blender game engine is that GameKit fully supports non-PC platforms such as Android and iOS. GameKit also uses a non-viral license, meaning the games you create can have any license you want.
+Um de seus principais benefícios sobre o mecanismo de jogo do Blender é que o GameKit oferece suporte total a plataformas que não sejam de PC, como Android e iOS. O GameKit também usa uma licença não viral, o que significa que os jogos que você cria podem ter qualquer licença que você desejar.
 
-As of the time this book went to press, GameKit is still in its early stages. Nevertheless, it's generating some hype in the Blender game community. We are following this project closely and recommend you do the same.
+Quando este livro foi impresso, o GameKit ainda estava em seus estágios iniciais. No entanto, está gerando um certo entusiasmo na comunidade de jogos do Blender. Estamos acompanhando este projeto de perto e recomendamos que você faça o mesmo.
 
 ### Unity, SIO2 <a id="Unity,_SIO2"></a>
 
-While GameKit stands out for its tight integration with Blender, there are other engines with strong supports for the Blender native file.
+Enquanto o GameKit se destaca por sua forte integração com o Blender, existem outros engines com forte suporte para o arquivo nativo do Blender.
 
-SIO2 is an engine targeted exclusively to the mobile market. It currently supports both Android and iPhone devices. It also supports native Blender files, so there is no need to fiddle with export file types.
+SIO2 é um motor voltado exclusivamente para o mercado móvel. Atualmente, ele suporta dispositivos Android e iPhone. Ele também suporta arquivos nativos do Blender, então não há necessidade de mexer com os tipos de arquivo de exportação.
 
-If your market does not use only portable devices, then Unity3D is another commercial engine that works with Blender files; it's as simple as drag-dropping them inside the editor.
+Se o seu mercado não usa apenas dispositivos portáteis, o Unity3D é outro motor comercial que trabalha com arquivos do Blender; é tão simples quanto arrastá-los e soltá-los dentro do editor.
 
-Unity3D has been broadly used by the indie industry. They support mobiles to desktops, and by the time you read this, they can probably deploy for all the main consoles on the market. You still need to rework your materials once you import them inside the engine, but changes in the original file can be merged into the Unity3D editor.
+O Unity3D tem sido amplamente utilizado pela indústria indie. Eles suportam celulares a desktops e, quando você ler isto, provavelmente poderão ser implantados em todos os principais consoles do mercado. Você ainda precisa retrabalhar seus materiais depois de importá-los dentro do mecanismo, mas as alterações no arquivo original podem ser mescladas no editor Unity3D.
 
-## Blender Development Cycle <a id="Blender_Development_Cycle"></a>
+## Ciclo de Desenvolvimento do Blender <a id="Blender_Development_Cycle"></a>
 
-The development of the game engine is tied to the development cycle of Blender itself. Although improvements in different parts of the software are done separately, the release of new versions of the game engine happens as part of the Blender releases.
+O desenvolvimento do motor de jogo está ligado ao ciclo de desenvolvimento do próprio Blender. Embora as melhorias em diferentes partes do software sejam feitas separadamente, o lançamento de novas versões da engine do jogo acontece como parte dos lançamentos do Blender.
 
-Once a week there is an online developers' meeting[md]Blender Sunday Meeting. At the meeting, they deliberate on pending issues, present current development from coders, and trace plans for the upcoming weeks and months. The meetings happen in the #blendercoders channel in the Freenode IRC network every Sunday at 4 p.m. Amsterdam time.
+Uma vez por semana há uma reunião de desenvolvedores online [md] Reunião de Domingo do Blender. Na reunião, eles deliberam sobre questões pendentes, apresentam o desenvolvimento atual dos programadores e traçam planos para as próximas semanas e meses. As reuniões acontecem no canal #blendercoders da rede Freenode IRC todos os domingos às 16h. Hora de Amsterdã.
 
-For topics that require longer discussions and a larger audience, the developers use a mailing list hosted at the Blender Institute servers: bf-committers@blender.org.
+Para tópicos que requerem discussões mais longas e um público maior, os desenvolvedores usam uma lista de discussão hospedada nos servidores do Blender Institute: bf-committers@blender.org.
 
-To subscribe to this list or visit its archives, go to: _http://lists.blender.org/mailman/listinfo/bf-committers_
+Para se inscrever nesta lista ou visitar seus arquivos, vá para: _http: //lists.blender.org/mailman/listinfo/bf-committers_
 
-Proposals and roadmaps are presented and discussed in both channels. Some long-term projects end up resting in the Blender wiki, which in turn can be incorporated at the official development documentation page: _http://www.blender.org/development/._
+Propostas e roteiros são apresentados e discutidos em ambos os canais. Alguns projetos de longo prazo acabam descansando no wiki do Blender, que por sua vez pode ser incorporado na página de documentação oficial de desenvolvimento: _http: //www.blender.org/development/._
 
-Approximately every two months, a new release cycle starts. In the first week, the proposals for what features should be in the trunk (official Blender code) are presented, discussed, and, if necessary, voted in or out of the upcoming Blender release.
+Aproximadamente a cada dois meses, um novo ciclo de lançamento é iniciado. Na primeira semana, as propostas de quais recursos devem estar no porta-malas (código oficial do Blender) são apresentadas, discutidas e, se necessário, votadas dentro ou fora do próximo lançamento do Blender.
 
-This is especially applicable for big features developed on branches (code not incorporated into the trunk yet). Developers may go for long periods of time coding, testing, and calling for feedback, before the code ever gets incorporated into Blender's main source.
+Isso é especialmente aplicável para grandes recursos desenvolvidos em ramos (código ainda não incorporado ao tronco). Desenvolvedores podem passar longos períodos codificando, testando e pedindo feedback, antes que o código seja incorporado à fonte principal do Blender.
 
-To follow new developments, to help beta-test new features, and to make sure we keep the game engine backward compatible, you can keep track of the branches, which are always announced in the Blender Sunday Meetings and in the mailing lists.
+Para acompanhar os novos desenvolvimentos, para ajudar no teste beta de novos recursos e para garantir que mantemos o mecanismo de jogo compatível com as versões anteriores, você pode acompanhar os ramos, que são sempre anunciados nas reuniões de domingo do Blender e nas listas de discussão.
 
-Additionally, if you want to talk with Blender game engine coders directly, or follow our discussions, the #bgecoders IRC channel (also on Freenode) is a place where development is discussed.
+Além disso, se você quiser falar com os programadores do mecanismo de jogo do Blender diretamente, ou seguir nossas discussões, o canal IRC #bgecoders (também na Freenode) é um lugar onde o desenvolvimento é discutido.
 
-## How to Report Bugs <a id="How_to_Report_Bugs"></a>
+## Como relatar bugs <a id="How_to_Report_Bugs"></a>
 
-All software has bugs. Make no mistake about that. For those unfamiliar with this technical terminology, a bug is a problem in the software. Think about the last time you swore at a computer. Behind your lost hours of work lies a bug (and the imprudence of not saving your work; haven't you learned anything from playing videogames?).
+Todo software tem bugs. Não se engane sobre isso. Para quem não está familiarizado com essa terminologia técnica, um bug é um problema no software. Pense na última vez que você xingou um computador. Por trás das horas perdidas de trabalho está um bug (e a imprudência de não guardar o seu trabalho; não aprendeu nada jogando videogame?).
 
-Blender has a webpage dedicated solely to report and track bugs from users: _http://projects.blender.org._
+O Blender tem uma página dedicada exclusivamente a relatar e rastrear bugs dos usuários: _http: //projects.blender.org._
 
-The guidelines for bug reporting are simple:
+As diretrizes para relatórios de bugs são simples:
 
-- Make sure you can reproduce the bug several times.
+- Certifique-se de que você pode reproduzir o bug várias vezes.
 
-- Re-create or isolate the bug in the simplest file you can think of.
+- Recrie ou isole o bug no arquivo mais simples que você puder imaginar.
 
-- Report the environment you are working in if it's relevant (OS, hardware, version).
+- Relate o ambiente em que você está trabalhando, se for relevante (SO, hardware, versão).
 
-- Be patient. Reporting a bug can be a very-time consuming task. And a fix may take a long, long time with some further tests and interactions with you and the coders.
+- Seja paciente. Relatar um bug pode ser uma tarefa demorada. E uma correção pode demorar muito, muito tempo com alguns testes adicionais e interações com você e os codificadores.
 
-And remember, the more time you spend on making a good report[md]with good sample files, concise descriptions, and so on[md]the more you free a developer to work on fixing the bug itself.
+E lembre-se, quanto mais tempo você gasta fazendo um bom relatório [md] com bons arquivos de amostra, descrições concisas e assim por diante [md], mais você libera um desenvolvedor para trabalhar na correção do próprio bug.
 
-## Do It Yourself <a id="Do_It_Yourself"></a>
+## Faça Você Mesmo <a id="Do_It_Yourself"></a>
 
-As a provocative final thought, have you considered literally expanding the game engine yourself? We haven't been giving enough attention to the fact that the Blender source code is open and available to everyone. That may not be the reason you got into the software, but it's interesting to explore its potential.
+Como um pensamento final provocativo, você considerou literalmente expandir o motor de jogo sozinho? Não temos dado atenção suficiente ao fato de que o código-fonte do Blender está aberto e disponível para todos. Esse pode não ser o motivo pelo qual você entrou no software, mas é interessante explorar seu potencial.
 
-Blender and the game engine are partly maintained by the Blender Foundation and partially by online volunteer coders. Most of the coders started as users, implementing specific features required for their projects. In the short term, that leads to solutions that make life easier and a project more complete. In the long term, it helps build the community that dedicates energy to the game engine project.
+O Blender e o motor de jogo são parcialmente mantidos pela Blender Foundation e parcialmente por programadores voluntários online. A maioria dos programadores começou como usuários, implementando recursos específicos necessários para seus projetos. No curto prazo, isso leva a soluções que tornam a vida mais fácil e um projeto mais completo. A longo prazo, ajuda a construir a comunidade que dedica energia ao projeto do motor de jogo.
 
-If nothing else, you can try building Blender and replacing the splash screen (see Figure 9.4). It's definitively the first step to looking cool and impressing your boss:
+Se nada mais, você pode tentar construir o Blender e substituir a tela inicial (veja a Figura 9.4). É definitivamente o primeiro passo para parecer legal e impressionar seu chefe:
 
-_http://wiki.blender.org/index.php/Dev:Doc/Building_Blender_
+_http: //wiki.blender.org/index.php/Dev: Doc / Building_Blender_
 
-DF: To be replaced with a splash screen with Blender 2.6 say on it and the cover of the book. Waiting for the cover of the book.
+DF: Para ser substituído por uma tela inicial com o Blender 2.6, digamos, e a capa do livro. Esperando pela capa do livro.
 
-![Custom splash screen](../figures/Chapter9/Fig09-04.png)
+![Tela inicial personalizada](../figures/Chapter9/Fig09-04.png)
