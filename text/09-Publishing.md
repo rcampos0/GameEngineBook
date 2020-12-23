@@ -122,57 +122,55 @@ Assim como o tempo de execução do Windows, no Linux temos uma pasta com os arq
 >./blenderplayer ~/myFileLinux.blend
 > Se você executá-lo com o argumento "-h", poderá ver todas as opções disponíveis na linha de comando. Outra opção é usar o botão Iniciar na aba Reprodutor Independente no menu Cena para iniciar o arquivo atual no Blenderplayer (veja "Opções de Interface" a seguir neste capítulo).
 
-### Resource Files <a id="Resource_Files"></a>
+### Arquivos de Recursos <a id="Resource_Files"></a>
 
-Often, your game will need more than you've enclosed in Blender. For example, if you decided not to pack the textures into your file, you will need to copy them to the same folder structure as they were originally. The same applies for sounds, fonts, movies, Python scripts, and so on.
+Freqüentemente, seu jogo precisará de mais do que você incluiu no Blender. Por exemplo, se você decidiu não compactar as texturas em seu arquivo, você precisará copiá-las para a mesma estrutura de pastas em que estavam originalmente. O mesmo se aplica a sons, fontes, filmes, scripts Python e assim por diante.
 
-For Linux and Windows, you simply need to copy them to the same folder of the exported executable. In other words, you need to keep the same file structure as you were using from inside Blender.
+Para Linux e Windows, você simplesmente precisa copiá-los para a mesma pasta do executável exportado. Em outras palavras, você precisa manter a mesma estrutura de arquivo que estava usando dentro do Blender.
 
-For Mac OSX, you need to copy them to "mygame.app/Contents/Resources/." This is the base folder (for example, textures go in mygame.app/Contents/Resources/textures/").
+Para Mac OSX, você precisa copiá-los para "mygame.app/Contents/Resources/." Esta é a pasta base (por exemplo, texturas vão em mygame.app/Contents/Resources/textures/ ").
 
-### Interface Options <a id="Interface_Options"></a>
+### Opções de Interface <a id="Interface_Options"></a>
 
-In the Render panel, you can find a few specific options for Blenderplayer, as shown in Figure 9.2.
+No painel Render, você pode encontrar algumas opções específicas para o Blenderplayer, conforme mostrado na Figura 9.2.
 
-![Blenderplayer and other options](../figures/Chapter9/Fig09-02.png)
+![Blenderplayer e outras opções](../figures/Chapter9/Fig09-02.png)
 
-- **Start:** A quick way to launch your game in Blenderplayer. It will open it in a new window, You need to save your file first. Don't mistake this with the Start button in the Embedded Player tab, which plays the game inside Blender.
+- **Start:** Uma maneira rápida de lançar seu jogo no Blenderplayer. Ele o abrirá em uma nova janela. Primeiro, você precisa salvar seu arquivo. Não confunda isso com o botão Iniciar na guia Player incorporado, que reproduz o jogo dentro do Blender.
 
-- **Width** and **Height:** The width and height of the Embedded Player determines the aspect ratio of the camera. The ones in the Blenderplayer panel change the actual size of the screen.
+- **Width** e **Height:** A largura e a altura do Player incorporado determinam a proporção da câmera. Os que estão no painel do Blenderplayer alteram o tamanho real da tela.
 
-- **Full-Screen** and **Desktop:** If you want to launch your game in full-screen, you can use this option. If you set the Desktop option, the game engine will use the current computer screen resolution for the Full-screen mode. Otherwise, the Blenderplayer resolution will change the desktop resolution.
+- **Full-Screen** e **Desktop:** Se você deseja iniciar o jogo em tela inteira, pode usar esta opção. Se você definir a opção Desktop, o mecanismo de jogo usará a resolução da tela do computador atual para o modo de tela inteira. Caso contrário, a resolução do Blenderplayer mudará a resolução da área de trabalho.
 
-- **AA Samples:** For smooth rendered edges, you can turn on anti-aliasing. If the computer running the game does not support a specific level of AA or doesn't support AA at all, the game engine will fall back to the maximum supported parameter.
+- **AA Samples:** Para bordas renderizadas suaves, você pode ativar o anti-aliasing. Se o computador que está executando o jogo não oferecer suporte a um nível específico de AA ou não oferecer suporte a AA de forma alguma, o mecanismo do jogo retornará ao parâmetro máximo compatível.
 
-- **Bit Depth** and **Refresh Rate:** The color depth and the refresh rate for the graphics.
+- **Bit Depth** e **Refresh Rate:** A profundidade da cor e a taxa de atualização dos gráficos.
 
-- **Framing:** What can you do when the screen is scaled? Choose one of those three options: Letterbox, Extend, and Scale. Scale will stretch the frame to the new screen size (expect some aspect ratio distortions); Extend will reveal more of the frame, as if you had changed the Blenderplayer and the Embedded Player resolution at the same time. Letterbox will fill any difference between the camera aspect ratio (Embedded Player resolution) and the screen size with the color you choose in the color box (black by default).
+- **Framing:** O que você pode fazer quando a tela é dimensionada? Escolha uma dessas três opções: Letterbox, Extend e Scale. A escala estenderá o quadro para o novo tamanho de tela (espere algumas distorções de proporção); Extend revelará mais do quadro, como se você tivesse alterado a resolução do Blenderplayer e do Embedded Player ao mesmo tempo. A caixa de correio preencherá qualquer diferença entre a proporção da câmera (resolução do Embedded Player) e o tamanho da tela com a cor que você escolher na caixa de cores (preto por padrão).
 
 ### File Security <a id="File_Security"></a>
 
-Because Blender is available for free to everyone, if you distribute your game as a Blender file (.blend), there is really no way to prevent people from firing up Blender and taking a peek at your Blender file. Even if the game is packed and made into a runtime in the form of a single executable, it is still relatively easy for someone with a bit of technical skill to extract the game data. The bottom line is that packing, compressing, and making runtime are just conveniences for you; a Blend file is never secure against a curious (and determined) evil mind.
+Como o Blender está disponível gratuitamente para todos, se você distribuir seu jogo como um arquivo do Blender (.blend), não há realmente nenhuma maneira de evitar que as pessoas abram o Blender e dêem uma olhada em seu arquivo do Blender. Mesmo que o jogo seja compactado e transformado em um runtime na forma de um único executável, ainda é relativamente fácil para alguém com um pouco de habilidade técnica extrair os dados do jogo. O resultado final é que compactar, compactar e criar tempo de execução são apenas conveniências para você; um arquivo Blend nunca é seguro contra uma mente maligna curiosa (e determinada).
 
 >**No-Cheating**
 >
->If the game involves multiple players connected across the Internet, the only way to make sure that the game is tamper-proof is to do rigorous checking on the server. Any client-side Python code to ensure integrity can be easily modified by the user, and so it is effectively useless. For example, for a shooter game, the game server should keep track of the remaining ammunition for each player; this way, a malicious player would not be able to cheat by altering his own ammunition count.
+> Se o jogo envolver vários jogadores conectados pela Internet, a única maneira de garantir que o jogo seja à prova de falsificação é fazer uma verificação rigorosa no servidor. Qualquer código Python do lado do cliente para garantir a integridade pode ser facilmente modificado pelo usuário e, portanto, é efetivamente inútil. Por exemplo, para um jogo de tiro, o servidor do jogo deve controlar a munição restante de cada jogador; dessa forma, um jogador malicioso não seria capaz de trapacear alterando sua própria contagem de munição.
 
-The part of your program you can easily protect is the Python scripts. Although the plain text .py file is easy to be read by anyone, a compiled script is an unintelligible blob of binary code. To compile your script, all you need to do is run it once, and the game engine will generate a .pyc file for you. This file can be found in the same folder as your original scripts in a subfolder called \_\_pycache\_\_. Now all you need to do is to replace the original script files (.py) by their compiled version (.pyc). Alternatively, you can use Python stand-alone to generate the .pyc files: python –m compileall –b <folder-with-scripts>.
+A parte do seu programa que você pode proteger facilmente são os scripts Python. Embora o arquivo .py de texto simples seja fácil de ser lido por qualquer pessoa, um script compilado é um blob ininteligível de código binário. Para compilar seu script, tudo que você precisa fazer é executá-lo uma vez e o mecanismo de jogo irá gerar um arquivo .pyc para você. Este arquivo pode ser encontrado na mesma pasta que seus scripts originais em uma subpasta chamada \ _ \ _ pycache \ _ \ _. Agora, tudo o que você precisa fazer é substituir os arquivos de script originais (.py) por sua versão compilada (.pyc). Alternativamente, você pode usar o Python autônomo para gerar os arquivos .pyc: python –m compileall –b <folder-with-scripts>.
 
-Even though your production files will be exposed, this is not the end of the world. Your work is still protected under the licensing rights. Which happens to be our next topic[md] what were the odds?
+Mesmo que seus arquivos de produção sejam expostos, este não é o fim do mundo. Seu trabalho ainda está protegido pelos direitos de licenciamento. Qual é o nosso próximo tópico [md] quais eram as chances?
 
-## Licensing <a id="Licensing"></a>
+## Licenciamento <a id="Licensing"></a>
 
-It's true that 11 out of 10 people haven't read a single software EULA (End User License Agreement) in their lives. You know, that box full of text you have to agree to before installing a program. To enlighten your mind and relieve your guilty conscience, try not to skip this section.
+É verdade que 11 em cada 10 pessoas nunca leram um único software EULA (Contrato de Licença do Usuário Final) em suas vidas. Você sabe, aquela caixa cheia de texto com a qual você tem que concordar antes de instalar um programa. Para iluminar sua mente e aliviar sua consciência culpada, tente não pular esta seção.
 
-Just like a document you composed in Word rightfully belongs to you, and not Microsoft, any Blender file you created is entirely yours. You are free to distribute, sell, and publicly show the Blender file as much as you want.
+Assim como um documento que você compôs no Word pertence por direito a você, e não à Microsoft, qualquer arquivo do Blender que você criou é inteiramente seu. Você é livre para distribuir, vender e mostrar publicamente o arquivo do Blender o quanto quiser.
 
-The game engine has a catch, though. Blender and Blenderplayer are licensed under the GNU General Public License (GPL). In a nutshell, it means that any executable file that is derived from one of those binaries needs to follow the same original license. And from that legal perspective, a game exported as a Runtime is considered to be a derived binary.
+O motor do jogo tem um problema, entretanto. O Blender e o Blenderplayer são licenciados sob a GNU General Public License (GPL). Resumindo, isso significa que qualquer arquivo executável derivado de um desses binários precisa seguir a mesma licença original. E dessa perspectiva legal, um jogo exportado como um Runtime é considerado um binário derivado.
 
-In other words, you need to ensure that all the files you don't want to license under the GPL are not bundled within the Blenderplayer. The option for export as Runtime can still be used, but your initial file (the one incorporated inside the Blenderplayer) will have to be licensed under GPL.
+Em outras palavras, você precisa garantir que todos os arquivos que não deseja licenciar sob a GPL não estejam incluídos no Blenderplayer. A opção de exportar como Runtime ainda pode ser usada, mas seu arquivo inicial (aquele incorporado no Blenderplayer) terá que ser licenciado sob GPL.
 
-A simple way to keep your files separated from the Blenderplayer is to create an initial load file. This file will have a game actuator that only then will load your real main file. This way, all your actual game files can be kept external to the binary. Your file doesn't even need to end in ".blend" for the Game actuator to work.
-
->**Why the Blender Game Engine Won't Run on iOS**
+Uma maneira simples de manter seus arquivos separados do Blenderplayer é criar um arquivo de carregamento inicial. Este arquivo terá um atuador de jogo que só então carregará seu arquivo principal real. Dessa forma, todos os seus arquivos de jogo reais podem ser mantidos externos ao binário. Seu arquivo nem precisa terminar em ".blend" para que o atuador do jogo funcione.>**Why the Blender Game Engine Won't Run on iOS**
 >
 >There is a downside of the GPL license when publishing in some distribution platforms. For legal (and perhaps economic) reasons, most distribution game platforms do not accept GPL code in their components. That means it will be hard to get the game engine ported over to consoles and some more restrictive mobile and portable devices.
 
