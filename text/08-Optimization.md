@@ -408,37 +408,35 @@ Se você estiver curioso, um mapa normal usa os três canais de cores (RGB) para
 >
 > Os dois utilitários de mapa normais mais populares parecem ser o Gimp-NormalMap para (você adivinhou!) O GIMP (http://code.google.com/p/gimp-normalmap) e NVIDIA Texture Tools for Photoshop (http://developer.nvidia.com/nvidia-texture-tools-adobe-photoshop).
 
-### Level of Detail <a id="Level_of_Detail"></a>
+### Nivel de Detalhes <a id="Level_of_Detail"></a>
 
-Level of detail (LOD) is a general term referring to ways to adjust the complexity of the object, depending on its perceived size. The idea is that objects farther away are smaller and generally less significant to the gameplay. Therefore, they can often be removed or simplified.
+Nível de detalhe (LOD) é um termo geral que se refere a maneiras de ajustar a complexidade do objeto, dependendo de seu tamanho percebido. A ideia é que os objetos mais distantes são menores e geralmente menos significativos para a jogabilidade. Portanto, eles geralmente podem ser removidos ou simplificados.
 
-Ideally, LOD requires computing the size of the object on the screen. Because this is usually very difficult to achieve, LOD is commonly done by looking at the distance between the camera and the object.
+Idealmente, o LOD requer o cálculo do tamanho do objeto na tela. Como isso geralmente é muito difícil de conseguir, o LOD é normalmente feito observando-se a distância entre a câmera e o objeto.
 
-For a complex mesh, you can create multiple copies of the same model, with decreasing complexity. So when an object is a certain distance away from the camera, you can ask Blender to swap the mesh to a less detailed version. Additionally, as the object gets further away, you can even set the object to invisible, which avoids rendering that object completely.
+Para uma malha complexa, você pode criar várias cópias do mesmo modelo, com complexidade decrescente. Então quando um objeto está a uma certa distância da câmera, você pode pedir ao Blender para trocar a malha para uma versão menos detalhada. Além disso, conforme o objeto se afasta, você pode até definir o objeto como invisível, o que evita a renderização desse objeto completamente.
 
-Unfortunately, Blender does not have built-in support for LOD, so you have to create your own with Python.
+Infelizmente, o Blender não tem suporte embutido para LOD, então você deve criar o seu próprio com Python.
 
-A reference implementation of a LOD system can be found at /Chapter8/LoD.blend. This implementation uses a small script that keeps track of the distance of the object to the camera, and replaces the mesh with a less detailed one as the distance increases. Figure 8.19 shows the script-based LOD system.
+Uma implementação de referência de um sistema LOD pode ser encontrada em /Chapter8/LoD.blend. Esta implementação usa um pequeno script que rastreia a distância do objeto à câmera e substitui a malha por uma menos detalhada conforme a distância aumenta. A Figura 8.19 mostra o sistema LOD baseado em script.![LOD system](../figures/Chapter8/Fig08-19.png)
 
-![LOD system](../figures/Chapter8/Fig08-19.png)
+O script deve ser um bom lugar para você começar a mexer em sua própria implementação de LOD.
 
-The script should be a good place for you to start tinkering with your own LOD implementation.
+### Eliminação de objetos <a id="Object_Culling"></a>
 
-### Object Culling <a id="Object_Culling"></a>
+Para fazer o jogo funcionar da maneira mais eficiente possível, os objetos que não são visíveis não devem ser renderizados. Embora possa ser óbvio que tudo atrás de uma parede sólida não deve ser processado, o computador precisará de um pouco mais de ajuda para fazer isso.
 
-To make the game run as efficiently as possible, objects that are not visible should not be rendered. While it might be obvious that everything behind a solid wall should not be processed, the computer will need a bit more help to accomplish that.
+Para ajudar o mecanismo de jogo a selecionar objetos, configure oclusores para ocultar parte da cena da vista. Por exemplo, oclusores podem ser usados para marcar a separação entre uma cena interna e uma cena externa. Um arquivo de amostra é fornecido em /Chapter8/culling.blend. O efeito do abate é mostrado na Figura 8.20.
 
-To help the game engine cull objects, set up occluders to hide part of the scene from view. For example, occluders can be used to mark the separation between an indoor scene and an outdoor scene. A sample file is provided at /Chapter8/culling.blend. The effect of culling is shown in Figure 8.20.
+![Eliminação de objetos: visualização do jogo (esquerda), sem oclusor (centro), casa como oclusor (direita)](../figures/Chapter8/Fig08-20.png)
 
-![Object Culling: game view (Left), no occluder (Centre), house as occluder (Right)](../figures/Chapter8/Fig08-20.png)
+Para ver os efeitos da seleção de oclusão, certifique-se de que você está no modo de exibição de wireframe.
 
-To see the effects of occlusion culling, make sure that you are in wireframe view.
+Primeiro, execute o arquivo de amostra. Observe que tudo dentro da casa é visível, mesmo quando a câmera está fora. Isso ocorre porque não há nenhum objeto oclusor.
 
-First, run the sample file. Notice that everything inside the house is visible, even when the camera is outside. This is because there is no occluder object.
+Agora, defina o objeto WallOccluder para ser um oclusor e execute o jogo novamente. Observe que a parede efetivamente esconde objetos dentro da casa até que a câmera entre.
 
-Now, set the WallOccluder object to be an occluder and rerun the game. Notice that the wall effectively hides objects inside the house until the camera is inside.
-
-Keep in mind that culling is done on a per-object basis. Blender will not hide part of the model. Therefore, occlusion culling is effective only when there are many small objects in the scene hiding behind a large object.
+Lembre-se de que a seleção é feita por objeto. O Blender não irá esconder parte do modelo. Portanto, a seleção de oclusão é eficaz apenas quando há muitos objetos pequenos na cena escondidos atrás de um objeto grande.
 
 ### Scene Management <a id="Scene_Management"></a>
 
