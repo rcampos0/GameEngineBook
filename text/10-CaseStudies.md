@@ -14,17 +14,17 @@
 	- [OceanViz](#OceanViz)
 	- [Cosmic Sensation](#Cosmic_Sensation)
 
-# Chapter 10: Case Studies <a id="Chapter_10_Case_Studies"></a>
+# Capítulo 10: Estudos de caso <a id="Chapter_10_Case_Studies"></a>
 
-By now you should have a very good command of the Blender game engine. Armed with this newfound skill, no doubt you are bursting with ideas. Whether you are working alone or with a team, completing a game from start to finish is a lot of work. It is also a lot different from the examples and tutorials we used in the book, which are often stripped down to the most basic in order to be didactic. Real-world productions usually involve many more files, which are larger, more complex, and messier. This chapter tries to ease the transition between the classroom and the real world by showcasing other people's finished work.
+Agora você deve ter um bom comando do motor de jogo do Blender. Armado com essa habilidade recém-descoberta, sem dúvida você está explodindo de ideias. Quer você esteja trabalhando sozinho ou em equipe, completar um jogo do início ao fim dá muito trabalho. Também é muito diferente dos exemplos e tutoriais que usamos no livro, que muitas vezes são reduzidos ao mais básico para serem didáticos. As produções do mundo real geralmente envolvem muito mais arquivos, que são maiores, mais complexos e mais confusos. Este capítulo tenta facilitar a transição entre a sala de aula e o mundo real, mostrando o trabalho concluído de outras pessoas.
 
-The Blender-made games selected for this chapter represent some of the best work in quality, gameplay, and visuals. Some are also selected for their interesting use of the game engine in non-traditional ways. By seeing what is possible with Blender, we hope you will be inspired to learn from these masters of the Blender game engine. By showcasing some of the different uses for the game engine, we hope you will realize that the game engine is not just a video-game production machine, but also a sandbox that allows you to do almost anything.
+Os jogos feitos pelo Blender selecionados para este capítulo representam alguns dos melhores trabalhos em qualidade, jogabilidade e visuais. Alguns também são selecionados por seu uso interessante do mecanismo de jogo de maneiras não tradicionais. Ao ver o que é possível com o Blender, esperamos que você se inspire para aprender com esses mestres do mecanismo de jogo do Blender. Ao apresentar alguns dos diferentes usos do mecanismo de jogo, esperamos que você perceba que o mecanismo de jogo não é apenas uma máquina de produção de videogame, mas também uma caixa de areia que permite fazer quase tudo.
 
-All the games mentioned here can be found on the book website for you to play, and when the authors are willing, the blend source files are also provided so that you can freely explore the file on your own. You will notice that each artist has a unique style in file organization, scene structure, techniques, and tricks. Most of these tricks might be invisible to the player when the game is running. But by looking at the source file, you can gain much insight into how the game is made.
+Todos os jogos mencionados aqui podem ser encontrados no site do livro para você jogar e, quando os autores quiserem, os arquivos de origem da combinação também são fornecidos para que você possa explorar o arquivo livremente por conta própria. Você notará que cada artista tem um estilo único de organização de arquivos, estrutura de cena, técnicas e truques. A maioria desses truques pode ser invisível para o jogador durante o jogo. Mas, olhando para o arquivo de origem, você pode obter mais informações sobre como o jogo é feito.
 
 >**Blender Versions Clash**
 >
->We worked hard with the authors of these games to make sure that all the included games on the disk are playable in the latest version of Blender; however, due to limited time, some games might require a different version of Blender to run. Refer to the readme.txt file within each game folder for system requirement.
+> Trabalhamos muito com os autores desses jogos para garantir que todos os jogos incluídos no disco possam ser reproduzidos na última versão do Blender; entretanto, devido ao tempo limitado, alguns jogos podem exigir uma versão diferente do Blender para serem executados. Consulte o arquivo readme.txt dentro de cada pasta do jogo para os requisitos do sistema.
 
 ## Super Blender Galaxy <a id="Super_Blender_Galaxy"></a>
 
@@ -39,13 +39,13 @@ _[c] 2014 Carlos Limon._
 ![Carlos Limon](../figures/Chapter10/Fig10-03.png)
 _[c] 2014 Carlos Limon._
 
-Super Blender Galaxy wooed the Blender community with its fantastic artwork and slick gameplay. Carlos Limon is a relatively new member to Blender, but he wasted no time in single-handedly creating a stunning game that took home a very well deserved first place in the 2010 Blender Game competition.
+O Super Blender Galaxy conquistou a comunidade do Blender com sua arte fantástica e jogabilidade habilidosa. Carlos Limon é um membro relativamente novo do Blender, mas ele não perdeu tempo em criar sozinho um jogo impressionante que levou para casa um merecido primeiro lugar na competição de jogos do Blender de 2010.
 
-Based on Super Mario Galaxy, Super Blender Galaxy was inspired by the art and gameplay concept from the classic Nintendo title. Of course, Carlos had to remake all the artwork from scratch. It took eight months of hard work to get the game ready, an impressive feat considering it was a one-man production.
+Baseado no Super Mario Galaxy, o Super Blender Galaxy foi inspirado na arte e no conceito de jogabilidade do clássico título da Nintendo. Claro, Carlos teve que refazer toda a arte do zero. Demorou oito meses de trabalho duro para deixar o jogo pronto, um feito impressionante, considerando que foi uma produção de um homem só.
 
-What strikes us about this game is its attention to detail: every component of the game just feels polished right from the introductory screen. Objects look like they fully belong in this fictional universe, the effects are superb, and the gameplay is just what you'd expect from a Mario game.
+O que nos impressiona neste jogo é a sua atenção aos detalhes: cada componente do jogo parece polido desde a tela introdutória. Os objetos parecem pertencer totalmente a este universo fictício, os efeitos são excelentes e a jogabilidade é exatamente o que você esperaria de um jogo Mario.
 
-Carlos explains how the game was made:
+Carlos explica como o jogo foi feito:
 
 "It wasn't till around 2009 that I found Blender. I have never had experience with any kind of 3D software. I actually stumbled onto Blender when I was trying to learn how to make those stereogram images that look like a mess of stuff that you have to cross your eyes to see.
 
