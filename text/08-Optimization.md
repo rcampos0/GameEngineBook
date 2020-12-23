@@ -266,27 +266,27 @@ Para usar o proxy de colisão:
 
 Então, isso é proxy de colisão em poucas palavras. Como você pode ver, muitas etapas estão envolvidas nessa abordagem, o que torna o uso de proxy de colisão adequado apenas para modelos muito complexos que têm uma forma única. Caso contrário, é muito mais fácil (e eficiente) usar uma das primitivas de limite de colisão predefinidas.
 
-### Partial Collision <a id="Partial_Collision"></a>
+### Colisão Parcial <a id="Partial_Collision"></a>
 
-Another alternative to collision proxy is to simply turn off collision on part of the model. This can be done in the material Properties Editor. By adding multiple materials, you can control which part of the model is collision detected and which part is ignored by collision detection.
+Outra alternativa ao proxy de colisão é simplesmente desligar a colisão em parte do modelo. Isso pode ser feito no Editor de propriedades do material. Ao adicionar vários materiais, você pode controlar qual parte do modelo é detectada por colisão e qual parte é ignorada pela detecção de colisão.
 
 _**Tutorial**_
 
-1. Open /Chapter8/collisionMultiMaterial.blend.
+1. Abra /Chapter8/collisionMultiMaterial.blend.
 
-2. Start the game and notice that the entire tree object reacts to collision. You can confirm this by looking at the wireframe physics visualization.
+2. Inicie o jogo e observe que todo o objeto da árvore reage à colisão. Você pode confirmar isso olhando para a visualização da física do wireframe.
 
-3. In order to make the game run better, let's disable collisions for the smaller tree branches.
+3. Para fazer o jogo funcionar melhor, desabilitemos as colisões para os galhos menores das árvores.
 
-4. Select the tree object and go to the Material Properties Editor.
+4. Selecione o objeto árvore e vá para o Editor de Propriedades de Material.
 
-5. Select the material slot named _Trunk_ and make sure that the Physics checkbox is turned on.
+5. Selecione o slot de material denominado _Trunk_ e certifique-se de que a caixa de seleção Physics esteja ativada.
 
-6. Select the material slot named _Branches_ and disable collision by unchecking the Physics checkbox. The resulting file should look like Figure 8.11
+6. Selecione o slot de material denominado _Branches_ e desative a colisão desmarcando a caixa de seleção Física. O arquivo resultante deve ser semelhante à Figura 8.11
 
-7. Run the game again and notice that the smaller branches will now be ignored by the physics engine. Not only will this free up some physics computation, but it will also make the game more realistic by letting objects go through leaves.
+7. Execute o jogo novamente e observe que os ramos menores serão ignorados pelo mecanismo de física. Isso não apenas irá liberar alguns cálculos físicos, mas também tornará o jogo mais realista, permitindo que os objetos passem pelas folhas.
 
-![Material Properties Editor](../figures/Chapter8/Fig08-11.png)
+![Editor de propriedades de materiais](../figures/Chapter8/Fig08-11.png)
 
 ### Texture Baking <a id="Texture_Baking"></a>
 
