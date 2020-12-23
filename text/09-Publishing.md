@@ -42,35 +42,35 @@ De modo geral, para outros usuários rodarem um jogo criado pelo Blender, eles p
 
 Esta lista é simplificada. Por exemplo, em um projeto maior, em vez de um único arquivo do Blender, um jogo pode ser composto de vários arquivos do Blender, mas sempre haverá um arquivo que atua como um ponto de entrada para iniciar o jogo. Recursos são arquivos externos usados no jogo. Os recursos podem ser compactados, o que basicamente copia esses arquivos para o arquivo do Blender. Finalmente, o binário do Blender geralmente não é um único arquivo. Ele contém bibliotecas e scripts que o Blender irá precisar. Normalmente é uma boa ideia incluir o binário com o lançamento, porque a menos que o jogo seja distribuído exclusivamente dentro da comunidade Blender, o usuário provavelmente não terá o Blender (ou a versão correta do Blender) instalado para executar o arquivo do Blender.
 
-## The Theory of Relativity <a id="The_Theory_of_Relativity"></a>
+## A teoria da relatividade <a id="The_Theory_of_Relativity"></a>
 
-The first rule of deployment is to remember that because we have no control over the user's computer, it is impossible to predict where our game will be installed. If that is not bad enough, different operating systems (Windows, Mac, Linux) handle file paths differently. The only way to ensure compatibility across different systems is to make sure all file paths used in the game are relative and nested to the root folder of your game.
+A primeira regra de implantação é lembrar que, como não temos controle sobre o computador do usuário, é impossível prever onde nosso jogo será instalado. Se isso não for ruim o suficiente, diferentes sistemas operacionais (Windows, Mac, Linux) tratam os caminhos de arquivo de maneira diferente. A única maneira de garantir a compatibilidade entre sistemas diferentes é certificar-se de que todos os caminhos de arquivo usados no jogo são relativos e aninhados na pasta raiz do jogo.
 
-Some relative file paths:
+Alguns caminhos de arquivo relativos:
 
 _//textures/color.png_
 
 _//audio/music/background.mp3_
 
-Some bad relative file paths (avoid them):
+Alguns caminhos de arquivo relativos incorretos (evite-os):
 
 _//..\..\..\Fonts\ComicSans.ttf_
 
 _//../../Downloads/textures/floor.png_
 
-Some absolute file paths (avoid them):
+Alguns caminhos de arquivo absolutos (evite-os):
 
 _C:\Users\Documents\Peter\MyBlenderProject\textures\color.png_
 
 _/home/desktop/DownloadedFromInternet/audio/music/background.mp3_
 
-As you can see, not only does an absolute file path reveal a lot of things you probably don't want others to see, but an absolute file path simply wouldn't work on another computer unless it has the same folder setup as you and a compatible operating system.
+Como você pode ver, não só um caminho de arquivo absoluto revela muitas coisas que você provavelmente não quer que outros vejam, mas um caminho de arquivo absoluto simplesmente não funcionaria em outro computador a menos que tenha a mesma configuração de pasta que você e um sistema operacional compatível.
 
-By default, Blender references all external assets (such as image textures, audio files, and linked Blender files) using a relative path. The file path is always relative to the Blender file.
+Por padrão, o Blender faz referência a todos os ativos externos (como texturas de imagem, arquivos de áudio e arquivos do Blender vinculados) usando um caminho relativo. O caminho do arquivo é sempre relativo ao arquivo do Blender.
 
-Because all relative paths are relative to the currently opened Blender file, in order for the relative path to work, the Blender file should be saved before any external assets are loaded.
+Como todos os caminhos relativos são relativos ao arquivo do Blender aberto atualmente, para que o caminho relativo funcione, o arquivo do Blender deve ser salvo antes que quaisquer ativos externos sejam carregados.
 
-If you are using Python scripts to load a file from the computer, you should always use the "os" module (os.path.sep, os.path.join, …) to handle these files' locations.
+Se estiver usando scripts Python para carregar um arquivo do computador, você deve sempre usar o módulo "os" (os.path.sep, os.path.join,…) para lidar com a localização desses arquivos.
 
 >**It's Never Too Late to Make It Right**
 >
