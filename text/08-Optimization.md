@@ -404,9 +404,9 @@ Para preparar um mapa normal de um modelo de polígono alto para um modelo de ba
 
 Se você estiver curioso, um mapa normal usa os três canais de cores (RGB) para armazenar as direções normais (XYZ) de uma superfície. Como a maioria dos normais de superfície está apontando para fora, eles têm um valor normal de (X = 0,5, Y = 0,5, Z = 1,0), que é o que dá aos mapas normais essa cor roxa distinta.
 
->**Normal Map Utilities**
+>**Utilitários de mapa normais**
 >
->The two most popular normal map utilities seem to be Gimp-NormalMap for (you guessed it!) the GIMP (http://code.google.com/p/gimp-normalmap) and NVIDIA Texture Tools for Photoshop (http://developer.nvidia.com/nvidia-texture-tools-adobe-photoshop).
+> Os dois utilitários de mapa normais mais populares parecem ser o Gimp-NormalMap para (você adivinhou!) O GIMP (http://code.google.com/p/gimp-normalmap) e NVIDIA Texture Tools for Photoshop (http://developer.nvidia.com/nvidia-texture-tools-adobe-photoshop).
 
 ### Level of Detail <a id="Level_of_Detail"></a>
 
