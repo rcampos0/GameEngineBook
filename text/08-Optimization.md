@@ -361,49 +361,48 @@ Apesar das limitações, o cozimento de texturas é um método popular amplament
 
 ### Normal Map <a id="Normal_Map"></a>
 
-Baking a normal map is actually just a special case of the texture baking. Normal map baking is commonly used to generate a tangent normal map from a high-resolution model to map onto a low-resolution model.
+Cozinhar um mapa normal é na verdade apenas um caso especial de cozimento de textura. O cozimento de mapa normal é comumente usado para gerar um mapa normal tangente de um modelo de alta resolução para mapear em um modelo de baixa resolução.
 
-So what is a normal map?
+Então, o que é um mapa normal?
 
-A normal map is a regular image file, but instead of influencing the color of the surface like a regular color texture, normal maps are used to alter the per-pixel surface normal. By altering the surface normal, you can change the apparent bumpiness of a surface. The effect of a normal mapped object is one that has far more apparent fidelity than the actual underlying mesh. Figure 8.16 shows the effect of a normal map.
+Um mapa normal é um arquivo de imagem regular, mas em vez de influenciar a cor da superfície como uma textura de cor regular, os mapas normais são usados para alterar a normal da superfície por pixel. Ao alterar a normal da superfície, você pode alterar a irregularidade aparente de uma superfície. O efeito de um objeto mapeado normal é aquele que tem muito mais fidelidade aparente do que a malha subjacente real. A Figura 8.16 mostra o efeito de um mapa normal.
 
-![From left to right: Original high-resolution model, low-resolution model, low-resolution model with normal maps](../figures/Chapter8/Fig08-16.png)
+![Da esquerda para a direita: modelo original de alta resolução, modelo de baixa resolução, modelo de baixa resolução com mapas normais](../figures/Chapter8/Fig08-16.png)
 
-There are two ways to create a normal map:
+Existem duas maneiras de criar um mapa normal:
 
-1. A normal map can be created in an image-editing tool, such as Photoshop or GIMP. Plug-ins are available that can convert a black-and-white height map into a normal map.
+1. Um mapa normal pode ser criado em uma ferramenta de edição de imagem, como Photoshop ou GIMP. Estão disponíveis plug-ins que podem converter um mapa de altura em preto e branco em um mapa normal.
 
-2. Use Blender's built-in tool to bake a normal map from a high-polygon model to a low-polygon model.
-
+2. Use a ferramenta embutida do Blender para preparar um mapa normal de um modelo de polígono alto para um modelo de polígono baixo.
 
 _**Tutorial**_
-To bake a normal map from a high-polygon model to a low-polygon model:
+Para preparar um mapa normal de um modelo de polígono alto para um modelo de baixo polígono:
 
-1. Open /Chapter8/NormalMap.blend.
+1. Abra /Chapter8/NormalMap.blend.
 
-2. Notice that we have two objects of the same model: a high-resolution model that we'll use as the input, and a low-resolution model that we will bake the normal map to. They occupy the same space because this is necessary for the normal map-baking process to work properly.
+2. Observe que temos dois objetos do mesmo modelo: um modelo de alta resolução que usaremos como entrada e um modelo de baixa resolução para o qual prepararemos o mapa normal. Eles ocupam o mesmo espaço porque isso é necessário para que o processo normal de confecção de mapas funcione corretamente.
 
-3. As with lightmap baking, you first need to UV unwrap the model so that the texture baking knows where to place the texture. Select the low-resolution model (since that's the one you are baking to). Go into Edit mode, press U, and select Unwrap.
+3. Assim como na confecção de mapas de luz, primeiro você precisa desdobrar o modelo em UV para que a confecção de texturas saiba onde colocá-la. Selecione o modelo de baixa resolução (já que é para ele que você está cozinhando). Vá para o modo Edit, pressione U e selecione Unwrap.
 
-4. Because no image texture is created for you automatically, manually create a new image texture data block by clicking on the New button in the Image Editor. A resolution of 1024 is sufficient for this example.
+4. Como nenhuma textura de imagem é criada automaticamente para você, crie manualmente um novo bloco de dados de textura de imagem clicando no botão Novo no Editor de imagens. Uma resolução de 1024 é suficiente para este exemplo.
 
-5. Now comes the tricky part. First, select the high-resolution model; then hold down Shift to add the low-resolution model to the selection. This way, both objects should be selected, with the low-resolution model being the active object. You can select the object from the Outliner to make the process simpler.
+5. Agora vem a parte complicada. Primeiro, selecione o modelo de alta resolução; em seguida, mantenha pressionada a tecla Shift para adicionar o modelo de baixa resolução à seleção. Desta forma, ambos os objetos devem ser selecionados, sendo o modelo de baixa resolução o objeto ativo. Você pode selecionar o objeto do Outliner para tornar o processo mais simples.
 
-6. From the Render Properties Editor, select Normal from Bake mode and then click on Bake.
+6. No Render Properties Editor, selecione Normal from Bake mode e então clique em Bake.
 
-7. Once the baking is done, the baked texture should have a purple hue to it. If the color is off, check to make sure that you are baking a normal map into the correct normal space (tangent), as shown in Figure 8.17.
+7. Assim que o cozimento estiver pronto, a textura cozida deve ter uma tonalidade roxa. Se a cor estiver apagada, certifique-se de que você está preparando um mapa normal no espaço normal correto (tangente), conforme mostrado na Figura 8.17.
 
-![Baked normal map](../figures/Chapter8/Fig08-17.png)
+![Mapa normal cozido](../figures/Chapter8/Fig08-17.png)
 
-8. At this point, you have no use for the high-resolution model anymore. Move the object to a different layer or delete it.
+8. Neste ponto, você não precisa mais do modelo de alta resolução. Mova o objeto para uma camada diferente ou exclua-o.
 
-9. To use the normal map, create a material and image texture for the low-resolution model, as shown in Figure 8.18.
+9. Para usar o mapa normal, crie uma textura de material e imagem para o modelo de baixa resolução, conforme mostrado na Figura 8.18.
 
-![Normal map material](../figures/Chapter8/Fig08-18.png)
+![Material normal do mapa](../figures/Chapter8/Fig08-18.png)
 
-10. The final result should look like the file Chapter8/NormalMap-Finished.blend.
+10. O resultado final deve ser semelhante ao arquivo Chapter8 / NormalMap-Finished.blend.
 
-If you are curious, a normal map uses the three color channels (RGB) to store the normal directions (XYZ) of a surface. Because most surface normals are pointing outward, they have a normal value of (X=0.5,Y=0.5, Z=1.0), which is what gives normal maps that distinct purple color.
+Se você estiver curioso, um mapa normal usa os três canais de cores (RGB) para armazenar as direções normais (XYZ) de uma superfície. Como a maioria dos normais de superfície está apontando para fora, eles têm um valor normal de (X = 0,5, Y = 0,5, Z = 1,0), que é o que dá aos mapas normais essa cor roxa distinta.
 
 >**Normal Map Utilities**
 >
