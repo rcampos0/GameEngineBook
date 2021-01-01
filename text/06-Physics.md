@@ -1,10 +1,10 @@
 **Table of Contents**
 
 - [Chapter 6: Physics](#Chapter_6_Physics)
-	- [What Is Physics?](#What_Is_Physics?)
+	- [O que é Física?](#What_Is_Physics?)
 	- [Overview](#Overview)
-	- [World Properties](#World_Properties)
-	- [Physics Engine](#Physics_Engine)
+	- [Propriedades do Mundo](#World_Properties)
+	- [Engine da Física](#Physics_Engine)
 		- [Hands-on: World Settings for Multiple Scenes](#Hands-on_World_Settings_for_Multiple_Scenes)
 	- [Culling Resolution](#Culling_Resolution)
 	- [Physics Substeps](#Physics_Substeps)
